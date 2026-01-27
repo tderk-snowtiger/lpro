@@ -1,4 +1,4 @@
-a simplified version of MProcs
+# a simplified version of MProcs
 
 to install:
 
