@@ -628,7 +628,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.9-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.14-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -5409,7 +5409,7 @@ def main():
                 print("Generating tones... (Ctrl+C to stop)")
 
                 while True:
-                    pitch = random.uniform(300, 1000)
+                    pitch = random.uniform(40, 1000)
                     duration = random.uniform(0.01, 1.11) 
                     num_samples = int(sample_rate * duration)
                     
