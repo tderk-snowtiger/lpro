@@ -9,6 +9,8 @@ import platform
 import os
 import shutil
 import argparse
+import math
+import struct
 
 omit_result = False
 current_ddd = [""]
@@ -626,7 +628,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.3-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.9-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -777,7 +779,7 @@ def main():
             print()
             print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: xcbmp, xcbmpc, xhbmp, xhbmpc, xjbmp, xjbmpc, xfbmp")
             print()
-            print(" | ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], police (prad), CAI Environments (CAI/GES), time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]")
+            print(" | sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], police (prad), CAI Environments (CAI/GES), time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]")
             print()
             print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}")
 
@@ -5368,7 +5370,69 @@ def main():
             
             # 4. Print to console
             ct = datetime.datetime.now()
-            print(f"\n{BLUE}generated_string: {secure_str} | {ct}{RESET}")            
+            print(f"\n{BLUE}generated_string: {secure_str} | {ct}{RESET}")
+
+        def check_ss():
+            try:
+                subprocess.run(["mpv", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                return True
+            except FileNotFoundError:
+                print("-" * 50)
+                print("ERROR: 'mpv' is not installed.")
+                print("\nTo fix this, run:")
+                print("  Termux: pkg install mpv pulseaudio")
+                print("  Linux:  sudo apt install mpv")
+                print("  MacOS:  brew install mpv")
+                print("-" * 50)
+                return False
+
+        def sound_stream():
+
+            if not check_ss():
+                return
+
+            sample_rate = 44100
+            
+            cmd = [
+                "mpv",
+                "--no-video",
+                "--demuxer=rawaudio",  
+                "--demuxer-rawaudio-rate=44100",
+                "--demuxer-rawaudio-channels=1",
+                "--demuxer-rawaudio-format=s16le",
+                "-"  # Read from stdin
+            ]
+
+            try:
+                player = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+                
+                print("Generating tones... (Ctrl+C to stop)")
+
+                while True:
+                    pitch = random.uniform(300, 1000)
+                    duration = random.uniform(0.01, 1.11) 
+                    num_samples = int(sample_rate * duration)
+                    
+                    audio_bytes = bytearray()
+                    for x in range(num_samples):
+                        sample = int(16000 * math.sin(2 * math.pi * pitch * (x / sample_rate)))
+                        audio_bytes.extend(struct.pack('h', sample))
+                    
+                    if player.poll() is not None:
+                        print("\n[!] mpv exited unexpectedly.")
+                        break
+                        
+                    player.stdin.write(audio_bytes)
+                    player.stdin.flush()
+
+            except KeyboardInterrupt:
+                print("\nStopping...")
+            except BrokenPipeError:
+                print("\n[!] Connection to mpv was lost.")
+            finally:
+                if 'player' in locals():
+                    player.terminate()
+                    player.wait()            
 
         def choice():
             choice = ''
@@ -5824,6 +5888,9 @@ def main():
 
                 if choice == "ghost write" or choice == "Ghost Write" or choice == "GW" or choice == "gw" or choice == "ghost code":
                     ghost_write()
+
+                if choice == "soundstream" or choice == "sst" or choice == "SST" or choice == "sound stream" or choice == "stream sound" or choice == "streamsound":
+                    sound_stream()
 
         chooseAgain = "yes"
         while chooseAgain:

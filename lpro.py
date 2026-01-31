@@ -9,6 +9,8 @@ import platform
 import os
 import shutil
 import argparse
+import math
+import struct
 
 omit_result = False
 current_ddd = [""]
@@ -627,7 +629,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.3{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.9{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -788,7 +790,7 @@ def main():
             print()
             print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: cbmp, cmbpc, xcbmp, xcbmpc, hbmp, hbmpc, xhbmp, xhbmpc, jbmp, jbmpc, xjbmp, xjbmpc, fbmp, xfbmp")
             print()
-            print(" | ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
+            print(" | sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
             print()
             print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}, monitor-search [msearch], acad-search [asearch]")
 
@@ -3355,9 +3357,9 @@ def main():
             if shutil.which("espeak"):
                 try:
                     if platform.system() == "Windows":
-                        subprocess.run(["espeak", text], check=True)
+                        subprocess.run(["espeak", "-v", "en+f1", text], check=True)
                     else:
-                        subprocess.run(["espeak", text], check=True)
+                        subprocess.run(["espeak", "-v", "en+f1", text], check=True)
                     return
                 except subprocess.CalledProcessError as e:
                     print(f"eSpeak error: {e}")
@@ -7355,6 +7357,68 @@ def main():
             # Print to file (Note the comma before file=z)
             print(f"{usr}Generated_String: {secure_str} | {ct}", file=z)
 
+        def check_ss():
+            try:
+                subprocess.run(["mpv", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                return True
+            except FileNotFoundError:
+                print("-" * 50)
+                print("ERROR: 'mpv' is not installed.")
+                print("\nTo fix this, run:")
+                print("  Termux: pkg install mpv pulseaudio")
+                print("  Linux:  sudo apt install mpv")
+                print("  MacOS:  brew install mpv")
+                print("-" * 50)
+                return False
+
+        def sound_stream():
+
+            if not check_ss():
+                return
+
+            sample_rate = 44100
+            
+            cmd = [
+                "mpv",
+                "--no-video",
+                "--demuxer=rawaudio",  
+                "--demuxer-rawaudio-rate=44100",
+                "--demuxer-rawaudio-channels=1",
+                "--demuxer-rawaudio-format=s16le",
+                "-"  # Read from stdin
+            ]
+
+            try:
+                player = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+                
+                print("Generating tones... (Ctrl+C to stop)")
+
+                while True:
+                    pitch = random.uniform(300, 1000)
+                    duration = random.uniform(0.01, 1.11) 
+                    num_samples = int(sample_rate * duration)
+                    
+                    audio_bytes = bytearray()
+                    for x in range(num_samples):
+                        sample = int(16000 * math.sin(2 * math.pi * pitch * (x / sample_rate)))
+                        audio_bytes.extend(struct.pack('h', sample))
+                    
+                    if player.poll() is not None:
+                        print("\n[!] mpv exited unexpectedly.")
+                        break
+                        
+                    player.stdin.write(audio_bytes)
+                    player.stdin.flush()
+
+            except KeyboardInterrupt:
+                print("\nStopping...")
+            except BrokenPipeError:
+                print("\n[!] Connection to mpv was lost.")
+            finally:
+                if 'player' in locals():
+                    player.terminate()
+                    player.wait()
+
         def choice():
             choice = ''
             while choice !='pray' and choice !='slot' and choice !='search for items' and choice !='surf' and choice !='sleep' and choice !='eat' and choice !='meditate' and choice !='find coins' and choice !='draw card' and choice !='fly' and choice !='drink coffee' and choice !='drink tea' and choice !='surf' and choice !='dhammapada' and choice !='skate' and choice !='art' and choice !='give alms' and choice !='radio' and choice !='hack' and choice !='message' and choice !='brawl' and choice !='souls'and choice !='hipster tarot' and choice !='mp3' and choice !='spar' and choice !='train' and choice !='rest' and choice !='psalms' and choice !='haiku' and choice !='muslim prayer' and choice !='karate' and choice !='koans' and choice !='equips' and choice !='rpg' and choice !='archery' and choice !='color key' and choice !='doodling' and choice !='BUMP' and choice !='MA' and choice !='Magic' and choice !='commands' and choice !='ascii' and choice !='zen melody' and choice !='monopoly' and choice !='light incense' and choice  !='stats' and choice !='prayer' and choice !='progress' and choice !='collections' and choice !='football' and choice !='c' and choice !='map' and choice !='search' and choice !='print time' and choice !='entry' and choice !='posting' and choice !='koran' and choice !='heBrews' and choice !='Medicals' and choice !='M' and choice !='Clearance' and choice !='MiCasa' and choice !='stuff' and choice !='worship' and choice !='Earth Science' and choice !='SCI' and choice !='value' and choice !='psychology' and choice !='psyc' and choice !='Patient Simu' and choice !='biology' and choice !='B' and choice !='legal terms' and choice !='Law' and choice !='the heart sutra' and choice !='License' and choice !='police' and choice !='prad' and choice !='climb' and choice !='chemistry' and choice !='ch' and choice !='weapon start' and choice !='wstart' and choice !='teletubby' and choice !='note' and choice !='save' and choice !='journal' and choice !='version' and choice !='ai' and choice !='auto-mat' and choice !='AAM' and choice !='ID' and choice !='IDC' and choice !='echo' and choice !='monitor-start' and choice !='mstart' and choice !='change username' and choice !='username' and choice !='user' and choice !='fuzz' and choice !='message-scan' and choice !='scan' and choice !='monitor-search' and choice !='msearch' and choice !='tag' and choice !='atag' and choice !='a-tag' and choice !='acad-monitor' and choice !='astart' and choice !='acad-search' and choice !='asearch' and choice !='oscillator' and choice !='oscillate' and choice !='oscill' and choice !='amror' and choice !='game' and choice !='amsearch' and choice !='amror-search' and choice !='amror search' and choice !='profile' and choice !='Profile' and choice !='herbs' and choice !='herbals' and choice !='degree' and choice !='degrees' and choice !='major' and choice !='majors' and choice !='MedProc AI' and choice !='MAI' and choice !='frames' and choice !='fsearch' and choice !='ascsearch' and choice !='alerts' and choice !='Alerts' and choice !='burner-start' and choice !='burner start' and choice !='burner' and choice !='burn' and choice !='MAIc' and choice !='MPC' and choice !='mpc' and choice !='GES' and choice !='call' and choice !='time-monitor':
@@ -7363,7 +7427,6 @@ def main():
                 choice = input(usr)
                 ct = datetime.datetime.now()
                 print(usr, choice, ct, file=z)
-
 
                 if choice == "version" or choice == "about":
                     version()
@@ -7861,6 +7924,9 @@ def main():
 
                 if choice == "ghost write" or choice == "Ghost Write" or choice == "GW" or choice == "gw" or choice == "ghost code":
                     ghost_write()
+
+                if choice == "soundstream" or choice == "sst" or choice == "SST" or choice == "sound stream" or choice == "stream sound" or choice == "streamsound":
+                    sound_stream()
 
         chooseAgain = "yes"
         while chooseAgain:
