@@ -8,6 +8,7 @@ import subprocess
 import platform
 import os
 import shutil
+import argparse
 
 omit_result = False
 current_ddd = [""]
@@ -559,49 +560,37 @@ def main():
         usr = newUsr
     new = "zeta"
 
-    def select_charset():
+    def select_charset(provided_choice=None):
         global current_ddd, omit_result
+        
         while True:
-            choice = input("Nano EST Charset - 1. Korean 2. Chinese 3. Japanese 4. None/English only -- add/or 'A/a' to toggle English words : ").strip()    
-            if choice == '':
+            choice = provided_choice if provided_choice else input("Nano EST Charset - 1. Korean 2. Chinese 3. Japanese 4. None/English (add 'a' for English toggle): ").strip()
+            
+            c = choice.lower().replace(" ", "") 
+
+            if c in ['', '1', 'korean', 'k']:
                 current_ddd = jamo
-                print("Defaulting to Korean")
-                time.sleep(.3)
-                break
-            if choice == '1' or choice == 'Korean' or choice == 'korean' or choice == 'K':
-                current_ddd = jamo
-                break
-            elif choice == '2' or choice == 'Chinese' or choice == 'chinese' or choice == 'C':
+            elif c in ['2', 'chinese', 'c']:
                 current_ddd = chi_chars
-                break
-            elif choice == '3' or choice == 'Japanese' or choice == 'japanese' or choice == 'J':
+            elif c in ['3', 'japanese', 'j']:
                 current_ddd = katakana
-                break
-            elif choice == '4'  or choice == 'None' or choice == 'none':
-                current_ddd = [""]
-                omit_result = False
-                break
-            elif choice == '1 a' or choice == '1 A' or choice == 'Korean a' or choice == 'Korean A' or choice == 'korean a' or choice == 'korean A' or choice == '1a' or choice == '1A' or choice == 'KoreanA' or choice == 'Koreana' or choice == 'koreanA' or choice == 'KA' or choice == " K A" or choice == " K a" or choice == " k a" or choice == " k A":
-                current_ddd = jamo
+            elif c in ['4', 'none']:
+                current_ddd, omit_result = [""], False
+            elif c in ['1a', '1-a', 'koreana', 'korean-a', 'ka', 'k-a']:
+                current_ddd, omit_result = jamo, not omit_result
+            elif c in ['2a', '2-a', 'chinesea','chinese-a', 'ca', 'c-a']:
+                current_ddd, omit_result = chi_chars, not omit_result
+            elif c in ['3a', '3-a', 'japanesea', 'japanese-a', 'ja', 'j-a']:
+                current_ddd, omit_result = katakana, not omit_result
+            elif c in ['a']:
                 omit_result = not omit_result
-                break
-            elif choice == '2 a' or choice == '2 A' or choice == 'Chinese a' or choice == 'Chinese A' or choice == 'chinese a' or choice == 'chinese A' or choice == '2a' or choice == '2A' or choice == 'ChineseA' or choice == 'Chinesea' or choice == 'chineseA' or choice == 'CA' or choice == 'cA' or choice == "ca" or choice == "Ca" or choice == " C A" or choice == " C a" or choice == " c a" or choice == " c A":
-                current_ddd = chi_chars
-                omit_result = not omit_result
-                break
-            elif choice == '3 a' or choice == '3 A' or choice == 'Japanese a' or choice == 'Japanese A' or choice == 'japanese a' or choice == 'japanese A' or choice == '3a' or choice == '3A' or choice == 'JapaneseA' or choice == 'Japanesea' or choice == 'japaneseA' or choice == 'JA' or choice == 'jA' or choice == "ja" or choice == "Ja" or choice == " J A" or choice == " J a" or choice == " j a" or choice == " j A":
-                current_ddd = katakana
-                omit_result = not omit_result
-                break
-            elif choice == "A" or choice == "a": 
-                omit_result = not omit_result
-                break
-            elif choice == "4a" or choice == "4A" or choice == "4 a" or choice == "4 A": 
-                current_ddd = [""]
-                omit_result = not omit_result
-                break
+            elif c in ['4a', '4-a']:
+                current_ddd, omit_result = [""], not omit_result
             else:
                 print("Invalid input")
+                provided_choice = None
+                continue
+            break
     ###
     user = f"{GREEN}{new}{RESET}"
     ST = " st"
@@ -638,7 +627,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.3{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -890,22 +879,34 @@ def main():
             print(l_time, t_time)
             print(usr, l_time, t_time, file=z)
 
-        def change_username():
+        def change_username(provided_name=None):
             def set_usr(newUsr):
                 global usr
                 usr = newUsr
-            new = input("Session username: ")
+            new = provided_name if provided_name else input("Session username: ")
             user = f"{GREEN}{new}{RESET}"
             ST = " st"
             medicci = f"{ST}"
             dollar = "$"
-            sign = f"{PURPLE}{dollar}{RESET}"
+            sign = f"{BLUE}{dollar}{RESET}"
             set_usr(medicci + "" + " " + "" + "(" + "" + " " + "" + "" + user + "" + "" + " " + "" + ")" + "" + " " + "" + sign + "" + " ")
             ct = datetime.datetime.now()
             m = open("monitor-logs.txt", "a", buffering=1)
             monitor = "Username changed in 1 session:"
             print(monitor, usr, ct, file=m)
             print(file=m)
+
+        parser = argparse.ArgumentParser(description="MProcs")
+        parser.add_argument("--user", "--username", nargs='?', const='ASK', help="Set username")
+        parser.add_argument("--charset", "--nano", nargs='?', const='ASK', help="Set Nano charset (e.g. 1, 2a, korean)")
+
+        args = parser.parse_args()
+
+        if args.user:
+            change_username(None if args.user == 'ASK' else args.user)
+        
+        if args.charset:
+            select_charset(None if args.charset == 'ASK' else args.charset)
 
         def profile():
             print()
@@ -7364,7 +7365,7 @@ def main():
                 print(usr, choice, ct, file=z)
 
 
-                if choice == "version":
+                if choice == "version" or choice == "about":
                     version()
 
                 if choice == "commands" or choice == "help" or choice == "-help" or choice == "--help":
