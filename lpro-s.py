@@ -628,7 +628,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.14-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.15-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -881,6 +881,9 @@ def main():
         parser = argparse.ArgumentParser(description="MProcs")
         parser.add_argument("--user", "--username", nargs='?', const='ASK', help="Set username")
         parser.add_argument("--charset", "--nano", nargs='?', const='ASK', help="Set Nano charset (e.g. 1, 2a, korean)")
+        parser.add_argument("--version", "--about", "--wm", "--intro", 
+                    action="store_true", 
+                    help="Display intro, version, and welcome message")
 
         args = parser.parse_args()
 
@@ -889,6 +892,10 @@ def main():
         
         if args.charset:
             select_charset(None if args.charset == 'ASK' else args.charset)
+
+        if args.version:
+            print()
+            version()
 
         def search():
             zen = input("Search: ")
