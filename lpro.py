@@ -4165,6 +4165,7 @@ def main():
             for _ in range(number):
                 time.sleep(.103)
                 an = (fcci) 
+                nano = (diction)
                 acad = (acadlist)
                 ct = datetime.datetime.now()
                 tag = "n-tag:"
@@ -4180,11 +4181,13 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 nn = random.choices(an, k=random.randint(1,10))
                 wonyao_str = ''.join(nn)
+                cchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 acadl = random.sample(acad, random.randint(1,7))
+                dash = "-"
                 print()
                 print(file=z)
-                print(tag, ctag, random_letters, sitch, wonyao_str, acadl, ctm)
-                print(usr, tag, ctag, random_letters, sitch, wonyao_str, acadl, ctm, file=z)
+                print(tag, ctag, random_letters, sitch, wonyao_str, dash, cchat, acadl, ctm)
+                print(usr, tag, ctag, random_letters, sitch, wonyao_str, dash, cchat, acadl, ctm, file=z)
 
 
         def MAI():
