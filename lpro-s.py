@@ -11,6 +11,7 @@ import shutil
 import argparse
 import math
 import struct
+import sys
 
 omit_result = False
 current_ddd = [""]
@@ -628,7 +629,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.4.15-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.5.1-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -877,25 +878,6 @@ def main():
             sign = f"{BLUE}{dollar}{RESET}"
             set_usr(medicci + "" + " " + "" + "(" + "" + " " + "" + "" + user + "" + "" + " " + "" + ")" + "" + " " + "" + sign + "" + " ")
             ct = datetime.datetime.now()
-
-        parser = argparse.ArgumentParser(description="MProcs")
-        parser.add_argument("--user", "--username", nargs='?', const='ASK', help="Set username")
-        parser.add_argument("--charset", "--nano", nargs='?', const='ASK', help="Set Nano charset (e.g. 1, 2a, korean)")
-        parser.add_argument("--version", "--about", "--wm", "--intro", 
-                    action="store_true", 
-                    help="Display intro, version, and welcome message")
-
-        args = parser.parse_args()
-
-        if args.user:
-            change_username(None if args.user == 'ASK' else args.user)
-        
-        if args.charset:
-            select_charset(None if args.charset == 'ASK' else args.charset)
-
-        if args.version:
-            print()
-            version()
 
         def search():
             zen = input("Search: ")
@@ -3140,6 +3122,7 @@ def main():
         def fntcci_monitor():
             maroon = " st"
             aono = (fcci)
+            nano = (diction)
             acad = (acadlist)
             title = input("FNTCCI-monitor name: ")
             ct = datetime.datetime.now()
@@ -3149,10 +3132,12 @@ def main():
             print()
             def Wonraoyerjishibli():
                 cci = random.choices(aono, k=random.randint(1,10))
+                cchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 acadl = random.choices(acad, k=random.randint(1,7))
                 wonyao_str = ''.join(cci)
+                dash = "-"
                 ctm = datetime.datetime.now()
-                print(maroon, wonyao_str, acadl, ctm)
+                print(maroon, wonyao_str, dash, cchat, acadl, ctm)
                 print("_______________________________________")
                 print()
 
@@ -5898,6 +5883,606 @@ def main():
 
                 if choice == "soundstream" or choice == "sst" or choice == "SST" or choice == "sound stream" or choice == "stream sound" or choice == "streamsound":
                     sound_stream()
+
+        parser = argparse.ArgumentParser(description="MProcs", prefix_chars='-')
+
+        parser.add_argument("--user", "--username", nargs='?', const='ASK', help="Set username")
+        parser.add_argument("--charset", "--nanochars", "-ch", nargs='?', const='ASK', help="Set Nano charset (e.g. 1, 2a, korean)")
+        parser.add_argument("--version", "--about", "--wm", "--intro", action="store_true", help="Display intro, version, and welcome message")
+        parser.add_argument("--x", "--c", "--exit", "--close", action="store_true", help="Don't continue the program")
+        parser.add_argument("-nano", "-n", action="store_true")
+        parser.add_argument("-lh", "-message", action="store_true")
+        parser.add_argument("-cai", "-ges", action="store_true")
+        parser.add_argument("-print-time", action="store_true")
+        parser.add_argument("-profile", action="store_true")
+        parser.add_argument("-alerts", action="store_true")
+        parser.add_argument("-fsearch", action="store_true")
+        parser.add_argument("-echo", action="store_true")
+        parser.add_argument("-chinese-characters", "-c-characters", "-cchar", action="store_true")
+        parser.add_argument("-ch-monitor", "-chm", action="store_true")
+        parser.add_argument("-pray", action="store_true")
+        parser.add_argument("-climb", action="store_true")
+        parser.add_argument("-prayer", action="store_true")
+        parser.add_argument("-stats", action="store_true")
+        parser.add_argument("-progress", action="store_true")
+        parser.add_argument("-light-incense", action="store_true")
+        parser.add_argument("-heart-sutra", action="store_true")
+        parser.add_argument("-hebrews", action="store_true")
+        parser.add_argument("-teletubby", action="store_true")
+        parser.add_argument("-herbs", "-herbals", action="store_true")
+        parser.add_argument("-legal-terms", "-law", action="store_true")
+        parser.add_argument("-degrees", "-majors", action="store_true")
+        parser.add_argument("-biology", action="store_true")
+        parser.add_argument("-chemistry", action="store_true")
+        parser.add_argument("-patient-simu", action="store_true")
+        parser.add_argument("-earth-science", "-sci", action="store_true")
+        parser.add_argument("-psychology", "-psyc", action="store_true")
+        parser.add_argument("-medicals", "-m", action="store_true")
+        parser.add_argument("-license", action="store_true")
+        parser.add_argument("-police", "-prad", action="store_true")
+        parser.add_argument("-clearance", action="store_true")
+        parser.add_argument("-katakana", "-kata", action="store_true")
+        parser.add_argument("-jamo", "-hangu", action="store_true")
+        parser.add_argument("-chi", action="store_true")
+        parser.add_argument("-kata-monitor", "-km", action="store_true")
+        parser.add_argument("-jamo-monitor", "-jm", action="store_true")
+        parser.add_argument("-entry", action="store_true")
+        parser.add_argument("-micasa", action="store_true")
+        parser.add_argument("-stuff", action="store_true")
+        parser.add_argument("-worship", action="store_true")
+        parser.add_argument("-posting", action="store_true")
+        parser.add_argument("-fajr", action="store_true")
+        parser.add_argument("-dhuhr", action="store_true")
+        parser.add_argument("-asr", action="store_true")
+        parser.add_argument("-maghrib", action="store_true")
+        parser.add_argument("-isha", action="store_true")
+        parser.add_argument("-meditate", action="store_true")
+        parser.add_argument("-sleep", action="store_true")
+        parser.add_argument("-eat", action="store_true")
+        parser.add_argument("-find-coins", action="store_true")
+        parser.add_argument("-slot", action="store_true")
+        parser.add_argument("-draw-card", action="store_true")
+        parser.add_argument("-search-items", action="store_true")
+        parser.add_argument("-fly", action="store_true")
+        parser.add_argument("-drink-coffee", action="store_true")
+        parser.add_argument("-drink-tea", action="store_true")
+        parser.add_argument("-surf", action="store_true")
+        parser.add_argument("-collections", action="store_true")
+        parser.add_argument("-doodling", action="store_true")
+        parser.add_argument("-zen-melody", action="store_true")
+        parser.add_argument("-value", action="store_true")
+        parser.add_argument("-bump", action="store_true")
+        parser.add_argument("-ma", "-martial-arts", action="store_true")
+        parser.add_argument("-skate", action="store_true")
+        parser.add_argument("-id", action="store_true")
+        parser.add_argument("-idc", action="store_true")
+        parser.add_argument("-art", action="store_true")
+        parser.add_argument("-radio", action="store_true")
+        parser.add_argument("-give-alms", action="store_true")
+        parser.add_argument("-brawl", action="store_true")
+        parser.add_argument("-karate", action="store_true")
+        parser.add_argument("-koans", action="store_true")
+        parser.add_argument("-hipster-tarot", "-tarot", action="store_true")
+        parser.add_argument("-hack", action="store_true")
+        parser.add_argument("-spar", action="store_true")
+        parser.add_argument("-train", action="store_true")
+        parser.add_argument("-rest", action="store_true")
+        parser.add_argument("-haiku", action="store_true")
+        parser.add_argument("-psalms", action="store_true")
+        parser.add_argument("-dhammapada", action="store_true")
+        parser.add_argument("-proverbs", action="store_true")
+        parser.add_argument("-koran", action="store_true")
+        parser.add_argument("-souls", action="store_true")
+        parser.add_argument("-guard", action="store_true")
+        parser.add_argument("-chat", action="store_true")
+        parser.add_argument("-ascii", action="store_true")
+        parser.add_argument("-mp3", action="store_true")
+        parser.add_argument("-monopoly", action="store_true")
+        parser.add_argument("-equips", action="store_true")
+        parser.add_argument("-rpg", action="store_true")
+        parser.add_argument("-archery", action="store_true")
+        parser.add_argument("-color-key", action="store_true")
+        parser.add_argument("-magic", action="store_true")
+        parser.add_argument("-football", action="store_true")
+        parser.add_argument("-map", action="store_true")
+        parser.add_argument("-auto-mat", "-aam", action="store_true")
+        parser.add_argument("-donate", action="store_true")
+        parser.add_argument("-weapon-start", "-wstart", action="store_true")
+        parser.add_argument("-call", action="store_true")
+        parser.add_argument("-time-call", "-tc", action="store_true")
+        parser.add_argument("-monitor-start", "-mstart", action="store_true")
+        parser.add_argument("-acad-monitor", "-astart", action="store_true")
+        parser.add_argument("-time-monitor", "-tmonitor", action="store_true")
+        parser.add_argument("-speech-tmonitor", action="store_true")
+        parser.add_argument("-message-scan", "-scan", action="store_true")
+        parser.add_argument("-fuzz", action="store_true")
+        parser.add_argument("-tag", action="store_true")
+        parser.add_argument("-a-tag", "-atag", action="store_true")
+        parser.add_argument("-medproc-ai", "-mai", action="store_true")
+        parser.add_argument("-medproc-cont", "-mpc", "-maic", action="store_true")
+        parser.add_argument("-frames", "-fps", action="store_true")
+        parser.add_argument("-oscillator", "-oscill", action="store_true")
+        parser.add_argument("-time-oscillator", "-toscill", action="store_true")
+        parser.add_argument("-burner-start", "-burner", "-burn", action="store_true")
+        parser.add_argument("-time-burner-start", "-time-burner", "-tburner", "-tburn", action="store_true")
+        parser.add_argument("-zuz", "-pp", action="store_true")
+        parser.add_argument("-programs", "-progr", action="store_true")
+        parser.add_argument("-tinien", action="store_true")
+        parser.add_argument("-n-tag", "-ntag", action="store_true")
+        parser.add_argument("-fcci-monitor", "-fmonitor", action="store_true")
+        parser.add_argument("-type-text", action="store_true")
+        parser.add_argument("-threads", action="store_true")
+        parser.add_argument("-speak", "-spk", action="store_true")
+        parser.add_argument("-xcbmp", action="store_true")
+        parser.add_argument("-xcbmpc", action="store_true")
+        parser.add_argument("-xhbmp", action="store_true")
+        parser.add_argument("-xhbmpc", action="store_true")
+        parser.add_argument("-xjbmp", action="store_true")
+        parser.add_argument("-xjbmpc", action="store_true")
+        parser.add_argument("-xfbmp", action="store_true")
+        parser.add_argument("-gen-string", "-gstring", action="store_true")
+        parser.add_argument("-ghost-write", "-gw", action="store_true")
+        parser.add_argument("-sound-stream", "-sst", action="store_true")
+        parser.add_argument("-mprocs-commands", action="store_true")
+
+        single_dash_args = [a for a in sys.argv[1:] if a.startswith('-') and not a.startswith('--')]
+
+        if len(single_dash_args) > 1:
+            print("Error: You cannot combine multiple single-dash flags.")
+            sys.exit(1)
+
+        args = parser.parse_args()
+
+        if args.user:
+            change_username(None if args.user == 'ASK' else args.user)
+        
+        if args.charset:
+            select_charset(None if args.charset == 'ASK' else args.charset)
+
+        if args.version:
+            print()
+            version()
+
+        if args.cai:
+            GES()
+            
+        if args.print_time:
+            print_time()            
+
+        if args.profile:
+            profile()           
+
+        if args.alerts:
+            alerts()                       
+
+        if args.echo:
+            echo()
+            
+        if args.chinese_characters:
+            chichars()            
+
+        if args.ch_monitor:
+            ch_monitor()            
+            sys.exit(0)
+
+        if args.pray:
+            pray()
+            
+        if args.climb:
+            climb()
+            
+        if args.prayer:
+            prayer()            
+
+        if args.stats:
+            stats()
+            
+        if args.progress:
+            progress()
+            
+        if args.light_incense:
+            light_incense()
+            
+        if args.heart_sutra:
+            heart_sutra()            
+
+        if args.hebrews:
+            hebrews()
+            
+        if args.teletubby:
+            teletubby()           
+
+        if args.herbs:
+            herbs()            
+
+        if args.legal_terms:
+            legal_terms()
+            
+        if args.degrees:
+            degree()
+            
+        if args.biology:
+            biology()
+            
+        if args.chemistry:
+            chemistry()
+            
+        if args.patient_simu:
+            patient_simu()
+            
+        if args.earth_science:
+            earth_science()
+            
+        if args.psychology:
+            psychology()
+            
+        if args.medicals:
+            medicals()
+            
+        if args.license:
+            license()
+            
+        if args.police:
+            police()
+            
+        if args.clearance:
+            clearance()
+            
+        if args.nano:
+            nano()
+            
+        if args.katakana:
+            kata()           
+
+        if args.jamo:
+            hangu()           
+
+        if args.chi:
+            manton()            
+
+        if args.kata_monitor:
+            kata_monitor()
+            sys.exit(0)
+
+        if args.jamo_monitor:
+            hangu_monitor()
+            sys.exit(0)
+
+        if args.entry:
+            entry()
+            
+        if args.micasa:
+            micasa()
+            
+        if args.stuff:
+            stuff()
+            
+        if args.worship:
+            worship()
+            
+        if args.posting:
+            posting()
+            
+        if args.fajr:
+            fajr()
+            
+        if args.dhuhr:
+            dhuhr()
+            
+        if args.asr:
+            asr()           
+
+        if args.maghrib:
+            maghrib()
+            
+        if args.isha:
+            meditate()            
+
+        if args.sleep:
+            sleep()
+            
+        if args.eat:
+            eat()
+            
+        if args.find_coins:
+            find_coins()
+            
+        if args.slot:
+            slot()
+            
+        if args.draw_card:
+            draw_card()
+            
+        if args.search_items:
+            search_for_items()
+            
+        if args.fly:
+            fly()
+            
+        if args.drink_coffee:
+            drink_coffee()            
+
+        if args.drink_tea:
+            drink_tea()
+            
+        if args.surf:
+            surf()            
+
+        if args.collections:
+            collections()
+            
+        if args.doodling:
+            doodling()            
+
+        if args.zen_melody:
+            zen_melody()
+            
+        if args.value:
+            value()            
+
+        if args.bump:
+            bump()
+            
+        if args.ma:
+            ma()
+            
+        if args.skate:
+            skate()
+            
+        if args.id:
+            ID()
+            
+        if args.idc:
+            IDC()
+            
+        if args.art:
+            art()
+            
+        if args.radio:
+            radio()
+            
+        if args.give_alms:
+            give_alms()
+            
+        if args.brawl:
+            brawl()
+            
+        if args.karate:
+            karate()
+            
+        if args.koans:
+            koans()
+            
+        if args.hipster_tarot:
+            hipster_tarot()
+            
+        if args.hack:
+            hack()
+            
+        if args.spar:
+            spar()
+            
+        if args.train:
+            train()
+            
+        if args.rest:
+            rest()           
+
+        if args.haiku:
+            haiku()            
+
+        if args.psalms:
+            psalms()
+            
+        if args.dhammapada:
+            dhammapada()            
+
+        if args.proverbs:
+            proverbs()            
+
+        if args.koran:
+            koran()            
+
+        if args.lh:
+            message()
+            
+        if args.souls:
+            souls()
+            
+        if args.guard:
+            guard()
+            sys.exit(0)
+            
+        if args.chat:
+            c()
+            
+        if args.ascii:
+            asciii()
+            
+        if args.mp3:
+            mp3()
+            
+        if args.monopoly:
+            monopoly()
+            
+        if args.equips:
+            equips()
+            
+        if args.rpg:
+            rpg()
+            
+        if args.archery:
+            archery()
+            
+        if args.color_key:
+            color_key()
+            
+        if args.magic:
+            magic()            
+
+        if args.football:
+            football()
+            
+        if args.map:
+            mapp()
+            
+        if args.auto_mat:
+            auto_mat()
+            
+        if args.donate:
+            print("Contact the developer at usvu.tech@gmail.com")
+            
+        if args.weapon_start:
+            weapon_start()
+            sys.exit(0)            
+
+        if args.call:
+            call()
+            sys.exit(0)
+            
+        if args.time_call:
+            time_call()
+            sys.exit(0)
+            
+        if args.monitor_start:
+            monitor_start()
+            sys.exit(0)
+            
+        if args.acad_monitor:
+            acad_monitor()
+            sys.exit(0)
+            
+        if args.time_monitor:
+            time_monitor()
+            sys.exit(0)
+            
+        if args.speech_tmonitor:
+            s_time_monitor()
+            sys.exit(0)
+            
+        if args.message_scan:
+            msgs()
+            
+        if args.fuzz:
+            fuzz()            
+
+        if args.tag:
+            tag()
+            
+        if args.a_tag:
+            atag()
+            
+        if args.medproc_ai:
+            MAI()
+            sys.exit(0)           
+
+        if args.medproc_cont:
+            MAIc()
+            sys.exit(0)
+            
+        if args.frames:
+            frames()           
+            
+        if args.oscillator:
+            oscillator()
+            sys.exit(0)
+            
+        if args.time_oscillator:
+            toscillator()
+            sys.exit(0)         
+
+        if args.burner_start:
+            burner()
+            sys.exit(0)
+            
+        if args.time_burner_start:
+            tburner()
+            sys.exit(0)
+
+        if args.fsearch:
+            search()
+            
+        if args.zuz:
+            zuz()
+            
+        if args.programs:
+            programs()
+            sys.exit(0)           
+
+        if args.tinien:
+            tinie_N()           
+
+        if args.n_tag:
+            ntag()           
+
+        if args.fcci_monitor:
+            fntcci_monitor()
+            sys.exit(0)            
+
+        if args.type_text:
+            text()
+            
+        if args.threads:
+            while True:
+
+                    thread_stop_event = threading.Event()
+
+                    try:
+                        activate_threads(thread_stop_event) 
+
+                    except Exception as e:
+                        print(f"An unhandled error occurred: {e}")
+                        thread_stop_event.set()
+                    
+                    sys.exit(0)
+
+        if args.speak:
+            spheak()
+            
+        if args.xcbmp:
+            xcbmp()
+            sys.exit(0)
+
+        if args.xcbmpc:
+            xcbmpc()
+            sys.exit(0)
+
+        if args.xcbmp:
+            xhbmp()
+            sys.exit(0)
+
+        if args.xcbmpc:
+            xhbmpc()
+            sys.exit(0)
+
+        if args.xcbmp:
+            xjbmp()
+            sys.exit(0)
+
+        if args.xcbmpc:
+            xjbmpc()
+            sys.exit(0)
+
+        if args.xfbmp:
+            xfbmp()
+            sys.exit(0)
+
+        if args.gen_string:
+            generate_secure_string()            
+
+        if args.ghost_write:
+            ghost_write()
+            sys.exit(0)           
+
+        if args.sound_stream:
+            sound_stream()
+            sys.exit(0)
+
+        if args.mprocs_commands:
+            commands()
+
+        if args.x:
+            sys.exit(0)
 
         chooseAgain = "yes"
         while chooseAgain:
