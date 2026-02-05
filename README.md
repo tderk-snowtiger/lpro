@@ -1,12 +1,14 @@
 # a simplified version of MProcs
 
-to install:
+to install (distributable package = mdcci, enters lpro-s and has option to switch to lpro):
 
-    pipx install lpro
+    pipx install mdcci
 
 open:
 
+    mdcci (default)
     lpro
+    lpro-s
 
 to open and set user, Nano EST Charset, and display version/intro:
 
@@ -14,7 +16,7 @@ to open and set user, Nano EST Charset, and display version/intro:
 
 view Shell flags:
 
-    lpro --help
+    mdcci --help
 
 do indicated function then return to shell:
     
