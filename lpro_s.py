@@ -26,7 +26,7 @@ RESET = '\033[0m'
 raw_name = session.raw_usr
 
 global usr
-usr = f" st ( {PINK}{raw_name}{RESET} ) {PURPLE}${RESET} "
+usr = f" st ( {GREEN}{raw_name}{RESET} ) {PURPLE}${RESET} "
 
 def set_usr(newUsr):
     session.usr = newUsr
@@ -55,7 +55,7 @@ def change_username(provided_name=None):
     session.raw_usr = new_raw
     raw_usr = new_raw
     
-    usr = f" st ( {PINK}{new_raw}{RESET} ) {BLUE}${RESET} "
+    usr = f" st ( {GREEN}{new_raw}{RESET} ) {BLUE}${RESET} "
     
     return usr
 
@@ -628,11 +628,9 @@ def main():
                 provided_choice = None
                 continue
             break
-
             session.current_charset = selected  # Persist to session
             return selected
     ###
-    z = open("MProcs-logs.txt", "a", buffering=1)
 
     def alerts():
         kk = (katakana)
@@ -658,10 +656,9 @@ def main():
         alerts = "Alerts:"
         alert = f"{PINK}{alerts}{RESET}"
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct)
-        print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.5.3.1{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.5.3-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -675,14 +672,9 @@ def main():
         print()
         print(title2)
         print()
-        print(title, time, title3, title4, file=z)
-        print(file=z)
-        print(pr, prvrb, file=z)
-        print(file=z)
-        print(title2, file=z)
-        print()
-        print(file=z)
         alerts()
+
+    time.sleep(0)
 
     def mp():
 
@@ -746,10 +738,10 @@ def main():
                     "4 Their sorrows shall be multiplied that hasten after another god: their drink offerings of blood will I not offer, nor take up their names into my lips.", "5 The LORD is the portion of mine inheritance and of my cup: thou maintainest my lot.", "6 The lines are fallen unto me in pleasant places; yea, I have a goodly heritage.", "7 I will bless the LORD, who hath given me counsel: my reins also instruct me in the night seasons.", "8 I have set the LORD always before me: because he is at my right hand, I shall not be moved.", "9 Therefore my heart is glad, and my glory rejoiceth: my flesh also shall rest in hope.", "10 For thou wilt not leave my soul in hell; neither wilt thou suffer thine Holy One to see corruption.", "11 Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.", "1 Hear the right, O LORD, attend unto my cry, give ear unto my prayer, that goeth not out of feigned lips.", "2 Let my sentence come forth from thy presence; let thine eyes behold the things that are equal.", "3 Thou hast proved mine heart; thou hast visited me in the night; thou hast tried me, and shalt find nothing; I am purposed that my mouth shall not transgress.", "4 Concerning the works of men, by the word of thy lips I have kept me from the paths of the destroyer.", "5 Hold up my goings in thy paths, that my footsteps slip not.", "6 I have called upon thee, for thou wilt hear me, O God: incline thine ear unto me, and hear my speech.", "7 Shew thy marvellous lovingkindness, O thou that savest by thy right hand them which put their trust in thee from those that rise up against them.", "8 Keep me as the apple of the eye*, hide me under the shadow of thy wings,", "9 From the wicked that oppress me, from my deadly enemies, who compass me about.", "10 They are inclosed in their own fat: with their mouth they speak proudly.", "11 They have now compassed us in our steps: they have set their eyes bowing down to the earth;", "12 Like as a lion that is greedy of his prey, and as it were a young lion lurking in secret places.", "13 Arise, O LORD, disappoint him, cast him down: deliver my soul from the wicked, which is thy sword:", "14 From men which are thy hand, O LORD, from men of the world, which have their portion in this life, and whose belly thou fillest with thy hid treasure: they are full of children, and leave the rest of their substance to their babes.", "15 As for me, I will behold thy face in righteousness: I shall be satisfied, when I awake, with thy likeness.", "1 I will love thee, O LORD, my strength.", "2 The LORD is my rock, and my fortress, and my deliverer; my God, my strength, in whom I will trust; my buckler, and the horn of my salvation, and my high tower.", "3 I will call upon the LORD, who is worthy to be praised: so shall I be saved from mine enemies.", "4 The sorrows of death compassed me, and the floods of ungodly men made me afraid.", "5 The sorrows of hell compassed me about: the snares of death prevented me.", "6 In my distress I called upon the LORD, and cried unto my God: he heard my voice out of his temple, and my cry came before him, even into his ears.", "7 Then the earth shook and trembled; the foundations also of the hills moved and were shaken, because he was wroth.", "8 There went up a smoke out of his nostrils, and fire out of his mouth devoured: coals were kindled by it.", "9 He bowed the heavens also, and came down: and darkness was under his feet.", "10 And he rode upon a cherub, and did fly: yea, he did fly upon the wings of the wind.", "11 He made darkness his secret place; his pavilion round about him were dark waters and thick clouds of the skies.", "12 At the brightness that was before him his thick clouds passed, hail stones and coals of fire.", "13 The LORD also thundered in the heavens, and the Highest gave his voice; hail stones and coals of fire.", "14 Yea, he sent out his arrows, and scattered them; and he shot out lightnings, and discomfited them.", "15 Then the channels of waters were seen, and the foundations of the world were discovered at thy rebuke, O LORD, at the blast of the breath of thy nostrils.", "16 He sent from above, he took me, he drew me out of many waters.", "17 He delivered me from my strong enemy, and from them which hated me: for they were too strong for me.", "18 They prevented me in the day of my calamity: but the LORD was my stay.", "19 He brought me forth also into a large place; he delivered me, because he delighted in me.", "20 The LORD rewarded me according to my righteousness; according to the cleanness of my hands hath he recompensed me.", "21 For I have kept the ways of the LORD, and have not wickedly departed from my God.", "22 For all his judgments were before me, and I did not put away his statutes from me.", "23 I was also upright before him, and I kept myself from mine iniquity.", "24 Therefore hath the LORD recompensed me according to my righteousness, according to the cleanness of my hands in his eyesight.", "25 With the merciful thou wilt shew thyself merciful; with an upright man thou wilt shew thyself upright;" "26 With the pure thou wilt shew thyself pure; and with the froward thou wilt shew thyself froward.", "27 For thou wilt save the afflicted people; but wilt bring down high looks.", "28 For thou wilt light my candle: the LORD my God will enlighten my darkness.", "29 For by thee I have run through a troop; and by my God have I leaped over a wall.", "30 As for God, his way is perfect: the word of the LORD is tried: he is a buckler to all those that trust in him.", "31 For who is God save the LORD? or who is a rock save our God?", "32 It is God that girdeth me with strength, and maketh my way perfect.", "33 He maketh my feet like hinds' feet, and setteth me upon my high places.", "34 He teacheth my hands to war, so that a bow of steel is broken by mine arms.", "35 Thou hast also given me the shield of thy salvation: and thy right hand hath holden me up, and thy gentleness hath made me great.", "36 Thou hast enlarged my steps under me, that my feet did not slip.", "37 I have pursued mine enemies, and overtaken them: neither did I turn again till they were consumed.", "38 I have wounded them that they were not able to rise: they are fallen under my feet.", "39 For thou hast girded me with strength unto the battle: thou hast subdued under me those that rose up against me.", "40 Thou hast also given me the necks of mine enemies; that I might destroy them that hate me.", "41 They cried, but there was none to save them: even unto the LORD, but he answered them not.", "42 Then did I beat them small as the dust before the wind: I did cast them out as the dirt in the streets.", "43 Thou hast delivered me from the strivings of the people; and thou hast made me the head of the heathen: a people whom I have not known shall serve me.", "44 As soon as they hear of me, they shall obey me: the strangers shall submit themselves unto me.", "45 The strangers shall fade away, and be afraid out of their close places.", "46 The LORD liveth; and blessed be my rock; and let the God of my salvation be exalted.", "47 It is God that avengeth* me, and subdueth the people under me.", "48 He delivereth me from mine enemies: yea, thou liftest me up above those that rise up against me: thou hast delivered me from the violent man.", "49 Therefore will I give thanks unto thee, O LORD, among the heathen, and sing praises unto thy name.", "50 Great deliverance giveth he to his king; and sheweth mercy to his anointed, to David, and to his seed for evermore.", "1 The heavens declare the glory of God; and the firmament sheweth his handywork*.", "2 Day unto day uttereth speech, and night unto night sheweth knowledge.", "3 There is no speech nor language, where their voice is not heard.", "4 Their line is gone out through all the earth, and their words to the end of the world. In them hath he set a tabernacle for the sun,", "5 Which is as a bridegroom coming out of his chamber, and rejoiceth as a strong man to run a race.", "6 His going forth is from the end of the heaven, and his circuit unto the ends of it: and there is nothing hid from the heat thereof.", "7 The law of the LORD is perfect, converting the soul: the testimony of the LORD is sure, making wise the simple.", "8 The statutes of the LORD are right, rejoicing the heart: the commandment of the LORD is pure, enlightening the eyes.", "9 The fear of the LORD is clean, enduring for ever: the judgments of the LORD are true and righteous altogether.", "10 More to be desired are they than gold, yea, than much fine gold: sweeter also than honey and the honeycomb*.", "11 Moreover by them is thy servant warned: and in keeping of them there is great reward.", "12 Who can understand his errors? cleanse thou me from secret faults.", "13 Keep back thy servant also from presumptuous sins; let them not have dominion over me: then shall I be upright, and I shall be innocent from the great transgression.", "14 Let the words of my mouth, and the meditation of my heart, be acceptable in thy sight, O LORD, my strength, and my redeemer.", "1 The LORD hear thee in the day of trouble; the name of the God of Jacob defend thee;", "2 Send thee help from the sanctuary, and strengthen thee out of Zion;", "3 Remember all thy offerings, and accept thy burnt sacrifice; Selah.", "4 Grant thee according to thine own heart, and fulfil all thy counsel.", "5 We will rejoice in thy salvation, and in the name of our God we will set up our banners: the LORD fulfil all thy petitions.", "6 Now know I that the LORD saveth his anointed; he will hear him from his holy heaven with the saving strength of his right hand.", "7 Some trust in chariots, and some in horses: but we will remember the name of the LORD our God.", "8 They are brought down and fallen: but we are risen, and stand upright.", "9 Save, LORD: let the king hear us when we call.", "1 The king shall joy in thy strength, O LORD; and in thy salvation how greatly shall he rejoice!", "2 Thou hast given him his heart's desire, and hast not withholden the request of his lips. Selah.", "3 For thou preventest him with the blessings of goodness: thou settest a crown of pure gold on his head.", "4 He asked life of thee, and thou gavest it him, even length of days for ever and ever.", "5 His glory is great in thy salvation: honour and majesty hast thou laid upon him.", "6 For thou hast made him most blessed for ever: thou hast made him exceeding glad with thy countenance.", "7 For the king trusteth in the LORD, and through the mercy of the most High he shall not be moved.", "8 Thine hand shall find out all thine enemies: thy right hand shall find out those that hate thee.", "9 Thou shalt make them as a fiery oven in the time of thine anger: the LORD shall swallow them up in his wrath, and the fire shall devour them.", "10 Their fruit shalt thou destroy from the earth, and their seed from among the children of men.", "11 For they intended evil against thee: they imagined a mischievous device, which they are not able to perform.", "12 Therefore shalt thou make them turn their back, when thou shalt make ready thine arrows upon thy strings against the face of them.", "13 Be thou exalted, LORD, in thine own strength: so will we sing and praise thy power."]
             
         deck1 = ["Ace of Hearts", "Two of Hearts", "Three of Hearts", "Four of Hearts", "Five of Hearts", "Six of Hearts", "Seven of Hearts", "Eight of Hearts", "Nine of Hearts", "Ten of Hearts", "Jack of Hearts", "Queen Of Hearts", "King of Hearts", "Ace of Clubs", "Two of Clubs", "Three of Clubs", "Four of Clubs", "Five of Clubs", "Six of Clubs", "Seven of Clubs", "Eight of Clubs", "Nine of Clubs", "Ten of Clubs", "Jack of Clubs", "Queen Of Clubs", "King of Clubs", "Ace of Diamonds", "Two of Diamonds", "Three of Diamonds", "Four of Diamonds", "Five of Diamonds", "Six of Diamonds", "Seven of Diamonds", "Eight of Diamonds", "Nine of Diamonds", "Ten of Diamonds", "Jack of Diamonds", "Queen Of Diamonds", "King of Diamonds", "Ace of Spades", "Two of Spades", "Three of Spades", "Four of Spades", "Five of Spades", "Six of Spades", "Seven of Spades", "Eight of Spades", "Nine of Spades", "Ten of Spades", "Jack of Spades", "Queen Of Spades", "King of Spades", "Joker", "Joker"]
-            
+
         koran1 = ["[67.1] Blessed is He in Whose hand is the kingdom, and He has power over all things,", "[67.2] Who created death and life that He may try you-- which of you is best in deeds; and He is the Mighty, the Forgiving,", "[67.3] Who created the seven heavens one above another; you see no incongruity in the creation of the Beneficent God; then look again, can you see any disorder?", "[67.4] Then turn back the eye again and again; your look shall '~ come back to you confused while it is fatigued.", "[67.5] And certainly We have adorned this lower heaven with ( lamps and We have made these missiles for the Shaitans, and We have prepared for them the chastisement of burning.", "[67.6] And for those who disbelieve in their Lord is the punishment of hell, and evil is the resort.", "[67.7] When they shall be cast therein, they shall hear a loud moaning of it as it heaves,", "[67.8] Almost bursting for fury. Whenever a group is cast into it, its keeper shall ask them: Did there not come to you a warner?", "[67.9] They shall say: Yea! indeed there came to us a warner, but we rejected (him) and said: Allah has not revealed anything, you are only in a great error.", "[67.10] And they shall say: Had we but listened or pondered, we should not have been among the inmates of the burning fire.", "[67.11] So they shall acknowledge their sins, but far will be (forgiveness) from the inmates of the burning fire.", "[67.12] (As for) those who fear their Lord in secret, they shall surely have forgiveness and a great reward.", "[67.13] And conceal your word or manifest it; surely He is Cognizant of what is in the hearts.", "[67.14] Does He not know, Who created? And He is the Knower of the subtleties, the Aware.", "[67.15] He it is Who made the earth smooth for you, therefore go about in the spacious sides thereof, and eat of His sustenance, and to Him is the return after death.", "[67.16] Are you secure of those in the heaven that He should not make the earth to swallow you up? Then lo! it shall be in a state of commotion.", "[67.17] Or are you secure of those in the heaven that He should not send down upon you a punishment? Then shall you know how was My warning.", "[67.18] And certainly those before them rejected (the truth), then how was My disapproval.", "[67.19] Have they not seen the birds above them expanding (their wings) and contracting (them)? What is it that withholds them save the Beneficent God? Surely He sees everything.", "[67.20] Or who is it that will be a host for you to assist you besides the Beneficent God? The unbelievers are only in deception.", "[67.21] Or who is it that will give you sustenance if He should withhold His sustenance? Nay! they persist in disdain and aversion.", "[67.22] What! is he who goes prone upon his face better guided or he who walks upright upon a straight path?", "[67.23] Say: He it is Who brought you into being and made for you the ears and the eyes and the hearts: little is it that you give thanks.", "[67.24] Say: He it is Who multiplied you in the earth and to Him you shall be gathered.", "[67.25] And they say: When shall this threat be (executed) if you are truthful?", "[67.26] Say: The knowledge (thereof is only with Allah and I am only a plain warner.=", "[67.27] But when they shall see it nigh, the faces of those who disbelieve shall be sorry, and it shall be said; This is that which you used to call for.", "[67.28] Say: Have you considered if Allah should destroy me and those with me-- rather He will have mercy on us; yet who will protect the unbelievers from a painful punishment?", "[67.29] Say: He is the Beneficent God, we believe in Him and on Him do we rely, so you shall come to know who it is that is in clear error.", "[67.30] Say: Have you considered if your water should go down, who is it then that will bring you flowing water?", "[89.1] I swear by the daybreak,", "[89.2] And the ten nights,", "[89.3] And the even and the odd,", "[89.4] And the night when it departs.", "[89.5] Truly in that there is an oath for those who possess understanding.", "[89.6] Have you not considered how your Lord dealt with Ad,", "[89.7] (The people of) Aram, possessors of lofty buildings,", "[89.8] The like of which were not created in the (other) cities;", "[89.9] And (with) Samood, who hewed out the rocks in the valley,", "[89.10] And (with) Firon, the lord of hosts,", "[89.11] Who committed inordinacy in the cities,", "[89.12] So they made great mischief therein?", "[89.13] Therefore your Lord let down upon them a portion of the chastisement.", "[89.14] Most sure!y your Lord is watching.", "[89.15] And as for man, when his Lord tries him, then treats him with honor and makes him lead an easy life, he says: My Lord honors me.", "[89.16] But when He tries him (differently), then straitens to him his means of subsistence, he says: My Lord has disgraced me.", "[89.17] Nay! but you do not honor the orphan,", "[89.18] Nor do you urge one another to feed the poor,", "[89.19] And you eat away the heritage, devouring (everything) indiscriminately,", "[89.20] And you love wealth with exceeding love.", "[89.21] Nay! when the earth is made to crumble to pieces,", "[89.22] And your Lord comes and (also) the angels in ranks,", "[89.23] And hell is made to appear on that day. On that day shall man be mindful, and what shall being mindful (then) avail him?", "[89.24] He shall say: O! would that I had sent before for (this) my life!", "[89.25] But on that day shall no one chastise with (anything like) His chastisement,", "[89.26] And no one shall bind with (anything like) His binding.", "[89.27] O soul that art at rest!", "[89.28] Return to your Lord, well-pleased (with him), well-pleasing (Him),", "[89.29] So enter among My servants,", "[89.30] And enter into My garden.", "[87.1] Glorify the name of your Lord, the Most High,", "[87.2] Who creates, then makes complete,", "[87.3] And Who makes (things) according to a measure, then guides (them to their goal),", "[87.4] And Who brings forth herbage,", "[87.5] Then makes it dried up, dust-colored.", "[87.6] We will make you recite so you shall not forget,", "[87.7] Except what Allah pleases, surely He knows the manifest, and what is hidden.", "[87.8] And We will make your way smooth to a state of ease.", "[87.9] Therefore do remind, surely reminding does profit.", "[87.10] He who fears will mind,", "[87.11] And the most unfortunate one will avoid it,", "[87.12] Who shall enter the great fire;", "[87.13] Then therein he shall neither live nor die.", "[87.14] He indeed shall be successful who purifies himself,", "[87.15] And magnifies the name of his Lord and prays.", "[87.16] Nay! you prefer the life of this world,", "[87.17] While the hereafter is better and more lasting.", "[87.18] Most surely this is in the earlier scriptures,", "[87.19] The scriptures of Ibrahim and Musa.", "[24.1] (This is) a chapter which We have revealed and made obligatory and in which We have revealed clear communications that you may be mindful.", "[24.2] (As for) the fornicatress and the fornicator, flog each of them, (giving) a hundred stripes, and let not pity for them detain you in the matter of obedience to Allah, if you believe in Allah and the last day, and let a party of believers witness their chastisement.", "[24.3] The fornicator shall not marry any but a fornicatress or idolatress, and (as for) the fornicatress, none shall marry her but a fornicator or an idolater; and it is forbidden to the believers.", "[24.4] And those who accuse free women then do not bring four witnesses, flog them, (giving) eighty stripes, and do not admit any evidence from them ever; and these it is that are the transgressors,", "[24.5] Except those who repent after this and act aright, for surely Allah is Forgiving, Merciful.", "[24.6] And (as for) those who accuse their wives and have no witnesses except themselves, the evidence of one of these (should be taken) four times, bearing Allah to witness that he is most surely of the truthful ones.", "[24.7] And the fifth (time) that the curse of Allah be on him if he is one of the liars.", "[24.8] And it shall avert the chastisement from her if she testify four times, bearing Allah to witness that he is most surely one of the liars;", "[24.9] And the fifth (time) that the wrath of Allah be on her if he is one of the truthful.", "[24.10] And were it not for Allah's grace upon you and His mercy-- and that Allah is Oft-returning (to mercy), Wise!", "[24.11] Surely they who concocted the lie are a party from among you. Do not regard it an evil to you; nay, it is good for you. Every man of them shall have what he has earned of sin; and (as for) him who took upon himself the main part thereof, he shall have a grievous chastisement.", "[24.12] Why did not the believing men and the believing women, when you heard it, think well of their own people, and say: This is an evident falsehood?", "[24.13] Why did they not bring four witnesses of it? But as they have not brought witnesses they are liars before Allah.", "[24.14] And were it not for Allah's grace upon you and His mercy in this world and the hereafter, a grievous chastisement would certainly have touched you on account of the discourse which you entered into.", "[24.15] When you received it with your tongues and spoke with your mouths what you had no knowledge of, and you deemed it an easy matter while with Allah it was grievous.", "[24.16] And why did you not, when you heard it, say: It does not beseem us that we should talk of it; glory be to Thee! this is a great calumny?", "[24.17] Allah admonishes you that you should not return to the like of it ever again if you are believers.", "[24.18] And Allah makes clear to you the communications; and Allah is Knowing, Wise.", "[24.19] Surely (as for) those who love that scandal should circulate respecting those who believe, they shall have a grievous chastisement in this world and the hereafter; and Allah knows, while you do not know.", "[24.20] And were it not for Allah's grace on you and His mercy, and that Allah is Compassionate, Merciful.", "[24.21] O you who believe! do not follow the footsteps of the Shaitan, and whoever follows the footsteps of the Shaitan, then surely he bids the doing of indecency and evil; and were it not for Allah's grace upon you and His mercy, not one of you would have ever been pure, but Allah purifies whom He pleases; and Allah is Hearing, Knowing.", "[24.22] And let not those of you who possess grace and abundance swear against giving to the near of kin and the poor and those who have fled in Allah's way, and they should pardon and turn away. Do you not love that Allah should forgive you? And Allah is Forgiving, Merciful.", "[24.23] Surely those who accuse chaste believing women, unaware (of the evil), are cursed in this world and the hereafter, and they shall have a grievous chastisement.", "[24.24] On the day when their tongues and their hands and their feet shall bear witness against them as to what they did.", "[24.25] On that day Allah will pay back to them in full their just reward, and they shall know that Allah is the evident Truth.", "[24.26] Bad women .are for bad men and bad men are for bad women. Good women are for good men and good men are for good women", "[24.27] O you who believe! Do not enter houses other than your own houses until you have asked permission and saluted their inmates; this is better for you, that you may be mindful.", "[24.28] But if you do not find any one therein, then do not enter them until permission is given to you; and if it is said to you: Go back, then go back; this is purer for you; and Allah is Cognizant of what you do.", "[24.29] It is no sin in you that you enter uninhabited houses wherein you have your necessaries; and Allah knows what you do openly and what you hide.", "[24.30] Say to the believing men that they cast down their looks and guard their private parts; that is purer for them; surely Allah is Aware of what they do.", "[24.31] And say to the believing women that they cast down their looks and guard their private parts and do not display their ornaments except what appears thereof, and let them wear their head-coverings over their bosoms, and not display their ornaments except to their husbands or their fathers, or the fathers of their husbands, or their sons, or the sons of their husbands, or their brothers, or their brothers' sons, or their sisters' sons, or their women, or those whom their right hands possess, or the male servants not having need (of women), or the children who have not attained knowledge of what is hidden of women; and let them not strike their feet so that what they hide of their ornaments may be known; and turn to Allah all of you, O believers! so that you may be successful.", "[24.32] And marry those among you who are single and those who are fit among your male slaves and your female slaves; if they are needy, Allah will make them free from want out of His grace; and Allah is Ample-giving, Knowing.", "[24.33] And let those who do not find the means to marry keep chaste until Allah makes them free from want out of His grace. And (as for) those who ask for a writing from among those whom your right hands possess, give them the writing if you know any good in them, and give them of the wealth of Allah which He has given you; and do not compel your slave girls to prostitution, when they desire to keep chaste, in order to seek the frail good of this world's life; and whoever compels them, then surely after their compulsion Allah is Forgiving, Merciful.", "[24.34] And certainly We have sent to you clear communications and a description of those who have passed away before you, and an admonition to those who guard (against evil).", "[24.35] Allah is the light of the heavens and the earth; a likeness of His light is as a niche in which is a lamp, the lamp is in a glass, (and) the glass is as it were a brightly shining star, lit from a blessed olive-tree, neither eastern nor western, the oil whereof almost gives light though fire touch it not-- light upon light-- Allah guides to His light whom He pleases, and Allah sets forth parables for men, and Allah is Cognizant of all things.", "[24.36] In houses which Allah has permitted to be exalted and that His name may be remembered in them; there glorify Him therein in the mornings and the evenings,", "[24.37] Men whom neither merchandise nor selling diverts from the remembrance of Allah and the keeping up of prayer and the giving of poor-rate; they fear a day in which the hearts and eyes shall turn about;", "[24.38] That Allah may give them the best reward of what they have done, and give them more out of His grace; and Allah gives sustenance to whom He pleases without measure.", "[24.39] And (as for) those who disbelieve, their deeds are like the mirage in a desert, which the thirsty man deems to be water; until when he comes to it he finds it to be naught, and there he finds Allah, so He pays back to him his reckoning in full; and Allah is quick in reckoning;", "[24.40] Or like utter darkness in the deep sea: there covers it a wave above which is another wave, above which is a cloud, (layers of) utter darkness one above another; when he holds out his hand, he is almost unable to see it; and to whomsoever Allah does not give light, he has no light.", "[24.41] Do you not see that Allah is He Whom do glorify all those who are in the heavens and the earth, and the (very) birds with expanded wings? He knows the prayer of each one and its glorification, and Allah is Cognizant of what they do.", "[24.42] And Allah's is the kingdom of the heavens and the earth, and to Allah is the eventual coming.", "[24.43] Do you not see that Allah drives along the clouds, then gathers them together, then piles them up, so that you see the rain coming forth from their midst? And He sends down of the clouds that are (like) mountains wherein is hail, afflicting therewith whom He pleases and turning it away from whom He pleases; the flash of His lightning almost takes away the sight.", "[24.44] Allah turns over the night and the day; most surely there is a lesson in this for those who have sight.", \
             "[24.45] And Allah has created from water every living creature: so of them is that which walks upon its belly, and of them is that which walks upon two feet, and of them is that which walks upon four; Allah creates what He pleases; surely Allah has power over all things.", "[24.46] Certainly We have revealed clear communications, and Allah guides whom He pleases to the right way.", "[24.47] And they say: We believe in Allah and in the apostle and we obey; then a party of them turn back after this, and these are not believers.", "[24.48] And when they are called to Allah and His Apostle that he may judge between them, lo! a party of them turn aside.", "[24.49] And if the truth be on their side, they come to him quickly, obedient.", "[24.50] Is there in their hearts a disease, or are they in doubt, or do they fear that Allah and His Apostle will act wrongfully towards them? Nay! they themselves are the unjust.", "[24.51] The response of the believers, when they are invited to Allah and His Apostle that he may judge between them, is only to say: We hear and we obey; and these it is that are the successful.", "[24.52] And he who obeys Allah and His Apostle, and fears Allah, and is careful of (his duty to) Him, these it is that are the achievers.", "[24.53] And they swear by Allah with the most energetic of their oaths that if you command them they would certainly go forth. Say: Swear not; reasonable obedience (is desired); surely Allah is aware of what you do.", "[24.54] Say: Obey Allah and obey the Apostle; but if you turn back, then on him rests that which is imposed on him and on you rests that which is imposed on you; and if you obey him, you are on the right way; and nothing rests on the Apostle but clear delivering (of the message).", "[24.55] Allah has promised to those of you who believe and do good that He will most certainly make them rulers in the earth as He made rulers those before them, and that He will most certainly establish for them their religion which He has chosen for them, and that He will most certainly, after their fear, give them security in exchange; they shall serve Me, not associating aught with Me; and whoever is ungrateful after this, these it is who are the. transgressors.", "[24.56] And keep up prayer and pay the poor-rate and obey the Apostle, so that mercy may be shown to you.", "[24.57] Think not that those who disbelieve shall escape in the earth, and their abode is the fire; and certainly evil is the resort!", "[24.58] O you who believe! let those whom your right hands possess and those of you who have not attained to puberty ask permission of you three times; before the morning prayer, and when you put off your clothes at midday in summer, and after the prayer of the nightfall; these are three times of privacy for you; neither is it a sin for you nor for them besides these, some of you must go round about (waiting) upon others; thus does Allah make clear to you the communications, and Allah is Knowing, Wise.", "[24.59] And when the children among you have attained to puberty, let them seek permission as those before them sought permission; thus does Allah make clear to you His communications, and Allah is knowing, Wise.", "[24.60] And (as for) women advanced in years who do not hope for a marriage, it is no sin for them if they put off their clothes without displaying their ornaments; and if they restrain themselves it is better for them; and Allah is Hearing, Knowing.", "[24.61] There is no blame on the blind man, nor is there blame on the lame, nor is there blame on the sick, nor on yourselves that you eat from your houses, or your fathers' houses or your mothers' houses, or your brothers' houses, or your sisters' houses, or your paternal uncles' houses, or your paternal aunts' houses, or your maternal uncles' houses, or your maternal aunts' houses, or what you possess the keys of, or your friends' (houses). It is no sin in you that you eat together or separately. So when you enter houses, greet your people with a salutation from Allah, blessed (and) goodly; thus does Allah make clear to you the communications that you may understand.", "[24.62] Only those are believers who believe in Allah and His Apostle, and when they are with him on a momentous affair they go not away until they have asked his permission; surely they who ask your permission are they who believe in Allah and His Apostle; so when they ask your permission for some affair of theirs, give permission to whom you please of them and ask forgiveness for them from Allah; surely Allah is Forgiving, Merciful.", "[24.63] Do not hold the Apostle's calling (you) among you to be like your calling one to the other; Allah indeed knows those who steal away from among you, concealing themselves; therefore let those beware who go against his order lest a trial afflict them or there befall them a painful chastisement.", "[24.64] Now surely Allah's is whatever is in the heavens and the earth; He knows indeed that to which you are conforming yourselves; and on the day on which they are returned to Him He will inform them of what they did; and Allah is Cognizant of all things.", "[85.1] I swear by the mansions of the stars,", "[85.2] And the promised day,", "[85.3] And the bearer of witness and those against whom the witness is borne.", "[85.4] Cursed be the makers of the pit,", "[85.5] Of the fire (kept burning) with fuel,", "[85.6] When they sat by it,", "[85.7] And they were witnesses of what they did with the believers.", "[85.8] And they did not take vengeance on them for aught except that they believed in Allah, the Mighty, the Praised,", "[85.9] Whose is the kingdom of the heavens and the earth; and Allah is a Witness of all things.", "[85.10] Surely (as for) those who persecute the believing men and the believing women, then do not repent, they shall have the chastisement of hell, and they shall have the chastisement of burning.", "[85.11] Surely (as for) those who believe and do good, they shall have gardens beneath which rivers flow, that is the great achievement.", "[85.12] Surely the might of your Lord is great.", "[85.13] Surely He it is Who originates and reproduces,", "[85.14] And He is the Forgiving, the Loving,", "[85.15] Lord of the Arsh, the Glorious,", "[85.16] The great doer of what He will.", "[85.17] Has not there come to you the story of the hosts,", "[85.18] Of Firon and Samood?", "[85.19] Nay! those who disbelieve are in (the act of) giving the lie to the truth.", "[85.20] And Allah encompasses them on every side.", "[85.21] Nay! it is a glorious Quran,", "[85.22] In a guarded tablet.", "[113.1] Say: I seek refuge in the Lord of the dawn,", "[113.2] From the evil of what He has created,", "[113.3] And from the evil of the utterly dark night when it comes,", "[113.4] And from the evil of those who blow on knots,", "[113.5] And from the evil of the envious when he envies", "[52.1] I swear by the Mountain,", "[52.2] And the Book written", "[52.3] In an outstretched fine parchment,", "[52.4] And the House (Kaaba) that is visited,", "[52.5] And the elevated canopy", "[52.6] And the swollen sea", "[52.7] Most surely the punishment of your Lord will come to pass;", "[52.8] There shall be none to avert it;", "[52.9] On the day when the heaven shall move from side to side", "[52.10] And the mountains shall pass away passing away (altogether).", "[52.11] So woe on that day to those who reject (the truth),", "[52.12] Those who sport entering into vain discourses.", "[52.13] The day on which they shall be driven away to the fire of hell with violence.", "[52.14] This is the fire which you used to give the lie to.", "[52.15] Is it magic then or do you not see?", "[52.16] Enter into it, then bear (it) patiently, or do not bear (it) patiently, it is the same to you; you shall be requited only (for) what you did.", "[52.17] Surely those who guard (against evil) shall be in gardens and bliss", "[52.18] Rejoicing because of what their Lord gave them, and their Lord saved them from the punishment of the burning fire.", "[52.19] Eat and drink pleasantly for what you did,", "[52.20] Reclining on thrones set in lines, and We will unite them to large-eyed beautiful ones.", "[52.21] And (as for) those who believe and their offspring follow them in faith, We will unite with them their offspring and We will not diminish to them aught of their work; every man is responsible for what he shall have wrought.", "[52.22] And We will aid them with fruit and flesh such as they desire.", "[52.23] They shall pass therein from one to another a cup wherein there shall be nothing vain nor any sin.", "[52.24] And round them shall go boys of theirs as if they were hidden pearls.", "[52.25] And some of them shall advance towards others questioning each other.", "[52.26] Saying: Surely we feared before on account of our families:", "[52.27] But Allah has been gracious to us and He has saved us from the punishment of the hot wind:", "[52.28] Surely we called upon Him before: Surely He is the Benign, the Merciful.", "[52.29] Therefore continue to remind, for by the grace of your Lord, you are not a soothsayer, or a madman.", "[52.30] Or do they say: A poet, we wait for him the evil accidents of time.", "[52.31] Say: Wait, for surely I too with you am of those who wait.", "[52.32] Nay! do their understandings bid them this? Or are they an inordinate people?", "[52.33] Or do they say: He has forged it. Nay! they do not believe.", "[52.34] Then let them bring an announcement like it if they are truthful.", "[52.35] Or were they created without there being anything, or are they the creators?", "[52.36] Or did they create the heavens and the earth? Nay! they have no certainty.", "[52.37] Or have they the treasures of your Lord with them? Or have they been set in absolute authority?", "[52.38] Or have they the means by which they listen? Then let their listener bring a clear authority.", "[52.39] Or has He daughters while you have sons?", "[52.40] Or do you ask them for a reward, so that they are overburdened by a debt?", "[52.41] Or have they the unseen so that they write (it) down?", "[52.42] Or do they desire a war? But those who disbelieve shall be the vanquished ones in war.", "[52.43] Or have they a god other than Allah? Glory be to Allah from what they set up (with Him).", "[52.44] And if they should see a portion of the heaven coming down, they would say: Piled up clouds.", "[52.45] Leave them then till they meet that day of theirs wherein they shall be made to swoon (with terror):", "[52.46] The day on which their struggle shall not avail them aught, nor shall they be helped.", "[52.47] And surely those who are unjust shall have a punishment besides that (in the world), but most of them do not know.", "[52.48] And wait patiently for the judgment of your Lord, for surely you are before Our eyes, and sing the praise of your Lord when you rise;", "[52.49] And in the night, give Him glory too, and at the setting of the stars."]
-            
+
         fcci = ['a', 'ai', 'an', 'ang', 'ao', 'ba', 'bai', 'ban', 'bang', 'bao', 'bei', 'ben', 'beng', 'bi', 'bian', 'biao', 'bie', 'bin', 'bing', 'bo', 'bu', 'ca', 'cai', 'can', 'cang', 'cao', 'ce', 'cei', 'cen', 'ceng', 'cha', 'chai', 'chan', 'chang', 'chao', 'che', 'chen', 'cheng', 'chi', 'chong', 'chou', 'chu', 'chua', 'chuai', 'chuan', 'chuang', 'chui', 'chun', 'chuo', 'ci', 'cong', 'cou', 'cu', 'cuan', 'cui', 'cun', 'cuo', 'da', 'dai', 'dan', 'dang', 'dao', 'de', 'dei', 'den', 'deng', 'di', 'dia', 'dian', 'diao', 'die', 'ding', 'diu', 'dong', 'dou', 'du', 'duan', 'dui', 'dun', 'duo', 'e', 'ei', 'en', 'eng', 'er', 'fa', 'fan', 'fang', 'fei', 'fen', 'feng', 'fo', 'fou', 'fu', 'ga', 'gai', 'gan', 'gang', 'gao', 'ge', 'gei', 'gen', 'geng', 'gong', 'gou', 'gu', 'gua', 'guai', 'guan', 'guang', 'gui', 'gun', 'guo', 'ha', 'hai', 'han', 'hang', 'hao', 'he', 'hei', 'hen', 'heng', 'hong', 'hou', 'hu', 'hua', 'huai', 'huan', 'huang', 'hui', 'hun', 'huo', 'ji', 'jia', 'jian', 'jiang', 'jiao', 'jie', 'jin', 'jing', 'jiong', 'jiu', 'ju', 'juan', 'jue', 'jun', 'ka', 'kai', 'kan', 'kang', 'kao', 'ke', 'kei', 'ken', 'keng', 'kong', 'kou', 'ku', 'kua', 'kuai', 'kuan', 'kuang', 'kui', 'kun', 'kuo', 'la', 'lai', 'lan', 'lang', 'lao', 'le', 'lei', 'leng', 'li', 'lia', 'lian', 'liang', 'liao', 'lie', 'lin', 'ling', 'liu', 'long', 'lou', 'lu', 'luan', 'lun', 'luo', 'lü', 'lüe', 'ma', 'mai', 'man', 'mang', 'mao', 'me', 'mei', 'men', 'meng', 'mi', 'mian', 'miao', 'mie', 'min', 'ming', 'miu', 'mo', 'mou', 'mu', 'na', 'nai', 'nan', 'nang', 'nao', 'ne', 'nei', 'nen', 'neng', 'ni', 'nian', 'niang', 'niao', 'nie', 'nin', 'ning', 'niu', 'nong', 'nou', 'nu', 'nuan', 'nuo', 'nü', 'nüe', 'o', 'ou', 'pa', 'pai', 'pan', 'pang', 'pao', 'pei', 'pen', 'peng', 'pi', 'pian', 'piao', 'pie', 'pin', 'ping', 'po', 'pou', 'pu', 'qi', 'qia', 'qian', 'qiang', 'qiao', 'qie', 'qin', 'qing', 'qiong', 'qiu', 'qu', 'quan', 'que', 'qun', 'ran', 'rang', 'rao', 're', 'ren', 'reng', 'ri', 'rong', 'rou', 'ru', 'ruan', 'rui', 'run', 'ruo', 'sa', 'sai', 'san', 'sang', 'sao', 'se', 'sen', 'seng', 'sha', 'shai', 'shan', 'shang', 'shao', 'she', 'shei', 'shen', 'sheng', 'shi', 'shou', 'shu', 'shua', 'shuai', 'shuan', 'shuang', 'shui', 'shun', 'shuo', 'si', 'song', 'sou', 'su', 'suan', 'sui', 'sun', 'suo', 'ta', 'tai', 'tan', 'tang', 'tao', 'te', 'tei', 'teng', 'ti', 'tian', 'tiao', 'tie', 'ting', 'tong', 'tou', 'tu', 'tuan', 'tui', 'tun', 'tuo', 'wa', 'wai', 'wan', 'wang', 'wei', 'wen', 'weng', 'wo', 'wu', 'xi', 'xia', 'xian', 'xiang', 'xiao', 'xie', 'xin', 'xing', 'xiong', 'xiu', 'xu', 'xuan', 'xue', 'xun', 'ya', 'yan', 'yang', 'yao', 'ye', 'yi', 'yin', 'ying', 'yo', 'yong', 'you', 'yu', 'yuan', 'yue', 'yun', 'za', 'zai', 'zan', 'zang', 'zao', 'ze', 'zei', 'zen', 'zeng', 'zha', 'zhai', 'zhan', 'zhang', 'zhao', 'zhe', 'zhei', 'zhen', 'zheng', 'zhi', 'zhong', 'zhou', 'zhu', 'zhua', 'zhuai', 'zhuan', 'zhuang', 'zhui', 'zhun', 'zhuo', 'zi', 'zong', 'zou', 'zu', 'zuan', 'zui', 'zun', 'zuo', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
         def nano():
@@ -767,7 +759,6 @@ def main():
             star = "&"
             dash = ""
             print(star, dash, chchars_str, dash, result, dash, ct)
-            print(usr, star, dash, chchars_str, dash, result, dash, ct, file=z)
 
         def kata():
             dd = (diction)
@@ -779,7 +770,6 @@ def main():
             result = "  ".join(random.sample(nano, random.randint(1, 9)))
             tars = "~~"
             print(tars, kkchar_str, result, ct)
-            print(usr, tars, kkchar_str, result, ct, file=z)
 
         def hangu():
             dd = (diction)
@@ -791,7 +781,6 @@ def main():
             result = "  ".join(random.sample(dd, random.randint(1, 9)))
             arts = "^^"
             print(arts, hangchar_str, result, ct)
-            print(usr, arts, hangchar_str, result, ct, file=z)
 
         def manton():
             dd = (diction)
@@ -803,7 +792,6 @@ def main():
             result = "  ".join(random.sample(dd, random.randint(1, 9)))
             marts = "++"
             print(marts, macchar_str, result, ct)
-            print(usr, marts, macchar_str, result, ct, file=z)
 
         def tinie_N():
             an = (fcci)
@@ -814,17 +802,16 @@ def main():
             wonyao_str = ''.join(cci)
             ha_sh = "#"
             print(ha_sh, wonyao_str, acadl, ct)
-            print(usr, ha_sh, wonyao_str, acadl, ct, file=z)
 
         def commands():
             print()
-            print(" version | switch/lpro-s [lx] | [blank input] for nano | nano characters [nanochars/nnc] | katakana [kata/b] | jamo [hangu/n] | chi [++] | profile | note / journal / save | pwd / ls / cd / clear [cl] / mkdir / rm | type-text | search")
+            print(" version | switch/lpro [lx] | [blank input] for nano | nano characters [nanochars/nnc] | katakana [kata/b] | jamo [hangu/n] | chi [++] | profile | pwd / ls / cd / clear [cl] / mkdir / rm | type-text | fsearch ")
             print()
-            print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: cbmp, cmbpc, xcbmp, xcbmpc, hbmp, hbmpc, xhbmp, xhbmpc, jbmp, jbmpc, xjbmp, xjbmpc, fbmp, xfbmp")
+            print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: xcbmp, xcbmpc, xhbmp, xhbmpc, xjbmp, xjbmpc, xfbmp")
             print()
-            print(" | sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
+            print(" | sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], police (prad), CAI Environments (CAI/GES), time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]")
             print()
-            print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}, monitor-search [msearch], acad-search [asearch]")
+            print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}")
 
         def ls():
             try:
@@ -890,10 +877,8 @@ def main():
             ct = datetime.datetime.now()
             monitor = "text-type:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
             print(usr, monitor, title, ct, file=j)
             print()
-            print(file=z)
             print("*this saves to MProcs-text.txt*")
             print()
             print(file=j)
@@ -903,100 +888,16 @@ def main():
 
         def GES():
             print()
-            print(file=z)
             print("Crown | ART | Birth Snapshot | YzB | Thailand Hospital | egg | Zen Meditation (USVU) | Shinobi Primer | Hacking 101 @m0nkrpg | Saler | 445 | First Office Salute | Poker Table | chi_a | med_apteu #proc #music")
-            print("Crown | ART | Birth Snapshot | YzB | Thailand Hospital | egg | Zen Meditation (USVU) | Shinobi Primer | Hacking 101 @m0nkrpg | Saler | 445 | First Office Salute | Poker Table | chi_a | med_apteu #proc #music", file=z)
 
         def print_time():
             t_time = datetime.datetime.now()
             l_time = "Time: "
             print(l_time, t_time)
-            print(usr, l_time, t_time, file=z)
-
-        def profile():
-            print()
-            print(file=z)
-            ID()
-            print()
-            print(file=z)
-            value()
-            print()
-            print(file=z)
-            atag()
-            print()
-            print(file=z)
-            earth_science()
-            print()
-            print(file=z)
-            draw_card()
-            print()
-            print(file=z)
-            stats()
-            print()
-            print(file=z)
-            hack()
-            print()
-            print(file=z)
-            progress()
-            print()
-            print(file=z)
-            haiku()
-            print()
-            print(file=z)
-            rpg()
-            print()
-            print(file=z)
-            equips()
-            print()
-            print(file=z)
-            legal_terms()
-            print()
-            print(file=z)
-            dhammapada()
-
-        def note():
-            t_time = datetime.datetime.now()
-            l_time = "| Time:"
-            print("type in note")
-            print("type in note", file=z)
-            print()
-            print(file=z)
-            save = input()
-            print()
-            print(file=z)
-            print("note: " + "" + save, l_time, t_time)
-            print(usr + "" + " " + "" + "note: " + "" + save, l_time, t_time, file=z)
-
-        def journal():
-            t_time = datetime.datetime.now()
-            l_time = "| Time:"
-            print("type in note")
-            print("type in note", file=z)
-            print()
-            print(file=z)
-            save = input()
-            print()
-            print(file=z)
-            print("journal: " + "" + save, l_time, t_time)
-            print(usr + "" + " " + "" + "journal: " + "" + save, l_time, t_time, file=z)
-
-        def save():
-            t_time = datetime.datetime.now()
-            l_time = "| Time:"
-            print("type in note")
-            print("type in note", file=z)
-            print()
-            print(file=z)
-            save = input()
-            print()
-            print(file=z)
-            print("save: " + "" + save, l_time, t_time)
-            print(usr + "" + " " + "" + "save: " + "" + save, l_time, t_time, file=z)
 
         def search():
             zen = input("Search: ")
             print()
-            print(file=z)
             with open(r"MProcs-logs.txt", 'r') as fp:
                 for l_no, line in enumerate(fp):
                     # search string
@@ -1005,57 +906,79 @@ def main():
                         print('Line Number:', l_no)
                         print('Line:', line)
 
-        def msearch():
-            zen = input("Monitor-Search: ")
-            folder = input("folder (foldername followed by a slash or leave blank): ")
-            print()
-            print(file=z)
-            with open(folder + "" + r"monitor-logs.txt", 'r') as fp:
-                for l_no, line in enumerate(fp):
-                    # search string
-                    if zen in line:
-                        print(zen + "" + ' found')
-                        print('Line Number:', l_no)
-                        print('Line:', line)
+        def busearch(file_path="burner-log.txt"):
+            zen = input("(burner) search: ")
+            if not zen:
+                print("Search cancelled.")
+                return
 
-        def asearch():
-            zen = input("acad-monitor-search: ")
-            folder = input("folder (foldername followed by a slash or leave blank): ")
-            print()
-            print(file=z)
-            with open(folder + "" + r"a-monitor-logs.txt", 'r') as fp:
-                for l_no, line in enumerate(fp):
-                    # search string
-                    if zen in line:
-                        print(zen + "" + ' found')
-                        print('Line Number:', l_no)
-                        print('Line:', line)
+            while True:
+                try:
+                    fps = float(input("Indicate speed in seconds: "))
+                    if fps < 0:
+                        print("Speed must be non-negative.")
+                        continue
+                    break
+                except ValueError:
+                    print("Invalid value. Please enter a number.")
+                except KeyboardInterrupt:
+                    print("\nInput cancelled.")
+                    return
 
-        def amsearch():
-            zen = input("amror-monitor-search: ")
-            folder = input("folder (foldername followed by a slash or leave blank): ")
             print()
-            print(file=z)
-            with open(folder + "" + r"amror-logs.txt", 'r') as fp:
-                for l_no, line in enumerate(fp):
-                    # search string
-                    if zen in line:
-                        print(zen + "" + ' found')
-                        print('Line Number:', l_no)
-                        print('Line:', line)
+            print("Ctrl-C to stop")
+            print()
+            try:
+                with open(file_path, 'r') as fp:
+                    for line in fp:  # Process line by line to save memory
+                        if zen in line:  # Case-sensitive search
+                            try:
+                                time.sleep(fps)  # Can be interrupted by Ctrl+C
+                                print(line.strip())
+                            except KeyboardInterrupt:
+                                print("\nSearch interrupted by user.")
+                                return
+            except FileNotFoundError:
+                print(f"Error: File '{file_path}' not found.")
+            except Exception as e:
+                print(f"An error occurred: {e}")
+
+        def profile():
+            print()
+            ID()
+            print()
+            value()
+            print()
+            atag()
+            print()
+            earth_science()
+            print()
+            draw_card()
+            print()
+            stats()
+            print()
+            hack()
+            print()
+            progress()
+            print()
+            haiku()
+            print()
+            rpg()
+            print()
+            equips()
+            print()
+            legal_terms()
+            print()
+            dhammapada()
 
         def echo():
             echo = input("$ ")
             ct = datetime.datetime.now()
             print()
-            print(file=z)
             ech = "echo:"
             print(ech, usr, echo, ct)
-            print(ech, usr, echo, ct, file=z)
 
         def worker_thread(thread_id, delay, stop_event):
-
-            o = open("threads.txt", "a", buffering=1)
 
             def generate_random_letters():
                 random1 = random.choice(string.ascii_letters)
@@ -1076,7 +999,7 @@ def main():
                     acad = acadlist                 
                     random_letters = generate_random_letters()
                     sitch  = (round(random.random() * 9999, 4))
-
+                    
                     sample_size_hangu = random.randint(1, min(20, len(hangu)))
                     sample_size_cc = random.randint(1, min(12, len(cc)))
                     sample_size_kk = random.randint(1, min(15, len(kk)))
@@ -1091,9 +1014,7 @@ def main():
                 
                     ctm = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     print(f"{maroon} {title} {random_letters} {sitch:.4f} {hchat} {cchat} {kkhat} {kchat} {kchat2} {ctm}")
-                    print(f"{maroon} {title} {random_letters} {sitch:.4f} {hchat} {cchat} {kkhat} {kchat} {kchat2} {ctm}", file=o)
                     print()
-                    print(file=o)
                     stop_event.wait(delay)
 
             except Exception as e:
@@ -1102,10 +1023,7 @@ def main():
                 print(f"\nThread {thread_id} finished")
 
         def activate_threads(stop_event):
-
-            o = open("threads.txt", "a", buffering=1)
             title = input("thread name: ")
-
             while True:
                 try:
                     num_threads = int(input("Number of threads: "))
@@ -1127,16 +1045,10 @@ def main():
                     print("Invalid input")
 
             ct = datetime.datetime.now()
-            monitor = "threads-start:"
-            print()
-            print("*this saves to threads.txt*")
+            monitor = "s-threads-start:"
             print()
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=o)
             print()
-            print(file=z)
-            print(file=o)
             time.sleep(3)
 
             print("\nStarting threads...")
@@ -1178,15 +1090,12 @@ def main():
             ct = datetime.datetime.now()
             chchar = "c-characters:"
             print(chchar, chichar, ct)
-            print(usr, chchar, chichar, ct, file=z) 
 
         def pray():
             ct = datetime.datetime.now()
             print("You start praying to a God...")
-            print(usr + "" + " " + "" + "You start praying to a God...", file=z)
             time.sleep(7)
             print("You finished praying", ct)
-            print(usr + "" + " " + "" + "You finished praying", ct, file=z)
             time.sleep(3)
 
         def climb():
@@ -1196,12 +1105,10 @@ def main():
             ct = datetime.datetime.now()
             clim = "climb:"
             print(clim, climb, ct)
-            print(usr, clim, climb, ct, file=z)
 
         def prayer():
             ct = datetime.datetime.now()
             print("OM MANI PADME HUM", ct)
-            print(usr + "" + " " + "" + "OM MANI PADME HUM", ct, file=z)
 
         def stats():
             stat = "stats:"
@@ -1225,7 +1132,6 @@ def main():
             chemicals = (round(random.random()*120))
             ct = datetime.datetime.now()
             print(stat, hea, health, conf, confidence, oxyg, oxygen, happ, happiness, luc, luck, rele, release, ener, energy, oppo, opportunity, chem, chemicals, ct)
-            print(usr, stat, hea, health, conf, confidence, oxyg, oxygen, happ, happiness, luc, luck, rele, release, ener, energy, oppo, opportunity, chem, chemicals, ct, file=z)
 
         def progress():
             ct = datetime.datetime.now()
@@ -1234,12 +1140,9 @@ def main():
             progress = "progress: "
             print(percentage)
             print("% done with")
-            print("% done with", file=z)
             probability = (round(random.random()*4))
             print(probability)
             print("quads", ct)
-            print("quads", file=z)
-            print(usr, progress, percentage, probability, ct, file=z)
 
         def light_incense():
             while True:
@@ -1252,57 +1155,44 @@ def main():
             number
             numberstr = str(number)
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             print("You light" + "" + " " + "" + numberstr + "" + " " + "" + "incense...", ct)
-            print(usr + "" + " " + "" + "You light" + "" + " " + "" + numberstr + "" + " " + "" + "incense...", ct, file=z)
             time.sleep(3)
 
         def heart_sutra():
             time.sleep(2)
             print()
             print("The Bodhisattva of Compassion, / When he meditated deeply, / Saw the emptiness of all five skandhas / And sundered the bonds that caused him suffering.")
-            print("The Bodhisattva of Compassion, / When he meditated deeply, / Saw the emptiness of all five skandhas / And sundered the bonds that caused him suffering.", file=z)
             time.sleep(8)
             print()
             print("Here then, / Form is no other than emptiness, / Emptiness no other than form. / Form is only emptiness, / Emptiness only form.")
-            print("Here then, / Form is no other than emptiness, / Emptiness no other than form. / Form is only emptiness, / Emptiness only form.", file=z)
             time.sleep(8)
             print()
             print("Feeling, thought, and choice, / Consciousness itself, / Are the same as this.")
-            print("Feeling, thought, and choice, / Consciousness itself, / Are the same as this.", file=z)
             time.sleep(8)
             print()
             print("All things are by nature void / They are not born or destroyed / Nor are they stained or pure / Nor do they wax or wane")
-            print("All things are by nature void / They are not born or destroyed / Nor are they stained or pure / Nor do they wax or wane", file=z)
             time.sleep(8)
             print()
             print("So, in emptiness, no form, / No feeling, thought, or choice, / Nor is there consciousness. / No eye, ear, nose, tongue, body, mind; / No colour, sound, smell, taste, touch, / Or what the mind takes hold of, / Nor even act of sensing.")
-            print("So, in emptiness, no form, / No feeling, thought, or choice, / Nor is there consciousness. / No eye, ear, nose, tongue, body, mind; / No colour, sound, smell, taste, touch, / Or what the mind takes hold of, / Nor even act of sensing.", file=z)
             time.sleep(10)
             print()
             print("No ignorance or end of it, / Nor all that comes of ignorance; / No withering, no death, / No end of them.")
-            print("No ignorance or end of it, / Nor all that comes of ignorance; / No withering, no death, / No end of them.", file=z)
             time.sleep(7)
             print()
             print("Nor is there pain, or cause of pain, / Or cease in pain, or noble path / To lead from pain; / Not even wisdom to attain! / Attainment too is emptiness.")
-            print("Nor is there pain, or cause of pain, / Or cease in pain, or noble path / To lead from pain; / Not even wisdom to attain! / Attainment too is emptiness.", file=z)
             time.sleep(8)
             print()
             print("So know that the Bodhisattva / Holding to nothing whatever, / But dwelling in Prajna wisdom, / Is freed of delusive hindrance, / Rid of the fear bred by it, / And reaches clearest Nirvana.")
-            print("So know that the Bodhisattva / Holding to nothing whatever, / But dwelling in Prajna wisdom, / Is freed of delusive hindrance, / Rid of the fear bred by it, / And reaches clearest Nirvana.", file=z)
             time.sleep(9)
             print()
             print("All Buddhas of past and present, / Buddhas of future time, / Using this Prajna wisdom, / Come to full and perfect vision.")
-            print("All Buddhas of past and present, / Buddhas of future time, / Using this Prajna wisdom, / Come to full and perfect vision.", file=z)
             time.sleep(8)
             print()
             print("Hear then the great dharani, / The radiant peerless mantra, / The Prajnaparamita / Whose words allay all pain; Hear and believe its truth!")
-            print("Hear then the great dharani, / The radiant peerless mantra, / The Prajnaparamita / Whose words allay all pain; Hear and believe its truth!", file=z)
             time.sleep(8)
             print()
             print("Gate Gate Paragate Parasamgate / Bodhi Svaha / Gate Gate Paragate Parasamgate / Bodhi Svaha / Gate Gate Paragate Parasamgate / Bodhi Svaha")
-            print("Gate Gate Paragate Parasamgate / Bodhi Svaha / Gate Gate Paragate Parasamgate / Bodhi Svaha / Gate Gate Paragate Parasamgate / Bodhi Svaha", file=z)
             time.sleep(10)
 
         def hebrews():
@@ -1313,12 +1203,10 @@ def main():
             ct = datetime.datetime.now()
             brews = "heBrews:"
             print(brews, verse, ct)
-            print(usr, brews, verse, ct, file=z)
 
         def teletubby():
             ct = datetime.datetime.now()
             print("You think of a command", ct)
-            print(usr + "" + " " + "" + "You think of a command", ct, file=z)
             time.sleep(2)
 
         def herbs():
@@ -1349,7 +1237,6 @@ def main():
             value = (round(random.random()*9999999999,10))
             ct = datetime.datetime.now()
             print(h, letter1, letter2, letter3, letter4, letter5, value, herbal, ct)
-            print(usr, h, letter1, letter2, letter3, letter4, letter5, value, herbal, ct, file=z)
 
         def legal_terms():
             dd = list(legal_terms1)
@@ -1367,7 +1254,6 @@ def main():
             ct = datetime.datetime.now()
             l = "law:"
             print(l, law, ct)
-            print(usr, l, law, ct, file=z)
 
         def degree():
             dd = list(degrees1)
@@ -1387,11 +1273,8 @@ def main():
             bu = "-from Boston University website (bu.edu)"
             ct = datetime.datetime.now()
             print(d, value, degree, ct)
-            print(usr, d, value, degree, ct, file=z)
             print()
-            print(file=z)
             print(bu)
-            print(bu, file=z)
 
         def biology():
             dd = list(biology1)
@@ -1409,7 +1292,6 @@ def main():
             ct = datetime.datetime.now()
             bio = "biology:"
             print(bio, b, ct)
-            print(usr, bio, b, ct, file=z)
 
         def chemistry():
             dd = list(chemistry1)
@@ -1427,7 +1309,6 @@ def main():
             ct = datetime.datetime.now()
             chem = "chemistry:"
             print(chem, ch, ct)
-            print(usr, chem, ch, ct, file=z)
 
         def patient_simu():
             time.sleep(0)
@@ -1468,7 +1349,6 @@ def main():
             missue = random.sample(msymptoms, 2)
             m = "mental issue:"
             print(t_time, patient, n, name, surname, age, ages, g, gender, l, locality, temp, temperature, pu, pulse, rr, respiration, bp, pressure, s, symptom, othersy, osymptoms, m, missue)
-            print(usr, t_time, patient, n, name, surname, age, ages, g, gender, l, locality, temp, temperature, pu, pulse, rr, respiration, bp, pressure, s, symptom, othersy, osymptoms, m, missue, file=z)
 
         def earth_science():
             dd = list(science1)
@@ -1486,7 +1366,6 @@ def main():
             ct = datetime.datetime.now()
             sci = "earth science:"
             print(sci, earth, ct)
-            print(usr, sci, earth, ct, file=z)
 
         def psychology():
             dd = list(psychology1)
@@ -1504,7 +1383,6 @@ def main():
             ct = datetime.datetime.now()
             p = "psychology:"
             print(p, psych, ct)
-            print(usr, p, psych, ct, file=z)
 
         def medicals():
             dd = list(medicals1)
@@ -1522,7 +1400,6 @@ def main():
             ct = datetime.datetime.now()
             med = "Medicals:"
             print(med, medical, ct)
-            print(usr, med, medical, ct, file=z)
 
         def license():
             license = ["You have no license", "You have no license", "You have a license"]
@@ -1530,7 +1407,6 @@ def main():
             ct = datetime.datetime.now()
             lic = "License:"
             print(lic, lice, ct)
-            print(usr, lic, lice, ct, file=z)
 
         def police():
             time.sleep(0)
@@ -1550,7 +1426,6 @@ def main():
             ct = datetime.datetime.now()
             po = "police:"
             print(po, cod, urge, sus, suspectcode, pol, loc, dire, location, ct)
-            print(usr, po, cod, urge, sus, suspectcode, pol, loc, dire, sus, suspectcode, location, ct, file=z)
 
         def clearance():
             time.sleep(0)
@@ -1559,7 +1434,6 @@ def main():
             ct = datetime.datetime.now()
             med = "Clearance:"
             print(med, clear, ct)
-            print(usr, med, clear, ct, file=z)
 
         def entry():
             _entry = "Entry: "
@@ -1573,7 +1447,6 @@ def main():
             ct = datetime.datetime.now()
             _room = "Room"
             print(_entry, gate, phase, _floor, floors, _room, rooms, ct)
-            print(usr, _entry, gate, phase, _floor, floors, _room, rooms, ct, file=z)
 
         def zuz():
             dd = (diction)
@@ -1585,7 +1458,6 @@ def main():
             result_text = ", ".join(random_result)
             speak(result_text)
             print(sitar, result_text, result, ct)
-            print(usr, sitar, result_text, result, ct, file=z)
 
         def micasa():
             time.sleep(1)
@@ -1594,7 +1466,6 @@ def main():
             micasa = random.sample(rooms, 1)
             ct = datetime.datetime.now()
             print(mic, micasa, ct)
-            print(usr, mic, micasa, ct, file=z)
 
         def stuff():
             stu = "stuff:"
@@ -1603,7 +1474,6 @@ def main():
             stuffs = random.sample(stuff, random.randint(1, 8))
             ct = datetime.datetime.now()
             print(stu, stuffs, ct)
-            print(usr, stu, stuffs, ct, file=z)
 
         def worship():
             ct = datetime.datetime.now()
@@ -1611,7 +1481,6 @@ def main():
             wor = "worship:"
             worship = "You worship in silence.."
             print(wor, worship, ct)
-            print(usr, wor, worship, ct, file=z)
             time.sleep(3)
 
         def posting():
@@ -1623,195 +1492,141 @@ def main():
             postings = (round(random.random()*5))
             defaults = (round(random.random()*15))
             print(_post, _have, postings, _posting, defaults, _default, ct)
-            print(usr, _post, _have, postings, _posting, defaults, _default, ct, file=z)
 
         def speech(text):
             if platform.system() == "Linux" and shutil.which("termux-tts-speak"):
                 try:
                     subprocess.run(["termux-tts-speak", text], check=True)
                     return
-                except subprocess.CalledProcessError as e:
+                except (subprocess.CalledProcessError, FileNotFoundError) as e:
                     print(f"Termux-TTS error: {e}")
-                except FileNotFoundError:
-                    pass
 
-            if shutil.which("espeak"):
+            # Find the correct binary name for eSpeak
+            cmd = shutil.which("espeak-ng") or shutil.which("espeak")
+            
+            if cmd:
                 try:
-                    if platform.system() == "Windows":
-                        subprocess.run(["espeak", "-v", "en+f1", text], check=True)
-                    else:
-                        subprocess.run(["espeak", "-v", "en+f1", text], check=True)
+                    # -v en+f2 is the built-in female variant for English
+                    # We only pass 'cmd', not 'cmd' AND 'espeak'
+                    subprocess.run([cmd, "-v", "en+f2", text], check=True)
                     return
                 except subprocess.CalledProcessError as e:
                     print(f"eSpeak error: {e}")
-                    return
                 except Exception as e:
-                    print(f"An unexpected error occurred with eSpeak: {e}")
-                    return d
+                    print(f"An unexpected error occurred: {e}")
+            else:
+                print("Error: eSpeak or espeak-ng not found on system.")
                    
         def muslim_prayer():
             def prayer():
                 time.sleep(3)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
-                print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings", file=z)
                 speech("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
-                print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger", file=z)
                 speech("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
-                print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")        
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
-                print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
 
@@ -1827,281 +1642,190 @@ def main():
             def prayer():
                 time.sleep(3)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")        
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
-                print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings", file=z)
                 speech("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
-                print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger", file=z)
                 speech("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
-                print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
-                print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
 
@@ -2117,223 +1841,151 @@ def main():
             def prayer():
                 time.sleep(3)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")        
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
-                print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings", file=z)
                 speech("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
-                print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger", file=z)
                 speech("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
-                print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
-                print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
 
@@ -2357,53 +2009,42 @@ def main():
             ct = datetime.datetime.now()
             print()
             print("You sit and start to meditate...", ct)
-            print(usr + "" + " " + "" + "You sit and start to meditate...", ct, file=z)
             time.sleep(number)
             ct2 = datetime.datetime.now()
             print("You finished meditating", ct2)
-            print(usr + "" + " " + "" + "You finished meditating", ct, file=z)
             time.sleep(3)
 
         def sleep():
             ct = datetime.datetime.now()
             print("You lay down and doze off...", ct)
-            print(usr + "" + " " + "" + "You lay down and doze off...", ct, file=z)
             time.sleep(29)
             print("You wake up", ct)
-            print(usr + "" + " " + "" + "You wake up", ct, file=z)
             time.sleep(3)
 
         def eat():
             ct = datetime.datetime.now()
             print("You prepare food and start to consume a meal...")
-            print(usr + "" + " " + "" + "You prepare food and start to consume a meal...", file=z)
             time.sleep(5)
             print("You have eaten", ct)
-            print(usr + "" + " " + "" + "You have eaten", ct, file=z)
             time.sleep(3)
 
         def find_coins():
             ct = datetime.datetime.now()
             print("You start to search around for coins...")
-            print(usr + "" + " " + "" + "You start to search around for coins...", file=z)
             time.sleep(10)
             print("You found:")
-            print("You found:", file=z)
             tin = (random.randint(0,100))
             coins = "coins: "
             print(coins, tin, ct)
-            print(usr, coins, tin, ct, file=z)      
             time.sleep(3)
 
         def slot():
             ct = datetime.datetime.now()
             print("You pull on the slot lever...")
-            print(usr + "" + " " + "" + "You pull on the slot lever...", file=z)
             time.sleep(5)
             slot = random.choices(range(10), k=3)
             slots = "slot: "
             print(slots, slot, ct)
-            print(usr, slots, slot, ct, file=z)
             time.sleep(3)
 
         def draw_card():
@@ -2419,118 +2060,88 @@ def main():
             ct = datetime.datetime.now()
             print()
             print("You draw a card from a deck...")
-            print(usr + "" + " " + "" + "You draw a card from a deck...", file=z)
             time.sleep(2)
             card = random.sample(dd, number)
             print("You drew:")
-            print("You drew:", file=z)
             cards = "card: "
             print(cards, card, ct)
-            print(usr, cards, card, ct, file=z)
             time.sleep(3)
 
         def search_for_items():
             print("You search around...")
-            print(usr + "" + " " + "" + "You search around...", file=z)
             time.sleep(2)
             itemd = ["empty bottle", "bottle of wine", "wine glass", "bottle of iced tea", "energy drink", "lemon juice", "pack of green peas", "shirt", "bed", "headphones", "earphones", "blanket", "tablet", "kindle", "pills", "pack of coffee beans", "cup of coffee", "junkfood", "medicine", "spoon", "fork", "Nintendo Switch", "laptop", "mobile phone", "electric fan", "chair", "guitar", "keyboard", "piano", "tv", "monitor", "oil", "hashish", "marijuana", "cigarette", "vape", "pillow", "dog food", "bike", "car", "scooter", "skateboard", "printer", "shards of glass", "garbage", "strips of sleather", "food", "bottle of water", "bible", "Dhammapada", "yoga mat", "helmet", "chewing gum", "vitamins", "shirt", "sweater", "pants", "working pants", "skirt", "underwear", "parachute", "gun", "knife", "sword", "katana", "oatmeal", "chain", "slippers", "shoes", "book", "wires", "credit card", "stove", "oven", "hat", "bucket hat", "baseball cap", "beanie", "hoodie", "necklace", "ring", "gold ring", "diamond ring", "diamond", "diamonds", "painting", "pencil", "ballpoint pen", "sketchpad", "crayon", "box of crayons", "paint", "spray paint", "fruit", "lettuce", "carrot", "watermelon", "orange", "apple", "banana", "pear", "gold", "gold bar", "pistol", "lantern", "lamp", "umbrella", "newspaper", "Sega", "ecstasy", "Nintendo 64", "calculator", "brownies", "pie", "loaf bread", "aviator shades", "shutter shades", "CD", "floppy disk", "mp3 player", "walkman", "cassette", "ticket", "food stub", "ski mask", "spear", "nunchucks", "frying pan", "beans", "charger", "guitar pick", "mic", "digicam", "GoPro", "night vision goggles", "sniper rifle", "DS4 Playstation controller", "CDJ", "Raybans", "smartwatch", "modem", "axe"]
             items = (random.choice(itemd), random.choice(itemd))
             item = random.sample(items, 2)
             ct = datetime.datetime.now()
             print("You found:")
-            print("You found:", file=z)
             items = "items: "
             print(items, item, ct)
-            print(usr, items, item, ct, file=z)
             time.sleep(3)
 
         def fly():
             print("You go to the airport and board a plane...")
-            print(usr + "" + " " + "" + "You go to the airport and board a plane...", file=z)
             time.sleep(2)
             print("You arrived in:")
-            print("You arrived in:", file=z)
             countries = ["Canada", "Sweden", "China", "Beijing", "New York", "California", "L.A.", "San Francisco", "Detroit", "Colorado", "Newark", "New Jersey", "Australia", "Gold Coast", "Thailand", "North Korea", "Pyongyang", "Seoul", "Tokyo", "Osaka", "Japan", "Fujian", "Kyoto", "Manila", "Palawan", "Siargao", "Sultan Kudarat", "Davao", "Sydney", "Poland", "Uzbekistan", "Kyrgystan", "Turkey", "Iraq", "Iran", "Bolivia", "Iceland", "Lithuania", "Greenland", "UK", "France", "Spain", "Rome", "Greece", "Amsterdam", "Netherlands", "Boracay", "Indonesia", "Russia", "Ukraine", "Africa", "Antarctica", "Alaska", "South Carolina", "North Carolina", "Philadelphia", "Brooklyn", "Mexico", "Brazil", "Taiwan", "Burma", "Cambodia", "Vietnam", "India", "Bangladesh", "New Delhi", "Bombay", "Philippines"]
             country = random.sample(countries, 1)
             ct = datetime.datetime.now()
             fly = "fly: "
             print(fly, country, ct)
-            print(usr, fly, country, ct, file=z)
             time.sleep(3)
 
         def drink_coffee():
             print("You have coffee and feel the effect of caffeine...")
-            print(usr + "" + " " + "" + "You have coffee and feel the effect of caffeine...", file=z)
             time.sleep(7)
             ct = datetime.datetime.now()
             print("You finished drinking your coffee", ct)
-            print(usr + "" + " " + "" + "You finished drinking your coffee", ct, file=z)
             time.sleep(3)
 
         def drink_tea():
             print("You have tea...")
-            print(usr + "" + " " + "" + "You have tea...", file=z)
             time.sleep(7)
             ct = datetime.datetime.now()
             print("You finish your tea", ct)
-            print(usr + "" + " " + "" + "You finish your tea", ct, file=z)
             time.sleep(3)
 
         def surf():
             print("You enter the water and wait for a wave...")
-            print(usr + "" + " " + "" + "You enter the water and wait for a wave...", file=z)
             time.sleep(random.randint(1,8))
             print("You surfed:")
-            print("You surfed:", file=z)
             time.sleep(3)
             modnar = (round(random.random()*60,2))
             ct = datetime.datetime.now()
             surf = "surfed: "
             print(surf, modnar, ct)
-            print(usr, surf, modnar, ct, file=z)
             print("..meters before you wiped-out")
-            print("..meters before you wiped-out", file=z)
             time.sleep(3)
 
         def collections():
             print("You recall")
-            print(usr + "" + " " + "" + "You recall", file=z)
             time.sleep(3)
             semit = (round(random.random()*666))
             collections = "collections: "
             print(semit)
-            print(semit, file=z)
             print("items out of 666 with")
-            print("items out of 666 with", file=z)
             time.sleep(1)
             sitch  = (round(random.random()*100,3))
             print(sitch)
-            print(sitch, file=z)
             ct = datetime.datetime.now()
             print("in your Satchel")
-            print("in your Satchel", ct, file=z)
-            print(usr, collections, semit, sitch, ct, file=z)
 
         def doodling():
             print("You pick up a calculator...")
-            print(usr + "" + " " + "" + "You pick up a calculator...", file=z)
             time.sleep(5)
             print()
-            print(file=z)
             print("You draw:")
-            print("You draw:", file=z)
             time.sleep(1)
             print()
             print()
-            print(file=z)
-            print(file=z)
             mondar = (round(random.random()*999,8))
             ct = datetime.datetime.now()
             doodling = "doodling: "
             print(doodling, mondar, ct)
-            print(usr, doodling, mondar, ct, file=z)
             print()
-            print(file=z)
 
         def zen_melody():
             keys = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
@@ -2539,7 +2150,6 @@ def main():
             ct = datetime.datetime.now()
             zenmelody = "zen melody: "
             print(zenmelody, key, raondam, ct)
-            print(usr + "" + " " + "" + zenmelody, key, raondam, ct, file=z)
 
         def value():
             letters1 = ["A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m", "N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T", "t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z"]
@@ -2556,13 +2166,11 @@ def main():
             ct = datetime.datetime.now()
             values = "value:"
             print(values, letter1, letter2, letter3, letter4, letter5, value, ct)
-            print(usr + "" + " " + "" + values, letter1, letter2, letter3, letter4, letter5, value, ct, file=z)
 
         def bump():
             ct = datetime.datetime.now()
             time.sleep(1.5)
             print("You can do it!", ct)
-            print(usr + "" + " " + "" + "You can do it!", ct, file=z)
             time.sleep(3)
 
         def ma():
@@ -2572,56 +2180,46 @@ def main():
             ct = datetime.datetime.now()
             MA = "MA: "
             print(MA, mart, ct)
-            print(usr, MA, mart, ct, file=z)
             print()
-            print(file=z)
             print("-from the contents of Martial Arts of the World: An Encyclopedia")
-            print("-from the contents of Martial Arts of the World: An Encyclopedia", file=z)
             time.sleep(6)
 
         def skate():
             time.sleep(5)
             print("You ride your trickboard and did a")
-            print("You ride your trickboard and did a", file=z)
             tricks = ["Backside 180", "Backside 360", "Backside Caballerial", "Backside Half Cab", "Fakie Ollie", "Frontside 180", "Frontside 360", "Frontside Caballerial", "Frontside Half Cab", "Kickturn", "Nollie", "Nollie Backside 180", "Nollie Backside 360", "Nollie Frontside 180", "Nollie Frontside 360", "Ollie", "Ollie North", "Ollie South", "Switch Backside 180", "Switch Backside 360", "Switch Frontside 180", "Switch Frontside 360", "Switch Ollie", "Tic-Tac", "360 Flip", "360 Hardflip", "360 Ollie Heelflip", "360 Ollie Kickflip", "360 Pop Shove-it", "360 Shuvit", "540 Flip", "720 Flip", "Alpha Flip", "Anti Casper Flip", "Backside Bigspin", "Backside Flip", "Backside Half Cab Heelflip", "Backside Half Cab Kickflip", "Backside Heelflip", "Backside Kickflip", "Big Heelflip", "Bigflip", "Biggerflip", "Biggerspin", "Bigspin", "Bubble Flip", "Bullflip", "Caballerial Flip", "Camel Flip", "Casper Flip", "Daydream Flip", "De Comply", "Disco Flip", "Double Heelflip", "Double Kickflip", "Dragon Flip", "Fakie 360 Flip", "Fakie 360 Hardflip", "Fakie Backside Bigspin", "Fakie Backside Pop Shove-it", "Fakie Frontside Bigspin", "Fakie Frontside Pop Shove-it", "Fakie Hardflip", "Fakie Heelflip", "Fakie Inward Heelflip", "Fakie Kickflip", "Fakie Varial Heelflip", "Fakie Varial Kickflip", "Feather Flip", "Fingerflip", "Forward Flip", "Front Foot Impossible", "Frontside 360 Pop Shove it", "Frontside Bigspin", "Frontside Flip", "Frontside Half Cab Heelflip", "Frontside Half Cab Kickflip", "Frontside Heelflip", "Frontside Kickflip", "Frontside Pop Shove-it", "Gazelle Flip", "Gazelle Spin", "Ghetto Bird", "Gingersnap", "Grape Flip", "Half Cab", "Handstand Flip", "Hardflip", "Haslam Flip", "Heelflip", "Hospital Flip", "Illusion Flip", "Impossible", "Inward Heelflip", "Jesus Flip", "Kickback Flip", "Kickflip", "Kiwi Flip", "Laser Flip", "Late Kickflip", "Nerd Flip", "Nightmare Flip", "No Comply", "540", "720", "900", "Airwalk", "Benihana", "Cannonball", "Christ Air", "Crossbone", "Delmar Indy", "Indy", "Indy Grab", "Invert", "Japan Air", "Judo Air", "Madonna", "McTwist", "Melancholy Grab", "Melon", "Method Air", "Mute Air", "Nose Grab", "Rocket Air", "Sal Flip", "Seatbelt Grab", "Stiffy", "Superman Grab", "Varial", "Egg Plant", "Manual", "Nose Manual", "Varial Heelflip", "Varial Kickflip",\
                          "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", ]
             trick = random.sample(tricks, 1)
             ct = datetime.datetime.now()
             skate = "skate: "
             print(skate, trick, ct)
-            print(usr, skate, trick, ct, file=z)
             time.sleep(3)
 
         def art():
             time.sleep(4)
             print("You make a piece in the style of")
-            print("You make a piece in the style of", file=z)
             styles = ["Abstract Art", "Abstract Expressionism", "Academicism", "Analytical Cubism", "Art Deco", "Art Nouveau", "Ashcan School", "Banksy", "Baroque", "Byzantine Art", "Classicism", "Cloisonnism", "Color Field", "Conceptual Art", "Constructivism", "Cubism", "Cubo-Futurism", "Dadaism", "Dutch Golden Age", "Early Netherlandish", "Early Renaissance", "Expressionism", "Fauvism", "Futurism", "Geometric Abstract Art", "Gothic Art", "High Renaissance", "Hudson River School", "Impressionism", "Italian Renaissance", "Kitsch", "Luminism", "Mannerism", "Metaphysical Art", "Minimalism", "Modernism", "Naive Art/ Primitivism", "Neo-Baroque", "Neo-Classicism", "Neo-Dada", "Neo Expressionism", "Neoplasticism", "New Realism", "Northern Renaissance", "Op-Art", "Orientalism", "Orphism", "Pointilism", "Pop Art", "Pop Surrealism", "Post-Impressionism", "Pre-Raphaelites", "Precisionism", "Proto Renaissance", "Purism", "Realism", "Regionalism", "Renaissance", "Rococo", "Romanticism", "Social Realism", "Socialist Realism", "Suprematism", "Surrealism", "Symbolism", "Synthetic Cubism", "Synthetism", "Tenebrism", "Tonalism", "Tubism", "Ukiyo-E", "Verism"]
             art = random.sample(styles, 1)
             ct = datetime.datetime.now()
             arts = "art: "
             print(arts, art, ct)
-            print(usr, arts, art, ct, file=z)
             time.sleep(3)
 
         def radio():
             time.sleep(2)
             print("You tune in to the radio and listen to:")
-            print("You tune in to the radio and listen to:", file=z)
             time.sleep(1)
             genres = ["Alternative", "Anime", "Blues", "Classical", "Comedy", "Commercials", "Country", "Dance", "Easy Listening", "Electronic", "Enka", "French Pop", "Folk Music", "German Folk", "German Pop", "Fitness and Workout", "Hip-Hop/Rap", "Holiday Music", "Indie Pop", "Industrial", "Inspirational", "Instrumental", "Jazz", "K-Pop", "Karaoke", "Latin", "Metal", "New Age", "Opera", "Pop", "R&B/Soul", "Reggae", "Rock", "Soundtracks", "Spoken Word", "Tex-Mex/Tejano", "Vocal", "World"]
             music = random.sample(genres, 1)
             ct = datetime.datetime.now()
             radio = "radio: "
             print(radio, music, ct)
-            print(usr, radio, music, ct, file=z)
             time.sleep(3)
 
         def give_alms():
             ct = datetime.datetime.now()
             time.sleep(3)
             print("You gave alms to the needy", ct)
-            print(usr + "" + " " + "" + "You gave alms to the needy", ct, file=z)
             time.sleep(3)
 
         def brawl():
@@ -2636,48 +2234,37 @@ def main():
             print(brawls, ct)
             time.sleep(3)
             print()
-            print(file=z)
             print("With A Score Of:")
-            print("With A Score Of:", file=z)
             time.sleep(2)
             randit = (random.randint(50,100))
             ct = datetime.datetime.now()
             print(randit)
-            print(randit, file=z)
-            print(usr, brawl, action, person, randit, ct, file=z)
             time.sleep(3)
 
         def karate():
             time.sleep(1)
             print("Movement:")
-            print("Movement:", file=z)
             time.sleep(3)
             print()
-            print(file=z)
             radnti = (random.randint(0,999))
             opponents = ["You", "Sensei", "Opponent", "Opponent"]
             opponent = random.sample(opponents, 1)
             ct = datetime.datetime.now()
             karate = "karate: "
             print(karate, radnti, opponent, ct)
-            print(usr, karate, radnti, opponent, ct, file=z)   
             time.sleep(3)
 
         def koans():
             time.sleep(2)
             print()
-            print(file=z)
             koans = ['One day, the World-Honored One ascended to the rostrum. Manjusri struck the table with the gavel and said, “Contemplate clearly the Dharma of the Dharma-King! The Dharma of the Dharma-King is like this.” Thereupon, the World-Honored One descended from the rostrum.', 'Emperor Bu of Ryo asked Great Master Bodhidharma, “What is the highest meaning of the holy reality?” Bodhidharma replied, “Vast and void, no holiness.” The emperor said, “Who are you in front of me?” Bodhidharma said, “I don’t know.” The emperor did not match him. Finally, Bodhidharma crossed the Yangtse River and came to the Shorin Temple. There he sat for nine years, facing the wall.', 'A king of Eastern India invited the twenty-seventh patriarch, Prajna Tara, for a meal. The king asked, “Why don’t you recite sutras?” The patriarch said, “The poor way [1] does not stay in the world of subject when breathing in, and has nothing to do with the world of objects when breathing out. I am always reciting the suchness-sutra in millions and millions of volumes.” [1]: i.e., “I.”', 'When the World-Honored One was walking with his assembly, he pointed to the ground with his hand and said, “This place is good for building a temple.” Indra [1] took a stalk of grass and stuck it in the ground and said, “The temple has been built.” The World-Honored One smiled. [1]: Exactly: Sakra Devendra. The lord god of the Trayastrimasa Heaven.', 'A monk asked Seigen, “What is the essence of Buddhism?” Seigen said, “What is the price of rice in Roryo?”', 'A monk asked Great Master Ba, “Apart from the Four Phrases, beyond one hundred Negations, please tell me directly, Master, the meaning of Bodhidharma’s coming from the West.” Master Ba said, “I am tired today, I can’t explain it to you. Go and ask Chizo.” The monk asked Chizo about it. Chizo said, “Why don’t you ask our master?” The monk said, “He told me to ask you.” Chizo said, “I have a headache today, I can’t explain it to you. Go and ask Brother Kai.” The monk asked Brother Kai about it. Kai said, “I don’t understand nothing about that question.” The monk told Great Master Ba about it. Great Master said, “Chizo’s head is white, Kai’s head is black.”', 'Yakusan had not ascended the rostrum for a long time. The temple steward said, “All the assembly has been wishing for instruction for a long time. Please, Master, give your assembly a sermon.” Yakusan had the bell rung. The assembly gathered. Yakusan ascended the rostrum and sat there for a while. Then he descended and returned to his room. The temple steward followed him and asked, “You said a while ago that you would give the assembly a sermon. Why didn’t you speak even a word?” Yakusan said, “For sutras, there are sutra specialists; for sastras [1], there are sastra specialists. Why do you have doubts about this old monk [2] ?” [1]: Books on Buddhist doctrines, written by ancient Buddhist philosophers. [2]: i.e. Yakusan.', 'Whenever Master Hyakujo delivered a sermon, an old man was always there listening with the monks. When they left, he left too. One day, however, he remained behind. Hyakujo asked him, “What man are you, standing there?” The old man replied, “In the past, in the time of Kashyapa Buddha, I lived on this mountain as a Zen priest. Once a monk came and asked me, ‘Does a perfectly enlightened person fall under the law of cause and effect or not?’ I said to him, He does not.’ Because of this answer, I fell into the state of a fox for 500 lives. Now, I beg you, Master, please say a turning word.” Hyakujo said, “The law of cause and effect cannot be obscured.” Upon hearing this, the old man became greatly enlightened.', 'Once the monks of the eastern and western Zen halls in Nansen’s temple were quarrelling about a cat. As he saw this, Nansen held up the cat and said, “You monks! If one of you can say a word, I will not slay the cat.” No one could answer. Nansen cut the cat in two. Nansen told Joshu what had happened, and asked him for his view. Joshu thereupon took his sandals, put them upon his head and went away. Nansen said, “If you had been there, I could have spared the cat.”', 'There was an old woman on the way to Taizan. Whenever a monk asked her how to get to Taizan, she would answer, “Go straight on.” After the monk had gone a few steps, she would say, “This good and naïve fellow goes off that way, too.” Later a monk told Joshu about this. Joshu said, “Wait a bit. I will go and see through her for you.” He went and asked the same question. The next day, Joshu ascended the rostrum and said, “I have seen through the old woman for you.”', 'Great Master Unmon said, “When the light does not penetrate, there are two diseases. Everything is unclear and things hang before you: this is one disease. Even after you have realized the emptiness of all things, somehow you feel as if there were still something there. This shows that the light has not yet penetrated thoroughly. Also there are two diseases concerning the Dharma-body. You have reached the Dharma-body, but you remain attached to the Dharma and cannot extinguish your own view; therefore you lead a corrupt life around the Dharma-body: this is one disease. Suppose you have truly penetrated to the end, if you give up further efforts, it will not do. You examine yourself minutely and say you have no flaw: this is nothing but a disease.”', 'Jizo asked Shuzanshu, “Where have you come from?” Shuzanshu said, “I have come from the South.” Jizo said, “How is Buddhism in the South these days?” Shuzanshu said, “There is much lively discussion.” Jizo said, “How could that match with our planting the rice field here and making rice-balls to eat?” Shuzanshu said, “How could you then save the beings of the Three Worlds?” Jizo said, “What do you call ‘the Three Worlds’?”', 'When Rinzai was about to die, he entrusted Sansho with his Dharma and said, “After my passing, do not destroy my treasury of the Eye of the true Dharma [1].” Sansho said, “How would I dare destroy your treasury of the Eye of the true Dharma?” Rinzai said, “If someone asks you about it, how will you answer?” Sansho instantly shouted his Kaatz. Rinzai said, “Who knows that my treasury of the Eye of the true Dharma has been destroyed by this blind donkey?” [1]: Originally: shobogenzo.', 'Attendant Kaku asked Tokusan, “Where have all the past saints gone?” Tokusan said, “What? What?” Kaku said, “I gave the command for an excellent horse like a flying dragon to spring forth, but there came out only a lame tortoise.” Tokusan was silent. The next day, when Tokusan came out of the bath, Kaku served him tea. Tokusan passed his hand gently over Kaku’s back. Kaku said, “This old fellow has gotten a glimpse for the first time.” Again, Tokusan was silent.', 'Isan asked Kyozan, “Where have you come from?” Kyozan said, “From the rice field.” Isan said, “How many people are there in the rice field?” Kyozan thrust his hoe into the ground and stood with his hands folded on his chest. Isan said, “There are a great number of people cutting thatch on the South Mountain.” Kyozan took up his hoe and left immediately.', 'Mayoku, with his ring-staff in hand, came to Shokei. He circled Shokei’s dais three times, shook the ring-staff and stood there bolt upright. Shokei said, “Right, right!” Mayoku then came to Nansen. He circled Nansen’s dais three times, shook the ring-staff and stood there bolt upright. Nansen said, “Not right, not right!” Then, Mayoku said, “Master Shokei said, ‘Right, right!’ Why, Master, do you say, ‘Not right, not right!’?” Nansen said, “With Shokei it is right, but with you it is not right. This is nothing but a whirling of the wind. In the end, it will perish.”', 'Hogen asked Shuzanshu, “"If there is only a hairsbreadth of difference, it is the distance between heaven and earth."[1] How do you understand that?” Shuzanshu said, “If there is only a hairsbreadth of difference, it is the distance between heaven and earth.” Hogen said, “If that’s your understanding, how could you ever attain IT?” Shuzanshu said, “My view is just that. How about you, Master?” Hogen said, “If there only is a hairsbreadth of difference, it is the distance between heaven and earth.” Shuzanshu made a deep bow. [1]: Cited from the Shinjinmei (A Hymn of Sincere Mind), a work by the Third Patriarch Sosan.', 'A monk asked Joshu, “Does the dog have buddha-nature, or not?” Joshu said, “It has” [U]. The monk said, “If it has it, why did it creep into that skin bag?” Joshu said, “Because it does so knowingly.” Another monk asked, “Does the dog have buddha-nature, or not?” Joshu said, “It has not” [Mu]. The monk said, “All living beings have buddha-nature [2]. Why doesn’t the dog have any?” Joshu said, “Because it is in its karma-consciousness.” [1]: see case 1 of Mumonkan: the Shoyoroku case presents a fuller text of the dialogue. [2]: Quotation from the Nirvana Sutra 7, 25.', 'A monk asked Unmon, “Not a single thought arises: is there any fault or not?” Unmon said, “Mt. Sumeru. [1]” [1]: The highest and most massive mountain in the world according to the Indian cosmology.', 'Jizo asked Hogen, “Where are you going, senior monk? [1]” Hogen said, “I am on pilgrimage [2], following the wind.” Jizo said, “What are you on pilgrimage for?” Hogen said, “I don’t know.” Jizo said, “Non knowing is most intimate.” Hogen suddenly attained great enlightenment. [1]: “Senior monk” (joza) is an honorific for a monk who has practiced more than 10 years. [2]: Originally: angya.', 'When Ungan was sweeping the ground, Dogo said, “You are having a hard time!” Ungan said, “You should know there is one who doesn’t have a hard time.” Dogo said, “If that’s true, you mean there is a second moon?” Ungan held up his broom and said, “What number of moon is this?” Dogo was silent. Gensha said, “That is precisely the second moon.” Unmon said, “The servant greets the maid politely.”', 'Ganto came to Tokusan. He straddled the threshold of the gate and asked, “Is this ordinary or is this holy?” Tokusan shouted, “Kaatz!” Ganto made a deep bow. Hearing of this, Tozan said, “Hardly anyone but Ganto could have accepted it that way.” Ganto said, “Old Tozan can’t tell between good and bad. At that time, I raised up with one hand and suppressed with the other.”', 'Whenever Roso saw a monk coming, he immediately sat facing the wall. Hearing of this, Nansen said, “I usually tell my people to realize what has existed before the kalpa of emptiness [1], or to understand what has been before Buddhas appeared in the world. Still, I haven’t acknowledged one disciple or even a half. If he continues that way, he will go on even until the year of the donkey [2].” [1]: One of the “four kalpas” or periods of cosmic changes: the kalpa of creation, the kalpa of existence, the kalpa of destruction, and the kalpa of emptiness. [2]: Since there is no “year of the donkey” in the Chinese zodiac, the expression “until the year of donkey” means endlessly.', 'Seppo, instructing the assembly, said, “There’s a poisonous snake on the southern side of the mountain. All of you should look at it carefully!” Chokei said, “Today in the Zen hall there are many people. They have lost their body and life.” A monk told this to Gensha, who said, “Only Elder Brother Ryo [2] could say something like that. However, I wouldn’t talk like that.” The monk asked, “What then would you say, Master”? Gensha replied, “Why does it have to be ‘the southern side of the mountain’?” Unmon threw his staff in front of Seppo and acted frightened. [1]: see case 22 of Hekiganroku. [2]: i.e. Chokei.', 'One day, Enkan called to his attendant, “Bring me the rhinoceros fan.” The attendant said, “It is broken.” Enkan said, “If the fan is already broken, bring me the rhinoceros himself.” The attendant gave no answer. Shifuku drew a circle and wrote the ideograph “ox [2]” in it. [1]: see case 91 of Hekiganroku. [2]: The Chinese character for “ox” (gyu) is one of the two characters for “rhinoceros” (saigyu = sai + gyu).', 'Kyozan pointed to the snow lion [1] and said, “Is there any [2] that goes beyond this color?” Unmon said [3], “I would have pushed it over for him at once.” Setcho said [4], “He only knows how to push it over, but he doesn’t know how to help it up.” [1]: Probably a lion made of snow or a stone lion covered with snow. [2]: I.e., “anyone” or “anything.” [3]: I.e., later. [4]: I.e., hearing of this.', 'Hogen pointed to the bamboo blinds with his hand. At that moment, two monks who were there went over to the blinds together and rolled them up. Hogen said, “One has gained, one has lost.”', 'A monk asked Gokoku, “How about when a crane perches on a withered pine tree?” Gokoku said, “It is a disgrace when seen from the ground.” The monk asked, “What about when every drop of water is frozen at once?” Gokoku said, “It’s a disgrace after the sun has risen.” The monk asked, “At the time of the Esho Persecution [1], where did the good Guardian Deities [2] of the Dharma go?” Gokoku said, “It is a disgrace for the two of them on both sides of the temple gate.” [1]: Buddhism was suppressed by order of Emperor Bu (about 840). [2]: Nio-figures representing the two Deva kings on each side of the main gate of a Buddhist temple. They are considered to be protectors of the Dharma.', 'When he was staying at the government office of the Province Ei, Fuketsu entered the hall [to preach] and said, “The heart seal [stamp] of the patriarch resembles the activity of the iron ox. When it goes away, the [impression of the] seal remains; when it stays there, the [impression of the] seal is brought to naught. If it neither goes away nor stays, would it be right to give a seal [of approval] or not?” Then Elder Rohi came up and said, “I have the activities of the iron ox. [However,] I ask you, Master, not to give me the seal.” Fuketsu said, “I am accustomed to leveling the great ocean through fishing whales. But, alas, now I find instead a frog wriggling about in the mud.” Rohi stood there considering. Fuketsu shouted “Kaatz!” and said, “Why don’t you say anything else, Elder?” Rohi was perplexed. Fuketsu hit him with his whisk and said, “Do you remember what you said? Say something, I’ll check it for you.” Rohi tried to say something. Fuketsu hit him again with his whisk. The Magistrate said, “Buddha’s law and the King’s law are of the same nature.” Fuketsu said, “What principle do you see in them?” The Magistrate said, “If you do not make a decision where a decision should be made, you are inviting disorder.” Fuketsu descended from the rostrum.', 'A monk asked Daizui, “When the great kalpa fire bursts out, the whole universe [2] will be destroyed. I wonder if IT will also be destroyed or not.” Daizui said, “Destroyed.” The monk said, “If so, will IT be gone with the other [3]?” Daizui said, “Gone with the other.” A monk asked Ryusai, “When the great kalpa fire bursts out, the whole universe will be destroyed. I wonder if IT will also be destroyed or not.” Ryusai said, “Not destroyed.” The monk said, “Why is it not destroyed?” Ryusai said, “Because it is the same as the whole universe.” [1]: see case 29 of Hekiganroku: The Shoyoroku case has an additional part with Ryusai. [2]: Literally: “a billion worlds.” [3]: The word “the other” means “the universe.”', 'Unmon, instructing the assembly, said, “The old buddha and a pillar intersect each other. What number of activity is that?” The assembly was silent. He said on their behalf, “Clouds gather over the South Mountain; rain falls on the North Mountain.”', 'Kyozan asked a monk, “Where do you come from?” The monk said, “I am from Yu Province” Kyozan said, “Do you think of that place?” The monk said, “I always do.” Kyozan said, “That which thinks is the mind [1]. That which is thought about is the objective world. Within that are mountains, rivers and the great earth, towers, palaces, people, animals, and other things. Reflect upon the mind that thinks. Are there a lot of things there?” The monk said, “I don’t see anything at all there.” Kyozan said, “That’s right for the stage of understanding, but not yet for the stage of personalization.” The monk said, “Do you have any special advice, Master?”\
                      Kyozan said, “It is not right to say that there is or there is not. Your insight shows that you have obtained only one side of the mystery. Sitting down, putting on clothes, from now on you see by yourself.” [1]: Originally: kokoro.', 'Sansho asked Seppo, “When a fish with golden scales has passed through the net, what should it get for food?” Seppo said, “I will tell you when you have passed through the net.” Sansho said, “A great Zen master with 1500 disciples doesn’t know how to speak.” Seppo said, “The old monk is just too busy with temple affairs.”', 'Fuketsu, giving instruction, said, “If one raises a speck of dust, the house and the nation prosper. If one does not raise a speck of dust, they perish.” Setcho held up his staff and said, “Is there anyone who lives and dies with this?”', 'Rakuho came to Kassan and without bowing stood facing him. Kassan said, “A chicken dwells in the phoenix nest. It’s not of the same class. Go away.” Rakuho said, “I have come from far away, hearing much about you. Please, Master, I beg you to guide me.” Kassan said, “Before my eyes there is no you, and here there is no old monk [1].” Rakuho shouted, “Kaatz!” Kassan said, “Stop it, stop it. Don’t be so careless and hasty. Clouds and the moon are the same; valleys and mountains are different from each other. It is not difficult to cut off the tongues of the people under heaven. But how can you make a tongueless person speak?” Rakuho said nothing. Kassan hit him. With this, Rakuho started to obey Kassan. [1]: I.e., “I.”', 'Great Master Ba was seriously ill. The temple steward asked him, “Master, how are you feeling these days?” Great Master said, “Sun-faced Buddha, Moon-faced Buddha.”', 'Isan asked Kyozan, “Suppose a man asks you, saying, ‘All living beings are tossed in a vast karma-consciousness, and have no foundation to rely upon.’ How would you check him?” Kyozan said, “If such a monk appears, I call out to him, ‘Mr. So-and-so!’ When he turns his head, instantly I say, ‘What is this?’ If he hesitates, then I say to him, "Not only is there a vast karma-consciousness, but also there is no foundation to rely upon."” Isan said, “Good.”', 'Rinzai instructed his assembly and said, “There is one true person of no rank, always coming out and going in through the gates of your face [1]. Beginners who have not yet witnessed that, look! look!” Then a monk came out and asked, “What is the one true person of no rank?” Rinzai descended from the rostrum and grabbed him. The monk hesitated. Rinzai pushed him away and said, “The true person of no rank — what a shit-stick you are!” [1]: I.e., sense organs such as eyes, nose, ears, tongue, etc.', 'A monk asked Joshu, “I have just entered this monastery. I beg you, Master, please give me instructions.” Joshu asked, “Have you eaten your rice gruel yet?” The monk answered, “Yes, I have.” Joshu said, “Then wash your bowls.”', 'Unmon asked Kempo, “May I ask for your answer [1]?” Kempo said, “Have you ever reached this old monk or not?” Unmon said, “If so, I must say I was too late.” Kempo said, “Is that so? Is that so?” Unmon said, “I thought I was Marquis White, but I find that here is Marquise Black [2].” [1]: A literal translation. It is possible to understand the word simply as “instruction.” [2]: Marquis White and Marquise Black are noted thieves in Chinese folklore. Marquise Black, a female thief, seems to have been the cleverer of the two.', 'When he was about to die, Rakuho addressed his assembly and said, “I have one matter to ask you about. If you say ‘yes’ to this, you are putting another head on your own. If you say ‘no,’ you are looking for life by cutting off your head.” The head monk said, “The green mountain always lifts up its legs; you don’t need to carry a lantern in the daylight.” [1] Rakuho said, “What time is this to utter such a saying?” A senior monk named Genjo stepped forward and said, “Apart from these two ways, I beg you, Master, not to ask.” Rakuho said, “That’s not enough. Say some more.” Genjo said, “I cannot say it fully.” Rakuho said, “I don’t care whether or not you can say it fully.” Genjo said, “I feel just like an attendant who has nothing to respond to his master.” [2] That evening, Rakuho called Genjo to him and said, “Your response today had something quite reasonable. You have to realize what our late master [3] said, "There are no dharmas before the eyes, Yet consciousness is before the eyes. IT is not the Dharma before the eyes, IT cannot be reached by eyes and ears."" Which phrase is the guest? Which phrase is the host? If you can sort them out, I will transmit the bowl and robe to you.” Genjo said, “I don’t understand.” Rakuho said, “You must understand.” Genjo said, “I really don’t understand.” Rakuho uttered a kaatz and said, “Miserable, miserable!” [Another] monk asked, “What would you like to say, Master?” Rakuho said, “The boat of compassion is not rowed over pure waves. It’s been wasted labor releasing wooden geese down the precipitous strait [4].” [1]: Most probably a saying formed by Rakuho himself. [2]: Apparently an idiomatic expression meaning, “I can’t describe it in words.” [3]: Rinzai or Kassan. [4]: It was a custom that the boat rushing down the stream through a gorge released pieces of wood ahead as a warning so that a possible crash with the boat coming upstream could be avoided. These wooden chips were called “wooden geese.”', 'A monk asked National Teacher Chu of Nanyo, “What is the essential body [1] of Vairocana Buddha [2]?” National Teacher said, “Pass me that water jug.” The monk passed him the water jug. National Teacher said, “Put it back where it was.” The monk asked again, “What is the essential body of Vairocana Buddha?” National Teacher said, “The old Buddha is long gone.” [1]: The so-called “Dharma-body” or dharmakaya. [2]: The principal Buddha.', 'Razan asked Ganto, “What if things appear and disappear without ceasing?” Ganto scolded him saying, “Who appears and disappears?”', 'A monk asked Master Ho of Koyo, “The great dragon has emerged from the ocean, calming heaven and earth. How will you treat him when he suddenly appears before you?” Master Ho said, “Suparnin [1], the king of birds, absorbs the entire universe. Who can stick his head within him?” The monk said, “But how about when he does appear?” Ho said, “It is like a falcon catching a pigeon. If you don’t realize it, you will learn the truth through the ‘inspection before the balcony.’ [2]” The monk said, “If so, then I’ll fold my hands on my chest and retreat three steps.” Ho said, “You black tortoise under the Sumeru altar. [3] Don’t wait to be struck on the forehead again and get hurt.” [1]: A giant bird that eats even dragons. [2]: A reference to a story in which Heigenkun Chosho, the brother of the king of Cho and a wealthy landlord with 3,000 dependents, built a grand palace with a balcony that overlooked the main road. One day a crippled person was passing by and one of the concubines saw him and laughed. The crippled person was angered and demanded Heigenkun her head. Heigenkun presented the head of an executed convict as the head of the concubine. His dependents knew of his deception, lost faith in their master and gradually all left him. His fortunes declined, so at last he cut off the head of the concubine and presented it for the crippled person to inspect. After that the dependents returned and his fortunes were restored. The story is an allusion to the fact that you can never hide away the real truth. [3]: A reference to one of the four carved figures, representing black tortoises, underneath the Sumeru altar (with the Buddha statue). It is used here as a symbol of someone who has lost the freedom of movement.', 'The Engaku [1] Sutra says: “At all times, you do not raise the delusive mind. When there are all kinds of illusory thoughts, you do not extinguish them. Dwelling in the delusory state of mind, you do not add understanding. Where there is no understanding, you do not distinguish the truth.” [1]: “Engaku” means the perfect awakening of Buddha.', 'Great Master Tokusan Emmyo instructed his assembly and said, “If you have exhausted to the end, you will realize right away that all buddhas in the three worlds have stuck their mouths to the wall [1]. Yet there is still one person ¡© he is giving a great laugh. If you can recognize that person, you have accomplished your study.” [1]: I.e., they are unable to open their mouths.', 'A monk asked Joshu, “What is the meaning of the patriarch’s coming from the West?” Joshu said, “The oak tree there in the garden.”', 'Vimalakirti asked Manjusri, “What does it mean that the Bodhisattva enters the Dharma-gate of Not-Two?” Manjusri said, “I see it like this: in all phenomena, there are neither words nor explanations, neither presentations nor knowledge; it is beyond all questions and answers. That is what I understand with /to enter the Dharma-gate of Not-Two/.” Then Manjusri asked Vimalakirti, “All of us have finished giving our explanations. Now you should give your explanation. What does it mean that the Bodhisattva enters the Dharma-gate of Not-Two?” Vimalakirti remained silent.', 'When Tozan held a memorial service for Ungan before his portrait, he mentioned the episode with the portrait [1]. A monk came forward and asked, “When Ungan said, ‘Just this!’ what did that mean?” Tozan said, “At that time, I almost misunderstood my master’s meaning.” The monk said, “I wonder whether or not Ungan really knew that IT is.” Tozan said, “If he did not know that it is, how could he say like that? If he knew that it is, how did he dare say like that?” [1]: Tozan was still a young monk under Ungan. One day, when he was leaving his master, he asked Ungan, “After your passing, if I am asked by someone whether I have your portrait, what should I answer?” Ungan was silent for a while and then said, “Just this.”', 'When Seppo was living in a hermitage, two monks came to pay their respects. When he saw them coming, Seppo thrust open the gate of his hermitage with his hands, jumped out, and said, “What is this?” The monks also said, “What is this?” Seppo hung his head and retired into his hermitage. Later, the monks came to Ganto. He asked them, “Where have you come from?” The monks said, “From Reinan.” Ganto said, “Did you ever visit Seppo?” The monks said, “Yes, we visited him.” Ganto said, “What did he say?” The monks related what had happened. Ganto said, “What else did he say?” The monks said, “Not a word; he hung his head and retired into his hermitage.” Ganto said, “Oh, how I regret now that in those days I did not tell him the last word! If I had told it to him, no one under heaven could do anything against him.” At the end of the summer practice period the monks came back to this conversation and asked him about its meaning. Ganto said, “Why didn’t you ask me about it sooner?” The monks said, “We could not dare to ask you about it.” Ganto said, “Seppo was born on the same stem as I, but he will not die on the same stem. If you want to know the last word, it is just this.”']
             koan = random.sample(koans, 1)
             ct = datetime.datetime.now()
             koans = "koans: "
             print(koans, koan, ct)
-            print(usr, koans, koan, ct, file=z)
             print()
-            print(file=z)
             print("-Shoyoroku (E. Book of Serenity, C. Ts’ung-jung lu) A collection of 100 koans (50 are in LIFE), originally compiled in the 12th century by Wanshi Shogaku (C. Hung-chih Cheng-chüeh)")
-            print("-Shoyoroku (E. Book of Serenity, C. Ts’ung-jung lu) A collection of 100 koans (50 are in LIFE), originally compiled in the 12th century by Wanshi Shogaku (C. Hung-chih Cheng-chüeh)", file=z)
 
         def hipster_tarot():
             while True:
@@ -2691,18 +2278,14 @@ def main():
             numberstr = str(number)
             print()
             print("You draw" + "" + " " + "" + numberstr + "" + " " + "" + "cards from a deck...")
-            print(usr + "" + " " + "" + "You draw" + "" + " " + "" + numberstr + "" + " " + "" + "cards from a deck...", file=z) 
             time.sleep(4)
             deck = ["The Fool | Upright | Beginnings, innocence, spontaneity, a free spirit", "The Fool | Reversed | Holding back, recklessness, risk-taking", "The Fool | Upright | Manifestation, resourcfulness, power, inspired action", "The Fool | Reversed | Manipulation, poor planning, untapped talents", "The High Priestess | Upright | Intuition, sacred knowledge, the subconscious mind", "The High Priestess | Reversed | Secrets, disconnected from intuition, withdrawal and silence", "The Empress | Upright | Femininity, beauty, nature, nurturing, abundance", "The Empress | Reversed | Creative block, dependence on others", "The Emperor | Upright | Authority, establishment, structure, a father figure", "The Emperor | Reversed | Domination, excessive control, lack of discipline, inflexibility", "The Hierophant | Upright | Spiritual wisdom, religious beliefs, conformity, tradition,institutions", "The Hierophant | Reversed | Personal beliefs, freedom, challenging the status quo", "The Lovers | Upright | Love, harmony, relationships, values alignment, choices", "The Lovers | Reversed | Self-love, disharmony, imbalance, misalignment of values", "The Chariot | Upright | Control, willpower, success, action, determination", "The Chariot | Reversed | Self-discipline, opposition, lack of direction", "Strength | Upright | Strength, courage, persuasion, influence, compassion", "Strength | Reversed | Inner strength, self-doubt, low energy, raw emotion", "The Hermit | Upright | Soul-searching, introspection, being alone, inner guidance", "The Hermit | Reversed | Isolation, loneliness, withdrawal", "Wheel Of Fortune | Upright | Good luck, karma, life cycles, destiny, a turning point", "Wheel Of Fortune | Reversed | Bad luck, resistance to change, breaking cycles", "Justice | Upright | Justice, fairness, truth, cause and effect, law", "Justice | Reversed | Unfairness, lack of accountability, dishonesty", "The Hanged Man | Upright | Pause, surrender, letting go, new perspectives", "The Hanged Man | Reversed | Delays, resistance, stalling, indecision", "Death | Upright | Endings, change, transformation, transition", "Death | Reversed | Resistance to change, personal transformation, inner purging", "Temperance | Upright | Balance, moderation, patience, purpose", "Temperance | Reversed | Imbalance, excess, self-healing, re-alignment", "The Devil | Upright | Shadow self, attachment, addiction, restriction, sexuality", "The Devil | Reversed | Releasing limiting beliefs, exploring dark thoughts, detachment", "The Tower | Upright | Sudden change, upheaval, chaos, revelation, awakening", "The Tower | Reversed | Personal transformation, fear of change, averting disaster", "The Star | Upright | Hope, faith, purpose, renewal, spirituality", "The Star | Reversed | Lack of faith, despair, self-trust, disconnection", "The Moon | Upright | Lack of faith, despair, self-trust, disconnection", "The Moon | Reversed | Release of fear, repressed emotion, inner confusion", "The Sun | Upright | Positivity, fun, warmth, success, vitality", "The Sun | Reversed | Inner child, feeling down, overly optimistic", "Judgement | Upright | Judgement, rebirth, inner calling, absolution", "Judgement | Reversed | Self-doubt, inner critic, ignoring the call", "The World | Upright | Completion, integration, accomplishment, travel", "The World | Reversed | Seeking personal closure, short-cuts, delays", "Ace Of Cups | Upright | Love, new relationships, compassion, creativity.", "Ace Of Cups | Reversed | Self-love, intuition, repressed emotions." "Two Of Cups | Upright | Unified love, partnership, mutual attraction", "Two Of Cups | Reversed | Self-love, break-ups, disharmony, distrust.", "Three Of Cups | Upright | Celebration, friendship, creativity, collaborations.", "Three Of Cups | Reversed | Independence, alone time, hardcore partying, ‘three’s a crowd’.", "Four Of Cups | Upright | Meditation, contemplation, apathy, reevaluation.", "Four Of Cups | Reversed | Retreat, withdrawal, checking in for alignment.", "Five Of Cups | Upright | Retreat, withdrawal, checking in for alignment.", "Five Of Cups | Reversed | Personal setbacks, self-forgiveness, moving on.", "Six Of Cups | Upright | Revisiting the past, childhood memories, innocence, joy.", "Six Of Cups | Reversed | Living in the past, forgiveness, lacking playfulness.", "Seven Of Cups | Upright | Opportunities, choices, wishful thinking, illusion.", "Seven Of Cups | Reversed | Alignment, personal values, overwhelmed by choices.", "Eight Of Cups | Upright | Disappointment, abandonment, withdrawal, escapism.", "Eight Of Cups | Reversed | Trying one more time, indecision, aimless drifting, walking away.", "Nine Of Cups | Upright | Contentment, satisfaction, gratitude, wish come true.", "Nine Of Cups | Reversed | Inner happiness, materialism, dissatisfaction, indulgence.", "Ten Of Cups | Upright | Divine love, blissful relationships, harmony, alignment.", "Ten Of Cups | Reversed | Disconnection, misaligned values, struggling relationships.", "Page Of Cups | Upright | Creative opportunities, intuitive messages, curiosity, possibility.", "Page Of Cups | Reversed | New ideas, doubting intuition, creative blocks, emotional immaturity.", "Knight Of  Cups | Upright | Creativity, romance, charm, imagination, beauty.", "Knight Of Cups | Reversed | Overactive imagination, unrealistic, jealous, moody.", "Queen Of Cups | Upright | Compassionate, caring, emotionally stable, intuitive, in flow.", "Queen Of Cups | Reversed | Inner feelings, self-care, self-love, co-dependency.", "King Of Cups | Upright | Emotionally balanced, compassionate, diplomatic.", "King Of Cups | Reversed | Self-compassion, inner feelings, moodiness, emotionally manipulative.", "Ace Of Swords | Upright | Breakthroughs, new ideas, mental clarity, success", "Ace of Swords | Reversed | Inner clarity, re-thinking an idea, clouded judgement", "Two Of Swords | Upright | Difficult decisions, weighing up options, an impasse, avoidance", "Two Of Swords | Reversed | Indecision, confusion, information overload, stalemate", "Three Of Swords | Upright | Heartbreak, emotional pain, sorrow, grief, hurt", "Three Of Swords | Reversed | Negative self-talk, releasing pain, optimism, forgiveness", "Four Of Swords | Upright | Rest, relaxation, meditation, contemplation, recuperation", "Four Of Swords | Reversed | Exhaustion, burn-out, deep contemplation, stagnation", "Five Of Swords | Upright | Conflict, disagreements, competition, defeat, winning at all costs", "Five Of Swords | Reversed | Reconciliation, making amends, past resentment", "Six Of Swords | Upright | Transition, change, rite of passage, releasing baggage.", "Six Of Swords | Reversed | Personal transition, resistance to change, unfinished business", "Seven Of Swords | Upright | Betrayal, deception, getting away with something, acting strategically", "Seven Of Swords | Reversed | Imposter syndrome, self-deceit, keeping secrets", "Eight Of Swords | Upright | Negative thoughts, self-imposed restriction, imprisonment, victim mentality", "Eight Of Swords | Reversed | Self-limiting beliefs, inner critic, releasing negative thoughts, open to new perspectives", "Nine Of Swords | Upright | Anxiety, worry, fear, depression, nightmares", "Nine Of Swords | Reversed | Inner turmoil, deep-seated fears, secrets, releasing worry", "Ten Of Swords | Upright | Painful endings, deep wounds, betrayal, loss, crisis", "Ten Of Swords | Reversed | Recovery, regeneration, resisting an inevitable end", "Page Of Swords | Upright | New ideas, curiosity, thirst for knowledge, new ways of communicating", "Page Of Swords | Reversed | Self-expression, all talk and no action, haphazard action, haste", "Knight Of Swords | Upright | Ambitious, action-oriented, driven to succeed, fast-thinking", "Knight Of Swords | Reversed | Restless, unfocused, impulsive, burn-out", "Queen Of Swords | Upright | Independent, unbiased judgement, clear boundaries, direct communication", "Queen Of Swords | Reversed | Overly-emotional, easily influenced, bitchy, cold-hearted", "King Of Swords | Upright | Mental clarity, intellectual power, authority, truth", "King Of Swords | Reversed | Quiet power, inner truth, misuse of power, manipulation", "Ace Of Pentacles | Upright | A new financial or career opportunity, manifestation, abundance", "Ace Of Pentacles | Reversed | Lost opportunity, lack of planning and foresight", "Two Of Pentacles | Upright | Multiple priorities, time management, prioritisation, adaptability.", "Two Of Pentacles | Reversed | Over-committed, disorganisation, reprioritisation.", "Three Of Pentacles | Upright | Teamwork, collaboration, learning, implementation.", "Three Of Pentacles | Reversed | Disharmony, misalignment, working alone.", "Four Of Pentacles | Upright | Saving money, security, conservatism, scarcity, control.", "Four Of Pentacles | Reversed | Over-spending, greed, self-protection.", "Five Of Pentacles | Upright | Financial loss, poverty, lack mindset, isolation, worry.", "Five Of Pentacles | Reversed | Recovery from financial loss, spiritual poverty.", "Six Of Pentacles | Upright | Giving, receiving, sharing wealth, generosity, charity.", "Six Of Pentacles | Reversed | Self-care, unpaid debts, one-sided charity.", "Seven Of Pentacles | Upright | Long-term view, sustainable results, perseverance, investment.", "Seven Of Pentacles | Reversed | Lack of long-term vision, limited success or reward.", "Eight Of Pentacles | Upright | Apprenticeship, repetitive tasks, mastery, skill development.", "Eight Of Pentacles | Reversed | Self-development, perfectionism, misdirected activity.", "Nine Of Pentacles | Upright | Abundance, luxury, self-sufficiency, financial independence.", "Nine Of Pentacles | Reversed | Self-worth, over-investment in work, hustling.", "Ten Of Pentacles | Upright | Wealth, financial security, family, long-term success, contribution.", "Ten Of Pentacles | Reversed | The dark side of wealth, financial failure or loss.", "Page Of Pentacles | Upright | Manifestation, financial opportunity, skill development.", "Page Of Pentacles | Reversed | Lack of progress, procrastination, learn from failure.", "Knight Of Pentacles | Upright | Hard work, productivity, routine, conservatism.", "Knight Of Pentacles | Reversed | Self-discipline, boredom, feeling ‘stuck’, perfectionism.", "Queen Of Pentacles | Upright | Nurturing, practical, providing financially, a working parent.", "Queen Of Pentacles | Reversed | Financial independence, self-care, work-home conflict", "King Of Pentacles | Upright | Wealth, business, leadership, security, discipline, abundance.", "King Of Pentacles | Reversed | Financially inept, obsessed with wealth and status, stubborn.", "Ace Of Wands | Upright | Inspiration, new opportunities, growth, potential", "Ace Of Wands | Reversed | An emerging idea, lack of direction, distractions, delays", "Two Of Wands | Upright | Future planning, progress, decisions, discovery", "Two Of Wands | Reversed | Personal goals, inner alignment, fear of unknown, lack of planning", "Three Of Wands | Upright | Progress, expansion, foresight, overseas opportunities", "Three Of Wands | Reversed | Playing small, lack of foresight, unexpected delays", "Four Of Wands | Upright | Celebration, joy, harmony, relaxation, homecoming", "Four Of Wands | Reversed | Personal celebration, inner harmony, conflict with others, transition.", "Five Of Wands | Upright | Conflict, disagreements, competition, tension, diversity", "Five Of Wands | Reversed | Inner conflict, conflict avoidance, tension release", "Six Of Wands | Upright | Success, public recognition, progress, self-confidence", "Six Of Wands | Reversed | Private achievement, personal definition of success, fall from grace, egotism", "Seven Of Wands | Upright | Challenge, competition, protection, perseverance", "Seven Of Wands | Reversed | Exhaustion, giving up, overwhelmed", "Eight Of Wands | Upright | Movement, fast paced change, action, alignment, air travel", "Eight Of Wands | Reversed | Delays, frustration, resisting change, internal alignment", "Nine Of Wands | Upright | Resilience, courage, persistence, test of faith, boundaries", "Nine Of Wands | Reversed | Inner resources, struggle, overwhelm, defensive, paranoia", "Ten Of Wands | Upright | Burden, extra responsibility, hard work, completion", "Ten Of Wands | Reversed | Doing it all, carrying the burden, delegation, release", "Page Of Wands | Upright | Inspiration, ideas, discovery, limitless potential, free spirit", "Page Of Wands | Reversed | Newly-formed ideas, redirecting energy, self-limiting beliefs, a spiritual path", "Knight Of Wands | Upright | Energy, passion, inspired action, adventure, impulsiveness", "Knight Of Wands | Reversed | Passion project, haste, scattered energy, delays, frustration", "Queen Of Wands | Upright | Courage, confidence, independence, social butterfly, determination", "Queen Of Wands | Reversed | Self-respect, self-confidence, introverted, re-establish sense of self", "King Of Wands | Upright | Natural-born leader, vision, entrepreneur, honour", "King Of Wands | Reversed |  Impulsiveness, haste, ruthless, high expectations"]
             card = random.sample(deck, number)
             print("You drew:")
-            print("You drew:", file=z)
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             tarot = "tarot: "
             print(tarot, card, ct)
-            print(usr, tarot, card, ct, file=z)
 
         def hack():
             time.sleep(5)
@@ -2735,7 +2318,6 @@ def main():
             ct = datetime.datetime.now()
             print(money, ct)
             hack = "hack:"
-            print(usr, hack, youm, country, serv, nega, amdorn, nega, andorm, andg, tidnar, money, ct, file=z)    
             time.sleep(3)
 
         def spar():
@@ -2747,31 +2329,25 @@ def main():
             ct = datetime.datetime.now()
             spar = "spar: "
             print(spar, action, kick, ct)
-            print(usr, spar, action, kick, ct, file=z)
             time.sleep(3)
 
         def train():
             time.sleep(2)
             print("You did:")
-            print("You did:", file=z)
             time.sleep(5)
             nums = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 20, 20, 20, 30, 30, 40, 40, 50, 50, 60, 70, 80, 90, 100]
             num = random.sample(nums, 1)
             ct = datetime.datetime.now()
             train = "train: "
             print(train, num, ct)
-            print(usr, train, num, ct, file=z)
             print("push-ups")
-            print("push-ups", file=z)
             time.sleep(3)
 
         def rest():
             ct = datetime.datetime.now()
             print("You start to rest...", ct)
-            print(usr + "" + " " + "" + "You start to rest...", ct, file=z)
             time.sleep(8)
             print("You rested", ct)
-            print(usr + "" + " " + "" + "You rested", ct, file=z)
             time.sleep(3)
 
         def haiku():
@@ -2785,21 +2361,17 @@ def main():
             ct = datetime.datetime.now()
             haiku = "haiku: "
             print(haiku, start, mid, end, ct)
-            print(usr, haiku, start, mid, end, ct, file=z)
 
         def psalms():
             dd = list(verses1)
             time.sleep(5)
             print("From the Bible (King James Version), The Book of Psalms 1-21,")
-            print("From the Bible (King James Version), The Book of Psalms 1-21,", file=z)
             print()
-            print(file=z)
             time.sleep(2)
             verse = random.sample(dd, 1)
             ct = datetime.datetime.now()
             psalms = "psalms: "
             print(psalms, verse, ct)
-            print(usr, psalms, verse, ct, file=z)
 
         def dhammapada():
             dd = list(dhammapada1)
@@ -2814,19 +2386,14 @@ def main():
             time.sleep(1)
             print()
             print()
-            print(file=z)
             print("Here are verses from Buddha's text, The Dhammapada")
-            print("Here are verses from Buddha's text, The Dhammapada", file=z)
             print()
-            print(file=z)
             time.sleep(1)
             verse = random.sample(dd, number)
             ct = datetime.datetime.now()
             dhammapad = "dhammapada: "
             print(dhammapad, verse, ct)
-            print(usr, dhammapad, verse, ct, file=z)
             print()
-            print(file=z)
 
         def pr0verbs():
             dd = list(proverbs)
@@ -2840,20 +2407,17 @@ def main():
             number
             time.sleep(.2)
             print()
-            print(file=z)
             verse = random.sample(dd, number)
             ct = datetime.datetime.now()
             prverbs = "proverbs:"
             print(prverbs, verse, ct)
-            print(usr, prverbs, verse, ct, file=z)
             print()
-            print(file=z)
 
         def koran():
             koran = list(koran1)
             while True:
                 try:
-                    number = int(input("Indicate number of (koran) verses: "))
+                    number = int(input("Indicate number of (koran) verses "))
                 except ValueError:
                     print("Invalid value")
                 else:
@@ -2861,19 +2425,16 @@ def main():
             number
             time.sleep(1)
             print()
-            print(file=z)
             print("Here are five verses from The Koran, from chapters 24. The Light, 52. The Mountain, 67. The Kingdom, 85. The Celestial Stations, 87. The Most High, 89. The Daybreak, 113. The Dawn")
-            print("Here are five verses from The Koran, from chapters 24. The Light, 52. The Mountain, 67. The Kingdom, 85. The Celestial Stations, 87. The Most High, 89. The Daybreak, 113. The Dawn", file=z)
             print()
-            print(file=z)
             time.sleep(2)
+            koran = ["[67.1] Blessed is He in Whose hand is the kingdom, and He has power over all things,", "[67.2] Who created death and life that He may try you-- which of you is best in deeds; and He is the Mighty, the Forgiving,", "[67.3] Who created the seven heavens one above another; you see no incongruity in the creation of the Beneficent God; then look again, can you see any disorder?", "[67.4] Then turn back the eye again and again; your look shall '~ come back to you confused while it is fatigued.", "[67.5] And certainly We have adorned this lower heaven with ( lamps and We have made these missiles for the Shaitans, and We have prepared for them the chastisement of burning.", "[67.6] And for those who disbelieve in their Lord is the punishment of hell, and evil is the resort.", "[67.7] When they shall be cast therein, they shall hear a loud moaning of it as it heaves,", "[67.8] Almost bursting for fury. Whenever a group is cast into it, its keeper shall ask them: Did there not come to you a warner?", "[67.9] They shall say: Yea! indeed there came to us a warner, but we rejected (him) and said: Allah has not revealed anything, you are only in a great error.", "[67.10] And they shall say: Had we but listened or pondered, we should not have been among the inmates of the burning fire.", "[67.11] So they shall acknowledge their sins, but far will be (forgiveness) from the inmates of the burning fire.", "[67.12] (As for) those who fear their Lord in secret, they shall surely have forgiveness and a great reward.", "[67.13] And conceal your word or manifest it; surely He is Cognizant of what is in the hearts.", "[67.14] Does He not know, Who created? And He is the Knower of the subtleties, the Aware.", "[67.15] He it is Who made the earth smooth for you, therefore go about in the spacious sides thereof, and eat of His sustenance, and to Him is the return after death.", "[67.16] Are you secure of those in the heaven that He should not make the earth to swallow you up? Then lo! it shall be in a state of commotion.", "[67.17] Or are you secure of those in the heaven that He should not send down upon you a punishment? Then shall you know how was My warning.", "[67.18] And certainly those before them rejected (the truth), then how was My disapproval.", "[67.19] Have they not seen the birds above them expanding (their wings) and contracting (them)? What is it that withholds them save the Beneficent God? Surely He sees everything.", "[67.20] Or who is it that will be a host for you to assist you besides the Beneficent God? The unbelievers are only in deception.", "[67.21] Or who is it that will give you sustenance if He should withhold His sustenance? Nay! they persist in disdain and aversion.", "[67.22] What! is he who goes prone upon his face better guided or he who walks upright upon a straight path?", "[67.23] Say: He it is Who brought you into being and made for you the ears and the eyes and the hearts: little is it that you give thanks.", "[67.24] Say: He it is Who multiplied you in the earth and to Him you shall be gathered.", "[67.25] And they say: When shall this threat be (executed) if you are truthful?", "[67.26] Say: The knowledge (thereof is only with Allah and I am only a plain warner.=", "[67.27] But when they shall see it nigh, the faces of those who disbelieve shall be sorry, and it shall be said; This is that which you used to call for.", "[67.28] Say: Have you considered if Allah should destroy me and those with me-- rather He will have mercy on us; yet who will protect the unbelievers from a painful punishment?", "[67.29] Say: He is the Beneficent God, we believe in Him and on Him do we rely, so you shall come to know who it is that is in clear error.", "[67.30] Say: Have you considered if your water should go down, who is it then that will bring you flowing water?", "[89.1] I swear by the daybreak,", "[89.2] And the ten nights,", "[89.3] And the even and the odd,", "[89.4] And the night when it departs.", "[89.5] Truly in that there is an oath for those who possess understanding.", "[89.6] Have you not considered how your Lord dealt with Ad,", "[89.7] (The people of) Aram, possessors of lofty buildings,", "[89.8] The like of which were not created in the (other) cities;", "[89.9] And (with) Samood, who hewed out the rocks in the valley,", "[89.10] And (with) Firon, the lord of hosts,", "[89.11] Who committed inordinacy in the cities,", "[89.12] So they made great mischief therein?", "[89.13] Therefore your Lord let down upon them a portion of the chastisement.", "[89.14] Most sure!y your Lord is watching.", "[89.15] And as for man, when his Lord tries him, then treats him with honor and makes him lead an easy life, he says: My Lord honors me.", "[89.16] But when He tries him (differently), then straitens to him his means of subsistence, he says: My Lord has disgraced me.", "[89.17] Nay! but you do not honor the orphan,", "[89.18] Nor do you urge one another to feed the poor,", "[89.19] And you eat away the heritage, devouring (everything) indiscriminately,", "[89.20] And you love wealth with exceeding love.", "[89.21] Nay! when the earth is made to crumble to pieces,", "[89.22] And your Lord comes and (also) the angels in ranks,", "[89.23] And hell is made to appear on that day. On that day shall man be mindful, and what shall being mindful (then) avail him?", "[89.24] He shall say: O! would that I had sent before for (this) my life!", "[89.25] But on that day shall no one chastise with (anything like) His chastisement,", "[89.26] And no one shall bind with (anything like) His binding.", "[89.27] O soul that art at rest!", "[89.28] Return to your Lord, well-pleased (with him), well-pleasing (Him),", "[89.29] So enter among My servants,", "[89.30] And enter into My garden.", "[87.1] Glorify the name of your Lord, the Most High,", "[87.2] Who creates, then makes complete,", "[87.3] And Who makes (things) according to a measure, then guides (them to their goal),", "[87.4] And Who brings forth herbage,", "[87.5] Then makes it dried up, dust-colored.", "[87.6] We will make you recite so you shall not forget,", "[87.7] Except what Allah pleases, surely He knows the manifest, and what is hidden.", "[87.8] And We will make your way smooth to a state of ease.", "[87.9] Therefore do remind, surely reminding does profit.", "[87.10] He who fears will mind,", "[87.11] And the most unfortunate one will avoid it,", "[87.12] Who shall enter the great fire;", "[87.13] Then therein he shall neither live nor die.", "[87.14] He indeed shall be successful who purifies himself,", "[87.15] And magnifies the name of his Lord and prays.", "[87.16] Nay! you prefer the life of this world,", "[87.17] While the hereafter is better and more lasting.", "[87.18] Most surely this is in the earlier scriptures,", "[87.19] The scriptures of Ibrahim and Musa.", "[24.1] (This is) a chapter which We have revealed and made obligatory and in which We have revealed clear communications that you may be mindful.", "[24.2] (As for) the fornicatress and the fornicator, flog each of them, (giving) a hundred stripes, and let not pity for them detain you in the matter of obedience to Allah, if you believe in Allah and the last day, and let a party of believers witness their chastisement.", "[24.3] The fornicator shall not marry any but a fornicatress or idolatress, and (as for) the fornicatress, none shall marry her but a fornicator or an idolater; and it is forbidden to the believers.", "[24.4] And those who accuse free women then do not bring four witnesses, flog them, (giving) eighty stripes, and do not admit any evidence from them ever; and these it is that are the transgressors,", "[24.5] Except those who repent after this and act aright, for surely Allah is Forgiving, Merciful.", "[24.6] And (as for) those who accuse their wives and have no witnesses except themselves, the evidence of one of these (should be taken) four times, bearing Allah to witness that he is most surely of the truthful ones.", "[24.7] And the fifth (time) that the curse of Allah be on him if he is one of the liars.", "[24.8] And it shall avert the chastisement from her if she testify four times, bearing Allah to witness that he is most surely one of the liars;", "[24.9] And the fifth (time) that the wrath of Allah be on her if he is one of the truthful.", "[24.10] And were it not for Allah's grace upon you and His mercy-- and that Allah is Oft-returning (to mercy), Wise!", "[24.11] Surely they who concocted the lie are a party from among you. Do not regard it an evil to you; nay, it is good for you. Every man of them shall have what he has earned of sin; and (as for) him who took upon himself the main part thereof, he shall have a grievous chastisement.", "[24.12] Why did not the believing men and the believing women, when you heard it, think well of their own people, and say: This is an evident falsehood?", "[24.13] Why did they not bring four witnesses of it? But as they have not brought witnesses they are liars before Allah.", "[24.14] And were it not for Allah's grace upon you and His mercy in this world and the hereafter, a grievous chastisement would certainly have touched you on account of the discourse which you entered into.", "[24.15] When you received it with your tongues and spoke with your mouths what you had no knowledge of, and you deemed it an easy matter while with Allah it was grievous.", "[24.16] And why did you not, when you heard it, say: It does not beseem us that we should talk of it; glory be to Thee! this is a great calumny?", "[24.17] Allah admonishes you that you should not return to the like of it ever again if you are believers.", "[24.18] And Allah makes clear to you the communications; and Allah is Knowing, Wise.", "[24.19] Surely (as for) those who love that scandal should circulate respecting those who believe, they shall have a grievous chastisement in this world and the hereafter; and Allah knows, while you do not know.", "[24.20] And were it not for Allah's grace on you and His mercy, and that Allah is Compassionate, Merciful.", "[24.21] O you who believe! do not follow the footsteps of the Shaitan, and whoever follows the footsteps of the Shaitan, then surely he bids the doing of indecency and evil; and were it not for Allah's grace upon you and His mercy, not one of you would have ever been pure, but Allah purifies whom He pleases; and Allah is Hearing, Knowing.", "[24.22] And let not those of you who possess grace and abundance swear against giving to the near of kin and the poor and those who have fled in Allah's way, and they should pardon and turn away. Do you not love that Allah should forgive you? And Allah is Forgiving, Merciful.", "[24.23] Surely those who accuse chaste believing women, unaware (of the evil), are cursed in this world and the hereafter, and they shall have a grievous chastisement.", "[24.24] On the day when their tongues and their hands and their feet shall bear witness against them as to what they did.", "[24.25] On that day Allah will pay back to them in full their just reward, and they shall know that Allah is the evident Truth.", "[24.26] Bad women .are for bad men and bad men are for bad women. Good women are for good men and good men are for good women", "[24.27] O you who believe! Do not enter houses other than your own houses until you have asked permission and saluted their inmates; this is better for you, that you may be mindful.", "[24.28] But if you do not find any one therein, then do not enter them until permission is given to you; and if it is said to you: Go back, then go back; this is purer for you; and Allah is Cognizant of what you do.", "[24.29] It is no sin in you that you enter uninhabited houses wherein you have your necessaries; and Allah knows what you do openly and what you hide.", "[24.30] Say to the believing men that they cast down their looks and guard their private parts; that is purer for them; surely Allah is Aware of what they do.", "[24.31] And say to the believing women that they cast down their looks and guard their private parts and do not display their ornaments except what appears thereof, and let them wear their head-coverings over their bosoms, and not display their ornaments except to their husbands or their fathers, or the fathers of their husbands, or their sons, or the sons of their husbands, or their brothers, or their brothers' sons, or their sisters' sons, or their women, or those whom their right hands possess, or the male servants not having need (of women), or the children who have not attained knowledge of what is hidden of women; and let them not strike their feet so that what they hide of their ornaments may be known; and turn to Allah all of you, O believers! so that you may be successful.", "[24.32] And marry those among you who are single and those who are fit among your male slaves and your female slaves; if they are needy, Allah will make them free from want out of His grace; and Allah is Ample-giving, Knowing.", "[24.33] And let those who do not find the means to marry keep chaste until Allah makes them free from want out of His grace. And (as for) those who ask for a writing from among those whom your right hands possess, give them the writing if you know any good in them, and give them of the wealth of Allah which He has given you; and do not compel your slave girls to prostitution, when they desire to keep chaste, in order to seek the frail good of this world's life; and whoever compels them, then surely after their compulsion Allah is Forgiving, Merciful.", "[24.34] And certainly We have sent to you clear communications and a description of those who have passed away before you, and an admonition to those who guard (against evil).", "[24.35] Allah is the light of the heavens and the earth; a likeness of His light is as a niche in which is a lamp, the lamp is in a glass, (and) the glass is as it were a brightly shining star, lit from a blessed olive-tree, neither eastern nor western, the oil whereof almost gives light though fire touch it not-- light upon light-- Allah guides to His light whom He pleases, and Allah sets forth parables for men, and Allah is Cognizant of all things.", "[24.36] In houses which Allah has permitted to be exalted and that His name may be remembered in them; there glorify Him therein in the mornings and the evenings,", "[24.37] Men whom neither merchandise nor selling diverts from the remembrance of Allah and the keeping up of prayer and the giving of poor-rate; they fear a day in which the hearts and eyes shall turn about;", "[24.38] That Allah may give them the best reward of what they have done, and give them more out of His grace; and Allah gives sustenance to whom He pleases without measure.", "[24.39] And (as for) those who disbelieve, their deeds are like the mirage in a desert, which the thirsty man deems to be water; until when he comes to it he finds it to be naught, and there he finds Allah, so He pays back to him his reckoning in full; and Allah is quick in reckoning;", "[24.40] Or like utter darkness in the deep sea: there covers it a wave above which is another wave, above which is a cloud, (layers of) utter darkness one above another; when he holds out his hand, he is almost unable to see it; and to whomsoever Allah does not give light, he has no light.", "[24.41] Do you not see that Allah is He Whom do glorify all those who are in the heavens and the earth, and the (very) birds with expanded wings? He knows the prayer of each one and its glorification, and Allah is Cognizant of what they do.", "[24.42] And Allah's is the kingdom of the heavens and the earth, and to Allah is the eventual coming.", "[24.43] Do you not see that Allah drives along the clouds, then gathers them together, then piles them up, so that you see the rain coming forth from their midst? And He sends down of the clouds that are (like) mountains wherein is hail, afflicting therewith whom He pleases and turning it away from whom He pleases; the flash of His lightning almost takes away the sight.", "[24.44] Allah turns over the night and the day; most surely there is a lesson in this for those who have sight.", \
+            "[24.45] And Allah has created from water every living creature: so of them is that which walks upon its belly, and of them is that which walks upon two feet, and of them is that which walks upon four; Allah creates what He pleases; surely Allah has power over all things.", "[24.46] Certainly We have revealed clear communications, and Allah guides whom He pleases to the right way.", "[24.47] And they say: We believe in Allah and in the apostle and we obey; then a party of them turn back after this, and these are not believers.", "[24.48] And when they are called to Allah and His Apostle that he may judge between them, lo! a party of them turn aside.", "[24.49] And if the truth be on their side, they come to him quickly, obedient.", "[24.50] Is there in their hearts a disease, or are they in doubt, or do they fear that Allah and His Apostle will act wrongfully towards them? Nay! they themselves are the unjust.", "[24.51] The response of the believers, when they are invited to Allah and His Apostle that he may judge between them, is only to say: We hear and we obey; and these it is that are the successful.", "[24.52] And he who obeys Allah and His Apostle, and fears Allah, and is careful of (his duty to) Him, these it is that are the achievers.", "[24.53] And they swear by Allah with the most energetic of their oaths that if you command them they would certainly go forth. Say: Swear not; reasonable obedience (is desired); surely Allah is aware of what you do.", "[24.54] Say: Obey Allah and obey the Apostle; but if you turn back, then on him rests that which is imposed on him and on you rests that which is imposed on you; and if you obey him, you are on the right way; and nothing rests on the Apostle but clear delivering (of the message).", "[24.55] Allah has promised to those of you who believe and do good that He will most certainly make them rulers in the earth as He made rulers those before them, and that He will most certainly establish for them their religion which He has chosen for them, and that He will most certainly, after their fear, give them security in exchange; they shall serve Me, not associating aught with Me; and whoever is ungrateful after this, these it is who are the. transgressors.", "[24.56] And keep up prayer and pay the poor-rate and obey the Apostle, so that mercy may be shown to you.", "[24.57] Think not that those who disbelieve shall escape in the earth, and their abode is the fire; and certainly evil is the resort!", "[24.58] O you who believe! let those whom your right hands possess and those of you who have not attained to puberty ask permission of you three times; before the morning prayer, and when you put off your clothes at midday in summer, and after the prayer of the nightfall; these are three times of privacy for you; neither is it a sin for you nor for them besides these, some of you must go round about (waiting) upon others; thus does Allah make clear to you the communications, and Allah is Knowing, Wise.", "[24.59] And when the children among you have attained to puberty, let them seek permission as those before them sought permission; thus does Allah make clear to you His communications, and Allah is knowing, Wise.", "[24.60] And (as for) women advanced in years who do not hope for a marriage, it is no sin for them if they put off their clothes without displaying their ornaments; and if they restrain themselves it is better for them; and Allah is Hearing, Knowing.", "[24.61] There is no blame on the blind man, nor is there blame on the lame, nor is there blame on the sick, nor on yourselves that you eat from your houses, or your fathers' houses or your mothers' houses, or your brothers' houses, or your sisters' houses, or your paternal uncles' houses, or your paternal aunts' houses, or your maternal uncles' houses, or your maternal aunts' houses, or what you possess the keys of, or your friends' (houses). It is no sin in you that you eat together or separately. So when you enter houses, greet your people with a salutation from Allah, blessed (and) goodly; thus does Allah make clear to you the communications that you may understand.", "[24.62] Only those are believers who believe in Allah and His Apostle, and when they are with him on a momentous affair they go not away until they have asked his permission; surely they who ask your permission are they who believe in Allah and His Apostle; so when they ask your permission for some affair of theirs, give permission to whom you please of them and ask forgiveness for them from Allah; surely Allah is Forgiving, Merciful.", "[24.63] Do not hold the Apostle's calling (you) among you to be like your calling one to the other; Allah indeed knows those who steal away from among you, concealing themselves; therefore let those beware who go against his order lest a trial afflict them or there befall them a painful chastisement.", "[24.64] Now surely Allah's is whatever is in the heavens and the earth; He knows indeed that to which you are conforming yourselves; and on the day on which they are returned to Him He will inform them of what they did; and Allah is Cognizant of all things.", "[85.1] I swear by the mansions of the stars,", "[85.2] And the promised day,", "[85.3] And the bearer of witness and those against whom the witness is borne.", "[85.4] Cursed be the makers of the pit,", "[85.5] Of the fire (kept burning) with fuel,", "[85.6] When they sat by it,", "[85.7] And they were witnesses of what they did with the believers.", "[85.8] And they did not take vengeance on them for aught except that they believed in Allah, the Mighty, the Praised,", "[85.9] Whose is the kingdom of the heavens and the earth; and Allah is a Witness of all things.", "[85.10] Surely (as for) those who persecute the believing men and the believing women, then do not repent, they shall have the chastisement of hell, and they shall have the chastisement of burning.", "[85.11] Surely (as for) those who believe and do good, they shall have gardens beneath which rivers flow, that is the great achievement.", "[85.12] Surely the might of your Lord is great.", "[85.13] Surely He it is Who originates and reproduces,", "[85.14] And He is the Forgiving, the Loving,", "[85.15] Lord of the Arsh, the Glorious,", "[85.16] The great doer of what He will.", "[85.17] Has not there come to you the story of the hosts,", "[85.18] Of Firon and Samood?", "[85.19] Nay! those who disbelieve are in (the act of) giving the lie to the truth.", "[85.20] And Allah encompasses them on every side.", "[85.21] Nay! it is a glorious Quran,", "[85.22] In a guarded tablet.", "[113.1] Say: I seek refuge in the Lord of the dawn,", "[113.2] From the evil of what He has created,", "[113.3] And from the evil of the utterly dark night when it comes,", "[113.4] And from the evil of those who blow on knots,", "[113.5] And from the evil of the envious when he envies", "[52.1] I swear by the Mountain,", "[52.2] And the Book written", "[52.3] In an outstretched fine parchment,", "[52.4] And the House (Kaaba) that is visited,", "[52.5] And the elevated canopy", "[52.6] And the swollen sea", "[52.7] Most surely the punishment of your Lord will come to pass;", "[52.8] There shall be none to avert it;", "[52.9] On the day when the heaven shall move from side to side", "[52.10] And the mountains shall pass away passing away (altogether).", "[52.11] So woe on that day to those who reject (the truth),", "[52.12] Those who sport entering into vain discourses.", "[52.13] The day on which they shall be driven away to the fire of hell with violence.", "[52.14] This is the fire which you used to give the lie to.", "[52.15] Is it magic then or do you not see?", "[52.16] Enter into it, then bear (it) patiently, or do not bear (it) patiently, it is the same to you; you shall be requited only (for) what you did.", "[52.17] Surely those who guard (against evil) shall be in gardens and bliss", "[52.18] Rejoicing because of what their Lord gave them, and their Lord saved them from the punishment of the burning fire.", "[52.19] Eat and drink pleasantly for what you did,", "[52.20] Reclining on thrones set in lines, and We will unite them to large-eyed beautiful ones.", "[52.21] And (as for) those who believe and their offspring follow them in faith, We will unite with them their offspring and We will not diminish to them aught of their work; every man is responsible for what he shall have wrought.", "[52.22] And We will aid them with fruit and flesh such as they desire.", "[52.23] They shall pass therein from one to another a cup wherein there shall be nothing vain nor any sin.", "[52.24] And round them shall go boys of theirs as if they were hidden pearls.", "[52.25] And some of them shall advance towards others questioning each other.", "[52.26] Saying: Surely we feared before on account of our families:", "[52.27] But Allah has been gracious to us and He has saved us from the punishment of the hot wind:", "[52.28] Surely we called upon Him before: Surely He is the Benign, the Merciful.", "[52.29] Therefore continue to remind, for by the grace of your Lord, you are not a soothsayer, or a madman.", "[52.30] Or do they say: A poet, we wait for him the evil accidents of time.", "[52.31] Say: Wait, for surely I too with you am of those who wait.", "[52.32] Nay! do their understandings bid them this? Or are they an inordinate people?", "[52.33] Or do they say: He has forged it. Nay! they do not believe.", "[52.34] Then let them bring an announcement like it if they are truthful.", "[52.35] Or were they created without there being anything, or are they the creators?", "[52.36] Or did they create the heavens and the earth? Nay! they have no certainty.", "[52.37] Or have they the treasures of your Lord with them? Or have they been set in absolute authority?", "[52.38] Or have they the means by which they listen? Then let their listener bring a clear authority.", "[52.39] Or has He daughters while you have sons?", "[52.40] Or do you ask them for a reward, so that they are overburdened by a debt?", "[52.41] Or have they the unseen so that they write (it) down?", "[52.42] Or do they desire a war? But those who disbelieve shall be the vanquished ones in war.", "[52.43] Or have they a god other than Allah? Glory be to Allah from what they set up (with Him).", "[52.44] And if they should see a portion of the heaven coming down, they would say: Piled up clouds.", "[52.45] Leave them then till they meet that day of theirs wherein they shall be made to swoon (with terror):", "[52.46] The day on which their struggle shall not avail them aught, nor shall they be helped.", "[52.47] And surely those who are unjust shall have a punishment besides that (in the world), but most of them do not know.", "[52.48] And wait patiently for the judgment of your Lord, for surely you are before Our eyes, and sing the praise of your Lord when you rise;", "[52.49] And in the night, give Him glory too, and at the setting of the stars."]
             verse = random.sample(koran, number)
             ct = datetime.datetime.now()
             kor = "koran: "
             print(kor, verse, ct)
-            print(usr, kor, verse, ct, file=z)
             print()
-            print(file=z)
 
         def message():
             chat = input("$ ")
@@ -2888,7 +2449,6 @@ def main():
             ctd = datetime.datetime.now()
             lh = "lh: "
             print(lh + "" + "$" + "" + " " + "" + usr, chat)
-            print(lh + "" + "$" + "" + " " + "" + usr, chat, ctd, file=z)
             for _ in range(number):
                 def generate_random_letters():
                     random1 = random.choice(string.ascii_letters)
@@ -2900,14 +2460,12 @@ def main():
                 random_letters = generate_random_letters()
                 time.sleep(random.randint(0,4))
                 print()
-                print(file=z)
                 nano = (diction)
                 sitch  = (round(random.random()*9999,4))
                 lokalhost = "LOKALHOST: "
                 chat = random.sample(nano, random.randint(0,5))
                 ct = datetime.datetime.now()
                 print(lokalhost, random_letters, sitch, chat, ct)
-                print(usr, lokalhost, random_letters, sitch, chat, ct, file=z)
 
         def souls():
             nano = (diction)
@@ -2924,20 +2482,16 @@ def main():
             for _ in range(number):
                 time.sleep(1)
                 print()
-                print(file=z)
                 anrdom = (round(random.random()*999,8))
                 soulchat = random.sample(nano, 1)
                 ct = datetime.datetime.now()
                 souls = "souls: "
                 print(souls, anrdom, soulchat, ct)
-                print(usr, souls, anrdom, soulchat, ct, file=z)
 
         def c():
             chat2 = input("chat: ")
             print()
-            print(file=z)
             print(usr + "" + " " + "" + "You: " + "" + chat2)
-            print(usr + "" + " " + "" + "You: " + "" + chat2, file=z)
             for _ in range(6):
                 print()
                 time.sleep(random.randint(1,4))
@@ -2947,11 +2501,9 @@ def main():
                 kchat = random.sample(chatso, 1)
                 c = "c: "
                 print(c, kchatz, kchat)
-                print(usr, c, kchatz, kchat, file=z)
 
         def asciii():
             print()
-            print(file=z)
             ctm = datetime.datetime.now()
             def generate_random_letters():
                 random1 = random.choice(string.ascii_letters)
@@ -2964,7 +2516,6 @@ def main():
             sitch  = (round(random.random()*9999,4))
             asc = "ascii:"
             print(asc, usr, random_letters, sitch, ctm)
-            print(asc, usr, random_letters, sitch, ctm, file=z)
             pr1 = (round(random.random()*99999999999999999999999999999999999999999))
             pr2 = (round(random.random()*99999999999999999999999999999999999999999))
             pr3 = (round(random.random()*99999999999999999999999999999999999999999))
@@ -2990,114 +2541,61 @@ def main():
             print(pr10)
             print(pr11)
             print(pr12)
-            print(file=z)
-            print(pr1, file=z)
-            print(pr2, file=z)
-            print(pr3, file=z)
-            print(pr4, file=z)
-            print(pr5, file=z)
-            print(pr6, file=z)
-            print(pr7, file=z)
-            print(pr8, file=z)
-            print(pr9, file=z)
-            print(pr10, file=z)
-            print(pr11, file=z)
-            print(pr12, file=z)
-
-        def ascsearch():
-            zen = input("(ascii) search: ")
-            print()
-            try:
-                with open(r"METASCI-logs.txt", 'r') as fp:
-                    for line_no, line in enumerate(fp):
-                        if zen in line:
-                            print(line.strip())
-                            fp_temp = open(r"METASCI-logs.txt", 'r')
-                            count = 0
-                            for temp_line_no, temp_line in enumerate(fp_temp):
-                                if temp_line_no > line_no and count < 14:
-                                    print(temp_line.strip())
-                                    count += 1
-                            fp_temp.close()
-                            print()
-            except FileNotFoundError:
-                print("Error: File 'METASCI-logs.txt' not found.")
-            except Exception as e:
-                print(f"An error occurred: {e}")
 
         def mp3():
             print("You queue five tracks from an mp3 player that you found on the train...")
-            print(usr + "" + " " + "" + "You queue four tracks from an mp3 player that you found on the train...", file=z)
             time.sleep(4)
             tracks = ["NO RULES by Mija, bloody white", "How Low by Ludacris", "BURN IT DOWN by Kayzo", "COUNT DANKULA by GENGHAR, GHASTLY", "Chum by Earl Sweatshirt", "O.P.U.S. by Subtronics", "Cyclops Rocks by Subtronics", "Wyclef Jean by Young Thug", "Wild for the Night by A$AP Rocky, Skrillex", "Hercules by Young Thug", "Angels by A$AP Rocky", "F**kin' Problems by A$AP Rocky, Drake, 2 Chainz, Kendrick Lamar", "Goldie by A$AP Rocky", "Don't Think It Over by Her's", "In My Mind - Deathpact Reprise by ILLENIUM, Excision, HALIENE, Deathpact", "Morning Star's Fall by Caster, Mantis", "Worldwide Suicide by In Hearts Wake, PhaseOne", "Never Let Go by Dion Timmer, Haley Maze", "Dont Wake Me Up by Oliverse", "Someone Else by Bear Grillz, Elle Vee", "Bottle Of Rain by Kayzo, POORSTACY", "GIGACHAD by Kai Wachi", "You're Gonna Love Me by Eliminate, Leah Culver", "Love, Love, Love by As Tall As Lions", "MakeDamnSure by Taking Back Sunday", "Kings And Queens by Thirty Seconds To Mars", "Maps by Yeah Yeah Yeahs", "Poetically Pathetic by Amber Pacific", "Tonight by FM Static", "Anthem Of Our Dying Day by Story Of The Year", "MAKE U MISS ME by Kayzo, Seon", "NEWS FLASH by Kayzo, Kamiyada+", "Fight or Flight by Alison Wonderland, MEMBA", "YUKON (INTERLUDE) by Joji", "My Hero by Foo Fighters", "Called Out In The Dark by Snow Patrol", "my god by Trevor Hall", "Real Love by Jess Glynne, Clean Bandit", "MIND YOUR BUSINESS by will.i.am, Britney Spears", "Obstacle 1 by Interpol", "Full Circle by HAELOS", "Hold On by HAELOS", "Fire Ina Hole by Method Man, Redman", "Rockit by Herbie Hancock", "Hymn For The Weekend by Coldplay", "Agent Orange by Slapshock", "I'm Gonna Be by Post Malone", "I'm Not Okay by My Chemical Romance", "Rude Boy by Rihanna", "D.O.A. (Death Of Auto-Tune) by JAY-Z", "Roses by The Chainsmokers, ROZES", "Stick Stickly by Attack Attack!", "Jail pt 2 by Kanye West", "Risk by Deftones", "This Is What You Came For by Calvin Harris, Rihanna", "Hot-n-Fun by N.E.R.D, Nelly Furtado", "Work by Rihanna, Drake", "777 by Kid Trunks, XXXTENTACION", "Music by Madonna", "What's My Name by Rihanna, Drake", "Love Never Felt So Good by Michael Jackson, Justin Timberlake", "Sweet Disposition by The Temper Trap", "Forrest Gump by Frank Ocean", "Purification by Purification", "Total Liberation by Gather", "Soaked In Torment by All Out War", "Scream & Shout by will.i.am, Britney Spears", "Decode by Paramore", "Miracle by Paramore", "Messiah by Alison Wonderland, M-Phazes", "Heart Skipped A Beat by The xx", "Basic Space by The xx", "Intro by The xx", "Islands by The xx", "Crystalized by The xx", "VCR by The xx", "Mood Ring by Lorde", "Sudden Desire by Hayley Williams", "August 10 by Khruangbin", "The Pioneers by Bloc Party", "Chasing Cars by Snow Patrol", "RUNNING by The Kid LAROI", "Shake It by Metro Station", "The Less I Know The Better by Tame Impala", "Miss The Rage by Trippie Red, Playboi Carti", "This Is America by Childish Gambino", "Consistency by Megan Thee Stallion, Jhene Aiko", "Flexing So Hard by Higher Brothers", "Laundry by QUIX", "Cologne by Clean Bandit, Nikki Cislyn, Javeon", "Pachuca Sunrise by Minus The Bear", "Feeling Like The End by Joji", "Nomadic by Higher Brothers, Joji", "Upper Echelon by Travis Scott, T.I., 2 Chainz", "Same Ol' Mistakes by Rihanna", "Power Trip by J. Cole, Miguel", "Hits From The Bong by Cypress Hill", "Y.O.U. by Method Man, Redman"]
             music = random.sample(tracks, 5)
             ct = datetime.datetime.now()
             mp3 = "mp3: "
             print(mp3, music, ct)
-            print(usr, mp3, music, ct, file=z)
             time.sleep(3)
 
         def monopoly():
             print("You rolled:")
-            print("You rolled:", file=z)
             time.sleep(2)
             dice1 = ["1", "2", "3", "4", "5", "6", "7", "8"]
             dice2 = ["1", "2", "3", "4", "5", "6", "7", "8"]
             roll1 = random.sample(dice1, 1)
             roll2 = random.sample(dice2, 1)
             print(roll1)
-            print(roll1, file=z)
             print(roll2)
-            print(roll2, file=z)
             time.sleep(2)
             boxes = ["Mediterranean Avenue", "Community Chest", "Baltic Avenue", "INCOME TAX", "Reading Railroad", "Oriental Avenue", "Chance", "Vermont Avenue", "Connecticut Avenue", "Jail", "St. Charles Palace", "Electric Company", "States Avenue", "Virginia Avenue", "Pennsylvania Railroad", "St. James Place", "Community Chest", "Free Parking", "Kentucky Avenue", "Chance", "Indiana Avenue", "Illinois Avenue", "B&O Railroad", "Atlantic Avenue", "Ventnor Avenue", "Water Works", "Marvin Gardens", "GO TO JAIL", "Pacific Avenue", "North Carolina Avenue", "Community Chest", "Pennsylvania Avenue", "Short Line", "Chance", "Park Place", "LUXURY TAX", "Boardwalk"]
             box = random.sample(boxes, 1)
             print("And landed in =")
-            print("And landed in =", file=z)
             ct = datetime.datetime.now()
             monopoly = "monopoly: "
             print(monopoly, box, ct)
-            print(usr, monopoly, roll1, roll2, box, ct, file=z)
             time.sleep(3)
 
         def equips():
             time.sleep(2)
             print("head:")
-            print("head:", file=z)
             headgear = ["samurai helmet", "bike helmet", "motorcycle helmet", "astronaut helmet", "pilot helmet", "aviator hat", "baseball cap", "backwards baseball cap", "trucker cap", "backwards trucker cap", "construction helmet", "miner helmet", "skate helmet", "ski mask", "facemask", "beanie", "birthday party hat", "pantyhose", "f13th mask", "jabbawockee mask", "none", "poring hat", "beehive", "idea bubble", "speech bubble", "bucket hat", "black bucket hat", "beige bucket hat", "orange bucket hat", "blue bucket hat", "american football helmet", "rugby helmet", "emo hair", "mohawk", "blonded semi-balded", "skinhead", "tropika", "glasses", "raybans", "shades", "spectacles", "night-vision goggles", "pilot goggles", "black-rimmed glasses", "nostril piercing", "tibetan headgear", "sikh headgear", "muslim hat", "skullcap", "muslim skullhat", "long hair", "salt and pepper", "blonde", "headphones", "earphones", "visor hat", "headband", "cat headband", "rabbit headband", "afro", "curly curls", "facial mask", "face paint", "warpaint", "unipaint", "maked-up", "bush headgear", "soldier helmet", "buddhahead", "game-night drink", "cig", "tobacco", "spliff", "straw", "british army guard headgear", "police helmet", "police mask", "hanja mask", "java mask", "african continent mask", "feather", "chef hat", "indian chief headgear", "black paint", "hijab"]
             head= random.sample(headgear, 1)
             print(head)
-            print(head, file=z)
             print("torso:")
-            print("torso:", file=z)
             torsogear = ["knight armor", "police armor", "samurai armor", "karate uniform", "police uniform", "soldier uniform", "korean robe", "japanese robe", "barong", "polo", "shirt", "black shirt", "sweater", "tanktop", "backpack", "slingbag", "none", "chest hair", "kevlar", "press vest", "bush gear", "hoodie", "white hoodie", "blue hoodie", "tight shirt", "nikes", "puma", "adidas", "coca-cola retro shirt", "rasta shirt", "sash", "soccer uniform", "american football armor", "football shirt", "soccer shirt", "referee shirt", "pacemaker", "bra", "bikini", "chest bag", "tuxedo", "suit", "bowtie", "tie", "apron", "chef uniform", "red paint", "black paint", "astronaut suit", "diving suit", "rashguard", "jersey", "bathrobe", "farmer gear", "lanyard", "muslim clothing", "sikh clothing", "tourguide uniform", "boyscout uniform", "girlscout uniform", "black sweater", "scarf", "shawl", "green hoodie", "pink hoodie", "jacket", "windbreaker", "varsity jacket", "jock jacket", "vest", "coat"]
             torso= random.sample(torsogear, 1)
             print(torso)
-            print(torso, file=z)
             print("hand:")
-            print("hand:", file=z)
             handgear = ["sword", "samurai", "club", "knife", "machete", "ice cream", "food", "coffee", "pizza", "camera", "gun", "staff", "ruler", "katana", "arnis", "nunchucks", "cat", "tablet", "phone", "iphone", "android", "fruitshake", "vape", "bong", "spliff", "joint", "beer", "champagne", "chainsaw", "folder", "testpaper", "pen", "macbook", "laptop", "linux computer", "pencil", "paintbrush", "tire pump", "fire extinguisher", "measuring device", "scalpel", "diamond cutter", "diamond", "diamonds", "trash", "water", "none", "empty-hand", "spraypaint", "smartwatch", "dynamite", "c4", "whisker", "whiskey", "liquor", "flask", "leaf", "feather", "book", "novel", "junkfood", "rifle", "sniper", "handgun", "laser", "keys", "guitar", "electric guitar", "classical guitar", "ukulele", "keyboard", "burger", "twig", "plank", "paddel", "coins", "money", "dollar bills", "fruit", "vegetable", "ps4 controller", "xbox controller", "ipod", "yarn", "spear", "bow"]
             hand= random.sample(handgear, 1)
             print(hand)
-            print(hand, file=z)
             print("legs:")
-            print("legs:", file=z)
             leggear = ["tights", "shorts", "cycling shorts", "skirt", "bushwear", "pants", "leggings", "elephant pants", "skinny jeans", "jeans", "none", "trunks", "pants", "pants", "pants", "holster", "bruise", "slacks", "hiking pants", "karate pants", "taekwondo pants", "mma shorts", "briefs", "sleather pants"]
             legs= random.sample(leggear, 1)
             print(legs)
-            print(legs, file=z)
             print("feet:")
-            print("feet:", file=z)
             feetgear = ["slippers", "hotel slippers", "shoes", "shoes", "shoes", "shoes", "boots", "beige boots", "black army boots", "nikes", "adidas", "puma", "converse", "chucks", "none", "socks", "clogs", "leather shoes", "white shoes", "skateboard", "longboard", "sneakers", "new balance", "world balance", "fluffy shoes", "fluffy slippers", "sandals"]
             feet= random.sample(feetgear, 1)
             print(feet)
-            print(feet, file=z)
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             equips = "equips: "
             print(equips, head, torso, hand, legs, feet, ct)
-            print(usr, equips, head, torso, hand, legs, feet, ct, file=z)
 
         def rpg():
             time.sleep(2)
@@ -3106,31 +2604,22 @@ def main():
             ct = datetime.datetime.now()
             rpg = "rpg: "
             print(rpg, path, ct)
-            print(usr, rpg, path, ct, file=z)
             time.sleep(3)
 
         def archery():
             time.sleep(2)
             print()
-            print(file=z)
             print("You aim your bow..")
-            print(usr + "" + " " + "" + "You aim your bow..", file=z)
             time.sleep(2)
             print("You hit:")
-            print("You hit:", file=z)
             num = (round(random.random()*30,3))
             print(num)
-            print(num, file=z)
             print("centimeters from the bullseye with")
-            print("centimeters from the bullseye with", file=z)
             raditn = (random.randint(50,100))
             print(raditn)
-            print(raditn, file=z)
             ct = datetime.datetime.now()
             print("percent accuracy", ct)
-            print("percent accuracy", ct, file=z)
             archery = "archery: "
-            print(usr, archery, num, raditn, ct, file=z)
             time.sleep(3)
 
         def color_key():
@@ -3140,7 +2629,6 @@ def main():
             ct = datetime.datetime.now()
             colorkey = "color key: "
             print(colorkey, colors, ct)
-            print(usr, colorkey, colors, ct, file=z)
 
         def magic():
             opp = "OPPONENT"
@@ -3204,7 +2692,6 @@ def main():
             ct = datetime.datetime.now()
             print(turnt, ct)
             magic = "magic:"
-            print(usr, magic, opp, hand, hand1, hand2, hand3, hand4, hand5, hand6, hand7, nexto, next1, fromb, you, hand, hand21, hand22, hand23, hand24, hand25, hand26, hand27, nexto, next2, fromc, turnt, ct, file=z)
 
         def football():
             football = ["touchdown", "touchdown", "touchdown", "first down", "first down", "first down", "first down", "second down", "second down", "second down", "third down", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "there are 3 guards ahead of you", "there are 3 guards ahead of you", "there are 3 guards ahead of you", "there are 4 guards ahead of you", "there are 2 guards ahead of you", "there are 2 guards ahead of you", "there are 2 guards ahead of you", "there is 1 guard ahead of you", "there is 1 guard ahead of you"]
@@ -3212,7 +2699,6 @@ def main():
             ct = datetime.datetime.now()
             footballs = "football: "
             print(footballs, fball, ct)
-            print(usr, footballs, fball, ct, file=z)
 
         def mapp():
             dd = list(diction)
@@ -3230,7 +2716,6 @@ def main():
             ct = datetime.datetime.now()
             mapd = "map:"
             print(mapd, mapped, ct)
-            print(usr, mapd, mapped, ct, file=z)
 
         def auto_mat():
             while True:
@@ -3245,7 +2730,6 @@ def main():
             time.sleep(1)
             print()
             print(numberstr + "" + " " + "" + "processes will be queued...")
-            print(usr + "" + " " + "" + numberstr + "" + " " + "" + "processes will be queued...", file=z)
             time.sleep(3)
             for _ in range(number):
                 print()
@@ -3253,26 +2737,21 @@ def main():
                 function_list = [version, print_time, pray, climb, prayer, stats, progress, light_incense, hebrews, teletubby, legal_terms, biology, chemistry, patient_simu, earth_science, psychology, medicals, license, police, clearance, nano, entry, micasa, stuff, worship, posting, meditate, sleep, eat, find_coins, slot, draw_card, search_for_items, fly, drink_coffee, drink_tea, surf, collections, doodling, zen_melody, value, bump, ma, skate, art, radio, give_alms, brawl, karate, koans, hipster_tarot, hack, spar, train, rest, haiku, psalms, dhammapada, koran, message, souls, c, asciii, mp3, monopoly, equips, rpg, archery, color_key, magic, football, mapp, ID, IDC, fuzz, msgs, tag, atag, frames, chichars, tinie_N, kata, hangu, generate_secure_string, pr0verbs]
                 random.choice(function_list)()
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             print("/processes finished!", ct)
-            print(usr + "" + " " + "" + "/processes finished!", ct, file=z)
             print()
-            print(file=z)
 
         def ID():
             ct = datetime.datetime.now()
             ID = "ID:"
             log = "[Logged-in]"
             print(usr, ID, log, ct)
-            print(usr, ID, log, ct, file=z)
 
         def IDC():
             ct = datetime.datetime.now()
             IDC = "IDC:"
             log = "[Logged-out]"
             print(usr, IDC, log, ct)
-            print(usr, IDC, log, ct, file=z)
 
         def weapon_start():
             print("Ctrl+C to stop")
@@ -3379,17 +2858,7 @@ def main():
             maroon = " st"
             nano = (diction)
             title = input("call name: ")
-            c = open("call-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "call-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=c)
             print()
-            print(file=z)
-            print("*this saves to call-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=c)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3399,17 +2868,15 @@ def main():
                     letters = [random1, random2, random3]
                     return letters
                 speak("alert!")
-                time.sleep(2.9)
+                time.sleep(1.6)
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 kchat = random.sample(nano, random.randint(1,7))
                 random_result = random.choices(nano, k=random.randint(1,7))
                 result_text = "  ".join(random_result)
                 print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=c)
                 speak(result_text)
                 print()
-                print(file=c)
             
             def main_loop():
                 while True:
@@ -3428,7 +2895,6 @@ def main():
             maroon = " st"
             nano = (diction)
             title = input("time-call name: ")
-            c = open("call-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             while True:
                 try:
@@ -3440,13 +2906,7 @@ def main():
             buffer
             monitor = "time-call-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=c)
             print()
-            print(file=z)
-            print("*this saves to call-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=c)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3456,17 +2916,15 @@ def main():
                     letters = [random1, random2, random3]
                     return letters
                 speak("alert!")
-                time.sleep(1.6)
+                time.sleep(2.9)
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 kchat = random.sample(nano, random.randint(1,7))
                 random_result = random.choices(nano, k=random.randint(1,7))
                 result_text = "  ".join(random_result)
                 print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=c)
                 speak(result_text)
                 print()
-                print(file=c)
                 time.sleep(buffer)
             
             def main_loop():
@@ -3481,26 +2939,17 @@ def main():
         def spheak():
             sph = input("speak: ")
             print()
-            print(file=z)
             print(sph)
-            print(sph, file=z)
             speak(sph)
 
         def kata_monitor():
             maroon = " st"
             nano = (katakana)
             title = input("kata-monitor name: ")
-            n = open("kata-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "kata-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=n)
             print()
-            print(file=z)
-            print("*this saves to kata-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=n)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3514,9 +2963,7 @@ def main():
                 kkhat = random.choices(nano, k=random.randint(1,15))
                 kkhat_str = ''.join(kkhat)
                 print(maroon, kkhat_str, sitch, random_letters, ctm)
-                print(maroon, kkhat_str, sitch, random_letters, file=n)
                 print()
-                print(file=n)
 
             def main_loop():
                 while True:
@@ -3535,17 +2982,10 @@ def main():
             maroon = " st"
             nano = (jamo)
             title = input("jamo-monitor name: ")
-            h = open("jamo-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "jamo-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=h)
             print()
-            print(file=z)
-            print("*this saves to jamo-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=h)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3559,9 +2999,7 @@ def main():
                 kkhat = random.choices(nano, k=random.randint(1,20))
                 kkhat_str = ''.join(kkhat)
                 print(maroon, kkhat_str, random_letters, sitch, ctm)
-                print(maroon, kkhat_str, random_letters, sitch, file=h)
                 print()
-                print(file=h)
 
             def main_loop():
                 while True:
@@ -3580,17 +3018,10 @@ def main():
             maroon = " st"
             nano = (chi_chars)
             title = input("ch-monitor name: ")
-            l = open("ch-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "ch-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=l)
             print()
-            print(file=z)
-            print("*this saves to ch-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=l)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3603,9 +3034,7 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 cchat = random.choices(nano, k=random.randint(1,12))
                 print(maroon, random_letters, sitch, cchat, ctm)
-                print(maroon, random_letters, sitch, cchat, ctm, file=l)
                 print()
-                print(file=l)
 
             def main_loop():
                 while True:
@@ -3614,7 +3043,7 @@ def main():
                     if integer > 15:
                         if random.choice([True, False]):
                             generate_random_result()
-
+                            
             try:
                 main_loop()
             except KeyboardInterrupt:
@@ -3622,13 +3051,10 @@ def main():
 
         def ghost_write():
             nano = (diction)
-            g = open("ghost.txt", "a", buffering=1)
             print()
-            print(file=g)
             def generate_random_result():
                 kchat = " ".join(random.choices(nano, k=random.randint(1,7)))
                 print(kchat)
-                print(kchat, file=g)
 
             def main_loop():
                 while True:
@@ -3640,23 +3066,12 @@ def main():
             except KeyboardInterrupt:
                 print()
                 print("\nStopped by user.")
-                print("this saved to ghost.txt")
 
         def monitor_start():
             maroon = " st"
             nano = (diction)
             title = input("monitor name: ")
-            m = open("monitor-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "monitor-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=m)
             print()
-            print(file=z)
-            print("*this saves to monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=m)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3669,9 +3084,7 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 print(maroon, random_letters, sitch, kchat, ctm)
-                print(maroon, random_letters, sitch, kchat, ctm, file=m)
                 print()
-                print(file=m)
 
             def main_loop():
                 while True:
@@ -3691,17 +3104,7 @@ def main():
             nano = (diction)
             acad = (acadlist)
             title = input("a-monitor name: ")
-            a = open("a-monitor-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "acad-monitor-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=a)
             print()
-            print(file=z)
-            print("*this saves to a-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=a)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3716,11 +3119,8 @@ def main():
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 kchat2 = random.choices(acad, k=random.randint(1,7))
                 print(maroon, random_letters, sitch, kchat, kchat2, ctm)
-                print(maroon, random_letters, sitch, kchat, kchat2, ctm, file=a)
                 print("_______________________________________")
-                print("_______________________________________", file=a)
                 print()
-                print(file=a)
 
             def main_loop():
                 while True:
@@ -3738,20 +3138,14 @@ def main():
         def fntcci_monitor():
             maroon = " st"
             aono = (fcci)
-            nano= (diction)
+            nano = (diction)
             acad = (acadlist)
             title = input("FNTCCI-monitor name: ")
-            i = open("FNTCCI-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "FNTCCI-monitor-start:"
+            print()
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=i)
             print()
-            print(file=z)
-            print("*this saves to FNTCCI-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=i)
             def Wonraoyerjishibli():
                 cci = random.choices(aono, k=random.randint(1,10))
                 cchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
@@ -3760,11 +3154,8 @@ def main():
                 dash = "-"
                 ctm = datetime.datetime.now()
                 print(maroon, wonyao_str, dash, cchat, acadl, ctm)
-                print(maroon, wonyao_str, dash, cchat, acadl, ctm, file=i)
                 print("_______________________________________")
-                print("_______________________________________", file=i)
                 print()
-                print(file=i)
 
             def main_loop():
                 while True:
@@ -3792,17 +3183,7 @@ def main():
                 else:
                     break
             buffer
-            t = open("t-monitor-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "time-monitor-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=t)
             print()
-            print(file=z)
-            print("*this saves to t-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=t)
             def generate_random_result():
                 time.sleep(buffer)
                 ctm = datetime.datetime.now()
@@ -3818,11 +3199,8 @@ def main():
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 kchat2 = random.choices(acad, k=random.randint(1,7))
                 print(maroon, random_letters, sitch, kchat, kchat2, ctm)
-                print(maroon, random_letters, sitch, kchat, kchat2, ctm, file=t)
                 print("_______________________________________")
-                print("_______________________________________", file=t)
                 print()
-                print(file=t)
 
             def main_loop():
                 while True:
@@ -3846,17 +3224,7 @@ def main():
                 else:
                     break
             buffer
-            t = open("t-monitor-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "time-monitor-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=t)
             print()
-            print(file=z)
-            print("*this saves to t-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=t)
             def generate_random_result():
                 time.sleep(buffer)
                 ctm = datetime.datetime.now()
@@ -3874,12 +3242,9 @@ def main():
                 random_result = [random.choice(nano)]
                 result_text = ", ".join(random_result)
                 print(maroon, random_letters, sitch, kchat, kchat2, result_text, ctm)
-                print(maroon, random_letters, sitch, kchat, kchat2, result_text, ctm, file=t)
                 print("_______________________________________")
-                print("_______________________________________", file=t)
                 speak(result_text)
                 print()
-                print(file=t)
 
             def main_loop():
                 while True:
@@ -3937,17 +3302,11 @@ def main():
                 else:
                     break
             buffer
-            p = open("programs-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "programs-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=p)
             print()
-            print(file=z)
-            print("*this saves to programs-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=p)
+
             def generate_random_result():
                 time.sleep(buffer)
                 ctm = datetime.datetime.now()
@@ -3964,12 +3323,8 @@ def main():
                 result = random.sample(random_result, 1)
                 result_text = ", ".join(result)
                 print(maroon, random_letters, sitch, result, ctm)
-                print(maroon, random_letters, sitch, result, ctm, file=z)
-                print(maroon, random_letters, sitch, result, ctm, file=p)
                 speak(result_text)
                 print()
-                print(file=z)
-                print(file=p)
 
             def main_loop():
                 while True:
@@ -3995,9 +3350,7 @@ def main():
             numberstr = str(number)
             print()
             print("Scanning...")
-            print("Scanning...", file=z)
             print()
-            print(file=z)
             time.sleep(2)
             for _ in range(number):
                 time.sleep(.1)
@@ -4021,85 +3374,59 @@ def main():
                         cchat = random.choices(cc, k=random.randint(1,40))
                         kkchar_str = ''.join(kkchar)
                         hchar_str = ''.join(hchar)
-                        kchat = "  ".join(random.choices(nano, k=random.randint(0,27)))
-                        kchat2 = random.choices(acad, k=random.randint(0,8))
+                        kchat = "  ".join(random.sample(nano, random.randint(0,27)))
+                        kchat2 = random.sample(acad, random.randint(0,8))
                         msg = "msg:"
                         print(usr, msg, random_letters, sitch, kchat, kchat2, kkchar_str, cchat, hchar_str, ctm)
-                        print(usr, msg, random_letters, sitch, kchat, kchat2, kkchar_str, cchat, hchar_str, ctm, file=z)
-                        print()
-                        print(file=z)                   
+                        print()                 
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             print("/scanning finished!", ct)
-            print(usr + "" + " " + "" + "/scanning finished!", ct, file=z)
             print()
-            print(file=z)
 
         def fuzz():
             ct = datetime.datetime.now()
             fuzz = "fuzzing..."
             print(fuzz, ct)
-            print(usr, ct, fuzz, file=z)
             time.sleep(3)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print()
-            print(file=z)
             print("You light an incense...")
-            print("You light an incense...", file=z)
             time.sleep(4)
 
         def tag():   
@@ -4127,11 +3454,9 @@ def main():
                     return letters
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
-                kchat = "  ".join(random.sample(nano, random.randint(1,7)))
+                kchat = "  ".join(random.choices(nano, k=random.randint(1,7)))
                 print()
-                print(file=z)
                 print(tag, rtag, random_letters, sitch, kchat, ctm)
-                print(usr, tag, rtag, random_letters, sitch, kchat, ctm, file=z)
 
         def atag():   
             rtag = input("a-tag: ")
@@ -4162,9 +3487,7 @@ def main():
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,8)))
                 kchat2 = random.choices(acad, k=random.randint(1,7))
                 print()
-                print(file=z)
                 print(tag, rtag, random_letters, sitch, kchat, kchat2, ctm)
-                print(usr, tag, rtag, random_letters, sitch, kchat, kchat2, ctm, file=z)
 
         def ntag():  
             ctag = input("n-tag: ")
@@ -4199,10 +3522,7 @@ def main():
                 acadl = random.sample(acad, random.randint(1,7))
                 dash = "-"
                 print()
-                print(file=z)
                 print(tag, ctag, random_letters, sitch, wonyao_str, dash, cchat, acadl, ctm)
-                print(usr, tag, ctag, random_letters, sitch, wonyao_str, dash, cchat, acadl, ctm, file=z)
-
 
         def MAI():
             import time
@@ -4218,7 +3538,6 @@ def main():
             for _ in range(number):
                 time.sleep(1.5)
                 print()
-                print(file=z)
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
                     random1 = random.choice(string.ascii_letters)
@@ -4231,7 +3550,6 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 asc = "ascii:"
                 print(asc, usr, random_letters, sitch, ctm)
-                print(asc, usr, random_letters, sitch, ctm, file=z)
                 pr1 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr2 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr3 = (round(random.random()*99999999999999999999999999999999999999999))
@@ -4257,21 +3575,7 @@ def main():
                 print(pr10)
                 print(pr11)
                 print(pr12)
-                print(file=z)
-                print(pr1, file=z)
-                print(pr2, file=z)
-                print(pr3, file=z)
-                print(pr4, file=z)
-                print(pr5, file=z)
-                print(pr6, file=z)
-                print(pr7, file=z)
-                print(pr8, file=z)
-                print(pr9, file=z)
-                print(pr10, file=z)
-                print(pr11, file=z)
-                print(pr12, file=z)
                 print()
-                print(file=z)
                 time.sleep(2)
                 if True:
                     nano = (diction)
@@ -4295,11 +3599,8 @@ def main():
                             kchat = random.choices(nano, k=random.randint(1,8))
                             kchat2 = random.choices(acad, k=random.randint(1,7))
                             print()
-                            print(file=z)
                             print(usr, random_letters, sitch, kchat2, kchat, ctm)
-                            print(usr, random_letters, sitch, kchat2, kchat, ctm, file=z)
                             print()
-                            print(file=z)
                             time.sleep(4.2)
                 if True:
                     integer = (round(random.random()*25))
@@ -4312,9 +3613,7 @@ def main():
                                 hashes = ("#", "#####", "##########", "##########################", "##########################", "##########################")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
                 if True:
                     integer = (round(random.random()*25))
@@ -4327,9 +3626,7 @@ def main():
                                 hashes = ("V", "    V", "          V", "                    V", "                              V", "                                        V")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4343,9 +3640,7 @@ def main():
                                 hashes = ("v", "    v", "          v", "                    v", "                              v", "                                        v")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4359,9 +3654,7 @@ def main():
                                 hashes = ("O", "    O", "          O", "                    O", "                              O", "                                        O")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4375,9 +3668,7 @@ def main():
                                 hashes = ("o", "    o", "          o", "                    o", "                              o", "                                        o")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4391,9 +3682,7 @@ def main():
                                 hashes = ("0", "    0", "          0", "                    0", "                              0", "                                        0")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4407,9 +3696,7 @@ def main():
                                 hashes = ("H", "    H", "          H", "                    H", "                              H", "                                        H")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4423,9 +3710,7 @@ def main():
                                 hashes = ("h", "    h", "          h", "                    h", "                              h", "                                        h")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4439,9 +3724,7 @@ def main():
                                 hashes = ("Q", "    Q", "          Q", "                    Q", "                              Q", "                                        Q")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4455,9 +3738,7 @@ def main():
                                 hashes = ("q", "    q", "          q", "                    q", "                              q", "                                        q")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4471,9 +3752,7 @@ def main():
                                 hashes = ("Y", "    Y", "          Y", "                    Y", "                              Y", "                                        Y")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4487,9 +3766,7 @@ def main():
                                 hashes = ("y", "    y", "          y", "                    y", "                              y", "                                        y")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4503,9 +3780,7 @@ def main():
                                 hashes = ("I", "    I", "          I", "                    I", "                              I", "                                        I", "                              III", "                                        III")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4519,9 +3794,7 @@ def main():
                                 hashes = ("i", "    i", "          i", "                    i", "                              i", "                                        i", "                              iii", "                                        iii")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4535,9 +3808,7 @@ def main():
                                 hashes = ("L", "    L", "          L", "                    L", "                              L", "                                        L")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4551,9 +3822,7 @@ def main():
                                 hashes = ("l", "    l", "          l", "                    l", "                              l", "                                        l")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4567,9 +3836,7 @@ def main():
                                 hashes = ("X", "    X", "          X", "                    X", "                              X", "                                        X")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4583,9 +3850,7 @@ def main():
                                 hashes = ("x", "    x", "          x", "                    x", "                              x", "                                        x")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4599,9 +3864,7 @@ def main():
                                 hashes = ("U", "    U", "          U", "                    U", "                              U", "                                        U")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4615,9 +3878,7 @@ def main():
                                 hashes = ("u", "    u", "          u", "                    u", "                              u", "                                        u")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4631,9 +3892,7 @@ def main():
                                 hashes = ("G", "    G", "          G", "                    G", "                              G", "                                        G")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4646,10 +3905,7 @@ def main():
                                 ctm = datetime.datetime.now()
                                 hashes = ("g", "    g", "          g", "                    g", "                              g", "                                        g")
                                 hashh = random.sample(hashes, random.randint(1,1))
-                                print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4663,9 +3919,7 @@ def main():
                                 hashes = ("B", "    B", "          B", "                    B", "                              B", "                                        B")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4679,9 +3933,7 @@ def main():
                                 hashes = ("b", "    b", "          b", "                    b", "                              b", "                                        b")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4695,9 +3947,7 @@ def main():
                                 hashes = ("P", "    P", "          P", "                    P", "                              P", "                                        P")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4711,9 +3961,7 @@ def main():
                                 hashes = ("p", "    p", "          p", "                    p", "                              p", "                                        p")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4727,9 +3975,7 @@ def main():
                                 hashes = ("T", "    T", "          T", "                    T", "                              T", "                                        T")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4743,9 +3989,7 @@ def main():
                                 hashes = ("t", "    t", "          t", "                    t", "                              t", "                                        t")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4759,9 +4003,7 @@ def main():
                                 hashes = ("C", "    C", "          C", "                    C", "                              C", "                                        C")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4775,9 +4017,7 @@ def main():
                                 hashes = ("c", "    c", "          c", "                    c", "                              c", "                                        c")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4791,9 +4031,7 @@ def main():
                                 hashes = ("Z", "    Z", "          Z", "                    Z", "                              Z", "                                        Z")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4807,9 +4045,7 @@ def main():
                                 hashes = ("z", "    z", "          z", "                    z", "                              z", "                                        z")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4823,9 +4059,7 @@ def main():
                                 hashes = ("-======================", "-================", "-======================", "-================")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4839,9 +4073,7 @@ def main():
                                 hashes = ("#", "#####", "##########", "##########################", "##########################", "##########################")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
         def MAIc():
@@ -4851,7 +4083,6 @@ def main():
             def generate_random_result():
                 time.sleep(1.5)
                 print()
-                print(file=z)
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
                     random1 = random.choice(string.ascii_letters)
@@ -4864,7 +4095,6 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 asc = "ascii:"
                 print(asc, usr, random_letters, sitch, ctm)
-                print(asc, usr, random_letters, sitch, ctm, file=z)
                 pr1 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr2 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr3 = (round(random.random()*99999999999999999999999999999999999999999))
@@ -4890,21 +4120,7 @@ def main():
                 print(pr10)
                 print(pr11)
                 print(pr12)
-                print(file=z)
-                print(pr1, file=z)
-                print(pr2, file=z)
-                print(pr3, file=z)
-                print(pr4, file=z)
-                print(pr5, file=z)
-                print(pr6, file=z)
-                print(pr7, file=z)
-                print(pr8, file=z)
-                print(pr9, file=z)
-                print(pr10, file=z)
-                print(pr11, file=z)
-                print(pr12, file=z)
                 print()
-                print(file=z)
                 time.sleep(2)
                 if True:
                     nano = (diction)
@@ -4928,11 +4144,8 @@ def main():
                             kchat = random.choices(nano, k=random.randint(1,8))
                             kchat2 = random.choices(acad, k=random.randint(1,7))
                             print()
-                            print(file=z)
                             print(usr, random_letters, sitch, kchat2, kchat, ctm)
-                            print(usr, random_letters, sitch, kchat2, kchat, ctm, file=z)
                             print()
-                            print(file=z)
                             time.sleep(4.2)
                 if True:
                     integer = (round(random.random()*25))
@@ -4945,9 +4158,7 @@ def main():
                                 hashes = ("#", "#####", "##########", "##########################", "##########################", "##########################")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
                 if True:
                     integer = (round(random.random()*25))
@@ -4960,9 +4171,7 @@ def main():
                                 hashes = ("V", "    V", "          V", "                    V", "                              V", "                                        V")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4976,9 +4185,7 @@ def main():
                                 hashes = ("v", "    v", "          v", "                    v", "                              v", "                                        v")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4992,9 +4199,7 @@ def main():
                                 hashes = ("O", "    O", "          O", "                    O", "                              O", "                                        O")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5008,9 +4213,7 @@ def main():
                                 hashes = ("o", "    o", "          o", "                    o", "                              o", "                                        o")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5024,9 +4227,7 @@ def main():
                                 hashes = ("0", "    0", "          0", "                    0", "                              0", "                                        0")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5040,9 +4241,7 @@ def main():
                                 hashes = ("H", "    H", "          H", "                    H", "                              H", "                                        H")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5056,9 +4255,7 @@ def main():
                                 hashes = ("h", "    h", "          h", "                    h", "                              h", "                                        h")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5072,9 +4269,7 @@ def main():
                                 hashes = ("Q", "    Q", "          Q", "                    Q", "                              Q", "                                        Q")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5088,9 +4283,7 @@ def main():
                                 hashes = ("q", "    q", "          q", "                    q", "                              q", "                                        q")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5104,9 +4297,7 @@ def main():
                                 hashes = ("Y", "    Y", "          Y", "                    Y", "                              Y", "                                        Y")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5120,9 +4311,7 @@ def main():
                                 hashes = ("y", "    y", "          y", "                    y", "                              y", "                                        y")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5136,9 +4325,7 @@ def main():
                                 hashes = ("I", "    I", "          I", "                    I", "                              I", "                                        I", "                              III", "                                        III")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5152,9 +4339,7 @@ def main():
                                 hashes = ("i", "    i", "          i", "                    i", "                              i", "                                        i", "                              iii", "                                        iii")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5168,9 +4353,7 @@ def main():
                                 hashes = ("L", "    L", "          L", "                    L", "                              L", "                                        L")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5184,9 +4367,7 @@ def main():
                                 hashes = ("l", "    l", "          l", "                    l", "                              l", "                                        l")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5200,9 +4381,7 @@ def main():
                                 hashes = ("X", "    X", "          X", "                    X", "                              X", "                                        X")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5216,9 +4395,7 @@ def main():
                                 hashes = ("x", "    x", "          x", "                    x", "                              x", "                                        x")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5232,9 +4409,7 @@ def main():
                                 hashes = ("U", "    U", "          U", "                    U", "                              U", "                                        U")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5248,9 +4423,7 @@ def main():
                                 hashes = ("u", "    u", "          u", "                    u", "                              u", "                                        u")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5264,9 +4437,7 @@ def main():
                                 hashes = ("G", "    G", "          G", "                    G", "                              G", "                                        G")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5280,9 +4451,7 @@ def main():
                                 hashes = ("g", "    g", "          g", "                    g", "                              g", "                                        g")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5296,9 +4465,7 @@ def main():
                                 hashes = ("B", "    B", "          B", "                    B", "                              B", "                                        B")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5312,9 +4479,7 @@ def main():
                                 hashes = ("b", "    b", "          b", "                    b", "                              b", "                                        b")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5328,9 +4493,7 @@ def main():
                                 hashes = ("P", "    P", "          P", "                    P", "                              P", "                                        P")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5344,9 +4507,7 @@ def main():
                                 hashes = ("p", "    p", "          p", "                    p", "                              p", "                                        p")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5360,9 +4521,7 @@ def main():
                                 hashes = ("T", "    T", "          T", "                    T", "                              T", "                                        T")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5376,9 +4535,7 @@ def main():
                                 hashes = ("t", "    t", "          t", "                    t", "                              t", "                                        t")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5392,9 +4549,7 @@ def main():
                                 hashes = ("C", "    C", "          C", "                    C", "                              C", "                                        C")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5408,9 +4563,7 @@ def main():
                                 hashes = ("c", "    c", "          c", "                    c", "                              c", "                                        c")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5424,9 +4577,7 @@ def main():
                                 hashes = ("Z", "    Z", "          Z", "                    Z", "                              Z", "                                        Z")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5440,9 +4591,7 @@ def main():
                                 hashes = ("z", "    z", "          z", "                    z", "                              z", "                                        z")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5456,9 +4605,7 @@ def main():
                                 hashes = ("-======================", "-================", "-======================", "-================")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5472,9 +4619,7 @@ def main():
                                 hashes = ("#", "#####", "##########", "##########################", "##########################", "##########################")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
             def main_loop():
@@ -5550,9 +4695,7 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
-
         def frames():
-            b = open("D-frames-logs.txt", "a", buffering=1)
             while True:
                 try:
                     number = int(input("Indicate number of (frames) results: "))
@@ -5578,9 +4721,7 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 asc = "frames:"
                 print()
-                print(file=b)
                 print(asc, usr, name, random_letters, sitch, ctm)
-                print(asc, usr, name, random_letters, sitch, ctm, file=b)
                 pr1 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr2 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr3 = (round(random.random()*99999999999999999999999999999999999999999))
@@ -5606,93 +4747,11 @@ def main():
                 print(pr10)
                 print(pr11)
                 print(pr12)
-                print(file=b)
-                print(pr1, file=b)
-                print(pr2, file=b)
-                print(pr3, file=b)
-                print(pr4, file=b)
-                print(pr5, file=b)
-                print(pr6, file=b)
-                print(pr7, file=b)
-                print(pr8, file=b)
-                print(pr9, file=b)
-                print(pr10, file=b)
-                print(pr11, file=b)
-                print(pr12, file=b)
                 print()
-                print(file=b)
-
-        def fsearch():
-            zen = input("(frames) search: ")
-            while True:
-                try:
-                    fps = float(input("Indicate speed in (halfed) seconds: "))
-                except ValueError:
-                    print("Invalid value")
-                else:
-                    break
-            print()
-            try:
-                with open(r"D-frames-logs.txt", 'r') as fp:
-                    for line_no, line in enumerate(fp):
-                        if zen in line:
-                            time.sleep(fps)
-                            print(line.strip())
-                            fp_temp = open(r"D-frames-logs.txt", 'r')
-                            count = 0
-                            for temp_line_no, temp_line in enumerate(fp_temp):
-                                if temp_line_no > line_no and count < 14:
-                                    print(temp_line.strip())
-                                    count += 1
-                            fp_temp.close()
-                            print()
-            except FileNotFoundError:
-                print("Error: File 'D-frames-logs.txt' not found.")
-            except Exception as e:
-                print(f"An error occurred: {e}")
-
-
-        def busearch(file_path="burner-log.txt"):
-            zen = input("(burner) search: ")
-            if not zen:
-                print("Search cancelled.")
-                return
-
-            while True:
-                try:
-                    fps = float(input("Indicate speed in seconds: "))
-                    if fps < 0:
-                        print("Speed must be non-negative.")
-                        continue
-                    break
-                except ValueError:
-                    print("Invalid value. Please enter a number.")
-                except KeyboardInterrupt:
-                    print("\nInput cancelled.")
-                    return
-
-            print()
-            print("Ctrl-C to stop")
-            print()
-            try:
-                with open(file_path, 'r') as fp:
-                    for line in fp:  # Process line by line to save memory
-                        if zen in line:  # Case-sensitive search
-                            try:
-                                time.sleep(fps)  # Can be interrupted by Ctrl+C
-                                print(line.strip())
-                            except KeyboardInterrupt:
-                                print("\nSearch interrupted by user.")
-                                return
-            except FileNotFoundError:
-                print(f"Error: File '{file_path}' not found.")
-            except Exception as e:
-                print(f"An error occurred: {e}")
 
         def oscillator():
             print("Ctrl+C to stop")
             print()
-
             def generate_random_result():
                 meter = ["                              ", "*                             ", " *                            ", "  *                           ", "   *                          ", "    *                         ", "     *                        ", "      *                       ", "       *                      ", "        *                     ", "         *                    ", "          *                   ", "           *                  ", "            *                 ", "             *                ", "              *               ", "               *              ", "                *             ", "                 *            ", "                  *           ", "                   *          ", "                    *         ", "                     *        ", "                      *       ", "                       *      ", "                        *     ", "                         *    ", "                          *   ", "                           *  ", "                            * ", "                             *"]
                 oscill = random.sample(meter, 1)
@@ -5737,548 +4796,17 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
-        def amror():
-            nano = (diction)
-            title = input("Amror session name: ")
-            g = open("amror-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "amror-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=g)
-            print()
-            print(file=z)
-            print("*this saves to amror-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=g)
-            def generate_random_result():
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            mic = "home:"
-                            rooms = ["living room", "kitchen", "bedroom", "garden", "patio", "guest room", "garage", "work room", "library", "art room", "meditation room", "bath room", "temple"]
-                            micasa = random.sample(rooms, 1)
-                            ct = datetime.datetime.now()
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(mic, micasa, ct, group)
-                            print(usr, mic, micasa, ct, group, file=z)
-                            print(usr, mic, micasa, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            paths = ["You level up", "You level up", "You level up", "You walk in a field", "You encounter an animal", "You encounter a monster", "You encounter an enemy", "You encounter a friend", "You encounter an ally", "You enter an alley", "It is night time", "The sun just rised", "It is dawn", "It is dusk", "You enter the university", "You sit down on your computer", "You just chill", "You chill in a cafe", "You feel sleepy", "You are hungry", "You walk on", "You run straight", "You run in loops", "You are tired", "You are bullied", "You are sent to the hospital", "You go on a roadtrip", "You hike", "You mine", "You are out of money", "You just earned your salary", "You spend your time waiting", "You just nearly died", "You do your assignment", "You paint", "You hum", "You rap", "You sing", "You hear someone singing", "You compose rap", "You compose a classical track", "You feel lonely", "You feel happy", "You feel ecstatic", "You yearn for something", "You feel you should meditate", "You feel you should pray", "You walk in a church", "You walk in a temple", "You walk in a mosque", "You walk in a forest", "You walk in a jungle", "You walk along the road", "You're in the city", "You ride a bus", "You ride a cab", "You take out the trash", "You find a job", "Someone gave you work", "You worship", "You're in transit", "You surf the internet", "You got hacked", "You got scammed", "You exercise", "You were commissioned in the army", "You were commisioned in the police force", "You were commissioned in the airforce", "You were commissioned in the marines", "You have a mission", "You feel inspired", "You feel uninspired", "You feel creative block", "You feel like dancing", "You hear music", "You watch TV", "You hear the radio", "You are fatigued", "You enter war", "You meet someone", "You view film showing schedules", "You browse through courses", "You walk into a market", "You think of getting souvenirs", "You explore the place"]
-                            path = random.sample(paths, 1)
-                            ct = datetime.datetime.now()
-                            rpg = "rpg: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(rpg, path, ct, group)
-                            print(usr, rpg, path, ct, group, file=z)
-                            print(usr, rpg, path, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            stu = "stuff:"
-                            stuffd = ["sofa", "tv", "radio", "computer", "tablet", "phone", "refrigerator", "bed", "sink", "oven", "stove", "clock", "refreshments", "snacks", "cookies", "easel", "sketchpad", "laptop", "postcard", "table", "study table", "desk", "kitchen counter", "bible", "dining table", "chair", "gaming chair", "lamp", "light", "fruit", "speaker", "guitar", "piano", "synthesizer", "photo", "painting", "cdj", "vinyl", "electric guitar", "bass guitar", "monitor", "camera", "vinyl player", "gun", "iPod", "cctv", "bike", "car", "window", "door", "sweater", "ps5", "pillow", "blanket", "clothes", "dresser", "safe", "dhammapada", "keyboard", "koran", "paint", "paper", "brush", "tree", "pencil", "spraypaint", "drawing tablet", "drawing", "buddha", "air conditioner", "duster", "walkie", "grass", "mirror", "tools", "pen", "magazine", "book", "carpet", "mat", "zafu", "weed", "kush"]
-                            stuff = (random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd))
-                            stuffs = random.sample(stuff, random.randint(1, 8))
-                            ct = datetime.datetime.now()
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(stu, stuffs, ct, group)
-                            print(usr, stu, stuffs, ct, group, file=z)
-                            print(usr, stu, stuffs, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You go to the airport and board a plane...")
-                            print(usr + "" + " " + "" + "You go to the airport and board a plane...", file=z)
-                            time.sleep(2)
-                            print("You arrived in:")
-                            print("You arrived in:", file=z)
-                            countries = ["Canada", "Sweden", "China", "Beijing", "New York", "California", "L.A.", "San Francisco", "Detroit", "Colorado", "Newark", "New Jersey", "Australia", "Gold Coast", "Thailand", "North Korea", "Pyongyang", "Seoul", "Tokyo", "Osaka", "Japan", "Fujian", "Kyoto", "Manila", "Palawan", "Siargao", "Sultan Kudarat", "Davao", "Sydney", "Poland", "Uzbekistan", "Kyrgystan", "Turkey", "Iraq", "Iran", "Bolivia", "Iceland", "Lithuania", "Greenland", "UK", "France", "Spain", "Rome", "Greece", "Amsterdam", "Netherlands", "Boracay", "Indonesia", "Russia", "Ukraine", "Africa", "Antarctica", "Alaska", "South Carolina", "North Carolina", "Philadelphia", "Brooklyn", "Mexico", "Brazil", "Taiwan", "Burma", "Cambodia", "Vietnam", "India", "Bangladesh", "New Delhi", "Bombay", "Philippines"]
-                            country = random.sample(countries, 1)
-                            ct = datetime.datetime.now()
-                            fly = "fly: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(fly, country, ct, group)
-                            print(usr, fly, country, ct, group, file=z)
-                            print(usr, fly, country, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            youm = "You manage to connect to..."
-                            print(youm)
-                            countries = ["Canada", "Sweden", "China", "Beijing", "New York", "California", "L.A.", "San Francisco", "Detroit", "Colorado", "Newark", "New Jersey", "Australia", "Gold Coast", "Thailand", "North Korea", "Pyongyang", "Seoul", "Tokyo", "Osaka", "Japan", "Fujian", "Kyoto", "Manila", "Palawan", "Siargao", "Sultan Kudarat", "Davao", "Sydney", "Poland", "Uzbekistan", "Kyrgystan", "Turkey", "Iraq", "Iran", "Bolivia", "Iceland", "Lithuania", "Greenland", "UK", "France", "Spain", "Rome", "Greece", "Amsterdam", "Netherlands", "Boracay", "Indonesia", "Russia", "Ukraine", "Africa", "Antarctica", "Alaska", "South Carolina", "North Carolina", "Philadelphia", "Brooklyn", "Mexico", "Brazil", "Taiwan", "Burma", "Cambodia", "Vietnam", "India", "Bangladesh", "New Delhi", "Bombay", "Philippines", "Italy", "Belgium", "Denmark", "Colombia", "Argentina", "Albania", "Algeria", "Andora", "Angola", "Antigua and Barbuda", "Armenia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Belarus", "Belize", "Benin", "Bhutan", "Bosnia", "Botswana", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cameroon", "Chad", "Chile", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia", "Congo", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Guinea", "Estonia", "Swaziland", "Ethiopia", "Fiji", "Gabon", "Gambia", "Ghana", "Guatemala", "Guyana", "Haiti", "Honduras", "Hungary", "Israel", "Italy", "Jamaica", "Kenya", "Jordan", "Laos", "Latvia", "Lebanon", "Liberia", "Liechtenstein", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritiana", "Mauritius", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Portugal", "Qatar", "Romania", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Slovakia", "Slovenia", "Solomon Islands", "South Africa", "South Korea", "South Sudan", "Sri Lanka", "Sudan", "Suriname", "Syria", "Tajikistan", "Tanzania", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Yemen", "Zambia", "Zimbabwe"]
-                            country = random.sample(countries, 1)
-                            print(country)
-                            serv = "Server at:"
-                            print(serv)
-                            negat = ["-", "+"]
-                            nega = random.sample(negat, 1)
-                            print(nega) 
-                            amdorn = (round(random.random()*90,4))
-                            print(amdorn)
-                            nega = random.sample(negat, 1)
-                            print(nega)
-                            andorm = (round(random.random()*180,4))
-                            print(andorm)
-                            andg = "and got away with:"
-                            print(andg)
-                            tidnar = (random.randint(0,999999999))
-                            print(tidnar)
-                            monies = ["Dollars", "Rupies", "Yen", "Pesos", "Pounds", "Coins", "Arcade Coins", "Mickey Mouse Money", "Francs", "Shekels", "Tugriks", "Indian Rupees", "Singapore Dollars", "Rubles", "Dinars", "Yuans", "Bahts", "Afghanis", "Riyals", "Kronas", "Riels", "DDOS attacks", "Botnets", "Credit Card Numbers", "E-mail addresses", "Business Addresses", "Home Addresses", "Passwords", "Mobile Numbers", "Telephone Numbers", "STD", "spits", "garbage", "sickness", "nudes", "hate", "likes"]
-                            money = random.sample(monies, 1)
-                            ct = datetime.datetime.now()
-                            print(money, ct)
-                            hack = "hack:"
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(group)
-                            print()
-                            print(usr, hack, youm, country, serv, nega, amdorn, nega, andorm, andg, tidnar, money, ct, group, file=z)
-                            print(usr, hack, youm, country, serv, nega, amdorn, nega, andorm, andg, tidnar, money, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You rolled:")
-                            print("You rolled:", file=z)
-                            time.sleep(1)
-                            dice1 = ["1", "2", "3", "4", "5", "6", "7", "8"]
-                            dice2 = ["1", "2", "3", "4", "5", "6", "7", "8"]
-                            roll1 = random.sample(dice1, 1)
-                            roll2 = random.sample(dice2, 1)
-                            print(roll1)
-                            print(roll1, file=z)
-                            print(roll2)
-                            print(roll2, file=z)
-                            time.sleep(2)
-                            boxes = ["Mediterranean Avenue", "Community Chest", "Baltic Avenue", "INCOME TAX", "Reading Railroad", "Oriental Avenue", "Chance", "Vermont Avenue", "Connecticut Avenue", "Jail", "St. Charles Palace", "Electric Company", "States Avenue", "Virginia Avenue", "Pennsylvania Railroad", "St. James Place", "Community Chest", "Free Parking", "Kentucky Avenue", "Chance", "Indiana Avenue", "Illinois Avenue", "B&O Railroad", "Atlantic Avenue", "Ventnor Avenue", "Water Works", "Marvin Gardens", "GO TO JAIL", "Pacific Avenue", "North Carolina Avenue", "Community Chest", "Pennsylvania Avenue", "Short Line", "Chance", "Park Place", "LUXURY TAX", "Boardwalk"]
-                            box = random.sample(boxes, 1)
-                            print("And landed in =")
-                            print("And landed in =", file=z)
-                            ct = datetime.datetime.now()
-                            monopoly = "monopoly: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(monopoly, box, ct, group)
-                            print(usr, monopoly, roll1, roll2, box, ct, group, file=z)
-                            print(usr, monopoly, roll1, roll2, box, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You ride your trickboard and did a")
-                            print("You ride your trickboard and did a", file=z)
-                            tricks = ["Backside 180", "Backside 360", "Backside Caballerial", "Backside Half Cab", "Fakie Ollie", "Frontside 180", "Frontside 360", "Frontside Caballerial", "Frontside Half Cab", "Kickturn", "Nollie", "Nollie Backside 180", "Nollie Backside 360", "Nollie Frontside 180", "Nollie Frontside 360", "Ollie", "Ollie North", "Ollie South", "Switch Backside 180", "Switch Backside 360", "Switch Frontside 180", "Switch Frontside 360", "Switch Ollie", "Tic-Tac", "360 Flip", "360 Hardflip", "360 Ollie Heelflip", "360 Ollie Kickflip", "360 Pop Shove-it", "360 Shuvit", "540 Flip", "720 Flip", "Alpha Flip", "Anti Casper Flip", "Backside Bigspin", "Backside Flip", "Backside Half Cab Heelflip", "Backside Half Cab Kickflip", "Backside Heelflip", "Backside Kickflip", "Big Heelflip", "Bigflip", "Biggerflip", "Biggerspin", "Bigspin", "Bubble Flip", "Bullflip", "Caballerial Flip", "Camel Flip", "Casper Flip", "Daydream Flip", "De Comply", "Disco Flip", "Double Heelflip", "Double Kickflip", "Dragon Flip", "Fakie 360 Flip", "Fakie 360 Hardflip", "Fakie Backside Bigspin", "Fakie Backside Pop Shove-it", "Fakie Frontside Bigspin", "Fakie Frontside Pop Shove-it", "Fakie Hardflip", "Fakie Heelflip", "Fakie Inward Heelflip", "Fakie Kickflip", "Fakie Varial Heelflip", "Fakie Varial Kickflip", "Feather Flip", "Fingerflip", "Forward Flip", "Front Foot Impossible", "Frontside 360 Pop Shove it", "Frontside Bigspin", "Frontside Flip", "Frontside Half Cab Heelflip", "Frontside Half Cab Kickflip", "Frontside Heelflip", "Frontside Kickflip", "Frontside Pop Shove-it", "Gazelle Flip", "Gazelle Spin", "Ghetto Bird", "Gingersnap", "Grape Flip", "Half Cab", "Handstand Flip", "Hardflip", "Haslam Flip", "Heelflip", "Hospital Flip", "Illusion Flip", "Impossible", "Inward Heelflip", "Jesus Flip", "Kickback Flip", "Kickflip", "Kiwi Flip", "Laser Flip", "Late Kickflip", "Nerd Flip", "Nightmare Flip", "No Comply", "540", "720", "900", "Airwalk", "Benihana", "Cannonball", "Christ Air", "Crossbone", "Delmar Indy", "Indy", "Indy Grab", "Invert", "Japan Air", "Judo Air", "Madonna", "McTwist", "Melancholy Grab", "Melon", "Method Air", "Mute Air", "Nose Grab", "Rocket Air", "Sal Flip", "Seatbelt Grab", "Stiffy", "Superman Grab", "Varial", "Egg Plant", "Manual", "Nose Manual", "Varial Heelflip", "Varial Kickflip",\
-                         "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", ]
-                            trick = random.sample(tricks, 1)
-                            ct = datetime.datetime.now()
-                            skate = "skate: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(skate, trick, ct, group)
-                            print(usr, skate, trick, ct, group, file=z)
-                            print(usr, skate, trick, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            starting = ["in the depths of soul", "in as much as I want", "nevertheless", "coming up with it", "i don't know this", "thinking of it", "thinking of you", "thinking of us", "i never want to but", "carry me all the way", "i am happy", "starting", "i never know how", "as much as i would", "killing me softly", "killing us", "the quietest weather", "gray clouds above", "i see the clear sky", "while the sky is bluest", "i've never been apart", "how would i know", "will i see you again", "it came up to me", "i was surprised", "surprising", "i would", "come to me", "start with this", "a few words", "lenten season is upon us", "i love", "thinking", "stop"]
-                            start = random.sample(starting, 1)
-                            middle = ["i wish i would have", "consider me", "i am looking for food", "while i am clothed", "walking the distance", "i still end up with you", "consider my wish", "halfed tree", "searching", "unsure", "not minding everyone", "listening to music", "on my computer", "typing", "eating", "sleeping", "thinking", "never missing", "stopping", "staring", "resting", "excruciating pain", "this sadness", "while im without", "collecting", "listening", "happiness", "the surf", "inspired", "rocking the music", "travelling", "playing", "while music plays", "stirring things up", "taking a bath", "walking on the shore", "grinding"]
-                            mid = random.sample(middle, 1)
-                            ending = ["i never knew how", "i be at it", "considered everything", "i died", "i slept", "its wrapped", "made a union", "the sky bleeds", "music is spoken", "chilled", "i am spoiled", "this bringeth happiness", "its up to me", "the weather is", "i stay awake", "pillows", "grains", "half of the time", "it ends here", "i take flight", "distance is", "i like this", "forever", "lets meet", "gathered my wits"]
-                            end = random.sample(ending, 1)
-                            ct = datetime.datetime.now()
-                            haiku = "haiku: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(haiku, start, mid, end, ct, group)
-                            print(usr, haiku, start, mid, end, ct, group, file=z)
-                            print(usr, haiku, start, mid, end, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print()
-                            print(file=z)
-                            print("You aim your bow..")
-                            print(usr + "" + " " + "" + "You aim your bow..", file=z)
-                            time.sleep(1)
-                            print("You hit:")
-                            print("You hit:", file=z)
-                            num = (round(random.random()*30,3))
-                            print(num)
-                            print(num, file=z)
-                            print("centimeters from the bullseye with")
-                            print("centimeters from the bullseye with", file=z)
-                            raditn = (random.randint(50,100))
-                            print(raditn)
-                            print(raditn, file=z)
-                            ct = datetime.datetime.now()
-                            print("percent accuracy", ct)
-                            print("percent accuracy", ct, file=z)
-                            archery = "archery: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(group)
-                            print(usr, archery, num, raditn, ct, group, file=z)
-                            print(usr, archery, num, raditn, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            _entry = "Entry: "
-                            gates = ["Gate 1", "Gate 2", "Gate 3", "Gate 4", "Gate 5", "Gate 6", "Gate 7", "Gate 8", "Gate 9"]
-                            phases = ["Phase 1", "Phase 2", "Phase 3", "Phase 4", "Phase 5", "Phase 6", "Phase 7", "Phase 8", "Phase 9", "Phase 10"]
-                            floors = (round(random.random()*102))
-                            _floor = "Floor"
-                            gate = random.sample(gates, 1)
-                            phase = random.sample(phases, 1)
-                            rooms = (round(random.random()*102))
-                            ct = datetime.datetime.now()
-                            _room = "Room"
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(_entry, gate, phase, _floor, floors, _room, rooms, ct, group)
-                            print(usr, _entry, gate, phase, _floor, floors, _room, rooms, ct, group, file=z)
-                            print(usr, _entry, gate, phase, _floor, floors, _room, rooms, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You tune in to the radio and listen to:")
-                            print("You tune in to the radio and listen to:", file=z)
-                            genres = ["Alternative", "Anime", "Blues", "Classical", "Comedy", "Commercials", "Country", "Dance", "Easy Listening", "Electronic", "Enka", "French Pop", "Folk Music", "German Folk", "German Pop", "Fitness and Workout", "Hip-Hop/Rap", "Holiday Music", "Indie Pop", "Industrial", "Inspirational", "Instrumental", "Jazz", "K-Pop", "Karaoke", "Latin", "Metal", "New Age", "Opera", "Pop", "R&B/Soul", "Reggae", "Rock", "Soundtracks", "Spoken Word", "Tex-Mex/Tejano", "Vocal", "World"]
-                            music = random.sample(genres, 1)
-                            ct = datetime.datetime.now()
-                            radio = "radio: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(radio, music, ct, group)
-                            print(usr, radio, music, ct, group, file=z)
-                            print(usr, radio, music, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("head:")
-                            print("head:", file=z)
-                            headgear = ["samurai helmet", "bike helmet", "motorcycle helmet", "astronaut helmet", "pilot helmet", "aviator hat", "baseball cap", "backwards baseball cap", "trucker cap", "backwards trucker cap", "construction helmet", "miner helmet", "skate helmet", "ski mask", "facemask", "beanie", "birthday party hat", "pantyhose", "f13th mask", "jabbawockee mask", "none", "poring hat", "beehive", "idea bubble", "speech bubble", "bucket hat", "black bucket hat", "beige bucket hat", "orange bucket hat", "blue bucket hat", "american football helmet", "rugby helmet", "emo hair", "mohawk", "blonded semi-balded", "skinhead", "tropika", "glasses", "raybans", "shades", "spectacles", "night-vision goggles", "pilot goggles", "black-rimmed glasses", "nostril piercing", "tibetan headgear", "sikh headgear", "muslim hat", "skullcap", "muslim skullhat", "long hair", "salt and pepper", "blonde", "headphones", "earphones", "visor hat", "headband", "cat headband", "rabbit headband", "afro", "curly curls", "facial mask", "face paint", "warpaint", "unipaint", "maked-up", "bush headgear", "soldier helmet", "buddhahead", "game-night drink", "cig", "tobacco", "spliff", "straw", "british army guard headgear", "police helmet", "police mask", "hanja mask", "java mask", "african continent mask", "feather", "chef hat", "indian chief headgear", "black paint", "hijab"]
-                            head= random.sample(headgear, 1)
-                            print(head)
-                            print(head, file=z)
-                            print("torso:")
-                            print("torso:", file=z)
-                            torsogear = ["knight armor", "police armor", "samurai armor", "karate uniform", "police uniform", "soldier uniform", "korean robe", "japanese robe", "barong", "polo", "shirt", "black shirt", "sweater", "tanktop", "backpack", "slingbag", "none", "chest hair", "kevlar", "press vest", "bush gear", "hoodie", "white hoodie", "blue hoodie", "tight shirt", "nikes", "puma", "adidas", "coca-cola retro shirt", "rasta shirt", "sash", "soccer uniform", "american football armor", "football shirt", "soccer shirt", "referee shirt", "pacemaker", "bra", "bikini", "chest bag", "tuxedo", "suit", "bowtie", "tie", "apron", "chef uniform", "red paint", "black paint", "astronaut suit", "diving suit", "rashguard", "jersey", "bathrobe", "farmer gear", "lanyard", "muslim clothing", "sikh clothing", "tourguide uniform", "boyscout uniform", "girlscout uniform", "black sweater", "scarf", "shawl", "green hoodie", "pink hoodie", "jacket", "windbreaker", "varsity jacket", "jock jacket", "vest", "coat"]
-                            torso= random.sample(torsogear, 1)
-                            print(torso)
-                            print(torso, file=z)
-                            print("hand:")
-                            print("hand:", file=z)
-                            handgear = ["sword", "samurai", "club", "knife", "machete", "ice cream", "food", "coffee", "pizza", "camera", "gun", "staff", "ruler", "katana", "arnis", "nunchucks", "cat", "tablet", "phone", "iphone", "android", "fruitshake", "vape", "bong", "spliff", "joint", "beer", "champagne", "chainsaw", "folder", "testpaper", "pen", "macbook", "laptop", "linux computer", "pencil", "paintbrush", "tire pump", "fire extinguisher", "measuring device", "scalpel", "diamond cutter", "diamond", "diamonds", "trash", "water", "none", "empty-hand", "spraypaint", "smartwatch", "dynamite", "c4", "whisker", "whiskey", "liquor", "flask", "leaf", "feather", "book", "novel", "junkfood", "rifle", "sniper", "handgun", "laser", "keys", "guitar", "electric guitar", "classical guitar", "ukulele", "keyboard", "burger", "twig", "plank", "paddel", "coins", "money", "dollar bills", "fruit", "vegetable", "ps4 controller", "xbox controller", "ipod", "yarn", "spear", "bow"]
-                            hand= random.sample(handgear, 1)
-                            print(hand)
-                            print(hand, file=z)
-                            print("legs:")
-                            print("legs:", file=z)
-                            leggear = ["tights", "shorts", "cycling shorts", "skirt", "bushwear", "pants", "leggings", "elephant pants", "skinny jeans", "jeans", "none", "trunks", "pants", "pants", "pants", "holster", "bruise", "slacks", "hiking pants", "karate pants", "taekwondo pants", "mma shorts", "briefs", "sleather pants"]
-                            legs= random.sample(leggear, 1)
-                            print(legs)
-                            print(legs, file=z)
-                            print("feet:")
-                            print("feet:", file=z)
-                            feetgear = ["slippers", "hotel slippers", "shoes", "shoes", "shoes", "shoes", "boots", "beige boots", "black army boots", "nikes", "adidas", "puma", "converse", "chucks", "none", "socks", "clogs", "leather shoes", "white shoes", "skateboard", "longboard", "sneakers", "new balance", "world balance", "fluffy shoes", "fluffy slippers", "sandals"]
-                            feet= random.sample(feetgear, 1)
-                            print(feet)
-                            print(feet, file=z)
-                            print()
-                            print(file=z)
-                            ct = datetime.datetime.now()
-                            equips = "equips: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(equips, head, torso, hand, legs, feet, ct, group)
-                            print(usr, equips, head, torso, hand, legs, feet, ct, group, file=z)
-                            print(usr, equips, head, torso, hand, legs, feet, ct, group,  file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            actions = ["You met", "You fought with", "You fought with", "You defeated", "You defeated","You defeated", "You were sent to the hospital by", "You were defeated by", "You healed", "You were healed by", "You jailed", "You pranked", "You were pranked by", "You were jailed by", "you were beat by", "you were K.Ode by"]
-                            action = random.sample(actions, 1)
-                            people = ["a stranger", "a child", "an emo", "a doctor", "a soldier", "a police", "a homeless person", "a mom", "a gamer", "a dancer", "an artist", "a peasant", "a prince", "a princess", "a King", "a Queen", "a lawyer", "a vendor", "an alien", "a Mexican", "a nurse", "a lizard", "a woman", "a girl", "a boy", "an optometrist", "a physician", "a psychologist", "a psychiatrist", "a teacher", "White Tara", "Green Tara", "a ninja", "a gangster"]
-                            person = random.sample(people, 1)
-                            brawl = "brawl: "
-                            brawls = brawl, action, person
-                            print(brawls, )
-                            print()
-                            print(file=z)
-                            print("With A Score Of:")
-                            print("With A Score Of:", file=z)
-                            randit = (random.randint(50,100))
-                            ct = datetime.datetime.now()
-                            print(randit)
-                            print(randit, file=z)
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(group)
-                            print(usr, brawl, action, person, randit, ct, group, file=z)
-                            print(usr, brawl, action, person, randit, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            ct = datetime.datetime.now()
-                            print("You start to rest...", ct)
-                            print(usr + "" + " " + "" + "You start to rest...", ct, file=z)
-                            time.sleep(8)
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print("You rested", ct, group)
-                            print(usr + "" + " " + "" + "You rested", ct, group, file=z)
-                            print(usr + "" + " " + "" + "You rested", ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You search around...")
-                            print(usr + "" + " " + "" + "You search around...", file=z)
-                            time.sleep(2)
-                            itemd = ["empty bottle", "bottle of wine", "wine glass", "bottle of iced tea", "energy drink", "lemon juice", "pack of green peas", "shirt", "bed", "headphones", "earphones", "blanket", "tablet", "kindle", "pills", "pack of coffee beans", "cup of coffee", "junkfood", "medicine", "spoon", "fork", "Nintendo Switch", "laptop", "mobile phone", "electric fan", "chair", "guitar", "keyboard", "piano", "tv", "monitor", "oil", "hashish", "marijuana", "cigarette", "vape", "pillow", "dog food", "bike", "car", "scooter", "skateboard", "printer", "shards of glass", "garbage", "strips of sleather", "food", "bottle of water", "bible", "Dhammapada", "yoga mat", "helmet", "chewing gum", "vitamins", "shirt", "sweater", "pants", "working pants", "skirt", "underwear", "parachute", "gun", "knife", "sword", "katana", "oatmeal", "chain", "slippers", "shoes", "book", "wires", "credit card", "stove", "oven", "hat", "bucket hat", "baseball cap", "beanie", "hoodie", "necklace", "ring", "gold ring", "diamond ring", "diamond", "diamonds", "painting", "pencil", "ballpoint pen", "sketchpad", "crayon", "box of crayons", "paint", "spray paint", "fruit", "lettuce", "carrot", "watermelon", "orange", "apple", "banana", "pear", "gold", "gold bar", "pistol", "lantern", "lamp", "umbrella", "newspaper", "Sega", "ecstasy", "Nintendo 64", "calculator", "brownies", "pie", "loaf bread", "aviator shades", "shutter shades", "CD", "floppy disk", "mp3 player", "walkman", "cassette", "ticket", "food stub", "ski mask", "spear", "nunchucks", "frying pan", "beans", "charger", "guitar pick", "mic", "digicam", "GoPro", "night vision goggles", "sniper rifle", "DS4 Playstation controller", "CDJ", "Raybans", "smartwatch", "modem", "axe"]
-                            items = (random.choice(itemd), random.choice(itemd))
-                            item = random.sample(items, 2)
-                            ct = datetime.datetime.now()
-                            print("You found:")
-                            print("You found:", file=z)
-                            items = "items: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(items, item, ct, group)
-                            print(usr, items, item, ct, group, file=z)
-                            print(usr, items, item, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            actions = ["You connected with a", "You connected a", "You anticipate to give a", "You hit your opponent with a", "You give a", "You waited and gave a", "You missed with a", "You missed with a", "You attempted a", "You recieved a", "Your opponent connected with a", "Your opponent missed with a", "Your opponent waited and gave a", "Your opponent anticipated to give a", "You blocked a", "You blocked a", "You blocked a", "You blocked a", "You blocked a", "Your opponent blocked a", "Your opponent blocked a", "Your opponent blocked a", "Your opponent blocked a"]
-                            action = random.sample(actions, 1)
-                            kicks = ["45 kick", "45 kick", "45 kick", "45 kick", "45 kick", "front kick", "stretching kick", "turning-side kick", "turning-side kick", "side kick", "side kick", "punching kick", "axe kick", "axe kick", "full moon kick","full moon kick", "turning-long", "turning-long", "turning-jumping 45 kick", "out-in kick", "in-out kick", "turning-jumping out-in", "roundhouse kick", "roundhouse kick", "roundhouse kick", "turning-jumping roundhouse kick", "punch", "punch", "punch", "punch", "bullet 45 kick", "double 45 kick", "triple 45 kick", "jumping 45 kick", "jumping roundhouse kick", "jumping axe kick", "jumping front kick", "jumping out-in kick", "jumping in-out kick", "jumping side kick", "jumping turning-side kick", "jumping full moon kick"]
-                            kick = random.sample(kicks, 1)
-                            ct = datetime.datetime.now()
-                            spar = "spar: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(spar, action, kick, ct, group)
-                            print(usr, spar, action, kick, ct, group, file=z)
-                            print(usr, spar, action, kick, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            color = ["red", "crimson", "maroon", "scarlet", "orange", "amber", "rust", "salmon", "green", "emerald", "lime", "olive", "yellow", "gold", "lemon", "mustard", "blue", "azure", "indigo", "teal", "purple", "lavender", "magenta", "violet", "brown", "beige", "chocolate", "sienna", "gray", "charcoal", "silver", "slate", "black", "ebony", "jet", "onyx", "white", "alabaster", "ivory", "pearl", "pink", "sky blue", "neon green", "neon yellow", "neon orange", "neon blue"]
-                            colors = random.sample(color, 5)
-                            ct = datetime.datetime.now()
-                            colorkey = "color key: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(colorkey, colors, ct, group)
-                            print(usr, colorkey, colors, ct, group, file=z)
-                            print(usr, colorkey, colors, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You make a piece in the style of")
-                            print("You make a piece in the style of", file=z)
-                            styles = ["Abstract Art", "Abstract Expressionism", "Academicism", "Analytical Cubism", "Art Deco", "Art Nouveau", "Ashcan School", "Banksy", "Baroque", "Byzantine Art", "Classicism", "Cloisonnism", "Color Field", "Conceptual Art", "Constructivism", "Cubism", "Cubo-Futurism", "Dadaism", "Dutch Golden Age", "Early Netherlandish", "Early Renaissance", "Expressionism", "Fauvism", "Futurism", "Geometric Abstract Art", "Gothic Art", "High Renaissance", "Hudson River School", "Impressionism", "Italian Renaissance", "Kitsch", "Luminism", "Mannerism", "Metaphysical Art", "Minimalism", "Modernism", "Naive Art/ Primitivism", "Neo-Baroque", "Neo-Classicism", "Neo-Dada", "Neo Expressionism", "Neoplasticism", "New Realism", "Northern Renaissance", "Op-Art", "Orientalism", "Orphism", "Pointilism", "Pop Art", "Pop Surrealism", "Post-Impressionism", "Pre-Raphaelites", "Precisionism", "Proto Renaissance", "Purism", "Realism", "Regionalism", "Renaissance", "Rococo", "Romanticism", "Social Realism", "Socialist Realism", "Suprematism", "Surrealism", "Symbolism", "Synthetic Cubism", "Synthetism", "Tenebrism", "Tonalism", "Tubism", "Ukiyo-E", "Verism"]
-                            art = random.sample(styles, 1)
-                            ct = datetime.datetime.now()
-                            arts = "art: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(arts, art, ct, group)
-                            print(usr, arts, art, ct, group, file=z)
-                            print(usr, arts, art, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("Movement:")
-                            print("Movement:", file=z)
-                            time.sleep(3)
-                            print()
-                            print(file=z)
-                            radnti = (random.randint(0,999))
-                            opponents = ["You", "Sensei", "Opponent", "Opponent"]
-                            opponent = random.sample(opponents, 1)
-                            ct = datetime.datetime.now()
-                            karate = "karate: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(karate, radnti, opponent, ct, group)
-                            print(usr, karate, radnti, opponent, ct, group, file=z)
-                            print(usr, karate, radnti, opponent, ct, group, file=g)   
-                            print()
-                            print(file=g)   
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You start to search around for coins...")
-                            print(usr + "" + " " + "" + "You start to search around for coins...", file=z)
-                            time.sleep(10)
-                            print("You found:")
-                            print("You found:", file=z)
-                            tin = (random.randint(0,100))
-                            ct = datetime.datetime.now()
-                            coins = "coins: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(coins, tin, ct, group)
-                            print(usr, coins, tin, ct, group, file=z)
-                            print(usr, coins, tin, ct, group, file=g)  
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You did:")
-                            print("You did:", file=z)
-                            time.sleep(5)
-                            nums = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 20, 20, 20, 30, 30, 40, 40, 50, 50, 60, 70, 80, 90, 100]
-                            num = random.sample(nums, 1)
-                            ct = datetime.datetime.now()
-                            train = "train: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(train, num, ct, group)
-                            print(usr, train, num, ct, group, file=z)
-                            print(usr, train, num, ct, group, file=g)
-                            print("push-ups")
-                            print("push-ups", file=z)
-                            print()
-                            print(file=g)
-
-            def generate_random_result2():
-                maroon = " st"
-                ctm = datetime.datetime.now()
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    random.shuffle(letters)
-                    return letters
-                random_letters = generate_random_letters()
-                sitch  = (round(random.random()*9999,4))
-                kchat = random.sample(nano, random.randint(0,7))
-                amtag = "am-tag:"
-                groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                group = random.sample(groups, 1)
-                print(amtag, random_letters, sitch, kchat, ctm, group)
-                print(usr, amtag, random_letters, sitch, kchat, ctm, group, file=z)
-                print(usr, amtag, random_letters, sitch, kchat, ctm, group, file=g)
-                print()
-                print(file=g)
-            
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,5))
-                    integer = (round(random.random()*25))
-                    integer2 = (round(random.random()*25))
-                    if integer > 15:
-                        if random.choice([True, False]):
-                            generate_random_result()
-                    if integer2 > 15:
-                        if random.choice([True, False]):
-                            generate_random_result2()
-            
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
         def burner():
             nano = (diction)
+            print("Not recording")
+            print()
+            time.sleep(.4)
             title = input("burn name: ")
-            x = open("burner-log.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "burner-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=x)
             print()
-            print(file=z)
-            print("*this saves to burner-log.txt* Ctrl+C to stop")
             print()
-            print(file=x)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -6308,7 +4836,6 @@ def main():
                 sitch  = (round(random.random()*999999999999999,5))
                 kchat = random.sample(nano, random.randint(1,2))
                 print(title, ctm, random_letters, sitch, kchat)
-                print(title, ctm, random_letters, sitch, kchat, file=x)
             
             def main_loop():
                 while True:
@@ -6325,8 +4852,10 @@ def main():
 
         def tburner():
             nano = (diction)
+            print("Not recording")
+            print()
+            time.sleep(.4)
             title = input("burn name: ")
-            x = open("burner-log.txt", "a", buffering=1)
             while True:
                 try:
                     buffer = float(input("time-buffer in seconds: "))
@@ -6337,13 +4866,8 @@ def main():
             ct = datetime.datetime.now()
             monitor = "burner-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=x)
             print()
-            print(file=z)
-            print("*this saves to burner-log.txt* Ctrl+C to stop")
             print()
-            print(file=x)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -6373,156 +4897,11 @@ def main():
                 sitch  = (round(random.random()*999999999999999,5))
                 kchat = random.sample(nano, random.randint(1,2))
                 print(title, ctm, random_letters, sitch, kchat)
-                print(title, ctm, random_letters, sitch, kchat, file=x)
             
             def main_loop():
                 while True:
                     time.sleep(buffer)
                     generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def cbmp():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Chinese'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (C)'")
-            print()
-
-            time.sleep(.3)
-
-            c_fcci = ['a', 'ai', 'an', 'ang', 'ao', 'ba', 'bai', 'ban', 'bang', 'bao', 'bei', 'ben', 'beng', 'bi', 'bian', 'biao', 'bie', 'bin', 'bing', 'bo', 'bu', 'ca', 'cai', 'can', 'cang', 'cao', 'ce', 'cei', 'cen', 'ceng', 'cha', 'chai', 'chan', 'chang', 'chao', 'che', 'chen', 'cheng', 'chi', 'chong', 'chou', 'chu', 'chua', 'chuai', 'chuan', 'chuang', 'chui', 'chun', 'chuo', 'ci', 'cong', 'cou', 'cu', 'cuan', 'cui', 'cun', 'cuo', 'da', 'dai', 'dan', 'dang', 'dao', 'de', 'dei', 'den', 'deng', 'di', 'dia', 'dian', 'diao', 'die', 'ding', 'diu', 'dong', 'dou', 'du', 'duan', 'dui', 'dun', 'duo', 'e', 'ei', 'en', 'eng', 'er', 'fa', 'fan', 'fang', 'fei', 'fen', 'feng', 'fo', 'fou', 'fu', 'ga', 'gai', 'gan', 'gang', 'gao', 'ge', 'gei', 'gen', 'geng', 'gong', 'gou', 'gu', 'gua', 'guai', 'guan', 'guang', 'gui', 'gun', 'guo', 'ha', 'hai', 'han', 'hang', 'hao', 'he', 'hei', 'hen', 'heng', 'hong', 'hou', 'hu', 'hua', 'huai', 'huan', 'huang', 'hui', 'hun', 'huo', 'ji', 'jia', 'jian', 'jiang', 'jiao', 'jie', 'jin', 'jing', 'jiong', 'jiu', 'ju', 'juan', 'jue', 'jun', 'ka', 'kai', 'kan', 'kang', 'kao', 'ke', 'kei', 'ken', 'keng', 'kong', 'kou', 'ku', 'kua', 'kuai', 'kuan', 'kuang', 'kui', 'kun', 'kuo', 'la', 'lai', 'lan', 'lang', 'lao', 'le', 'lei', 'leng', 'li', 'lia', 'lian', 'liang', 'liao', 'lie', 'lin', 'ling', 'liu', 'long', 'lou', 'lu', 'luan', 'lun', 'luo', 'lü', 'lüe', 'ma', 'mai', 'man', 'mang', 'mao', 'me', 'mei', 'men', 'meng', 'mi', 'mian', 'miao', 'mie', 'min', 'ming', 'miu', 'mo', 'mou', 'mu', 'na', 'nai', 'nan', 'nang', 'nao', 'ne', 'nei', 'nen', 'neng', 'ni', 'nian', 'niang', 'niao', 'nie', 'nin', 'ning', 'niu', 'nong', 'nou', 'nu', 'nuan', 'nuo', 'nü', 'nüe', 'o', 'ou', 'pa', 'pai', 'pan', 'pang', 'pao', 'pei', 'pen', 'peng', 'pi', 'pian', 'piao', 'pie', 'pin', 'ping', 'po', 'pou', 'pu', 'qi', 'qia', 'qian', 'qiang', 'qiao', 'qie', 'qin', 'qing', 'qiong', 'qiu', 'qu', 'quan', 'que', 'qun', 'ran', 'rang', 'rao', 're', 'ren', 'reng', 'ri', 'rong', 'rou', 'ru', 'ruan', 'rui', 'run', 'ruo', 'sa', 'sai', 'san', 'sang', 'sao', 'se', 'sen', 'seng', 'sha', 'shai', 'shan', 'shang', 'shao', 'she', 'shei', 'shen', 'sheng', 'shi', 'shou', 'shu', 'shua', 'shuai', 'shuan', 'shuang', 'shui', 'shun', 'shuo', 'si', 'song', 'sou', 'su', 'suan', 'sui', 'sun', 'suo', 'ta', 'tai', 'tan', 'tang', 'tao', 'te', 'tei', 'teng', 'ti', 'tian', 'tiao', 'tie', 'ting', 'tong', 'tou', 'tu', 'tuan', 'tui', 'tun', 'tuo', 'wa', 'wai', 'wan', 'wang', 'wei', 'wen', 'weng', 'wo', 'wu', 'xi', 'xia', 'xian', 'xiang', 'xiao', 'xie', 'xin', 'xing', 'xiong', 'xiu', 'xu', 'xuan', 'xue', 'xun', 'ya', 'yan', 'yang', 'yao', 'ye', 'yi', 'yin', 'ying', 'yo', 'yong', 'you', 'yu', 'yuan', 'yue', 'yun', 'za', 'zai', 'zan', 'zang', 'zao', 'ze', 'zei', 'zen', 'zeng', 'zha', 'zhai', 'zhan', 'zhang', 'zhao', 'zhe', 'zhei', 'zhen', 'zheng', 'zhi', 'zhong', 'zhou', 'zhu', 'zhua', 'zhuai', 'zhuan', 'zhuang', 'zhui', 'zhun', 'zhuo', 'zi', 'zong', 'zou', 'zu', 'zuan', 'zui', 'zun', 'zuo', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            
-            maroon = " st"
-
-            cnano1 = (c_fcci)
-
-            q = open("cbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "cbmp-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=q)
-            print()
-            print("*this saves to cbmp.txt*")
-            print()
-            print(file=q)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                cci1 = random.choices(cnano1, k=random.randint(1,10))
-
-                result_text = "".join(cci1)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=q)
-
-                speak(result_text)
-
-                print()
-                print(file=q)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def cbmpc():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Chinese'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (CC)'")
-            print()
-
-            time.sleep(.3)
-
-            c_fcci = chi_chars
-            
-            maroon = " st"
-
-            cnano1 = (c_fcci)
-
-            q = open("cbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "cbmpc-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=q)
-            print()
-            print("*this saves to cbmp.txt*")
-            print()
-            print(file=q)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                cci1 = random.choices(cnano1, k=random.randint(1,25))
-
-                result_text = "".join(cci1)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=q)
-
-                speak(result_text)
-
-                print()
-                print(file=q)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
 
             try:
                 main_loop()
@@ -6643,150 +5022,6 @@ def main():
                 speak(result_text)
 
                 print()
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def hbmp():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Korean'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (H)'")
-            print()
-
-            time.sleep(.3)
-
-            h_fcci = ["ga", "gya", "geo", "gyeo", "go", "gyo", "gu", "gyu", "geu", "gi", "gae", "gyae", "ge", "gye", "gwa", "gwae", "goe", "gwo", "gwe", "gwi", "gui", "kka", "kkya", "kkeo", "kkyeo", "kko", "kkyo", "kku", "kkyu", "kkeu", "kki", "kkae", "kkyae", "kke", "kkye", "kkwa", "kkwae", "kkoe", "kkwo", "kkwe", "kkwi", "kkui", "na", "nya", "neo", "nyeo", "no", "nyo", "nu", "nyu", "neu", "ni", "nae", "nyae", "ne", "nye", "nwa", "nwae", "noe", "nwo", "nwe", "nwi", "nui", "da", "dya", "deo", "dyeo", "do", "dyo", "du", "dyu", "deu", "di", "dae", "dyae", "de", "dye", "dwa", "dwae", "doe", "dwo", "dwe", "dwi", "dui", "tta", "ttya", "tteo", "ttyeo", "tto", "ttyo", "ttu", "ttyu", "tteu", "tti", "ttae", "ttyae", "tte", "ttye", "ttwa", "ttwae", "ttoe", "ttwo", "ttwe", "ttwi", "ttui", "ra", "rya", "reo", "ryeo", "ro", "ryo", "ru", "ryu", "reu", "ri", "rae", "ryae", "re", "rye", "rwa", "rwae", "roe", "rwo", "rwe", "rwi", "rui", "ma", "mya", "meo", "myeo", "mo", "myo", "mu", "myu", "meu", "mi", "mae", "myae", "me", "mye", "mwa", "mwae", "moe", "mwo", "mwe", "mwi", "mui", "ba", "bya", "beo", "byeo", "bo", "byo", "bu", "byu", "beu", "bi", "bae", "byae", "be", "bye", "bwa", "bwae", "boe", "bwo", "bwe", "bwi", "bui", "ppa", "ppya", "ppeo", "ppyeo", "ppo", "ppyo", "ppu", "ppyu", "ppeu", "ppi", "ppae", "ppyae", "ppe", "ppye", "ppwa", "ppwae", "ppoe", "ppwo", "ppwe", "ppwi", "ppui", "sa", "sya", "seo", "syeo", "so", "syo", "su", "syu", "seu", "si", "sae", "syae", "se", "sye", "swa", "swae", "soe", "swo", "swe", "swi", "sui", "ssa", "ssya", "sseo", "ssyeo", "sso", "ssyo", "ssu", "ssyu", "sseu", "ssi", "ssae", "ssyae", "sse", "ssye", "sswa", "sswae", "ssoe", "sswo", "sswe", "sswi", "ssui", "a", "ya", "eo", "yeo", "o", "yo", "u", "yu", "eu", "i", "ae", "yae", "e", "ye", "wa", "wae", "oe", "wo", "we", "wi", "ui", "ja", "jya", "jeo", "jyeo", "jo", "jyo", "ju", "jyu", "jeu", "ji", "jae", "jyae", "je", "jye", "jwa", "jwae", "joe", "jwo", "jwe", "jwi", "jui", "jja", "jjya", "jjeo", "jjyeo", "jjo", "jjyo", "jju", "jjyu", "jjeu", "jji", "jjae", "jjyae", "jje", "jjye", "jjwa", "jjwae", "jjoe", "jjwo", "jjwe", "jjwi", "jjui", "cha", "chya", "cheo", "chyeo", "cho", "chyo", "chu", "chyu", "cheu", "chi", "chae", "chyae", "che", "chye", "chwa", "chwae", "choe", "chwo", "chwe", "chwi", "chui", "ka", "kya", "keo", "kyeo", "ko", "kyo", "ku", "kyu", "keu", "ki", "kae", "kyae", "ke", "kye", "kwa", "kwae", "koe", "kwo", "kwe", "kwi", "kui", "ta", "tya", "teo", "tyeo", "to", "tyo", "tu", "tyu", "teu", "ti", "tae", "tyae", "te", "tye", "twa", "twae", "toe", "two", "twe", "twi", "tui", "pa", "pya", "peo", "pyeo", "po", "pyo", "pu", "pyu", "peu", "pi", "pae", "pyae", "pe", "pye", "pwa", "pwae", "poe", "pwo", "pwe", "pwi", "pui", "ha", "hya", "heo", "hyeo", "ho", "hyo", "hu", "hyu", "heu", "hi", "hae", "hyae", "he", "hye", "hwa", "hwae", "hoe", "hwo", "hwe", "hwi", "hui", ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            
-            maroon = " st"
-
-            hnano1 = (h_fcci)
-
-            k = open("hbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "hbmp-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=k)
-            print()
-            print("*this saves to hbmp.txt*")
-            print()
-            print(file=k)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                hcci = random.choices(hnano1, k=random.randint(1,10))
-
-                result_text = "".join(hcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=k)
-
-                speak(result_text)
-
-                print()
-                print(file=k)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def hbmpc():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Korean'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (HC)'")
-            print()
-
-            time.sleep(.3)
-
-            h_fcci = jamo
-            
-            maroon = " st"
-
-            hnano1 = (h_fcci)
-
-            k = open("hbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "hbmpc-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=k)
-            print()
-            print("*this saves to hbmp.txt*")
-            print()
-            print(file=k)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                hcci = random.choices(hnano1, k=random.randint(1,25))
-
-                result_text = "".join(hcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=k)
-
-                speak(result_text)
-
-                print()
-                print(file=k)
                 
             def main_loop():
                 while True:
@@ -6929,150 +5164,6 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
-        def jbmp():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Japanese'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (J)'")
-            print()
-
-            time.sleep(.3)
-
-            j_fcci = ["a", "i", "u", "e", "o", "ka", "ki", "ku", "ke", "ko", "kya", "kyu", "kyo", "ga", "gi", "gu", "ge", "go", "gya", "gyu", "gyo", "sa", "shi", "su", "se", "so", "sha", "shu", "sho", "za", "ji", "zu", "ze", "zo", "ja", "ju", "jo", "ta", "chi", "tsu", "te", "to", "cha", "chu", "cho", "da", "de", "do", "na", "ni", "nu", "ne", "no", "nya", "nyu", "nyo", "ha", "hi", "fu", "he", "ho", "hya", "hyu", "hyo", "ba", "bi", "bu", "be", "bo", "bya", "byu", "byo", "pa", "pi", "pu", "pe", "po", "pya", "pyu", "pyo", "ma", "mi", "mu", "me", "mo", "mya", "myu", "myo", "ya", "yu", "yo", "ra", "ri", "ru", "re", "ro", "rya", "ryu", "ryo", "wa", "wo", "n", ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            
-            maroon = " st"
-
-            jnano = (j_fcci)
-
-            e = open("jbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "jbmp-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=e)
-            print()
-            print("*this saves to jbmp.txt*")
-            print()
-            print(file=e)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                jcci = random.choices(jnano, k=random.randint(1,10))
-
-                result_text = "".join(jcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=e)
-
-                speak(result_text)
-
-                print()
-                print(file=e)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def jbmpc():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Japanese'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (JC)'")
-            print()
-
-            time.sleep(.3)
-
-            j_fcci = katakana
-            
-            maroon = " st"
-
-            jnano = (j_fcci)
-
-            e = open("jbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "jbmpc-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=e)
-            print()
-            print("*this saves to jbmp.txt*")
-            print()
-            print(file=e)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                jcci = random.choices(jnano, k=random.randint(1,25))
-
-                result_text = "".join(jcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=e)
-
-                speak(result_text)
-
-                print()
-                print(file=e)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
         def xjbmp():
 
             time.sleep(.3)
@@ -7201,78 +5292,6 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
-        def fbmp():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Filipino/Tagalog'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (F/T)'")
-            print()
-
-            time.sleep(.3)
-
-            t_fcci = ["a", "e", "i", "o", "u", "ba", "be", "bi", "bo", "bu", "ka", "ke", "ki", "ko", "ku", "da", "de", "di", "do", "du", "ga", "ge", "gi", "go", "gu", "ha", "he", "hi", "ho", "hu", "la", "le", "li", "lo", "lu", "ma", "me", "mi", "mo", "mu", "na", "ne", "ni", "no", "nu", "nga", "nge", "ngi", "ngo", "ngu", "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro", "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu", "wa", "we", "wi", "wo", "wu", "ya", "ye", "yi", "yo", "yu", ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            
-            maroon = " st"
-
-            fnano = (t_fcci)
-
-            u = open("fbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "fbmp-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=u)
-            print()
-            print("*this saves to fbmp.txt*")
-            print()
-            print(file=u)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                tcci = random.choices(fnano, k=random.randint(1,10))
-
-                result_text = "".join(tcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=u)
-
-                speak(result_text)
-
-                print()
-                print(file=u)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
         def xfbmp():
 
             time.sleep(.3)
@@ -7362,9 +5381,7 @@ def main():
             
             # 4. Print to console
             ct = datetime.datetime.now()
-            print(f"\n{BLUE}generated_string: {secure_str} | {ct}{RESET}")            
-            # Print to file (Note the comma before file=z)
-            print(f"{usr}Generated_String: {secure_str} | {ct}", file=z)
+            print(f"\n{BLUE}generated_string: {secure_str} | {ct}{RESET}")
 
         def check_ss():
             try:
@@ -7426,17 +5443,15 @@ def main():
             finally:
                 if 'player' in locals():
                     player.terminate()
-                    player.wait()
+                    player.wait()            
 
         def choice():
             choice = ''
-            while choice !='pray' and choice !='slot' and choice !='search for items' and choice !='surf' and choice !='sleep' and choice !='eat' and choice !='meditate' and choice !='find coins' and choice !='draw card' and choice !='fly' and choice !='drink coffee' and choice !='drink tea' and choice !='surf' and choice !='dhammapada' and choice !='skate' and choice !='art' and choice !='give alms' and choice !='radio' and choice !='hack' and choice !='message' and choice !='brawl' and choice !='souls'and choice !='hipster tarot' and choice !='mp3' and choice !='spar' and choice !='train' and choice !='rest' and choice !='psalms' and choice !='haiku' and choice !='muslim prayer' and choice !='karate' and choice !='koans' and choice !='equips' and choice !='rpg' and choice !='archery' and choice !='color key' and choice !='doodling' and choice !='BUMP' and choice !='MA' and choice !='Magic' and choice !='commands' and choice !='ascii' and choice !='zen melody' and choice !='monopoly' and choice !='light incense' and choice  !='stats' and choice !='prayer' and choice !='progress' and choice !='collections' and choice !='football' and choice !='c' and choice !='map' and choice !='search' and choice !='print time' and choice !='entry' and choice !='posting' and choice !='koran' and choice !='heBrews' and choice !='Medicals' and choice !='M' and choice !='Clearance' and choice !='MiCasa' and choice !='stuff' and choice !='worship' and choice !='Earth Science' and choice !='SCI' and choice !='value' and choice !='psychology' and choice !='psyc' and choice !='Patient Simu' and choice !='biology' and choice !='B' and choice !='legal terms' and choice !='Law' and choice !='the heart sutra' and choice !='License' and choice !='police' and choice !='prad' and choice !='climb' and choice !='chemistry' and choice !='ch' and choice !='weapon start' and choice !='wstart' and choice !='teletubby' and choice !='note' and choice !='save' and choice !='journal' and choice !='version' and choice !='ai' and choice !='auto-mat' and choice !='AAM' and choice !='ID' and choice !='IDC' and choice !='echo' and choice !='monitor-start' and choice !='mstart' and choice !='change username' and choice !='username' and choice !='user' and choice !='fuzz' and choice !='message-scan' and choice !='scan' and choice !='monitor-search' and choice !='msearch' and choice !='tag' and choice !='atag' and choice !='a-tag' and choice !='acad-monitor' and choice !='astart' and choice !='acad-search' and choice !='asearch' and choice !='oscillator' and choice !='oscillate' and choice !='oscill' and choice !='amror' and choice !='game' and choice !='amsearch' and choice !='amror-search' and choice !='amror search' and choice !='profile' and choice !='Profile' and choice !='herbs' and choice !='herbals' and choice !='degree' and choice !='degrees' and choice !='major' and choice !='majors' and choice !='MedProc AI' and choice !='MAI' and choice !='frames' and choice !='fsearch' and choice !='ascsearch' and choice !='alerts' and choice !='Alerts' and choice !='burner-start' and choice !='burner start' and choice !='burner' and choice !='burn' and choice !='MAIc' and choice !='MPC' and choice !='mpc' and choice !='GES' and choice !='call' and choice !='time-monitor':
+            while choice !='pray' and choice !='slot' and choice !='search for items' and choice !='surf' and choice !='sleep' and choice !='eat' and choice !='meditate' and choice !='find coins' and choice !='draw card' and choice !='fly' and choice !='drink coffee' and choice !='drink tea' and choice !='surf' and choice !='dhammapada' and choice !='skate' and choice !='art' and choice !='give alms' and choice !='radio' and choice !='hack' and choice !='message' and choice !='brawl' and choice !='souls'and choice !='hipster tarot' and choice !='mp3' and choice !='spar' and choice !='train' and choice !='rest' and choice !='psalms' and choice !='haiku' and choice !='muslim prayer' and choice !='karate' and choice !='koans' and choice !='equips' and choice !='rpg' and choice !='archery' and choice !='color key' and choice !='doodling' and choice !='BUMP' and choice !='MA' and choice !='Magic' and choice !='commands' and choice !='ascii' and choice !='zen melody' and choice !='monopoly' and choice !='light incense' and choice  !='stats' and choice !='prayer' and choice !='progress' and choice !='collections' and choice !='football' and choice !='c' and choice !='map' and choice !='search' and choice !='print time' and choice !='entry' and choice !='posting' and choice !='koran' and choice !='heBrews' and choice !='Medicals' and choice !='M' and choice !='Clearance' and choice !='MiCasa' and choice !='stuff' and choice !='worship' and choice !='Earth Science' and choice !='SCI' and choice !='value' and choice !='psychology' and choice !='psyc' and choice !='Patient Simu' and choice !='biology' and choice !='B' and choice !='legal terms' and choice !='Law' and choice !='the heart sutra' and choice !='License' and choice !='police' and choice !='prad' and choice !='climb' and choice !='chemistry' and choice !='ch' and choice !='weapon start' and choice !='wstart' and choice !='teletubby' and choice !='note' and choice !='save' and choice !='journal' and choice !='version' and choice !='ai' and choice !='auto-mat' and choice !='AAM' and choice !='ID' and choice !='IDC' and choice !='echo' and choice !='monitor-start' and choice !='mstart' and choice !='change username' and choice !='username' and choice !='user' and choice !='fuzz' and choice !='message-scan' and choice !='scan' and choice !='monitor-search' and choice !='msearch' and choice !='tag' and choice !='atag' and choice !='a-tag' and choice !='acad-monitor' and choice !='astart' and choice !='acad-search' and choice !='asearch' and choice !='oscillator' and choice !='oscillate' and choice !='oscill' and choice !='amror' and choice !='game' and choice !='amsearch' and choice !='amror-search' and choice !='amror search' and choice !='profile' and choice !='Profile' and choice !='herbs' and choice !='herbals' and choice !='degree' and choice !='degrees' and choice !='major' and choice !='majors' and choice !='MedProc AI' and choice !='MAI' and choice !='frames' and choice !='fsearch' and choice !='ascsearch' and choice !='alerts' and choice !='Alerts' and choice !='burner-start' and choice !='burner start' and choice !='burner' and choice !='burn' and choice !='kiomai' and choice !='KIOMAI' and choice !='GES' and choice !='call' and choice !='time-monitor':
                 global usr
                 print()
-                print(file=z)
                 choice = input(usr)
                 ct = datetime.datetime.now()
-                print(usr, choice, ct, file=z)
 
                 if choice == "version" or choice == "about":
                     version()
@@ -7444,7 +5459,7 @@ def main():
                 if choice == "commands" or choice == "help" or choice == "-help" or choice == "--help":
                     commands()
 
-                if choice == "nano chars" or choice == "nano characters" or choice == "nano-characters" or choice == "nanochars" or choice == "nano-chars" or choice == "nnc" or choice == 'NNC':
+                if choice == "nano chars" or choice == "nano characters" or choice == "nano-characters" or choice == "nanochars" or choice == "nano-chars" or choice == "nnc" or choice == "NNC":
                     select_charset()
 
                 if choice == "GES" or choice == "CAI" or choice == "CAI Environments" or choice == "CAI environments" or choice == "cai environments":
@@ -7462,21 +5477,6 @@ def main():
 
                 if choice == 'alerts' or choice == 'Alerts':
                     alerts()
-
-                if choice == 'note':
-                    note()
-
-                if choice == 'journal':
-                    journal()
-
-                if choice == 'save':
-                    save()
-
-                if choice == 'search':
-                    search()
-
-                if choice == 'monitor-search' or choice == 'msearch':
-                    msearch()
 
                 if choice == 'echo':
                     echo()
@@ -7721,9 +5721,6 @@ def main():
                 if choice == "ascii" or choice == "  ":
                     asciii()
 
-                if choice == "ascii search" or choice == "ascsearch" or choice == "asc search" or choice =="asc":
-                    ascsearch()
-
                 if choice == "mp3":
                     mp3()
 
@@ -7756,7 +5753,6 @@ def main():
 
                 if choice == "donate":
                     print("Contact the developer at usvu.tech@gmail.com")
-                    print(usr + "" + " " + "" + "Contact the developer at usvu.tech@gmail.com", file=z)
                     time.sleep(5)
 
                 if choice == "exit":
@@ -7787,9 +5783,6 @@ def main():
                 if choice == "speech time monitor" or choice == "speech-time-monitor" or choice == "speech time-monitor" or choice == "speech tmonitor" or choice == "stmonitor":
                     s_time_monitor()
 
-                if choice == "acad-search" or choice == "asearch":
-                    asearch()
-
                 if choice == "message-scan" or choice == "scan":
                     msgs()
 
@@ -7811,29 +5804,23 @@ def main():
                 if choice == "frames" or choice == "fps":
                     frames()
 
-                if choice == "frames search" or choice == "fsearch":
-                    fsearch()
-
-                if choice == "busearch" or choice == "burner search" or choice == "burner-search" or choice == "bsearch" or choice == "b-search":
-                    busearch()
-
                 if choice == "oscillator" or choice == "oscillate" or choice == "oscill":
                     oscillator()
 
                 if choice == "toscillator" or choice == "toscillate" or choice == "toscill" or choice == "time-oscill" or choice == "time-oscillate" or choice == "time-oscillator":
                     toscillator()
 
-                if choice == "amror" or choice == "game" or choice == "amror game" or choice == "meditation game":
-                    amror()
-
-                if choice == "amsearch" or choice == "amror-search" or choice == "amror search":
-                    amsearch()
-
                 if choice == "burner-start" or choice == "burner start" or choice == "burner" or choice == "burn" or choice == "Burn":
                     burner()
 
                 if choice == "time-burner-start" or choice == "time burner start" or choice == "time burner" or choice == "tburn" or choice == "time burn" or choice == "tburner" or choice == "tBurn" or choice == "time-burner":
                     tburner()
+
+                if choice == 'search' or choice == 'fsearch':
+                    search()
+
+                if choice == "busearch" or choice == "burner search" or choice == "burner-search" or choice == "bsearch" or choice == "b-search":
+                    busearch()
 
                 if choice == "zuz" or choice == "ZUZ" or choice == "pp" or choice == "PP" or choice == "Zuz":
                     zuz()
@@ -7888,23 +5875,11 @@ def main():
                 if choice == "speak" or choice == "spk":
                     spheak()
 
-                if choice == "cbmp":
-                    cbmp()
-
-                if choice == "cbmpc":
-                    cbmpc()                    
-
                 if choice == "xcbmp":
                     xcbmp()
 
                 if choice == "xcbmpc":
                     xcbmpc()
-
-                if choice == "hbmp":
-                    hbmp()
-
-                if choice == "hbmpc":
-                    hbmpc()
 
                 if choice == "xhbmp":
                     xhbmp()
@@ -7912,20 +5887,11 @@ def main():
                 if choice == "xhbmpc":
                     xhbmpc()
 
-                if choice == "jbmp":
-                    jbmp()
-
-                if choice == "jbmpc":
-                    jbmpc()
-
                 if choice == "xjbmp":
                     xjbmp()
 
                 if choice == "xjbmpc":
                     xjbmpc()
-
-                if choice == "fbmp":
-                    fbmp()
 
                 if choice == "xfbmp":
                     xfbmp()
@@ -7939,7 +5905,7 @@ def main():
                 if choice == "soundstream" or choice == "sst" or choice == "SST" or choice == "sound stream" or choice == "stream sound" or choice == "streamsound":
                     sound_stream()
 
-                if choice == "switch" or choice == "lx" or choice == "lpro-s":
+                if choice == "switch" or choice == "lx" or choice == "lpro":
                     return "switch"
 
         parser = argparse.ArgumentParser(description="MProcs", prefix_chars='-')
@@ -7954,11 +5920,7 @@ def main():
         parser.add_argument("-print-time", action="store_true")
         parser.add_argument("-profile", action="store_true")
         parser.add_argument("-alerts", action="store_true")
-        parser.add_argument("-note", action="store_true")
-        parser.add_argument("-journal", action="store_true")
-        parser.add_argument("-save", action="store_true")
-        parser.add_argument("-search", action="store_true")
-        parser.add_argument("-monitor-search", "-msearch", action="store_true")
+        parser.add_argument("-fsearch", action="store_true")
         parser.add_argument("-echo", action="store_true")
         parser.add_argument("-chinese-characters", "-c-characters", "-cchar", action="store_true")
         parser.add_argument("-ch-monitor", "-chm", action="store_true")
@@ -8038,7 +6000,6 @@ def main():
         parser.add_argument("-guard", action="store_true")
         parser.add_argument("-chat", action="store_true")
         parser.add_argument("-ascii", action="store_true")
-        parser.add_argument("-ascii-search", "-ascsearch", action="store_true")
         parser.add_argument("-mp3", action="store_true")
         parser.add_argument("-monopoly", action="store_true")
         parser.add_argument("-equips", action="store_true")
@@ -8057,7 +6018,6 @@ def main():
         parser.add_argument("-acad-monitor", "-astart", action="store_true")
         parser.add_argument("-time-monitor", "-tmonitor", action="store_true")
         parser.add_argument("-speech-tmonitor", action="store_true")
-        parser.add_argument("-acad-search", action="store_true")
         parser.add_argument("-message-scan", "-scan", action="store_true")
         parser.add_argument("-fuzz", action="store_true")
         parser.add_argument("-tag", action="store_true")
@@ -8065,12 +6025,8 @@ def main():
         parser.add_argument("-medproc-ai", "-mai", action="store_true")
         parser.add_argument("-medproc-cont", "-mpc", "-maic", action="store_true")
         parser.add_argument("-frames", "-fps", action="store_true")
-        parser.add_argument("-frames-search", action="store_true")
-        parser.add_argument("-burner-search", "-bsearch", action="store_true")
         parser.add_argument("-oscillator", "-oscill", action="store_true")
         parser.add_argument("-time-oscillator", "-toscill", action="store_true")
-        parser.add_argument("-amror", action="store_true")
-        parser.add_argument("-amror-search", "-amsearch", action="store_true")
         parser.add_argument("-burner-start", "-burner", "-burn", action="store_true")
         parser.add_argument("-time-burner-start", "-time-burner", "-tburner", "-tburn", action="store_true")
         parser.add_argument("-zuz", "-pp", action="store_true")
@@ -8081,19 +6037,12 @@ def main():
         parser.add_argument("-type-text", action="store_true")
         parser.add_argument("-threads", action="store_true")
         parser.add_argument("-speak", "-spk", action="store_true")
-        parser.add_argument("-cbmp", action="store_true")
-        parser.add_argument("-cbmpc", action="store_true")
         parser.add_argument("-xcbmp", action="store_true")
         parser.add_argument("-xcbmpc", action="store_true")
-        parser.add_argument("-hbmp", action="store_true")
-        parser.add_argument("-hbmpc", action="store_true")
         parser.add_argument("-xhbmp", action="store_true")
         parser.add_argument("-xhbmpc", action="store_true")
-        parser.add_argument("-jbmp", action="store_true")
-        parser.add_argument("-jbmpc", action="store_true")
         parser.add_argument("-xjbmp", action="store_true")
         parser.add_argument("-xjbmpc", action="store_true")
-        parser.add_argument("-fbmp", action="store_true")
         parser.add_argument("-xfbmp", action="store_true")
         parser.add_argument("-gen-string", "-gstring", action="store_true")
         parser.add_argument("-ghost-write", "-gw", action="store_true")
@@ -8116,7 +6065,6 @@ def main():
 
         if args.version:
             print()
-            print(file=z)
             version()
 
         if args.cai:
@@ -8129,22 +6077,7 @@ def main():
             profile()           
 
         if args.alerts:
-            alerts()            
-
-        if args.note:
-            note()            
-
-        if args.journal:
-            journal()
-            
-        if args.save:
-            save()
-            
-        if args.search:
-            search()
-            
-        if args.monitor_search:
-            msearch()            
+            alerts()                       
 
         if args.echo:
             echo()
@@ -8390,9 +6323,6 @@ def main():
         if args.ascii:
             asciii()
             
-        if args.ascii_search:
-            ascsearch()
-            
         if args.mp3:
             mp3()
             
@@ -8425,7 +6355,6 @@ def main():
             
         if args.donate:
             print("Contact the developer at usvu.tech@gmail.com")
-            print(usr + "" + " " + "" + "Contact the developer at usvu.tech@gmail.com", file=z)
             
         if args.weapon_start:
             weapon_start()
@@ -8455,9 +6384,6 @@ def main():
             s_time_monitor()
             sys.exit(0)
             
-        if args.acad_search:
-            asearch()
-            
         if args.message_scan:
             msgs()
             
@@ -8479,13 +6405,7 @@ def main():
             sys.exit(0)
             
         if args.frames:
-            frames()
-            
-        if args.frames_search:
-            fsearch()            
-
-        if args.burner_search:
-            busearch()
+            frames()           
             
         if args.oscillator:
             oscillator()
@@ -8493,14 +6413,7 @@ def main():
             
         if args.time_oscillator:
             toscillator()
-            sys.exit(0)
-            
-        if args.amror:
-            amror()
-            sys.exit(0)           
-
-        if args.amror_search:
-            amsearch()           
+            sys.exit(0)         
 
         if args.burner_start:
             burner()
@@ -8509,6 +6422,9 @@ def main():
         if args.time_burner_start:
             tburner()
             sys.exit(0)
+
+        if args.fsearch:
+            search()
             
         if args.zuz:
             zuz()
@@ -8547,28 +6463,12 @@ def main():
         if args.speak:
             spheak()
             
-        if args.cbmp:
-            cbmp()
-            sys.exit(0)
-            
-        if args.cbmpc:
-            cbmpc()
-            sys.exit(0)
-            
         if args.xcbmp:
             xcbmp()
             sys.exit(0)
 
         if args.xcbmpc:
             xcbmpc()
-            sys.exit(0)
-
-        if args.cbmp:
-            hbmp()            
-            sys.exit(0)
-
-        if args.cbmpc:
-            hbmpc()
             sys.exit(0)
 
         if args.xcbmp:
@@ -8579,24 +6479,12 @@ def main():
             xhbmpc()
             sys.exit(0)
 
-        if args.cbmp:
-            jbmp()           
-            sys.exit(0)
-
-        if args.cbmpc:
-            jbmpc()
-            sys.exit(0)
-
         if args.xcbmp:
             xjbmp()
             sys.exit(0)
 
         if args.xcbmpc:
             xjbmpc()
-            sys.exit(0)
-
-        if args.fbmp:
-            fbmp()
             sys.exit(0)
 
         if args.xfbmp:
@@ -8619,7 +6507,7 @@ def main():
 
         if args.x:
             sys.exit(0)
-            
+
         chooseAgain = "yes"
         while chooseAgain == "yes":
             result = choice()
@@ -8628,29 +6516,17 @@ def main():
                 return
 
         chooseAgain = input()
-        z.close()
-        m.close()
-        a.close()
-        b.close()
-        i.close()
-        x.close()
-        c.close()
-        t.close()
-        p.close()
-        j.close()
-        q.close()
-        k.close()
-        e.close()
-        u.close()
-        o.close()
-        n.close()
-        h.close()
-        l.close()
-        g.close()
 
     mp()
 
 if __name__ == "__main__":
-    main()
+     main()
+
+
+
+
+
+
+
 
 
