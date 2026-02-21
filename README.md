@@ -9,6 +9,7 @@ open:
     mdcci (default)
     lpro
     lpro-s
+    lxpro
 
 to open and set user, Nano EST Charset, and display version/intro:
 
