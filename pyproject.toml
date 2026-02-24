@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mdcci"
+version = "1.1.1"
+description = "Extended LPro - MProcs simplified - A Life program by tderk, originally LPro.py and Destiny [2024]"
+requires-python = ">=3.8"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "tderk", email = "usvu.tech@gmail.com" }
+]
+
+[project.scripts]
+mdcci = "mdcci.scripts.main:run"
+
+lpro = "mdcci.scripts.lpro:main"
+lpro-s = "mdcci.scripts.lpro_s:main"
+
+lxpro = "mdcci.scripts.main:run"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["mdcci*", "mdcci.*"] 
+exclude = ["tests*", "docs*", "venv*", "build*", "dist*", "*test*"]
+
+[tool.setuptools.package-data]
+"mdcci" = ["py.typed"]  # Changed to x_lpro
+"mdcci.scripts" = ["*.txt", "*.md", "*.json", "data/*", "logs/*"]
+
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "flake8"]

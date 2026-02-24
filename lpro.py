@@ -661,7 +661,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.5.3.1{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.6{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -822,7 +822,7 @@ def main():
             print()
             print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: cbmp, cmbpc, xcbmp, xcbmpc, hbmp, hbmpc, xhbmp, xhbmpc, jbmp, jbmpc, xjbmp, xjbmpc, fbmp, xfbmp")
             print()
-            print(" | sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
+            print(" | insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
             print()
             print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}, monitor-search [msearch], acad-search [asearch]")
 
@@ -3250,7 +3250,7 @@ def main():
             for _ in range(number):
                 print()
                 time.sleep(2)
-                function_list = [version, print_time, pray, climb, prayer, stats, progress, light_incense, hebrews, teletubby, legal_terms, biology, chemistry, patient_simu, earth_science, psychology, medicals, license, police, clearance, nano, entry, micasa, stuff, worship, posting, meditate, sleep, eat, find_coins, slot, draw_card, search_for_items, fly, drink_coffee, drink_tea, surf, collections, doodling, zen_melody, value, bump, ma, skate, art, radio, give_alms, brawl, karate, koans, hipster_tarot, hack, spar, train, rest, haiku, psalms, dhammapada, koran, message, souls, c, asciii, mp3, monopoly, equips, rpg, archery, color_key, magic, football, mapp, ID, IDC, fuzz, msgs, tag, atag, frames, chichars, tinie_N, kata, hangu, generate_secure_string, pr0verbs]
+                function_list = [version, print_time, pray, climb, prayer, stats, progress, light_incense, hebrews, teletubby, legal_terms, biology, chemistry, patient_simu, earth_science, psychology, medicals, license, police, clearance, nano, entry, micasa, stuff, worship, posting, meditate, sleep, eat, find_coins, slot, draw_card, search_for_items, fly, drink_coffee, drink_tea, surf, collections, doodling, zen_melody, value, bump, ma, skate, art, radio, give_alms, brawl, karate, koans, hipster_tarot, hack, spar, train, rest, haiku, psalms, dhammapada, koran, message, souls, c, asciii, mp3, monopoly, equips, rpg, archery, color_key, magic, football, mapp, ID, IDC, fuzz, msgs, tag, atag, frames, chichars, tinie_N, kata, hangu, generate_secure_string, pr0verbs, insta_ghost_write]
                 random.choice(function_list)()
             print()
             print(file=z)
@@ -3641,6 +3641,25 @@ def main():
                 print()
                 print("\nStopped by user.")
                 print("this saved to ghost.txt")
+
+        def insta_ghost_write():
+            nano = (diction)
+            g = open("ghost.txt", "a", buffering=1)
+            while True:
+                try:
+                    number = int(input("Indicate number of (i-GhostWrite) results: "))
+                except ValueError:
+                    print("Invalid value")
+                else:
+                    break
+            number
+            print()
+            for _ in range(number):
+                kchat = " ".join(random.choices(nano, k=random.randint(1,7)))
+                print(kchat)
+                print(kchat, file=g)
+            print()
+            print("this saved to ghost.txt")
 
         def monitor_start():
             maroon = " st"
@@ -7438,7 +7457,7 @@ def main():
                 ct = datetime.datetime.now()
                 print(usr, choice, ct, file=z)
 
-                if choice == "version" or choice == "about":
+                if choice == "version" or choice == "about" or choice == "intro":
                     version()
 
                 if choice == "commands" or choice == "help" or choice == "-help" or choice == "--help":
@@ -7935,6 +7954,9 @@ def main():
 
                 if choice == "ghost write" or choice == "Ghost Write" or choice == "GW" or choice == "gw" or choice == "ghost code":
                     ghost_write()
+
+                if choice == "insta ghost write" or choice == "Insta Ghost Write" or choice == "IGW" or choice == "igw" or choice == "insta ghost code" or choice == "iGW" or choice == "insta GW" or choice == "insta gw":
+                    insta_ghost_write()
 
                 if choice == "soundstream" or choice == "sst" or choice == "SST" or choice == "sound stream" or choice == "stream sound" or choice == "streamsound":
                     sound_stream()
