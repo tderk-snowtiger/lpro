@@ -7,9 +7,9 @@ to install (distributable package = mdcci, enters lpro-s and has option to switc
 open:
 
     mdcci (default)
-    lpro
-    lpro-s
-    lxpro
+    lpro (included)
+    lpro-s (included)
+    lxpro (included)
 
 to open and set user, Nano EST Charset, and display version/intro:
 
