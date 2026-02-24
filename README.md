@@ -1,4 +1,5 @@
 # a simplified version of MProcs
+Files here are for documentation purposes and research. The distributable package 'mdcci' is installed as a single module from pip/pipx directory directly.
 
 to install (distributable package = mdcci, enters lpro-s and has option to switch to lpro):
 
