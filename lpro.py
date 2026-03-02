@@ -661,7 +661,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.6{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.8{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -769,6 +769,22 @@ def main():
             print(star, dash, chchars_str, dash, result, dash, ct)
             print(usr, star, dash, chchars_str, dash, result, dash, ct, file=z)
 
+        def n1():
+            global omit_result
+            dd = (diction)
+            ddd = session.current_charset if session.current_charset else current_ddd
+            ct = datetime.datetime.now()
+            cchar = random.choices(ddd, k=random.randint(1,7))
+            chchars_str = ''.join(cchar)
+            if omit_result:
+                result = ""
+            else:
+                result = "".join(random.choice(dd))
+            star = "&"
+            dash = ""
+            print(star, dash, chchars_str, dash, result, dash, ct)
+            print(usr, star, dash, chchars_str, dash, result, dash, ct, file=z)
+
         def kata():
             dd = (diction)
             kk = (katakana)
@@ -818,7 +834,7 @@ def main():
 
         def commands():
             print()
-            print(" version | switch/lpro-s [lx] | [blank input] for nano | nano characters [nanochars/nnc] | katakana [kata/b] | jamo [hangu/n] | chi [++] | profile | note / journal / save | pwd / ls / cd / clear [cl] / mkdir / rm | type-text | search")
+            print(" version | switch/lpro-s [lx] | [blank input] for nano / 1-nano [n1/3 spaces] | nano characters [nanochars/nnc] | katakana [kata/b] | jamo [hangu/n] | chi [++] | profile | note / journal / save | pwd / ls / cd / clear [cl] / mkdir / rm | type-text | search")
             print()
             print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: cbmp, cmbpc, xcbmp, xcbmpc, hbmp, hbmpc, xhbmp, xhbmpc, jbmp, jbmpc, xjbmp, xjbmpc, fbmp, xfbmp")
             print()
@@ -3250,7 +3266,7 @@ def main():
             for _ in range(number):
                 print()
                 time.sleep(2)
-                function_list = [version, print_time, pray, climb, prayer, stats, progress, light_incense, hebrews, teletubby, legal_terms, biology, chemistry, patient_simu, earth_science, psychology, medicals, license, police, clearance, nano, entry, micasa, stuff, worship, posting, meditate, sleep, eat, find_coins, slot, draw_card, search_for_items, fly, drink_coffee, drink_tea, surf, collections, doodling, zen_melody, value, bump, ma, skate, art, radio, give_alms, brawl, karate, koans, hipster_tarot, hack, spar, train, rest, haiku, psalms, dhammapada, koran, message, souls, c, asciii, mp3, monopoly, equips, rpg, archery, color_key, magic, football, mapp, ID, IDC, fuzz, msgs, tag, atag, frames, chichars, tinie_N, kata, hangu, generate_secure_string, pr0verbs, insta_ghost_write]
+                function_list = [version, print_time, pray, climb, prayer, stats, progress, light_incense, hebrews, teletubby, legal_terms, biology, chemistry, patient_simu, earth_science, psychology, medicals, license, police, clearance, nano, entry, micasa, stuff, worship, posting, meditate, sleep, eat, find_coins, slot, draw_card, search_for_items, fly, drink_coffee, drink_tea, surf, collections, doodling, zen_melody, value, bump, ma, skate, art, radio, give_alms, brawl, karate, koans, hipster_tarot, hack, spar, train, rest, haiku, psalms, dhammapada, koran, message, souls, c, asciii, mp3, monopoly, equips, rpg, archery, color_key, magic, football, mapp, ID, IDC, fuzz, msgs, tag, atag, frames, chichars, tinie_N, kata, hangu, generate_secure_string, pr0verbs, insta_ghost_write, n1]
                 random.choice(function_list)()
             print()
             print(file=z)
@@ -7569,8 +7585,11 @@ def main():
                 if choice == "Clearance":
                     clearance()
 
-                if choice == "":
+                if choice == "" or choice == "nano":
                     nano()
+
+                if choice == "n1" or choice == "   " or choice == "1-nano" or choice == "1nano":
+                    n1()
 
                 if choice == "katakana" or choice == "kata" or choice == "b":
                     kata()
@@ -7971,6 +7990,7 @@ def main():
         parser.add_argument("--version", "--about", "--wm", "--intro", action="store_true", help="Display intro, version, and welcome message")
         parser.add_argument("--x", "--c", "--exit", "--close", action="store_true", help="Don't continue the program")
         parser.add_argument("-nano", "-n", action="store_true")
+        parser.add_argument("-n1", "-1nano", action="store_true")
         parser.add_argument("-lh", "-message", action="store_true")
         parser.add_argument("-cai", "-ges", action="store_true")
         parser.add_argument("-print-time", action="store_true")
@@ -8119,6 +8139,7 @@ def main():
         parser.add_argument("-xfbmp", action="store_true")
         parser.add_argument("-gen-string", "-gstring", action="store_true")
         parser.add_argument("-ghost-write", "-gw", action="store_true")
+        parser.add_argument("-insta-ghost-write", "-igw", action="store_true")
         parser.add_argument("-sound-stream", "-sst", action="store_true")
         parser.add_argument("-mprocs-commands", action="store_true")
 
@@ -8243,6 +8264,9 @@ def main():
             
         if args.nano:
             nano()
+
+        if args.n1:
+            n1()
             
         if args.katakana:
             kata()           
@@ -8630,7 +8654,10 @@ def main():
 
         if args.ghost_write:
             ghost_write()
-            sys.exit(0)           
+            sys.exit(0)
+
+        if args.insta_ghost_write:
+            insta_ghost_write()                
 
         if args.sound_stream:
             sound_stream()
