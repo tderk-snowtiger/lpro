@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mdcci"
-version = "1.2"
+version = "1.3.1"
 description = "Extended LPro - MProcs simplified - A Life program by tderk, originally LPro.py and Destiny [2024]"
 requires-python = ">=3.8"
 readme = "README.md"
@@ -20,6 +20,8 @@ lpro = "mdcci.scripts.lpro:main"
 lpro-s = "mdcci.scripts.lpro_s:main"
 
 lxpro = "mdcci.scripts.main:run"
+
+snowtiger = "mdcci.scripts.main:run"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
