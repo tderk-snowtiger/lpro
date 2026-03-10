@@ -11,6 +11,7 @@ open:
     lpro (included)
     lpro-s (included)
     lxpro (included)
+    snowtiger (is)
 
 to open and set user, Nano EST Charset, and display version/intro:
 
