@@ -588,6 +588,8 @@ def main():
           "金", "融", "创", "新", "金", "融", "科", "技", "数", "字",
           "货", "币", "区"]
 
+    ruh = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я"]
+
     proverbs = ["The proverbs of Solomon the son of David, king of Israel;", "To know wisdom and instruction; to perceive the words of understanding;", "To receive the instruction of wisdom, justice, and judgment, and equity;", "To give subtilty to the simple, to the young man knowledge and discretion.", "A wise man will hear, and will increase learning; and a man of understanding shall attain unto wise counsels:", "To understand a proverb, and the interpretation; the words of the wise, and their dark sayings.", "The fear of the LORD is the beginning of knowledge: but fools despise wisdom and instruction.", "My son, hear the instruction of thy father, and forsake not the law of thy mother:", "For they shall be an ornament of grace unto thy head, and chains about thy neck.", "My son, if sinners entice thee, consent thou not.", "If they say, Come with us, let us lay wait for blood, let us lurk privily for the innocent without cause:", "Let us swallow them up alive as the grave; and whole, as those that go down into the pit:", "We shall find all precious substance, we shall fill our houses with spoil:", "Cast in thy lot among us; let us all have one purse:", "My son, walk not thou in the way with them; refrain thy foot from their path:", "For their feet run to evil, and make haste to shed blood.", "Surely in vain the net is spread in the sight of any bird.", "And they lay wait for their own blood; they lurk privily for their own lives.", "So are the ways of every one that is greedy of gain; which taketh away the life of the owners thereof.", "Wisdom crieth without; she uttereth her voice in the streets:", "She crieth in the chief place of concourse, in the openings of the gates: in the city she uttereth her words, saying,", "How long, ye simple ones, will ye love simplicity? and the scorners delight in their scorning, and fools hate knowledge?", "Turn you at my reproof: behold, I will pour out my spirit unto you, I will make known my words unto you.", "Because I have called, and ye refused; I have stretched out my hand, and no man regarded;", "But ye have set at nought all my counsel, and would none of my reproof:", "I also will laugh at your calamity; I will mock when your fear cometh;", "When your fear cometh as desolation, and your destruction cometh as a whirlwind; when distress and anguish cometh upon you.", "Then shall they call upon me, but I will not answer; they shall seek me early, but they shall not find me:", "For that they hated knowledge, and did not choose the fear of the LORD:", "They would none of my counsel: they despised all my reproof.", "Therefore shall they eat of the fruit of their own way, and be filled with their own devices.", "For the turning away of the simple shall slay them, and the prosperity of fools shall destroy them.", "But whoso hearkeneth unto me shall dwell safely, and shall be quiet from fear of evil.", "My son, if thou wilt receive my words, and hide my commandments with thee;", "So that thou incline thine ear unto wisdom, and apply thine heart to understanding;", "Yea, if thou criest after knowledge, and liftest up thy voice for understanding;", "If thou seekest her as silver, and searchest for her as for hid treasures;", "Then shalt thou understand the fear of the LORD, and find the knowledge of God.", "For the LORD giveth wisdom: out of his mouth cometh knowledge and understanding.", "He layeth up sound wisdom for the righteous: he is a buckler to them that walk uprightly.", "He keepeth the paths of judgment, and preserveth the way of his saints.", "Then shalt thou understand righteousness, and judgment, and equity; yea, every good path.", "When wisdom entereth into thine heart, and knowledge is pleasant unto thy soul;", "Discretion shall preserve thee, understanding shall keep thee:", "To deliver thee from the way of the evil man, from the man that speaketh froward things;", "Who leave the paths of uprightness, to walk in the ways of darkness;", "Who rejoice to do evil, and delight in the frowardness of the wicked;", "Whose ways are crooked, and they froward in their paths:", "To deliver thee from the strange woman, even from the stranger which flattereth with her words;", "Which forsaketh the guide of her youth, and forgetteth the covenant of her God.", "For her house inclineth unto death, and her paths unto the dead.", "None that go unto her return again, neither take they hold of the paths of life.", "That thou mayest walk in the way of good men, and keep the paths of the righteous.", "For the upright shall dwell in the land, and the perfect shall remain in it.", "But the wicked shall be cut off from the earth, and the transgressors shall be rooted out of it.", "My son, forget not my law; but let thine heart keep my commandments:", "For length of days, and long life, and peace, shall they add to thee.", "Let not mercy and truth forsake thee: bind them about thy neck; write them upon the table of thine heart:", "So shalt thou find favour and good understanding in the sight of God and man.", "Trust in the LORD with all thine heart; and lean not unto thine own understanding.", "In all thy ways acknowledge him, and he shall direct thy paths.", "Be not wise in thine own eyes: fear the LORD, and depart from evil.", "It shall be health to thy navel, and marrow to thy bones.", "Honour the LORD with thy substance, and with the firstfruits of all thine increase:", "So shall thy barns be filled with plenty, and thy presses shall burst out with new wine.", "My son, despise not the chastening of the LORD; neither be weary of his correction:", "For whom the LORD loveth he correcteth; even as a father the son in whom he delighteth.", "Happy is the man that findeth wisdom, and the man that getteth understanding.", "For the merchandise of it is better than the merchandise of silver, and the gain thereof than fine gold.", "She is more precious than rubies: and all the things thou canst desire are not to be compared unto her.", "Length of days is in her right hand; and in her left hand riches and honour.", "Her ways are ways of pleasantness, and all her paths are peace.", "She is a tree of life to them that lay hold upon her: and happy is every one that retaineth her.", "The LORD by wisdom hath founded the earth; by understanding hath he established the heavens.", "By his knowledge the depths are broken up, and the clouds drop down the dew.", "My son, let not them depart from thine eyes: keep sound wisdom and discretion:", "So shall they be life unto thy soul, and grace to thy neck.", "Then shalt thou walk in thy way safely, and thy foot shall not stumble.", "When thou liest down, thou shalt not be afraid: yea, thou shalt lie down, and thy sleep shall be sweet.", "Be not afraid of sudden fear, neither of the desolation of the wicked, when it cometh.", "For the LORD shall be thy confidence, and shall keep thy foot from being taken.", "Withhold not good from them to whom it is due, when it is in the power of thine hand to do it.", "Say not unto thy neighbour, Go, and come again, and to morrow I will give; when thou hast it by thee.", "Devise not evil against thy neighbour, seeing he dwelleth securely by thee.", "Strive not with a man without cause, if he have done thee no harm.", "Envy thou not the oppressor, and choose none of his ways.", "For the froward is abomination to the LORD: but his secret is with the righteous.", "The curse of the LORD is in the house of the wicked: but he blesseth the habitation of the just.", "Surely he scorneth the scorners: but he giveth grace unto the lowly.", "The wise shall inherit glory: but shame shall be the promotion of fools.", "Hear, ye children, the instruction of a father, and attend to know understanding.", "For I give you good doctrine, forsake ye not my law.", "For I was my father's son, tender and only beloved in the sight of my mother.", "He taught me also, and said unto me, Let thine heart retain my words: keep my commandments, and live.", "Get wisdom, get understanding: forget it not; neither decline from the words of my mouth.", "Forsake her not, and she shall preserve thee: love her, and she shall keep thee.", "Wisdom is the principal thing; therefore get wisdom: and with all thy getting get understanding.", "Exalt her, and she shall promote thee: she shall bring thee to honour, when thou dost embrace her.", "She shall give to thine head an ornament of grace: a crown of glory shall she deliver to thee.", "Hear, O my son, and receive my sayings; and the years of thy life shall be many.", "I have taught thee in the way of wisdom; I have led thee in right paths.", "When thou goest, thy steps shall not be straitened; and when thou runnest, thou shalt not stumble.", "Take fast hold of instruction; let her not go: keep her; for she is thy life.", "Enter not into the path of the wicked, and go not in the way of evil men.", "Avoid it, pass not by it, turn from it, and pass away.", "For they sleep not, except they have done mischief; and their sleep is taken away, unless they cause some to fall.", "For they eat the bread of wickedness, and drink the wine of violence.", "But the path of the just is as the shining light, that shineth more and more unto the perfect day.", "The way of the wicked is as darkness: they know not at what they stumble.", "My son, attend to my words; incline thine ear unto my sayings.", "Let them not depart from thine eyes; keep them in the midst of thine heart.", "For they are life unto those that find them, and health to all their flesh.", "Keep thy heart with all diligence; for out of it are the issues of life.", "Put away from thee a froward mouth, and perverse lips put far from thee.", "Let thine eyes look right on, and let thine eyelids look straight before thee.", "Ponder the path of thy feet, and let all thy ways be established.", "Turn not to the right hand nor to the left: remove thy foot from evil.", "My son, attend unto my wisdom, and bow thine ear to my understanding:", "That thou mayest regard discretion, and that thy lips may keep knowledge.", "For the lips of a strange woman drop as an honeycomb, and her mouth is smoother than oil:", "But her end is bitter as wormwood, sharp as a two-edged sword.", "Her feet go down to death; her steps take hold on hell.", "Lest thou shouldest ponder the path of life, her ways are moveable, that thou canst not know them.", "Hear me now therefore, O ye children, and depart not from the words of my mouth.", "Remove thy way far from her, and come not nigh the door of her house:", "Lest thou give thine honour unto others, and thy years unto the cruel:", "Lest strangers be filled with thy wealth; and thy labours be in the house of a stranger;", "And thou mourn at the last, when thy flesh and thy body are consumed,", "And say, How have I hated instruction, and my heart despised reproof;", "And have not obeyed the voice of my teachers, nor inclined mine ear to them that instructed me!", "I was almost in all evil in the midst of the congregation and assembly.", "Drink waters out of thine own cistern, and running waters out of thine own well.", "Let thy fountains be dispersed abroad, and rivers of waters in the streets.", "But let them be thine own, and not strangers' with thee.", "Let thy fountain be blessed: and rejoice with the wife of thy youth.", "Let her be as the loving hind and pleasant roe; let her breasts satisfy thee at all times; and be thou ravished always with her love.", "And why wilt thou, my son, be ravished with a strange woman, and embrace the bosom of a stranger?", "For the ways of man are before the eyes of the LORD, and he pondereth all his goings.", "His own iniquities shall take the wicked himself, and he shall be holden with the cords of his sins.", "He shall die without instruction; and in the greatness of his folly he shall go astray.",\
      "My son, if thou be surety for thy friend, if thou hast stricken thy hand with a stranger,", "Thou art snared with the words of thy mouth, thou art taken with the words of thy mouth.", "Do this now, my son, and deliver thyself, when thou art come into the hand of thy friend; go, humble thyself, and make sure thy friend.", "Give not sleep to thine eyes, nor slumber to thine eyelids.", "Deliver thyself as a roe from the hand of the hunter, and as a bird from the hand of the fowler.", "Go to the ant, thou sluggard; consider her ways, and be wise:", "Which having no guide, overseer, or ruler,", "Provideth her meat in the summer, and gathereth her food in the harvest.", "How long wilt thou sleep, O sluggard? when wilt thou arise out of thy sleep?", "Yet a little sleep, a little slumber, a little folding of the hands to sleep:", "So shall thy poverty come as one that travelleth, and thy want as an armed man.", "A naughty person, a wicked man, walketh with a froward mouth.", "He winketh with his eyes, he speaketh with his feet, he teacheth with his fingers;", "Frowardness is in his heart, he deviseth mischief continually; he soweth discord.", "Therefore shall his calamity come suddenly; suddenly shall he be broken without remedy.", "These six things doth the LORD hate: yea, seven are an abomination unto him:", "A proud look, a lying tongue, and hands that shed innocent blood,", "An heart that deviseth wicked imaginations, feet that be swift in running to mischief,", "A false witness that speaketh lies, and he that soweth discord among brethren.", "My son, keep thy father's commandment, and forsake not the law of thy mother:", "Bind them continually upon thine heart, and tie them about thy neck.", "When thou goest, it shall lead thee; when thou sleepest, it shall keep thee; and when thou awakest, it shall talk with thee.", "For the commandment is a lamp; and the law is light; and reproofs of instruction are the way of life:", "To keep thee from the evil woman, from the flattery of the tongue of a strange woman.", "Lust not after her beauty in thine heart; neither let her take thee with her eyelids.", "For by means of a whorish woman a man is brought to a piece of bread: and the adulteress will hunt for the precious life.", "Can a man take fire in his bosom, and his clothes not be burned?", "Can one go upon hot coals, and his feet not be burned?", "So he that goeth in to his neighbour's wife; whosoever toucheth her shall not be innocent.", "Men do not despise a thief, if he steal to satisfy his soul when he is hungry;", "But if he be found, he shall restore sevenfold; he shall give all the substance of his house.", "But whoso committeth adultery with a woman lacketh understanding: he that doeth it destroyeth his own soul.", "A wound and dishonour shall he get; and his reproach shall not be wiped away.", "For jealousy is the rage of a man: therefore he will not spare in the day of vengeance.", "He will not regard any ransom; neither will he rest content, though thou givest many gifts.", "My son, keep my words, and lay up my commandments with thee.", "Keep my commandments, and live; and my law as the apple of thine eye.", "Bind them upon thy fingers, write them upon the table of thine heart.", "Say unto wisdom, Thou art my sister; and call understanding thy kinswoman:", "That they may keep thee from the strange woman, from the stranger which flattereth with her words.", "For at the window of my house I looked through my casement,", "And beheld among the simple ones, I discerned among the youths, a young man void of understanding,", "Passing through the street near her corner; and he went the way to her house,", "In the twilight, in the evening, in the black and dark night:", "And, behold, there met him a woman with the attire of an harlot, and subtil of heart.", "She is loud and stubborn; her feet abide not in her house:", "Now is she without, now in the streets, and lieth in wait at every corner.)", "So she caught him, and kissed him, and with an impudent face said unto him,", "I have peace offerings with me; this day have I payed my vows.", "Therefore came I forth to meet thee, diligently to seek thy face, and I have found thee.", "I have decked my bed with coverings of tapestry, with carved works, with fine linen of Egypt.", "I have perfumed my bed with myrrh, aloes, and cinnamon.", "Come, let us take our fill of love until the morning: let us solace ourselves with loves.", "For the goodman is not at home, he is gone a long journey:", "He hath taken a bag of money with him, and will come home at the day appointed.", "With her much fair speech she caused him to yield, with the flattering of her lips she forced him.", "He goeth after her straightway, as an ox goeth to the slaughter, or as a fool to the correction of the stocks;", "Till a dart strike through his liver; as a bird hasteth to the snare, and knoweth not that it is for his life.", "Hearken unto me now therefore, O ye children, and attend to the words of my mouth.", "Let not thine heart decline to her ways, go not astray in her paths.", "For she hath cast down many wounded: yea, many strong men have been slain by her.", "Her house is the way to hell, going down to the chambers of death.", "Doth not wisdom cry? and understanding put forth her voice?", "She standeth in the top of high places, by the way in the places of the paths.", "She crieth at the gates, at the entry of the city, at the coming in at the doors.", "Unto you, O men, I call; and my voice is to the sons of man.", "O ye simple, understand wisdom: and, ye fools, be ye of an understanding heart.", "Hear; for I will speak of excellent things; and the opening of my lips shall be right things.", "For my mouth shall speak truth; and wickedness is an abomination to my lips.", "All the words of my mouth are in righteousness; there is nothing froward or perverse in them.", "They are all plain to him that understandeth, and right to them that find knowledge.", "Receive my instruction, and not silver; and knowledge rather than choice gold.", "For wisdom is better than rubies; and all the things that may be desired are not to be compared to it.", "I wisdom dwell with prudence, and find out knowledge of witty inventions.", "The fear of the LORD is to hate evil: pride, and arrogancy, and the evil way, and the froward mouth, do I hate.", "Counsel is mine, and sound wisdom: I am understanding; I have strength.", "By me kings reign, and princes decree justice.", "By me princes rule, and nobles, even all the judges of the earth.", "I love them that love me; and those that seek me early shall find me.", "Riches and honour are with me; yea, durable riches and righteousness.", "My fruit is better than gold, yea, than fine gold; and my revenue than choice silver.", "I lead in the way of righteousness, in the midst of the paths of judgment:", "That I may cause those that love me to inherit substance; and I will fill their treasures.", "The LORD possessed me in the beginning of his way, before his works of old.", "I was set up from everlasting, from the beginning, or ever the earth was.", "When there were no depths, I was brought forth; when there were no fountains abounding with water.", "Before the mountains were settled, before the hills was I brought forth:", "While as yet he had not made the earth, nor the fields, nor the highest part of the dust of the world.", "When he prepared the heavens, I was there: when he set a compass upon the face of the depth:", "When he established the clouds above: when he strengthened the fountains of the deep:", "When he gave to the sea his decree, that the waters should not pass his commandment: when he appointed the foundations of the earth:", "Then I was by him, as one brought up with him: and I was daily his delight, rejoicing always before him;", "Rejoicing in the habitable part of his earth; and my delights were with the sons of men.", "Now therefore hearken unto me, O ye children: for blessed are they that keep my ways.", "Hear instruction, and be wise, and refuse it not.", "Blessed is the man that heareth me, watching daily at my gates, waiting at the posts of my doors.", "For whoso findeth me findeth life, and shall obtain favour of the LORD.", "But he that sinneth against me wrongeth his own soul: all they that hate me love death.", "Wisdom hath builded her house, she hath hewn out her seven pillars:", "She hath killed her beasts; she hath mingled her wine; she hath also furnished her table.", "She hath sent forth her maidens: she crieth upon the highest places of the city,", "Whoso is simple, let him turn in hither: as for him that lacketh understanding, she saith to him,", "Come, eat of my bread, and drink of the wine which I have mingled.", "Forsake the foolish, and live; and go in the way of understanding.", "He that reproveth a scorner getteth to himself shame: and he that rebuketh a wicked man getteth himself a blot.", "Reprove not a scorner, lest he hate thee: rebuke a wise man, and he will love thee.", "Give instruction to a wise man, and he will be yet wiser: teach a just man, and he will increase in learning.", "The fear of the LORD is the beginning of wisdom: and the knowledge of the holy is understanding.", "For by me thy days shall be multiplied, and the years of thy life shall be increased.", "If thou be wise, thou shalt be wise for thyself: but if thou scornest, thou alone shalt bear it.", "A foolish woman is clamorous: she is simple, and knoweth nothing.", "For she sitteth at the door of her house, on a seat in the high places of the city,", "To call passengers who go right on their ways:", "Whoso is simple, let him turn in hither: and as for him that lacketh understanding, she saith to him,", "Stolen waters are sweet, and bread eaten in secret is pleasant.", "But he knoweth not that the dead are there; and that her guests are in the depths of hell.", "The proverbs of Solomon. A wise son maketh a glad father: but a foolish son is the heaviness of his mother.", "Treasures of wickedness profit nothing: but righteousness delivereth from death.", "The LORD will not suffer the soul of the righteous to famish: but he casteth away the substance of the wicked.", "He becometh poor that dealeth with a slack hand: but the hand of the diligent maketh rich.", "He that gathereth in summer is a wise son: but he that sleepeth in harvest is a son that causeth shame.", "Blessings are upon the head of the just: but violence covereth the mouth of the wicked.", "The memory of the just is blessed: but the name of the wicked shall rot.", "The wise in heart will receive commandments: but a prating fool shall fall.", "He that walketh uprightly walketh surely: but he that perverteth his ways shall be known.", "He that winketh with the eye causeth sorrow: but a prating fool shall fall.", "The mouth of the righteous is a well of life: but violence covereth the mouth of the wicked.", "Hatred stirreth up strifes: but love covereth all sins.", "In the lips of him that hath understanding wisdom is found: but a rod is for the back of him that is void of understanding.", "Wise men lay up knowledge: but the mouth of the foolish is near destruction.", "The rich man's wealth is his strong city: the destruction of the poor is their poverty.", "The labour of the righteous tendeth to life: the fruit of the wicked to sin.", "He is in the way of life that keepeth instruction: but he that refuseth reproof erreth.", "He that hideth hatred with lying lips, and he that uttereth a slander, is a fool.", "In the multitude of words there wanteth not sin: but he that refraineth his lips is wise.", "The tongue of the just is as choice silver: the heart of the wicked is little worth.", "The lips of the righteous feed many: but fools die for want of wisdom.", "The blessing of the LORD, it maketh rich, and he addeth no sorrow with it.", "It is as sport to a fool to do mischief: but a man of understanding hath wisdom.", "The fear of the wicked, it shall come upon him: but the desire of the righteous shall be granted.", "As the whirlwind passeth, so is the wicked no more: but the righteous is an everlasting foundation.", "As vinegar to the teeth, and as smoke to the eyes, so is the sluggard to them that send him.", "The fear of the LORD prolongeth days: but the years of the wicked shall be shortened.", "The hope of the righteous shall be gladness: but the expectation of the wicked shall perish.", "The way of the LORD is strength to the upright: but destruction shall be to the workers of iniquity.", "The righteous shall never be removed: but the wicked shall not inhabit the earth.", "The mouth of the just bringeth forth wisdom: but the froward tongue shall be cut out.", "The lips of the righteous know what is acceptable: but the mouth of the wicked speaketh frowardness.",\
       "A false balance is abomination to the LORD: but a just weight is his delight.", "When pride cometh, then cometh shame: but with the lowly is wisdom.", "The integrity of the upright shall guide them: but the perverseness of transgressors shall destroy them.", "Riches profit not in the day of wrath: but righteousness delivereth from death.", "The righteousness of the perfect shall direct his way: but the wicked shall fall by his own wickedness.", "The righteousness of the upright shall deliver them: but transgressors shall be taken in their own naughtiness.", "When a wicked man dieth, his expectation shall perish: and the hope of unjust men perisheth.", "The righteous is delivered out of trouble, and the wicked cometh in his stead.", "An hypocrite with his mouth destroyeth his neighbour: but through knowledge shall the just be delivered.", "When it goeth well with the righteous, the city rejoiceth: and when the wicked perish, there is shouting.", "By the blessing of the upright the city is exalted: but it is overthrown by the mouth of the wicked.", "He that is void of wisdom despiseth his neighbour: but a man of understanding holdeth his peace.", "A talebearer revealeth secrets: but he that is of a faithful spirit concealeth the matter.", "Where no counsel is, the people fall: but in the multitude of counsellors there is safety.", "He that is surety for a stranger shall smart for it: and he that hateth suretiship is sure.", "A gracious woman retaineth honour: and strong men retain riches.", "The merciful man doeth good to his own soul: but he that is cruel troubleth his own flesh.", "The wicked worketh a deceitful work: but to him that soweth righteousness shall be a sure reward.", "As righteousness tendeth to life: so he that pursueth evil pursueth it to his own death.", "They that are of a froward heart are abomination to the LORD: but such as are upright in their way are his delight.", "Though hand join in hand, the wicked shall not be unpunished: but the seed of the righteous shall be delivered.", "As a jewel of gold in a swine's snout, so is a fair woman which is without discretion.", "The desire of the righteous is only good: but the expectation of the wicked is wrath.", "There is that scattereth, and yet increaseth; and there is that withholdeth more than is meet, but it tendeth to poverty.", "The liberal soul shall be made fat: and he that watereth shall be watered also himself.", "He that withholdeth corn, the people shall curse him: but blessing shall be upon the head of him that selleth it.", "He that diligently seeketh good procureth favour: but he that seeketh mischief, it shall come unto him.", "He that trusteth in his riches shall fall: but the righteous shall flourish as a branch.", "He that troubleth his own house shall inherit the wind: and the fool shall be servant to the wise of heart.", "The fruit of the righteous is a tree of life; and he that winneth souls is wise.", "Behold, the righteous shall be recompensed in the earth: much more the wicked and the sinner.", "Whoso loveth instruction loveth knowledge: but he that hateth reproof is brutish.", "A good man obtaineth favour of the LORD: but a man of wicked devices will he condemn.", "A man shall not be established by wickedness: but the root of the righteous shall not be moved.", "A virtuous woman is a crown to her husband: but she that maketh ashamed is as rottenness in his bones.", "The thoughts of the righteous are right: but the counsels of the wicked are deceit.", "The words of the wicked are to lie in wait for blood: but the mouth of the upright shall deliver them.", "The wicked are overthrown, and are not: but the house of the righteous shall stand.", "A man shall be commended according to his wisdom: but he that is of a perverse heart shall be despised.", "He that is despised, and hath a servant, is better than he that honoureth himself, and lacketh bread.", "A righteous man regardeth the life of his beast: but the tender mercies of the wicked are cruel.", "He that tilleth his land shall be satisfied with bread: but he that followeth vain persons is void of understanding.", "The wicked desireth the net of evil men: but the root of the righteous yieldeth fruit.", "The wicked is snared by the transgression of his lips: but the just shall come out of trouble.", "A man shall be satisfied with good by the fruit of his mouth: and the recompence of a man's hands shall be rendered unto him.", "The way of a fool is right in his own eyes: but he that hearkeneth unto counsel is wise.", "A fool's wrath is presently known: but a prudent man covereth shame.", "He that speaketh truth sheweth forth righteousness: but a false witness deceit.", "There is that speaketh like the piercings of a sword: but the tongue of the wise is health.", "The lip of truth shall be established for ever: but a lying tongue is but for a moment.", "Deceit is in the heart of them that imagine evil: but to the counsellors of peace is joy.", "No grave trouble shall happen to the just: but the wicked shall be filled with evil.", "Lying lips are abomination to the LORD: but they that deal truly are his delight.", "A prudent man concealeth knowledge: but the heart of fools proclaimeth foolishness.", "The hand of the diligent shall bear rule: but the slothful shall be under tribute.", "Heaviness in the heart of man maketh it stoop: but a good word maketh it glad.", "The righteous is more excellent than his neighbour: but the way of the wicked seduceth them.", "The slothful man roasteth not that which he took in hunting: but the substance of a diligent man is precious.", "In the way of righteousness is life; and in the pathway thereof there is no death.", "A wise son heareth his father's instruction: but a scorner heareth not rebuke.", "A man shall eat good by the fruit of his mouth: but the soul of the transgressors shall eat violence.", "He that keepeth his mouth keepeth his life: but he that openeth wide his lips shall have destruction.", "The soul of the sluggard desireth, and hath nothing: but the soul of the diligent shall be made fat.", "The righteous hateth lying: but the wicked maketh himself odious, and cometh to shame.", "Righteousness keepeth him that is upright in the way: but wickedness overthroweth the sinner.", "There is that maketh himself rich, yet hath nothing: there is that maketh himself poor, yet hath great riches.", "The ransom of a man's life are his riches: but the poor heareth not rebuke.", "The light of the righteous rejoiceth: but the lamp of the wicked shall be put out.", "Only by pride cometh contention: but with the well advised is wisdom.", "Wealth gotten by vanity shall be diminished: but he that gathereth by labour shall increase.", "Hope deferred maketh the heart sick: but when the desire cometh, it is a tree of life.", "Whoso despiseth the word shall be destroyed: but he that feareth the commandment shall be rewarded.", "The law of the wise is a fountain of life, to depart from the snares of death.", "Good understanding giveth favour: but the way of transgressors is hard.", "Every prudent man dealeth with knowledge: but a fool layeth open his folly.", "A wicked messenger falleth into mischief: but a faithful ambassador is health.", "Poverty and shame shall be to him that refuseth instruction: but he that regardeth reproof shall be honoured.", "The desire accomplished is sweet to the soul: but it is abomination to fools to depart from evil.", "He that walketh with wise men shall be wise: but a companion of fools shall be destroyed.", "Evil pursueth sinners: but to the righteous good shall be repayed.", "A good man leaveth an inheritance to his children's children: and the wealth of the sinner is laid up for the just.", "Much food is in the tillage of the poor: but there is that is destroyed for want of judgment.", "He that spareth his rod hateth his son: but he that loveth him chasteneth him betimes.", "The righteous eateth to the satisfying of his soul: but the belly of the wicked shall want.", "A wise woman buildeth her house: but the foolish plucketh it down with her hands.", "He that walketh in his uprightness feareth the LORD: but he that is perverse in his ways despiseth him.", "In the mouth of the foolish is a rod of pride: but the lips of the wise shall preserve them.", "Where no oxen are, the crib is clean: but much increase is by the strength of the ox.", "A faithful witness will not lie: but a false witness will utter lies.", "A scorner seeketh wisdom, and findeth it not: but knowledge is easy unto him that understandeth.", "Go from the presence of a foolish man, when thou perceivest not in him the lips of knowledge.", "The wisdom of the prudent is to understand his way: but the folly of fools is deceit.", "Fools make a mock at sin: but among the righteous there is favour.", "The heart knoweth his own bitterness; and a stranger doth not intermeddle with his joy.", "The house of the wicked shall be overthrown: but the tabernacle of the upright shall flourish.", "There is a way which seemeth right unto a man, but the end thereof are the ways of death.", "Even in laughter the heart is sorrowful; and the end of that mirth is heaviness.", "The backslider in heart shall be filled with his own ways: and a good man shall be satisfied from himself.", "The simple believeth every word: but the prudent man looketh well to his going.", "A wise man feareth, and departeth from evil: but the fool rageth, and is confident.", "He that is soon angry dealeth foolishly: and a man of wicked devices is hated.", "The simple inherit folly: but the prudent are crowned with knowledge.", "The evil bow before the good; and the wicked at the gates of the righteous.", "The poor is hated even of his own neighbour: but the rich hath many friends.", "He that despiseth his neighbour sinneth: but he that hath mercy on the poor, happy is he.", "Do they not err that devise evil? but mercy and truth shall be to them that devise good.", "In all labour there is profit: but the talk of the lips tendeth only to penury.", "The crown of the wise is their riches: but the foolishness of fools is folly.", "A true witness delivereth souls: but a deceitful witness speaketh lies.", "In the fear of the LORD is strong confidence: and his children shall have a place of refuge.", "The fear of the LORD is a fountain of life, to depart from the snares of death.", "In the multitude of people is the king's honour: but in the want of people is the destruction of the prince.", "He that is slow to wrath is of great understanding: but he that is hasty of spirit exalteth folly.", "A sound heart is the life of the flesh: but envy the rottenness of the bones.", "He that oppresseth the poor reproacheth his Maker: but he that honoureth him hath mercy on the poor.", "The wicked is driven away in his wickedness: but the righteous hath hope in his death.", "Wisdom resteth in the heart of him that hath understanding: but that which is in the midst of fools is made known.", "Righteousness exalteth a nation: but sin is a reproach to any people.", "The king's favour is toward a wise servant: but his wrath is against him that causeth shame.", "A soft answer turneth away wrath: but grievous words stir up anger.", "The tongue of the wise useth knowledge aright: but the mouth of fools poureth out foolishness.", "The eyes of the LORD are in every place, beholding the evil and the good.", "A wholesome tongue is a tree of life: but perverseness therein is a breach in the spirit.", "A fool despiseth his father's instruction: but he that regardeth reproof is prudent.", "In the house of the righteous is much treasure: but in the revenues of the wicked is trouble.", "The lips of the wise disperse knowledge: but the heart of the foolish doeth not so.", "The sacrifice of the wicked is an abomination to the LORD: but the prayer of the upright is his delight.", "The way of the wicked is an abomination unto the LORD: but he loveth him that followeth after righteousness.", "Correction is grievous unto him that forsaketh the way: and he that hateth reproof shall die.", "Hell and destruction are before the LORD: how much more then the hearts of the children of men?", "A scorner loveth not one that reproveth him: neither will he go unto the wise.", "A merry heart maketh a cheerful countenance: but by sorrow of the heart the spirit is broken.", "The heart of him that hath understanding seeketh knowledge: but the mouth of fools feedeth on foolishness.", "All the days of the afflicted are evil: but he that is of a merry heart hath a continual feast.", "Better is little with the fear of the LORD than great treasure and trouble therewith.", "Better is a dinner of herbs where love is, than a stalled ox and hatred therewith.", "A wrathful man stirreth up strife: but he that is slow to anger appeaseth strife.", "The way of the slothful man is as an hedge of thorns: but the way of the righteous is made plain.", "A wise son maketh a glad father: but a foolish man despiseth his mother.", "Folly is joy to him that is destitute of wisdom: but a man of understanding walketh uprightly.", "Without counsel purposes are disappointed: but in the multitude of counsellors they are established.", "A man hath joy by the answer of his mouth: and a word spoken in due season, how good is it!", "The way of life is above to the wise, that he may depart from hell beneath.", "The LORD will destroy the house of the proud: but he will establish the border of the widow.", "The thoughts of the wicked are an abomination to the LORD: but the words of the pure are pleasant words.", "He that is greedy of gain troubleth his own house; but he that hateth gifts shall live.", "The heart of the righteous studieth to answer: but the mouth of the wicked poureth out evil things.", "The LORD is far from the wicked: but he heareth the prayer of the righteous.", "The light of the eyes rejoiceth the heart: and a good report maketh the bones fat.", "The ear that heareth the reproof of life abideth among the wise.", "He that refuseth instruction despiseth his own soul: but he that heareth reproof getteth understanding.", "The fear of the LORD is the instruction of wisdom; and before honour is humility.",\
@@ -603,7 +605,7 @@ def main():
         global current_ddd, omit_result
         
         while True:
-            choice = provided_choice if provided_choice else input("Nano EST Charset - 1. Korean 2. Chinese 3. Japanese 4. Alphanumeric 5. None/English (add 'a' for English toggle): ").strip()
+            choice = provided_choice if provided_choice else input("Nano EST Charset - 1. Korean 2. Chinese 3. Japanese 4. Alphanumeric 5. Russian 6. None/English (add 'a' for English toggle): ").strip()
             
             c = choice.lower().replace(" ", "") 
 
@@ -613,7 +615,7 @@ def main():
                 current_ddd = chi_chars
             elif c in ['3', 'japanese', 'j']:
                 current_ddd = katakana
-            elif c in ['5', 'none']:
+            elif c in ['6', 'none']:
                 current_ddd, omit_result = [""], False
             elif c in ['1a', '1-a', 'koreana', 'korean-a', 'ka', 'k-a']:
                 current_ddd, omit_result = jamo, not omit_result
@@ -625,9 +627,13 @@ def main():
                 current_ddd = alphabeta
             elif c in ['alphanumerica', 'alphanumerica-a', "ana", "an-a", "4a", "4-a"]:
                 current_ddd, omit_result = alphabeta, not omit_result
+            elif c in ["russian", "ru", "5"]:
+                current_ddd = ruh
+            elif c in ['russiana', 'russian-a', "rua", "ru-a", "5a", "5-a"]:
+                current_ddd, omit_result = ruh, not omit_result
             elif c in ['a']:
                 omit_result = not omit_result
-            elif c in ['5a', '5-a']:
+            elif c in ['6a', '6-a']:
                 current_ddd, omit_result = [""], not omit_result
             else:
                 print("Invalid input")
@@ -667,7 +673,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.9{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.10{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -763,7 +769,7 @@ def main():
             dd = (diction)
             ddd = session.current_charset if session.current_charset else current_ddd
             ct = datetime.datetime.now()
-            cchar = random.choices(ddd, k=random.randint(1,7))
+            cchar = random.choices(ddd, k=random.randint(1,8))
             chchars_str = ''.join(cchar)
             if omit_result:
                 result = ""
@@ -823,9 +829,33 @@ def main():
             macchar_str = ''.join(macchar)
             nano = (random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd))
             result = "  ".join(random.sample(dd, random.randint(1, 9)))
-            marts = "++"
+            marts = "+++"
             print(marts, macchar_str, result, ct)
             print(usr, marts, macchar_str, result, ct, file=z)
+
+        def aans():
+            dd = (diction)
+            ans = (alphabeta)
+            ct = datetime.datetime.now()
+            anschar = random.choices(ans, k=random.randint(1,9))
+            anschar_str = ''.join(anschar)
+            nano = (random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd))
+            result = "  ".join(random.sample(dd, random.randint(1, 9)))
+            ansarts = "@@@"
+            print(ansarts, anschar_str, result, ct)
+            print(usr, ansarts, anschar_str, result, ct, file=z)
+
+        def ruuh():
+            dd = (diction)
+            ru = (ruh)
+            ct = datetime.datetime.now()
+            ruchar = random.choices(ru, k=random.randint(1,10))
+            ruchar_str = ''.join(ruchar)
+            nano = (random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd))
+            result = "  ".join(random.sample(dd, random.randint(1, 9)))
+            rarts = "%%%"
+            print(rarts, ruchar_str, result, ct)
+            print(usr, rarts, ruchar_str, result, ct, file=z)
 
         def tinie_N():
             an = (fcci)
@@ -840,11 +870,11 @@ def main():
 
         def commands():
             print()
-            print(" version | switch/lpro-s [lx] | [blank input] for nano / 1-nano [n1/3 spaces] | nano characters [nanochars/nnc] | katakana [kata/b] | jamo [hangu/n] | chi [++] | profile | note / journal / save | pwd / ls / cd / clear [cl] / mkdir / rm | type-text | search")
+            print(" version | switch/lpro-s [lx] | [blank input] for nano / 1-nano [n1/3 spaces] | nano characters [nanochars/nnc] | katakana [kata/b] | jamo [hangu/n] | chi [++] | ans [@@] | ruh [%%] | profile | note / journal / save | pwd / ls / cd / clear [cl] / mkdir / rm | type-text | search")
             print()
             print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: cbmp, cmbpc, xcbmp, xcbmpc, hbmp, hbmpc, xhbmp, xhbmpc, jbmp, jbmpc, xjbmp, xjbmpc, fbmp, xfbmp")
             print()
-            print(" | insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
+            print(" | ruh-time-call [RTC], ruh-monitor [rmonitor], insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
             print()
             print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}, monitor-search [msearch], acad-search [asearch]")
 
@@ -3397,6 +3427,34 @@ def main():
                 print("ERROR: Neither 'termux-tts-speak' nor 'espeak' was found.")
                 print("Install 'termux-api' (and the Android Termux:API app) or 'sudo apt install espeak / pkg install espeak'.")
 
+        def spik(text):
+            if platform.system() == "Linux" and shutil.which("termux-tts-speak"):
+                try:
+                    subprocess.run(["termux-tts-speak", text], check=True)
+                    return
+                except subprocess.CalledProcessError as e:
+                    print(f"Termux-TTS error: {e}")
+                except FileNotFoundError:
+                    pass
+
+            if shutil.which("espeak"):
+                try:
+                    if platform.system() == "Windows":
+                        subprocess.run(["espeak", "-v", "ru+f2", text], check=True)
+                    else:
+                        subprocess.run(["espeak", "-v", "ru+f2", text], check=True)
+                    return
+                except subprocess.CalledProcessError as e:
+                    print(f"eSpeak error: {e}")
+                    return
+                except Exception as e:
+                    print(f"An unexpected error occurred with eSpeak: {e}")
+                    return d
+            else:
+                print()
+                print("ERROR: Neither 'termux-tts-speak' nor 'espeak' was found.")
+                print("Install 'termux-api' (and the Android Termux:API app) or 'sudo apt install espeak / pkg install espeak'.")
+
         def call():
             maroon = " st"
             nano = (diction)
@@ -3489,6 +3547,62 @@ def main():
                 speak(result_text)
                 print()
                 print(file=c)
+                time.sleep(buffer)
+            
+            def main_loop():
+                while True:
+                    generate_random_result()
+
+            try:
+                main_loop()
+            except KeyboardInterrupt:
+                print("\nStopped by user.")
+
+        def ruh_time_call():
+            maroon = " st"
+            
+            nano = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+            title = input("ruh-TC name: ")
+            r = open("ruh-call-logs.txt", "a", buffering=1)
+            ct = datetime.datetime.now()
+            while True:
+                try:
+                    buffer = float(input("time-buffer in seconds: "))
+                except ValueError:
+                    print("Invalid value")
+                else:
+                    break
+            buffer
+            monitor = "ruh-TC-start:"
+            print(usr, monitor, title, ct)
+            print(usr, monitor, title, ct, file=z)
+            print(usr, monitor, title, ct, file=r)
+            print()
+            print(file=z)
+            print("*this saves to call-logs.txt* Ctrl+C to stop")
+            print()
+            print(file=r)
+            def generate_random_result():
+                ctm = datetime.datetime.now()
+                def generate_random_letters():
+                    random1 = random.choice(string.ascii_letters)
+                    random2 = random.choice(string.ascii_letters)
+                    random3 = random.choice(string.ascii_letters)
+                    letters = [random1, random2, random3]
+                    return letters
+                spik("alert!")
+                time.sleep(1.6)
+                random_letters = generate_random_letters()
+                sitch  = (round(random.random()*9999,4))
+                kchat = random.sample(nano, random.randint(1,7))
+                random_result = random.choices(nano, k=random.randint(1,22))
+                result_text = "".join(random_result)
+                print(maroon, random_letters, sitch, result_text, ctm)
+                print(maroon, random_letters, sitch, result_text, ctm, file=r)
+                spik(result_text)
+                print()
+                print(file=r)
                 time.sleep(buffer)
             
             def main_loop():
@@ -3628,6 +3742,53 @@ def main():
                 print(maroon, random_letters, sitch, cchat, ctm, file=l)
                 print()
                 print(file=l)
+
+            def main_loop():
+                while True:
+                    time.sleep(random.randint(0,5))
+                    integer = (round(random.random()*25))
+                    if integer > 15:
+                        if random.choice([True, False]):
+                            generate_random_result()
+
+            try:
+                main_loop()
+            except KeyboardInterrupt:
+                print("\nStopped by user.")
+
+        def ruh_monitor():
+            maroon = " st"
+            
+            nano = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+            title = input("ruh-monitor name: ")
+            w = open("ruh-monitor-logs.txt", "a", buffering=1)
+            ct = datetime.datetime.now()
+            monitor = "ruh-monitor-start:"
+            print(usr, monitor, title, ct)
+            print(usr, monitor, title, ct, file=z)
+            print(usr, monitor, title, ct, file=w)
+            print()
+            print(file=z)
+            print("*this saves to ruh-monitor-logs.txt* Ctrl+C to stop")
+            print()
+            print(file=w)
+            def generate_random_result():
+                ctm = datetime.datetime.now()
+                def generate_random_letters():
+                    random1 = random.choice(string.ascii_letters)
+                    random2 = random.choice(string.ascii_letters)
+                    random3 = random.choice(string.ascii_letters)
+                    letters = [random1, random2, random3]
+                    return letters
+                random_letters = generate_random_letters()
+                sitch  = (round(random.random()*9999,4))
+                kkhat = random.choices(nano, k=random.randint(1,22))
+                kkhat_str = ''.join(kkhat)
+                print(maroon, kkhat_str, sitch, random_letters, ctm)
+                print(maroon, kkhat_str, sitch, random_letters, file=w)
+                print()
+                print(file=w)
 
             def main_loop():
                 while True:
@@ -7606,11 +7767,20 @@ def main():
                 if choice == "chi" or choice == "CHI" or choice == "Chi" or choice == "++":
                     manton()
 
+                if choice == "ans" or choice == "@@":
+                    aans()
+
+                if choice == "ruh" or choice == "%%":
+                    ruuh()
+
                 if choice == "kata-monitor" or choice == "kata monitor" or choice == "katakana-monitor" or choice == "katakana monitor" or choice == "kk-monitor" or choice == "kk monitor" or choice == "KM":
                     kata_monitor()
 
                 if choice == "jamo-monitor" or choice == "jamo monitor" or choice == "j-monitor" or choice == "JM":
                     hangu_monitor()
+
+                if choice == "ruh monitor" or choice == "ruh-monitor" or choice == "rmonitor":
+                    ruh_monitor()
 
                 if choice == "entry":
                     entry()
@@ -7818,6 +7988,9 @@ def main():
 
                 if choice == "time-call" or choice == "time call" or choice == "TC":
                     time_call()
+
+                if choice == "RTC" or choice == "ruh time call" or choice == "ruh-time-call":
+                    ruh_time_call()
 
                 if choice == "monitor-start" or choice == "mstart":
                     monitor_start()
@@ -8034,8 +8207,11 @@ def main():
         parser.add_argument("-katakana", "-kata", action="store_true")
         parser.add_argument("-jamo", "-hangu", action="store_true")
         parser.add_argument("-chi", action="store_true")
+        parser.add_argument("-ans", action="store_true")
+        parser.add_argument("-ruh", action="store_true")
         parser.add_argument("-kata-monitor", "-km", action="store_true")
         parser.add_argument("-jamo-monitor", "-jm", action="store_true")
+        parser.add_argument("-ruh-monitor", "-rmonitor", action="store_true")
         parser.add_argument("-entry", action="store_true")
         parser.add_argument("-micasa", action="store_true")
         parser.add_argument("-stuff", action="store_true")
@@ -8104,6 +8280,7 @@ def main():
         parser.add_argument("-monitor-start", "-mstart", action="store_true")
         parser.add_argument("-acad-monitor", "-astart", action="store_true")
         parser.add_argument("-time-monitor", "-tmonitor", action="store_true")
+        parser.add_argument("-ruh-time-call", "-rtc", action="store_true")
         parser.add_argument("-speech-tmonitor", action="store_true")
         parser.add_argument("-acad-search", action="store_true")
         parser.add_argument("-message-scan", "-scan", action="store_true")
@@ -8281,7 +8458,13 @@ def main():
             hangu()           
 
         if args.chi:
-            manton()            
+            manton()
+
+        if args.ans:
+            aans()
+
+        if args.ruh:
+            ruuh()            
 
         if args.kata_monitor:
             kata_monitor()
@@ -8289,6 +8472,10 @@ def main():
 
         if args.jamo_monitor:
             hangu_monitor()
+            sys.exit(0)
+
+        if args.ruh_monitor:
+            ruh_monitor()
             sys.exit(0)
 
         if args.entry:
@@ -8506,6 +8693,10 @@ def main():
         if args.speech_tmonitor:
             s_time_monitor()
             sys.exit(0)
+
+        if args.ruh_time_call:
+            ruh_time_call()
+            sys.exit(0)
             
         if args.acad_search:
             asearch()
@@ -8700,6 +8891,7 @@ def main():
         o.close()
         n.close()
         h.close()
+        w.close()
         l.close()
         g.close()
 
