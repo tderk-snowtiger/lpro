@@ -649,6 +649,7 @@ def main():
         kk = (katakana)
         j = (jamo)
         cc = (chi_chars)
+        rr = (ruh)
         def generate_random_letters():
             random1 = random.choice(string.ascii_letters)
             random2 = random.choice(string.ascii_letters)
@@ -659,19 +660,21 @@ def main():
             random.shuffle(letters)
             return letters
         random_letters = generate_random_letters()
+        rrchar = random.choices(rr, k=random.randint(1,8))
         kkchar = random.choices(kk, k=random.randint(1,7))
         hchar = random.choices(j, k=random.randint(1,7))
         cchat = random.choices(cc, k=random.randint(1,5))
+        rrchar_str = ''.join(rrchar)
         kkchar_str = ''.join(kkchar)
         hchar_str = ''.join(hchar)
         value = (round(random.random()*9999999999,10))
         ct = datetime.datetime.now()
         alerts = "Alerts:"
         alert = f"{PINK}{alerts}{RESET}"
-        print(alert, value, random_letters, kkchar_str, cchat, hchar_str, ct)
+        print(alert, value, random_letters, kkchar_str, cchat, hchar_str, rrchar_str, ct)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.10-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.11-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -859,7 +862,7 @@ def main():
             print()
             print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: xcbmp, xcbmpc, xhbmp, xhbmpc, xjbmp, xjbmpc, xfbmp")
             print()
-            print(" | ruh-time-call [RTC], ruh-monitor [rmonitor], insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], police (prad), CAI Environments (CAI/GES), time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]")
+            print(" | cburner/ctburner, ruh-time-call [RTC], ruh-monitor [rmonitor], insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], police (prad), CAI Environments (CAI/GES), time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]")
             print()
             print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}")
 
@@ -5014,6 +5017,46 @@ def main():
                 sitch  = (round(random.random()*999999999999999,5))
                 kchat = random.sample(nano, random.randint(1,2))
                 print(title, ctm, random_letters, sitch, kchat)
+
+        def cburner():
+            chi_char = (chi_chars)
+            print("Not recording")
+            print()
+            time.sleep(.4)
+            title = input("c-burn name: ")
+            ct = datetime.datetime.now()
+            monitor = "c-burner-start:"
+            print(usr, monitor, title, ct)
+            print()
+            print()
+            def generate_random_result():
+                ctm = datetime.datetime.now()
+                def generate_random_characters():
+                    random1 = random.choice(chi_char)
+                    random2 = random.choice(chi_char)
+                    random3 = random.choice(chi_char)
+                    random4 = random.choice(chi_char)
+                    random5 = random.choice(chi_char)
+                    random6 = random.choice(chi_char)
+                    random7 = random.choice(chi_char)
+                    random8 = random.choice(chi_char)
+                    random9 = random.choice(chi_char)
+                    random10 = random.choice(chi_char)
+                    random11 = random.choice(chi_char)
+                    random12 = random.choice(chi_char)
+                    random13 = random.choice(chi_char)
+                    random14 = random.choice(chi_char)
+                    random15 = random.choice(chi_char)
+                    random16 = random.choice(chi_char)
+                    random17 = random.choice(chi_char)
+                    random18 = random.choice(chi_char)
+                    random19 = random.choice(chi_char)
+                    random20 = random.choice(chi_char)
+                    characters = [random1, random2, random3, random4, random5, random6, random7, random8, random9, random10, random11, random12, random13, random14, random15, random16, random17, random18, random19, random20]
+                    return characters
+                random_characters = generate_random_characters()
+                sitch  = (round(random.random()*999999999999999,5))
+                print(title, ctm, random_characters, sitch)
             
             def main_loop():
                 while True:
@@ -5075,6 +5118,63 @@ def main():
                 sitch  = (round(random.random()*999999999999999,5))
                 kchat = random.sample(nano, random.randint(1,2))
                 print(title, ctm, random_letters, sitch, kchat)
+            
+            def main_loop():
+                while True:
+                    time.sleep(buffer)
+                    generate_random_result()
+
+            try:
+                main_loop()
+            except KeyboardInterrupt:
+                print("\nStopped by user.")
+
+        def ctburner():
+            chi_char = (chi_chars)
+            print("Not recording")
+            print()
+            time.sleep(.4)
+            title = input("c-burn name: ")
+            while True:
+                try:
+                    buffer = float(input("time-buffer in seconds: "))
+                except ValueError:
+                    print("Invalid value")
+                else:
+                    break
+            ct = datetime.datetime.now()
+            monitor = "c-burner-start:"
+            print(usr, monitor, title, ct)
+            print()
+            print()
+            def generate_random_result():
+                ctm = datetime.datetime.now()
+                def generate_random_characters():
+                    random1 = random.choice(chi_char)
+                    random2 = random.choice(chi_char)
+                    random3 = random.choice(chi_char)
+                    random4 = random.choice(chi_char)
+                    random5 = random.choice(chi_char)
+                    random6 = random.choice(chi_char)
+                    random7 = random.choice(chi_char)
+                    random8 = random.choice(chi_char)
+                    random9 = random.choice(chi_char)
+                    random10 = random.choice(chi_char)
+                    random11 = random.choice(chi_char)
+                    random12 = random.choice(chi_char)
+                    random13 = random.choice(chi_char)
+                    random14 = random.choice(chi_char)
+                    random15 = random.choice(chi_char)
+                    random16 = random.choice(chi_char)
+                    random17 = random.choice(chi_char)
+                    random18 = random.choice(chi_char)
+                    random19 = random.choice(chi_char)
+                    random20 = random.choice(chi_char)
+                    characters = [random1, random2, random3, random4, random5, random6, random7, random8, random9, random10, random11, random12, random13, random14, random15, random16, random17, random18, random19, random20]
+                    return characters
+                random_characters = generate_random_characters()
+                sitch  = (round(random.random()*999999999999999,5))
+                print(title, ctm, random_characters, sitch)
             
             def main_loop():
                 while True:
@@ -6006,8 +6106,14 @@ def main():
                 if choice == "burner-start" or choice == "burner start" or choice == "burner" or choice == "burn" or choice == "Burn":
                     burner()
 
-                if choice == "time-burner-start" or choice == "time burner start" or choice == "time burner" or choice == "tburn" or choice == "time burn" or choice == "tburner" or choice == "tBurn" or choice == "time-burner":
+                if choice == "c-burner-start" or choice == "c burner start" or choice == "cburner" or choice == "cburn" or choice == "Burn":
+                    cburner()
+
+                if choice == "time-burner-start" or choice == "time burner start" or choice == "time burner" or choice == "tburn" or choice == "time burn" or choice == "tburner" or choice == "tBurn" or choice == "c-time-burner":
                     tburner()
+
+                if choice == "c-time-burner-start" or choice == "c time burner start" or choice == "c time burner" or choice == "ctburn" or choice == "c time burn" or choice == "ctburner" or choice == "ctBurn" or choice == "c-time-burner":
+                    ctburner()
 
                 if choice == 'search' or choice == 'fsearch':
                     search()
@@ -6230,6 +6336,8 @@ def main():
         parser.add_argument("-time-oscillator", "-toscill", action="store_true")
         parser.add_argument("-burner-start", "-burner", "-burn", action="store_true")
         parser.add_argument("-time-burner-start", "-time-burner", "-tburner", "-tburn", action="store_true")
+        parser.add_argument("-c-burner-start", "-cburner", "-cburn", action="store_true")
+        parser.add_argument("-c-time-burner-start", "-c-time-burner", "-ctburner", "-ctburn", action="store_true")
         parser.add_argument("-zuz", "-pp", action="store_true")
         parser.add_argument("-programs", "-progr", action="store_true")
         parser.add_argument("-tinien", action="store_true")
@@ -6640,6 +6748,14 @@ def main():
             
         if args.time_burner_start:
             tburner()
+            sys.exit(0)
+
+        if args.c_burner_start:
+            cburner()
+            sys.exit(0)
+            
+        if args.c_time_burner_start:
+            ctburner()
             sys.exit(0)
 
         if args.fsearch:
