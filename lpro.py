@@ -676,7 +676,7 @@ def main():
         print(alert, value, random_letters, rrchar_str, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.11{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.12{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -877,7 +877,7 @@ def main():
             print()
             print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: cbmp, cmbpc, xcbmp, xcbmpc, hbmp, hbmpc, xhbmp, xhbmpc, jbmp, jbmpc, xjbmp, xjbmpc, fbmp, xfbmp")
             print()
-            print(" | cburner/ctburner, ruh-time-call [RTC], ruh-monitor [rmonitor], insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
+            print(" | jburner/jtburner, cburner/ctburner, ruh-time-call [RTC], ruh-monitor [rmonitor], insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
             print()
             print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}, monitor-search [msearch], acad-search [asearch]")
 
@@ -6585,6 +6585,64 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
+
+        def jburner():
+            chi_char = (katakana)
+            title = input("j-burn name: ")
+            x = open("burner-log.txt", "a", buffering=1)
+            ct = datetime.datetime.now()
+            monitor = "j-burner-start:"
+            print(usr, monitor, title, ct)
+            print(usr, monitor, title, ct, file=z)
+            print(usr, monitor, title, ct, file=x)
+            print()
+            print(file=z)
+            print("*this saves to burner-log.txt* Ctrl+C to stop")
+            print()
+            print(file=x)
+            def generate_random_result():
+                ctm = datetime.datetime.now()
+                def generate_random_characters():
+                    random1 = random.choice(chi_char)
+                    random2 = random.choice(chi_char)
+                    random3 = random.choice(chi_char)
+                    random4 = random.choice(chi_char)
+                    random5 = random.choice(chi_char)
+                    random6 = random.choice(chi_char)
+                    random7 = random.choice(chi_char)
+                    random8 = random.choice(chi_char)
+                    random9 = random.choice(chi_char)
+                    random10 = random.choice(chi_char)
+                    random11 = random.choice(chi_char)
+                    random12 = random.choice(chi_char)
+                    random13 = random.choice(chi_char)
+                    random14 = random.choice(chi_char)
+                    random15 = random.choice(chi_char)
+                    random16 = random.choice(chi_char)
+                    random17 = random.choice(chi_char)
+                    random18 = random.choice(chi_char)
+                    random19 = random.choice(chi_char)
+                    random20 = random.choice(chi_char)
+                    characters = [random1, random2, random3, random4, random5, random6, random7, random8, random9, random10, random11, random12, random13, random14, random15, random16, random17, random18, random19, random20]
+                    return characters
+                random_characters = generate_random_characters()
+                sitch  = (round(random.random()*999999999999999,5))
+                print(title, ctm, random_characters, sitch)
+                print(title, ctm, random_characters, sitch, file=x)
+            
+            def main_loop():
+                while True:
+                    time.sleep(random.randint(0,1))
+                    integer = (round(random.random()*10))
+                    if integer > 5:
+                        if random.choice([True, False]):
+                            generate_random_result()
+
+            try:
+                main_loop()
+            except KeyboardInterrupt:
+                print("\nStopped by user.")
+
         def tburner():
             nano = (diction)
             title = input("burn name: ")
@@ -6660,6 +6718,67 @@ def main():
                     break
             ct = datetime.datetime.now()
             monitor = "c-burner-start:"
+            print(usr, monitor, title, ct)
+            print(usr, monitor, title, ct, file=z)
+            print(usr, monitor, title, ct, file=x)
+            print()
+            print(file=z)
+            print("*this saves to burner-log.txt* Ctrl+C to stop")
+            print()
+            print(file=x)
+            def generate_random_result():
+                ctm = datetime.datetime.now()
+                def generate_random_characters():
+                    random1 = random.choice(chi_char)
+                    random2 = random.choice(chi_char)
+                    random3 = random.choice(chi_char)
+                    random4 = random.choice(chi_char)
+                    random5 = random.choice(chi_char)
+                    random6 = random.choice(chi_char)
+                    random7 = random.choice(chi_char)
+                    random8 = random.choice(chi_char)
+                    random9 = random.choice(chi_char)
+                    random10 = random.choice(chi_char)
+                    random11 = random.choice(chi_char)
+                    random12 = random.choice(chi_char)
+                    random13 = random.choice(chi_char)
+                    random14 = random.choice(chi_char)
+                    random15 = random.choice(chi_char)
+                    random16 = random.choice(chi_char)
+                    random17 = random.choice(chi_char)
+                    random18 = random.choice(chi_char)
+                    random19 = random.choice(chi_char)
+                    random20 = random.choice(chi_char)
+                    characters = [random1, random2, random3, random4, random5, random6, random7, random8, random9, random10, random11, random12, random13, random14, random15, random16, random17, random18, random19, random20]
+                    return characters
+                random_characters = generate_random_characters()
+                sitch  = (round(random.random()*999999999999999,5))
+                print(title, ctm, random_characters, sitch)
+                print(title, ctm, random_characters, sitch, file=x)
+            
+            def main_loop():
+                while True:
+                    time.sleep(buffer)
+                    generate_random_result()
+
+            try:
+                main_loop()
+            except KeyboardInterrupt:
+                print("\nStopped by user.")
+
+        def jtburner():
+            chi_char = (katakana)
+            title = input("j-burn name: ")
+            x = open("burner-log.txt", "a", buffering=1)
+            while True:
+                try:
+                    buffer = float(input("time-buffer in seconds: "))
+                except ValueError:
+                    print("Invalid value")
+                else:
+                    break
+            ct = datetime.datetime.now()
+            monitor = "j-burner-start:"
             print(usr, monitor, title, ct)
             print(usr, monitor, title, ct, file=z)
             print(usr, monitor, title, ct, file=x)
@@ -8170,14 +8289,20 @@ def main():
                 if choice == "burner-start" or choice == "burner start" or choice == "burner" or choice == "burn" or choice == "Burn":
                     burner()
 
-                if choice == "c-burner-start" or choice == "c burner start" or choice == "cburner" or choice == "cburn" or choice == "Burn":
+                if choice == "c-burner-start" or choice == "c burner start" or choice == "cburner" or choice == "cburn" or choice == "cBurn":
                     cburner()
+
+                if choice == "j-burner-start" or choice == "j burner start" or choice == "jburner" or choice == "jburn" or choice == "jBurn":
+                    jburner()
 
                 if choice == "time-burner-start" or choice == "time burner start" or choice == "time burner" or choice == "tburn" or choice == "time burn" or choice == "tburner" or choice == "tBurn" or choice == "c-time-burner":
                     tburner()
 
                 if choice == "c-time-burner-start" or choice == "c time burner start" or choice == "c time burner" or choice == "ctburn" or choice == "c time burn" or choice == "ctburner" or choice == "ctBurn" or choice == "c-time-burner":
                     ctburner()
+
+                if choice == "j-time-burner-start" or choice == "j time burner start" or choice == "j time burner" or choice == "jtburn" or choice == "j time burn" or choice == "jtburner" or choice == "jtBurn" or choice == "j-time-burner":
+                    jtburner()
 
                 if choice == "zuz" or choice == "ZUZ" or choice == "pp" or choice == "PP" or choice == "Zuz":
                     zuz()
@@ -8427,6 +8552,8 @@ def main():
         parser.add_argument("-time-burner-start", "-time-burner", "-tburner", "-tburn", action="store_true")
         parser.add_argument("-c-burner-start", "-cburner", "-cburn", action="store_true")
         parser.add_argument("-c-time-burner-start", "-c-time-burner", "-ctburner", "-ctburn", action="store_true")
+        parser.add_argument("-j-burner-start", "-jburner", "-jburn", action="store_true")
+        parser.add_argument("-j-time-burner-start", "-j-time-burner", "-jtburner", "-jtburn", action="store_true")
         parser.add_argument("-zuz", "-pp", action="store_true")
         parser.add_argument("-programs", "-progr", action="store_true")
         parser.add_argument("-tinien", action="store_true")
@@ -8888,6 +9015,14 @@ def main():
             
         if args.c_time_burner_start:
             ctburner()
+            sys.exit(0)
+
+        if args.j_burner_start:
+            jburner()
+            sys.exit(0)
+            
+        if args.j_time_burner_start:
+            jtburner()
             sys.exit(0)
             
         if args.zuz:
