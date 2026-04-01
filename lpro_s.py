@@ -674,7 +674,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, rrchar_str, ct)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.12-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.15-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -862,7 +862,7 @@ def main():
             print()
             print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: xcbmp, xcbmpc, xhbmp, xhbmpc, xjbmp, xjbmpc, xfbmp")
             print()
-            print(" | jburner/jtburner, cburner/ctburner, ruh-time-call [RTC], ruh-monitor [rmonitor], insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], police (prad), CAI Environments (CAI/GES), time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]")
+            print(" | random hospital [rhosp/ghosthunt], jburner/jtburner, cburner/ctburner, ruh-time-call [RTC], ruh-monitor [rmonitor], insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], police (prad), CAI Environments (CAI/GES), time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]")
             print()
             print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}")
 
@@ -2948,6 +2948,12 @@ def main():
                     random3 = random.choice(string.ascii_letters)
                     letters = [random1, random2, random3]
                     return letters
+                def generate_ans():
+                    ans = (alphabeta)
+                    anschar = random.choices(ans, k=random.randint(5,6))
+                    sstr = ''.join(anschar)
+                    return sstr
+                anschar_str = generate_ans()
                 speak("alert!")
                 time.sleep(1.6)
                 random_letters = generate_random_letters()
@@ -2955,7 +2961,9 @@ def main():
                 kchat = random.sample(nano, random.randint(1,7))
                 random_result = random.choices(nano, k=random.randint(1,7))
                 result_text = "  ".join(random_result)
-                print(maroon, random_letters, sitch, result_text, ctm)
+                print(maroon, anschar_str, sitch, result_text, ctm)
+                speak(anschar_str)
+                time.sleep(.2)
                 speak(result_text)
                 print()
             
@@ -2996,6 +3004,12 @@ def main():
                     random3 = random.choice(string.ascii_letters)
                     letters = [random1, random2, random3]
                     return letters
+                def generate_ans():
+                    ans = (alphabeta)
+                    anschar = random.choices(ans, k=random.randint(5,6))
+                    sstr = ''.join(anschar)
+                    return sstr
+                anschar_str = generate_ans()
                 speak("alert!")
                 time.sleep(2.9)
                 random_letters = generate_random_letters()
@@ -3003,7 +3017,9 @@ def main():
                 kchat = random.sample(nano, random.randint(1,7))
                 random_result = random.choices(nano, k=random.randint(1,7))
                 result_text = "  ".join(random_result)
-                print(maroon, random_letters, sitch, result_text, ctm)
+                print(maroon, anschar_str, sitch, result_text, ctm)
+                speak(anschar_str)
+                time.sleep(.2)
                 speak(result_text)
                 print()
                 time.sleep(buffer)
@@ -3043,6 +3059,12 @@ def main():
                     random3 = random.choice(string.ascii_letters)
                     letters = [random1, random2, random3]
                     return letters
+                def generate_ans():
+                    ans = (alphabeta)
+                    anschar = random.choices(ans, k=random.randint(5,6))
+                    sstr = ''.join(anschar)
+                    return sstr
+                anschar_str = generate_ans()
                 spik("alert!")
                 time.sleep(1.6)
                 random_letters = generate_random_letters()
@@ -3050,7 +3072,7 @@ def main():
                 kchat = random.sample(nano, random.randint(1,7))
                 random_result = random.choices(nano, k=random.randint(1,22))
                 result_text = "".join(random_result)
-                print(maroon, random_letters, sitch, result_text, ctm)
+                print(maroon, anschar_str, sitch, result_text, ctm)
                 spik(result_text)
                 print()
                 time.sleep(buffer)
@@ -3261,10 +3283,16 @@ def main():
                     random3 = random.choice(string.ascii_letters)
                     letters = [random1, random2, random3]
                     return letters
+                def generate_ans():
+                    ans = (alphabeta)
+                    anschar = random.choices(ans, k=random.randint(5,6))
+                    sstr = ''.join(anschar)
+                    return sstr
+                anschar_str = generate_ans()
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
-                print(maroon, random_letters, sitch, kchat, ctm)
+                print(maroon, anschar_str, sitch, kchat, ctm)
                 print()
 
             def main_loop():
@@ -3695,6 +3723,12 @@ def main():
                     letters = [random1, random2, random3]
                     random.shuffle(letters)
                     return letters
+                def generate_ans():
+                    ans = (alphabeta)
+                    anschar = random.choices(ans, k=random.randint(5,6))
+                    sstr = ''.join(anschar)
+                    return sstr
+                anschar_str = generate_ans()
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 nn = random.choices(an, k=random.randint(1,10))
@@ -3703,7 +3737,7 @@ def main():
                 acadl = random.sample(acad, random.randint(1,7))
                 dash = "-"
                 print()
-                print(tag, ctag, random_letters, sitch, wonyao_str, dash, cchat, acadl, ctm)
+                print(tag, ctag, anschar_str, sitch, wonyao_str, dash, cchat, acadl, ctm)
 
         def MAI():
             import time
@@ -5831,7 +5865,610 @@ def main():
             finally:
                 if 'player' in locals():
                     player.terminate()
-                    player.wait()            
+                    player.wait()
+
+        def rhospital():
+            hospitals = ["MASSACHUSETTS GENERAL HOSPITAL: 55 FRUIT STREET, BOSTON, MA 02114. Type: Acute Care Teaching Hospital. Beds: 999. Specialty: General Medicine, Surgery, Psychiatry.",
+            "BRIGHAM AND WOMEN'S HOSPITAL: 75 FRANCIS STREET, BOSTON, MA 02115. Type: Acute Care Teaching Hospital. Beds: 793. Specialty: Cardiology, Women's Health, Orthopedics.",
+            "BOSTON CHILDREN'S HOSPITAL: 300 LONGWOOD AVENUE, BOSTON, MA 02115. Type: Pediatric Teaching Hospital. Beds: 415. Specialty: Pediatric Cardiology, Oncology, Neurology.",
+            "NEWYORK-PRESBYTERIAN HOSPITAL: 525 EAST 68TH STREET, NEW YORK, NY 10065. Type: Acute Care Teaching Hospital. Beds: 2,478. Specialty: Cardiology, Neurology, Transplantation.",
+            "MOUNT SINAI HOSPITAL: ONE GUSTAVE L LEVY PLACE, NEW YORK, NY 10029. Type: Acute Care Teaching Hospital. Beds: 1,139. Specialty: Geriatrics, Cardiology, Cancer Care.",
+            "NYU LANGONE HEALTH - TISCH HOSPITAL: 550 FIRST AVENUE, NEW YORK, NY 10016. Type: Acute Care Teaching Hospital. Beds: 844. Specialty: Orthopedics, Neurology, Rehabilitation.",
+            "HOSPITAL FOR SPECIAL SURGERY: 535 EAST 70TH STREET, NEW YORK, NY 10021. Type: Specialty Orthopedic Hospital. Beds: 205. Specialty: Orthopedic Surgery, Rheumatology.",
+            "MEMORIAL SLOAN KETTERING CANCER CENTER: 1275 YORK AVENUE, NEW YORK, NY 10065. Type: Specialty Cancer Hospital. Beds: 514. Specialty: Oncology, Hematology.",
+            "UNIVERSITY OF PENNSYLVANIA HOSPITAL: 3400 CIVIC CENTER BOULEVARD, PHILADELPHIA, PA 19104. Type: Acute Care Teaching Hospital. Beds: 1,734. Specialty: Cardiology, Oncology, Transplant.",
+            "CHILDREN'S HOSPITAL OF PHILADELPHIA: 3401 CIVIC CENTER BOULEVARD, PHILADELPHIA, PA 19104. Type: Pediatric Teaching Hospital. Beds: 594. Specialty: Pediatric Cardiology, Oncology, Fetal Surgery.",
+            "JOHNS HOPKINS HOSPITAL: 1800 ORLEANS STREET, BALTIMORE, MD 21287. Type: Acute Care Teaching Hospital. Beds: 1,162. Specialty: Neurology, Cardiology, Oncology, Pediatrics.",
+            "YALE NEW HAVEN HOSPITAL: 20 YORK STREET, NEW HAVEN, CT 06510. Type: Acute Care Teaching Hospital. Beds: 1,541. Specialty: Cancer, Cardiology, Psychiatry.",
+            "RHODE ISLAND HOSPITAL: 593 EDDY STREET, PROVIDENCE, RI 02903. Type: Acute Care Teaching Hospital. Beds: 719. Specialty: Trauma, Cardiology, Orthopedics.",
+            "DARTMOUTH-HITCHCOCK MEDICAL CENTER: ONE MEDICAL CENTER DRIVE, LEBANON, NH 03756. Type: Acute Care Teaching Hospital. Beds: 396. Specialty: Cancer, Orthopedics, Neurology.",
+            "MAINE MEDICAL CENTER: 22 BRAMHALL STREET, PORTLAND, ME 04102. Type: Acute Care Teaching Hospital. Beds: 637. Specialty: Cardiology, Trauma, Cancer Care.", "CLEVELAND CLINIC: 9500 EUCLID AVENUE, CLEVELAND, OH 44195. Type: Acute Care Teaching Hospital. Beds: 1,300. Specialty: Cardiology, Heart Surgery, Urology.",
+            "MAYO CLINIC - ROCHESTER: 200 FIRST STREET SW, ROCHESTER, MN 55905. Type: Acute Care Teaching Hospital. Beds: 2,059. Specialty: Multispecialty, Transplant, Cancer, Neurology.",
+            "NORTHWESTERN MEMORIAL HOSPITAL: 251 EAST HURON STREET, CHICAGO, IL 60611. Type: Acute Care Teaching Hospital. Beds: 894. Specialty: Cardiology, Neurology, Organ Transplant.",
+            "UNIVERSITY OF CHICAGO MEDICAL CENTER: 5841 SOUTH MARYLAND AVENUE, CHICAGO, IL 60637. Type: Acute Care Teaching Hospital. Beds: 811. Specialty: Cancer, Cardiology, Pediatrics.",
+            "RUSH UNIVERSITY MEDICAL CENTER: 1620 WEST HARRISON STREET, CHICAGO, IL 60612. Type: Acute Care Teaching Hospital. Beds: 664. Specialty: Orthopedics, Neurology, Geriatrics.",
+            "OHIO STATE UNIVERSITY WEXNER MEDICAL CENTER: 410 WEST 10TH AVENUE, COLUMBUS, OH 43210. Type: Acute Care Teaching Hospital. Beds: 1,380. Specialty: Cancer, Cardiology, Neurology.",
+            "UNIVERSITY OF MICHIGAN HOSPITAL: 1500 EAST MEDICAL CENTER DRIVE, ANN ARBOR, MI 48109. Type: Acute Care Teaching Hospital. Beds: 1,047. Specialty: Cardiology, Cancer, Transplant.",
+            "BARNES-JEWISH HOSPITAL: ONE BARNES-JEWISH HOSPITAL PLAZA, ST. LOUIS, MO 63110. Type: Acute Care Teaching Hospital. Beds: 1,388. Specialty: Cardiology, Neurology, Transplant.",
+            "UNIVERSITY OF IOWA HOSPITALS AND CLINICS: 200 HAWKINS DRIVE, IOWA CITY, IA 52242. Type: Acute Care Teaching Hospital. Beds: 811. Specialty: Orthopedics, Pediatrics, Cancer.",
+            "INDIANA UNIVERSITY HEALTH METHODIST HOSPITAL: 1701 NORTH SENATE AVENUE, INDIANAPOLIS, IN 46202. Type: Acute Care Teaching Hospital. Beds: 1,150. Specialty: Cardiology, Trauma, Transplant.",
+            "FROEDTERT HOSPITAL: 9200 WEST WISCONSIN AVENUE, MILWAUKEE, WI 53226. Type: Acute Care Teaching Hospital. Beds: 607. Specialty: Trauma, Cancer, Neuroscience.",
+            "UNIVERSITY OF KANSAS HOSPITAL: 4000 CAMBRIDGE STREET, KANSAS CITY, KS 66160. Type: Acute Care Teaching Hospital. Beds: 727. Specialty: Cancer, Neurology, Cardiology.",
+            "NEBRASKA MEDICINE - UNIVERSITY HOSPITAL: 4350 EMILIE STREET, OMAHA, NE 68198. Type: Acute Care Teaching Hospital. Beds: 639. Specialty: Cancer, Transplant, Orthopedics.",
+            "UNIVERSITY OF MINNESOTA MEDICAL CENTER: 500 HARVARD STREET SE, MINNEAPOLIS, MN 55455. Type: Acute Care Teaching Hospital. Beds: 750. Specialty: Transplant, Cardiology, Cancer.",
+            "LOYOLA UNIVERSITY MEDICAL CENTER: 2160 SOUTH FIRST AVENUE, MAYWOOD, IL 60153. Type: Acute Care Teaching Hospital. Beds: 547. Specialty: Cancer, Cardiology, Transplant.", "HOUSTON METHODIST HOSPITAL: 6565 FANNIN STREET, HOUSTON, TX 77030. Type: Acute Care Teaching Hospital. Beds: 1,108. Specialty: Cardiology, Cancer, Neurology.",
+            "MD ANDERSON CANCER CENTER: 1515 HOLCOMBE BOULEVARD, HOUSTON, TX 77030. Type: Specialty Cancer Hospital. Beds: 745. Specialty: Oncology, Hematology, Radiation Oncology.",
+            "TEXAS CHILDREN'S HOSPITAL: 6621 FANNIN STREET, HOUSTON, TX 77030. Type: Pediatric Teaching Hospital. Beds: 639. Specialty: Pediatric Cardiology, Oncology, Pulmonology.",
+            "UT SOUTHWESTERN MEDICAL CENTER: 6201 HARRY HINES BOULEVARD, DALLAS, TX 75390. Type: Acute Care Teaching Hospital. Beds: 855. Specialty: Cardiology, Neurology, Transplant.",
+            "BAPTIST HEALTH SOUTH FLORIDA: 8900 NORTH KENDALL DRIVE, MIAMI, FL 33176. Type: Acute Care Hospital. Beds: 435. Specialty: Cardiology, Cancer, Orthopedics.",
+            "JACKSON MEMORIAL HOSPITAL: 1611 NORTHWEST 12TH AVENUE, MIAMI, FL 33136. Type: Acute Care Teaching Hospital. Beds: 1,550. Specialty: Trauma, Burn Care, Transplant.",
+            "ADVENTHEALTH ORLANDO: 601 EAST ROLLINS STREET, ORLANDO, FL 32803. Type: Acute Care Hospital. Beds: 1,739. Specialty: Cardiology, Cancer, Neurology.",
+            "EMORY UNIVERSITY HOSPITAL: 1364 CLIFTON ROAD NE, ATLANTA, GA 30322. Type: Acute Care Teaching Hospital. Beds: 733. Specialty: Cardiology, Transplant, Neurology.",
+            "CHILDREN'S HEALTHCARE OF ATLANTA - EGESTON: 1405 CLIFTON ROAD NE, ATLANTA, GA 30322. Type: Pediatric Teaching Hospital. Beds: 446. Specialty: Pediatric Cardiology, Cancer, Transplant.",
+            "VANDERBILT UNIVERSITY MEDICAL CENTER: 1211 MEDICAL CENTER DRIVE, NASHVILLE, TN 37232. Type: Acute Care Teaching Hospital. Beds: 1,161. Specialty: Cardiology, Cancer, Transplant.",
+            "DUKE UNIVERSITY HOSPITAL: 2301 ERWIN ROAD, DURHAM, NC 27710. Type: Acute Care Teaching Hospital. Beds: 1,048. Specialty: Cardiology, Cancer, Neurology.",
+            "UNC MEDICAL CENTER: 101 MANNING DRIVE, CHAPEL HILL, NC 27514. Type: Acute Care Teaching Hospital. Beds: 888. Specialty: Cancer, Cardiology, Transplant.",
+            "UAB HOSPITAL: 619 SOUTH 19TH STREET, BIRMINGHAM, AL 35233. Type: Acute Care Teaching Hospital. Beds: 1,207. Specialty: Transplant, Trauma, Cancer.",
+            "OCHSNER MEDICAL CENTER - NEW ORLEANS: 1516 JEFFERSON HIGHWAY, NEW ORLEANS, LA 70121. Type: Acute Care Teaching Hospital. Beds: 932. Specialty: Cardiology, Transplant, Pulmonology.",
+            "UNIVERSITY OF KENTUCKY ALBERT B. CHANDLER HOSPITAL: 800 ROSE STREET, LEXINGTON, KY 40536. Type: Acute Care Teaching Hospital. Beds: 945. Specialty: Cancer, Cardiology, Transplant.", "UCLA MEDICAL CENTER: 757 WESTWOOD PLAZA, LOS ANGELES, CA 90095. Type: Acute Care Teaching Hospital. Beds: 485. Specialty: Cancer, Neurology, Transplant.",
+            "CEDARS-SINAI MEDICAL CENTER: 8700 BEVERLY BOULEVARD, LOS ANGELES, CA 90048. Type: Acute Care Teaching Hospital. Beds: 958. Specialty: Cardiology, Neurology, Orthopedics.",
+            "STANFORD HEALTH CARE: 300 PASTEUR DRIVE, STANFORD, CA 94305. Type: Acute Care Teaching Hospital. Beds: 613. Specialty: Cardiology, Cancer, Transplant.",
+            "UCSF MEDICAL CENTER: 505 PARNASSUS AVENUE, SAN FRANCISCO, CA 94143. Type: Acute Care Teaching Hospital. Beds: 658. Specialty: Neurology, Cancer, Transplant.",
+            "CHILDREN'S HOSPITAL LOS ANGELES: 4650 SUNSET BOULEVARD, LOS ANGELES, CA 90027. Type: Pediatric Teaching Hospital. Beds: 452. Specialty: Pediatric Cardiology, Cancer, Orthopedics.",
+            "RADY CHILDREN'S HOSPITAL: 3020 CHILDREN'S WAY, SAN DIEGO, CA 92123. Type: Pediatric Teaching Hospital. Beds: 303. Specialty: Pediatric Cardiology, Neurology, Neonatology.",
+            "SCRIPPS MERCY HOSPITAL: 4077 5TH AVENUE, SAN DIEGO, CA 92103. Type: Acute Care Hospital. Beds: 415. Specialty: Cardiology, Orthopedics, Cancer.",
+            "UNIVERSITY OF WASHINGTON MEDICAL CENTER: 1959 NE PACIFIC STREET, SEATTLE, WA 98195. Type: Acute Care Teaching Hospital. Beds: 540. Specialty: Transplant, Cardiology, Neurology.",
+            "SEATTLE CHILDREN'S HOSPITAL: 4800 SAND POINT WAY NE, SEATTLE, WA 98105. Type: Pediatric Teaching Hospital. Beds: 407. Specialty: Pediatric Cardiology, Cancer, Orthopedics.",
+            "OHSU HOSPITAL: 3181 SW SAM JACKSON PARK ROAD, PORTLAND, OR 97239. Type: Acute Care Teaching Hospital. Beds: 576. Specialty: Cardiology, Neurology, Cancer.",
+            "UNIVERSITY OF COLORADO HOSPITAL: 12605 EAST 16TH AVENUE, AURORA, CO 80045. Type: Acute Care Teaching Hospital. Beds: 720. Specialty: Cardiology, Transplant, Cancer.",
+            "MAYO CLINIC - PHOENIX: 5777 EAST MAYO BOULEVARD, PHOENIX, AZ 85054. Type: Acute Care Teaching Hospital. Beds: 286. Specialty: Cardiology, Cancer, Neurology.",
+            "BANNER - UNIVERSITY MEDICAL CENTER PHOENIX: 1111 EAST MCDOWELL ROAD, PHOENIX, AZ 85006. Type: Acute Care Teaching Hospital. Beds: 733. Specialty: Trauma, Transplant, Neurology.",
+            "INTERMOUNTAIN MEDICAL CENTER: 5121 SOUTH COTTONWOOD STREET, MURRAY, UT 84107. Type: Acute Care Teaching Hospital. Beds: 504. Specialty: Cardiology, Orthopedics, Transplant.",
+            "UNIVERSITY MEDICAL CENTER OF SOUTHERN NEVADA: 1800 WEST CHARLESTON BOULEVARD, LAS VEGAS, NV 89102. Type: Acute Care Teaching Hospital. Beds: 541. Specialty: Trauma, Cardiology, Transplant.", "TORONTO GENERAL HOSPITAL (UNIVERSITY HEALTH NETWORK): 200 ELIZABETH STREET, TORONTO, ON M5G 2C4. Type: Academic Teaching Hospital. Beds: 650. Specialty: Transplant, Cardiology, Trauma.",
+            "ST. MICHAEL'S HOSPITAL (UNITY HEALTH TORONTO): 30 BOND STREET, TORONTO, ON M5B 1W8. Type: Academic Teaching Hospital. Beds: 456. Specialty: Trauma, Cardiology, Inner City Health.",
+            "SICKKIDS (THE HOSPITAL FOR SICK CHILDREN): 555 UNIVERSITY AVENUE, TORONTO, ON M5G 1X8. Type: Pediatric Teaching Hospital. Beds: 420. Specialty: Pediatric Cardiology, Oncology, Neurology.",
+            "MONTREAL GENERAL HOSPITAL (MCGILL UNIVERSITY HEALTH CENTRE): 1650 CEDAR AVENUE, MONTREAL, QC H3G 1A4. Type: Academic Teaching Hospital. Beds: 479. Specialty: Trauma, Neurology, Cancer.",
+            "VANCOUVER GENERAL HOSPITAL: 899 WEST 12TH AVENUE, VANCOUVER, BC V5Z 1M9. Type: Academic Teaching Hospital. Beds: 955. Specialty: Trauma, Transplant, Cardiology.",
+            "FOOTHILLS MEDICAL CENTRE (ALBERTA HEALTH SERVICES): 1403 29TH STREET NW, CALGARY, AB T2N 2T9. Type: Academic Teaching Hospital. Beds: 1,032. Specialty: Trauma, Transplant, Cardiology.",
+            "ROYAL ALEXANDRA HOSPITAL: 10240 KINGSWAY NW, EDMONTON, AB T5H 3V9. Type: Academic Teaching Hospital. Beds: 668. Specialty: Women's Health, Neonatology, Transplant.",
+            "OTTAWA HOSPITAL - CIVIC CAMPUS: 1053 CARLING AVENUE, OTTAWA, ON K1Y 4E9. Type: Academic Teaching Hospital. Beds: 611. Specialty: Cardiology, Cancer, Trauma.",
+            "HAMILTON GENERAL HOSPITAL: 237 BARTON STREET EAST, HAMILTON, ON L8L 2X2. Type: Academic Teaching Hospital. Beds: 476. Specialty: Trauma, Cardiology, Stroke.",
+            "LONDON HEALTH SCIENCES CENTRE - VICTORIA HOSPITAL: 800 COMMISSIONERS ROAD EAST, LONDON, ON N6A 5W9. Type: Academic Teaching Hospital. Beds: 735. Specialty: Transplant, Cardiology, Trauma.", "ST THOMAS' HOSPITAL (GUY'S AND ST THOMAS' NHS FOUNDATION TRUST): WESTMINSTER BRIDGE ROAD, LONDON SE1 7EH. Type: Teaching Hospital. Beds: 584. Specialty: Cardiology, Cancer, Emergency Medicine.",
+            "GUY'S HOSPITAL: GREAT MAZE POND, LONDON SE1 9RT. Type: Teaching Hospital. Beds: 400. Specialty: Renal, Oncology, Dentistry.",
+            "ROYAL FREE HOSPITAL: POND STREET, LONDON NW3 2QG. Type: Teaching Hospital. Beds: 554. Specialty: Hepatology, Transplant, Infectious Diseases.",
+            "KING'S COLLEGE HOSPITAL: DENMARK HILL, LONDON SE5 9RS. Type: Teaching Hospital. Beds: 950. Specialty: Neurology, Liver Disease, Trauma.",
+            "GREAT ORMOND STREET HOSPITAL: GREAT ORMOND STREET, LONDON WC1N 3JH. Type: Pediatric Teaching Hospital. Beds: 400. Specialty: Pediatric Cardiology, Oncology, Rare Diseases.",
+            "THE ROYAL MARSDEN NHS FOUNDATION TRUST: FULHAM ROAD, LONDON SW3 6JJ. Type: Specialty Cancer Hospital. Beds: 243. Specialty: Oncology, Hematology.",
+            "JOHN RADCLIFFE HOSPITAL: HEADLEY WAY, OXFORD OX3 9DU. Type: Teaching Hospital. Beds: 845. Specialty: Cardiology, Neurology, Trauma.",
+            "ADDENBROOKE'S HOSPITAL: HILLS ROAD, CAMBRIDGE CB2 0QQ. Type: Teaching Hospital. Beds: 1,034. Specialty: Transplant, Genetics, Neurology.",
+            "QUEEN ELIZABETH HOSPITAL BIRMINGHAM: MINDELSOHN WAY, BIRMINGHAM B15 2GW. Type: Teaching Hospital. Beds: 1,213. Specialty: Trauma, Transplant, Liver Disease.",
+            "MANCHESTER ROYAL INFIRMARY: OXFORD ROAD, MANCHESTER M13 9WL. Type: Teaching Hospital. Beds: 650. Specialty: Trauma, Cardiology, Orthopedics.", "ROYAL MELBOURNE HOSPITAL: 300 GRATTAN STREET, PARKVILLE VIC 3050, AUSTRALIA. Type: Academic Teaching Hospital. Beds: 650. Specialty: Trauma, Neurology, Cardiology.",
+            "ALFRED HOSPITAL: 55 COMMERCIAL ROAD, MELBOURNE VIC 3004, AUSTRALIA. Type: Academic Teaching Hospital. Beds: 500. Specialty: Trauma, Burns, Heart-Lung Transplant.",
+            "ROYAL CHILDREN'S HOSPITAL MELBOURNE: 50 FLEMINGTON ROAD, PARKVILLE VIC 3052, AUSTRALIA. Type: Pediatric Teaching Hospital. Beds: 353. Specialty: Pediatric Cardiology, Oncology, Surgery.",
+            "ROYAL PRINCE ALFRED HOSPITAL: 50 MISSENDEN ROAD, CAMPERDOWN NSW 2050, AUSTRALIA. Type: Academic Teaching Hospital. Beds: 580. Specialty: Transplant, Cardiology, Trauma.",
+            "ST VINCENT'S HOSPITAL SYDNEY: 390 VICTORIA STREET, DARLINGHURST NSW 2010, AUSTRALIA. Type: Academic Teaching Hospital. Beds: 326. Specialty: Cardiology, Transplant, HIV Medicine.",
+            "WESTMEAD HOSPITAL: HAWKESBURY ROAD, WESTMEAD NSW 2145, AUSTRALIA. Type: Academic Teaching Hospital. Beds: 920. Specialty: Trauma, Transplant, Pediatrics.",
+            "ROYAL BRISBANE & WOMEN'S HOSPITAL: BUTTERFIELD STREET, HERSTON QLD 4029, AUSTRALIA. Type: Academic Teaching Hospital. Beds: 1,050. Specialty: Trauma, Transplant, Cardiology.",
+            "ROYAL ADELAIDE HOSPITAL: PORT ROAD, ADELAIDE SA 5000, AUSTRALIA. Type: Academic Teaching Hospital. Beds: 700. Specialty: Cardiology, Transplant, Neurology.",
+            "FIONA STANLEY HOSPITAL: 11 ROBIN WARREN DRIVE, MURDOCH WA 6150, AUSTRALIA. Type: Academic Teaching Hospital. Beds: 783. Specialty: Trauma, Cardiology, Neurology.",
+            "AUCKLAND CITY HOSPITAL: 2 PARK ROAD, GRAFTON, AUCKLAND 1023, NEW ZEALAND. Type: Academic Teaching Hospital. Beds: 1,150. Specialty: Cardiology, Transplant, Trauma.",
+            "CHRISTCHURCH HOSPITAL: 2 RICHMOND AVENUE, CHRISTCHURCH 8011, NEW ZEALAND. Type: Academic Teaching Hospital. Beds: 900. Specialty: Trauma, Cardiology, Orthopedics.", "CHARITÉ - UNIVERSITÄTSMEDIZIN BERLIN: CHARITÉPLATZ 1, 10117 BERLIN, GERMANY. Type: University Hospital. Beds: 3,200. Specialty: Multispecialty, Neurology, Cardiology.",
+            "UNIVERSITÄTSKLINIKUM HEIDELBERG: IM NEUENHEIMER FELD 672, 69120 HEIDELBERG, GERMANY. Type: University Hospital. Beds: 2,000. Specialty: Oncology, Transplant, Cardiology.",
+            "KLINIKUM RECHTS DER ISAR (TECHNISCHE UNIVERSITÄT MÜNCHEN): ISMANINGER STRASSE 22, 81675 MUNICH, GERMANY. Type: University Hospital. Beds: 1,100. Specialty: Cardiology, Oncology, Transplant.",
+            "AP-HP PITIÉ-SALPÊTRIÈRE: 47-83 BOULEVARD DE L'HÔPITAL, 75013 PARIS, FRANCE. Type: University Hospital. Beds: 1,600. Specialty: Neurology, Cardiology, Infectious Diseases.",
+            "HÔPITAL EUROPEEN GEORGES POMPIDOU (AP-HP): 20 RUE LEBLANC, 75015 PARIS, FRANCE. Type: University Hospital. Beds: 800. Specialty: Cardiology, Cancer, Orthopedics.",
+            "HOSPICES CIVILS DE LYON - HÔPITAL EDOUARD HERRIOT: 5 PLACE D'ARSONVAL, 69003 LYON, FRANCE. Type: University Hospital. Beds: 1,200. Specialty: Transplant, Nephrology, Geriatrics.",
+            "UNIVERSITÄTSSPITAL ZÜRICH: RÄMISTRASSE 100, 8091 ZURICH, SWITZERLAND. Type: University Hospital. Beds: 880. Specialty: Cardiology, Neurology, Transplant.",
+            "HUG - HÔPITAUX UNIVERSITAIRES DE GENÈVE: RUE GABRIELLE-PERRET-GENTIL 4, 1205 GENEVA, SWITZERLAND. Type: University Hospital. Beds: 1,900. Specialty: Transplant, Pediatrics, Cardiology.",
+            "LEIDEN UNIVERSITY MEDICAL CENTER: ALBINUSDREEF 2, 2333 ZA LEIDEN, NETHERLANDS. Type: University Hospital. Beds: 1,000. Specialty: Transplant, Genetics, Oncology.",
+            "KAROLINSKA UNIVERSITY HOSPITAL: EUGENIAVÄGEN 3, 171 76 STOCKHOLM, SWEDEN. Type: University Hospital. Beds: 1,600. Specialty: Transplant, Pediatrics, Cardiology.",
+            "RIGSHOSPITALET (COPENHAGEN UNIVERSITY HOSPITAL): BLEGDAMSVEJ 9, 2100 COPENHAGEN, DENMARK. Type: University Hospital. Beds: 1,200. Specialty: Cardiology, Transplant, Pediatrics.",
+            "HELSINKI UNIVERSITY HOSPITAL: HAARTMANINKATU 4, 00290 HELSINKI, FINLAND. Type: University Hospital. Beds: 2,000. Specialty: Cancer, Neurology, Transplant.", "TOKYO UNIVERSITY HOSPITAL: 7-3-1 HONGO, BUNKYO-KU, TOKYO 113-8655, JAPAN. Type: University Hospital. Beds: 1,217. Specialty: Cardiology, Oncology, Transplant.",
+            "KEIO UNIVERSITY HOSPITAL: 35 SHINANOMACHI, SHINJUKU-KU, TOKYO 160-8582, JAPAN. Type: University Hospital. Beds: 1,075. Specialty: Cancer, Cardiology, Neurology.",
+            "NATIONAL CANCER CENTER HOSPITAL: 5-1-1 TSUKIJI, CHUO-KU, TOKYO 104-0045, JAPAN. Type: Specialty Cancer Hospital. Beds: 700. Specialty: Oncology, Hematology.",
+            "SEOUL NATIONAL UNIVERSITY HOSPITAL: 101 DAEHAK-RO, JONGNO-GU, SEOUL 03080, SOUTH KOREA. Type: University Hospital. Beds: 1,700. Specialty: Multispecialty, Transplant, Cancer.",
+            "SAMSUNG MEDICAL CENTER: 81 IRWON-RO, GANGNAM-GU, SEOUL 06351, SOUTH KOREA. Type: University Hospital. Beds: 1,979. Specialty: Cardiology, Cancer, Neurology.",
+            "ASAN MEDICAL CENTER: 88 OLYMPIC-RO 43-GIL, SONGPA-GU, SEOUL 05505, SOUTH KOREA. Type: University Hospital. Beds: 2,700. Specialty: Cardiology, Transplant, Cancer.",
+            "SINGAPORE GENERAL HOSPITAL: 1 OUTRAM ROAD, SINGAPORE 169608. Type: Academic Teaching Hospital. Beds: 1,785. Specialty: Cardiology, Trauma, Transplant.",
+            "NATIONAL UNIVERSITY HOSPITAL (NUH): 5 LOWER KENT RIDGE ROAD, SINGAPORE 119074. Type: University Hospital. Beds: 1,200. Specialty: Cancer, Cardiology, Pediatrics.",
+            "Peking Union Medical College Hospital: 1 SHUAFUYUAN, DONGCHENG DISTRICT, BEIJING 100730, CHINA. Type: University Hospital. Beds: 2,000. Specialty: Multispecialty, Rheumatology, Endocrinology.",
+            "FUDAN UNIVERSITY ZHONGSHAN HOSPITAL: 180 FENGQUAN ROAD, XUHUI DISTRICT, SHANGHAI 200032, CHINA. Type: University Hospital. Beds: 2,000. Specialty: Cardiology, Oncology, Transplant.",
+            "RAMATHIBODI HOSPITAL: 270 RAMA VI ROAD, THUNG PHAYA THAI, RATCHATHEWI, BANGKOK 10400, THAILAND. Type: University Hospital. Beds: 1,200. Specialty: Multispecialty, Transplant.",
+            "BUMRUNGRAD INTERNATIONAL HOSPITAL: 33 SUKHUMVIT 3, WATTANA, BANGKOK 10110, THAILAND. Type: Private International Hospital. Beds: 580. Specialty: Multispecialty, Medical Tourism.", "SHEIKH ZAYED HOSPITAL: 17 TALAT HARB STREET, DOWNTOWN, CAIRO, EGYPT. Type: Academic Hospital. Beds: 1,200. Specialty: Multispecialty, Renal Transplant.",
+            "ALBERT EINSTEIN HOSPITAL: AV. ALBERT EINSTEIN, 627, MORUMBI, SÃO PAULO, SP 05652-900, BRAZIL. Type: Private Teaching Hospital. Beds: 600. Specialty: Cardiology, Oncology, Orthopedics.",
+            "HOSPITAL ITALIANO DE BUENOS AIRES: JUAN D. PERÓN 4190, C1199 CABA, ARGENTINA. Type: Teaching Hospital. Beds: 600. Specialty: Cardiology, Transplant, Oncology.",
+            "FUNDACIÓN SANTA FE DE BOGOTÁ: CALLE 119 #7-75, BOGOTÁ, COLOMBIA. Type: Teaching Hospital. Beds: 600. Specialty: Cardiology, Transplant, Neurology.",
+            "SHEBA MEDICAL CENTER: TEL HASHOMER, 5265601, ISRAEL. Type: University Hospital. Beds: 1,600. Specialty: Transplant, Rehabilitation, Cardiology.",
+            "HADASSAH MEDICAL CENTER: POB 12000, JERUSALEM, 9112001, ISRAEL. Type: University Hospital. Beds: 1,000. Specialty: Neurology, Oncology, Transplant.",
+            "CLEVELAND CLINIC ABU DHABI: AL MARYAH ISLAND, ABU DHABI, UAE. Type: Acute Care Teaching Hospital. Beds: 364. Specialty: Cardiology, Neurology, Transplant.",
+            "KING FAISAL SPECIALIST HOSPITAL & RESEARCH CENTRE: AL URUBIAH ST, RIYADH 11211, SAUDI ARABIA. Type: Specialty Tertiary Hospital. Beds: 1,500. Specialty: Oncology, Transplant, Cardiology.",
+            "GROOTE SCHUUR HOSPITAL: MAIN ROAD, OBSERVATORY, CAPE TOWN 7925, SOUTH AFRICA. Type: Academic Teaching Hospital. Beds: 950. Specialty: Transplant, Cardiology, Trauma.",
+            "CHRISTIAAN BARNARD MEMORIAL HOSPITAL: 181 LONG STREET, CAPE TOWN 8001, SOUTH AFRICA. Type: Private Hospital. Beds: 200. Specialty: Cardiology, Transplant, Multispecialty.", "YALE NEW HAVEN HOSPITAL: 20 YORK STREET, NEW HAVEN, CT 06510. Type: Acute Care Teaching Hospital. Beds: 1,541. Specialty: Cancer, Cardiology, Psychiatry.",
+            "HARTFORD HOSPITAL: 80 SEYMOUR STREET, HARTFORD, CT 06102. Type: Acute Care Teaching Hospital. Beds: 938. Specialty: Trauma, Cardiology, Orthopedics.",
+            "BRIDGEPORT HOSPITAL: 267 GRANT STREET, BRIDGEPORT, CT 06610. Type: Acute Care Teaching Hospital. Beds: 501. Specialty: Cardiology, Oncology, Pediatrics.",
+            "STAMFORD HOSPITAL: ONE HOSPITAL PLAZA, STAMFORD, CT 06902. Type: Acute Care Hospital. Beds: 305. Specialty: Cardiology, Orthopedics, Oncology.",
+            "DANBURY HOSPITAL: 24 HOSPITAL AVENUE, DANBURY, CT 06810. Type: Acute Care Hospital. Beds: 371. Specialty: Cardiology, Orthopedics, Women's Health.",
+            "MAINE MEDICAL CENTER: 22 BRAMHALL STREET, PORTLAND, ME 04102. Type: Acute Care Teaching Hospital. Beds: 637. Specialty: Cardiology, Trauma, Cancer.",
+            "EASTERN MAINE MEDICAL CENTER: 489 STATE STREET, BANGOR, ME 04401. Type: Acute Care Hospital. Beds: 411. Specialty: Cardiology, Trauma, Cancer.",
+            "NORTHERN LIGHT HEALTH: 417 STATE STREET, BANGOR, ME 04401. Type: Regional Health System. Beds: 350. Specialty: Multispecialty.",
+            "MERCY HOSPITAL - PORTLAND: 144 STATE STREET, PORTLAND, ME 04101. Type: Acute Care Hospital. Beds: 125. Specialty: Women's Health, Orthopedics.",
+            "BETH ISRAEL DEACONESS MEDICAL CENTER: 330 BROOKLINE AVENUE, BOSTON, MA 02215. Type: Acute Care Teaching Hospital. Beds: 673. Specialty: Cardiology, Transplant, Cancer.",
+            "TUFTS MEDICAL CENTER: 800 WASHINGTON STREET, BOSTON, MA 02111. Type: Acute Care Teaching Hospital. Beds: 495. Specialty: Cardiology, Orthopedics, Transplant.",
+            "BOSTON MEDICAL CENTER: ONE BOSTON MEDICAL CENTER PLACE, BOSTON, MA 02118. Type: Acute Care Teaching Hospital. Beds: 514. Specialty: Trauma, Cardiology, Addiction Medicine.",
+            "UMASS MEMORIAL MEDICAL CENTER: 55 LAKE AVENUE NORTH, WORCESTER, MA 01655. Type: Acute Care Teaching Hospital. Beds: 781. Specialty: Trauma, Cancer, Cardiology.",
+            "LAHEY HOSPITAL & MEDICAL CENTER: 41 MALL ROAD, BURLINGTON, MA 01805. Type: Acute Care Teaching Hospital. Beds: 335. Specialty: Cardiology, Neurology, Transplant.",
+            "DARTMOUTH-HITCHCOCK MEDICAL CENTER: ONE MEDICAL CENTER DRIVE, LEBANON, NH 03756. Type: Acute Care Teaching Hospital. Beds: 396. Specialty: Cancer, Orthopedics, Neurology.",
+            "ELLIOT HOSPITAL: 1 ELLIOT WAY, MANCHESTER, NH 03103. Type: Acute Care Hospital. Beds: 296. Specialty: Cardiology, Orthopedics, Emergency.",
+            "NEW HAMPSHIRE HOSPITAL: 36 CLINTON STREET, CONCORD, NH 03301. Type: Psychiatric Hospital. Beds: 150. Specialty: Mental Health, Psychiatry.",
+            "NEWARK BETH ISRAEL MEDICAL CENTER: 201 LYONS AVENUE, NEWARK, NJ 07112. Type: Acute Care Hospital. Beds: 665. Specialty: Cardiology, Oncology, Bariatrics.",
+            "HACKENSACK UNIVERSITY MEDICAL CENTER: 30 PROSPECT AVENUE, HACKENSACK, NJ 07601. Type: Acute Care Teaching Hospital. Beds: 781. Specialty: Cardiology, Cancer, Orthopedics.",
+            "ROBERT WOOD JOHNSON UNIVERSITY HOSPITAL: 1 ROBERT WOOD JOHNSON PLACE, NEW BRUNSWICK, NJ 08901. Type: Acute Care Teaching Hospital. Beds: 610. Specialty: Cardiology, Cancer, Transplant.",
+            "ST. JOSEPH'S UNIVERSITY MEDICAL CENTER: 703 MAIN STREET, PATERSON, NJ 07503. Type: Acute Care Teaching Hospital. Beds: 651. Specialty: Trauma, Cardiology, Pediatrics.",
+            "ALBANY MEDICAL CENTER: 43 NEW SCOTLAND AVENUE, ALBANY, NY 12208. Type: Acute Care Teaching Hospital. Beds: 734. Specialty: Cardiology, Cancer, Transplant.",
+            "STONY BROOK UNIVERSITY HOSPITAL: 101 NICOLLS ROAD, STONY BROOK, NY 11794. Type: Acute Care Teaching Hospital. Beds: 603. Specialty: Trauma, Cardiology, Neurology.",
+            "UNIVERSITY OF ROCHESTER MEDICAL CENTER: 601 ELMWOOD AVENUE, ROCHESTER, NY 14642. Type: Acute Care Teaching Hospital. Beds: 886. Specialty: Cancer, Cardiology, Transplant.",
+            "BUFFALO GENERAL MEDICAL CENTER: 100 HIGH STREET, BUFFALO, NY 14203. Type: Acute Care Teaching Hospital. Beds: 528. Specialty: Trauma, Cardiology, Transplant.",
+            "NORTH SHORE UNIVERSITY HOSPITAL: 300 COMMUNITY DRIVE, MANHASSET, NY 11030. Type: Acute Care Teaching Hospital. Beds: 738. Specialty: Cardiology, Neurology, Oncology.",
+            "LONG ISLAND JEWISH MEDICAL CENTER: 270-05 76TH AVENUE, NEW HYDE PARK, NY 11040. Type: Acute Care Teaching Hospital. Beds: 583. Specialty: Cardiology, Transplant, Orthopedics.",
+            "MONTEFFIORE MEDICAL CENTER: 111 EAST 210TH STREET, BRONX, NY 10467. Type: Acute Care Teaching Hospital. Beds: 1,044. Specialty: Cardiology, Cancer, Transplant.",
+            "WESTCHESTER MEDICAL CENTER: 100 WOODS ROAD, VALHALLA, NY 10595. Type: Acute Care Teaching Hospital. Beds: 643. Specialty: Trauma, Cardiology, Pediatrics.",
+            "TEMPLE UNIVERSITY HOSPITAL: 3401 NORTH BROAD STREET, PHILADELPHIA, PA 19140. Type: Acute Care Teaching Hospital. Beds: 722. Specialty: Cardiology, Transplant, Neurology.",
+            "THOMAS JEFFERSON UNIVERSITY HOSPITAL: 111 SOUTH 11TH STREET, PHILADELPHIA, PA 19107. Type: Acute Care Teaching Hospital. Beds: 957. Specialty: Cardiology, Neurology, Orthopedics.",
+            "UPMC PRESBYTERIAN SHADYSIDE: 200 LOTHROP STREET, PITTSBURGH, PA 15213. Type: Acute Care Teaching Hospital. Beds: 1,577. Specialty: Transplant, Cardiology, Neurology.",
+            "PENN STATE HEALTH MILTON S. HERSHEY MEDICAL CENTER: 500 UNIVERSITY DRIVE, HERSHEY, PA 17033. Type: Acute Care Teaching Hospital. Beds: 548. Specialty: Cancer, Cardiology, Pediatrics.",
+            "GEISINGER MEDICAL CENTER: 100 NORTH ACADEMY AVENUE, DANVILLE, PA 17822. Type: Acute Care Teaching Hospital. Beds: 580. Specialty: Cardiology, Neurology, Transplant.",
+            "LANKENAU MEDICAL CENTER: 100 LANCASTER AVENUE, WYNNEWOOD, PA 19096. Type: Acute Care Hospital. Beds: 331. Specialty: Cardiology, Oncology, Orthopedics.",
+            "CHRISTIANA HOSPITAL: 4755 OGLETOWN-STANTON ROAD, NEWARK, DE 19718. Type: Acute Care Teaching Hospital. Beds: 1,128. Specialty: Trauma, Cardiology, Cancer.",
+            "BAYHEALTH KENT GENERAL HOSPITAL: 640 SOUTH STATE STREET, DOVER, DE 19901. Type: Acute Care Hospital. Beds: 185. Specialty: Cardiology, Orthopedics.",
+            "RHODE ISLAND HOSPITAL: 593 EDDY STREET, PROVIDENCE, RI 02903. Type: Acute Care Teaching Hospital. Beds: 719. Specialty: Trauma, Cardiology, Orthopedics.",
+            "MIRIAM HOSPITAL: 164 SUMMIT AVENUE, PROVIDENCE, RI 02906. Type: Acute Care Teaching Hospital. Beds: 247. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY OF VERMONT MEDICAL CENTER: 111 COLCHESTER AVENUE, BURLINGTON, VT 05401. Type: Acute Care Teaching Hospital. Beds: 562. Specialty: Cardiology, Cancer, Transplant.",
+            "RUTLAND REGIONAL MEDICAL CENTER: 160 ALLEN STREET, RUTLAND, VT 05701. Type: Acute Care Hospital. Beds: 120. Specialty: Orthopedics, Cardiology.", "UNIVERSITY OF CHICAGO MEDICAL CENTER: 5841 SOUTH MARYLAND AVENUE, CHICAGO, IL 60637. Type: Acute Care Teaching Hospital. Beds: 811. Specialty: Cancer, Cardiology, Pediatrics.",
+            "RUSH UNIVERSITY MEDICAL CENTER: 1620 WEST HARRISON STREET, CHICAGO, IL 60612. Type: Acute Care Teaching Hospital. Beds: 664. Specialty: Orthopedics, Neurology, Geriatrics.",
+            "LOYOLA UNIVERSITY MEDICAL CENTER: 2160 SOUTH FIRST AVENUE, MAYWOOD, IL 60153. Type: Acute Care Teaching Hospital. Beds: 547. Specialty: Cancer, Cardiology, Transplant.",
+            "UNIVERSITY OF ILLINOIS HOSPITAL: 1740 WEST TAYLOR STREET, CHICAGO, IL 60612. Type: Acute Care Teaching Hospital. Beds: 462. Specialty: Trauma, Cancer, Neurology.",
+            "ADVOCATE LUTHERAN GENERAL HOSPITAL: 1775 DEMPSTER STREET, PARK RIDGE, IL 60068. Type: Acute Care Hospital. Beds: 645. Specialty: Cardiology, Orthopedics, Oncology.",
+            "NORTHWESTERN MEDICINE CENTRAL DUPAGE HOSPITAL: 25 NORTH WINFIELD ROAD, WINFIELD, IL 60190. Type: Acute Care Hospital. Beds: 389. Specialty: Cardiology, Orthopedics.",
+            "ST. JOSEPH HOSPITAL - CHICAGO: 2900 NORTH LAKE SHORE DRIVE, CHICAGO, IL 60657. Type: Acute Care Hospital. Beds: 340. Specialty: Cardiology, Orthopedics.",
+            "INDIANA UNIVERSITY HEALTH METHODIST HOSPITAL: 1701 NORTH SENATE AVENUE, INDIANAPOLIS, IN 46202. Type: Acute Care Teaching Hospital. Beds: 1,150. Specialty: Cardiology, Trauma, Transplant.",
+            "IU HEALTH BLOOMINGTON HOSPITAL: 601 WEST SECOND STREET, BLOOMINGTON, IN 47403. Type: Acute Care Hospital. Beds: 325. Specialty: Cardiology, Orthopedics.",
+            "PARKVIEW HEALTH RANDALLIA HOSPITAL: 11109 PARKVIEW PLAZA DRIVE, FORT WAYNE, IN 46845. Type: Acute Care Hospital. Beds: 245. Specialty: Cardiology, Orthopedics.",
+            "ST. VINCENT HOSPITAL - INDIANAPOLIS: 2001 WEST 86TH STREET, INDIANAPOLIS, IN 46260. Type: Acute Care Hospital. Beds: 720. Specialty: Cardiology, Transplant.",
+            "UNIVERSITY OF MICHIGAN HOSPITAL: 1500 EAST MEDICAL CENTER DRIVE, ANN ARBOR, MI 48109. Type: Acute Care Teaching Hospital. Beds: 1,047. Specialty: Cardiology, Cancer, Transplant.",
+            "HENRY FORD HOSPITAL: 2799 WEST GRAND BOULEVARD, DETROIT, MI 48202. Type: Acute Care Teaching Hospital. Beds: 877. Specialty: Cardiology, Neurology, Transplant.",
+            "BEAUMONT HOSPITAL - ROYAL OAK: 3601 WEST THIRTEEN MILE ROAD, ROYAL OAK, MI 48073. Type: Acute Care Teaching Hospital. Beds: 1,070. Specialty: Cardiology, Oncology, Orthopedics.",
+            "SPECTRUM HEALTH BUTTERWORTH HOSPITAL: 100 MICHIGAN STREET NE, GRAND RAPIDS, MI 49503. Type: Acute Care Teaching Hospital. Beds: 805. Specialty: Cardiology, Orthopedics, Transplant.",
+            "COVENANT HEALTHCARE: 1447 NORTH HARRISON STREET, SAGINAW, MI 48602. Type: Acute Care Hospital. Beds: 425. Specialty: Cardiology, Orthopedics.",
+            "MAYO CLINIC - ROCHESTER: 200 FIRST STREET SW, ROCHESTER, MN 55905. Type: Acute Care Teaching Hospital. Beds: 2,059. Specialty: Multispecialty, Transplant, Cancer.",
+            "UNIVERSITY OF MINNESOTA MEDICAL CENTER: 500 HARVARD STREET SE, MINNEAPOLIS, MN 55455. Type: Acute Care Teaching Hospital. Beds: 750. Specialty: Transplant, Cardiology, Cancer.",
+            "ABBOTT NORTHWESTERN HOSPITAL: 800 EAST 28TH STREET, MINNEAPOLIS, MN 55407. Type: Acute Care Hospital. Beds: 586. Specialty: Cardiology, Orthopedics.",
+            "ST. CLOUD HOSPITAL: 1406 6TH AVENUE NORTH, ST. CLOUD, MN 56303. Type: Acute Care Hospital. Beds: 388. Specialty: Cardiology, Orthopedics.",
+            "BARNES-JEWISH HOSPITAL: ONE BARNES-JEWISH HOSPITAL PLAZA, ST. LOUIS, MO 63110. Type: Acute Care Teaching Hospital. Beds: 1,388. Specialty: Cardiology, Neurology, Transplant.",
+            "MERCY HOSPITAL ST. LOUIS: 615 NEW BALLAS ROAD, ST. LOUIS, MO 63141. Type: Acute Care Hospital. Beds: 826. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY OF MISSOURI HOSPITAL: ONE HOSPITAL DRIVE, COLUMBIA, MO 65212. Type: Acute Care Teaching Hospital. Beds: 532. Specialty: Trauma, Cancer, Cardiology.",
+            "ST. LUKE'S HOSPITAL OF KANSAS CITY: 4401 WORNALL ROAD, KANSAS CITY, MO 64111. Type: Acute Care Teaching Hospital. Beds: 652. Specialty: Cardiology, Orthopedics.",
+            "NEBRASKA MEDICINE - UNIVERSITY HOSPITAL: 4350 EMILIE STREET, OMAHA, NE 68198. Type: Acute Care Teaching Hospital. Beds: 639. Specialty: Cancer, Transplant, Orthopedics.",
+            "CHI HEALTH ST. ELIZABETH: 555 SOUTH 70TH STREET, LINCOLN, NE 68510. Type: Acute Care Hospital. Beds: 252. Specialty: Cardiology, Orthopedics.",
+            "CLEVELAND CLINIC: 9500 EUCLID AVENUE, CLEVELAND, OH 44195. Type: Acute Care Teaching Hospital. Beds: 1,300. Specialty: Cardiology, Heart Surgery, Urology.",
+            "OHIO STATE UNIVERSITY WEXNER MEDICAL CENTER: 410 WEST 10TH AVENUE, COLUMBUS, OH 43210. Type: Acute Care Teaching Hospital. Beds: 1,380. Specialty: Cancer, Cardiology, Neurology.",
+            "UNIVERSITY OF CINCINNATI MEDICAL CENTER: 234 GOODMAN STREET, CINCINNATI, OH 45219. Type: Acute Care Teaching Hospital. Beds: 678. Specialty: Trauma, Transplant, Cardiology.",
+            "UNIVERSITY HOSPITALS CLEVELAND MEDICAL CENTER: 11100 EUCLID AVENUE, CLEVELAND, OH 44106. Type: Acute Care Teaching Hospital. Beds: 1,032. Specialty: Cancer, Cardiology, Neurology.",
+            "PROMEDICA TOLEDO HOSPITAL: 2142 NORTH COVE BOULEVARD, TOLEDO, OH 43606. Type: Acute Care Hospital. Beds: 571. Specialty: Cardiology, Orthopedics.",
+            "AKRON GENERAL MEDICAL CENTER: 1 AKRON GENERAL AVENUE, AKRON, OH 44307. Type: Acute Care Teaching Hospital. Beds: 532. Specialty: Cardiology, Orthopedics.",
+            "FROEDTERT HOSPITAL: 9200 WEST WISCONSIN AVENUE, MILWAUKEE, WI 53226. Type: Acute Care Teaching Hospital. Beds: 607. Specialty: Trauma, Cancer, Neuroscience.",
+            "UNIVERSITY OF WISCONSIN HOSPITAL: 600 HIGHLAND AVENUE, MADISON, WI 53792. Type: Acute Care Teaching Hospital. Beds: 505. Specialty: Cancer, Cardiology, Transplant.",
+            "AURORA ST. LUKE'S MEDICAL CENTER: 2900 WEST OKLAHOMA AVENUE, MILWAUKEE, WI 53215. Type: Acute Care Hospital. Beds: 930. Specialty: Cardiology, Orthopedics.",
+            "MARSHFIELD MEDICAL CENTER: 1000 NORTH OAK AVENUE, MARSHFIELD, WI 54449. Type: Acute Care Teaching Hospital. Beds: 504. Specialty: Cardiology, Orthopedics, Cancer.",
+            "UNIVERSITY OF KANSAS HOSPITAL: 4000 CAMBRIDGE STREET, KANSAS CITY, KS 66160. Type: Acute Care Teaching Hospital. Beds: 727. Specialty: Cancer, Neurology, Cardiology.",
+            "VIA CHRISTI HOSPITAL - WICHITA: 929 NORTH ST. FRANCIS AVENUE, WICHITA, KS 67214. Type: Acute Care Hospital. Beds: 654. Specialty: Cardiology, Trauma.",
+            "SANFORD MEDICAL CENTER FARGO: 801 BROADWAY NORTH, FARGO, ND 58122. Type: Acute Care Teaching Hospital. Beds: 583. Specialty: Cardiology, Orthopedics, Cancer.",
+            "AVERA MCKENNAN HOSPITAL: 1325 SOUTH CLIFF AVENUE, SIOUX FALLS, SD 57105. Type: Acute Care Hospital. Beds: 545. Specialty: Cardiology, Orthopedics, Cancer.",
+            "UNIVERSITY OF IOWA HOSPITALS AND CLINICS: 200 HAWKINS DRIVE, IOWA CITY, IA 52242. Type: Acute Care Teaching Hospital. Beds: 811. Specialty: Orthopedics, Pediatrics, Cancer.",
+            "MERCYONE DES MOINES MEDICAL CENTER: 1111 6TH AVENUE, DES MOINES, IA 50314. Type: Acute Care Hospital. Beds: 569. Specialty: Cardiology, Orthopedics.", "UNIVERSITY OF ALABAMA AT BIRMINGHAM HOSPITAL: 619 SOUTH 19TH STREET, BIRMINGHAM, AL 35233. Type: Acute Care Teaching Hospital. Beds: 1,207. Specialty: Transplant, Trauma, Cancer.",
+            "BAPTIST MEDICAL CENTER SOUTH: 2105 EAST SOUTH BOULEVARD, MONTGOMERY, AL 36116. Type: Acute Care Hospital. Beds: 441. Specialty: Cardiology, Orthopedics.",
+            "HUNTSVILLE HOSPITAL: 101 SIVLEY ROAD, HUNTSVILLE, AL 35801. Type: Acute Care Hospital. Beds: 881. Specialty: Cardiology, Orthopedics, Oncology.",
+            "MOBILE INFIRMARY: 5 MOBILE INFIRMARY CIRCLE, MOBILE, AL 36607. Type: Acute Care Hospital. Beds: 659. Specialty: Cardiology, Orthopedics.",
+            "PROVIDENCE HOSPITAL: 6801 AIRPORT BOULEVARD, MOBILE, AL 36608. Type: Acute Care Hospital. Beds: 349. Specialty: Cardiology, Oncology.",
+            "DCH REGIONAL MEDICAL CENTER: 809 UNIVERSITY BOULEVARD EAST, TUSCALOOSA, AL 35401. Type: Acute Care Hospital. Beds: 583. Specialty: Cardiology, Trauma.",
+            "ARKANSAS CHILDREN'S HOSPITAL: 1 CHILDREN'S WAY, LITTLE ROCK, AR 72202. Type: Pediatric Teaching Hospital. Beds: 336. Specialty: Pediatric Cardiology, Oncology, Neurology.",
+            "UNIVERSITY OF ARKANSAS FOR MEDICAL SCIENCES MEDICAL CENTER: 4301 WEST MARKHAM STREET, LITTLE ROCK, AR 72205. Type: Acute Care Teaching Hospital. Beds: 757. Specialty: Cancer, Transplant, Cardiology.",
+            "BAPTIST HEALTH MEDICAL CENTER - LITTLE ROCK: 9601 INTERSTATE 630, LITTLE ROCK, AR 72205. Type: Acute Care Hospital. Beds: 821. Specialty: Cardiology, Orthopedics.",
+            "MERCY HOSPITAL FORT SMITH: 7301 ROGERS AVENUE, FORT SMITH, AR 72903. Type: Acute Care Hospital. Beds: 532. Specialty: Cardiology, Orthopedics.",
+            "CHRISTIANA CARE HEALTH SYSTEM: 4755 OGLETOWN-STANTON ROAD, NEWARK, DE 19718. Type: Acute Care Teaching Hospital. Beds: 1,128. Specialty: Trauma, Cardiology, Cancer.",
+            "ADVENTHEALTH ORLANDO: 601 EAST ROLLINS STREET, ORLANDO, FL 32803. Type: Acute Care Hospital. Beds: 1,739. Specialty: Cardiology, Cancer, Neurology.",
+            "JACKSON MEMORIAL HOSPITAL: 1611 NORTHWEST 12TH AVENUE, MIAMI, FL 33136. Type: Acute Care Teaching Hospital. Beds: 1,550. Specialty: Trauma, Burn Care, Transplant.",
+            "BAPTIST HOSPITAL OF MIAMI: 8900 NORTH KENDALL DRIVE, MIAMI, FL 33176. Type: Acute Care Hospital. Beds: 435. Specialty: Cardiology, Cancer, Orthopedics.",
+            "TAMPA GENERAL HOSPITAL: 1 TAMPA GENERAL CIRCLE, TAMPA, FL 33606. Type: Acute Care Teaching Hospital. Beds: 1,010. Specialty: Trauma, Cardiology, Transplant.",
+            "SHANDS HOSPITAL AT THE UNIVERSITY OF FLORIDA: 1600 SOUTHWEST ARCHER ROAD, GAINESVILLE, FL 32608. Type: Acute Care Teaching Hospital. Beds: 1,106. Specialty: Cardiology, Neurology, Transplant.",
+            "ORLANDO HEALTH ORLANDO REGIONAL MEDICAL CENTER: 52 WEST UNDERWOOD STREET, ORLANDO, FL 32806. Type: Acute Care Teaching Hospital. Beds: 808. Specialty: Cardiology, Trauma, Cancer.",
+            "HOLY CROSS HOSPITAL: 4725 NORTH FEDERAL HIGHWAY, FORT LAUDERDALE, FL 33308. Type: Acute Care Hospital. Beds: 580. Specialty: Cardiology, Orthopedics.",
+            "SARASOTA MEMORIAL HOSPITAL: 1700 SOUTH TAMIAMI TRAIL, SARASOTA, FL 34239. Type: Acute Care Hospital. Beds: 839. Specialty: Cardiology, Orthopedics, Cancer.",
+            "EMORY UNIVERSITY HOSPITAL: 1364 CLIFTON ROAD NE, ATLANTA, GA 30322. Type: Acute Care Teaching Hospital. Beds: 733. Specialty: Cardiology, Transplant, Neurology.",
+            "PIEDMONT ATLANTA HOSPITAL: 1968 PEACHTREE ROAD NW, ATLANTA, GA 30309. Type: Acute Care Hospital. Beds: 685. Specialty: Cardiology, Orthopedics, Cancer.",
+            "WELLSTAR KENNESTONE HOSPITAL: 677 CHURCH STREET, MARIETTA, GA 30060. Type: Acute Care Hospital. Beds: 633. Specialty: Cardiology, Orthopedics.",
+            "CHILDREN'S HEALTHCARE OF ATLANTA - SCOTTISH RITE: 1001 JOHNSON FERRY ROAD NE, ATLANTA, GA 30342. Type: Pediatric Hospital. Beds: 245. Specialty: Pediatric Orthopedics, Rehabilitation.",
+            "AUGUSTA UNIVERSITY MEDICAL CENTER: 1120 15TH STREET, AUGUSTA, GA 30912. Type: Acute Care Teaching Hospital. Beds: 832. Specialty: Cardiology, Neurology, Transplant.",
+            "MEMORIAL HEALTH UNIVERSITY MEDICAL CENTER: 4700 WATERS AVENUE, SAVANNAH, GA 31404. Type: Acute Care Teaching Hospital. Beds: 610. Specialty: Cardiology, Trauma.",
+            "NORTHEAST GEORGIA MEDICAL CENTER: 743 SPRING STREET NE, GAINESVILLE, GA 30501. Type: Acute Care Hospital. Beds: 557. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY OF KENTUCKY ALBERT B. CHANDLER HOSPITAL: 800 ROSE STREET, LEXINGTON, KY 40536. Type: Acute Care Teaching Hospital. Beds: 945. Specialty: Cancer, Cardiology, Transplant.",
+            "NORTON HOSPITAL: 200 EAST CHESTNUT STREET, LOUISVILLE, KY 40202. Type: Acute Care Teaching Hospital. Beds: 642. Specialty: Cardiology, Orthopedics.",
+            "BAPTIST HEALTH LOUISVILLE: 4000 KRESGE WAY, LOUISVILLE, KY 40207. Type: Acute Care Hospital. Beds: 519. Specialty: Cardiology, Orthopedics.",
+            "ST. ELIZABETH HEALTHCARE - EDGEWOOD: 1 MEDICAL VILLAGE DRIVE, EDGEWOOD, KY 41017. Type: Acute Care Hospital. Beds: 390. Specialty: Cardiology, Orthopedics.",
+            "OCHSNER MEDICAL CENTER - NEW ORLEANS: 1516 JEFFERSON HIGHWAY, NEW ORLEANS, LA 70121. Type: Acute Care Teaching Hospital. Beds: 932. Specialty: Cardiology, Transplant, Pulmonology.",
+            "OUR LADY OF THE LAKE REGIONAL MEDICAL CENTER: 5000 HENNESSY BOULEVARD, BATON ROUGE, LA 70808. Type: Acute Care Teaching Hospital. Beds: 875. Specialty: Cardiology, Trauma, Transplant.",
+            "UNIVERSITY MEDICAL CENTER NEW ORLEANS: 2000 CANAL STREET, NEW ORLEANS, LA 70112. Type: Acute Care Teaching Hospital. Beds: 446. Specialty: Trauma, Burn Care.",
+            "WILLIS-KNIGHTON MEDICAL CENTER: 2600 GREENWOOD ROAD, SHREVEPORT, LA 71103. Type: Acute Care Hospital. Beds: 335. Specialty: Cardiology, Orthopedics.",
+            "JOHNS HOPKINS BAYVIEW MEDICAL CENTER: 4940 EASTERN AVENUE, BALTIMORE, MD 21224. Type: Acute Care Teaching Hospital. Beds: 518. Specialty: Burn Care, Geriatrics, Cardiology.",
+            "UNIVERSITY OF MARYLAND MEDICAL CENTER: 22 SOUTH GREENE STREET, BALTIMORE, MD 21201. Type: Acute Care Teaching Hospital. Beds: 757. Specialty: Trauma, Cardiology, Transplant.",
+            "MERCY MEDICAL CENTER - BALTIMORE: 345 SAINT PAUL PLACE, BALTIMORE, MD 21202. Type: Acute Care Hospital. Beds: 356. Specialty: Cardiology, Orthopedics.",
+            "SUBURBAN HOSPITAL: 8600 OLD GEORGETOWN ROAD, BETHESDA, MD 20814. Type: Acute Care Hospital. Beds: 228. Specialty: Orthopedics, Oncology.",
+            "UNIVERSITY OF MISSISSIPPI MEDICAL CENTER: 2500 NORTH STATE STREET, JACKSON, MS 39216. Type: Acute Care Teaching Hospital. Beds: 722. Specialty: Trauma, Transplant, Cardiology.",
+            "BAPTIST MEMORIAL HOSPITAL - DESOTO: 7601 SOUTHCREST PARKWAY, SOUTHAVEN, MS 38671. Type: Acute Care Hospital. Beds: 292. Specialty: Cardiology, Orthopedics.",
+            "DUKE UNIVERSITY HOSPITAL: 2301 ERWIN ROAD, DURHAM, NC 27710. Type: Acute Care Teaching Hospital. Beds: 1,048. Specialty: Cardiology, Cancer, Neurology.",
+            "UNC MEDICAL CENTER: 101 MANNING DRIVE, CHAPEL HILL, NC 27514. Type: Acute Care Teaching Hospital. Beds: 888. Specialty: Cancer, Cardiology, Transplant.",
+            "WAKE FOREST BAPTIST MEDICAL CENTER: MEDICAL CENTER BOULEVARD, WINSTON-SALEM, NC 27157. Type: Acute Care Teaching Hospital. Beds: 885. Specialty: Cardiology, Cancer, Transplant.",
+            "CAROLINAS MEDICAL CENTER: 1000 BLYTHE BOULEVARD, CHARLOTTE, NC 28203. Type: Acute Care Teaching Hospital. Beds: 874. Specialty: Trauma, Cardiology, Transplant.",
+            "VIDANT MEDICAL CENTER: 2100 STANTONSBURG ROAD, GREENVILLE, NC 27834. Type: Acute Care Teaching Hospital. Beds: 974. Specialty: Trauma, Cardiology, Cancer.",
+            "MISSION HOSPITAL: 509 BILTMORE AVENUE, ASHEVILLE, NC 28801. Type: Acute Care Hospital. Beds: 763. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY OF OKLAHOMA MEDICAL CENTER: 700 NE 13TH STREET, OKLAHOMA CITY, OK 73104. Type: Acute Care Teaching Hospital. Beds: 773. Specialty: Trauma, Transplant, Cardiology.",
+            "ST. JOHN MEDICAL CENTER: 1923 SOUTH UTICA AVENUE, TULSA, OK 74104. Type: Acute Care Hospital. Beds: 446. Specialty: Cardiology, Orthopedics.",
+            "MERCY HOSPITAL OKLAHOMA CITY: 4300 WEST MEMORIAL ROAD, OKLAHOMA CITY, OK 73120. Type: Acute Care Hospital. Beds: 320. Specialty: Cardiology, Orthopedics.",
+            "MEDICAL UNIVERSITY OF SOUTH CAROLINA: 169 ASHLEY AVENUE, CHARLESTON, SC 29425. Type: Acute Care Teaching Hospital. Beds: 865. Specialty: Cardiology, Transplant, Neurology.",
+            "PRISMA HEALTH RICHLAND HOSPITAL: 5 RICHLAND MEDICAL PARK DRIVE, COLUMBIA, SC 29203. Type: Acute Care Teaching Hospital. Beds: 650. Specialty: Trauma, Cardiology, Transplant.",
+            "BON SECOURS ST. FRANCIS HOSPITAL: 2095 HENRY TECKLENBURG DRIVE, CHARLESTON, SC 29414. Type: Acute Care Hospital. Beds: 305. Specialty: Cardiology, Orthopedics.",
+            "VANDERBILT UNIVERSITY MEDICAL CENTER: 1211 MEDICAL CENTER DRIVE, NASHVILLE, TN 37232. Type: Acute Care Teaching Hospital. Beds: 1,161. Specialty: Cardiology, Cancer, Transplant.",
+            "METHODIST UNIVERSITY HOSPITAL: 1265 UNION AVENUE, MEMPHIS, TN 38104. Type: Acute Care Teaching Hospital. Beds: 550. Specialty: Transplant, Neurology, Cardiology.",
+            "ST. JUDE CHILDREN'S RESEARCH HOSPITAL: 262 DANNY THOMAS PLACE, MEMPHIS, TN 38105. Type: Pediatric Cancer Specialty Hospital. Beds: 163. Specialty: Pediatric Oncology, Hematology.",
+            "ERLANGER HEALTH SYSTEM: 975 EAST 3RD STREET, CHATTANOOGA, TN 37403. Type: Acute Care Teaching Hospital. Beds: 723. Specialty: Trauma, Cardiology, Neurology.",
+            "BAPTIST MEMORIAL HOSPITAL - MEMPHIS: 6019 WALNUT GROVE ROAD, MEMPHIS, TN 38120. Type: Acute Care Hospital. Beds: 709. Specialty: Cardiology, Orthopedics.",
+            "HOUSTON METHODIST HOSPITAL: 6565 FANNIN STREET, HOUSTON, TX 77030. Type: Acute Care Teaching Hospital. Beds: 1,108. Specialty: Cardiology, Cancer, Neurology.",
+            "MD ANDERSON CANCER CENTER: 1515 HOLCOMBE BOULEVARD, HOUSTON, TX 77030. Type: Specialty Cancer Hospital. Beds: 745. Specialty: Oncology, Hematology, Radiation Oncology.",
+            "TEXAS CHILDREN'S HOSPITAL: 6621 FANNIN STREET, HOUSTON, TX 77030. Type: Pediatric Teaching Hospital. Beds: 639. Specialty: Pediatric Cardiology, Oncology, Pulmonology.",
+            "UT SOUTHWESTERN MEDICAL CENTER: 6201 HARRY HINES BOULEVARD, DALLAS, TX 75390. Type: Acute Care Teaching Hospital. Beds: 855. Specialty: Cardiology, Neurology, Transplant.",
+            "BAYLOR UNIVERSITY MEDICAL CENTER: 3500 GASTON AVENUE, DALLAS, TX 75246. Type: Acute Care Teaching Hospital. Beds: 914. Specialty: Cardiology, Transplant, Oncology.",
+            "METHODIST DALLAS MEDICAL CENTER: 1441 NORTH BECKLEY AVENUE, DALLAS, TX 75203. Type: Acute Care Hospital. Beds: 498. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY HOSPITAL - SAN ANTONIO: 4502 MEDICAL DRIVE, SAN ANTONIO, TX 78229. Type: Acute Care Teaching Hospital. Beds: 716. Specialty: Trauma, Transplant, Cardiology.",
+            "TEXAS HEALTH HARRIS METHODIST HOSPITAL: 1301 PENNSYLVANIA AVENUE, FORT WORTH, TX 76104. Type: Acute Care Hospital. Beds: 726. Specialty: Cardiology, Orthopedics.",
+            "ST. DAVID'S MEDICAL CENTER: 919 EAST 32ND STREET, AUSTIN, TX 78705. Type: Acute Care Hospital. Beds: 413. Specialty: Cardiology, Trauma.",
+            "VIRGINIA COMMONWEALTH UNIVERSITY MEDICAL CENTER: 1250 EAST MARSHALL STREET, RICHMOND, VA 23298. Type: Acute Care Teaching Hospital. Beds: 865. Specialty: Trauma, Transplant, Cardiology.",
+            "UNIVERSITY OF VIRGINIA MEDICAL CENTER: 1215 LEE STREET, CHARLOTTESVILLE, VA 22908. Type: Acute Care Teaching Hospital. Beds: 639. Specialty: Cardiology, Neurology, Transplant.",
+            "INOVA FAIRFAX HOSPITAL: 3300 GALLOWS ROAD, FALLS CHURCH, VA 22042. Type: Acute Care Hospital. Beds: 923. Specialty: Cardiology, Orthopedics, Oncology.",
+            "SENTARA NORFOLK GENERAL HOSPITAL: 600 GRESHAM DRIVE, NORFOLK, VA 23507. Type: Acute Care Hospital. Beds: 525. Specialty: Cardiology, Orthopedics.",
+            "WEST VIRGINIA UNIVERSITY HOSPITALS: 1 MEDICAL CENTER DRIVE, MORGANTOWN, WV 26506. Type: Acute Care Teaching Hospital. Beds: 690. Specialty: Cardiology, Transplant, Neurology.",
+            "CAMDEN-CLARK MEDICAL CENTER: 800 GARFIELD AVENUE, PARKERSBURG, WV 26101. Type: Acute Care Hospital. Beds: 205. Specialty: Cardiology, Orthopedics.",
+            "CHARLESTON AREA MEDICAL CENTER: 501 MORRIS STREET, CHARLESTON, WV 25301. Type: Acute Care Hospital. Beds: 838. Specialty: Cardiology, Orthopedics.", "UCLA MEDICAL CENTER: 757 WESTWOOD PLAZA, LOS ANGELES, CA 90095. Type: Acute Care Teaching Hospital. Beds: 485. Specialty: Cancer, Neurology, Transplant.",
+            "CEDARS-SINAI MEDICAL CENTER: 8700 BEVERLY BOULEVARD, LOS ANGELES, CA 90048. Type: Acute Care Teaching Hospital. Beds: 958. Specialty: Cardiology, Neurology, Orthopedics.",
+            "STANFORD HEALTH CARE: 300 PASTEUR DRIVE, STANFORD, CA 94305. Type: Acute Care Teaching Hospital. Beds: 613. Specialty: Cardiology, Cancer, Transplant.",
+            "UCSF MEDICAL CENTER: 505 PARNASSUS AVENUE, SAN FRANCISCO, CA 94143. Type: Acute Care Teaching Hospital. Beds: 658. Specialty: Neurology, Cancer, Transplant.",
+            "CHILDREN'S HOSPITAL LOS ANGELES: 4650 SUNSET BOULEVARD, LOS ANGELES, CA 90027. Type: Pediatric Teaching Hospital. Beds: 452. Specialty: Pediatric Cardiology, Cancer, Orthopedics.",
+            "RADY CHILDREN'S HOSPITAL: 3020 CHILDREN'S WAY, SAN DIEGO, CA 92123. Type: Pediatric Teaching Hospital. Beds: 303. Specialty: Pediatric Cardiology, Neurology, Neonatology.",
+            "SCRIPPS MERCY HOSPITAL: 4077 5TH AVENUE, SAN DIEGO, CA 92103. Type: Acute Care Hospital. Beds: 415. Specialty: Cardiology, Orthopedics, Cancer.",
+            "SHARP MEMORIAL HOSPITAL: 7901 FROST STREET, SAN DIEGO, CA 92123. Type: Acute Care Hospital. Beds: 408. Specialty: Cardiology, Orthopedics.",
+            "HOAG MEMORIAL HOSPITAL PRESBYTERIAN: 1 HOAG DRIVE, NEWPORT BEACH, CA 92663. Type: Acute Care Hospital. Beds: 523. Specialty: Cardiology, Orthopedics, Cancer.",
+            "LOMA LINDA UNIVERSITY MEDICAL CENTER: 11234 ANDERSON STREET, LOMA LINDA, CA 92354. Type: Acute Care Teaching Hospital. Beds: 842. Specialty: Transplant, Cardiology, Trauma.",
+            "KAISER PERMANENTE LOS ANGELES MEDICAL CENTER: 4867 SUNSET BOULEVARD, LOS ANGELES, CA 90027. Type: Acute Care Hospital. Beds: 548. Specialty: Cardiology, Orthopedics.",
+            "SUTTER HEALTH CALIFORNIA PACIFIC MEDICAL CENTER: 1101 VAN NESS AVENUE, SAN FRANCISCO, CA 94109. Type: Acute Care Hospital. Beds: 547. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY OF CALIFORNIA DAVIS MEDICAL CENTER: 2315 STOCKTON BOULEVARD, SACRAMENTO, CA 95817. Type: Acute Care Teaching Hospital. Beds: 646. Specialty: Trauma, Transplant, Cardiology.",
+            "UNIVERSITY OF CALIFORNIA IRVINE MEDICAL CENTER: 101 THE CITY DRIVE, ORANGE, CA 92868. Type: Acute Care Teaching Hospital. Beds: 459. Specialty: Trauma, Cardiology, Neurology.",
+            "RIVERSIDE UNIVERSITY HEALTH SYSTEM: 26520 CACTUS AVENUE, MORENO VALLEY, CA 92555. Type: Acute Care Hospital. Beds: 439. Specialty: Cardiology, Orthopedics.",
+            "ST. JOSEPH HOSPITAL - ORANGE: 1100 WEST STEWART DRIVE, ORANGE, CA 92868. Type: Acute Care Hospital. Beds: 303. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY OF WASHINGTON MEDICAL CENTER: 1959 NE PACIFIC STREET, SEATTLE, WA 98195. Type: Acute Care Teaching Hospital. Beds: 540. Specialty: Transplant, Cardiology, Neurology.",
+            "SEATTLE CHILDREN'S HOSPITAL: 4800 SAND POINT WAY NE, SEATTLE, WA 98105. Type: Pediatric Teaching Hospital. Beds: 407. Specialty: Pediatric Cardiology, Cancer, Orthopedics.",
+            "VIRGINIA MASON MEDICAL CENTER: 1100 9TH AVENUE, SEATTLE, WA 98101. Type: Acute Care Hospital. Beds: 336. Specialty: Cardiology, Orthopedics.",
+            "PROVIDENCE SACRED HEART MEDICAL CENTER: 101 WEST 8TH AVENUE, SPOKANE, WA 99204. Type: Acute Care Hospital. Beds: 644. Specialty: Cardiology, Orthopedics.",
+            "MULTICARE TACOMA GENERAL HOSPITAL: 315 MARTIN LUTHER KING JR WAY, TACOMA, WA 98405. Type: Acute Care Hospital. Beds: 388. Specialty: Cardiology, Trauma.",
+            "OHSU HOSPITAL: 3181 SW SAM JACKSON PARK ROAD, PORTLAND, OR 97239. Type: Acute Care Teaching Hospital. Beds: 576. Specialty: Cardiology, Neurology, Cancer.",
+            "PROVIDENCE ST. VINCENT MEDICAL CENTER: 9205 SW BARNES ROAD, PORTLAND, OR 97225. Type: Acute Care Hospital. Beds: 523. Specialty: Cardiology, Orthopedics.",
+            "LEGACY EMANUEL MEDICAL CENTER: 2801 NORTH GANTENBEIN AVENUE, PORTLAND, OR 97227. Type: Acute Care Hospital. Beds: 554. Specialty: Trauma, Cardiology.",
+            "ST. CHARLES MEDICAL CENTER: 2500 NE NEFF ROAD, BEND, OR 97701. Type: Acute Care Hospital. Beds: 226. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY OF COLORADO HOSPITAL: 12605 EAST 16TH AVENUE, AURORA, CO 80045. Type: Acute Care Teaching Hospital. Beds: 720. Specialty: Cardiology, Transplant, Cancer.",
+            "PENROSE HOSPITAL: 2222 NORTH NEVADA AVENUE, COLORADO SPRINGS, CO 80907. Type: Acute Care Hospital. Beds: 398. Specialty: Cardiology, Orthopedics.",
+            "MEDICAL CENTER OF THE ROCKIES: 2500 ROCKY MOUNTAIN AVENUE, LOVELAND, CO 80538. Type: Acute Care Hospital. Beds: 187. Specialty: Cardiology, Orthopedics.",
+            "ST. ANTHONY HOSPITAL: 11600 WEST 2ND PLACE, LAKEWOOD, CO 80228. Type: Acute Care Hospital. Beds: 313. Specialty: Cardiology, Trauma.",
+            "MAYO CLINIC - PHOENIX: 5777 EAST MAYO BOULEVARD, PHOENIX, AZ 85054. Type: Acute Care Teaching Hospital. Beds: 286. Specialty: Cardiology, Cancer, Neurology.",
+            "BANNER - UNIVERSITY MEDICAL CENTER PHOENIX: 1111 EAST MCDOWELL ROAD, PHOENIX, AZ 85006. Type: Acute Care Teaching Hospital. Beds: 733. Specialty: Trauma, Transplant, Neurology.",
+            "BANNER - UNIVERSITY MEDICAL CENTER TUCSON: 1625 NORTH CAMPBELL AVENUE, TUCSON, AZ 85719. Type: Acute Care Teaching Hospital. Beds: 515. Specialty: Cardiology, Transplant.",
+            "HONORHEALTH SCOTTSDALE OSBORN MEDICAL CENTER: 7400 EAST OSBORN ROAD, SCOTTSDALE, AZ 85251. Type: Acute Care Hospital. Beds: 337. Specialty: Cardiology, Orthopedics.",
+            "DIGNITY HEALTH ST. JOSEPH'S HOSPITAL AND MEDICAL CENTER: 350 WEST THOMAS ROAD, PHOENIX, AZ 85013. Type: Acute Care Hospital. Beds: 589. Specialty: Cardiology, Neurology.",
+            "INTERMOUNTAIN MEDICAL CENTER: 5121 SOUTH COTTONWOOD STREET, MURRAY, UT 84107. Type: Acute Care Teaching Hospital. Beds: 504. Specialty: Cardiology, Orthopedics, Transplant.",
+            "UNIVERSITY OF UTAH HOSPITAL: 50 NORTH MEDICAL DRIVE, SALT LAKE CITY, UT 84132. Type: Acute Care Teaching Hospital. Beds: 613. Specialty: Cardiology, Neurology, Transplant.",
+            "ST. MARK'S HOSPITAL: 1200 EAST 3900 SOUTH, SALT LAKE CITY, UT 84124. Type: Acute Care Hospital. Beds: 316. Specialty: Cardiology, Orthopedics.",
+            "MCKAY-DEE HOSPITAL: 4401 HARRISON BOULEVARD, OGDEN, UT 84403. Type: Acute Care Hospital. Beds: 257. Specialty: Cardiology, Orthopedics.",
+            "UNIVERSITY MEDICAL CENTER OF SOUTHERN NEVADA: 1800 WEST CHARLESTON BOULEVARD, LAS VEGAS, NV 89102. Type: Acute Care Teaching Hospital. Beds: 541. Specialty: Trauma, Cardiology, Transplant.",
+            "RENOWN REGIONAL MEDICAL CENTER: 1155 MILL STREET, RENO, NV 89502. Type: Acute Care Hospital. Beds: 808. Specialty: Cardiology, Orthopedics, Trauma.",
+            "SUMMERLIN HOSPITAL MEDICAL CENTER: 657 NORTH TOWN CENTER DRIVE, LAS VEGAS, NV 89144. Type: Acute Care Hospital. Beds: 485. Specialty: Cardiology, Orthopedics.",
+            "PRESCOTT VA MEDICAL CENTER: 500 NORTH HIGHWAY 89, PRESCOTT, AZ 86313. Type: Veterans Health Administration. Beds: 145. Specialty: Mental Health, Geriatrics.",
+            "ALASKA NATIVE MEDICAL CENTER: 4315 DIPLOMACY DRIVE, ANCHORAGE, AK 99508. Type: Tribal Hospital. Beds: 174. Specialty: Multispecialty, Primary Care.",
+            "PROVIDENCE ALASKA MEDICAL CENTER: 3200 PROVIDENCE DRIVE, ANCHORAGE, AK 99508. Type: Acute Care Hospital. Beds: 398. Specialty: Cardiology, Orthopedics, Trauma.",
+            "QUEEN'S MEDICAL CENTER: 1301 PUNCHBOWL STREET, HONOLULU, HI 96813. Type: Acute Care Teaching Hospital. Beds: 575. Specialty: Cardiology, Transplant, Orthopedics.",
+            "KAPI'OLANI MEDICAL CENTER FOR WOMEN & CHILDREN: 1319 PUNAHOU STREET, HONOLULU, HI 96826. Type: Specialty Hospital. Beds: 243. Specialty: Pediatrics, Women's Health, Neonatology.",
+            "MAUI MEMORIAL MEDICAL CENTER: 221 MAHALANI STREET, WAILUKU, HI 96793. Type: Acute Care Hospital. Beds: 213. Specialty: Cardiology, Orthopedics.", "TORONTO GENERAL HOSPITAL (UNIVERSITY HEALTH NETWORK): 200 ELIZABETH STREET, TORONTO, ON M5G 2C4. Type: Academic Teaching Hospital. Beds: 650. Specialty: Transplant, Cardiology, Trauma.",
+            "ST. MICHAEL'S HOSPITAL (UNITY HEALTH TORONTO): 30 BOND STREET, TORONTO, ON M5B 1W8. Type: Academic Teaching Hospital. Beds: 456. Specialty: Trauma, Cardiology, Inner City Health.",
+            "SICKKIDS (THE HOSPITAL FOR SICK CHILDREN): 555 UNIVERSITY AVENUE, TORONTO, ON M5G 1X8. Type: Pediatric Teaching Hospital. Beds: 420. Specialty: Pediatric Cardiology, Oncology, Neurology.",
+            "MOUNT SINAI HOSPITAL - TORONTO: 600 UNIVERSITY AVENUE, TORONTO, ON M5G 1X5. Type: Academic Teaching Hospital. Beds: 442. Specialty: Women's Health, Gastroenterology, Oncology.",
+            "SUNNYBROOK HEALTH SCIENCES CENTRE: 2075 BAYVIEW AVENUE, TORONTO, ON M4N 3M5. Type: Academic Teaching Hospital. Beds: 673. Specialty: Trauma, Burns, Neurology.",
+            "NORTH YORK GENERAL HOSPITAL: 4001 LESLIE STREET, TORONTO, ON M2K 1E1. Type: Community Teaching Hospital. Beds: 411. Specialty: Cardiology, Orthopedics.",
+            "MONTREAL GENERAL HOSPITAL (MCGILL UNIVERSITY HEALTH CENTRE): 1650 CEDAR AVENUE, MONTREAL, QC H3G 1A4. Type: Academic Teaching Hospital. Beds: 479. Specialty: Trauma, Neurology, Cancer.",
+            "ROYAL VICTORIA HOSPITAL (MUHC): 1001 DECARIE BOULEVARD, MONTREAL, QC H4A 3J1. Type: Academic Teaching Hospital. Beds: 517. Specialty: Transplant, Cardiology, Cancer.",
+            "MONTREAL CHILDREN'S HOSPITAL (MUHC): 1001 DECARIE BOULEVARD, MONTREAL, QC H4A 3J1. Type: Pediatric Teaching Hospital. Beds: 155. Specialty: Pediatric Cardiology, Oncology.",
+            "JEWISH GENERAL HOSPITAL (CIUSSS WEST-CENTRAL MONTREAL): 3755 COTE-SAINTE-CATHERINE ROAD, MONTREAL, QC H3T 1E2. Type: Academic Teaching Hospital. Beds: 637. Specialty: Cardiology, Geriatrics.",
+            "VANCOUVER GENERAL HOSPITAL: 899 WEST 12TH AVENUE, VANCOUVER, BC V5Z 1M9. Type: Academic Teaching Hospital. Beds: 955. Specialty: Trauma, Transplant, Cardiology.",
+            "ST. PAUL'S HOSPITAL - VANCOUVER: 1081 BURRARD STREET, VANCOUVER, BC V6Z 1Y6. Type: Academic Teaching Hospital. Beds: 450. Specialty: HIV/AIDS, Cardiology, Respiratory.",
+            "BC CHILDREN'S HOSPITAL: 4480 OAK STREET, VANCOUVER, BC V6H 3V4. Type: Pediatric Teaching Hospital. Beds: 227. Specialty: Pediatric Cardiology, Oncology, Neurology.",
+            "ROYAL COLUMBIAN HOSPITAL: 330 EAST COLUMBIA STREET, NEW WESTMINSTER, BC V3L 3W7. Type: Community Hospital. Beds: 367. Specialty: Cardiology, Orthopedics.",
+            "FOOTHILLS MEDICAL CENTRE (ALBERTA HEALTH SERVICES): 1403 29TH STREET NW, CALGARY, AB T2N 2T9. Type: Academic Teaching Hospital. Beds: 1,032. Specialty: Trauma, Transplant, Cardiology.",
+            "PETER LOUGHEED CENTRE: 3500 26TH AVENUE NE, CALGARY, AB T1Y 6J4. Type: Specialty Hospital. Beds: 520. Specialty: Cardiology, Orthopedics, Neurosciences.",
+            "ROYAL ALEXANDRA HOSPITAL: 10240 KINGSWAY NW, EDMONTON, AB T5H 3V9. Type: Academic Teaching Hospital. Beds: 668. Specialty: Women's Health, Neonatology, Transplant.",
+            "UNIVERSITY OF ALBERTA HOSPITAL: 8440 112TH STREET NW, EDMONTON, AB T6G 2B7. Type: Academic Teaching Hospital. Beds: 736. Specialty: Transplant, Cardiology, Neurology.",
+            "OTTAWA HOSPITAL - CIVIC CAMPUS: 1053 CARLING AVENUE, OTTAWA, ON K1Y 4E9. Type: Academic Teaching Hospital. Beds: 611. Specialty: Cardiology, Cancer, Trauma.",
+            "OTTAWA HOSPITAL - GENERAL CAMPUS: 501 SMYTH ROAD, OTTAWA, ON K1H 8L6. Type: Academic Teaching Hospital. Beds: 500. Specialty: Trauma, Neurology, Transplant.",
+            "CHEO (CHILDREN'S HOSPITAL OF EASTERN ONTARIO): 401 SMYTH ROAD, OTTAWA, ON K1H 8L1. Type: Pediatric Hospital. Beds: 197. Specialty: Pediatric Oncology, Cardiology.",
+            "HAMILTON GENERAL HOSPITAL: 237 BARTON STREET EAST, HAMILTON, ON L8L 2X2. Type: Academic Teaching Hospital. Beds: 476. Specialty: Trauma, Cardiology, Stroke.",
+            "JURAVINSKI HOSPITAL & CANCER CENTRE: 711 CONCESSION STREET, HAMILTON, ON L8V 1C3. Type: Academic Teaching Hospital. Beds: 300. Specialty: Oncology, Cardiology.",
+            "LONDON HEALTH SCIENCES CENTRE - VICTORIA HOSPITAL: 800 COMMISSIONERS ROAD EAST, LONDON, ON N6A 5W9. Type: Academic Teaching Hospital. Beds: 735. Specialty: Transplant, Cardiology, Trauma.",
+            "ST. JOSEPH'S HEALTHCARE LONDON: 268 GROSVENOR STREET, LONDON, ON N6A 4V2. Type: Academic Teaching Hospital. Beds: 550. Specialty: Mental Health, Rehabilitation.",
+            "WINNIPEG HEALTH SCIENCES CENTRE: 820 SHERBROOK STREET, WINNIPEG, MB R3A 1R9. Type: Academic Teaching Hospital. Beds: 800. Specialty: Trauma, Transplant, Cardiology.",
+            "ST. BONIFACE HOSPITAL: 409 TACHE AVENUE, WINNIPEG, MB R2H 2A6. Type: Academic Teaching Hospital. Beds: 492. Specialty: Cardiology, Transplant.",
+            "ROYAL UNIVERSITY HOSPITAL: 103 HOSPITAL DRIVE, SASKATOON, SK S7N 0W8. Type: Academic Teaching Hospital. Beds: 518. Specialty: Cardiology, Transplant, Trauma.",
+            "QUEEN ELIZABETH II HEALTH SCIENCES CENTRE: 1796 SUMMER STREET, HALIFAX, NS B3H 3A7. Type: Academic Teaching Hospital. Beds: 800. Specialty: Trauma, Cardiology, Transplant.",
+            "ST. JOHN'S HEALTH SCIENCES CENTRE: 300 PRINCE PHILIP DRIVE, ST. JOHN'S, NL A1B 3V6. Type: Academic Teaching Hospital. Beds: 472. Specialty: Trauma, Cardiology.", "ST THOMAS' HOSPITAL (GUY'S AND ST THOMAS' NHS FOUNDATION TRUST): WESTMINSTER BRIDGE ROAD, LONDON SE1 7EH. Type: Teaching Hospital. Beds: 584. Specialty: Cardiology, Cancer, Emergency Medicine.",
+            "GUY'S HOSPITAL: GREAT MAZE POND, LONDON SE1 9RT. Type: Teaching Hospital. Beds: 400. Specialty: Renal, Oncology, Dentistry.",
+            "ROYAL FREE HOSPITAL: POND STREET, LONDON NW3 2QG. Type: Teaching Hospital. Beds: 554. Specialty: Hepatology, Transplant, Infectious Diseases.",
+            "KING'S COLLEGE HOSPITAL: DENMARK HILL, LONDON SE5 9RS. Type: Teaching Hospital. Beds: 950. Specialty: Neurology, Liver Disease, Trauma.",
+            "GREAT ORMOND STREET HOSPITAL: GREAT ORMOND STREET, LONDON WC1N 3JH. Type: Pediatric Teaching Hospital. Beds: 400. Specialty: Pediatric Cardiology, Oncology, Rare Diseases.",
+            "THE ROYAL MARSDEN NHS FOUNDATION TRUST: FULHAM ROAD, LONDON SW3 6JJ. Type: Specialty Cancer Hospital. Beds: 243. Specialty: Oncology, Hematology.",
+            "CHARING CROSS HOSPITAL: FULHAM PALACE ROAD, LONDON W6 8RF. Type: Teaching Hospital. Beds: 400. Specialty: Neuroscience, Trauma.",
+            "ST. GEORGE'S HOSPITAL: BLACKSHAW ROAD, LONDON SW17 0QT. Type: Teaching Hospital. Beds: 1,300. Specialty: Trauma, Cardiology, Neurology.",
+            "UNIVERSITY COLLEGE HOSPITAL: 235 EUSTON ROAD, LONDON NW1 2BU. Type: Teaching Hospital. Beds: 700. Specialty: Cancer, Cardiology, Neurology.",
+            "JOHN RADCLIFFE HOSPITAL: HEADLEY WAY, OXFORD OX3 9DU. Type: Teaching Hospital. Beds: 845. Specialty: Cardiology, Neurology, Trauma.",
+            "ADDENBROOKE'S HOSPITAL: HILLS ROAD, CAMBRIDGE CB2 0QQ. Type: Teaching Hospital. Beds: 1,034. Specialty: Transplant, Genetics, Neurology.",
+            "QUEEN ELIZABETH HOSPITAL BIRMINGHAM: MINDELSOHN WAY, BIRMINGHAM B15 2GW. Type: Teaching Hospital. Beds: 1,213. Specialty: Trauma, Transplant, Liver Disease.",
+            "BIRMINGHAM CHILDREN'S HOSPITAL: STEELHOUSE LANE, BIRMINGHAM B4 6NH. Type: Pediatric Hospital. Beds: 296. Specialty: Pediatric Cardiology, Oncology.",
+            "MANCHESTER ROYAL INFIRMARY: OXFORD ROAD, MANCHESTER M13 9WL. Type: Teaching Hospital. Beds: 650. Specialty: Trauma, Cardiology, Orthopedics.",
+            "ROYAL MANCHESTER CHILDREN'S HOSPITAL: OXFORD ROAD, MANCHESTER M13 9WL. Type: Pediatric Hospital. Beds: 371. Specialty: Pediatric Oncology, Cardiology.",
+            "LEEDS GENERAL INFIRMARY: GREAT GEORGE STREET, LEEDS LS1 3EX. Type: Teaching Hospital. Beds: 900. Specialty: Cardiology, Trauma, Transplant.",
+            "ST. JAMES'S UNIVERSITY HOSPITAL: BECKETT STREET, LEEDS LS9 7TF. Type: Teaching Hospital. Beds: 1,200. Specialty: Cancer, Cardiology.",
+            "ROYAL VICTORIA INFIRMARY: QUEEN VICTORIA ROAD, NEWCASTLE UPON TYNE NE1 4LP. Type: Teaching Hospital. Beds: 600. Specialty: Transplant, Cardiology, Trauma.",
+            "GREAT NORTHERN HOSPITAL: 2 SAINT JAMES'S BOULEVARD, NEWCASTLE UPON TYNE NE7 7DN. Type: Teaching Hospital. Beds: 400. Specialty: Orthopedics, Neurology.",
+            "SOUTHAMPTON GENERAL HOSPITAL: TREMONA ROAD, SOUTHAMPTON SO16 6YD. Type: Teaching Hospital. Beds: 1,200. Specialty: Cardiology, Trauma, Transplant.",
+            "UNIVERSITY HOSPITAL OF WALES: HEATH PARK, CARDIFF CF14 4XW. Type: Teaching Hospital. Beds: 800. Specialty: Cardiology, Trauma, Neurology.",
+            "WESTERN GENERAL HOSPITAL: CREWE ROAD SOUTH, EDINBURGH EH4 2XU. Type: Teaching Hospital. Beds: 700. Specialty: Cardiology, Neurology.",
+            "ROYAL INFIRMARY OF EDINBURGH: 51 LITTLE FRANCE CRESCENT, EDINBURGH EH16 4SA. Type: Teaching Hospital. Beds: 900. Specialty: Trauma, Transplant.",
+            "QUEEN ELIZABETH UNIVERSITY HOSPITAL: 1345 GOVAN ROAD, GLASGOW G51 4TF. Type: Teaching Hospital. Beds: 1,100. Specialty: Trauma, Cardiology, Transplant.",
+            "BELFAST CITY HOSPITAL: 51 LISBURN ROAD, BELFAST BT9 7AB. Type: Teaching Hospital. Beds: 400. Specialty: Cancer, Cardiology.",
+            "ROYAL VICTORIA HOSPITAL - BELFAST: 274 GROSVENOR ROAD, BELFAST BT12 6BA. Type: Teaching Hospital. Beds: 800. Specialty: Trauma, Neurology, Transplant.", "CHARITÉ - UNIVERSITÄTSMEDIZIN BERLIN: CHARITÉPLATZ 1, 10117 BERLIN, GERMANY. Type: University Hospital. Beds: 3,200. Specialty: Multispecialty, Neurology, Cardiology.",
+            "UNIVERSITÄTSKLINIKUM HEIDELBERG: IM NEUENHEIMER FELD 672, 69120 HEIDELBERG, GERMANY. Type: University Hospital. Beds: 2,000. Specialty: Oncology, Transplant, Cardiology.",
+            "KLINIKUM RECHTS DER ISAR (TECHNISCHE UNIVERSITÄT MÜNCHEN): ISMANINGER STRASSE 22, 81675 MUNICH, GERMANY. Type: University Hospital. Beds: 1,100. Specialty: Cardiology, Oncology, Transplant.",
+            "UNIVERSITÄTSKLINIKUM HAMBURG-EPPENDORF: MARTINISTRASSE 52, 20246 HAMBURG, GERMANY. Type: University Hospital. Beds: 1,500. Specialty: Neurology, Cardiology, Transplant.",
+            "UNIVERSITÄTSKLINIKUM KÖLN: KERPENER STRASSE 62, 50937 COLOGNE, GERMANY. Type: University Hospital. Beds: 1,400. Specialty: Cardiology, Oncology.",
+            "UNIVERSITÄTSKLINIKUM FRANKFURT: THEODOR-STERN-KAI 7, 60590 FRANKFURT, GERMANY. Type: University Hospital. Beds: 1,200. Specialty: Transplant, Cardiology.",
+            "AP-HP PITIÉ-SALPÊTRIÈRE: 47-83 BOULEVARD DE L'HÔPITAL, 75013 PARIS, FRANCE. Type: University Hospital. Beds: 1,600. Specialty: Neurology, Cardiology, Infectious Diseases.",
+            "HÔPITAL EUROPÉEN GEORGES POMPIDOU (AP-HP): 20 RUE LEBLANC, 75015 PARIS, FRANCE. Type: University Hospital. Beds: 800. Specialty: Cardiology, Cancer, Orthopedics.",
+            "HÔPITAL LARIBOISIÈRE (AP-HP): 2 RUE AMBROISE PARÉ, 75010 PARIS, FRANCE. Type: University Hospital. Beds: 700. Specialty: Cardiology, Ophthalmology.",
+            "HOSPICES CIVILS DE LYON - HÔPITAL EDOUARD HERRIOT: 5 PLACE D'ARSONVAL, 69003 LYON, FRANCE. Type: University Hospital. Beds: 1,200. Specialty: Transplant, Nephrology, Geriatrics.",
+            "HÔPITAL DE LA CONCEPTION (AP-HM): 147 BOULEVARD BAILLE, 13005 MARSEILLE, FRANCE. Type: University Hospital. Beds: 800. Specialty: Cardiology, Pediatrics.",
+            "UNIVERSITÄTSSPITAL ZÜRICH: RÄMISTRASSE 100, 8091 ZURICH, SWITZERLAND. Type: University Hospital. Beds: 880. Specialty: Cardiology, Neurology, Transplant.",
+            "HUG - HÔPITAUX UNIVERSITAIRES DE GENÈVE: RUE GABRIELLE-PERRET-GENTIL 4, 1205 GENEVA, SWITZERLAND. Type: University Hospital. Beds: 1,900. Specialty: Transplant, Pediatrics, Cardiology.",
+            "INSELSPITAL BERN: FREIBURGSTRASSE 18, 3010 BERN, SWITZERLAND. Type: University Hospital. Beds: 1,000. Specialty: Cardiology, Neurology, Transplant.",
+            "LEIDEN UNIVERSITY MEDICAL CENTER: ALBINUSDREEF 2, 2333 ZA LEIDEN, NETHERLANDS. Type: University Hospital. Beds: 1,000. Specialty: Transplant, Genetics, Oncology.",
+            "ERASMUS MC: DR. MOLEWATERPLEIN 40, 3015 GD ROTTERDAM, NETHERLANDS. Type: University Hospital. Beds: 1,300. Specialty: Cardiology, Transplant, Pediatrics.",
+            "AMSTERDAM UMC (ACADEMISCH MEDISCH CENTRUM): MEIBERGDREEF 9, 1105 AZ AMSTERDAM, NETHERLANDS. Type: University Hospital. Beds: 1,000. Specialty: Cardiology, Neurology.",
+            "KAROLINSKA UNIVERSITY HOSPITAL: EUGENIAVÄGEN 3, 171 76 STOCKHOLM, SWEDEN. Type: University Hospital. Beds: 1,600. Specialty: Transplant, Pediatrics, Cardiology.",
+            "SAHLGRENSKA UNIVERSITY HOSPITAL: BLÅ STRÅKET 5, 413 45 GOTHENBURG, SWEDEN. Type: University Hospital. Beds: 1,800. Specialty: Cardiology, Transplant.",
+            "RIGSHOSPITALET (COPENHAGEN UNIVERSITY HOSPITAL): BLEGDAMSVEJ 9, 2100 COPENHAGEN, DENMARK. Type: University Hospital. Beds: 1,200. Specialty: Cardiology, Transplant, Pediatrics.",
+            "HELSINKI UNIVERSITY HOSPITAL: HAARTMANINKATU 4, 00290 HELSINKI, FINLAND. Type: University Hospital. Beds: 2,000. Specialty: Cancer, Neurology, Transplant.",
+            "OSLO UNIVERSITY HOSPITAL: KIRKEVEIEN 166, 0450 OSLO, NORWAY. Type: University Hospital. Beds: 1,800. Specialty: Cardiology, Transplant, Neurology.",
+            "ST. OLAVS HOSPITAL: OLAV KYRRES GATE 17, 7030 TRONDHEIM, NORWAY. Type: University Hospital. Beds: 1,000. Specialty: Cardiology, Neurology.",
+            "VIENNA GENERAL HOSPITAL (AKH WIEN): WÄHRINGER GÜRTEL 18-20, 1090 VIENNA, AUSTRIA. Type: University Hospital. Beds: 1,700. Specialty: Cardiology, Transplant, Oncology.",
+            "MEDICAL UNIVERSITY OF VIENNA: SPITALGASSE 23, 1090 VIENNA, AUSTRIA. Type: University Hospital. Beds: 1,500. Specialty: Multispecialty.",
+            "UNIVERSITÄTSSPITAL BASEL: SPITALSTRASSE 21, 4031 BASEL, SWITZERLAND. Type: University Hospital. Beds: 700. Specialty: Cardiology, Transplant.",
+            "GEMEINNÜTZIGE SALZBURGER LANDESKLINIKEN: MÜLLNER HAUPTSTRASSE 48, 5020 SALZBURG, AUSTRIA. Type: Teaching Hospital. Beds: 1,200. Specialty: Cardiology, Neurology.",
+            "UNIVERSITÄTSKLINIKUM GRAZ: AUENBRUGGERPLATZ 2, 8036 GRAZ, AUSTRIA. Type: University Hospital. Beds: 1,500. Specialty: Cardiology, Transplant.",
+            "UNIVERSITÄTSKLINIKUM FREIBURG: HUGSTETTER STRASSE 55, 79106 FREIBURG, GERMANY. Type: University Hospital. Beds: 1,600. Specialty: Cardiology, Neurology.",
+            "UNIVERSITÄTSKLINIKUM DÜSSELDORF: MOORENSTRASSE 5, 40225 DÜSSELDORF, GERMANY. Type: University Hospital. Beds: 1,200. Specialty: Cardiology, Transplant.", "TOKYO UNIVERSITY HOSPITAL: 7-3-1 HONGO, BUNKYO-KU, TOKYO 113-8655. Type: University Hospital. Beds: 1,217. Specialty: Cardiology, Oncology, Transplant.",
+            "KEIO UNIVERSITY HOSPITAL: 35 SHINANOMACHI, SHINJUKU-KU, TOKYO 160-8582. Type: University Hospital. Beds: 1,075. Specialty: Cancer, Cardiology, Neurology.",
+            "NATIONAL CANCER CENTER HOSPITAL: 5-1-1 TSUKIJI, CHUO-KU, TOKYO 104-0045. Type: Specialty Cancer Hospital. Beds: 700. Specialty: Oncology, Hematology.",
+            "KYOTO UNIVERSITY HOSPITAL: 54 SHOGOIN KAWAHARA-CHO, SAKYO-KU, KYOTO 606-8507. Type: University Hospital. Beds: 1,121. Specialty: Cardiology, Transplant.",
+            "OSAKA UNIVERSITY HOSPITAL: 2-15 YAMADAOKA, SUITA, OSAKA 565-0871. Type: University Hospital. Beds: 1,086. Specialty: Transplant, Neurology.",
+            "JUNTENDO UNIVERSITY HOSPITAL: 3-1-3 HONGO, BUNKYO-KU, TOKYO 113-8431. Type: University Hospital. Beds: 1,020. Specialty: Cardiology, Oncology.",
+            "ST. LUKE'S INTERNATIONAL HOSPITAL: 9-1 AKASHI-CHO, CHUO-KU, TOKYO 104-8560. Type: Private Teaching Hospital. Beds: 520. Specialty: Cardiology, Obstetrics.",
+            "KYUSHU UNIVERSITY HOSPITAL: 3-1-1 MAIDASHI, HIGASHI-KU, FUKUOKA 812-8582. Type: University Hospital. Beds: 1,275. Specialty: Cardiology, Neurology.",
+            "HOKKAIDO UNIVERSITY HOSPITAL: KITA-14, NISHI-5, KITA-KU, SAPPORO 060-8648. Type: University Hospital. Beds: 1,100. Specialty: Cardiology, Transplant.",
+            "TOHOKU UNIVERSITY HOSPITAL: 1-1 SEIRYO-MACHI, AOBA-KU, SENDAI 980-8574. Type: University Hospital. Beds: 1,200. Specialty: Neurology, Cardiology.", "SEOUL NATIONAL UNIVERSITY HOSPITAL: 101 DAEHAK-RO, JONGNO-GU, SEOUL 03080. Type: University Hospital. Beds: 1,700. Specialty: Multispecialty, Transplant, Cancer.",
+            "SAMSUNG MEDICAL CENTER: 81 IRWON-RO, GANGNAM-GU, SEOUL 06351. Type: University Hospital. Beds: 1,979. Specialty: Cardiology, Cancer, Neurology.",
+            "ASAN MEDICAL CENTER: 88 OLYMPIC-RO 43-GIL, SONGPA-GU, SEOUL 05505. Type: University Hospital. Beds: 2,700. Specialty: Cardiology, Transplant, Cancer.",
+            "YONSEI UNIVERSITY SEVERANCE HOSPITAL: 50-1 YONSEI-RO, SEODAEMUN-GU, SEOUL 03722. Type: University Hospital. Beds: 2,100. Specialty: Cardiology, Transplant.",
+            "KOREA UNIVERSITY ANSAN HOSPITAL: 123 JEOKGEUM-RO, DANWON-GU, ANSAN 15355. Type: University Hospital. Beds: 800. Specialty: Cardiology, Oncology.",
+            "CATHOLIC UNIVERSITY OF KOREA SEOUL ST. MARY'S HOSPITAL: 222 BANPO-DAERO, SEOCHO-GU, SEOUL 06591. Type: University Hospital. Beds: 1,300. Specialty: Cardiology, Cancer.",
+            "KYUNG HEE UNIVERSITY HOSPITAL: 23 KYUNGHEEDAE-RO, DONGDAEMUN-GU, SEOUL 02447. Type: University Hospital. Beds: 900. Specialty: Cardiology, Neurology.",
+            "NATIONAL CANCER CENTER: 323 ILSAN-RO, ILSANDONG-GU, GOYANG 10408. Type: Specialty Cancer Hospital. Beds: 600. Specialty: Oncology, Research.", "SINGAPORE GENERAL HOSPITAL: 1 OUTRAM ROAD, SINGAPORE 169608. Type: Academic Teaching Hospital. Beds: 1,785. Specialty: Cardiology, Trauma, Transplant.",
+            "NATIONAL UNIVERSITY HOSPITAL (NUH): 5 LOWER KENT RIDGE ROAD, SINGAPORE 119074. Type: University Hospital. Beds: 1,200. Specialty: Cancer, Cardiology, Pediatrics.",
+            "TAN TOCK SENG HOSPITAL: 11 JALAN TAN TOCK SENG, SINGAPORE 308433. Type: Academic Teaching Hospital. Beds: 1,600. Specialty: Cardiology, Orthopedics.",
+            "KK WOMEN'S AND CHILDREN'S HOSPITAL: 100 BUKIT TIMAH ROAD, SINGAPORE 229899. Type: Specialty Hospital. Beds: 830. Specialty: Pediatrics, Obstetrics.",
+            "CHANGI GENERAL HOSPITAL: 2 SIMEI STREET 3, SINGAPORE 529889. Type: Acute Care Hospital. Beds: 1,000. Specialty: Cardiology, Orthopedics.",
+            "MOUNT ELIZABETH HOSPITAL: 3 MOUNT ELIZABETH, SINGAPORE 228510. Type: Private Hospital. Beds: 345. Specialty: Cardiology, Oncology, Orthopedics.",
+            "RAFFLES HOSPITAL: 585 NORTH BRIDGE ROAD, SINGAPORE 188770. Type: Private Hospital. Beds: 150. Specialty: Multispecialty, Medical Tourism.", "PEKING UNION MEDICAL COLLEGE HOSPITAL: 1 SHUAFUYUAN, DONGCHENG DISTRICT, BEIJING 100730. Type: University Hospital. Beds: 2,000. Specialty: Multispecialty, Rheumatology, Endocrinology.",
+            "FUDAN UNIVERSITY ZHONGSHAN HOSPITAL: 180 FENGQUAN ROAD, XUHUI DISTRICT, SHANGHAI 200032. Type: University Hospital. Beds: 2,000. Specialty: Cardiology, Oncology, Transplant.",
+            "PEKING UNIVERSITY FIRST HOSPITAL: 8 XISHIKU STREET, XICHENG DISTRICT, BEIJING 100034. Type: University Hospital. Beds: 1,800. Specialty: Cardiology, Nephrology.",
+            "RUIJIN HOSPITAL (SHANGHAI JIAO TONG UNIVERSITY): 197 RUIJIN ER ROAD, HUANGPU DISTRICT, SHANGHAI 200025. Type: University Hospital. Beds: 1,600. Specialty: Cardiology, Transplant.",
+            "WEST CHINA HOSPITAL (SICHUAN UNIVERSITY): 37 GUOXUE XIANG, CHENGDU 610041. Type: University Hospital. Beds: 4,300. Specialty: Multispecialty, Neurology.",
+            "GUANGZHOU WOMEN AND CHILDREN'S MEDICAL CENTER: 9 JINSUI ROAD, GUANGZHOU 510623. Type: Specialty Hospital. Beds: 1,500. Specialty: Pediatrics, Obstetrics.",
+            "BEIJING ANZHEN HOSPITAL (CAPITAL MEDICAL UNIVERSITY): 2 ANZHEN ROAD, CHAOYANG DISTRICT, BEIJING 100029. Type: Specialty Hospital. Beds: 1,000. Specialty: Cardiology, Cardiovascular Surgery.", "RAMATHIBODI HOSPITAL (MAHIDOL UNIVERSITY): 270 RAMA VI ROAD, THUNG PHAYA THAI, RATCHATHEWI, BANGKOK 10400. Type: University Hospital. Beds: 1,200. Specialty: Multispecialty, Transplant.",
+            "BUMRUNGRAD INTERNATIONAL HOSPITAL: 33 SUKHUMVIT 3, WATTANA, BANGKOK 10110. Type: Private International Hospital. Beds: 580. Specialty: Multispecialty, Medical Tourism.",
+            "SIRIRAJ HOSPITAL (MAHIDOL UNIVERSITY): 2 THAWATTHA ROAD, BANGKOK NOI, BANGKOK 10700. Type: University Hospital. Beds: 2,300. Specialty: Multispecialty, Cardiology.",
+            "BANGKOK HOSPITAL: 2 SOI SOONVIJAI 7, NEW PETCHABURI ROAD, BANGKOK 10310. Type: Private Hospital. Beds: 800. Specialty: Cardiology, Orthopedics, Medical Tourism.",
+            "PHYATHAI 2 HOSPITAL: 943 PHAHON YOTHIN ROAD, SAMSEN NAI, PHAYA THAI, BANGKOK 10400. Type: Private Hospital. Beds: 500. Specialty: Cardiology, Neurology.", "ROYAL MELBOURNE HOSPITAL: 300 GRATTAN STREET, PARKVILLE VIC 3050. Type: Academic Teaching Hospital. Beds: 650. Specialty: Trauma, Neurology, Cardiology.",
+            "ALFRED HOSPITAL: 55 COMMERCIAL ROAD, MELBOURNE VIC 3004. Type: Academic Teaching Hospital. Beds: 500. Specialty: Trauma, Burns, Heart-Lung Transplant.",
+            "ROYAL CHILDREN'S HOSPITAL MELBOURNE: 50 FLEMINGTON ROAD, PARKVILLE VIC 3052. Type: Pediatric Teaching Hospital. Beds: 353. Specialty: Pediatric Cardiology, Oncology, Surgery.",
+            "MONASH MEDICAL CENTRE: 246 CLAYTON ROAD, CLAYTON VIC 3168. Type: Academic Teaching Hospital. Beds: 640. Specialty: Trauma, Cardiology, Transplant.",
+            "ROYAL PRINCE ALFRED HOSPITAL: 50 MISSENDEN ROAD, CAMPERDOWN NSW 2050. Type: Academic Teaching Hospital. Beds: 580. Specialty: Transplant, Cardiology, Trauma.",
+            "ST VINCENT'S HOSPITAL SYDNEY: 390 VICTORIA STREET, DARLINGHURST NSW 2010. Type: Academic Teaching Hospital. Beds: 326. Specialty: Cardiology, Transplant, HIV Medicine.",
+            "WESTMEAD HOSPITAL: HAWKESBURY ROAD, WESTMEAD NSW 2145. Type: Academic Teaching Hospital. Beds: 920. Specialty: Trauma, Transplant, Pediatrics.",
+            "ROYAL NORTH SHORE HOSPITAL: RESERVE ROAD, ST LEONARDS NSW 2065. Type: Academic Teaching Hospital. Beds: 680. Specialty: Cardiology, Transplant.",
+            "ROYAL BRISBANE & WOMEN'S HOSPITAL: BUTTERFIELD STREET, HERSTON QLD 4029. Type: Academic Teaching Hospital. Beds: 1,050. Specialty: Trauma, Transplant, Cardiology.",
+            "PRINCESS ALEXANDRA HOSPITAL: 199 IPSWICH ROAD, WOOLLOONGABBA QLD 4102. Type: Academic Teaching Hospital. Beds: 800. Specialty: Transplant, Trauma.",
+            "ROYAL ADELAIDE HOSPITAL: PORT ROAD, ADELAIDE SA 5000. Type: Academic Teaching Hospital. Beds: 700. Specialty: Cardiology, Transplant, Neurology.",
+            "FIONA STANLEY HOSPITAL: 11 ROBIN WARREN DRIVE, MURDOCH WA 6150. Type: Academic Teaching Hospital. Beds: 783. Specialty: Trauma, Cardiology, Neurology.",
+            "SIR CHARLES GAIRDNER HOSPITAL: HOSPITAL AVENUE, NEDLANDS WA 6009. Type: Academic Teaching Hospital. Beds: 600. Specialty: Cardiology, Transplant.",
+            "CANBERRA HOSPITAL: YAMBA DRIVE, GARRAN ACT 2605. Type: Academic Teaching Hospital. Beds: 600. Specialty: Cardiology, Trauma.",
+            "ROYAL HOBART HOSPITAL: 48 LIVERPOOL STREET, HOBART TAS 7000. Type: Teaching Hospital. Beds: 500. Specialty: Cardiology, Orthopedics.", "AUCKLAND CITY HOSPITAL: 2 PARK ROAD, GRAFTON, AUCKLAND 1023. Type: Academic Teaching Hospital. Beds: 1,150. Specialty: Cardiology, Transplant, Trauma.",
+            "CHRISTCHURCH HOSPITAL: 2 RICHMOND AVENUE, CHRISTCHURCH 8011. Type: Academic Teaching Hospital. Beds: 900. Specialty: Trauma, Cardiology, Orthopedics.",
+            "WELLINGTON REGIONAL HOSPITAL: 23A MEADOW STREET, NEWTOWN, WELLINGTON 6021. Type: Teaching Hospital. Beds: 600. Specialty: Cardiology, Trauma.",
+            "WAIKATO HOSPITAL: PEMBROKE STREET, HAMILTON 3204. Type: Teaching Hospital. Beds: 600. Specialty: Cardiology, Trauma.",
+            "STARSHIP CHILDREN'S HOSPITAL: 2 PARK ROAD, GRAFTON, AUCKLAND 1023. Type: Pediatric Hospital. Beds: 150. Specialty: Pediatric Cardiology, Oncology, Surgery.",
+            "DUNEDIN PUBLIC HOSPITAL: 201 GREAT KING STREET, DUNEDIN 9016. Type: Teaching Hospital. Beds: 400. Specialty: Cardiology, Neurology.", "SHEBA MEDICAL CENTER: TEL HASHOMER, 5265601, ISRAEL. Type: University Hospital. Beds: 1,600. Specialty: Transplant, Rehabilitation, Cardiology.",
+            "HADASSAH MEDICAL CENTER: POB 12000, JERUSALEM, 9112001, ISRAEL. Type: University Hospital. Beds: 1,000. Specialty: Neurology, Oncology, Transplant.",
+            "RABIN MEDICAL CENTER (BEILINSON HOSPITAL): 39 ZE'EV JABOTINSKY STREET, PETAH TIKVA, 4941492, ISRAEL. Type: University Hospital. Beds: 1,100. Specialty: Cardiology, Transplant.",
+            "CLEVELAND CLINIC ABU DHABI: AL MARYAH ISLAND, ABU DHABI, UAE. Type: Acute Care Teaching Hospital. Beds: 364. Specialty: Cardiology, Neurology, Transplant.",
+            "KING FAISAL SPECIALIST HOSPITAL & RESEARCH CENTRE: AL URUBIAH ST, RIYADH 11211, SAUDI ARABIA. Type: Specialty Tertiary Hospital. Beds: 1,500. Specialty: Oncology, Transplant, Cardiology.",
+            "KING ABDULAZIZ MEDICAL CITY: MECCA AL MUKARRAMAH ROAD, RIYADH 14611, SAUDI ARABIA. Type: Tertiary Hospital. Beds: 1,500. Specialty: Cardiology, Transplant.",
+            "HAMAD MEDICAL CORPORATION: AL RAYYAN STREET, DOHA, QATAR. Type: Tertiary Hospital. Beds: 2,200. Specialty: Trauma, Transplant, Cardiology.",
+            "AMERICAN UNIVERSITY OF BEIRUT MEDICAL CENTER: RUE DE DAMAS, BEIRUT, LEBANON. Type: University Hospital. Beds: 420. Specialty: Cardiology, Oncology.",
+            "JOHNS HOPKINS ARAMCO HEALTHCARE: DHAHRAN, SAUDI ARABIA. Type: Private Hospital. Beds: 250. Specialty: Multispecialty, Occupational Health.",
+            "ZAYED MILITARY HOSPITAL: MADINAT MOHAMMED BIN ZAYED, ABU DHABI, UAE. Type: Military Hospital. Beds: 500. Specialty: Trauma, Cardiology.", "GROOTE SCHUUR HOSPITAL: MAIN ROAD, OBSERVATORY, CAPE TOWN 7925, SOUTH AFRICA. Type: Academic Teaching Hospital. Beds: 950. Specialty: Transplant, Cardiology, Trauma.",
+            "CHRISTIAAN BARNARD MEMORIAL HOSPITAL: 181 LONG STREET, CAPE TOWN 8001, SOUTH AFRICA. Type: Private Hospital. Beds: 200. Specialty: Cardiology, Transplant, Multispecialty.",
+            "NETCARE UNION HOSPITAL: 30 PRINCE STREET, ALBERTON, GAUTENG, SOUTH AFRICA. Type: Private Hospital. Beds: 500. Specialty: Cardiology, Orthopedics.",
+            "AHMED GASIM HOSPITAL: 21 AFRICA AVENUE, JOHANNESBURG, GAUTENG, SOUTH AFRICA. Type: Private Hospital. Beds: 150. Specialty: Oncology, Multispecialty.",
+            "RED CROSS WAR MEMORIAL CHILDREN'S HOSPITAL: KLIPFONTEIN ROAD, RONDEBOSCH, CAPE TOWN 7700, SOUTH AFRICA. Type: Pediatric Hospital. Beds: 300. Specialty: Pediatric Surgery, Trauma.",
+            "ALEXANDRA HOSPITAL: CNR VICTORY ROAD & SYDNEY AVENUE, JOHANNESBURG, GAUTENG, SOUTH AFRICA. Type: Public Hospital. Beds: 500. Specialty: Trauma, Obstetrics.",
+            "AL SABAH HOSPITAL: AIRPORT ROAD, SAFAT, KUWAIT CITY, KUWAIT. Type: Public Hospital. Beds: 800. Specialty: Trauma, Cardiology.",
+            "SHIEKH ZAYED HOSPITAL: 17 TALAT HARB STREET, DOWNTOWN, CAIRO, EGYPT. Type: Academic Hospital. Beds: 1,200. Specialty: Multispecialty, Renal Transplant.",
+            "KASR AL AINY HOSPITAL (CAIRO UNIVERSITY): AL MANIAL, CAIRO, EGYPT. Type: University Hospital. Beds: 2,500. Specialty: Multispecialty.",
+            "AKAN CITY HOSPITAL: 27 THIKA ROAD, NAIROBI, KENYA. Type: Private Hospital. Beds: 250. Specialty: Cardiology, Orthopedics.",
+            "LAGOS UNIVERSITY TEACHING HOSPITAL: IDI-ARABA, LAGOS, NIGERIA. Type: University Hospital. Beds: 800. Specialty: Multispecialty.",
+            "UNIVERSITY COLLEGE HOSPITAL IBADAN: QUEEN ELIZABETH ROAD, IBADAN, NIGERIA. Type: University Hospital. Beds: 1,000. Specialty: Multispecialty, Transplant.", "ALL INDIA INSTITUTE OF MEDICAL SCIENCES (AIIMS): ANSARI NAGAR, NEW DELHI 110029. Type: University Hospital. Beds: 2,400. Specialty: Multispecialty, Transplant, Cardiology.",
+            "APOLLO HOSPITALS CHENNAI: 21 GREAMS LANE, OFF GREAMS ROAD, CHENNAI 600006. Type: Private Teaching Hospital. Beds: 700. Specialty: Cardiology, Transplant, Oncology.",
+            "FORTIS MEMORIAL RESEARCH INSTITUTE: SECTOR 44, GURUGRAM, HARYANA 122002. Type: Private Hospital. Beds: 400. Specialty: Cardiology, Transplant.",
+            "CHRISTIAN MEDICAL COLLEGE (CMC) VELLORE: IDA SCUDDER ROAD, VELLORE, TAMIL NADU 632004. Type: University Hospital. Beds: 2,500. Specialty: Multispecialty, Transplant.",
+            "TATA MEMORIAL HOSPITAL: DR. ERNEST BORGES ROAD, PAREL, MUMBAI 400012. Type: Specialty Cancer Hospital. Beds: 700. Specialty: Oncology, Hematology.",
+            "NARAYANA HEALTH INSTITUTE: 258/A BOMBAY HIGHWAY, BANGALORE 560099. Type: Private Hospital. Beds: 1,000. Specialty: Cardiology, Neurology, Transplant.",
+            "MEDANTA - THE MEDICITY: SECTOR 38, GURUGRAM, HARYANA 122001. Type: Private Hospital. Beds: 1,250. Specialty: Cardiology, Transplant.",
+            "KOKILABEN DHIRUBHAI AMBANI HOSPITAL: RAO RAJA RAM SINGH MARG, MUMBAI 400054. Type: Private Hospital. Beds: 750. Specialty: Cardiology, Oncology, Neurology.",
+            "POST GRADUATE INSTITUTE OF MEDICAL EDUCATION AND RESEARCH (PGIMER): SECTOR 12, CHANDIGARH 160012. Type: University Hospital. Beds: 1,900. Specialty: Multispecialty, Transplant.",
+            "SANJAY GANDHI POST GRADUATE INSTITUTE OF MEDICAL SCIENCES: RAEBARELI ROAD, LUCKNOW 226014. Type: University Hospital. Beds: 1,000. Specialty: Transplant, Neurology.",
+            "AMRITA INSTITUTE OF MEDICAL SCIENCES: AMRITA LANE, ERNAKULAM, KERALA 682041. Type: University Hospital. Beds: 1,200. Specialty: Cardiology, Oncology.", "HOSPITAL SÍRIO-LIBANÊS: RUA ADOLFO PINHEIRO, 630, SÃO PAULO, SP 01307-001, BRAZIL. Type: Private Teaching Hospital. Beds: 800. Specialty: Cardiology, Oncology, Neurology.",
+            "ALBERT EINSTEIN HOSPITAL: AV. ALBERT EINSTEIN, 627, MORUMBI, SÃO PAULO, SP 05652-900, BRAZIL. Type: Private Teaching Hospital. Beds: 600. Specialty: Cardiology, Oncology, Orthopedics.",
+            "HOSPITAL DAS CLÍNICAS DA FACULDADE DE MEDICINA DA USP: AV. DR. ENÉAS CARVALHO AGUIAR, 255, SÃO PAULO, SP 05403-000, BRAZIL. Type: University Hospital. Beds: 2,200. Specialty: Multispecialty, Transplant.",
+            "HOSPITAL ITALIANO DE BUENOS AIRES: JUAN D. PERÓN 4190, C1199 CABA, ARGENTINA. Type: Teaching Hospital. Beds: 600. Specialty: Cardiology, Transplant, Oncology.",
+            "HOSPITAL ALEMÁN DE BUENOS AIRES: AV. PUEYRREDÓN 1640, C1118 CABA, ARGENTINA. Type: Teaching Hospital. Beds: 500. Specialty: Cardiology, Oncology.",
+            "FUNDACIÓN SANTA FE DE BOGOTÁ: CALLE 119 #7-75, BOGOTÁ, COLOMBIA. Type: Teaching Hospital. Beds: 600. Specialty: Cardiology, Transplant, Neurology.",
+            "HOSPITAL UNIVERSITARIO FUNDACIÓN SANTA FE DE BOGOTÁ: CALLE 119 #7-75, BOGOTÁ, COLOMBIA. Type: University Hospital. Beds: 600. Specialty: Cardiology, Transplant.",
+            "CLÍNICA LAS CONDES: LO FONTECILLA 441, SANTIAGO, CHILE. Type: Private Hospital. Beds: 400. Specialty: Cardiology, Oncology.",
+            "HOSPITAL CLÍNICO DE LA UNIVERSIDAD DE CHILE: SANTOS DUMONT 999, SANTIAGO, CHILE. Type: University Hospital. Beds: 500. Specialty: Multispecialty.",
+            "CLÍNICA ALEMANA DE SANTIAGO: AV. VITACURA 5951, SANTIAGO, CHILE. Type: Private Hospital. Beds: 800. Specialty: Cardiology, Oncology.", "HOKKAIDO UNIVERSITY HOSPITAL: Kita-14, Nishi-5, Kita-ku, Sapporo 060-8648. Type: University Hospital. Beds: 1,100. Specialty: Cardiology, Transplant.",
+            "SAPPORO MEDICAL UNIVERSITY HOSPITAL: South 1, West 16, Chuo-ku, Sapporo 060-8543. Type: University Hospital. Beds: 600. Specialty: Oncology, Gastroenterology.",
+            "ASAHIKAWA MEDICAL UNIVERSITY HOSPITAL: 2-1-1 Midorigaoka Higashi 2-jo, Asahikawa 078-8510. Type: University Hospital. Beds: 600. Specialty: Neurosurgery.",
+            "TOHOKU UNIVERSITY HOSPITAL: 1-1 Seiryo-machi, Aoba-ku, Sendai 980-8574. Type: University Hospital. Beds: 1,200. Specialty: Neurology, Transplant.",
+            "IBARAKI PREFECTURAL CENTRAL HOSPITAL: 6528 Koibuchi, Kasama 309-1793. Type: Prefectural Hospital. Specialty: Emergency Medicine.",
+            "GUNMA UNIVERSITY HOSPITAL: 3-39-22 Showa-machi, Maebashi 371-8511. Type: University Hospital. Specialty: Oncology, Pediatrics.",
+            "SAITAMA MEDICAL UNIVERSITY HOSPITAL: 38 Morohongo, Moroyama-machi, Iruma-gun 350-0495. Type: University Hospital. Specialty: Cardiology, Neurology.",
+            "CHIBA UNIVERSITY HOSPITAL: 1-8-1 Inohana, Chuo-ku, Chiba 260-8677. Type: University Hospital. Beds: 900. Specialty: Neurosurgery, Orthopedics.",
+            "NATIONAL CENTER FOR CHILD HEALTH AND DEVELOPMENT: 2-10-1 Okura, Setagaya-ku, Tokyo 157-8535. Type: Specialty Research Hospital. Beds: 600. Specialty: Pediatrics, Perinatology.",
+            "TOKYO MEDICAL AND DENTAL UNIVERSITY HOSPITAL: 1-5-45 Yushima, Bunkyo-ku, Tokyo 113-8510. Type: University Hospital. Specialty: Dentistry, Orthopedics.",
+            "THE UNIVERSITY OF TOKYO HOSPITAL: 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-8655. Type: University Hospital. Beds: 1,200. Specialty: Multispecialty, Transplant.",
+            "KEIO UNIVERSITY HOSPITAL: 35 Shinanomachi, Shinjuku-ku, Tokyo 160-8582. Type: University Hospital. Beds: 1,000. Specialty: Cardiology, Oncology.",
+            "TOKYO METROPOLITAN CHILDREN’S MEDICAL CENTER: 2-8-29 Musashidai, Fuchu 183-8561. Type: Pediatric Specialty. Specialty: Pediatric Cardiac Surgery, Neonatology.",
+            "ST. LUKE'S INTERNATIONAL HOSPITAL: 9-1 Akashi-cho, Chuo-ku, Tokyo 104-8560. Type: Private Teaching Hospital. Beds: 500. Specialty: Obstetrics, Cardiology.",
+            "TOHO UNIVERSITY OMORI HOSPITAL: 6-11-1 Omori-nishi, Ota-ku, Tokyo 143-8541. Type: University Hospital. Specialty: Emergency Medicine.",
+            "SHOWA UNIVERSITY HOSPITAL: 1-5-8 Hatanodai, Shinagawa-ku, Tokyo 142-8666. Type: University Hospital. Specialty: Gastroenterology.",
+            "NIIGATA UNIVERSITY MEDICAL & DENTAL HOSPITAL: 1-757 Asahimachi-dori, Chuo-ku, Niigata 951-8510. Type: University Hospital. Specialty: Respiratory Medicine.",
+            "UNIVERSITY OF TOYAMA HOSPITAL: 2630 Sugitani, Toyama 930-0194. Type: University Hospital. Specialty: Neurology.",
+            "KANAZAWA UNIVERSITY HOSPITAL: 13-1 Takara-machi, Kanazawa 920-8641. Type: University Hospital. Specialty: Cancer, Cardiology.",
+            "SHINSHU UNIVERSITY HOSPITAL: 3-1-1 Asahi, Matsumoto 390-8621. Type: University Hospital. Beds: 700. Specialty: Orthopedics, Gastroenterology.",
+            "GIFU UNIVERSITY HOSPITAL: 1-1 Yanagido, Gifu 501-1194. Type: University Hospital. Specialty: Transplant.",
+            "FUJITA HEALTH UNIVERSITY HOSPITAL: 1-98 Dengakugakubo, Kutsukake-cho, Toyoake 470-1192. Type: University Hospital. Beds: 1,400. Specialty: Cardiology, Transplant.",
+            "NAGOYA UNIVERSITY HOSPITAL: 65 Tsurumai-cho, Showa-ku, Nagoya 466-8560. Type: University Hospital. Specialty: Cardiology.",
+            "MIE UNIVERSITY HOSPITAL: 2-174 Edobashi, Tsu 514-8507. Type: University Hospital. Specialty: Gastroenterology.",
+            "KYOTO UNIVERSITY HOSPITAL: 54 Shogoin Kawahara-cho, Sakyo-ku, Kyoto 606-8507. Type: University Hospital. Beds: 1,100. Specialty: Neurosurgery, Transplant.",
+            "OSAKA UNIVERSITY HOSPITAL: 2-15 Yamadaoka, Suita, Osaka 565-0871. Type: University Hospital. Beds: 1,000. Specialty: Transplant, Oncology.",
+            "OSAKA MEDICAL COLLEGE HOSPITAL: 2-7 Daigaku-machi, Takatsuki 569-8686. Type: University Hospital. Specialty: Cardiology.",
+            "KOBE UNIVERSITY HOSPITAL: 7-5-1 Kusunoki-cho, Chuo-ku, Kobe 650-0017. Type: University Hospital. Beds: 800. Specialty: Gastroenterology.",
+            "HYOGO COLLEGE OF MEDICINE HOSPITAL: 1-1 Mukogawa-cho, Nishinomiya 663-8501. Type: University Hospital. Specialty: Cardiology.",
+            "NARA MEDICAL UNIVERSITY HOSPITAL: 840 Shijo-cho, Kashihara 634-8522. Type: University Hospital. Beds: 1,000. Specialty: Pediatrics.",
+            "OKAYAMA UNIVERSITY HOSPITAL: 2-5-1 Shikata-cho, Kita-ku, Okayama 700-8558. Type: University Hospital. Beds: 800. Specialty: Transplant.",
+            "HIROSHIMA UNIVERSITY HOSPITAL: 1-2-3 Kasumi, Minami-ku, Hiroshima 734-8551. Type: University Hospital. Beds: 1,000. Specialty: Cancer, Immunology.",
+            "YAMAGUCHI UNIVERSITY HOSPITAL: 1-1-1 Minami-Kogushi, Ube 755-8505. Type: University Hospital. Specialty: Cardiology.",
+            "TOKUSHIMA UNIVERSITY HOSPITAL: 3-18-15 Kuramoto-cho, Tokushima 770-8503. Type: University Hospital. Specialty: Digestive Surgery.",
+            "KAGAWA UNIVERSITY HOSPITAL: 1750-1 Ikenobe, Miki-cho, Kita-gun, Kagawa 761-0793. Type: University Hospital. Specialty: Gastroenterology.",
+            "EHIME UNIVERSITY HOSPITAL: 454 Shitsukawa, Toon 791-0295. Type: University Hospital. Specialty: Neurology.",
+            "KOCHI UNIVERSITY HOSPITAL: 185-1 Kohasu, Oko-cho, Nankoku 783-8505. Type: University Hospital. Specialty: Emergency Medicine.",
+            "KYUSHU UNIVERSITY HOSPITAL: 3-1-1 Maidashi, Higashi-ku, Fukuoka 812-8582. Type: University Hospital. Beds: 1,200. Specialty: Neurology, Transplant.",
+            "SAGA UNIVERSITY HOSPITAL: 5-1-1 Nabeshima, Saga 849-8501. Type: University Hospital. Specialty: Pediatrics.",
+            "NAGASAKI UNIVERSITY HOSPITAL: 1-7-1 Sakamoto, Nagasaki 852-8501. Type: University Hospital. Specialty: Infectious Diseases.",
+            "KUMAMOTO UNIVERSITY HOSPITAL: 1-1-1 Honjo, Chuo-ku, Kumamoto 860-8556. Type: University Hospital. Specialty: Transplant, Nephrology.",
+            "OITA UNIVERSITY HOSPITAL: 1-1 Idaigaoka, Hasama-machi, Yufu 879-5593. Type: University Hospital. Specialty: Cardiology.",
+            "UNIVERSITY OF MIYAZAKI HOSPITAL: 5200 Kihara, Kiyotake-cho, Miyazaki 889-1692. Type: University Hospital. Specialty: Orthopedics.",
+            "KAGOSHIMA UNIVERSITY HOSPITAL: 8-35-1 Sakuragaoka, Kagoshima 890-8544. Type: University Hospital. Specialty: Neurosurgery.",
+            "UNIVERSITY OF THE RYUKYUS HOSPITAL: 207 Uehara, Nishihara-cho, Nakagami-gun, Okinawa 903-0215. Type: University Hospital. Specialty: Infectious Diseases.", "SEOUL NATIONAL UNIVERSITY HOSPITAL: 101 Daehak-ro, Jongno-gu, Seoul 03080. Type: University Hospital. Beds: 1,700. Specialty: Multispecialty, Transplant, Cancer.",
+            "SEVERANCE HOSPITAL (YONSEI UNIVERSITY): 50-1 Yonsei-ro, Seodaemun-gu, Seoul 03722. Type: University Hospital. Beds: 2,100. Specialty: Cardiology, Transplant.",
+            "SAMSUNG MEDICAL CENTER: 81 Irwon-ro, Gangnam-gu, Seoul 06351. Type: University Hospital. Beds: 1,979. Specialty: Cardiology, Cancer, Neurology.",
+            "ASAN MEDICAL CENTER: 88 Olympic-ro 43-gil, Songpa-gu, Seoul 05505. Type: University Hospital. Beds: 2,700. Specialty: Cardiology, Transplant, Cancer.",
+            "KOREA UNIVERSITY ANSAN HOSPITAL: 123 Jeokgeum-ro, Danwon-gu, Ansan 15355. Type: University Hospital. Beds: 800. Specialty: Occupational Medicine.",
+            "SEOUL ST. MARY'S HOSPITAL (CATHOLIC UNIVERSITY): 222 Banpo-daero, Seocho-gu, Seoul 06591. Type: University Hospital. Beds: 1,300. Specialty: Cardiology, Cancer.",
+            "KYUNG HEE UNIVERSITY HOSPITAL: 23 Kyungheedae-ro, Dongdaemun-gu, Seoul 02447. Type: University Hospital. Beds: 900. Specialty: Oriental Medicine, Cardiology.",
+            "GANGNAM SEVERANCE HOSPITAL: 211 Eonju-ro, Gangnam-gu, Seoul 06273. Type: University Hospital. Specialty: Cancer Center, Rehabilitation.",
+            "EWHA WOMANS UNIVERSITY MOKDONG HOSPITAL: 1071 Anyangcheon-ro, Yangcheon-gu, Seoul 07985. Type: University Hospital. Beds: 800. Specialty: Women's Health.",
+            "CHUNG-ANG UNIVERSITY HOSPITAL: 102 Heukseok-ro, Dongjak-gu, Seoul 06973. Type: University Hospital. Beds: 800. Specialty: Cardiology.",
+            "HALLYM UNIVERSITY HANGANG SACRED HEART HOSPITAL: 12 Beodeunaru-ro 7-gil, Yeongdeungpo-gu, Seoul 07207. Type: University Hospital. Specialty: International Healthcare.",
+            "THE CATHOLIC UNIVERSITY OF KOREA YEOUIDO ST. MARY'S HOSPITAL: 10 63-ro, Yeongdeungpo-gu, Seoul 07345. Type: University Hospital. Specialty: Cardiology, Orthopedics.",
+            "KANGNAM SACRED HEART HOSPITAL: 1 Singil-ro, Yeongdeungpo-gu, Seoul 07441. Type: University Hospital. Specialty: Cardiovascular.",
+            "AJOU UNIVERSITY HOSPITAL: 164 World Cup-ro, Yeongtong-gu, Suwon 16499. Type: University Hospital. Beds: 1,000. Specialty: Emergency Medicine, Transplant.",
+            "SEOUL NATIONAL UNIVERSITY BUNDANG HOSPITAL: 82 Gumi-ro 173-beon-gil, Bundang-gu, Seongnam 13620. Type: University Hospital. Beds: 900. Specialty: Cancer, Robotics.",
+            "CHA BUNDANG MEDICAL CENTER: 59 Yatap-ro, Bundang-gu, Seongnam 13496. Type: University Hospital. Specialty: Women's Health, Fertility.",
+            "DONGGUK UNIVERSITY ILSAN HOSPITAL: 27 Dongguk-ro, Ilsandong-gu, Goyang 10326. Type: University Hospital. Specialty: Oriental Medicine.",
+            "NATIONAL CANCER CENTER: 323 Ilsan-ro, Ilsandong-gu, Goyang 10408. Type: Specialty Cancer Hospital. Beds: 600. Specialty: Oncology, Research.",
+            "MYONGJI HOSPITAL: 55 Hwasu-ro 14beon-gil, Deokyang-gu, Goyang 10475. Type: General Hospital. Specialty: Rehabilitation.",
+            "INJE UNIVERSITY ILSAN-PAIK HOSPITAL: 170 Juhwa-ro, Ilsanseo-gu, Goyang 10380. Type: University Hospital. Specialty: Cardiology.",
+            "GACHON UNIVERSITY GIL MEDICAL CENTER: 21 Namdong-daero 774beon-gil, Namdong-gu, Incheon 21565. Type: University Hospital. Beds: 1,500. Specialty: Trauma, Cardiology.",
+            "INCHEON ST. MARY'S HOSPITAL: 56 Dongsu-ro, Bupyeong-gu, Incheon 21431. Type: University Hospital. Specialty: Gastroenterology.",
+            "CHUNGNAM NATIONAL UNIVERSITY HOSPITAL: 282 Munhwa-ro, Jung-gu, Daejeon 35015. Type: University Hospital. Beds: 800. Specialty: Cardiology.",
+            "DAEJEON EULJI MEDICAL CENTER: 25 Dunsanseo-ro, Seo-gu, Daejeon 35233. Type: University Hospital. Beds: 1,000. Specialty: Emergency Medicine.",
+            "CHONBUK NATIONAL UNIVERSITY HOSPITAL: 20 Geonji-ro, Deokjin-gu, Jeonju 54907. Type: University Hospital. Specialty: Neurology.",
+            "WONKWANG UNIVERSITY HOSPITAL: 895 Muwang-ro, Iksan 54538. Type: University Hospital. Specialty: Oriental Medicine.",
+            "CHONNAM NATIONAL UNIVERSITY HOSPITAL: 42 Jebong-ro, Dong-gu, Gwangju 61469. Type: University Hospital. Beds: 800. Specialty: Cardiology.",
+            "CHOSUN UNIVERSITY HOSPITAL: 365 Pilmun-daero, Dong-gu, Gwangju 61453. Type: University Hospital. Specialty: Dentistry.",
+            "KYUNGPOOK NATIONAL UNIVERSITY HOSPITAL: 130 Dongdeok-ro, Jung-gu, Daegu 41944. Type: University Hospital. Specialty: Neurology.",
+            "KEIMYUNG UNIVERSITY DONGSAN MEDICAL CENTER: 1035 Dalgubeol-daero, Dalseo-gu, Daegu 42601. Type: University Hospital. Specialty: Cardiology.",
+            "YEUNGNAM UNIVERSITY HOSPITAL: 170 Hyeonchung-ro, Nam-gu, Daegu 42415. Type: University Hospital. Specialty: Orthopedics.",
+            "PUSAN NATIONAL UNIVERSITY HOSPITAL: 179 Gudeok-ro, Seo-gu, Busan 49241. Type: University Hospital. Beds: 1,000. Specialty: Dentistry, Cardiology.",
+            "DONG-A UNIVERSITY HOSPITAL: 32 Daesingongwon-ro, Seo-gu, Busan 49201. Type: University Hospital. Specialty: Neurosurgery.",
+            "GOOD SAMSUN HOSPITAL: 20 Baeksan-gil, Busanjin-gu, Busan 47392. Type: General Hospital. Specialty: International Clinic.",
+            "JEJU NATIONAL UNIVERSITY HOSPITAL: 15 Aran 13-gil, Jeju-si, Jeju 63241. Type: University Hospital. Specialty: Infectious Diseases.", "PEKING UNION MEDICAL COLLEGE HOSPITAL: 1 Shuaifuyuan, Dongcheng District, Beijing 100730. Type: University Hospital. Beds: 2,000. Specialty: Multispecialty, Rheumatology, Endocrinology.",
+            "THE GENERAL HOSPITAL OF THE PEOPLE'S LIBERATION ARMY (301 HOSPITAL): 28 Fuxing Road, Haidian District, Beijing 100853. Type: Military Hospital. Beds: 4,000. Specialty: Cardiology, Orthopedics, Transplant.",
+            "BEIJING ANZHEN HOSPITAL (CAPITAL MEDICAL UNIVERSITY): 2 Anzhen Road, Chaoyang District, Beijing 100029. Type: Specialty Hospital. Beds: 1,000. Specialty: Cardiology, Cardiovascular Surgery.",
+            "BEIJING TIANTAN HOSPITAL (CAPITAL MEDICAL UNIVERSITY): 119 South Fourth Ring West Road, Fengtai District, Beijing 100070. Type: Specialty Hospital. Beds: 1,100. Specialty: Neurosurgery, Neurology.",
+            "BEIJING CHEST HOSPITAL: 9 Beiguan Street, Tongzhou District, Beijing 101149. Type: Specialty Hospital. Specialty: Respiratory Medicine, Tuberculosis.",
+            "FUDAN UNIVERSITY ZHONGSHAN HOSPITAL: 180 Fengquan Road, Xuhui District, Shanghai 200032. Type: University Hospital. Beds: 2,000. Specialty: Cardiology, Oncology, Transplant.",
+            "RUIJIN HOSPITAL (SHANGHAI JIAO TONG UNIVERSITY): 197 Ruijin Er Road, Huangpu District, Shanghai 200025. Type: University Hospital. Beds: 1,600. Specialty: Cardiology, Transplant, Endocrinology.",
+            "SHANGHAI PULMONARY HOSPITAL: 507 Zhengmin Road, Yangpu District, Shanghai 200433. Type: Specialty Hospital. Specialty: Thoracic Surgery, Respiratory Medicine.",
+            "LONGHUA HOSPITAL (SHANGHAI UNIVERSITY OF TCM): 725 South Wanping Road, Xuhui District, Shanghai 200032. Type: University Hospital. Specialty: Traditional Chinese Medicine.",
+            "ZHONGSHAN HOSPITAL (FUDAN UNIVERSITY): 180 Fengquan Road, Xuhui District, Shanghai 200032. Type: University Hospital. Specialty: Cardiology.",
+            "WEST CHINA HOSPITAL (SICHUAN UNIVERSITY): 37 Guoxue Xiang, Chengdu 610041. Type: University Hospital. Beds: 4,300. Specialty: Multispecialty, Neurology, Oncology.",
+            "WEST CHINA SECOND UNIVERSITY HOSPITAL (SICHUAN UNIVERSITY): 20 Section 3, South Renmin Road, Chengdu 610041. Type: University Hospital. Specialty: Pediatrics, Obstetrics.",
+            "THE FIRST AFFILIATED HOSPITAL OF ZHENGZHOU UNIVERSITY: 1 Jianshe East Road, Zhengzhou 450052. Type: University Hospital. Beds: 8,500. Specialty: Multispecialty (One of the largest in the world).",
+            "SHANDONG UNIVERSITY QILU HOSPITAL: 107 Wenhuaxi Road, Jinan 250012. Type: University Hospital. Beds: 3,000. Specialty: Neurology, Cardiology.",
+            "TONGJI HOSPITAL (HUAZHONG UNIVERSITY OF SCIENCE AND TECHNOLOGY): 1095 Jiefang Avenue, Wuhan 430030. Type: University Hospital. Beds: 5,000. Specialty: Organ Transplant, Urology.",
+            "UNION HOSPITAL (HUAZHONG UNIVERSITY OF SCIENCE AND TECHNOLOGY): 1277 Jiefang Avenue, Wuhan 430022. Type: University Hospital. Beds: 3,000. Specialty: Cardiology, Dermatology.",
+            "ZHONGNAN HOSPITAL OF WUHAN UNIVERSITY: 169 Donghu Road, Wuchang District, Wuhan 430071. Type: University Hospital. Specialty: Urology, Oncology.",
+            "XIANGYA HOSPITAL (CENTRAL SOUTH UNIVERSITY): 87 Xiangya Road, Kaifu District, Changsha 410008. Type: University Hospital. Beds: 3,500. Specialty: Neurology, Geriatrics.",
+            "THE SECOND XIANGYA HOSPITAL (CENTRAL SOUTH UNIVERSITY): 139 Middle Renmin Road, Furong District, Changsha 410011. Type: University Hospital. Specialty: Cardiovascular Surgery.",
+            "SUN YAT-SEN UNIVERSITY CANCER CENTER: 651 Dongfeng East Road, Yuexiu District, Guangzhou 510060. Type: Specialty Cancer Hospital. Beds: 1,400. Specialty: Oncology, Radiotherapy.",
+            "GUANGDONG PROVINCIAL PEOPLE'S HOSPITAL: 106 Zhongshan Er Road, Yuexiu District, Guangzhou 510080. Type: General Hospital. Beds: 3,000. Specialty: Cardiology, Pulmonology.",
+            "NANFANG HOSPITAL (SOUTHERN MEDICAL UNIVERSITY): 1838 North Guangzhou Avenue, Baiyun District, Guangzhou 510515. Type: University Hospital. Specialty: Orthopedics, Gastroenterology.",
+            "THE FIRST AFFILIATED HOSPITAL OF FUJIAN MEDICAL UNIVERSITY: 20 Chazhong Road, Taijiang District, Fuzhou 350005. Type: University Hospital. Specialty: Neurology.",
+            "THE FIRST AFFILIATED HOSPITAL OF XI'AN JIAOTONG UNIVERSITY: 277 Yanta West Road, Xi'an 710061. Type: University Hospital. Specialty: Cardiology, Nephrology.",
+            "THE SECOND AFFILIATED HOSPITAL OF ZHEJIANG UNIVERSITY: 88 Jiefang Road, Shangcheng District, Hangzhou 310009. Type: University Hospital. Beds: 2,000. Specialty: Ophthalmology, Cardiology.",
+            "THE FIRST AFFILIATED HOSPITAL OF NANJING MEDICAL UNIVERSITY: 300 Guangzhou Road, Gulou District, Nanjing 210029. Type: University Hospital. Specialty: Cardiology, Transplant.",
+            "THE FIRST HOSPITAL OF JILIN UNIVERSITY: 1 Xinmin Street, Chaoyang District, Changchun 130021. Type: University Hospital. Beds: 5,900. Specialty: Neurology, Transplant.",
+            "THE SECOND HOSPITAL OF TIANJIN MEDICAL UNIVERSITY: 23 Pingjiang Road, Hexi District, Tianjin 300211. Type: University Hospital. Specialty: Urology, Cardiology.",
+            "THE FIRST AFFILIATED HOSPITAL OF HARBIN MEDICAL UNIVERSITY: 23 Youzheng Street, Nangang District, Harbin 150001. Type: University Hospital. Beds: 3,500. Specialty: Neurosurgery.",
+            "FUWAI HOSPITAL (CHINESE ACADEMY OF MEDICAL SCIENCES): 167 Beilishi Road, Xicheng District, Beijing 100037. Type: Specialty Hospital. Beds: 800. Specialty: Cardiology, Cardiovascular Surgery (Ranked #1 in Cardiology in China)."]
+
+            hospital = random.choice(hospitals)
+
+            ct = datetime.datetime.now()
+            print()
+            print(hospital, ct)         
 
         def choice():
             choice = ''
@@ -6323,6 +6960,9 @@ def main():
                 if choice == "soundstream" or choice == "sst" or choice == "SST" or choice == "sound stream" or choice == "stream sound" or choice == "streamsound":
                     sound_stream()
 
+                if choice == "rhospital" or choice == "random hospital" or choice == "ghosthunt" or choice == "rhosp":
+                    rhospital()
+
                 if choice == "switch" or choice == "lx" or choice == "lpro":
                     return "switch"
 
@@ -6475,6 +7115,7 @@ def main():
         parser.add_argument("-ghost-write", "-gw", action="store_true")
         parser.add_argument("-insta-ghost-write", "-igw", action="store_true")
         parser.add_argument("-sound-stream", "-sst", action="store_true")
+        parser.add_argument("-rhospital", "-ghosthunt", action="store_true")
         parser.add_argument("-mprocs-commands", action="store_true")
 
         single_dash_args = [a for a in sys.argv[1:] if a.startswith('-') and not a.startswith('--')]
@@ -6965,6 +7606,9 @@ def main():
         if args.sound_stream:
             sound_stream()
             sys.exit(0)
+
+        if args.rhospital:
+            rhospital()
 
         if args.mprocs_commands:
             commands()

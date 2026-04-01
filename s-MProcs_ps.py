@@ -8,56 +8,6 @@ import subprocess
 import platform
 import os
 import shutil
-import argparse
-import math
-import struct
-import sys
-import session
-import re
-
-RED = '\033[91m'
-GREEN = '\033[92m'
-PURPLE = '\033[35m'
-ORANGE = '\033[93m'
-BLUE = '\033[94m'
-PINK = '\033[95m'
-RESET = '\033[0m'
-
-raw_name = session.raw_usr
-
-global usr
-usr = f" st ( {PINK}{raw_name}{RESET} ) {PURPLE}${RESET} "
-
-def set_usr(newUsr):
-    session.usr = newUsr
-
-def change_username(provided_name=None):
-    global usr
-    global raw_usr
-    
-    if provided_name:
-        if isinstance(provided_name, str):
-            clean_name = re.sub(r'\x1b\[[0-9;]*m', '', provided_name)
-            
-            match = re.search(r'st\s*\(([^)]+)\)', clean_name)
-            if match:
-                new_raw = match.group(1).strip()
-            else:
-                new_raw = clean_name.strip()
-        else:
-            new_raw = str(provided_name)
-    else:
-        new_raw = input("Session username: ").strip()
-
-    if not new_raw:
-        new_raw = "zeta"
-
-    session.raw_usr = new_raw
-    raw_usr = new_raw
-    
-    usr = f" st ( {PINK}{new_raw}{RESET} ) {BLUE}${RESET} "
-    
-    return usr
 
 omit_result = False
 current_ddd = [""]
@@ -601,11 +551,25 @@ def main():
            "For surely there is an end; and thine expectation shall not be cut off.", "Hear thou, my son, and be wise, and guide thine heart in the way.", "Be not among winebibbers; among riotous eaters of flesh:", "For the drunkard and the glutton shall come to poverty: and drowsiness shall clothe a man with rags.", "Hearken unto thy father that begat thee, and despise not thy mother when she is old.", "Buy the truth, and sell it not; also wisdom, and instruction, and understanding.", "The father of the righteous shall greatly rejoice: and he that begetteth a wise child shall have joy of him.", "Thy father and thy mother shall be glad, and she that bare thee shall rejoice.", "My son, give me thine heart, and let thine eyes observe my ways.", "For a whore is a deep ditch; and a strange woman is a narrow pit.", "She also lieth in wait as for a prey, and increaseth the transgressors among men.", "Who hath woe? who hath sorrow? who hath contentions? who hath babbling? who hath wounds without cause? who hath redness of eyes?", "They that tarry long at the wine; they that go to seek mixed wine.", "Look not thou upon the wine when it is red, when it giveth his colour in the cup, when it moveth itself aright.", "At the last it biteth like a serpent, and stingeth like an adder.", "Thine eyes shall behold strange women, and thine heart shall utter perverse things.", "Yea, thou shalt be as he that lieth down in the midst of the sea, or as he that lieth upon the top of a mast.", "They have stricken me, shalt thou say, and I was not sick; they have beaten me, and I felt it not: when shall I awake? I will seek it yet again.", "Be not thou envious against evil men, neither desire to be with them.", "For their heart studieth destruction, and their lips talk of mischief.", "Through wisdom is an house builded; and by understanding it is established:", "And by knowledge shall the chambers be filled with all precious and pleasant riches.", "A wise man is strong; yea, a man of knowledge increaseth strength.", "For by wise counsel thou shalt make thy war: and in multitude of counsellors there is safety.", "Wisdom is too high for a fool: he openeth not his mouth in the gate.", "He that deviseth to do evil shall be called a mischievous person.", "The thought of foolishness is sin: and the scorner is an abomination to men.", "If thou faint in the day of adversity, thy strength is small.", "If thou forbear to deliver them that are drawn unto death, and those that are ready to be slain;", "If thou sayest, Behold, we knew it not; doth not he that pondereth the heart consider it? and he that keepeth thy soul, doth not he know it? and shall not he render to every man according to his works?", "My son, eat thou honey, because it is good; and the honeycomb, which is sweet to thy taste:", "So shall the knowledge of wisdom be unto thy soul: when thou hast found it, then there shall be a reward, and thy expectation shall not be cut off.", "Lay not wait, O wicked man, against the dwelling of the righteous; spoil not his resting place:", "For a just man falleth seven times, and riseth up again: but the wicked shall fall into mischief.", "Rejoice not when thine enemy falleth, and let not thine heart be glad when he stumbleth:", "Lest the LORD see it, and it displease him, and he turn away his wrath from him.", "Fret not thyself because of evil men, neither be thou envious at the wicked;", "For there shall be no reward to the evil man; the candle of the wicked shall be put out.", "My son, fear thou the LORD and the king: and meddle not with them that are given to change:", "For their calamity shall rise suddenly; and who knoweth the ruin of them both?", "These things also belong to the wise. It is not good to have respect of persons in judgment.", "He that saith unto the wicked, Thou art righteous; him shall the people curse, nations shall abhor him:", "But to them that rebuke him shall be delight, and a good blessing shall come upon them.", "Every man shall kiss his lips that giveth a right answer.", "Prepare thy work without, and make it fit for thyself in the field; and afterwards build thine house.", "Be not a witness against thy neighbour without cause; and deceive not with thy lips.", "Say not, I will do so to him as he hath done to me: I will render to the man according to his work.", "I went by the field of the slothful, and by the vineyard of the man void of understanding;", "And, lo, it was all grown over with thorns, and nettles had covered the face thereof, and the stone wall thereof was broken down.", "Then I saw, and considered it well: I looked upon it, and received instruction.", "Yet a little sleep, a little slumber, a little folding of the hands to sleep:", "So shall thy poverty come as one that travelleth; and thy want as an armed man.", "A good name is rather to be chosen than great riches, and loving favour rather than silver and gold.", "The rich and poor meet together: the LORD is the maker of them all.", "A prudent man foreseeth the evil, and hideth himself: but the simple pass on, and are punished.", "By humility and the fear of the LORD are riches, and honour, and life.", "Thorns and snares are in the way of the froward: he that doth keep his soul shall be far from them.", "Train up a child in the way he should go: and when he is old, he will not depart from it.", "The rich ruleth over the poor, and the borrower is servant to the lender.", "He that soweth iniquity shall reap vanity: and the rod of his anger shall fail.", "He that hath a bountiful eye shall be blessed; for he giveth of his bread to the poor.", "Cast out the scorner, and contention shall go out; yea, strife and reproach shall cease.", "He that loveth pureness of heart, for the grace of his lips the king shall be his friend.", "The eyes of the LORD preserve knowledge, and he overthroweth the words of the transgressor.", "The slothful man saith, There is a lion without, I shall be slain in the streets.", "The mouth of strange women is a deep pit: he that is abhorred of the LORD shall fall therein.", "Foolishness is bound in the heart of a child; but the rod of correction shall drive it far from him.", "He that oppresseth the poor to increase his riches, and he that giveth to the rich, shall surely come to want.", "Bow down thine ear, and hear the words of the wise, and apply thine heart unto my knowledge.", "For it is a pleasant thing if thou keep them within thee; they shall withal be fitted in thy lips.", "That thy trust may be in the LORD, I have made known to thee this day, even to thee.", "Have not I written to thee excellent things in counsels and knowledge,", "That I might make thee know the certainty of the words of truth; that thou mightest answer the words of truth to them that send unto thee?", "Rob not the poor, because he is poor: neither oppress the afflicted in the gate:", "For the LORD will plead their cause, and spoil the soul of those that spoiled them.", "Make no friendship with an angry man; and with a furious man thou shalt not go:", "Lest thou learn his ways, and get a snare to thy soul.", "Be not thou one of them that strike hands, or of them that are sureties for debts.", "If thou hast nothing to pay, why should he take away thy bed from under thee?", "Remove not the ancient landmark, which thy fathers have set.", "Seest thou a man diligent in his business? he shall stand before kings; he shall not stand before mean men.", "When thou sittest to eat with a ruler, consider diligently what is before thee:", "And put a knife to thy throat, if thou be a man given to appetite.", "Be not desirous of his dainties: for they are deceitful meat.", "Labour not to be rich: cease from thine own wisdom.", "Wilt thou set thine eyes upon that which is not? for riches certainly make themselves wings; they fly away as an eagle toward heaven.", "Eat thou not the bread of him that hath an evil eye, neither desire thou his dainty meats:", "For as he thinketh in his heart, so is he: Eat and drink, saith he to thee; but his heart is not with thee.", "The morsel which thou hast eaten shalt thou vomit up, and lose thy sweet words.", "Speak not in the ears of a fool: for he will despise the wisdom of thy words.", "Remove not the old landmark; and enter not into the fields of the fatherless:", "For their redeemer is mighty; he shall plead their cause with thee.", "Apply thine heart unto instruction, and thine ears to the words of knowledge.", "Withhold not correction from the child: for if thou beatest him with the rod, he shall not die.", "Thou shalt beat him with the rod, and shalt deliver his soul from hell.", "My son, if thine heart be wise, my heart shall rejoice, even mine.", "Yea, my reins shall rejoice, when thy lips speak right things.", "Let not thine heart envy sinners: but be thou in the fear of the LORD all the day long.", "For surely there is an end; and thine expectation shall not be cut off.", "Hear thou, my son, and be wise, and guide thine heart in the way.", "Be not among winebibbers; among riotous eaters of flesh:", "For the drunkard and the glutton shall come to poverty: and drowsiness shall clothe a man with rags.", "Hearken unto thy father that begat thee, and despise not thy mother when she is old.", "Buy the truth, and sell it not; also wisdom, and instruction, and understanding.", "The father of the righteous shall greatly rejoice: and he that begetteth a wise child shall have joy of him.", "Thy father and thy mother shall be glad, and she that bare thee shall rejoice.", "My son, give me thine heart, and let thine eyes observe my ways.", "For a whore is a deep ditch; and a strange woman is a narrow pit.", "She also lieth in wait as for a prey, and increaseth the transgressors among men.", "Who hath woe? who hath sorrow? who hath contentions? who hath babbling? who hath wounds without cause? who hath redness of eyes?", "They that tarry long at the wine; they that go to seek mixed wine.", "Look not thou upon the wine when it is red, when it giveth his colour in the cup, when it moveth itself aright.", "At the last it biteth like a serpent, and stingeth like an adder.", "Thine eyes shall behold strange women, and thine heart shall utter perverse things.", "Yea, thou shalt be as he that lieth down in the midst of the sea, or as he that lieth upon the top of a mast.", "They have stricken me, shalt thou say, and I was not sick; they have beaten me, and I felt it not: when shall I awake? I will seek it yet again.", "Be not thou envious against evil men, neither desire to be with them.", "For their heart studieth destruction, and their lips talk of mischief.", "Through wisdom is an house builded; and by understanding it is established:", "And by knowledge shall the chambers be filled with all precious and pleasant riches.", "A wise man is strong; yea, a man of knowledge increaseth strength.", "For by wise counsel thou shalt make thy war: and in multitude of counsellors there is safety.", "Wisdom is too high for a fool: he openeth not his mouth in the gate.", "He that deviseth to do evil shall be called a mischievous person.", "The thought of foolishness is sin: and the scorner is an abomination to men.", "If thou faint in the day of adversity, thy strength is small.", "If thou forbear to deliver them that are drawn unto death, and those that are ready to be slain;", "If thou sayest, Behold, we knew it not; doth not he that pondereth the heart consider it? and he that keepeth thy soul, doth not he know it? and shall not he render to every man according to his works?", "My son, eat thou honey, because it is good; and the honeycomb, which is sweet to thy taste:", "So shall the knowledge of wisdom be unto thy soul: when thou hast found it, then there shall be a reward, and thy expectation shall not be cut off.", "Lay not wait, O wicked man, against the dwelling of the righteous; spoil not his resting place:", "For a just man falleth seven times, and riseth up again: but the wicked shall fall into mischief.", "Rejoice not when thine enemy falleth, and let not thine heart be glad when he stumbleth:", "Lest the LORD see it, and it displease him, and he turn away his wrath from him.", "Fret not thyself because of evil men, neither be thou envious at the wicked;", "For there shall be no reward to the evil man; the candle of the wicked shall be put out.", "My son, fear thou the LORD and the king: and meddle not with them that are given to change:", "For their calamity shall rise suddenly; and who knoweth the ruin of them both?", "These things also belong to the wise. It is not good to have respect of persons in judgment.", "He that saith unto the wicked, Thou art righteous; him shall the people curse, nations shall abhor him:", "But to them that rebuke him shall be delight, and a good blessing shall come upon them.", "Every man shall kiss his lips that giveth a right answer."]
 
 
+    RED = '\033[91m'
+    GREEN = '\033[92m'
+    PURPLE = '\033[35m'
+    ORANGE = '\033[93m'
+    BLUE = '\033[94m'
+    PINK = '\033[95m'
+    RESET = '\033[0m'
+    print()
+
+    def set_usr(newUsr):
+        global usr
+        usr = newUsr
+    new = input("Set session username: ")
+
     def select_charset(provided_choice=None):
         global current_ddd, omit_result
         
         while True:
-            choice = provided_choice if provided_choice else input("Nano EST Charset - 1. Korean 2. Chinese 3. Japanese 4. Alphanumeric 5. Russian 6. None/English (add 'a' for English toggle): ").strip()
+            choice = provided_choice if provided_choice else input("Nano EST Charset - 1. Korean 2. Chinese 3. Japanese 4. Alphanumeric 5. Russian 6. None/English  (add 'a' for English toggle): ").strip()
             
             c = choice.lower().replace(" ", "") 
 
@@ -640,11 +604,21 @@ def main():
                 provided_choice = None
                 continue
             break
-
             session.current_charset = selected  # Persist to session
             return selected
     ###
-    z = open("MProcs-logs.txt", "a", buffering=1)
+    select_charset()
+
+    user = f"{GREEN}{new}{RESET}"
+    ST = " st"
+    medicci = f"{ST}"
+    dollar = "$"
+    sign = f"{PURPLE}{dollar}{RESET}"
+    set_usr(medicci + "" + " " + "" + "(" + "" + " " + "" + "" + user + "" + "" + " " + "" + ")" + "" + " " + "" + sign + "" + " ")
+    print()
+
+    print(" > Download the .py script at github.com/tderk-snowtiger/MProcs-st")
+    print()
 
     def alerts():
         kk = (katakana)
@@ -673,10 +647,9 @@ def main():
         alerts = "Alerts:"
         alert = f"{PINK}{alerts}{RESET}"
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, rrchar_str, ct)
-        print(alert, value, random_letters, rrchar_str, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.15{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.15-xs{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -690,16 +663,17 @@ def main():
         print()
         print(title2)
         print()
-        print(title, time, title3, title4, file=z)
-        print(file=z)
-        print(pr, prvrb, file=z)
-        print(file=z)
-        print(title2, file=z)
-        print()
-        print(file=z)
         alerts()
 
+    version()
+
+    time.sleep(0)
+    print()
+    print()
+    print ("type 'commands'")
+
     def mp():
+        print()
 
         diction = ["a", "aa", "aaa", "aaron", "ab", "abandoned", "abc", "aberdeen", "abilities", "ability", "able", "aboriginal", "abortion", "about", "above", "abraham", "abroad", "abs", "absence", "absent", "absolute", "absolutely", "absorption", "abstract", "abstracts", "abu", "abuse", "ac", "academic", "academics", "academy", "acc", "accent", "accept", "acceptable", "acceptance", "accepted", "accepting", "accepts", "access", "accessed", "accessibility", "accessible", "accessing", "accessories", "accessory", "accident", "accidents", "accommodate", "accommodation", "accommodations", "accompanied", "accompanying", "accomplish", "accomplished", "accordance", "according", "accordingly", "account", "accountability", "accounting", "accounts", "accreditation", "accredited", "accuracy", "accurate", "accurately", "accused", "acdbentity", "ace", "acer", "achieve", "achieved", "achievement", "achievements", "achieving", "acid", "acids", "acknowledge", "acknowledged", "acm", "acne", "acoustic", "acquire", "acquired", "acquisition", "acquisitions", "acre", "acres", "acrobat", "across", "acrylic", "act", "acting", "action", "actions", "activated", "activation", "active", "actively", "activists", "activities", "activity", "actor", "actors", "actress", "acts", "actual", "actually", "acute", "ad", "ada", "adam", "adams", "adaptation", "adapted", "adapter", "adapters", "adaptive", "adaptor", "add", "added", "addiction", "adding", "addition", "additional", "additionally", "additions", "address", "addressed", "addresses", "addressing", "adds", "adelaide", "adequate", "adidas", "adipex", "adjacent", "adjust", "adjustable", "adjusted", "adjustment", "adjustments", "admin", "administered", "administration", "administrative", "administrator", "administrators", "admission", "admissions", "admit", "admitted", "adobe", "adolescent", "adopt", "adopted", "adoption", "adrian", "ads", "adsl", "adult", "adults", "advance", "advanced", "advancement", "advances", "advantage", "advantages", "adventure", "adventures", "adverse", "advert", "advertise", "advertisement", "advertisements", "advertiser", "advertisers", "advertising", "advice", "advise", "advised", "advisor", "advisors", "advisory", "advocacy", "advocate", "adware", "ae", "aerial", "aerospace", "af", "affair", "affairs", "affect", "affected", "affecting", "affects", "affiliate", "affiliated", "affiliates", "affiliation", "afford", "affordable", "afghanistan", "afraid", "africa", "african", "after", "afternoon", "afterwards", "ag", "again", "against", "age", "aged", "agencies", "agency", "agenda", "agent", "agents", "ages", "aggregate", "aggressive", "aging", "ago", "agree", "agreed", "agreement", "agreements", "agrees", "agricultural", "agriculture", "ah", "ahead", "ai", "aid", "aids", "aim", "aimed", "aims", "air", "aircraft", "airfare", "airline", "airlines", "airplane", "airport", "airports", "aj", "ak", "aka", "al", "ala", "alabama", "alan", "alarm", "alaska", "albania", "albany", "albert", "alberta", "album", "albums", "albuquerque", "alcohol", "alert", "alerts", "alex", "alexander", "alexandria", "alfred", "algebra", "algeria", "algorithm", "algorithms", "ali", "alias", "alice", "alien", "align", "alignment", "alike", "alive", "all", "allah", "allan", "alleged", "allen", "allergy", "alliance", "allied", "allocated", "allocation", "allow", "allowance", "allowed", "allowing", "allows", "alloy", "almost", "alone", "along", "alot", "alpha", "alphabetical", "alpine", "already", "also", "alt", "alter", "altered", "alternate", "alternative", "alternatively", "alternatives", "although", "alto", "aluminium", "aluminum", "alumni", "always", "am", "amanda", "amateur", "amazing", "amazon", "amazoncom", "amazoncouk", "ambassador", "amber", "ambien", "ambient", "amd", "amend", "amended", "amendment", "amendments", "amenities", "america", "american", "americans", "americas", "amino", "among", "amongst", "amount", "amounts", "amp", "ampland", "amplifier", "amsterdam", "amy", "an", "ana", "anaheim", "analog", "analyses", "analysis", "analyst", "analysts", "analytical", "analyze", "analyzed", "anatomy", "anchor", "ancient", "and", "andale", "anderson", "andorra", "andrea", "andreas", "andrew", "andrews", "andy", "angel", "angela", "angeles", "angels", "anger", "angle", "angola", "angry", "animal", "animals", "animated", "animation", "anime", "ann", "anna", "anne", "annex", "annie", "anniversary", "annotated", "annotation", "announce", "announced", "announcement", "announcements", "announces", "annoying", "annual", "annually", "anonymous", "another", "answer", "answered", "answering", "answers", "ant", "antarctica", "antenna", "anthony", "anthropology", "anti", "antibodies", "antibody", "anticipated", "antigua", "antique", "antiques", "antivirus", "antonio", "anxiety", "any", "anybody", "anymore", "anyone", "anything", "anytime", "anyway", "anywhere", "aol", "ap", "apache", "apart", "apartment", "apartments", "api", "apnic", "apollo", "app", "apparatus", "apparel", "apparent", "apparently", "appeal", "appeals", "appear", "appearance", "appeared", "appearing", "appears", "appendix", "apple", "appliance", "appliances", "applicable", "applicant", "applicants", "application", "applications", "applied", "applies", "apply", "applying", "appointed", "appointment", "appointments", "appraisal", "appreciate", "appreciated", "appreciation", "approach", "approaches", "appropriate", "appropriations", "approval", "approve", "approved", "approx", "approximate", "approximately", "apps", "apr", "april", "apt", "aqua", "aquarium", "aquatic", "ar", "arab", "arabia", "arabic", "arbitrary", "arbitration", "arc", "arcade", "arch", "architect", "architects", "architectural", "architecture", "archive", "archived", "archives", "arctic", "are", "area", "areas", "arena", "arg", "argentina", "argue", "argued", "argument", "arguments", "arise", "arising", "arizona", "arkansas", "arlington", "arm", "armed", "armenia", "armor", "arms", "armstrong", "army", "arnold", "around", "arrange", "arranged", "arrangement", "arrangements", "array", "arrest", "arrested", "arrival", "arrivals", "arrive", "arrived", "arrives", "arrow", "art", "arthritis", "arthur", "article", "articles", "artificial", "artist", "artistic", "artists", "arts", "artwork", "aruba", "as", "asbestos", "ascii", "ash", "ashley", "asia", "asian", "aside", "asin", "ask", "asked", "asking", "asks", "asn", "asp", "aspect", "aspects", "aspnet", "ass", "assault", "assembled", "assembly", "assess", "assessed", "assessing", "assessment", "assessments", "asset", "assets", "assign", "assigned", "assignment", "assignments", "assist", "assistance", "assistant", "assisted", "assists", "associate", "associated", "associates", "association", "associations", "assume", "assumed", "assumes", "assuming", "assumption", "assumptions", "assurance", "assure", "assured", "asthma", "astrology", "astronomy", "asus", "at", "ata", "ate", "athens", "athletes", "athletic", "athletics", "ati", "atlanta", "atlantic", "atlas", "atm", "atmosphere", "atmospheric", "atom", "atomic", "attach", "attached", "attachment", "attachments", "attack", "attacked", "attacks", "attempt", "attempted", "attempting", "attempts", "attend", "attendance", "attended", "attending", "attention", "attitude", "attitudes", "attorney", "attorneys", "attract", "attraction", "attractions", "attractive", "attribute", "attributes", "au", "auburn", "auckland", "auction", "auctions", "aud", "audi", "audience", "audio", "audit", "auditor", "aug", "august", "aurora", "aus", "austin", "australia", "australian", "austria", "authentic", "authentication", "author", "authorities", "authority", "authorization", "authorized", "authors", "auto", "automated", "automatic", "automatically", "automation", "automobile", "automobiles", "automotive", "autos", "autumn", "av", "availability", "available", "avatar", "ave", "avenue", "average", "avg", "avi", "aviation", "avoid", "avoiding", "avon", "aw", "award", "awarded", "awards", "aware", "awareness", "away", "awesome", "awful", "axis", "aye", "az", "azerbaijan", "b", "ba", "babe", "babes", "babies", "baby", "bachelor", "back", "backed", "background", "backgrounds", "backing", "backup", "bacon", "bacteria", "bacterial", "bad", "badge", "badly", "bag", "baghdad", "bags", "bahamas", "bahrain", "bailey", "baker", "baking", "balance", "balanced", "bald", "bali", "ball", "ballet", "balloon", "ballot", "balls", "baltimore", "ban", "banana", "band", "bands", "bandwidth", "bang", "bangkok", "bangladesh", "bank", "banking", "bankruptcy", "banks", "banned", "banner", "banners", "baptist", "bar", "barbados", "barbara", "barbie", "barcelona", "bare", "barely", "bargain", "bargains", "barn", "barnes", "barrel", "barrier", "barriers", "barry", "bars", "base", "baseball", "based", "baseline", "basement", "basename", "bases", "basic", "basically", "basics", "basin", "basis", "basket", "basketball", "baskets", "bass", "bat", "batch", "bath", "bathroom", "bathrooms", "baths", "batman", "batteries", "battery", "battle", "battlefield", "bay", "bb", "bbc", "bbs", "bbw", "bc", "bd", "bdsm", "be", "beach", "beaches", "beads", "beam", "bean", "beans", "bear", "bearing", "bears", "beast", "beastality", "beastiality", "beat", "beatles", "beats", "beautiful", "beautifully", "beauty", "beaver", "became", "because", "become", "becomes", "becoming", "bed", "bedding", "bedford", "bedroom", "bedrooms", "beds", "bee", "beef", "been", "beer", "before", "began", "begin", "beginner", "beginners", "beginning", "begins", "begun", "behalf", "behavior", "behavioral", "behaviour", "behind", "beijing", "being", "beings", "belarus", "belfast", "belgium", "belief", "beliefs", "believe", "believed", "believes", "belize", "belkin", "bell", "belle", "belly", "belong", "belongs", "below", "belt", "belts", "ben", "bench", "benchmark", "bend", "beneath", "beneficial", "benefit", "benefits", "benjamin", "bennett", "benz", "berkeley", "berlin", "bermuda", "bernard", "berry", "beside", "besides", "best", "bestiality", "bestsellers", "bet", "beta", "beth", "better", "betting", "betty", "between", "beverage", "beverages", "beverly", "beyond", "bg", "bhutan", "bi", "bias", "bible", "biblical", "bibliographic", "bibliography", "bicycle", "bid", "bidder", "bidding", "bids", "big", "bigger", "biggest", "bike", "bikes", "bikini", "bill", "billing", "billion", "bills", "billy", "bin", "binary", "bind", "binding", "bingo", "bio", "biodiversity", "biographies", "biography", "biol", "biological", "biology", "bios", "biotechnology", "bird", "birds", "birmingham", "birth", "birthday", "bishop", "bit", "bitch", "bite", "bits", "biz", "bizarre", "bizrate", "bk", "bl", "black", "blackberry", "blackjack", "blacks", "blade", "blades", "blah", "blair", "blake", "blame", "blank", "blanket", "blast", "bleeding", "blend", "bless", "blessed", "blind", "blink", "block", "blocked", "blocking", "blocks", "blog", "blogger", "bloggers", "blogging", "blogs", "blond", "blonde", "blood", "bloody", "bloom", "bloomberg", "blue", "blues", "bluetooth", "blvd", "bm", "bmw", "bo", "board", "boards", "boat", "boating", "boats", "bob", "bobby", "boc", "bodies", "body", "bold", "bolivia", "bolt", "bomb", "bon", "bond", "bondage", "bonds", "bone", "bones", "bonus", "boob", "boobs", "book", "booking", "bookings", "bookmark", "bookmarks", "books", "bookstore", "bool", "boolean", "boom", "boost", "boot", "booth", "boots", "booty", "border", "borders", "bored", "boring", "born", "borough", "bosnia", "boss", "boston", "both", "bother", "botswana", "bottle", "bottles", "bottom", "bought", "boulder", "boulevard", "bound", "boundaries", "boundary", "bouquet", "boutique", "bow", "bowl", "bowling", "box", "boxed", "boxes", "boxing", "boy", "boys", "bp", "br", "bra", "bracelet", "bracelets", "bracket", "brad", "bradford", "bradley", "brain", "brake", "brakes", "branch", "branches", "brand", "brandon", "brands", "bras", "brass", "brave", "brazil", "brazilian", "breach", "bread", "break", "breakdown", "breakfast", "breaking", "breaks", "breast", "breasts", "breath", "breathing", "breed", "breeding", "breeds", "brian", "brick", "bridal", "bride", "bridge", "bridges", "brief", "briefing", "briefly", "briefs", "bright", "brighton", "brilliant", "bring", "bringing", "brings", "brisbane", "bristol", "britain", "britannica", "british", "britney", "broad", "broadband", "broadcast", "broadcasting", "broader", "broadway", "brochure", "brochures", "broke", "broken", "broker", "brokers", "bronze", "brook", "brooklyn", "brooks", "bros", "brother", "brothers", "brought", "brown", "browse", "browser", "browsers", "browsing", "bruce", "brunei", "brunette", "brunswick", "brush", "brussels", "brutal", "bryan", "bryant", "bs", "bt", "bubble", "buck", "bucks", "budapest", "buddy", "budget", "budgets", "buf", "buffalo", "buffer", "bufing", "bug", "bugs", "build", "builder", "builders", "building", "buildings", "builds", "built", "bulgaria", "bulgarian", "bulk", "bull", "bullet", "bulletin", "bumper", "bunch", "bundle", "bunny", "burden", "bureau", "buried", "burke", "burlington", "burn", "burner", "burning", "burns", "burst", "burton", "bus", "buses", "bush", "business", "businesses", "busty", "busy", "but", "butler", "butt", "butter", "butterfly", "button", "buttons", "butts", "buy", "buyer", "buyers", "buying", "buys", "buzz", "bw", "by", "bye", "byte", "bytes", "c", "ca", "cab", "cabin", "cabinet", "cabinets", "cable", "cables", "cache", "cached", "cad", "cadillac", "cafe", "cage", "cake", "cakes", "cal", "calcium", "calculate", "calculated", "calculation", "calculations", "calculator", "calculators", "calendar", "calendars", "calgary", "calibration", "calif", "california", "call", "called", "calling", "calls", "calm", "calvin", "cam", "cambodia", "cambridge", "camcorder", "camcorders", "came", "camel", "camera", "cameras", "cameron", "cameroon", "camp", "campaign", "campaigns", "campbell", "camping", "camps", "campus", "cams", "can", "canada", "canadian", "canal", "canberra", "cancel", "cancellation", "cancelled", "cancer", "candidate", "candidates", "candle", "candles", "candy", "cannon", "canon", "cant", "canvas", "canyon", "cap", "capabilities", "capability", "capable", "capacity", "cape", "capital", "capitol", "caps", "captain", "capture", "captured", "car", "carb", "carbon", "card", "cardiac", "cardiff", "cardiovascular", "cards", "care", "career", "careers", "careful", "carefully", "carey", "cargo", "caribbean", "caring", "carl", "carlo", "carlos", "carmen", "carnival", "carol", "carolina", "caroline", "carpet", "carried", "carrier", "carriers", "carries", "carroll", "carry", "carrying", "cars", "cart", "carter", "cartoon", "cartoons", "cartridge", "cartridges", "cas", "casa", "case", "cases", "casey", "cash", "cashiers", "casino", "casinos", "casio", "cassette", "cast", "casting", "castle", "casual", "cat", "catalog", "catalogs", "catalogue", "catalyst", "catch", "categories", "category", "catering", "cathedral", "catherine", "catholic", "cats", "cattle", "caught", "cause", "caused", "causes", "causing", "caution", "cave", "cayman", "cb", "cbs", "cc", "ccd", "cd", "cdna", "cds", "cdt", "ce", "cedar", "ceiling", "celebrate", "celebration", "celebrities", "celebrity", "celebs", "cell", "cells", "cellular", "celtic", "cement", "cemetery", "census", "cent", "center", "centered", "centers", "central", "centre", "centres", "cents", "centuries", "century", "ceo", "ceramic", "ceremony", "certain", "certainly", "certificate", "certificates", "certification", "certified", "cest", "cet", "cf", "cfr", "cg", "cgi", "ch", "chad", "chain", "chains", "chair", "chairman", "chairs", "challenge", "challenged", "challenges", "challenging", "chamber", "chambers", "champagne", "champion", "champions", "championship", "championships", "chan", "chance", "chancellor", "chances", "change", "changed", "changelog", "changes", "changing", "channel", "channels", "chaos", "chapel", "chapter", "chapters", "char", "character", "characteristic", "characteristics", "characterization", "characterized", "characters", "charge", "charged", "charger", "chargers", "charges", "charging", "charitable", "charity", "charles", "charleston", "charlie", "charlotte", "charm", "charming", "charms", "chart", "charter", "charts", "chase", "chassis", "chat", "cheap", "cheaper", "cheapest", "cheat", "cheats", "check", "checked", "checking", "checklist", "checkout", "checks", "cheers", "cheese", "chef", "chelsea", "chem", "chemical", "chemicals", "chemistry", "chen", "cheque", "cherry", "chess", "chest", "chester", "chevrolet", "chevy", "chi", "chicago", "chick", "chicken", "chicks", "chief", "child", "childhood", "children", "childrens", "chile", "china", "chinese", "chip", "chips", "cho", "chocolate", "choice", "choices", "choir", "cholesterol", "choose", "choosing", "chorus", "chose", "chosen", "chris", "christ", "christian", "christianity", "christians", "christina", "christine", "christmas", "christopher", "chrome", "chronic", "chronicle", "chronicles", "chrysler", "chubby", "chuck", "church", "churches", "ci", "cia", "cialis", "ciao", "cigarette", "cigarettes", "cincinnati", "cindy", "cinema", "cingular", "cio", "cir", "circle", "circles", "circuit", "circuits", "circular", "circulation", "circumstances", "circus", "cisco", "citation", "citations", "cite", "cited", "cities", "citizen", "citizens", "citizenship", "city", "citysearch", "civic", "civil", "civilian", "civilization", "cj", "cl", "claim", "claimed", "claims", "claire", "clan", "clara", "clarity", "clark", "clarke", "class", "classes", "classic", "classical", "classics", "classification", "classified", "classifieds", "classroom", "clause", "clay", "clean", "cleaner", "cleaners", "cleaning", "cleanup", "clear", "clearance", "cleared", "clearing", "clearly", "clerk", "cleveland", "click", "clicking", "clicks", "client", "clients", "cliff", "climate", "climb", "climbing", "clinic", "clinical", "clinics", "clinton", "clip", "clips", "clock", "clocks", "clone", "close", "closed", "closely", "closer", "closes", "closest", "closing", "closure", "cloth", "clothes", "clothing", "cloud", "clouds", "cloudy", "club", "clubs", "cluster", "clusters", "cm", "cms", "cn", "cnet", "cnetcom", "cnn", "co", "coach", "coaches", "coaching", "coal", "coalition", "coast", "coastal", "coat", "coated", "coating", "cod", "code", "codes", "coding", "coffee", "cognitive", "cohen", "coin", "coins", "col", "cold", "cole", "coleman", "colin", "collaboration", "collaborative", "collapse", "collar", "colleague", "colleagues", "collect", "collectables", "collected", "collectible", "collectibles", "collecting", "collection", "collections", "collective", "collector", "collectors", "college", "colleges", "collins", "cologne", "colombia", "colon", "colonial", "colony", "color", "colorado", "colored", "colors", "colour", "colours", "columbia", "columbus", "column", "columnists", "columns", "com", "combat", "combination", "combinations", "combine", "combined", "combines", "combining", "combo", "come", "comedy", "comes", "comfort", "comfortable", "comic", "comics", "coming", "comm", "command", "commander", "commands", "comment", "commentary", "commented", "comments", "commerce", "commercial", "commission", "commissioner", "commissioners", "commissions", "commit", "commitment", "commitments", "committed", "committee", "committees", "commodities", "commodity", "common", "commonly", "commons", "commonwealth", "communicate", "communication", "communications", "communist", "communities", "community", "comp", "compact", "companies", "companion", "company", "compaq", "comparable", "comparative", "compare", "compared", "comparing", "comparison", "comparisons", "compatibility", "compatible", "compensation", "compete", "competent", "competing", "competition", "competitions", "competitive", "competitors", "compilation", "compile", "compiled", "compiler", "complaint", "complaints", "complement", "complete", "completed", "completely", "completing", "completion", "complex", "complexity", "compliance", "compliant", "complicated", "complications", "complimentary", "comply", "component", "components", "composed", "composer", "composite", "composition", "compound", "compounds", "comprehensive", "compressed", "compression", "compromise", "computation", "computational", "compute", "computed", "computer", "computers", "computing", "con", "concentrate", "concentration", "concentrations", "concept", "concepts", "conceptual", "concern", "concerned", "concerning", "concerns", "concert", "concerts", "conclude", "concluded", "conclusion", "conclusions", "concord", "concrete", "condition", "conditional", "conditioning", "conditions", "condo", "condos", "conduct", "conducted", "conducting", "conf", "conference", "conferences", "conferencing", "confidence", "confident", "confidential", "confidentiality", "config", "configuration", "configure", "configured", "configuring", "confirm", "confirmation", "confirmed", "conflict", "conflicts", "confused", "confusion", "congo", "congratulations", "congress", "congressional", "conjunction", "connect", "connected", "connecticut", "connecting", "connection", "connections", "connectivity", "connector", "connectors", "cons", "conscious", "consciousness", "consecutive", "consensus", "consent", "consequence", "consequences", "consequently", "conservation", "conservative", "consider", "considerable", "consideration", "considerations", "considered", "considering", "considers", "consist", "consistency", "consistent", "consistently", "consisting", "consists", "console", "consoles", "consolidated", "consolidation", "consortium", "conspiracy", "const", "constant", "constantly", "constitute", "constitutes", "constitution", "constitutional", "constraint", "constraints", "construct", "constructed", "construction", "consult", "consultancy", "consultant", "consultants", "consultation", "consulting", "consumer", "consumers", "consumption", "contact", "contacted", "contacting", "contacts", "contain", "contained", "container", "containers", "containing", "contains", "contamination", "contemporary", "content", "contents", "contest", "contests", "context", "continent", "continental", "continually", "continue", "continued", "continues", "continuing", "continuity", "continuous", "continuously", "contract", "contracting", "contractor", "contractors", "contracts", "contrary", "contrast", "contribute", "contributed", "contributing", "contribution", "contributions", "contributor", "contributors", "control", "controlled", "controller", "controllers", "controlling", "controls", "controversial", "controversy", "convenience", "convenient", "convention", "conventional", "conventions", "convergence", "conversation", "conversations", "conversion", "convert", "converted", "converter", "convertible", "convicted", "conviction", "convinced", "cook", "cookbook", "cooked", "cookie", "cookies", "cooking", "cool", "cooler", "cooling", "cooper", "cooperation", "cooperative", "coordinate", "coordinated", "coordinates", "coordination", "coordinator", "cop", "cope", "copied", "copies", "copper", "copy", "copying", "copyright", "copyrighted", "copyrights", "coral", "cord", "cordless", "core", "cork", "corn", "cornell", "corner", "corners", "cornwall", "corp", "corporate", "corporation", "corporations", "corps", "corpus", "correct", "corrected", "correction", "corrections", "correctly", "correlation", "correspondence", "corresponding", "corruption", "cos", "cosmetic", "cosmetics", "cost", "costa", "costs", "costume", "costumes", "cottage", "cottages", "cotton", "could", "council", "councils", "counsel", "counseling", "count", "counted", "counter", "counters", "counties", "counting", "countries", "country", "counts", "county", "couple", "coupled", "couples", "coupon", "coupons", "courage", "courier", "course", "courses", "court", "courtesy", "courts", "cove", "cover", "coverage", "covered", "covering", "covers", "cow", "cowboy", "cox", "cp", "cpu", "cr", "crack", "cradle", "craft", "crafts", "craig", "crap", "craps", "crash", "crawford", "crazy", "cream", "create", "created", "creates", "creating", "creation", "creations", "creative", "creativity", "creator", "creature", "creatures", "credit", "credits", "creek", "crest", "crew", "cricket", "crime", "crimes", "criminal", "crisis", "criteria", "criterion", "critical", "criticism", "critics", "crm", "croatia", "crop", "crops", "cross", "crossing", "crossword", "crowd", "crown", "crucial", "crude", "cruise", "cruises", "cruz", "cry", "crystal", "cs", "css", "cst", "ct", "cu", "cuba", "cube", "cubic", "cuisine", "cult", "cultural", "culture", "cultures", "cumulative", "cup", "cups", "cure", "curious", "currencies", "currency", "current", "currently", "curriculum", "cursor", "curtis", "curve", "curves", "custody", "custom", "customer", "customers", "customise", "customize", "customized", "customs", "cut", "cute", "cuts", "cutting", "cv", "cvs", "cw", "cyber", "cycle", "cycles", "cycling", "cylinder", "cyprus", "cz", "czech", "d", "da", "dad", "daddy", "daily", "dairy", "daisy", "dakota", "dale", "dallas", "dam", "damage", "damaged", "damages", "dame", "damn", "dan", "dana", "dance", "dancing", "danger", "dangerous", "daniel", "danish", "danny", "dans", "dare", "dark", "darkness", "darwin", "das", "dash", "dat", "data", "database", "databases", "date", "dated", "dates", "dating", "daughter", "daughters", "dave", "david", "davidson", "davis", "dawn", "day", "days", "dayton", "db", "dc", "dd", "ddr", "de", "dead", "deadline", "deadly", "deaf", "deal", "dealer", "dealers", "dealing", "deals", "dealt", "dealtime", "dean", "dear", "death", "deaths", "debate", "debian", "deborah", "debt", "debug", "debut", "dec", "decade", "decades", "december", "decent", "decide", "decided", "decimal", "decision", "decisions", "deck", "declaration", "declare", "declared", "decline", "declined", "decor", "decorating", "decorative", "decrease", "decreased", "dedicated", "dee", "deemed", "deep", "deeper", "deeply", "deer", "def", "default", "defeat", "defects", "defence", "defend", "defendant", "defense", "defensive", "deferred", "deficit", "define", "defined", "defines", "defining", "definitely", "definition", "definitions", "degree", "degrees", "del", "delaware", "delay", "delayed", "delays", "delegation", "delete", "deleted", "delhi", "delicious", "delight", "deliver", "delivered", "delivering", "delivers", "delivery", "dell", "delta", "deluxe", "dem", "demand", "demanding", "demands", "demo", "democracy", "democrat", "democratic", "democrats", "demographic", "demonstrate", "demonstrated", "demonstrates", "demonstration", "den", "denial", "denied", "denmark", "dennis", "dense", "density", "dental", "dentists", "denver", "deny", "department", "departmental", "departments", "departure", "depend", "dependence", "dependent", "depending", "depends", "deployment", "deposit", "deposits", "depot", "depression", "dept", "depth", "deputy", "der", "derby", "derek", "derived", "des", "descending", "describe", "described", "describes", "describing", "description", "descriptions", "desert", "deserve", "design", "designated", "designation", "designed", "designer", "designers", "designing", "designs", "desirable", "desire", "desired", "desk", "desktop", "desktops", "desperate", "despite", "destination", "destinations", "destiny", "destroy", "destroyed", "destruction", "detail", "detailed", "details", "detect", "detected", "detection", "detective", "detector", "determination", "determine", "determined", "determines", "determining", "detroit", "deutsch", "deutsche", "deutschland", "dev", "devel", "develop", "developed", "developer", "developers", "developing", "development", "developmental", "developments", "develops", "deviant", "deviation", "device", "devices", "devil", "devon", "devoted", "df", "dg", "dh", "di", "diabetes", "diagnosis", "diagnostic", "diagram", "dial", "dialog", "dialogue", "diameter", "diamond", "diamonds", "diana", "diane", "diary", "dice", "dictionaries", "dictionary", "did", "die", "died", "diego", "dies", "diesel", "diet", "dietary", "diff", "differ", "difference", "differences", "different", "differential", "differently", "difficult", "difficulties", "difficulty", "diffs", "dig", "digest", "digit", "digital", "dildo", "dildos", "dim", "dimension", "dimensional", "dimensions", "dining", "dinner", "dip", "diploma", "dir", "direct", "directed", "direction", "directions", "directive", "directly", "director", "directories", "directors", "directory", "dirt", "dirty", "dis", "disabilities", "disability", "disable", "disabled", "disagree", "disappointed", "disaster", "disc", "discharge", "disciplinary", "discipline", "disciplines", "disclaimer", "disclaimers", "disclose", "disclosure", "disco", "discount", "discounted", "discounts", "discover", "discovered", "discovery", "discrete", "discretion", "discrimination", "discs", "discuss", "discussed", "discusses", "discussing", "discussion", "discussions", "disease", "diseases", "dish", "dishes", "disk", "disks", "disney", "disorder", "disorders", "dispatch", "dispatched", "display", "displayed", "displaying", "displays", "disposal", "disposition", "dispute", "disputes", "dist", "distance", "distances", "distant", "distinct", "distinction", "distinguished", "distribute", "distributed", "distribution", "distributions", "distributor", "distributors", "district", "districts", "disturbed", "div", "dive", "diverse", "diversity", "divide", "divided", "dividend", "divine", "diving", "division", "divisions", "divorce", "divx", "diy", "dj", "dk", "dl", "dm", "dna", "dns", "do", "doc", "dock", "docs", "doctor", "doctors", "doctrine", "document", "documentary", "documentation", "documentcreatetextnode", "documented", "documents", "dod", "dodge", "doe", "does", "dog", "dogs", "doing", "doll", "dollar", "dollars", "dolls", "dom", "domain", "domains", "dome", "domestic", "dominant", "dominican", "don", "donald", "donate", "donated", "donation", "donations", "done", "donna", "donor", "donors", "dont", "doom", "door", "doors", "dos", "dosage", "dose", "dot", "double", "doubt", "doug", "douglas", "dover", "dow", "down", "download", "downloadable", "downloadcom", "downloaded", "downloading", "downloads", "downtown", "dozen", "dozens", "dp", "dpi", "dr", "draft", "drag", "dragon", "drain", "drainage", "drama", "dramatic", "dramatically", "draw", "drawing", "drawings", "drawn", "draws", "dream", "dreams", "dress", "dressed", "dresses", "dressing", "drew", "dried", "drill", "drilling", "drink", "drinking", "drinks", "drive", "driven", "driver", "drivers", "drives", "driving", "drop", "dropped", "drops", "drove", "drug", "drugs", "drum", "drums", "drunk", "dry", "dryer", "ds", "dsc", "dsl", "dt", "dts", "du", "dual", "dubai", "dublin", "duck", "dude", "due", "dui", "duke", "dumb", "dump", "duncan", "duo", "duplicate", "durable", "duration", "durham", "during", "dust", "dutch", "duties", "duty", "dv", "dvd", "dvds", "dx", "dying", "dylan", "dynamic", "dynamics", "e", "ea", "each", "eagle", "eagles", "ear", "earl", "earlier", "earliest", "early", "earn", "earned", "earning", "earnings", "earrings", "ears", "earth", "earthquake", "ease", "easier", "easily", "east", "easter", "eastern", "easy", "eat", "eating", "eau", "ebay", "ebony", "ebook", "ebooks", "ec", "echo", "eclipse", "eco", "ecological", "ecology", "ecommerce", "economic", "economics", "economies", "economy", "ecuador", "ed", "eddie", "eden", "edgar", "edge", "edges", "edinburgh", "edit", "edited", "editing", "edition", "editions", "editor", "editorial", "editorials", "editors", "edmonton", "eds", "edt", "educated", "education", "educational", "educators", "edward", "edwards", "ee", "ef", "effect", "effective", "effectively", "effectiveness", "effects", "efficiency", "efficient", "efficiently", "effort", "efforts", "eg", "egg", "eggs", "egypt", "egyptian", "eh", "eight", "either", "el", "elder", "elderly", "elect", "elected", "election", "elections", "electoral", "electric", "electrical", "electricity", "electro", "electron", "electronic", "electronics", "elegant", "element", "elementary", "elements", "elephant", "elevation", "eleven", "eligibility", "eligible", "eliminate", "elimination", "elite", "elizabeth", "ellen", "elliott", "ellis", "else", "elsewhere", "elvis", "em", "emacs", "email", "emails", "embassy", "embedded", "emerald", "emergency", "emerging", "emily", "eminem", "emirates", "emission", "emissions", "emma", "emotional", "emotions", "emperor", "emphasis", "empire", "empirical", "employ", "employed", "employee", "employees", "employer", "employers", "employment", "empty", "en", "enable", "enabled", "enables", "enabling", "enb", "enclosed", "enclosure", "encoding", "encounter", "encountered", "encourage", "encouraged", "encourages", "encouraging", "encryption", "encyclopedia", "end", "endangered", "ended", "endif", "ending", "endless", "endorsed", "endorsement", "ends", "enemies", "enemy", "energy", "enforcement", "eng", "engage", "engaged", "engagement", "engaging", "engine", "engineer", "engineering", "engineers", "engines", "england", "english", "enhance", "enhanced", "enhancement", "enhancements", "enhancing", "enjoy", "enjoyed", "enjoying", "enlarge", "enlargement", "enormous", "enough", "enquiries", "enquiry", "enrolled", "enrollment", "ensemble", "ensure", "ensures", "ensuring", "ent", "enter", "entered", "entering", "enterprise", "enterprises", "enters", "entertaining", "entertainment", "entire", "entirely", "entities", "entitled", "entity", "entrance", "entrepreneur", "entrepreneurs", "entries", "entry", "envelope", "environment", "environmental", "environments", "enzyme", "eos", "ep", "epa", "epic", "epinions", "epinionscom", "episode", "episodes", "epson", "eq", "equal", "equality", "equally", "equation", "equations", "equilibrium", "equipment", "equipped", "equity", "equivalent", "er", "era", "eric", "ericsson", "erik", "erotic", "erotica", "erp", "error", "errors", "es", "escape", "escort", "escorts", "especially", "espn", "essay", "essays", "essence", "essential", "essentially", "essentials", "essex", "est", "establish", "established", "establishing", "establishment", "estate", "estates", "estimate", "estimated", "estimates", "estimation", "estonia", "et", "etc", "eternal", "ethernet", "ethical", "ethics", "ethiopia", "ethnic", "eu", "eugene", "eur", "euro", "europe", "european", "euros", "ev", "eva", "eval", "evaluate", "evaluated", "evaluating", "evaluation", "evaluations", "evanescence", "evans", "eve", "even", "evening", "event", "events", "eventually", "ever", "every", "everybody", "everyday", "everyone", "everything", "everywhere", "evidence", "evident", "evil", "evolution", "ex", "exact", "exactly", "exam", "examination", "examinations", "examine", "examined", "examines", "examining", "example", "examples", "exams", "exceed", "excel", "excellence", "excellent", "except", "exception", "exceptional", "exceptions", "excerpt", "excess", "excessive", "exchange", "exchanges", "excited", "excitement", "exciting", "exclude", "excluded", "excluding", "exclusion", "exclusive", "exclusively", "excuse", "exec", "execute", "executed", "execution", "executive", "executives", "exempt", "exemption", "exercise", "exercises", "exhaust", "exhibit", "exhibition", "exhibitions", "exhibits", "exist", "existed", "existence", "existing", "exists", "exit", "exotic", "exp", "expand", "expanded", "expanding", "expansion", "expansys", "expect", "expectations", "expected", "expects", "expedia", "expenditure", "expenditures", "expense", "expenses", "expensive", "experience", "experienced", "experiences", "experiencing", "experiment", "experimental", "experiments", "expert", "expertise", "experts", "expiration", "expired", "expires", "explain", "explained", "explaining", "explains", "explanation", "explicit", "explicitly", "exploration", "explore", "explorer", "exploring", "explosion", "expo", "export", "exports", "exposed", "exposure", "express", "expressed", "expression", "expressions", "ext", "extend", "extended", "extending", "extends", "extension", "extensions", "extensive", "extent", "exterior", "external", "extra", "extract", "extraction", "extraordinary", "extras", "extreme", "extremely", "eye", "eyed", "eyes", "ez", "f", "fa", "fabric", "fabrics", "fabulous", "face", "faced", "faces", "facial", "facilitate", "facilities", "facility", "facing", "fact", "factor", "factors", "factory", "facts", "faculty", "fail", "failed", "failing", "fails", "failure", "failures", "fair", "fairfield", "fairly", "fairy", "faith", "fake", "fall", "fallen", "falling", "falls", "false", "fame", "familiar", "families", "family", "famous", "fan", "fancy", "fans", "fantastic", "fantasy", "faq", "faqs", "far", "fare", "fares", "farm", "farmer", "farmers", "farming", "farms", "fascinating", "fashion", "fast", "faster", "fastest", "fat", "fatal", "fate", "father", "fathers", "fatty", "fault", "favor", "favorite", "favorites", "favors", "favour", "favourite", "favourites", "fax", "fbi", "fc", "fcc", "fd", "fda", "fe", "fear", "fears", "feat", "feature", "featured", "features", "featuring", "feb", "february", "fed", "federal", "federation", "fee", "feed", "feedback", "feeding", "feeds", "feel", "feeling", "feelings", "feels", "fees", "feet", "fell", "fellow", "fellowship", "felt", "female", "females", "fence", "feof", "ferrari", "ferry", "festival", "festivals", "fever", "few", "fewer", "ff", "fg", "fi", "fiber", "fibre", "fiction", "field", "fields", "fifteen", "fifth", "fifty", "fig", "fight", "fighter", "fighters", "fighting", "figure", "figured", "figures", "fiji", "file", "filed", "filename", "files", "filing", "fill", "filled", "filling", "film", "filme", "films", "filter", "filtering", "filters", "fin", "final", "finally", "finals", "finance", "finances", "financial", "financing", "find", "findarticles", "finder", "finding", "findings", "findlaw", "finds", "fine", "finest", "finger", "fingering", "fingers", "finish", "finished", "finishing", "finite", "finland", "finnish", "fioricet", "fire", "fired", "firefox", "fireplace", "fires", "firewall", "firewire", "firm", "firms", "firmware", "first", "fiscal", "fish", "fisher", "fisheries", "fishing", "fist", "fisting", "fit", "fitness", "fits", "fitted", "fitting", "five", "fix", "fixed", "fixes", "fixtures", "fl", "fla", "flag", "flags", "flame", "flash", "flashers", "flashing", "flat", "flavor", "fleece", "fleet", "flesh", "flex", "flexibility", "flexible", "flickr", "flight", "flights", "flip", "float", "floating", "flood", "floor", "flooring", "floors", "floppy", "floral", "florence", "florida", "florist", "florists", "flour", "flow", "flower", "flowers", "flows", "floyd", "flu", "fluid", "flush", "flux", "fly", "flyer", "flying", "fm", "fo", "foam", "focal", "focus", "focused", "focuses", "focusing", "fog", "fold", "folder", "folders", "folding", "folk", "folks", "follow", "followed", "following", "follows", "font", "fonts", "foo", "food", "foods", "fool", "foot", "footage", "football", "footwear", "for", "forbes", "forbidden", "force", "forced", "forces", "ford", "forecast", "forecasts", "foreign", "forest", "forestry", "forests", "forever", "forge", "forget", "forgot", "forgotten", "fork", "form", "formal", "format", "formation", "formats", "formatting", "formed", "former", "formerly", "forming", "forms", "formula", "fort", "forth", "fortune", "forty", "forum", "forums", "forward", "forwarding", "fossil", "foster", "foto", "fotos", "fought", "foul", "found", "foundation", "foundations", "founded", "founder", "fountain", "four", "fourth", "fox", "fp", "fr", "fraction", "fragrance", "fragrances", "frame", "framed", "frames", "framework", "framing", "france", "franchise", "francis", "francisco", "frank", "frankfurt", "franklin", "fraser", "fraud", "fred", "frederick", "free", "freebsd", "freedom", "freelance", "freely", "freeware", "freeze", "freight", "french", "frequencies", "frequency", "frequent", "frequently", "fresh", "fri", "friday", "fridge", "friend", "friendly", "friends", "friendship", "frog", "from", "front", "frontier", "frontpage", "frost", "frozen", "fruit", "fruits", "fs", "ft", "ftp", "fu", "fuel", "fuji", "fujitsu", "full", "fully", "fun", "function", "functional", "functionality", "functioning", "functions", "fund", "fundamental", "fundamentals", "funded", "funding", "fundraising", "funds", "funeral", "funk", "funky", "funny", "fur", "furnished", "furnishings", "furniture", "further", "furthermore", "fusion", "future", "futures", "fuzzy", "fw", "fwd", "fx", "fy", "g", "ga", "gabriel", "gadgets", "gage", "gain", "gained", "gains", "galaxy", "gale", "galleries", "gallery", "gambling", "game", "gamecube", "games", "gamespot", "gaming", "gamma", "gang", "gap", "gaps", "garage", "garbage", "garcia", "garden", "gardening", "gardens", "garlic", "garmin", "gary", "gas", "gasoline", "gate", "gates", "gateway", "gather", "gathered", "gathering", "gauge", "gave", "gay", "gazette", "gb", "gba", "gbp", "gc", "gcc", "gd", "gdp", "ge", "gear", "geek", "gel", "gem", "gen", "gender", "gene", "genealogy", "general", "generally", "generate", "generated", "generates", "generating", "generation", "generations", "generator", "generators", "generic", "generous", "genes", "genesis", "genetic", "genetics", "geneva", "genius", "genome", "genre", "genres", "gentle", "gentleman", "gently", "genuine", "geo", "geographic", "geographical", "geography", "geological", "geology", "geometry", "george", "georgia", "gerald", "german", "germany", "get", "gets", "getting", "gg", "ghana", "ghost", "ghz", "gi", "giant", "giants", "gibraltar", "gibson", "gif", "gift", "gifts", "gig", "gilbert", "girl", "girlfriend", "girls", "gis", "give", "given", "gives", "giving", "gl", "glad", "glance", "glasgow", "glass", "glasses", "glen", "glenn", "global", "globe", "glory", "glossary", "gloves", "glow", "glucose", "gm", "gmbh", "gmc", "gmt", "gnome", "gnu", "go", "goal", "goals", "goat", "god", "gods", "goes", "going", "gold", "golden", "golf", "gone", "gonna", "good", "goods", "google", "gordon", "gore", "gorgeous", "gospel", "gossip", "got", "gothic", "goto", "gotta", "gotten", "gourmet", "gov", "governance", "governing", "government", "governmental", "governments", "governor", "govt", "gp", "gpl", "gps", "gr", "grab", "grace", "grad", "grade", "grades", "gradually", "graduate", "graduated", "graduates", "graduation", "graham", "grain", "grammar", "grams", "grand", "grande", "granny", "grant", "granted", "grants", "graph", "graphic", "graphical", "graphics", "graphs", "gras", "grass", "grateful", "gratis", "gratuit", "grave", "gravity", "gray", "great", "greater", "greatest", "greatly", "greece", "greek", "green", "greene", "greenhouse", "greensboro", "greeting", "greetings", "greg", "gregory", "grenada", "grew", "grey", "grid", "griffin", "grill", "grip", "grocery", "groove", "gross", "ground", "grounds", "groundwater", "group", "groups", "grove", "grow", "growing", "grown", "grows", "growth", "gs", "gsm", "gst", "gt", "gtk", "guam", "guarantee", "guaranteed", "guarantees", "guard", "guardian", "guards", "guatemala", "guess", "guest", "guestbook", "guests", "gui", "guidance", "guide", "guided", "guidelines", "guides", "guild", "guilty", "guinea", "guitar", "guitars", "gulf", "gun", "guns", "guru", "guy", "guyana", "guys", "gym", "gzip", "h", "ha", "habitat", "habits", "hack", "hacker", "had", "hair", "hairy", "haiti", "half", "halfcom", "halifax", "hall", "halloween", "halo", "ham", "hamburg", "hamilton", "hammer", "hampshire", "hampton", "hand", "handbags", "handbook", "handed", "handheld", "handhelds", "handle", "handled", "handles", "handling", "handmade", "hands", "handy", "hang", "hanging", "hans", "hansen", "happen", "happened", "happening", "happens", "happiness", "happy", "harassment", "harbor", "harbour", "hard", "hardcore", "hardcover", "harder", "hardly", "hardware", "hardwood", "harley", "harm", "harmful", "harmony", "harold", "harper", "harris", "harrison", "harry", "hart", "hartford", "harvard", "harvest", "harvey", "has", "hash", "hat", "hate", "hats", "have", "haven", "having", "hawaii", "hawaiian", "hawk", "hay", "hayes", "hazard", "hazardous", "hazards", "hb", "hc", "hd", "hdtv", "he", "head", "headed", "header", "headers", "heading", "headline", "headlines", "headphones", "headquarters", "heads", "headset", "healing", "health", "healthcare", "healthy", "hear", "heard", "hearing", "hearings", "heart", "hearts", "heat", "heated", "heater", "heath", "heather", "heating", "heaven", "heavily", "heavy", "hebrew", "heel", "height", "heights", "held", "helen", "helena", "helicopter", "hell", "hello", "helmet", "help", "helped", "helpful", "helping", "helps", "hence", "henderson", "henry", "hentai", "hepatitis", "her", "herald", "herb", "herbal", "herbs", "here", "hereby", "herein", "heritage", "hero", "heroes", "herself", "hewlett", "hey", "hh", "hi", "hidden", "hide", "hierarchy", "high", "higher", "highest", "highland", "highlight", "highlighted", "highlights", "highly", "highs", "highway", "highways", "hiking", "hill", "hills", "hilton", "him", "himself", "hindu", "hint", "hints", "hip", "hire", "hired", "hiring", "his", "hispanic", "hist", "historic", "historical", "history", "hit", "hitachi", "hits", "hitting", "hiv", "hk", "hl", "ho", "hobbies", "hobby", "hockey", "hold", "holdem", "holder", "holders", "holding", "holdings", "holds", "hole", "holes", "holiday", "holidays", "holland", "hollow", "holly", "hollywood", "holmes", "holocaust", "holy", "home", "homeland", "homeless", "homepage", "homes", "hometown", "homework", "hon", "honda", "honduras", "honest", "honey", "hong", "honolulu", "honor", "honors", "hood", "hook", "hop", "hope", "hoped", "hopefully", "hopes", "hoping", "hopkins", "horizon", "horizontal", "hormone", "horn", "horny", "horrible", "horror", "horse", "horses", "hose", "hospital", "hospitality", "hospitals", "host", "hosted", "hostel", "hostels", "hosting", "hosts", "hot", "hotel", "hotels", "hotelscom", "hotmail", "hottest", "hour", "hourly", "hours", "house", "household", "households", "houses", "housewares", "housewives", "housing", "houston", "how", "howard", "however", "howto", "hp", "hq", "hr", "href", "hrs", "hs", "ht", "html", "http", "hu", "hub", "hudson", "huge", "hugh", "hughes", "hugo", "hull", "human", "humanitarian", "humanities", "humanity", "humans", "humidity", "humor", "hundred", "hundreds", "hung", "hungarian", "hungary", "hunger", "hungry", "hunt", "hunter", "hunting", "huntington", "hurricane", "hurt", "husband", "hwy", "hybrid", "hydraulic", "hydrocodone", "hydrogen", "hygiene", "hypothesis", "hypothetical", "hyundai", "hz", "i", "ia", "ian", "ibm", "ic", "ice", "iceland", "icon", "icons", "icq", "ict", "id", "idaho", "ide", "idea", "ideal", "ideas", "identical", "identification", "identified", "identifier", "identifies", "identify", "identifying", "identity", "idle", "idol", "ids", "ie", "ieee", "if", "ignore", "ignored", "ii", "iii", "il", "ill", "illegal", "illinois", "illness", "illustrated", "illustration", "illustrations", "im", "ima", "image", "images", "imagination", "imagine", "imaging", "img", "immediate", "immediately", "immigrants", "immigration", "immune", "immunology", "impact", "impacts", "impaired", "imperial", "implement", "implementation", "implemented", "implementing", "implications", "implied", "implies", "import", "importance", "important", "importantly", "imported", "imports", "impose", "imposed", "impossible", "impressed", "impression", "impressive", "improve", "improved", "improvement", "improvements", "improving", "in", "inappropriate", "inbox", "inc", "incentive", "incentives", "incest", "inch", "inches", "incidence", "incident", "incidents", "incl", "include", "included", "includes", "including", "inclusion", "inclusive", "income", "incoming", "incomplete", "incorporate", "incorporated", "incorrect", "increase", "increased", "increases", "increasing", "increasingly", "incredible", "incurred", "ind", "indeed", "independence", "independent", "independently", "index", "indexed", "indexes", "india", "indian", "indiana", "indianapolis", "indians", "indicate", "indicated", "indicates", "indicating", "indication", "indicator", "indicators", "indices", "indie", "indigenous", "indirect", "individual", "individually", "individuals", "indonesia", "indonesian", "indoor", "induced", "induction", "industrial", "industries", "industry", "inexpensive", "inf", "infant", "infants", "infected", "infection", "infections", "infectious", "infinite", "inflation", "influence", "influenced", "influences", "info", "inform", "informal", "information", "informational", "informative", "informed", "infrared", "infrastructure", "ing", "ingredients", "inherited", "initial", "initially", "initiated", "initiative", "initiatives", "injection", "injured", "injuries", "injury", "ink", "inkjet", "inline", "inn", "inner", "innocent", "innovation", "innovations", "innovative", "inns", "input", "inputs", "inquire", "inquiries", "inquiry", "ins", "insects", "insert", "inserted", "insertion", "inside", "insider", "insight", "insights", "inspection", "inspections", "inspector", "inspiration", "inspired", "install", "installation", "installations", "installed", "installing", "instance", "instances", "instant", "instantly", "instead", "institute", "institutes", "institution", "institutional", "institutions", "instruction", "instructional", "instructions", "instructor", "instructors", "instrument", "instrumental", "instrumentation", "instruments", "insulin", "insurance", "insured", "int", "intake", "integer", "integral", "integrate", "integrated", "integrating", "integration", "integrity", "intel", "intellectual", "intelligence", "intelligent", "intend", "intended", "intense", "intensity", "intensive", "intent", "intention", "inter", "interact", "interaction", "interactions", "interactive", "interest", "interested", "interesting", "interests", "interface", "interfaces", "interference", "interim", "interior", "intermediate", "internal", "international", "internationally", "internet", "internship", "interpretation", "interpreted", "interracial", "intersection", "interstate", "interval", "intervals", "intervention", "interventions", "interview", "interviews", "intimate", "intl", "into", "intranet", "intro", "introduce", "introduced", "introduces", "introducing", "introduction", "introductory", "invalid", "invasion", "invention", "inventory", "invest", "investigate", "investigated", "investigation", "investigations", "investigator", "investigators", "investing", "investment", "investments", "investor", "investors", "invisible", "invision", "invitation", "invitations", "invite", "invited", "invoice", "involve", "involved", "involvement", "involves", "involving", "io", "ion", "iowa", "ip", "ipaq", "ipod", "ips", "ir", "ira", "iran", "iraq", "iraqi", "irc", "ireland", "irish", "iron", "irrigation", "irs", "is", "isa", "isaac", "isbn", "islam", "islamic", "island", "islands", "isle", "iso", "isolated", "isolation", "isp", "israel", "israeli", "issn", "issue", "issued", "issues", "ist", "istanbul", "it", "italia", "italian", "italiano", "italic", "italy", "item", "items", "its", "itsa", "itself", "itunes", "iv", "ivory", "ix", "j", "ja", "jack", "jacket", "jackets", "jackie", "jackson", "jacksonville", "jacob", "jade", "jaguar", "jail", "jake", "jam", "jamaica", "james", "jamie", "jan", "jane", "janet", "january", "japan", "japanese", "jar", "jason", "java", "javascript", "jay", "jazz", "jc", "jd", "je", "jean", "jeans", "jeep", "jeff", "jefferson", "jeffrey", "jelsoft", "jennifer", "jenny", "jeremy", "jerry", "jersey", "jerusalem", "jesse", "jessica", "jesus", "jet", "jets", "jewel", "jewellery", "jewelry", "jewish", "jews", "jill", "jim", "jimmy", "jj", "jm", "jo", "joan", "job", "jobs", "joe", "joel", "john", "johnny", "johns", "johnson", "johnston", "join", "joined", "joining", "joins", "joint", "joke", "jokes", "jon", "jonathan", "jones", "jordan", "jose", "joseph", "josh", "joshua", "journal", "journalism", "journalist", "journalists", "journals", "journey", "joy", "joyce", "jp", "jpeg", "jpg", "jr", "js", "juan", "judge", "judges", "judgment", "judicial", "judy", "juice", "jul", "julia", "julian", "julie", "july", "jump", "jumping", "jun", "junction", "june", "jungle", "junior", "junk", "jurisdiction", "jury", "just", "justice", "justify", "justin", "juvenile", "jvc", "k", "ka", "kai", "kansas", "karaoke", "karen", "karl", "karma", "kate", "kathy", "katie", "katrina", "kay", "kazakhstan", "kb", "kde", "keen", "keep", "keeping", "keeps", "keith", "kelkoo", "kelly", "ken", "kennedy", "kenneth", "kenny", "keno", "kent", "kentucky", "kenya", "kept", "kernel", "kerry", "kevin", "key", "keyboard", "keyboards", "keys", "keyword", "keywords", "kg", "kick", "kid", "kidney", "kids", "kijiji", "kill", "killed", "killer", "killing", "kills", "kilometers", "kim", "kinase", "kind", "kinda", "kinds", "king", "kingdom", "kings", "kingston", "kirk", "kiss", "kissing", "kit", "kitchen", "kits", "kitty", "klein", "km", "knee", "knew", "knife", "knight", "knights", "knit", "knitting", "knives", "knock", "know", "knowing", "knowledge", "knowledgestorm", "known", "knows", "ko", "kodak", "kong", "korea", "korean", "kruger", "ks", "kurt", "kuwait", "kw", "ky", "kyle", "l", "la", "lab", "label", "labeled", "labels", "labor", "laboratories", "laboratory", "labour", "labs", "lace", "lack", "ladder", "laden", "ladies", "lady", "lafayette", "laid", "lake", "lakes", "lamb", "lambda", "lamp", "lamps", "lan", "lancaster", "lance", "land", "landing", "lands", "landscape", "landscapes", "lane", "lanes", "lang", "language", "languages", "lanka", "lap", "laptop", "laptops", "large", "largely", "larger", "largest", "larry", "las", "laser", "last", "lasting", "lat", "late", "lately", "later", "latest", "latex", "latin", "latina", "latinas", "latino", "latitude", "latter", "latvia", "lauderdale", "laugh", "laughing", "launch", "launched", "launches", "laundry", "laura", "lauren", "law", "lawn", "lawrence", "laws", "lawsuit", "lawyer", "lawyers", "lay", "layer", "layers", "layout", "lazy", "lb", "lbs", "lc", "lcd", "ld", "le", "lead", "leader", "leaders", "leadership", "leading", "leads", "leaf", "league", "lean", "learn", "learned", "learners", "learning", "lease", "leasing", "least", "leather", "leave", "leaves", "leaving", "lebanon", "lecture", "lectures", "led", "lee", "leeds", "left", "leg", "legacy", "legal", "legally", "legend", "legendary", "legends", "legislation", "legislative", "legislature", "legitimate", "legs", "leisure", "lemon", "len", "lender", "lenders", "lending", "length", "lens", "lenses", "leo", "leon", "leonard", "leone", "les", "lesbian", "lesbians", "leslie", "less", "lesser", "lesson", "lessons", "let", "lets", "letter", "letters", "letting", "leu", "level", "levels", "levitra", "levy", "lewis", "lexington", "lexmark", "lexus", "lf", "lg", "li", "liabilities", "liability", "liable", "lib", "liberal", "liberia", "liberty", "librarian", "libraries", "library", "libs", "licence", "license", "licensed", "licenses", "licensing", "licking", "lid", "lie", "liechtenstein", "lies", "life", "lifestyle", "lifetime", "lift", "light", "lighter", "lighting", "lightning", "lights", "lightweight", "like", "liked", "likelihood", "likely", "likes", "likewise", "lil", "lime", "limit", "limitation", "limitations", "limited", "limiting", "limits", "limousines", "lincoln", "linda", "lindsay", "line", "linear", "lined", "lines", "lingerie", "link", "linked", "linking", "links", "linux", "lion", "lions", "lip", "lips", "liquid", "lisa", "list", "listed", "listen", "listening", "listing", "listings", "listprice", "lists", "lit", "lite", "literacy", "literally", "literary", "literature", "lithuania", "litigation", "little", "live", "livecam", "lived", "liver", "liverpool", "lives", "livestock", "living", "liz", "ll", "llc", "lloyd", "llp", "lm", "ln", "lo", "load", "loaded", "loading", "loads", "loan", "loans", "lobby", "loc", "local", "locale", "locally", "locate", "located", "location", "locations", "locator", "lock", "locked", "locking", "locks", "lodge", "lodging", "log", "logan", "logged", "logging", "logic", "logical", "login", "logistics", "logitech", "logo", "logos", "logs", "lol", "lolita", "london", "lone", "lonely", "long", "longer", "longest", "longitude", "look", "looked", "looking", "looks", "looksmart", "lookup", "loop", "loops", "loose", "lopez", "lord", "los", "lose", "losing", "loss", "losses", "lost", "lot", "lots", "lottery", "lotus", "lou", "loud", "louis", "louise", "louisiana", "louisville", "lounge", "love", "loved", "lovely", "lover", "lovers", "loves", "loving", "low", "lower", "lowest", "lows", "lp", "ls", "lt", "ltd", "lu", "lucas", "lucia", "luck", "lucky", "lucy", "luggage", "luis", "luke", "lunch", "lung", "luther", "luxembourg", "luxury", "lycos", "lying", "lynn", "lyric", "lyrics", "m", "ma", "mac", "macedonia", "machine", "machinery", "machines", "macintosh", "macro", "macromedia", "mad", "madagascar", "made", "madison", "madness", "madonna", "madrid", "mae", "mag", "magazine", "magazines", "magic", "magical", "magnet", "magnetic", "magnificent", "magnitude", "mai", "maiden", "mail", "mailed", "mailing", "mailman", "mails", "mailto", "main", "maine", "mainland", "mainly", "mainstream", "maintain", "maintained", "maintaining", "maintains", "maintenance", "major", "majority", "make", "maker", "makers", "makes", "makeup", "making", "malawi", "malaysia", "maldives", "male", "males", "mali", "mall", "malpractice", "malta", "mambo", "man", "manage", "managed", "management", "manager", "managers", "managing", "manchester", "mandate", "mandatory", "manga", "manhattan", "manitoba", "manner", "manor", "manual", "manually", "manuals", "manufacture", "manufactured", "manufacturer", "manufacturers", "manufacturing", "many", "map", "maple", "mapping", "maps", "mar", "marathon", "marble", "marc", "march", "marco", "marcus", "mardi", "margaret", "margin", "maria", "mariah", "marie", "marijuana", "marilyn", "marina", "marine", "mario", "marion", "maritime", "mark", "marked", "marker", "markers", "market", "marketing", "marketplace", "markets", "marking", "marks", "marriage", "married", "marriott", "mars", "marshall", "mart", "martha", "martial", "martin", "marvel", "mary", "maryland", "mas", "mask", "mason", "mass", "massachusetts", "massage", "massive", "master", "mastercard", "masters", "mat", "match", "matched", "matches", "matching", "mate", "material", "materials", "maternity", "math", "mathematical", "mathematics", "mating", "matrix", "mats", "matt", "matter", "matters", "matthew", "mattress", "mature", "maui", "mauritius", "max", "maximize", "maximum", "may", "maybe", "mayor", "mazda", "mb", "mba", "mc", "mcdonald", "md", "me", "meal", "meals", "mean", "meaning", "meaningful", "means", "meant", "meanwhile", "measure", "measured", "measurement", "measurements", "measures", "measuring", "meat", "mechanical", "mechanics", "mechanism", "mechanisms", "med", "medal", "media", "median", "medicaid", "medical", "medicare", "medication", "medications", "medicine", "medicines", "medieval", "meditation", "mediterranean", "medium", "medline", "meet", "meeting", "meetings", "meets", "meetup", "mega", "mel", "melbourne", "melissa", "mem", "member", "members", "membership", "membrane", "memo", "memorabilia", "memorial", "memories", "memory", "memphis", "men", "mens", "ment", "mental", "mention", "mentioned", "mentor", "menu", "menus", "mercedes", "merchandise", "merchant", "merchants", "mercury", "mercy", "mere", "merely", "merge", "merger", "merit", "merry", "mesa", "mesh", "mess", "message", "messages", "messaging", "messenger", "met", "meta", "metabolism", "metadata", "metal", "metallic", "metallica", "metals", "meter", "meters", "method", "methodology", "methods", "metres", "metric", "metro", "metropolitan", "mexican", "mexico", "meyer", "mf", "mfg", "mg", "mh", "mhz", "mi", "mia", "miami", "mic", "mice", "michael", "michel", "michelle", "michigan", "micro", "microphone", "microsoft", "microwave", "mid", "middle", "midi", "midlands", "midnight", "midwest", "might", "mighty", "migration", "mike", "mil", "milan", "mild", "mile", "mileage", "miles", "milf", "milfhunter", "milfs", "military", "milk", "mill", "millennium", "miller", "million", "millions", "mills", "milton", "milwaukee", "mime", "min", "mind", "minds", "mine", "mineral", "minerals", "mines", "mini", "miniature", "minimal", "minimize", "minimum", "mining", "minister", "ministers", "ministries", "ministry", "minneapolis", "minnesota", "minolta", "minor", "minority", "mins", "mint", "minus", "minute", "minutes", "miracle", "mirror", "mirrors", "misc", "miscellaneous", "miss", "missed", "missile", "missing", "mission", "missions", "mississippi", "missouri", "mistake", "mistakes", "mistress", "mit", "mitchell", "mitsubishi", "mix", "mixed", "mixer", "mixing", "mixture", "mj", "ml", "mlb", "mls", "mm", "mn", "mo", "mobile", "mobiles", "mobility", "mod", "mode", "model", "modeling", "modelling", "models", "modem", "modems", "moderate", "moderator", "moderators", "modern", "modes", "modification", "modifications", "modified", "modify", "mods", "modular", "module", "modules", "moisture", "mold", "moldova", "molecular", "molecules", "mom", "moment", "moments", "momentum", "moms", "mon", "monaco", "monday", "monetary", "money", "mongolia", "monica", "monitor", "monitored", "monitoring", "monitors", "monkey", "mono", "monroe", "monster", "montana", "monte", "montgomery", "month", "monthly", "months", "montreal", "mood", "moon", "moore", "moral", "more", "moreover", "morgan", "morning", "morocco", "morris", "morrison", "mortality", "mortgage", "mortgages", "moscow", "moses", "moss", "most", "mostly", "motel", "motels", "mother", "motherboard", "mothers", "motion", "motivated", "motivation", "motor", "motorcycle", "motorcycles", "motorola", "motors", "mount", "mountain", "mountains", "mounted", "mounting", "mounts", "mouse", "mouth", "move", "moved", "movement", "movements", "movers", "moves", "movie", "movies", "moving", "mozambique", "mozilla", "mp", "mpeg", "mpegs", "mpg", "mph", "mr", "mrna", "mrs", "ms", "msg", "msgid", "msgstr", "msie", "msn", "mt", "mtv", "mu", "much", "mud", "mug", "multi", "multimedia", "multiple", "mumbai", "munich", "municipal", "municipality", "murder", "murphy", "murray", "muscle", "muscles", "museum", "museums", "music", "musical", "musician", "musicians", "muslim", "muslims", "must", "mustang", "mutual", "muze", "mv", "mw", "mx", "my", "myanmar", "myers", "myrtle", "myself", "mysimon", "myspace", "mysql", "mysterious", "mystery", "myth", "n", "na", "nail", "nails", "naked", "nam", "name", "named", "namely", "names", "namespace", "namibia", "nancy", "nano", "naples", "narrative", "narrow", "nasa", "nascar", "nasdaq", "nashville", "nasty", "nat", "nathan", "nation", "national", "nationally", "nations", "nationwide", "native", "nato", "natural", "naturally", "naturals", "nature", "naughty", "nav", "naval", "navigate", "navigation", "navigator", "navy", "nb", "nba", "nbc", "nc", "ncaa", "nd", "ne", "near", "nearby", "nearest", "nearly", "nebraska", "nec", "necessarily", "necessary", "necessity", "neck", "necklace", "need", "needed", "needle", "needs", "negative", "negotiation", "negotiations", "neighbor", "neighborhood", "neighbors", "neil", "neither", "nelson", "neo", "neon", "nepal", "nerve", "nervous", "nest", "nested", "net", "netherlands", "netscape", "network", "networking", "networks", "neural", "neutral", "nevada", "never", "nevertheless", "new", "newark", "newbie", "newcastle", "newer", "newest", "newfoundland", "newly", "newport", "news", "newscom", "newsletter", "newsletters", "newspaper", "newspapers", "newton", "next", "nextel", "nfl", "ng", "nh", "nhl", "nhs", "ni", "niagara", "nicaragua", "nice", "nicholas", "nick", "nickel", "nickname", "nicole", "niger", "nigeria", "night", "nightlife", "nightmare", "nights", "nike", "nikon", "nil", "nine", "nintendo", "nipple", "nipples", "nirvana", "nissan", "nitrogen", "nj", "nl", "nm", "nn", "no", "noble", "nobody", "node", "nodes", "noise", "nokia", "nominated", "nomination", "nominations", "non", "none", "nonprofit", "noon", "nor", "norfolk", "norm", "normal", "normally", "norman", "north", "northeast", "northern", "northwest", "norton", "norway", "norwegian", "nos", "nose", "not", "note", "notebook", "notebooks", "noted", "notes", "nothing", "notice", "noticed", "notices", "notification", "notifications", "notified", "notify", "notion", "notre", "nottingham", "nov", "nova", "novel", "novels", "novelty", "november", "now", "nowhere", "np", "nr", "ns", "nsw", "nt", "ntsc", "nu", "nuclear", "nude", "nudist", "nudity", "nuke", "null", "number", "numbers", "numeric", "numerical", "numerous", "nurse", "nursery", "nurses", "nursing", "nut", "nutrition", "nutritional", "nuts", "nutten", "nv", "nvidia", "nw", "ny", "nyc", "nylon", "nz", "o", "oak", "oakland", "oaks", "oasis", "ob", "obesity", "obituaries", "obj", "object", "objective", "objectives", "objects", "obligation", "obligations", "observation", "observations", "observe", "observed", "observer", "obtain", "obtained", "obtaining", "obvious", "obviously", "oc", "occasion", "occasional", "occasionally", "occasions", "occupation", "occupational", "occupations", "occupied", "occur", "occurred", "occurrence", "occurring", "occurs", "ocean", "oclc", "oct", "october", "odd", "odds", "oe", "oecd", "oem", "of", "off", "offense", "offensive", "offer", "offered", "offering", "offerings", "offers", "office", "officer", "officers", "offices", "official", "officially", "officials", "offline", "offset", "offshore", "often", "og", "oh", "ohio", "oil", "oils", "ok", "okay", "oklahoma", "ol", "old", "older", "oldest", "olive", "oliver", "olympic", "olympics", "olympus", "om", "omaha", "oman", "omega", "omissions", "on", "once", "one", "ones", "ongoing", "onion", "online", "only", "ons", "ontario", "onto", "oo", "ooo", "oops", "op", "open", "opened", "opening", "openings", "opens", "opera", "operate", "operated", "operates", "operating", "operation", "operational", "operations", "operator", "operators", "opinion", "opinions", "opponent", "opponents", "opportunities", "opportunity", "opposed", "opposite", "opposition", "opt", "optical", "optics", "optimal", "optimization", "optimize", "optimum", "option", "optional", "options", "or", "oracle", "oral", "orange", "orbit", "orchestra", "order", "ordered", "ordering", "orders", "ordinance", "ordinary", "oregon", "org", "organ", "organic", "organisation", "organisations", "organised", "organisms", "organization", "organizational", "organizations", "organize", "organized", "organizer", "organizing", "orgasm", "orgy", "oriental", "orientation", "oriented", "origin", "original", "originally", "origins", "orlando", "orleans", "os", "oscar", "ot", "other", "others", "otherwise", "ottawa", "ou", "ought", "our", "ours", "ourselves", "out", "outcome", "outcomes", "outdoor", "outdoors", "outer", "outlet", "outline", "outlined", "outlook", "output", "outputs", "outreach", "outside", "outsourcing", "outstanding", "oval", "oven", "over", "overall", "overcome", "overhead", "overnight", "overseas", "overview", "owen", "own", "owned", "owner", "owners", "ownership", "owns", "oxford", "oxide", "oxygen", "oz", "ozone", "p", "pa", "pac", "pace", "pacific", "pack", "package", "packages", "packaging", "packard", "packed", "packet", "packets", "packing", "packs", "pad", "pads", "page", "pages", "paid", "pain", "painful", "paint", "paintball", "painted", "painting", "paintings", "pair", "pairs", "pakistan", "pal", "palace", "pale", "palestine", "palestinian", "palm", "palmer", "pam", "pamela", "pan", "panama", "panasonic", "panel", "panels", "panic", "panties", "pants", "pantyhose", "paper", "paperback", "paperbacks", "papers", "papua", "par", "para", "parade", "paradise", "paragraph", "paragraphs", "paraguay", "parallel", "parameter", "parameters", "parcel", "parent", "parental", "parenting", "parents", "paris", "parish", "park", "parker", "parking", "parks", "parliament", "parliamentary", "part", "partial", "partially", "participant", "participants", "participate", "participated", "participating", "participation", "particle", "particles", "particular", "particularly", "parties", "partition", "partly", "partner", "partners", "partnership", "partnerships", "parts", "party", "pas", "paso", "pass", "passage", "passed", "passenger", "passengers", "passes", "passing", "passion", "passive", "passport", "password", "passwords", "past", "pasta", "paste", "pastor", "pat", "patch", "patches", "patent", "patents", "path", "pathology", "paths", "patient", "patients", "patio", "patricia", "patrick", "patrol", "pattern", "patterns", "paul", "pavilion", "paxil", "pay", "payable", "payday", "paying", "payment", "payments", "paypal", "payroll", "pays", "pb", "pc", "pci", "pcs", "pct", "pd", "pda", "pdas", "pdf", "pdt", "pe", "peace", "peaceful", "peak", "pearl", "peas", "pediatric", "pee", "peeing", "peer", "peers", "pen", "penalties", "penalty", "pencil", "pendant", "pending", "penetration", "penguin", "peninsula", "penn", "pennsylvania", "penny", "pens", "pension", "pensions", "pentium", "people", "peoples", "pepper", "per", "perceived", "percent", "percentage", "perception", "perfect", "perfectly", "perform", "performance", "performances", "performed", "performer", "performing", "performs", "perfume", "perhaps", "period", "periodic", "periodically", "periods", "peripheral", "peripherals", "perl", "permalink", "permanent", "permission", "permissions", "permit", "permits", "permitted", "perry", "persian", "persistent", "person", "personal", "personality", "personalized", "personally", "personals", "personnel", "persons", "perspective", "perspectives", "perth", "peru", "pest", "pet", "pete", "peter", "petersburg", "peterson", "petite", "petition", "petroleum", "pets", "pf", "pg", "pgp", "ph", "phantom", "pharmaceutical", "pharmaceuticals", "pharmacies", "pharmacology", "pharmacy", "phase", "phases", "phd", "phenomenon", "phentermine", "phi", "phil", "philadelphia", "philip", "philippines", "philips", "phillips", "philosophy", "phoenix", "phone", "phones", "photo", "photograph", "photographer", "photographers", "photographic", "photographs", "photography", "photos", "photoshop", "php", "phpbb", "phrase", "phrases", "phys", "physical", "physically", "physician", "physicians", "physics", "physiology", "pi", "piano", "pic", "pichunter", "pick", "picked", "picking", "picks", "pickup", "picnic", "pics", "picture", "pictures", "pie", "piece", "pieces", "pierce", "pierre", "pig", "pike", "pill", "pillow", "pills", "pilot", "pin", "pine", "ping", "pink", "pins", "pioneer", "pipe", "pipeline", "pipes", "pirates", "piss", "pissing", "pit", "pitch", "pittsburgh", "pix", "pixel", "pixels", "pizza", "pj", "pk", "pl", "place", "placed", "placement", "places", "placing", "plain", "plains", "plaintiff", "plan", "plane", "planes", "planet", "planets", "planned", "planner", "planners", "planning", "plans", "plant", "plants", "plasma", "plastic", "plastics", "plate", "plates", "platform", "platforms", "platinum", "play", "playback", "playboy", "played", "player", "players", "playing", "playlist", "plays", "playstation", "plaza", "plc", "pleasant", "please", "pleased", "pleasure", "pledge", "plenty", "plot", "plots", "plug", "plugin", "plugins", "plumbing", "plus", "plymouth", "pm", "pmc", "pmid", "pn", "po", "pocket", "pockets", "pod", "podcast", "podcasts", "poem", "poems", "poet", "poetry", "point", "pointed", "pointer", "pointing", "points", "pokemon", "poker", "poland", "polar", "pole", "police", "policies", "policy", "polish", "polished", "political", "politicians", "politics", "poll", "polls", "pollution", "polo", "poly", "polyester", "polymer", "polyphonic", "pond", "pontiac", "pool", "pools", "poor", "pop", "pope", "popular", "popularity", "population", "populations", "por", "porcelain", "pork", "porsche", "port", "portable", "portal", "porter", "portfolio", "portion", "portions", "portland", "portrait", "portraits", "ports", "portsmouth", "portugal", "portuguese", "pos", "pose", "posing", "position", "positioning", "positions", "positive", "possess", "possession", "possibilities", "possibility", "possible", "possibly", "post", "postage", "postal", "postcard", "postcards", "posted", "poster", "posters", "posting", "postings", "postposted", "posts", "pot", "potato", "potatoes", "potential", "potentially", "potter", "pottery", "poultry", "pound", "pounds", "pour", "poverty", "powder", "powell", "power", "powered", "powerful", "powerpoint", "powers", "powerseller", "pp", "ppc", "ppm", "pr", "practical", "practice", "practices", "practitioner", "practitioners", "prague", "prairie", "praise", "pray", "prayer", "prayers", "pre", "preceding", "precious", "precipitation", "precise", "precisely", "precision", "predict", "predicted", "prediction", "predictions", "prefer", "preference", "preferences", "preferred", "prefers", "prefix", "pregnancy", "pregnant", "preliminary", "premier", "premiere", "premises", "premium", "prep", "prepaid", "preparation", "prepare", "prepared", "preparing", "prerequisite", "prescribed", "prescription", "presence", "present", "presentation", "presentations", "presented", "presenting", "presently", "presents", "preservation", "preserve", "president", "presidential", "press", "pressed", "pressing", "pressure", "preston", "pretty", "prev", "prevent", "preventing", "prevention", "preview", "previews", "previous", "previously", "price", "priced", "prices", "pricing", "pride", "priest", "primarily", "primary", "prime", "prince", "princess", "princeton", "principal", "principle", "principles", "print", "printable", "printed", "printer", "printers", "printing", "prints", "prior", "priorities", "priority", "prison", "prisoner", "prisoners", "privacy", "private", "privilege", "privileges", "prix", "prize", "prizes", "pro", "probability", "probably", "probe", "problem", "problems", "proc", "procedure", "procedures", "proceed", "proceeding", "proceedings", "proceeds", "process", "processed", "processes", "processing", "processor", "processors", "procurement", "produce", "produced", "producer", "producers", "produces", "producing", "product", "production", "productions", "productive", "productivity", "products", "prof", "profession", "professional", "professionals", "professor", "profile", "profiles", "profit", "profits", "program", "programme", "programmer", "programmers", "programmes", "programming", "programs", "progress", "progressive", "prohibited", "project", "projected", "projection", "projector", "projectors", "projects", "prominent", "promise", "promised", "promises", "promising", "promo", "promote", "promoted", "promotes", "promoting", "promotion", "promotional", "promotions", "prompt", "promptly", "proof", "propecia", "proper", "properly", "properties", "property", "prophet", "proportion", "proposal", "proposals", "propose", "proposed", "proposition", "proprietary", "pros", "prospect", "prospective", "prospects", "prostate", "prostores", "prot", "protect", "protected", "protecting", "protection", "protective", "protein", "proteins", "protest", "protocol", "protocols", "prototype", "proud", "proudly", "prove", "proved", "proven", "provide", "provided", "providence", "provider", "providers", "provides", "providing", "province", "provinces", "provincial", "provision", "provisions", "proxy", "prozac", "ps", "psi", "psp", "pst", "psychiatry", "psychological", "psychology", "pt", "pts", "pty", "pub", "public", "publication", "publications", "publicity", "publicly", "publish", "published", "publisher", "publishers", "publishing", "pubmed", "pubs", "puerto", "pull", "pulled", "pulling", "pulse", "pump", "pumps", "punch", "punishment", "punk", "pupils", "puppy", "purchase", "purchased", "purchases", "purchasing", "pure", "purple", "purpose", "purposes", "purse", "pursuant", "pursue", "pursuit", "push", "pushed", "pushing", "pussy", "put", "puts", "putting", "puzzle", "puzzles", "pvc", "python", "q", "qatar", "qc", "qld", "qt", "qty", "quad", "qualification", "qualifications", "qualified", "qualify", "qualifying", "qualities", "quality", "quantitative", "quantities", "quantity", "quantum", "quarter", "quarterly", "quarters", "que", "quebec", "queen", "queens", "queensland", "queries", "query", "quest", "question", "questionnaire", "questions", "queue", "qui", "quick", "quickly", "quiet", "quilt", "quit", "quite", "quiz", "quizzes", "quotations", "quote", "quoted", "quotes", "r", "ra", "rabbit", "race", "races", "rachel", "racial", "racing", "rack", "racks", "radar", "radiation", "radical", "radio", "radios", "radius", "rage", "raid", "rail", "railroad", "railway", "rain", "rainbow", "raise", "raised", "raises", "raising", "raleigh", "rally", "ralph", "ram", "ran", "ranch", "rand", "random", "randy", "range", "rangers", "ranges", "ranging", "rank", "ranked", "ranking", "rankings", "ranks", "rap", "rape", "rapid", "rapidly", "rapids", "rare", "rarely", "rat", "rate", "rated", "rates", "rather", "rating", "ratings", "ratio", "rational", "ratios", "rats", "raw", "ray", "raymond", "rays", "rb", "rc", "rca", "rd", "re", "reach", "reached", "reaches", "reaching", "reaction", "reactions", "read", "reader", "readers", "readily", "reading", "readings", "reads", "ready", "real", "realistic", "reality", "realize", "realized", "really", "realm", "realtor", "realtors", "realty", "rear", "reason", "reasonable", "reasonably", "reasoning", "reasons", "rebate", "rebates", "rebecca", "rebel", "rebound", "rec", "recall", "receipt", "receive", "received", "receiver", "receivers", "receives", "receiving", "recent", "recently", "reception", "receptor", "receptors", "recipe", "recipes", "recipient", "recipients", "recognised", "recognition", "recognize", "recognized", "recommend", "recommendation", "recommendations", "recommended", "recommends", "reconstruction", "record", "recorded", "recorder", "recorders", "recording", "recordings", "records", "recover", "recovered", "recovery", "recreation", "recreational", "recruiting", "recruitment", "recycling", "red", "redeem", "redhead", "reduce", "reduced", "reduces", "reducing", "reduction", "reductions", "reed", "reef", "reel", "ref", "refer", "reference", "referenced", "references", "referral", "referrals", "referred", "referring", "refers", "refinance", "refine", "refined", "reflect", "reflected", "reflection", "reflections", "reflects", "reform", "reforms", "refresh", "refrigerator", "refugees", "refund", "refurbished", "refuse", "refused", "reg", "regard", "regarded", "regarding", "regardless", "regards", "reggae", "regime", "region", "regional", "regions", "register", "registered", "registrar", "registration", "registry", "regression", "regular", "regularly", "regulated", "regulation", "regulations", "regulatory", "rehab", "rehabilitation", "reid", "reject", "rejected", "rel", "relate", "related", "relates", "relating", "relation", "relations", "relationship", "relationships", "relative", "relatively", "relatives", "relax", "relaxation", "relay", "release", "released", "releases", "relevance", "relevant", "reliability", "reliable", "reliance", "relief", "religion", "religions", "religious", "reload", "relocation", "rely", "relying", "remain", "remainder", "remained", "remaining", "remains", "remark", "remarkable", "remarks", "remedies", "remedy", "remember", "remembered", "remind", "reminder", "remix", "remote", "removable", "removal", "remove", "removed", "removing", "renaissance", "render", "rendered", "rendering", "renew", "renewable", "renewal", "reno", "rent", "rental", "rentals", "rentcom", "rep", "repair", "repairs", "repeat", "repeated", "replace", "replaced", "replacement", "replacing", "replica", "replication", "replied", "replies", "reply", "report", "reported", "reporter", "reporters", "reporting", "reports", "repository", "represent", "representation", "representations", "representative", "representatives", "represented", "representing", "represents", "reprint", "reprints", "reproduce", "reproduced", "reproduction", "reproductive", "republic", "republican", "republicans", "reputation", "request", "requested", "requesting", "requests", "require", "required", "requirement", "requirements", "requires", "requiring", "res", "rescue", "research", "researcher", "researchers", "reseller", "reservation", "reservations", "reserve", "reserved", "reserves", "reservoir", "reset", "residence", "resident", "residential", "residents", "resist", "resistance", "resistant", "resolution", "resolutions", "resolve", "resolved", "resort", "resorts", "resource", "resources", "respect", "respected", "respective", "respectively", "respiratory", "respond", "responded", "respondent", "respondents", "responding", "response", "responses", "responsibilities", "responsibility", "responsible", "rest", "restaurant", "restaurants", "restoration", "restore", "restored", "restrict", "restricted", "restriction", "restrictions", "restructuring", "result", "resulted", "resulting", "results", "resume", "resumes", "retail", "retailer", "retailers", "retain", "retained", "retention", "retired", "retirement", "retreat", "retrieval", "retrieve", "retrieved", "retro", "return", "returned", "returning", "returns", "reunion", "reuters", "rev", "reveal", "revealed", "reveals", "revelation", "revenge", "revenue", "revenues", "reverse", "review", "reviewed", "reviewer", "reviewing", "reviews", "revised", "revision", "revisions", "revolution", "revolutionary", "reward", "rewards", "reynolds", "rf", "rfc", "rg", "rh", "rhode", "rhythm", "ri", "ribbon", "rica", "rice", "rich", "richard", "richards", "richardson", "richmond", "rick", "rico", "rid", "ride", "rider", "riders", "rides", "ridge", "riding", "right", "rights", "rim", "ring", "rings", "ringtone", "ringtones", "rio", "rip", "ripe", "rise", "rising", "risk", "risks", "river", "rivers", "riverside", "rj", "rl", "rm", "rn", "rna", "ro", "road", "roads", "rob", "robert", "roberts", "robertson", "robin", "robinson", "robot", "robots", "robust", "rochester", "rock", "rocket", "rocks", "rocky", "rod", "roger", "rogers", "roland", "role", "roles", "roll", "rolled", "roller", "rolling", "rolls", "rom", "roman", "romance", "romania", "romantic", "rome", "ron", "ronald", "roof", "room", "roommate", "roommates", "rooms", "root", "roots", "rope", "rosa", "rose", "roses", "ross", "roster", "rotary", "rotation", "rouge", "rough", "roughly", "roulette", "round", "rounds", "route", "router", "routers", "routes", "routine", "routines", "routing", "rover", "row", "rows", "roy", "royal", "royalty", "rp", "rpg", "rpm", "rr", "rrp", "rs", "rss", "rt", "ru", "rubber", "ruby", "rug", "rugby", "rugs", "rule", "ruled", "rules", "ruling", "run", "runner", "running", "runs", "runtime", "rural", "rush", "russell", "russia", "russian", "ruth", "rv", "rw", "rwanda", "rx", "ryan", "s", "sa", "sacramento", "sacred", "sacrifice", "sad", "saddam", "safari", "safe", "safely", "safer", "safety", "sage", "sagem", "said", "sail", "sailing", "saint", "saints", "sake", "salad", "salaries", "salary", "sale", "salem", "sales", "sally", "salmon", "salon", "salt", "salvador", "salvation", "sam", "samba", "same", "samoa", "sample", "samples", "sampling", "samsung", "samuel", "san", "sand", "sandra", "sandwich", "sandy", "sans", "santa", "sanyo", "sao", "sap", "sapphire", "sara", "sarah", "sas", "saskatchewan", "sat", "satellite", "satin", "satisfaction", "satisfactory", "satisfied", "satisfy", "saturday", "saturn", "sauce", "saudi", "savage", "savannah", "save", "saved", "saver", "saves", "saving", "savings", "saw", "say", "saying", "says", "sb", "sbjct", "sc", "scale", "scales", "scan", "scanned", "scanner", "scanners", "scanning", "scary", "scenario", "scenarios", "scene", "scenes", "scenic", "schedule", "scheduled", "schedules", "scheduling", "schema", "scheme", "schemes", "scholar", "scholars", "scholarship", "scholarships", "school", "schools", "sci", "science", "sciences", "scientific", "scientist", "scientists", "scoop", "scope", "score", "scored", "scores", "scoring", "scotia", "scotland", "scott", "scottish", "scout", "scratch", "screen", "screening", "screens", "screensaver", "screensavers", "screenshot", "screenshots", "screw", "script", "scripting", "scripts", "scroll", "scsi", "scuba", "sculpture", "sd", "se", "sea", "seafood", "seal", "sealed", "sean", "search", "searchcom", "searched", "searches", "searching", "seas", "season", "seasonal", "seasons", "seat", "seating", "seats", "seattle", "sec", "second", "secondary", "seconds", "secret", "secretariat", "secretary", "secrets", "section", "sections", "sector", "sectors", "secure", "secured", "securely", "securities", "security", "see", "seed", "seeds", "seeing", "seek", "seeker", "seekers", "seeking", "seeks", "seem", "seemed", "seems", "seen", "sees", "sega", "segment", "segments", "select", "selected", "selecting", "selection", "selections", "selective", "self", "sell", "seller", "sellers", "selling", "sells", "semester", "semi", "semiconductor", "seminar", "seminars", "sen", "senate", "senator", "senators", "send", "sender", "sending", "sends", "senegal", "senior", "seniors", "sense", "sensitive", "sensitivity", "sensor", "sensors", "sent", "sentence", "sentences", "seo", "sep", "separate", "separated", "separately", "separation", "sept", "september", "seq", "sequence", "sequences", "ser", "serbia", "serial", "series", "serious", "seriously", "serum", "serve", "served", "server", "servers", "serves", "service", "services", "serving", "session", "sessions", "set", "sets", "setting", "settings", "settle", "settled", "settlement", "setup", "seven", "seventh", "several", "severe", "sewing", "sexo", "sexual", "sexuality", "sexually", "sexy", "sf", "sg", "sh", "shade", "shades", "shadow", "shadows", "shaft", "shake", "shakespeare", "shakira", "shall", "shame", "shanghai", "shannon", "shape", "shaped", "shapes", "share", "shared", "shareholders", "shares", "shareware", "sharing", "shark", "sharon", "sharp", "shaved", "shaw", "she", "shed", "sheep", "sheer", "sheet", "sheets", "sheffield", "shelf", "shell", "shelter", "shepherd", "sheriff", "sherman", "shield", "shift", "shine", "ship", "shipment", "shipments", "shipped", "shipping", "ships", "shirt", "shirts", "shit", "shock", "shoe", "shoes", "shoot", "shooting", "shop", "shopper", "shoppercom", "shoppers", "shopping", "shoppingcom", "shops", "shopzilla", "shore", "short", "shortcuts", "shorter", "shortly", "shorts", "shot", "shots", "should", "shoulder", "show", "showcase", "showed", "shower", "showers", "showing", "shown", "shows", "showtimes", "shut", "shuttle", "si", "sic", "sick", "side", "sides", "sie", "siemens", "sierra", "sig", "sight", "sigma", "sign", "signal", "signals", "signature", "signatures", "signed", "significance", "significant", "significantly", "signing", "signs", "signup", "silence", "silent", "silicon", "silk", "silly", "silver", "sim", "similar", "similarly", "simon", "simple", "simplified", "simply", "simpson", "simpsons", "sims", "simulation", "simulations", "simultaneously", "sin", "since", "sing", "singapore", "singer", "singh", "singing", "single", "singles", "sink", "sip", "sir", "sister", "sisters", "sit", "site", "sitemap", "sites", "sitting", "situated", "situation", "situations", "six", "sixth", "size", "sized", "sizes", "sk", "skating", "ski", "skiing", "skill", "skilled", "skills", "skin", "skins", "skip", "skirt", "skirts", "sku", "sky", "skype", "sl", "slave", "sleep", "sleeping", "sleeps", "sleeve", "slide", "slides", "slideshow", "slight", "slightly", "slim", "slip", "slope", "slot", "slots", "slovak", "slovakia", "slovenia", "slow", "slowly", "sm", "small", "smaller", "smart", "smell", "smile", "smilies", "smith", "smithsonian", "smoke", "smoking", "smooth", "sms", "smtp", "sn", "snake", "snap", "snapshot", "snow", "snowboard", "so", "soa", "soap", "soc", "soccer", "social", "societies", "society", "sociology", "socket", "socks", "sodium", "sofa", "soft", "softball", "software", "soil", "sol", "solar", "solaris", "sold", "soldier", "soldiers", "sole", "solely", "solid", "solo", "solomon", "solution", "solutions", "solve", "solved", "solving", "soma", "somalia", "some", "somebody", "somehow", "someone", "somerset", "something", "sometimes", "somewhat", "somewhere", "son", "song", "songs", "sonic", "sons", "sony", "soon", "soonest", "sophisticated", "sorry", "sort", "sorted", "sorts", "sought", "soul", "souls", "sound", "sounds", "soundtrack", "soup", "source", "sources", "south", "southampton", "southeast", "southern", "southwest", "soviet", "sox", "sp", "spa", "space", "spaces", "spain", "spam", "span", "spanish", "spank", "spanking", "sparc", "spare", "spas", "spatial", "speak", "speaker", "speakers", "speaking", "speaks", "spears", "spec", "special", "specialist", "specialists", "specialized", "specializing", "specially", "specials", "specialties", "specialty", "species", "specific", "specifically", "specification", "specifications", "specifics", "specified", "specifies", "specify", "specs", "spectacular", "spectrum", "speech", "speeches", "speed", "speeds", "spell", "spelling", "spencer", "spend", "spending", "spent", "sphere", "spice", "spider", "spies", "spin", "spine", "spirit", "spirits", "spiritual", "spirituality", "split", "spoke", "spoken", "spokesman", "sponsor", "sponsored", "sponsors", "sponsorship", "sport", "sporting", "sports", "spot", "spotlight", "spots", "spouse", "spray", "spread", "spreading", "spring", "springer", "springfield", "springs", "sprint", "spy", "spyware", "sq", "sql", "squad", "square", "squirt", "squirting", "sr", "src", "sri", "ss", "ssl", "st", "stability", "stable", "stack", "stadium", "staff", "staffing", "stage", "stages", "stainless", "stakeholders", "stamp", "stamps", "stan", "stand", "standard", "standards", "standing", "standings", "stands", "stanford", "stanley", "star", "starring", "stars", "starsmerchant", "start", "started", "starter", "starting", "starts", "startup", "stat", "state", "stated", "statement", "statements", "states", "statewide", "static", "stating", "station", "stationery", "stations", "statistical", "statistics", "stats", "status", "statute", "statutes", "statutory", "stay", "stayed", "staying", "stays", "std", "ste", "steady", "steal", "steam", "steel", "steering", "stem", "step", "stephanie", "stephen", "steps", "stereo", "sterling", "steve", "steven", "stevens", "stewart", "stick", "sticker", "stickers", "sticks", "sticky", "still", "stock", "stockholm", "stockings", "stocks", "stolen", "stomach", "stone", "stones", "stood", "stop", "stopped", "stopping", "stops", "storage", "store", "stored", "stores", "stories", "storm", "story", "str", "straight", "strain", "strand", "strange", "stranger", "strap", "strategic", "strategies", "strategy", "stream", "streaming", "streams", "street", "streets", "strength", "strengthen", "strengthening", "strengths", "stress", "stretch", "strict", "strictly", "strike", "strikes", "striking", "string", "strings", "strip", "stripes", "strips", "stroke", "strong", "stronger", "strongly", "struck", "struct", "structural", "structure", "structured", "structures", "struggle", "stuart", "stuck", "stud", "student", "students", "studied", "studies", "studio", "studios", "study", "studying", "stuff", "stuffed", "stunning", "stupid", "style", "styles", "stylish", "stylus", "su", "sub", "subaru", "subcommittee", "subdivision", "subject", "subjects", "sublime", "sublimedirectory", "submission", "submissions", "submit", "submitted", "submitting", "subscribe", "subscriber", "subscribers", "subscription", "subscriptions", "subsection", "subsequent", "subsequently", "subsidiaries", "subsidiary", "substance", "substances", "substantial", "substantially", "substitute", "subtle", "suburban", "succeed", "success", "successful", "successfully", "such", "suck", "sucking", "sucks", "sudan", "sudden", "suddenly", "sue", "suffer", "suffered", "suffering", "sufficient", "sufficiently", "sugar", "suggest", "suggested", "suggesting", "suggestion", "suggestions", "suggests", "suicide", "suit", "suitable", "suite", "suited", "suites", "suits", "sullivan", "sum", "summaries", "summary", "summer", "summit", "sun", "sunday", "sunglasses", "sunny", "sunrise", "sunset", "sunshine", "super", "superb", "superintendent", "superior", "supervision", "supervisor", "supervisors", "supplement", "supplemental", "supplements", "supplied", "supplier", "suppliers", "supplies", "supply", "support", "supported", "supporters", "supporting", "supports", "suppose", "supposed", "supreme", "sur", "sure", "surely", "surf", "surface", "surfaces", "surfing", "surge", "surgeon", "surgeons", "surgery", "surgical", "surname", "surplus", "surprise", "surprised", "surprising", "surrey", "surround", "surrounded", "surrounding", "surveillance", "survey", "surveys", "survival", "survive", "survivor", "survivors", "susan", "suse", "suspect", "suspected", "suspended", "suspension", "sussex", "sustainability", "sustainable", "sustained", "suzuki", "sv", "sw", "swap", "sweden", "swedish", "sweet", "swift", "swim", "swimming", "swing", "swingers", "swiss", "switch", "switched", "switches", "switching", "switzerland", "sword", "sydney", "symantec", "symbol", "symbols", "sympathy", "symphony", "symposium", "symptoms", "sync", "syndicate", "syndication", "syndrome", "synopsis", "syntax", "synthesis", "synthetic", "syracuse", "syria", "sys", "system", "systematic", "systems", "t", "ta", "tab", "table", "tables", "tablet", "tablets", "tabs", "tackle", "tactics", "tag", "tagged", "tags", "tahoe", "tail", "taiwan", "take", "taken", "takes", "taking", "tale", "talent", "talented", "tales", "talk", "talked", "talking", "talks", "tall", "tamil", "tampa", "tan", "tank", "tanks", "tanzania", "tap", "tape", "tapes", "tar", "target", "targeted", "targets", "tariff", "task", "tasks", "taste", "tattoo", "taught", "tax", "taxation", "taxes", "taxi", "taylor", "tb", "tba", "tc", "tcp", "td", "te", "tea", "teach", "teacher", "teachers", "teaches", "teaching", "team", "teams", "tear", "tears", "tech", "technical", "technician", "technique", "techniques", "techno", "technological", "technologies", "technology", "techrepublic", "ted", "teddy", "tee", "teen", "teenage", "teens", "teeth", "tel", "telecharger", "telecom", "telecommunications", "telephone", "telephony", "telescope", "television", "televisions", "tell", "telling", "tells", "temp", "temperature", "temperatures", "template", "templates", "temple", "temporal", "temporarily", "temporary", "ten", "tenant", "tend", "tender", "tennessee", "tennis", "tension", "tent", "term", "terminal", "terminals", "termination", "terminology", "terms", "terrace", "terrain", "terrible", "territories", "territory", "terror", "terrorism", "terrorist", "terrorists", "terry", "test", "testament", "tested", "testimonials", "testimony", "testing", "tests", "tex", "texas", "text", "textbook", "textbooks", "textile", "textiles", "texts", "texture", "tf", "tft", "tgp", "th", "thai", "thailand", "than", "thank", "thanks", "thanksgiving", "that", "thats", "the", "theater", "theaters", "theatre", "thee", "theft", "thehun", "their", "them", "theme", "themes", "themselves", "then", "theology", "theorem", "theoretical", "theories", "theory", "therapeutic", "therapist", "therapy", "there", "thereafter", "thereby", "therefore", "thereof", "thermal", "thesaurus", "these", "thesis", "they", "thick", "thickness", "thin", "thing", "things", "think", "thinking", "thinkpad", "thinks", "third", "thirty", "this", "thomas", "thompson", "thomson", "thong", "thongs", "thorough", "thoroughly", "those", "thou", "though", "thought", "thoughts", "thousand", "thousands", "thread", "threaded", "threads", "threat", "threatened", "threatening", "threats", "three", "threesome", "threshold", "thriller", "throat", "through", "throughout", "throw", "throwing", "thrown", "throws", "thru", "thu", "thumb", "thumbnail", "thumbnails", "thumbs", "thumbzilla", "thunder", "thursday", "thus", "thy", "ti", "ticket", "tickets", "tide", "tie", "tied", "tier", "ties", "tiffany", "tiger", "tigers", "tight", "til", "tile", "tiles", "till", "tim", "timber", "time", "timeline", "timely", "timer", "times", "timing", "timothy", "tin", "tiny", "tion", "tions", "tip", "tips", "tire", "tired", "tires", "tissue", "tit", "titanium", "titans", "title", "titled", "titles", "titten", "tm", "tmp", "tn", "to", "tobacco", "tobago", "today", "todd", "toddler", "toe", "together", "toilet", "token", "tokyo", "told", "tolerance", "toll", "tom", "tomato", "tomatoes", "tommy", "tomorrow", "ton", "tone", "toner", "tones", "tongue", "tonight", "tons", "tony", "too", "took", "tool", "toolbar", "toolbox", "toolkit", "tools", "tooth", "top", "topic", "topics", "topless", "tops", "toronto", "torture", "toshiba", "total", "totally", "totals", "touch", "touched", "tough", "tour", "touring", "tourism", "tourist", "tournament", "tournaments", "tours", "toward", "towards", "tower", "towers", "town", "towns", "township", "toxic", "toy", "toyota", "toys", "tp", "tr", "trace", "track", "trackback", "trackbacks", "tracked", "tracker", "tracking", "tracks", "tract", "tractor", "tracy", "trade", "trademark", "trademarks", "trader", "trades", "trading", "tradition", "traditional", "traditions", "traffic", "tragedy", "trail", "trailer", "trailers", "trails", "train", "trained", "trainer", "trainers", "training", "trains", "tramadol", "trance", "transaction", "transactions", "transcript", "transcription", "transcripts", "transfer", "transferred", "transfers", "transform", "transformation", "transit", "transition", "translate", "translated", "translation", "translations", "translator", "transmission", "transmit", "transmitted", "transparency", "transparent", "transport", "transportation", "transsexual", "trap", "trash", "trauma", "travel", "traveler", "travelers", "traveling", "traveller", "travelling", "travels", "travesti", "travis", "tray", "treasure", "treasurer", "treasures", "treasury", "treat", "treated", "treating", "treatment", "treatments", "treaty", "tree", "trees", "trek", "trembl", "tremendous", "trend", "trends", "treo", "tri", "trial", "trials", "triangle", "tribal", "tribe", "tribes", "tribunal", "tribune", "tribute", "trick", "tricks", "tried", "tries", "trigger", "trim", "trinidad", "trinity", "trio", "trip", "tripadvisor", "triple", "trips", "triumph", "trivia", "troops", "tropical", "trouble", "troubleshooting", "trout", "troy", "truck", "trucks", "true", "truly", "trunk", "trust", "trusted", "trustee", "trustees", "trusts", "truth", "try", "trying", "ts", "tsunami", "tt", "tu", "tub", "tube", "tubes", "tucson", "tue", "tuesday", "tuition", "tulsa", "tumor", "tune", "tuner", "tunes", "tuning", "tunisia", "tunnel", "turbo", "turkey", "turkish", "turn", "turned", "turner", "turning", "turns", "turtle", "tutorial", "tutorials", "tv", "tvcom", "tvs", "twelve", "twenty", "twice", "twiki", "twin", "twinks", "twins", "twist", "twisted", "two", "tx", "ty", "tyler", "type", "types", "typical", "typically", "typing", "u", "uc", "uganda", "ugly", "uh", "ui", "uk", "ukraine", "ul", "ultimate", "ultimately", "ultra", "ultram", "um", "un", "una", "unable", "unauthorized", "unavailable", "uncertainty", "uncle", "und", "undefined", "under", "undergraduate", "underground", "underlying", "understand", "understanding", "understood", "undertake", "undertaken", "underwear", "undo", "une", "unemployment", "unexpected", "unfortunately", "uni", "unified", "uniform", "union", "unions", "uniprotkb", "unique", "unit", "united", "units", "unity", "univ", "universal", "universe", "universities", "university", "unix", "unknown", "unless", "unlike", "unlikely", "unlimited", "unlock", "unnecessary", "unsigned", "unsubscribe", "until", "untitled", "unto", "unusual", "unwrap", "up", "upc", "upcoming", "update", "updated", "updates", "updating", "upgrade", "upgrades", "upgrading", "upload", "uploaded", "upon", "upper", "ups", "upset", "upskirt", "upskirts", "ur", "urban", "urge", "urgent", "uri", "url", "urls", "uruguay", "urw", "us", "usa", "usage", "usb", "usc", "usd", "usda", "use", "used", "useful", "user", "username", "users", "uses", "usgs", "using", "usps", "usr", "usual", "usually", "ut", "utah", "utc", "utilities", "utility", "utilization", "utilize", "utils", "uv", "uw", "uzbekistan", "v", "va", "vacancies", "vacation", "vacations", "vaccine", "vacuum", "vagina", "val", "valentine", "valid", "validation", "validity", "valium", "valley", "valuable", "valuation", "value", "valued", "values", "valve", "valves", "vampire", "van", "vancouver", "vanilla", "var", "variable", "variables", "variance", "variation", "variations", "varied", "varies", "variety", "various", "vary", "varying", "vast", "vat", "vatican", "vault", "vb", "vbulletin", "vc", "vcr", "ve", "vector", "vegas", "vegetable", "vegetables", "vegetarian", "vegetation", "vehicle", "vehicles", "velocity", "velvet", "vendor", "vendors", "venezuela", "venice", "venture", "ventures", "venue", "venues", "ver", "verbal", "verde", "verification", "verified", "verify", "verizon", "vermont", "vernon", "verse", "version", "versions", "versus", "vertex", "vertical", "very", "verzeichnis", "vessel", "vessels", "veteran", "veterans", "veterinary", "vg", "vhs", "vi", "via", "viagra", "vibrator", "vibrators", "vic", "vice", "victim", "victims", "victor", "victoria", "victorian", "victory", "vid", "video", "videos", "vids", "vienna", "vietnam", "vietnamese", "view", "viewed", "viewer", "viewers", "viewing", "viewpicture", "views", "vii", "viii", "viking", "villa", "village", "villages", "villas", "vincent", "vintage", "vinyl", "violation", "violations", "violence", "violent", "violin", "vip", "viral", "virgin", "virginia", "virtual", "virtually", "virtue", "virus", "viruses", "visa", "visibility", "visible", "vision", "visit", "visited", "visiting", "visitor", "visitors", "visits", "vista", "visual", "vital", "vitamin", "vitamins", "vocabulary", "vocal", "vocals", "vocational", "voice", "voices", "void", "voip", "vol", "volkswagen", "volleyball", "volt", "voltage", "volume", "volumes", "voluntary", "volunteer", "volunteers", "volvo", "von", "vote", "voted", "voters", "votes", "voting", "voyeur", "voyeurweb", "voyuer", "vp", "vpn", "vs", "vsnet", "vt", "vulnerability", "vulnerable", "w", "wa", "wage", "wages", "wagner", "wagon", "wait", "waiting", "waiver", "wake", "wal", "wales", "walk", "walked", "walker", "walking", "walks", "wall", "wallace", "wallet", "wallpaper", "wallpapers", "walls", "walnut", "walt", "walter", "wan", "wang", "wanna", "want", "wanted", "wanting", "wants", "war", "warcraft", "ward", "ware", "warehouse", "warm", "warming", "warned", "warner", "warning", "warnings", "warrant", "warranties", "warranty", "warren", "warrior", "warriors", "wars", "was", "wash", "washer", "washing", "washington", "waste", "watch", "watched", "watches", "watching", "water", "waterproof", "waters", "watershed", "watson", "watt", "watts", "wav", "wave", "waves", "wax", "way", "wayne", "ways", "wb", "wc", "we", "weak", "wealth", "weapon", "weapons", "wear", "wearing", "weather", "web", "webcam", "webcams", "webcast", "weblog", "weblogs", "webmaster", "webmasters", "webpage", "webshots", "website", "websites", "webster", "wed", "wedding", "weddings", "wednesday", "weed", "week", "weekend", "weekends", "weekly", "weeks", "weight", "weighted", "weights", "weird", "welcome", "welding", "welfare", "well", "wellington", "wellness", "wells", "welsh", "wendy", "went", "were", "wesley", "west", "western", "westminster", "wet", "whale", "what", "whatever", "whats", "wheat", "wheel", "wheels", "when", "whenever", "where", "whereas", "wherever", "whether", "which", "while", "whilst", "white", "who", "whole", "wholesale", "whom", "whose", "why", "wi", "wichita", "wicked", "wide", "widely", "wider", "widescreen", "widespread", "width", "wife", "wifi", "wiki", "wikipedia", "wild", "wilderness", "wildlife", "wiley", "will", "william", "williams", "willing", "willow", "wilson", "win", "wind", "window", "windows", "winds", "windsor", "wine", "wines", "wing", "wings", "winner", "winners", "winning", "wins", "winston", "winter", "wire", "wired", "wireless", "wires", "wiring", "wisconsin", "wisdom", "wise", "wish", "wishes", "wishlist", "wit", "witch", "with", "withdrawal", "within", "without", "witness", "witnesses", "wives", "wizard", "wm", "wma", "wn", "wolf", "woman", "women", "womens", "won", "wonder", "wonderful", "wondering", "wood", "wooden", "woods", "wool", "worcester", "word", "wordpress", "words", "work", "worked", "worker", "workers", "workflow", "workforce", "working", "workout", "workplace", "works", "workshop", "workshops", "workstation", "world", "worldcat", "worlds", "worldsex", "worldwide", "worm", "worn", "worried", "worry", "worse", "worship", "worst", "worth", "worthy", "would", "wound", "wow", "wp", "wr", "wrap", "wrapped", "wrapping", "wrestling", "wright", "wrist", "write", "writer", "writers", "writes", "writing", "writings", "written", "wrong", "wrote", "ws", "wt", "wto", "wu", "wv", "ww", "www", "wx", "wy", "wyoming", "x", "xanax", "xbox", "xerox", "xhtml", "xi", "xl", "xml", "xnxx", "xp", "xx", "xxx", "y", "ya", "yacht", "yahoo", "yale", "yamaha", "yang", "yard", "yards", "yarn", "ye", "yea", "yeah", "year", "yearly", "years", "yeast", "yellow", "yemen", "yen", "yes", "yesterday", "yet", "yield", "yields", "yn", "yo", "yoga", "york", "yorkshire", "you", "young", "younger", "your", "yours", "yourself", "youth", "yr", "yrs", "yu", "yugoslavia", "yukon", "z", "za", "zambia", "zdnet", "zealand", "zen", "zero", "zimbabwe", "zinc", "zip", "zoloft", "zone", "zones", "zoning", "zoo", "zoom", "zoophilia", "zope", "zshops", "zu", "zum", "zus", "the", "of", "and", "to", "a", "in", "for", "is", "on", "that", "by", "this", "with", "i", "you", "it", "not", "or", "be", "are", "from", "at", "as", "your", "all", "have", "new", "more", "an", "was", "we", "will", "home", "can", "us", "about", "if", "page", "my", "has", "search", "free", "but", "our", "one", "other", "do", "no", "information", "time", "they", "site", "he", "up", "may", "what", "which", "their", "news", "out", "use", "any", "there", "see", "only", "so", "his", "when", "contact", "here", "business", "who", "web", "also", "now", "help", "get", "pm", "view", "online", "c", "e", "first", "am", "been", "would", "how", "were", "me", "s", "services", "some", "these", "click", "its", "like", "service", "x", "than", "find", "price", "date", "back", "top", "people", "had", "list", "name", "just", "over", "state", "year", "day", "into", "email", "two", "health", "n", "world", "re", "next", "used", "go", "b", "work", "last", "most", "products", "music", "buy", "data", "make", "them", "should", "product", "system", "post", "her", "city", "t", "add", "policy", "number", "such", "please", "available", "copyright", "support", "message", "after", "best", "software", "then", "jan", "good", "video", "well", "d", "where", "info", "rights", "public", "books", "high", "school", "through", "m", "each", "links", "she", "review", "years", "order", "very", "privacy", "book", "items", "company", "r", "read", "group", "sex", "need", "many", "user", "said", "de", "does", "set", "under", "general", "research", "university", "january", "mail", "full", "map", "reviews", "program", "life", "know", "games", "way", "days", "management", "p", "part", "could", "great", "united", "hotel", "real", "f", "item", "international", "center", "ebay", "must", "store", "travel", "comments", "made", "development", "report", "off", "member", "details", "line", "terms", "before", "hotels", "did", "send", "right", "type", "because", "local", "those", "using", "results", "office", "education", "national", "car", "design", "take", "posted", "internet", "address", "community", "within", "states", "area", "want", "phone", "dvd", "shipping", "reserved", "subject", "between", "forum", "family", "l", "long", "based", "w", "code", "show", "o", "even", "black", "check", "special", "prices", "website", "index", "being", "women", "much", "sign", "file", "link", "open", "today", "technology", "south", "case", "project", "same", "pages", "uk", "version", "section", "own", "found", "sports", "house", "related", "security", "both", "g", "county", "american", "photo", "game", "members", "power", "while", "care", "network", "down", "computer", "systems", "three", "total", "place", "end", "following", "download", "h", "him", "without", "per", "access", "think", "north", "resources", "current", "posts", "big", "media", "law", "control", "water", "history", "pictures", "size", "art", "personal", "since", "including", "guide", "shop", "directory", "board", "location", "change", "white", "text", "small", "rating", "rate", "government", "children", "during", "usa", "return", "students", "v", "shopping", "account", "times", "sites", "level", "digital", "profile", "previous", "form", "events", "love", "old", "john", "main", "call", "hours", "image", "department", "title", "description", "non", "k", "y", "insurance", "another", "why", "shall", "property", "class", "cd", "still", "money", "quality", "every", "listing", "content", "country", "private", "little", "visit", "save", "tools", "low", "reply", "customer", "december", "compare", "movies", "include", "college", "value", "article", "york", "man", "card", "jobs", "provide", "j", "food", "source", "author", "different", "press", "u", "learn", "sale", "around", "print", "course", "job", "canada", "process", "teen", "room", "stock", "training", "too", "credit", "point", "join", "science", "men", "categories", "advanced", "west", "sales", "look", "english", "left", "team", "estate", "box", "conditions", "select", "windows", "photos", "gay", "thread", "week", "category", "note", "live", "large", "gallery", "table", "register", "however", "june", "october", "november", "market", "library", "really", "action", "start", "series", "model", "features", "air", "industry", "plan", "human", "provided", "tv", "yes", "required", "second", "hot", "accessories", "cost", "movie", "forums", "march", "la", "september", "better", "say", "questions", "july", "yahoo", "going", "medical", "test", "friend", "come", "dec", "server", "pc", "study", "application", "cart", "staff", "articles", "san", "feedback", "again", "play", "looking", "issues", "april", "never", "users", "complete", "street", "topic", "comment", "financial", "things", "working", "against", "standard", "tax", "person", "below", "mobile", "less", "got", "blog", "party", "payment", "equipment", "login", "student", "let", "programs", "offers", "legal", "above", "recent", "park", "stores", "side", "act", "problem", "red", "give", "memory", "performance", "social", "q", "august", "quote", "language", "story", "sell", "options", "experience", "rates", "create", "key", "body", "young", "america", "important", "field", "few", "east", "paper", "single", "ii", "age", "activities", "club", "example", "girls", "additional", "password", "z", "latest", "something", "road", "gift", "question", "changes", "night", "ca", "hard", "texas", "oct", "pay", "four", "poker", "status", "browse", "issue", "range", "building", "seller", "court", "february", "always", "result", "audio", "light", "write", "war", "nov", "offer", "blue", "groups", "al", "easy", "given", "files", "event", "release", "analysis", "request", "fax", "china", "making", "picture", "needs", "possible", "might", "professional", "yet", "month", "major", "star", "areas", "future", "space", "committee", "hand", "sun", "cards", "problems", "london", "washington", "meeting", "rss", "become", "interest", "id", "child", "keep", "enter", "california", "share", "similar", "garden", "schools", "million", "added", "reference", "companies", "listed", "baby", "learning", "energy", "run", "delivery", "net", "popular", "term", "film", "stories", "put", "computers", "journal", "reports", "co", "try", "welcome", "central", "images", "president", "notice", "god", "original", "head", "radio", "until", "cell", "color", "self", "council", "away", "includes", "track", "australia", "discussion", "archive", "once", "others", "entertainment", "agreement", "format", "least", "society", "months", "log", "safety", "friends", "sure", "faq", "trade", "edition", "cars", "messages", "marketing", "tell", "further", "updated", "association", "able", "having", "provides", "david", "fun", "already", "green", "studies", "close", "common", "drive", "specific", "several", "gold", "feb", "living", "sep", "collection", "called", "short", "arts", "lot", "ask", "display", "limited", "powered", "solutions", "means", "director", "daily", "beach", "past", "natural", "whether", "due", "et", "electronics", "five", "upon", "period", "planning", "database", "says", "official", "weather", "mar", "land", "average", "done", "technical", "window", "france", "pro", "region", "island", "record", "direct", "microsoft", "conference", "environment", "records", "st", "district", "calendar", "costs", "style", "url", "front", "statement", "update", "parts", "aug", "ever", "downloads", "early", "miles", "sound", "resource", "present", "applications", "either", "ago", "document", "word", "works", "material", "bill", "apr", "written", "talk", "federal", "hosting", "rules", "final", "adult", "tickets", "thing", "centre", "requirements", "via", "cheap", "nude", "kids", "finance", "true", "minutes", "else", "mark", "third", "rock", "gifts", "europe", "reading", "topics", "bad", "individual", "tips", "plus", "auto", "cover", "usually", "edit", "together", "videos", "percent", "fast", "function", "fact", "unit", "getting", "global", "tech", "meet", "far", "economic", "en", "player", "projects", "lyrics", "often", "subscribe", "submit", "germany", "amount", "watch", "included", "feel", "though", "bank", "risk", "thanks", "everything", "deals", "various", "words", "linux", "jul", "production", "commercial", "james", "weight", "town", "heart", "advertising", "received", "choose", "treatment", "newsletter", "archives", "points", "knowledge", "magazine", "error", "camera", "jun", "girl", "currently", "construction", "toys", "registered", "clear", "golf", "receive", "domain", "methods", "chapter", "makes", "protection", "policies", "loan", "wide", "beauty", "manager", "india", "position", "taken", "sort", "listings", "models", "michael", "known", "half", "cases", "step", "engineering", "florida", "simple", "quick", "none", "wireless", "license", "paul", "friday", "lake", "whole", "annual", "published", "later", "basic", "sony", "shows", "corporate", "google", "church", "method", "purchase", "customers", "active", "response", "practice", "hardware", "figure", "materials", "fire", "holiday", "chat", "enough", "designed", "along", "among", "death", "writing", "speed", "html", "countries", "loss", "face", "brand", "discount", "higher", "effects", "created", "remember", "standards", "oil", "bit", "yellow", "political", "increase", "advertise", "kingdom", "base", "near", "environmental", "thought", "stuff", "french", "storage", "oh", "japan", "doing", "loans", "shoes", "entry", "stay", "nature", "orders", "availability", "africa", "summary", "turn", "mean", "growth", "notes", "agency", "king", "monday", "european", "activity", "copy", "although", "drug", "pics", "western", "income", "force", "cash", "employment", "overall", "bay", "river", "commission", "ad", "package", "contents", "seen", "players", "engine", "port", "album", "regional", "stop", "supplies", "started", "administration", "bar", "institute", "views", "plans", "double", "dog", "build", "screen", "exchange", "types", "soon", "sponsored", "lines", "electronic", "continue", "across", "benefits", "needed", "season", "apply", "someone", "held", "ny", "anything", "printer", "condition", "effective", "believe", "organization", "effect", "asked", "eur", "mind", "sunday", "selection", "casino", "pdf", "lost", "tour", "menu", "volume", "cross", "anyone", "mortgage", "hope", "silver", "corporation", "wish", "inside", "solution", "mature", "role", "rather", "weeks", "addition", "came", "supply", "nothing", "certain", "usr", "executive", "running", "lower", "necessary", "union", "jewelry", "according", "dc", "clothing", "mon", "com", "particular", "fine", "names", "robert", "homepage", "hour", "gas", "skills", "six", "bush", "islands", "advice", "career", "military", "rental", "decision", "leave", "british", "teens", "pre", "huge", "sat", "woman", "facilities", "zip", "bid", "kind", "sellers", "middle", "move", "cable", "opportunities", "taking", "values", "division", "coming", "tuesday", "object", "lesbian", "appropriate", "machine", "logo", "length", "actually", "nice", "score", "statistics", "client", "ok", "returns", "capital", "follow", "sample", "investment", "sent", "shown", "saturday", "christmas", "england", "culture", "band", "flash", "ms", "lead", "george", "choice", "went", "starting", "registration", "fri", "thursday", "courses", "consumer", "hi", "airport", "foreign", "artist", "outside", "furniture", "levels", "channel", "letter", "mode", "phones", "ideas", "wednesday", "structure", "fund", "summer", "allow", "degree", "contract", "button", "releases", "wed", "homes", "super", "male", "matter", "custom", "virginia", "almost", "took", "located", "multiple", "asian", "distribution", "editor", "inn", "industrial", "cause", "potential", "song", "cnet", "ltd", "los", "hp", "focus", "late", "fall", "featured", "idea", "rooms", "female", "responsible", "inc", "communications", "win", "associated", "thomas", "primary", "cancer", "numbers", "reason", "tool", "browser", "spring", "foundation", "answer", "voice", "eg", "friendly", "schedule", "documents", "communication", "purpose", "feature", "bed", "comes", "police", "everyone", "independent", "ip", "approach", "cameras", "brown", "physical", "operating", "hill", "maps", "medicine", "deal", "hold", "ratings", "chicago", "forms", "glass", "happy", "tue", "smith", "wanted", "developed", "thank", "safe", "unique", "survey", "prior", "telephone", "sport", "ready", "feed", "animal", "sources", "mexico", "population", "pa", "regular", "secure", "navigation", "operations", "therefore", "ass", "simply", "evidence", "station", "christian", "round", "paypal", "favorite", "understand", "option", "master", "valley", "recently", "probably", "thu", "rentals", "sea", "built", "publications", "blood", "cut", "worldwide", "improve", "connection", "publisher", "hall", "larger", "anti", "networks", "earth", "parents", "nokia", "impact", "transfer", "introduction", "kitchen", "strong", "tel", "carolina", "wedding", "properties", "hospital", "ground", "overview", "ship", "accommodation", "owners", "disease", "tx", "excellent", "paid", "italy", "perfect", "hair", "opportunity", "kit", "classic", "basis", "command", "cities", "william", "express", "award", "distance", "tree", "peter", "assessment", "ensure", "thus", "wall", "ie", "involved", "el", "extra", "especially", "interface", "pussy", "partners", "budget", "rated", "guides", "success", "maximum", "ma", "operation", "existing", "quite", "selected", "boy", "amazon", "patients", "restaurants", "beautiful", "warning", "wine", "locations", "horse", "vote", "forward", "flowers", "stars", "significant", "lists", "technologies", "owner", "retail", "animals", "useful", "directly", "manufacturer", "ways", "est", "son", "providing", "rule", "mac", "housing", "takes", "iii", "gmt", "bring", "catalog", "searches", "max", "trying", "mother", "authority", "considered", "told", "xml", "traffic", "programme", "joined", "input", "strategy", "feet", "agent", "valid", "bin", "modern", "senior", "ireland", "sexy", "teaching", "door", "grand", "testing", "trial", "charge", "units", "instead", "canadian", "cool", "normal", "wrote", "enterprise", "ships", "entire", "educational", "md", "leading", "metal", "positive", "fl", "fitness", "chinese", "opinion", "mb", "asia", "football", "abstract", "uses", "output", "funds", "mr", "greater", "likely", "develop", "employees", "artists", "alternative", "processing", "responsibility", "resolution", "java", "guest", "seems", "publication", "pass", "relations", "trust", "van", "contains", "session", "multi", "photography", "republic", "fees", "components", "vacation", "century", "academic", "assistance", "completed", "skin", "graphics", "indian", "prev", "ads", "mary", "il", "expected", "ring", "grade", "dating", "pacific", "mountain", "organizations", "pop", "filter", "mailing", "vehicle", "longer", "consider", "int", "northern", "behind", "panel", "floor", "german", "buying", "match", "proposed", "default", "require", "iraq", "boys", "outdoor", "deep", "morning", "otherwise", "allows", "rest", "protein", "plant", "reported", "hit", "transportation", "mm", "pool", "mini", "politics", "partner", "disclaimer", "authors", "boards", "faculty", "parties", "fish", "membership", "mission", "eye", "string", "sense", "modified", "pack", "released", "stage", "internal", "goods", "recommended", "born", "unless", "richard", "detailed", "japanese", "race", "approved", "background", "target", "except", "character", "usb", "maintenance", "ability", "maybe", "functions", "ed", "moving", "brands", "places", "php", "pretty", "trademarks", "phentermine", "spain", "southern", "yourself", "etc", "winter", "rape", "battery", "youth", "pressure", "submitted", "boston", "incest", "debt", "keywords", "medium", "television", "interested", "core", "break", "purposes", "throughout", "sets", "dance", "wood", "msn", "itself", "defined", "papers", "playing", "awards", "fee", "studio", "reader", "virtual", "device", "established", "answers", "rent", "las", "remote", "dark", "programming", "external", "apple", "le", "regarding", "instructions", "min", "offered", "theory", "enjoy", "remove", "aid", "surface", "minimum", "visual", "host", "variety", "teachers", "isbn", "martin", "manual", "block", "subjects", "agents", "increased", "repair", "fair", "civil", "steel", "understanding", "songs", "fixed", "wrong", "beginning", "hands", "associates", "finally", "az", "updates", "desktop", "classes", "paris", "ohio", "gets", "sector", "capacity", "requires", "jersey", "un", "fat", "fully", "father", "electric", "saw", "instruments", "quotes", "officer", "driver", "businesses", "dead", "respect", "unknown", "specified", "restaurant", "mike", "trip", "pst", "worth", "mi", "procedures", "poor", "teacher", "xxx", "eyes", "relationship", "workers", "farm", "georgia", "peace", "traditional", "campus", "tom", "showing", "creative", "coast", "benefit", "progress", "funding", "devices", "lord", "grant", "sub", "agree", "fiction", "hear", "sometimes", "watches", "careers", "beyond", "goes", "families", "led", "museum", "themselves", "fan", "transport", "interesting", "blogs", "wife", "evaluation", "accepted", "former", "implementation", "ten", "hits", "zone", "complex", "th", "cat", "galleries", "references", "die", "presented", "jack", "flat", "flow", "agencies", "literature", "respective", "parent", "spanish", "michigan", "columbia", "setting", "dr", "scale", "stand", "economy", "highest", "helpful", "monthly", "critical", "frame", "musical", "definition", "secretary", "angeles", "networking", "path", "australian", "employee", "chief", "gives", "kb", "bottom", "magazines", "packages", "detail", "francisco", "laws", "changed", "pet", "heard", "begin", "individuals", "colorado", "royal", "clean", "switch", "russian", "largest", "african", "guy", "titles", "relevant", "guidelines", "justice", "connect", "bible", "dev", "cup", "basket", "applied", "weekly", "vol", "installation", "described", "demand", "pp", "suite", "vegas", "na", "square", "chris", "attention", "advance", "skip", "diet", "army", "auction", "gear", "lee", "os", "difference", "allowed", "correct", "charles", "nation", "selling", "lots", "piece", "sheet", "firm", "seven", "older", "illinois", "regulations", "elements", "species", "jump", "cells", "module", "resort", "facility", "random", "pricing", "dvds", "certificate", "minister", "motion", "looks", "fashion", "directions", "visitors", "documentation", "monitor", "trading", "forest", "calls", "whose", "coverage", "couple", "giving", "chance", "vision", "ball", "ending", "clients", "actions", "listen", "discuss", "accept", "automotive", "naked", "goal", "successful", "sold", "wind", "communities", "clinical", "situation", "sciences", "markets", "lowest", "highly", "publishing", "appear", "emergency", "developing", "lives", "currency", "leather", "determine", "milf", "temperature", "palm", "announcements", "patient", "actual", "historical", "stone", "bob", "commerce", "ringtones", "perhaps", "persons", "difficult", "scientific", "satellite", "fit", "tests", "village", "accounts", "amateur", "ex", "met", "pain", "xbox", "particularly", "factors", "coffee", "www", "settings", "cum", "buyer", "cultural", "steve", "easily", "oral", "ford", "poster", "edge", "functional", "root", "au", "fi", "closed", "holidays", "ice", "pink", "zealand", "balance", "monitoring", "graduate", "replies", "shot", "nc", "architecture", "initial", "label", "thinking", "scott", "llc", "sec", "recommend", "canon", "hardcore", "league", "waste", "minute", "bus", "provider", "optional", "dictionary", "cold", "accounting", "manufacturing", "sections", "chair", "fishing", "effort", "phase", "fields", "bag", "fantasy", "po", "letters", "motor", "va", "professor", "context", "install", "shirt", "apparel", "generally", "continued", "foot", "mass", "crime", "count", "breast", "techniques", "ibm", "rd", "johnson", "sc", "quickly", "dollars", "websites", "religion", "claim", "driving", "permission", "surgery", "patch", "heat", "wild", "measures", "generation", "kansas", "miss", "chemical", "doctor", "task", "reduce", "brought", "himself", "nor", "component", "enable", "exercise", "bug", "santa", "mid", "guarantee", "leader", "diamond", "israel", "se", "processes", "soft", "servers", "alone", "meetings", "seconds", "jones", "arizona", "keyword", "interests", "flight", "congress", "fuel", "username", "walk", "produced", "italian", "paperback", "classifieds", "wait", "supported", "pocket", "saint", "rose", "freedom", "argument", "competition", "creating", "jim", "drugs", "joint", "premium", "providers", "fresh", "characters", "attorney", "upgrade", "di", "factor", "growing", "thousands", "km", "stream", "apartments", "pick", "hearing", "eastern", "auctions", "therapy", "entries", "dates", "generated", "signed", "upper", "administrative", "serious", "prime", "samsung", "limit", "began", "louis", "steps", "errors", "shops", "bondage", "del", "efforts", "informed", "ga", "ac", "thoughts", "creek", "ft", "worked", "quantity", "urban", "practices", "sorted", "reporting", "essential", "myself", "tours", "platform", "load", "affiliate", "labor", "immediately", "admin", "nursing", "defense", "machines", "designated", "tags", "heavy", "covered", "recovery", "joe", "guys", "integrated", "configuration", "merchant", "comprehensive", "expert", "universal", "protect", "drop", "solid", "cds", "presentation", "languages", "became", "orange", "compliance", "vehicles", "prevent", "theme", "rich", "im", "campaign", "marine", "improvement", "vs", "guitar", "finding", "pennsylvania", "examples", "ipod", "saying", "spirit", "ar", "claims", "challenge", "motorola", "acceptance", "strategies", "mo", "seem", "affairs", "touch", "intended", "towards", "sa", "goals", "hire", "election", "suggest", "branch", "charges", "serve", "affiliates", "reasons", "magic", "mount", "smart", "talking", "gave", "ones", "latin", "multimedia", "xp", "avoid", "certified", "manage", "corner", "rank", "computing", "oregon", "element", "birth", "virus", "abuse", "interactive", "requests", "separate", "quarter", "procedure", "leadership", "tables", "define", "racing", "religious", "facts", "breakfast", "kong", "column", "plants", "faith", "chain", "developer", "identify", "avenue", "missing", "died", "approximately", "domestic", "sitemap", "recommendations", "moved", "houston", "reach", "comparison", "mental", "viewed", "moment", "extended", "sequence", "inch", "attack", "sorry", "centers", "opening", "damage", "lab", "reserve", "recipes", "cvs", "gamma", "plastic", "produce", "snow", "placed", "truth", "counter", "failure", "follows", "eu", "weekend", "dollar", "camp", "ontario", "automatically", "des", "minnesota", "films", "bridge", "native", "fill", "williams", "movement", "printing", "baseball", "owned", "approval", "draft", "chart", "played", "contacts", "cc", "jesus", "readers", "clubs", "lcd", "wa", "jackson", "equal", "adventure", "matching", "offering", "shirts", "profit", "leaders", "posters", "institutions", "assistant", "variable", "ave", "dj", "advertisement", "expect", "parking", "headlines", "yesterday", "compared", "determined", "wholesale", "workshop", "russia", "gone", "codes", "kinds", "extension", "seattle", "statements", "golden", "completely", "teams", "fort", "cm", "wi", "lighting", "senate", "forces", "funny", "brother", "gene", "turned", "portable", "tried", "electrical", "applicable", "disc", "returned", "pattern", "ct", "hentai", "boat", "named", "theatre", "laser", "earlier", "manufacturers", "sponsor", "classical", "icon", "warranty", "dedicated", "indiana", "direction", "harry", "basketball", "objects", "ends", "delete", "evening", "assembly", "nuclear", "taxes", "mouse", "signal", "criminal", "issued", "brain", "sexual", "wisconsin", "powerful", "dream", "obtained", "false", "da", "cast", "flower", "felt", "personnel", "passed", "supplied", "identified", "falls", "pic", "soul", "aids", "opinions", "promote", "stated", "stats", "hawaii", "professionals", "appears", "carry", "flag", "decided", "nj", "covers", "hr", "em", "advantage", "hello", "designs", "maintain", "tourism", "priority", "newsletters", "adults", "clips", "savings", "iv", "graphic", "atom", "payments", "rw", "estimated", "binding", "brief", "ended", "winning", "eight", "anonymous", "iron", "straight", "script", "served", "wants", "miscellaneous", "prepared", "void", "dining", "alert", "integration", "atlanta", "dakota", "tag", "interview", "mix", "framework", "disk", "installed", "queen", "vhs", "credits", "clearly", "fix", "handle", "sweet", "desk", "criteria", "pubmed", "dave", "massachusetts", "diego", "hong", "vice", "associate", "ne", "truck", "behavior", "enlarge", "ray", "frequently", "revenue", "measure", "changing", "votes", "du", "duty", "looked", "discussions", "bear", "gain", "festival", "laboratory", "ocean", "flights", "experts", "signs", "lack", "depth", "iowa", "whatever", "logged", "laptop", "vintage", "train", "exactly", "dry", "explore", "maryland", "spa", "concept", "nearly", "eligible", "checkout", "reality", "forgot", "handling", "origin", "knew", "gaming", "feeds", "billion", "destination", "scotland", "faster", "intelligence", "dallas", "bought", "con", "ups", "nations", "route", "followed", "specifications", "broken", "tripadvisor", "frank", "alaska", "zoom", "blow", "battle", "residential", "anime", "speak", "decisions", "industries", "protocol", "query", "clip", "partnership", "editorial", "nt", "expression", "es", "equity", "provisions", "speech", "wire", "principles", "suggestions", "rural", "shared", "sounds", "replacement", "tape", "strategic", "judge", "spam", "economics", "acid", "bytes", "cent", "forced", "compatible", "fight", "apartment", "height", "null", "zero", "speaker", "filed", "gb", "netherlands", "obtain", "bc", "consulting", "recreation", "offices", "designer", "remain", "managed", "pr", "failed", "marriage", "roll", "korea", "banks", "fr", "participants", "secret", "bath", "aa", "kelly", "leads", "negative", "austin", "favorites", "toronto", "theater", "springs", "missouri", "andrew", "var", "perform", "healthy", "translation", "estimates", "font", "assets", "injury", "mt", "joseph", "ministry", "drivers", "lawyer", "figures", "married", "protected", "proposal", "sharing", "philadelphia", "portal", "waiting", "birthday", "beta", "fail", "gratis", "banking", "officials", "brian", "toward", "won", "slightly", "assist", "conduct", "contained", "lingerie", "legislation", "calling", "parameters", "jazz", "serving", "bags", "profiles", "miami", "comics", "matters", "houses", "doc", "postal", "relationships", "tennessee", "wear", "controls", "breaking", "combined", "ultimate", "wales", "representative", "frequency", "introduced", "minor", "finish", "departments", "residents", "noted", "displayed", "mom", "reduced", "physics", "rare", "spent", "performed", "extreme", "samples", "davis", "daniel", "bars", "reviewed", "row", "oz", "forecast", "removed", "helps", "singles", "administrator", "cycle", "amounts", "contain", "accuracy", "dual", "rise", "usd", "sleep", "mg", "bird", "pharmacy", "brazil", "creation", "static", "scene", "hunter", "addresses", "lady", "crystal", "famous", "writer", "chairman", "violence", "fans", "oklahoma", "speakers", "drink", "academy", "dynamic", "gender", "eat", "permanent", "agriculture", "dell", "cleaning", "constitutes", "portfolio", "practical", "delivered", "collectibles", "infrastructure", "exclusive", "seat", "concerns", "colour", "vendor", "originally", "intel", "utilities", "philosophy", "regulation", "officers", "reduction", "aim", "bids", "referred", "supports", "nutrition", "recording", "regions", "junior", "toll", "les", "cape", "ann", "rings", "meaning", "tip", "secondary", "wonderful", "mine", "ladies", "henry", "ticket", "announced", "guess", "agreed", "prevention", "whom", "ski", "soccer", "math", "import", "posting", "presence", "instant", "mentioned", "automatic", "healthcare", "viewing", "maintained", "ch", "increasing", "majority", "connected", "christ", "dan", "dogs", "sd", "directors", "aspects", "austria", "ahead", "moon", "participation", "scheme", "utility", "preview", "fly", "manner", "matrix", "containing", "combination", "devel", "amendment", "despite", "strength", "guaranteed", "turkey", "libraries", "proper", "distributed", "degrees", "singapore", "enterprises", "delta", "fear", "seeking", "inches", "phoenix", "rs", "convention", "shares", "principal", "daughter", "standing", "voyeur", "comfort", "colors", "wars", "cisco", "ordering", "kept", "alpha", "appeal", "cruise", "bonus", "certification", "previously", "hey", "bookmark", "buildings", "specials", "beat", "disney", "household", "batteries", "adobe", "smoking", "bbc", "becomes", "drives", "arms", "alabama", "tea", "improved", "trees", "avg", "achieve", "positions", "dress", "subscription", "dealer", "contemporary", "sky", "utah", "nearby", "rom", "carried", "happen", "exposure", "panasonic", "hide", "permalink", "signature", "gambling", "refer", "miller", "provision", "outdoors", "clothes", "caused", "luxury", "babes", "frames", "viagra", "certainly", "indeed", "newspaper", "toy", "circuit", "layer", "printed", "slow", "removal", "easier", "src", "liability", "trademark", "hip", "printers", "faqs", "nine", "adding", "kentucky", "mostly", "eric", "spot", "taylor", "trackback", "prints", "spend", "factory", "interior", "revised", "grow", "americans", "optical", "promotion", "relative", "amazing", "clock", "dot", "hiv", "identity", "suites", "conversion", "feeling", "hidden", "reasonable", "victoria", "serial", "relief", "revision", "broadband", "influence", "ratio", "pda", "importance", "rain", "onto", "dsl", "planet", "webmaster", "copies", "recipe", "zum", "permit", "seeing", "proof", "dna", "diff", "tennis", "bass", "prescription", "bedroom", "empty", "instance", "hole", "pets", "ride", "licensed", "orlando", "specifically", "tim", "bureau", "maine", "sql", "represent", "conservation", "pair", "ideal", "specs", "recorded", "don", "pieces", "finished", "parks", "dinner", "lawyers", "sydney", "stress", "cream", "ss", "runs", "trends", "yeah", "discover", "sexo", "ap", "patterns", "boxes", "louisiana", "hills", "javascript", "fourth", "nm", "advisor", "mn", "marketplace", "nd", "evil", "aware", "wilson", "shape", "evolution", "irish", "certificates", "objectives", "stations", "suggested", "gps", "op", "remains", "acc", "greatest", "firms", "concerned", "euro", "operator", "structures", "generic", "encyclopedia", "usage", "cap", "ink", "charts", "continuing", "mixed", "census", "interracial", "peak", "tn", "competitive", "exist", "wheel", "transit", "suppliers", "salt", "compact", "poetry", "lights", "tracking", "angel", "bell", "keeping", "preparation", "attempt", "receiving", "matches", "accordance", "width", "noise", "engines", "forget", "array", "discussed", "accurate", "stephen", "elizabeth", "climate", "reservations", "pin", "playstation", "alcohol", "greek", "instruction", "managing", "annotation", "sister", "raw", "differences", "walking", "explain", "smaller", "newest", "establish", "gnu", "happened", "expressed", "jeff", "extent", "sharp", "lesbians", "ben", "lane", "paragraph", "kill", "mathematics", "aol", "compensation", "ce", "export", "managers", "aircraft", "modules", "sweden", "conflict", "conducted", "versions", "employer", "occur", "percentage", "knows", "mississippi", "describe", "concern", "backup", "requested", "citizens", "connecticut", "heritage", "personals", "immediate", "holding", "trouble", "spread", "coach", "kevin", "agricultural", "expand", "supporting", "audience", "assigned", "jordan", "collections", "ages", "participate", "plug", "specialist", "cook", "affect", "virgin", "experienced", "investigation", "raised", "hat", "institution", "directed", "dealers", "searching", "sporting", "helping", "perl", "affected", "lib", "bike", "totally", "plate", "expenses", "indicate", "blonde", "ab", "proceedings", "favourite", "transmission", "anderson", "utc", "characteristics", "der", "lose", "organic", "seek", "experiences", "albums", "cheats", "extremely", "verzeichnis", "contracts", "guests", "hosted", "diseases", "concerning", "developers", "equivalent", "chemistry", "tony", "neighborhood", "nevada", "kits", "thailand", "variables", "agenda", "anyway", "continues", "tracks", "advisory", "cam", "curriculum", "logic", "template", "prince", "circle", "soil", "grants", "anywhere", "psychology", "responses", "atlantic", "wet", "circumstances", "edward", "investor", "identification", "ram", "leaving", "wildlife", "appliances", "matt", "elementary", "cooking", "speaking", "sponsors", "fox", "unlimited", "respond", "sizes", "plain", "exit", "entered", "iran", "arm", "keys", "launch", "wave", "checking", "costa", "belgium", "printable", "holy", "acts", "guidance", "mesh", "trail", "enforcement", "symbol", "crafts", "highway", "buddy", "hardcover", "observed", "dean", "setup", "poll", "booking", "glossary", "fiscal", "celebrity", "styles", "denver", "unix", "filled", "bond", "channels", "ericsson", "appendix", "notify", "blues", "chocolate", "pub", "portion", "scope", "hampshire", "supplier", "cables", "cotton", "bluetooth", "controlled", "requirement", "authorities", "biology", "dental", "killed", "border", "ancient", "debate", "representatives", "starts", "pregnancy", "causes", "arkansas", "biography", "leisure", "attractions", "learned", "transactions", "notebook", "explorer", "historic", "attached", "opened", "tm", "husband", "disabled", "authorized", "crazy", "upcoming", "britain", "concert", "retirement", "scores", "financing", "efficiency", "sp", "comedy", "adopted", "efficient", "weblog", "linear", "commitment", "specialty", "bears", "jean", "hop", "carrier", "edited", "constant", "visa", "mouth", "jewish", "meter", "linked", "portland", "interviews", "concepts", "nh", "gun", "reflect", "pure", "deliver", "wonder", "hell", "lessons", "fruit", "begins", "qualified", "reform", "lens", "alerts", "treated", "discovery", "draw", "mysql", "classified", "relating", "assume", "confidence", "alliance", "fm", "confirm", "warm", "neither", "lewis", "howard", "offline", "leaves", "engineer", "lifestyle", "consistent", "replace", "clearance", "connections", "inventory", "converter", "suck", "organisation", "babe", "checks", "reached", "becoming", "safari", "objective", "indicated", "sugar", "crew", "legs", "sam", "stick", "securities", "allen", "pdt", "relation", "enabled", "genre", "slide", "montana", "volunteer", "tested", "rear", "democratic", "enhance", "switzerland", "exact", "bound", "parameter", "adapter", "processor", "node", "formal", "dimensions", "contribute", "lock", "hockey", "storm", "micro", "colleges", "laptops", "mile", "showed", "challenges", "editors", "mens", "threads", "bowl", "supreme", "brothers", "recognition", "presents", "ref", "tank", "submission", "dolls", "estimate", "encourage", "navy", "kid", "regulatory", "inspection", "consumers", "cancel", "limits", "territory", "transaction", "manchester", "weapons", "paint", "delay", "pilot", "outlet", "contributions", "continuous", "db", "czech", "resulting", "cambridge", "initiative", "novel", "pan", "execution", "disability", "increases", "ultra", "winner", "idaho", "contractor", "ph", "episode", "examination", "potter", "dish", "plays", "bulletin", "ia", "pt", "indicates", "modify", "oxford", "adam", "truly", "epinions", "painting", "committed", "extensive", "affordable", "universe", "candidate", "databases", "patent", "slot", "psp", "outstanding", "ha", "eating", "perspective", "planned", "watching", "lodge", "messenger", "mirror", "tournament", "consideration", "ds", "discounts", "sterling", "sessions", "kernel", "boobs", "stocks", "buyers", "journals", "gray", "catalogue", "ea", "jennifer", "antonio", "charged", "broad", "taiwan", "und", "chosen", "demo", "greece", "lg", "swiss", "sarah", "clark", "labour", "hate", "terminal", "publishers", "nights", "behalf", "caribbean", "liquid", "rice", "nebraska", "loop", "salary", "reservation", "foods", "gourmet", "guard", "properly", "orleans", "saving", "nfl", "remaining", "empire", "resume", "twenty", "newly", "raise", "prepare", "avatar", "gary", "depending", "illegal", "expansion", "vary", "hundreds", "rome", "arab", "lincoln", "helped", "premier", "tomorrow", "purchased", "milk", "decide", "consent", "drama", "visiting", "performing", "downtown", "keyboard", "contest", "collected", "nw", "bands", "boot", "suitable", "ff", "absolutely", "millions", "lunch", "dildo", "audit", "push", "chamber", "guinea", "findings", "muscle", "featuring", "iso", "implement", "clicking", "scheduled", "polls", "typical", "tower", "yours", "sum", "misc", "calculator", "significantly", "chicken", "temporary", "attend", "shower", "alan", "sending", "jason", "tonight", "dear", "sufficient", "holdem", "shell", "province", "catholic", "oak", "vat", "awareness", "vancouver", "governor", "beer", "seemed", "contribution", "measurement", "swimming", "spyware", "formula", "constitution", "packaging", "solar", "jose", "catch", "jane", "pakistan", "ps", "reliable", "consultation", "northwest", "sir", "doubt", "earn", "finder", "unable", "periods", "classroom", "tasks", "democracy", "attacks", "kim", "wallpaper", "merchandise", "const", "resistance", "doors", "symptoms", "resorts", "biggest", "memorial", "visitor", "twin", "forth", "insert", "baltimore", "gateway", "ky", "dont", "alumni", "drawing", "candidates", "charlotte", "ordered", "biological", "fighting", "transition", "happens", "preferences", "spy", "romance", "instrument", "bruce", "split", "themes", "powers", "heaven", "br", "bits", "pregnant", "twice", "classification", "focused", "egypt", "physician", "hollywood", "bargain", "wikipedia", "cellular", "norway", "vermont", "asking", "blocks", "normally", "lo", "spiritual", "hunting", "diabetes", "suit", "ml", "shift", "chip", "res", "sit", "bodies", "photographs", "cutting", "wow", "simon", "writers", "marks", "flexible", "loved", "favourites", "mapping", "numerous", "relatively", "birds", "satisfaction", "represents", "char", "indexed", "pittsburgh", "superior", "preferred", "saved", "paying", "cartoon", "shots", "intellectual", "moore", "granted", "choices", "carbon", "spending", "comfortable", "magnetic", "interaction", "listening", "effectively", "registry", "crisis", "outlook", "massive", "denmark", "employed", "bright", "treat", "header", "cs", "poverty", "formed", "piano", "echo", "que", "grid", "sheets", "patrick", "experimental", "puerto", "revolution", "consolidation", "displays", "plasma", "allowing", "earnings", "voip", "mystery", "landscape", "dependent", "mechanical", "journey", "delaware", "bidding", "consultants", "risks", "banner", "applicant", "charter", "fig", "barbara", "cooperation", "counties", "acquisition", "ports", "implemented", "sf", "directories", "recognized", "dreams", "blogger", "notification", "kg", "licensing", "stands", "teach", "occurred", "textbooks", "rapid", "pull", "hairy", "diversity", "cleveland", "ut", "reverse", "deposit", "seminar", "investments", "latina", "nasa", "wheels", "specify", "accessibility", "dutch", "sensitive", "templates", "formats", "tab", "depends", "boots", "holds", "router", "concrete", "si", "editing", "poland", "folder", "womens", "css", "completion", "upload", "pulse", "universities", "technique", "contractors", "milfhunter", "voting", "courts", "notices", "subscriptions", "calculate", "mc", "detroit", "alexander", "broadcast", "converted", "metro", "toshiba", "anniversary", "improvements", "strip", "specification", "pearl", "accident", "nick", "accessible", "accessory", "resident", "plot", "qty", "possibly", "airline", "typically", "representation", "regard", "pump", "exists", "arrangements", "smooth", "conferences", "uniprotkb", "beastiality", "strike", "consumption", "birmingham", "flashing", "lp", "narrow", "afternoon", "threat", "surveys", "sitting", "putting", "consultant", "controller", "ownership", "committees", "legislative", "researchers", "vietnam", "trailer", "anne", "castle", "gardens", "missed", "malaysia", "unsubscribe", "antique", "labels", "willing", "bio", "molecular", "upskirt", "acting", "heads", "stored", "exam", "logos", "residence", "attorneys", "milfs", "antiques", "density", "hundred", "ryan", "operators", "strange", "sustainable", "philippines", "statistical", "beds", "breasts", "mention", "innovation", "pcs", "employers", "grey", "parallel", "honda", "amended", "operate", "bills", "bold", "bathroom", "stable", "opera", "definitions", "von", "doctors", "lesson", "cinema", "asset", "ag", "scan", "elections", "drinking", "reaction", "blank", "enhanced", "entitled", "severe", "generate", "stainless", "newspapers", "hospitals", "vi", "deluxe", "humor", "aged", "monitors", "exception", "lived", "duration", "bulk", "successfully", "indonesia", "pursuant", "sci", "fabric", "edt", "visits", "primarily", "tight", "domains", "capabilities", "pmid", "contrast", "recommendation", "flying", "recruitment", "sin", "berlin", "cute", "organized", "ba", "para", "siemens", "adoption", "improving", "cr", "expensive", "meant", "capture", "pounds", "buffalo", "organisations", "plane", "pg", "explained", "seed", "programmes", "desire", "expertise", "mechanism", "camping", "ee", "jewellery", "meets", "welfare", "peer", "caught", "eventually", "marked", "driven", "measured", "medline", "bottle", "agreements", "considering", "innovative", "marshall", "massage", "rubber", "conclusion", "closing", "tampa", "thousand", "meat", "legend", "grace", "susan", "ing", "ks", "adams", "python", "monster", "alex", "bang", "villa", "bone", "columns", "disorders", "bugs", "collaboration", "hamilton", "detection", "ftp", "cookies", "inner", "formation", "tutorial", "med", "engineers", "entity", "cruises", "gate", "holder", "proposals", "moderator", "sw", "tutorials", "settlement", "portugal", "lawrence", "roman", "duties", "valuable", "erotic", "tone", "collectables", "ethics", "forever", "dragon", "busy", "captain", "fantastic", "imagine", "brings", "heating", "leg", "neck", "hd", "wing", "governments", "purchasing", "scripts", "abc", "stereo", "appointed", "taste", "dealing", "commit", "tiny", "operational", "rail", "airlines", "liberal", "livecam", "jay", "trips", "gap", "sides", "tube", "turns", "corresponding", "descriptions", "cache", "belt", "jacket", "determination", "animation", "oracle", "er", "matthew", "lease", "productions", "aviation", "hobbies", "proud", "excess", "disaster", "console", "commands", "jr", "telecommunications", "instructor", "giant", "achieved", "injuries", "shipped", "bestiality", "seats", "approaches", "biz", "alarm", "voltage", "anthony", "nintendo", "usual", "loading", "stamps", "appeared", "franklin", "angle", "rob", "vinyl", "highlights", "mining", "designers", "melbourne", "ongoing", "worst", "imaging", "betting", "scientists", "liberty", "wyoming", "blackjack", "argentina", "era", "convert", "possibility", "analyst", "commissioner", "dangerous", "garage", "exciting", "reliability", "thongs", "gcc", "unfortunately", "respectively", "volunteers", "attachment", "ringtone", "finland", "morgan", "derived", "pleasure", "honor", "asp", "oriented", "eagle", "desktops", "pants", "columbus", "nurse", "prayer", "appointment", "workshops", "hurricane", "quiet", "luck", "postage", "producer", "represented", "mortgages", "dial", "responsibilities", "cheese", "comic", "carefully", "jet", "productivity", "investors", "crown", "par", "underground", "diagnosis", "maker", "crack", "principle", "picks", "vacations", "gang", "semester", "calculated", "applies", "casinos", "appearance", "smoke", "apache", "filters", "incorporated", "nv", "craft", "cake", "notebooks", "apart", "fellow", "blind", "lounge", "mad", "algorithm", "semi", "coins", "andy", "gross", "strongly", "cafe", "valentine", "hilton", "ken", "proteins", "horror", "su", "exp", "familiar", "capable", "douglas", "debian", "till", "involving", "pen", "investing", "christopher", "admission", "epson", "shoe", "elected", "carrying", "victory", "sand", "madison", "terrorism", "joy", "editions", "cpu", "mainly", "ethnic", "ran", "parliament", "actor", "finds", "seal", "situations", "fifth", "allocated", "citizen", "vertical", "corrections", "structural", "municipal", "describes", "prize", "sr", "occurs", "jon", "absolute", "disabilities", "consists", "anytime", "substance", "prohibited", "addressed", "lies", "pipe", "soldiers", "nr", "guardian", "lecture", "simulation", "layout", "initiatives", "ill", "concentration", "classics", "lbs", "lay", "interpretation", "horses", "lol", "dirty", "deck", "wayne", "donate", "taught", "bankruptcy", "mp", "worker", "optimization", "alive", "temple", "substances", "prove", "discovered", "wings", "breaks", "genetic", "restrictions", "participating", "waters", "promise", "thin", "exhibition", "prefer", "ridge", "cabinet", "modem", "harris", "mph", "bringing", "sick", "dose", "evaluate", "tiffany", "tropical", "collect", "bet", "composition", "toyota", "streets", "nationwide", "vector", "definitely", "shaved", "turning", "buffer", "purple", "existence", "commentary", "larry", "limousines", "developments", "def", "immigration", "destinations", "lets", "mutual", "pipeline", "necessarily", "syntax", "li", "attribute", "prison", "skill", "chairs", "nl", "everyday", "apparently", "surrounding", "mountains", "moves", "popularity", "inquiry", "ethernet", "checked", "exhibit", "throw", "trend", "sierra", "visible", "cats", "desert", "postposted", "ya", "oldest", "rhode", "nba", "busty", "coordinator", "obviously", "mercury", "steven", "handbook", "greg", "navigate", "worse", "summit", "victims", "epa", "spaces", "fundamental", "burning", "escape", "coupons", "somewhat", "receiver", "substantial", "tr", "progressive", "cialis", "bb", "boats", "glance", "scottish", "championship", "arcade", "richmond", "sacramento", "impossible", "ron", "russell", "tells", "obvious", "fiber", "depression", "graph", "covering", "platinum", "judgment", "bedrooms", "talks", "filing", "foster", "modeling", "passing", "awarded", "testimonials", "trials", "tissue", "nz", "memorabilia", "clinton", "masters", "bonds", "cartridge", "alberta", "explanation", "folk", "org", "commons", "cincinnati", "subsection", "fraud", "electricity", "permitted", "spectrum", "arrival", "okay", "pottery", "emphasis", "roger", "aspect", "workplace", "awesome", "mexican", "confirmed", "counts", "priced", "wallpapers", "hist", "crash", "lift", "desired", "inter", "closer", "assumes", "heights", "shadow", "riding", "infection", "firefox", "lisa", "expense", "grove", "eligibility", "venture", "clinic", "korean", "healing", "princess", "mall", "entering", "packet", "spray", "studios", "involvement", "dad", "buttons", "placement", "observations", "vbulletin", "funded", "thompson", "winners", "extend", "roads", "subsequent", "pat", "dublin", "rolling", "fell", "motorcycle", "yard", "disclosure", "establishment", "memories", "nelson", "te", "arrived", "creates", "faces", "tourist", "av", "mayor", "murder", "sean", "adequate", "senator", "yield", "presentations", "grades", "cartoons", "pour", "digest", "reg", "lodging", "tion", "dust", "hence", "wiki", "entirely", "replaced", "radar", "rescue", "undergraduate", "losses", "combat", "reducing", "stopped", "occupation", "lakes", "butt", "donations", "associations", "citysearch", "closely", "radiation", "diary", "seriously", "kings", "shooting", "kent", "adds", "nsw", "ear", "flags", "pci", "baker", "launched", "elsewhere", "pollution", "conservative", "guestbook", "shock", "effectiveness", "walls", "abroad", "ebony", "tie", "ward", "drawn", "arthur", "ian", "visited", "roof", "walker", "demonstrate", "atmosphere", "suggests", "kiss", "beast", "ra", "operated", "experiment", "targets", "overseas", "purchases", "dodge", "counsel", "federation", "pizza", "invited", "yards", "assignment", "chemicals", "gordon", "mod", "farmers", "rc", "queries", "bmw", "rush", "ukraine", "absence", "nearest", "cluster", "vendors", "mpeg", "whereas", "yoga", "serves", "woods", "surprise", "lamp", "rico", "partial", "shoppers", "phil", "everybody", "couples", "nashville", "ranking", "jokes", "cst", "http", "ceo", "simpson", "twiki", "sublime", "counseling", "palace", "acceptable", "satisfied", "glad", "wins", "measurements", "verify", "globe", "trusted", "copper", "milwaukee", "rack", "medication", "warehouse", "shareware", "ec", "rep", "kerry", "receipt", "supposed", "ordinary", "nobody", "ghost", "violation", "configure", "stability", "mit", "applying", "southwest", "boss", "pride", "institutional", "expectations", "independence", "knowing", "reporter", "metabolism", "keith", "champion", "cloudy", "linda", "ross", "personally", "chile", "anna", "plenty", "solo", "sentence", "throat", "ignore", "maria", "uniform", "excellence", "wealth", "tall", "rm", "somewhere", "vacuum", "dancing", "attributes", "recognize", "brass", "writes", "plaza", "pdas", "outcomes", "survival", "quest", "publish", "sri", "screening", "toe", "thumbnail", "trans", "jonathan", "whenever", "nova", "lifetime", "api", "pioneer", "booty", "forgotten", "acrobat", "plates", "acres", "venue", "athletic", "thermal", "essays", "behaviour", "vital", "telling", "fairly", "coastal", "config", "cf", "charity", "intelligent", "edinburgh", "vt", "excel", "modes", "obligation", "campbell", "wake", "stupid", "harbor", "hungary", "traveler", "urw", "segment", "realize", "regardless", "lan", "enemy", "puzzle", "rising", "aluminum", "wells", "wishlist", "opens", "insight", "sms", "shit", "restricted", "republican", "secrets", "lucky", "latter", "merchants", "thick", "trailers", "repeat", "syndrome", "philips", "attendance", "penalty", "drum", "glasses", "enables", "nec", "iraqi", "builder", "vista", "jessica", "chips", "terry", "flood", "foto", "ease", "arguments", "amsterdam", "orgy", "arena", "adventures", "pupils", "stewart", "announcement", "tabs", "outcome", "xx", "appreciate", "expanded", "casual", "grown", "polish", "lovely", "extras", "gm", "centres", "jerry", "clause", "smile", "lands", "ri", "troops", "indoor", "bulgaria", "armed", "broker", "charger", "regularly", "believed", "pine", "cooling", "tend", "gulf", "rt", "rick", "trucks", "cp", "mechanisms", "divorce", "laura", "shopper", "tokyo", "partly", "nikon", "customize", "tradition", "candy", "pills", "tiger", "donald", "folks", "sensor", "exposed", "telecom", "hunt", "angels", "deputy", "indicators", "sealed", "thai", "emissions", "physicians", "loaded", "fred", "complaint", "scenes", "experiments", "balls", "afghanistan", "dd", "boost", "spanking", "scholarship", "governance", "mill", "founded", "supplements", "chronic", "icons", "moral", "den", "catering", "aud", "finger", "keeps", "pound", "locate", "camcorder", "pl", "trained", "burn", "implementing", "roses", "labs", "ourselves", "bread", "tobacco", "wooden", "motors", "tough", "roberts", "incident", "gonna", "dynamics", "lie", "crm", "rf", "conversation", "decrease", "chest", "pension", "billy", "revenues", "emerging", "worship", "capability", "ak", "fe", "craig", "herself", "producing", "churches", "precision", "damages", "reserves", "contributed", "solve", "shorts", "reproduction", "minority", "td", "diverse", "amp", "ingredients", "sb", "ah", "johnny", "sole", "franchise", "recorder", "complaints", "facing", "sm", "nancy", "promotions", "tones", "passion", "rehabilitation", "maintaining", "sight", "laid", "clay", "defence", "patches", "weak", "refund", "usc", "towns", "environments", "trembl", "divided", "blvd", "reception", "amd", "wise", "emails", "cyprus", "wv", "odds", "correctly", "insider", "seminars", "consequences", "makers", "hearts", "geography", "appearing", "integrity", "worry", "ns", "discrimination", "eve", "carter", "legacy", "marc", "pleased", "danger", "vitamin", "widely", "processed", "phrase", "genuine", "raising", "implications", "functionality", "paradise", "hybrid", "reads", "roles", "intermediate", "emotional", "sons", "leaf", "pad", "glory", "platforms", "ja", "bigger", "billing", "diesel", "versus", "combine", "overnight", "geographic", "exceed", "bs", "rod", "saudi", "fault", "cuba", "hrs", "preliminary", "districts", "introduce", "silk", "promotional", "kate", "chevrolet", "babies", "bi", "karen", "compiled", "romantic", "revealed", "specialists", "generator", "albert", "examine", "jimmy", "graham", "suspension", "bristol", "margaret", "compaq", "sad", "correction", "wolf", "slowly", "authentication", "communicate", "rugby", "supplement", "showtimes", "cal", "portions", "infant", "promoting", "sectors", "samuel", "fluid", "grounds", "fits", "kick", "regards", "meal", "ta", "hurt", "machinery", "bandwidth", "unlike", "equation", "baskets", "probability", "pot", "dimension", "wright", "img", "barry", "proven", "schedules", "admissions", "cached", "warren", "slip", "studied", "reviewer", "involves", "quarterly", "rpm", "profits", "devil", "grass", "comply", "marie", "florist", "illustrated", "cherry", "continental", "alternate", "deutsch", "achievement", "limitations", "kenya", "webcam", "cuts", "funeral", "nutten", "earrings", "enjoyed", "automated", "chapters", "pee", "charlie", "quebec", "nipples", "passenger", "convenient", "dennis", "mars", "francis", "tvs", "sized", "manga", "noticed", "socket", "silent", "literary", "egg", "mhz", "signals", "caps", "orientation", "pill", "theft", "childhood", "swing", "symbols", "lat", "meta", "humans", "analog", "facial", "choosing", "talent", "dated", "flexibility", "seeker", "wisdom", "shoot", "boundary", "mint", "packard", "offset", "payday", "philip", "elite", "gi", "spin", "holders", "believes", "swedish", "poems", "deadline", "jurisdiction", "robot", "displaying", "witness", "collins", "equipped", "stages", "encouraged", "sur", "winds", "powder", "broadway", "acquired", "assess", "wash", "cartridges", "stones", "entrance", "gnome", "roots", "declaration", "losing", "attempts", "gadgets", "noble", "glasgow", "automation", "impacts", "rev", "gospel", "advantages", "shore", "loves", "induced", "ll", "knight", "preparing", "loose", "aims", "recipient", "linking", "extensions", "appeals", "cl", "earned", "illness", "islamic", "athletics", "southeast", "ieee", "ho", "alternatives", "pending", "parker", "determining", "lebanon", "corp", "personalized", "kennedy", "gt", "sh", "conditioning", "teenage", "soap", "ae", "triple", "cooper", "nyc", "vincent", "jam", "secured", "unusual", "answered", "partnerships", "destruction", "slots", "increasingly", "migration", "disorder", "routine", "toolbar", "basically", "rocks", "conventional", "titans", "applicants", "wearing", "axis", "sought", "genes", "mounted", "habitat", "firewall", "median", "guns", "scanner", "herein", "occupational", "animated", "horny", "judicial", "rio", "hs", "adjustment", "hero", "integer", "treatments", "bachelor", "attitude", "camcorders", "engaged", "falling", "basics", "montreal", "carpet", "rv", "struct", "lenses", "binary", "genetics", "attended", "difficulty", "punk", "collective", "coalition", "pi", "dropped", "enrollment", "duke", "walter", "ai", "pace", "besides", "wage", "producers", "ot", "collector", "arc", "hosts", "interfaces", "advertisers", "moments", "atlas", "strings", "dawn", "representing", "observation", "feels", "torture", "carl", "deleted", "coat", "mitchell", "mrs", "rica", "restoration", "convenience", "returning", "ralph", "opposition", "container", "yr", "defendant", "warner", "confirmation", "app", "embedded", "inkjet", "supervisor", "wizard", "corps", "actors", "liver", "peripherals", "liable", "brochure", "morris", "bestsellers", "petition", "eminem", "recall", "antenna", "picked", "assumed", "departure", "minneapolis", "belief", "killing", "bikini", "memphis", "shoulder", "decor", "lookup", "texts", "harvard", "brokers", "roy", "ion", "diameter", "ottawa", "doll", "ic", "podcast", "tit", "seasons", "peru", "interactions", "refine", "bidder", "singer", "evans", "herald", "literacy", "fails", "aging", "nike", "intervention", "pissing", "fed", "plugin", "attraction", "diving", "invite", "modification", "alice", "latinas", "suppose", "customized", "reed", "involve", "moderate", "terror", "younger", "thirty", "mice", "opposite", "understood", "rapidly", "dealtime", "ban", "temp", "intro", "mercedes", "zus", "assurance", "fisting", "clerk", "happening", "vast", "mills", "outline", "amendments", "tramadol", "holland", "receives", "jeans", "metropolitan", "compilation", "verification", "fonts", "ent", "odd", "wrap", "refers", "mood", "favor", "veterans", "quiz", "mx", "sigma", "gr", "attractive", "xhtml", "occasion", "recordings", "jefferson", "victim", "demands", "sleeping", "careful", "ext", "beam", "gardening", "obligations", "arrive", "orchestra", "sunset", "tracked", "moreover", "minimal", "polyphonic", "lottery", "tops", "framed", "aside", "outsourcing", "licence", "adjustable", "allocation", "michelle", "essay", "discipline", "amy", "ts", "demonstrated", "dialogue", "identifying", "alphabetical", "camps", "declared", "dispatched", "aaron", "handheld", "trace", "disposal", "shut", "florists", "packs", "ge", "installing", "switches", "romania", "voluntary", "ncaa", "thou", "consult", "phd", "greatly", "blogging", "mask", "cycling", "midnight", "ng", "commonly", "pe", "photographer", "inform", "turkish", "coal", "cry", "messaging", "pentium", "quantum", "murray", "intent", "tt", "zoo", "largely", "pleasant", "announce", "constructed", "additions", "requiring", "spoke", "aka", "arrow", "engagement", "sampling", "rough", "weird", "tee", "refinance", "lion", "inspired", "holes", "weddings", "blade", "suddenly", "oxygen", "cookie", "meals", "canyon", "goto", "meters", "merely", "calendars", "arrangement", "conclusions", "passes", "bibliography", "pointer", "compatibility", "stretch", "durham", "furthermore", "permits", "cooperative", "muslim", "xl", "neil", "sleeve", "netscape", "cleaner", "cricket", "beef", "feeding", "stroke", "township", "rankings", "measuring", "cad", "hats", "robin", "robinson", "jacksonville", "strap", "headquarters", "sharon", "crowd", "tcp", "transfers", "surf", "olympic", "transformation", "remained", "attachments", "dv", "dir", "entities", "customs", "administrators", "personality", "rainbow", "hook", "roulette", "decline", "gloves", "israeli", "medicare", "cord", "skiing", "cloud", "facilitate", "subscriber", "valve", "val", "hewlett", "explains", "proceed", "flickr", "feelings", "knife", "jamaica", "priorities", "shelf", "bookstore", "timing", "liked", "parenting", "adopt", "denied", "fotos", "incredible", "britney", "freeware", "donation", "outer", "crop", "deaths", "rivers", "commonwealth", "pharmaceutical", "manhattan", "tales", "katrina", "workforce", "islam", "nodes", "tu", "fy", "thumbs", "seeds", "cited", "lite", "ghz", "hub", "targeted", "organizational", "skype", "realized", "twelve", "founder", "decade", "gamecube", "rr", "dispute", "portuguese", "tired", "adverse", "everywhere", "excerpt", "eng", "steam", "discharge", "ef", "drinks", "ace", "voices", "acute", "halloween", "climbing", "stood", "sing", "tons", "perfume", "carol", "honest", "albany", "hazardous", "restore", "stack", "methodology", "somebody", "sue", "ep", "housewares", "reputation", "resistant", "democrats", "recycling", "hang", "gbp", "curve", "creator", "amber", "qualifications", "museums", "coding", "slideshow", "tracker", "variation", "passage", "transferred", "trunk", "hiking", "lb", "damn", "pierre", "jelsoft", "headset", "photograph", "oakland", "colombia", "waves", "camel", "distributor", "lamps", "underlying", "hood", "wrestling", "suicide", "archived", "photoshop", "jp", "chi", "bt", "arabia", "gathering", "projection", "juice", "chase", "mathematical", "logical", "sauce", "fame", "extract", "specialized", "diagnostic", "panama", "indianapolis", "af", "payable", "corporations", "courtesy", "criticism", "automobile", "confidential", "rfc", "statutory", "accommodations", "athens", "northeast", "downloaded", "judges", "sl", "seo", "retired", "isp", "remarks", "detected", "decades", "paintings", "walked", "arising", "nissan", "bracelet", "ins", "eggs", "juvenile", "injection", "yorkshire", "populations", "protective", "afraid", "acoustic", "railway", "cassette", "initially", "indicator", "pointed", "hb", "jpg", "causing", "mistake", "norton", "locked", "eliminate", "tc", "fusion", "mineral", "sunglasses", "ruby", "steering", "beads", "fortune", "preference", "canvas", "threshold", "parish", "claimed", "screens", "cemetery", "planner", "croatia", "flows", "stadium", "venezuela", "exploration", "mins", "fewer", "sequences", "coupon", "nurses", "ssl", "stem", "proxy", "astronomy", "lanka", "opt", "edwards", "drew", "contests", "flu", "translate", "announces", "mlb", "costume", "tagged", "berkeley", "voted", "killer", "bikes", "gates", "adjusted", "rap", "tune", "bishop", "pulled", "corn", "gp", "shaped", "compression", "seasonal", "establishing", "farmer", "counters", "puts", "constitutional", "grew", "perfectly", "tin", "slave", "instantly", "cultures", "norfolk", "coaching", "examined", "trek", "encoding", "litigation", "submissions", "oem", "heroes", "painted", "lycos", "ir", "zdnet", "broadcasting", "horizontal", "artwork", "cosmetic", "resulted", "portrait", "terrorist", "informational", "ethical", "carriers", "ecommerce", "mobility", "floral", "builders", "ties", "struggle", "schemes", "suffering", "neutral", "fisher", "rat", "spears", "prospective", "dildos", "bedding", "ultimately", "joining", "heading", "equally", "artificial", "bearing", "spectacular", "coordination", "connector", "brad", "combo", "seniors", "worlds", "guilty", "affiliated", "activation", "naturally", "haven", "tablet", "jury", "dos", "tail", "subscribers", "charm", "lawn", "violent", "mitsubishi", "underwear", "basin", "soup", "potentially", "ranch", "constraints", "crossing", "inclusive", "dimensional", "cottage", "drunk", "considerable", "crimes", "resolved", "mozilla", "byte", "toner", "nose", "latex", "branches", "anymore", "oclc", "delhi", "holdings", "alien", "locator", "selecting", "processors", "pantyhose", "plc", "broke", "nepal", "zimbabwe", "difficulties", "juan", "complexity", "msg", "constantly", "browsing", "resolve", "barcelona", "presidential", "documentary", "cod", "territories", "melissa", "moscow", "thesis", "thru", "jews", "nylon", "palestinian", "discs", "rocky", "bargains", "frequent", "trim", "nigeria", "ceiling", "pixels", "ensuring", "hispanic", "cv", "cb", "legislature", "hospitality", "gen", "anybody", "procurement", "diamonds", "espn", "fleet", "untitled", "bunch", "totals", "marriott", "singing", "theoretical", "afford", "exercises", "starring", "referral", "nhl", "surveillance", "optimal", "quit", "distinct", "protocols", "lung", "highlight", "substitute", "inclusion", "hopefully", "brilliant", "turner", "sucking", "cents", "reuters", "ti", "fc", "gel", "todd", "spoken", "omega", "evaluated", "stayed", "civic", "assignments", "fw", "manuals", "doug", "sees", "termination", "watched", "saver", "thereof", "grill", "households", "gs", "redeem", "rogers", "grain", "aaa", "authentic", "regime", "wanna", "wishes", "bull", "montgomery", "architectural", "louisville", "depend", "differ", "macintosh", "movements", "ranging", "monica", "repairs", "breath", "amenities", "virtually", "cole", "mart", "candle", "hanging", "colored", "authorization", "tale", "verified", "lynn", "formerly", "projector", "bp", "situated", "comparative", "std", "seeks", "herbal", "loving", "strictly", "routing", "docs", "stanley", "psychological", "surprised", "retailer", "vitamins", "elegant", "gains", "renewal", "vid", "genealogy", "opposed", "deemed", "scoring", "expenditure", "panties", "brooklyn", "liverpool", "sisters", "critics", "connectivity", "spots", "oo", "algorithms", "hacker", "madrid", "similarly", "margin", "coin", "bbw", "solely", "fake", "salon", "collaborative", "norman", "fda", "excluding", "turbo", "headed", "voters", "cure", "madonna", "commander", "arch", "ni", "murphy", "thinks", "thats", "suggestion", "hdtv", "soldier", "phillips", "asin", "aimed", "justin", "bomb", "harm", "interval", "mirrors", "spotlight", "tricks", "reset", "brush", "investigate", "thy", "expansys", "panels", "repeated", "assault", "connecting", "spare", "logistics", "deer", "kodak", "tongue", "bowling", "tri", "danish", "pal", "monkey", "proportion", "filename", "skirt", "florence", "invest", "honey", "um", "analyses", "drawings", "significance", "scenario", "ye", "fs", "lovers", "atomic", "approx", "symposium", "arabic", "gauge", "essentials", "junction", "protecting", "nn", "faced", "mat", "rachel", "solving", "transmitted", "weekends", "screenshots", "produces", "oven", "ted", "intensive", "chains", "kingston", "sixth", "engage", "deviant", "noon", "switching", "quoted", "adapters", "correspondence", "farms", "imports", "supervision", "cheat", "bronze", "expenditures", "sandy", "separation", "testimony", "suspect", "celebrities", "macro", "sender", "mandatory", "boundaries", "crucial", "syndication", "gym", "celebration", "kde", "adjacent", "filtering", "tuition", "spouse", "exotic", "viewer", "signup", "threats", "luxembourg", "puzzles", "reaching", "vb", "damaged", "cams", "receptor", "piss", "laugh", "joel", "surgical", "destroy", "citation", "pitch", "autos", "yo", "premises", "perry", "proved", "offensive", "imperial", "dozen", "benjamin", "deployment", "teeth", "cloth", "studying", "colleagues", "stamp", "lotus", "salmon", "olympus", "separated", "proc", "cargo", "tan", "directive", "fx", "salem", "mate", "dl", "starter", "upgrades", "likes", "butter", "pepper", "weapon", "luggage", "burden", "chef", "tapes", "zones", "races", "isle", "stylish", "slim", "maple", "luke", "grocery", "offshore", "governing", "retailers", "depot", "kenneth", "comp", "alt", "pie", "blend", "harrison", "ls", "julie", "occasionally", "cbs", "attending", "emission", "pete", "spec", "finest", "realty", "janet", "bow", "penn", "recruiting", "apparent", "instructional", "phpbb", "autumn", "traveling", "probe", "midi", "permissions", "biotechnology", "toilet", "ranked", "jackets", "routes", "packed", "excited", "outreach", "helen", "mounting", "recover", "tied", "lopez", "balanced", "prescribed", "catherine", "timely", "talked", "upskirts", "debug", "delayed", "chuck", "reproduced", "hon", "dale", "explicit", "calculation", "villas", "ebook", "consolidated", "boob", "exclude", "peeing", "occasions", "brooks", "equations", "newton", "oils", "sept", "exceptional", "anxiety", "bingo", "whilst", "spatial", "respondents", "unto", "lt", "ceramic", "prompt", "precious", "minds", "annually", "considerations", "scanners", "atm", "xanax", "eq", "pays", "cox", "fingers", "sunny", "ebooks", "delivers", "je", "queensland", "necklace", "musicians", "leeds", "composite", "unavailable", "cedar", "arranged", "lang", "theaters", "advocacy", "raleigh", "stud", "fold", "essentially", "designing", "threaded", "uv", "qualify", "fingering", "blair", "hopes", "assessments", "cms", "mason", "diagram", "burns", "pumps", "footwear", "sg", "vic", "beijing", "peoples", "victor", "mario", "pos", "attach", "licenses", "utils", "removing", "advised", "brunswick", "spider", "phys", "ranges", "pairs", "sensitivity", "trails", "preservation", "hudson", "isolated", "calgary", "interim", "assisted", "divine", "streaming", "approve", "chose", "compound", "intensity", "technological", "syndicate", "abortion", "dialog", "venues", "blast", "wellness", "calcium", "newport", "antivirus", "addressing", "pole", "discounted", "indians", "shield", "harvest", "membrane", "prague", "previews", "bangladesh", "constitute", "locally", "concluded", "pickup", "desperate", "mothers", "nascar", "iceland", "demonstration", "governmental", "manufactured", "candles", "graduation", "mega", "bend", "sailing", "variations", "moms", "sacred", "addiction", "morocco", "chrome", "tommy", "springfield", "refused", "brake", "exterior", "greeting", "ecology", "oliver", "congo", "glen", "botswana", "nav", "delays", "synthesis", "olive", "undefined", "unemployment", "cyber", "verizon", "scored", "enhancement", "newcastle", "clone", "velocity", "lambda", "relay", "composed", "tears", "performances", "oasis", "baseline", "cab", "angry", "fa", "societies", "silicon", "brazilian", "identical", "petroleum", "compete", "ist", "norwegian", "lover", "belong", "honolulu", "beatles", "lips", "escort", "retention", "exchanges", "pond", "rolls", "thomson", "barnes", "soundtrack", "wondering", "malta", "daddy", "lc", "ferry", "rabbit", "profession", "seating", "dam", "cnn", "separately", "physiology", "lil", "collecting", "das", "exports", "omaha", "tire", "participant", "scholarships", "recreational", "dominican", "chad", "electron", "loads", "friendship", "heather", "passport", "motel", "unions", "treasury", "warrant", "sys", "solaris", "frozen", "occupied", "josh", "royalty", "scales", "rally", "observer", "sunshine", "strain", "drag", "ceremony", "somehow", "arrested", "expanding", "provincial", "investigations", "icq", "ripe", "yamaha", "rely", "medications", "hebrew", "gained", "rochester", "dying", "laundry", "stuck", "solomon", "placing", "stops", "homework", "adjust", "assessed", "advertiser", "enabling", "encryption", "filling", "downloadable", "sophisticated", "imposed", "silence", "scsi", "focuses", "soviet", "possession", "cu", "laboratories", "treaty", "vocal", "trainer", "organ", "stronger", "volumes", "advances", "vegetables", "lemon", "toxic", "dns", "thumbnails", "darkness", "pty", "ws", "nuts", "nail", "bizrate", "vienna", "implied", "span", "stanford", "sox", "stockings", "joke", "respondent", "packing", "statute", "rejected", "satisfy", "destroyed", "shelter", "chapel", "gamespot", "manufacture", "layers", "wordpress", "guided", "vulnerability", "accountability", "celebrate", "accredited", "appliance", "compressed", "bahamas", "powell", "mixture", "zoophilia", "bench", "univ", "tub", "rider", "scheduling", "radius", "perspectives", "mortality", "logging", "hampton", "christians", "borders", "therapeutic", "pads", "butts", "inns", "bobby", "impressive", "sheep", "accordingly", "architect", "railroad", "lectures", "challenging", "wines", "nursery", "harder", "cups", "ash", "microwave", "cheapest", "accidents", "travesti", "relocation", "stuart", "contributors", "salvador", "ali", "salad", "np", "monroe", "tender", "violations", "foam", "temperatures", "paste", "clouds", "competitions", "discretion", "tft", "tanzania", "preserve", "jvc", "poem", "vibrator", "unsigned", "staying", "cosmetics", "easter", "theories", "repository", "praise", "jeremy", "venice", "jo", "concentrations", "vibrators", "estonia", "christianity", "veteran", "streams", "landing", "signing", "executed", "katie", "negotiations", "realistic", "dt", "cgi", "showcase", "integral", "asks", "relax", "namibia", "generating", "christina", "congressional", "synopsis", "hardly", "prairie", "reunion", "composer", "bean", "sword", "absent", "photographic", "sells", "ecuador", "hoping", "accessed", "spirits", "modifications", "coral", "pixel", "float", "colin", "bias", "imported", "paths", "bubble", "por", "acquire", "contrary", "millennium", "tribune", "vessel", "acids", "focusing", "viruses", "cheaper", "admitted", "dairy", "admit", "mem", "fancy", "equality", "samoa", "gc", "achieving", "tap", "stickers", "fisheries", "exceptions", "reactions", "leasing", "lauren", "beliefs", "ci", "macromedia", "companion", "squad", "analyze", "ashley", "scroll", "relate", "divisions", "swim", "wages", "additionally", "suffer", "forests", "fellowship", "nano", "invalid", "concerts", "martial", "males", "victorian", "retain", "colours", "execute", "tunnel", "genres", "cambodia", "patents", "copyrights", "yn", "chaos", "lithuania", "mastercard", "wheat", "chronicles", "obtaining", "beaver", "updating", "distribute", "readings", "decorative", "kijiji", "confused", "compiler", "enlargement", "eagles", "bases", "vii", "accused", "bee", "campaigns", "unity", "loud", "conjunction", "bride", "rats", "defines", "airports", "instances", "indigenous", "begun", "cfr", "brunette", "packets", "anchor", "socks", "validation", "parade", "corruption", "stat", "trigger", "incentives", "cholesterol", "gathered", "essex", "slovenia", "notified", "differential", "beaches", "folders", "dramatic", "surfaces", "terrible", "routers", "cruz", "pendant", "dresses", "baptist", "scientist", "starsmerchant", "hiring", "clocks", "arthritis", "bios", "females", "wallace", "nevertheless", "reflects", "taxation", "fever", "pmc", "cuisine", "surely", "practitioners", "transcript", "myspace", "theorem", "inflation", "thee", "nb", "ruth", "pray", "stylus", "compounds", "pope", "drums", "contracting", "topless", "arnold", "structured", "reasonably", "jeep", "chicks", "bare", "hung", "cattle", "mba", "radical", "graduates", "rover", "recommends", "controlling", "treasure", "reload", "distributors", "flame", "levitra", "tanks", "assuming", "monetary", "elderly", "pit", "arlington", "mono", "particles", "floating", "extraordinary", "tile", "indicating", "bolivia", "spell", "hottest", "stevens", "coordinate", "kuwait", "exclusively", "emily", "alleged", "limitation", "widescreen", "compile", "squirting", "webster", "struck", "rx", "illustration", "plymouth", "warnings", "construct", "apps", "inquiries", "bridal", "annex", "mag", "gsm", "inspiration", "tribal", "curious", "affecting", "freight", "rebate", "meetup", "eclipse", "sudan", "ddr", "downloading", "rec", "shuttle", "aggregate", "stunning", "cycles", "affects", "forecasts", "detect", "actively", "ciao", "ampland", "knee", "prep", "pb", "complicated", "chem", "fastest", "butler", "shopzilla", "injured", "decorating", "payroll", "cookbook", "expressions", "ton", "courier", "uploaded", "shakespeare", "hints", "collapse", "americas", "connectors", "twinks", "unlikely", "oe", "gif", "pros", "conflicts", "techno", "beverage", "tribute", "wired", "elvis", "immune", "latvia", "travelers", "forestry", "barriers", "cant", "jd", "rarely", "gpl", "infected", "offerings", "martha", "genesis", "barrier", "argue", "incorrect", "trains", "metals", "bicycle", "furnishings", "letting", "arise", "guatemala", "celtic", "thereby", "irc", "jamie", "particle", "perception", "minerals", "advise", "humidity", "bottles", "boxing", "wy", "dm", "bangkok", "renaissance", "pathology", "sara", "bra", "ordinance", "hughes", "photographers", "bitch", "infections", "jeffrey", "chess", "operates", "brisbane", "configured", "survive", "oscar", "festivals", "menus", "joan", "possibilities", "duck", "reveal", "canal", "amino", "phi", "contributing", "herbs", "clinics", "mls", "cow", "manitoba", "analytical", "missions", "watson", "lying", "costumes", "strict", "dive", "saddam", "circulation", "drill", "offense", "threesome", "bryan", "cet", "protest", "assumption", "jerusalem", "hobby", "tries", "invention", "nickname", "fiji", "technician", "inline", "executives", "enquiries", "washing", "audi", "staffing", "cognitive", "exploring", "trick", "enquiry", "closure", "raid", "ppc", "timber", "volt", "intense", "div", "playlist", "registrar", "showers", "supporters", "ruling", "steady", "dirt", "statutes", "withdrawal", "myers", "drops", "predicted", "wider", "saskatchewan", "jc", "cancellation", "plugins", "enrolled", "sensors", "screw", "ministers", "publicly", "hourly", "blame", "geneva", "freebsd", "veterinary", "acer", "prostores", "reseller", "dist", "handed", "suffered", "intake", "informal", "relevance", "incentive", "butterfly", "tucson", "mechanics", "heavily", "swingers", "fifty", "headers", "mistakes", "numerical", "ons", "geek", "uncle", "defining", "xnxx", "counting", "reflection", "sink", "accompanied", "assure", "invitation", "devoted", "princeton", "jacob", "sodium", "randy", "spirituality", "hormone", "meanwhile", "proprietary", "timothy", "childrens", "brick", "grip", "naval", "thumbzilla", "medieval", "porcelain", "avi", "bridges", "pichunter", "captured", "watt", "thehun", "decent", "casting", "dayton", "translated", "shortly", "cameron", "columnists", "pins", "carlos", "reno", "donna", "andreas", "warrior", "diploma", "cabin", "innocent", "bdsm", "scanning", "ide", "consensus", "polo", "valium", "copying", "rpg", "delivering", "cordless", "patricia", "horn", "eddie", "uganda", "fired", "journalism", "pd", "prot", "trivia", "adidas", "perth", "frog", "grammar", "intention", "syria", "disagree", "klein", "harvey", "tires", "logs", "undertaken", "tgp", "hazard", "retro", "leo", "statewide", "semiconductor", "gregory", "episodes", "boolean", "circular", "anger", "diy", "mainland", "illustrations", "suits", "chances", "interact", "snap", "happiness", "arg", "substantially", "bizarre", "glenn", "ur", "auckland", "olympics", "fruits", "identifier", "geo", "ribbon", "calculations", "doe", "jpeg", "conducting", "startup", "suzuki", "trinidad", "ati", "kissing", "wal", "handy", "swap", "exempt", "crops", "reduces", "accomplished", "calculators", "geometry", "impression", "abs", "slovakia", "flip", "guild", "correlation", "gorgeous", "capitol", "sim", "dishes", "rna", "barbados", "chrysler", "nervous", "refuse", "extends", "fragrance", "mcdonald", "replica", "plumbing", "brussels", "tribe", "neighbors", "trades", "superb", "buzz", "transparent", "nuke", "rid", "trinity", "charleston", "handled", "legends", "boom", "calm", "champions", "floors", "selections", "projectors", "inappropriate", "exhaust", "comparing", "shanghai", "speaks", "burton", "vocational", "davidson", "copied", "scotia", "farming", "gibson", "pharmacies", "fork", "troy", "ln", "roller", "introducing", "batch", "organize", "appreciated", "alter", "nicole", "latino", "ghana", "edges", "uc", "mixing", "handles", "skilled", "fitted", "albuquerque", "harmony", "distinguished", "asthma", "projected", "assumptions", "shareholders", "twins", "developmental", "rip", "zope", "regulated", "triangle", "amend", "anticipated", "oriental", "reward", "windsor", "zambia", "completing", "gmbh", "buf", "ld", "hydrogen", "webshots", "sprint", "comparable", "chick", "advocate", "sims", "confusion", "copyrighted", "tray", "inputs", "warranties", "genome", "escorts", "documented", "thong", "medal", "paperbacks", "coaches", "vessels", "harbour", "walks", "sucks", "sol", "keyboards", "sage", "knives", "eco", "vulnerable", "arrange", "artistic", "bat", "honors", "booth", "indie", "reflected", "unified", "bones", "breed", "detector", "ignored", "polar", "fallen", "precise", "sussex", "respiratory", "notifications", "msgid", "mainstream", "invoice", "evaluating", "lip", "subcommittee", "sap", "gather", "suse", "maternity", "backed", "alfred", "colonial", "mf", "carey", "motels", "forming", "embassy", "cave", "journalists", "danny", "rebecca", "slight", "proceeds", "indirect", "amongst", "wool", "foundations", "msgstr", "arrest", "volleyball", "mw", "adipex", "horizon", "nu", "deeply", "toolbox", "ict", "marina", "liabilities", "prizes", "bosnia", "browsers", "decreased", "patio", "dp", "tolerance", "surfing", "creativity", "lloyd", "describing", "optics", "pursue", "lightning", "overcome", "eyed", "ou", "quotations", "grab", "inspector", "attract", "brighton", "beans", "bookmarks", "ellis", "disable", "snake", "succeed", "leonard", "lending", "oops", "reminder", "nipple", "xi", "searched", "behavioral", "riverside", "bathrooms", "plains", "sku", "ht", "raymond", "insights", "abilities", "initiated", "sullivan", "za", "midwest", "karaoke", "trap", "lonely", "fool", "ve", "nonprofit", "lancaster", "suspended", "hereby", "observe", "julia", "containers", "attitudes", "karl", "berry", "collar", "simultaneously", "racial", "integrate", "bermuda", "amanda", "sociology", "mobiles", "screenshot", "exhibitions", "kelkoo", "confident", "retrieved", "exhibits", "officially", "consortium", "dies", "terrace", "bacteria", "pts", "replied", "seafood", "novels", "rh", "rrp", "recipients", "playboy", "ought", "delicious", "traditions", "fg", "jail", "safely", "finite", "kidney", "periodically", "fixes", "sends", "durable", "mazda", "allied", "throws", "moisture", "hungarian", "roster", "referring", "symantec", "spencer", "wichita", "nasdaq", "uruguay", "ooo", "hz", "transform", "timer", "tablets", "tuning", "gotten", "educators", "tyler", "futures", "vegetable", "verse", "highs", "humanities", "independently", "wanting", "custody", "scratch", "launches", "ipaq", "alignment", "henderson", "bk", "britannica", "comm", "ellen", "competitors", "nhs", "rocket", "aye", "bullet", "towers", "racks", "lace", "nasty", "visibility", "latitude", "consciousness", "ste", "tumor", "ugly", "deposits", "beverly", "mistress", "encounter", "trustees", "watts", "duncan", "reprints", "hart", "bernard", "resolutions", "ment", "accessing", "forty", "tubes", "attempted", "col", "midlands", "priest", "floyd", "ronald", "analysts", "queue", "dx", "sk", "trance", "locale", "nicholas", "biol", "yu", "bundle", "hammer", "invasion", "witnesses", "runner", "rows", "administered", "notion", "sq", "skins", "mailed", "oc", "fujitsu", "spelling", "arctic", "exams", "rewards", "beneath", "strengthen", "defend", "aj", "frederick", "medicaid", "treo", "infrared", "seventh", "gods", "une", "welsh", "belly", "aggressive", "tex", "advertisements", "quarters", "stolen", "cia", "sublimedirectory", "soonest", "haiti", "disturbed", "determines", "sculpture", "poly", "ears", "dod", "wp", "fist", "naturals", "neo", "motivation", "lenders", "pharmacology", "fitting", "fixtures", "bloggers", "mere", "agrees", "passengers", "quantities", "petersburg", "consistently", "powerpoint", "cons", "surplus", "elder", "sonic", "obituaries", "cheers", "dig", "taxi", "punishment", "appreciation", "subsequently", "om", "belarus", "nat", "zoning", "gravity", "providence", "thumb", "restriction", "incorporate", "backgrounds", "treasurer", "guitars", "essence", "flooring", "lightweight", "ethiopia", "tp", "mighty", "athletes", "humanity", "transcription", "jm", "holmes", "complications", "scholars", "dpi", "scripting", "gis", "remembered", "galaxy", "chester", "snapshot", "caring", "loc", "worn", "synthetic", "shaw", "vp", "segments", "testament", "expo", "dominant", "twist", "specifics", "itunes", "stomach", "partially", "buried", "cn", "newbie", "minimize", "darwin", "ranks", "wilderness", "debut", "generations", "tournaments", "bradley", "deny", "anatomy", "bali", "judy", "sponsorship", "headphones", "fraction", "trio", "proceeding", "cube", "defects", "volkswagen", "uncertainty", "breakdown", "milton", "marker", "reconstruction", "subsidiary", "strengths", "clarity", "rugs", "sandra", "adelaide", "encouraging", "furnished", "monaco", "settled", "folding", "emirates", "terrorists", "airfare", "comparisons", "beneficial", "distributions", "vaccine", "belize", "crap", "fate", "viewpicture", "promised", "volvo", "penny", "robust", "bookings", "threatened", "minolta", "republicans", "discusses", "gui", "porter", "gras", "jungle", "ver", "rn", "responded", "rim", "abstracts", "zen", "ivory", "alpine", "dis", "prediction", "pharmaceuticals", "andale", "fabulous", "remix", "alias", "thesaurus", "individually", "battlefield", "literally", "newer", "kay", "ecological", "spice", "oval", "implies", "cg", "soma", "ser", "cooler", "appraisal", "consisting", "maritime", "periodic", "submitting", "overhead", "ascii", "prospect", "shipment", "breeding", "citations", "geographical", "donor", "mozambique", "tension", "href", "benz", "trash", "shapes", "wifi", "tier", "fwd", "earl", "manor", "envelope", "diane", "homeland", "disclaimers", "championships", "excluded", "andrea", "breeds", "rapids", "disco", "sheffield", "bailey", "aus", "endif", "finishing", "emotions", "wellington", "incoming", "prospects", "lexmark", "cleaners", "bulgarian", "hwy", "eternal", "cashiers", "guam", "cite", "aboriginal", "remarkable", "rotation", "nam", "preventing", "productive", "boulevard", "eugene", "ix", "gdp", "pig", "metric", "compliant", "minus", "penalties", "bennett", "imagination", "hotmail", "refurbished", "joshua", "armenia", "varied", "grande", "closest", "activated", "actress", "mess", "conferencing", "assign", "armstrong", "politicians", "trackbacks", "lit", "accommodate", "tigers", "aurora", "una", "slides", "milan", "premiere", "lender", "villages", "shade", "chorus", "christine", "rhythm", "digit", "argued", "dietary", "symphony", "clarke", "sudden", "accepting", "precipitation", "marilyn", "lions", "findlaw", "ada", "pools", "tb", "lyric", "claire", "isolation", "speeds", "sustained", "matched", "approximate", "rope", "carroll", "rational", "programmer", "fighters", "chambers", "dump", "greetings", "inherited", "warming", "incomplete", "vocals", "chronicle", "fountain", "chubby", "grave", "legitimate", "biographies", "burner", "yrs", "foo", "investigator", "gba", "plaintiff", "finnish", "gentle", "bm", "prisoners", "deeper", "muslims", "hose", "mediterranean", "nightlife", "footage", "howto", "worthy", "reveals", "architects", "saints", "entrepreneur", "carries", "sig", "freelance", "duo", "excessive", "devon", "screensaver", "helena", "saves", "regarded", "valuation", "unexpected", "cigarette", "fog", "characteristic", "marion", "lobby", "egyptian", "tunisia", "metallica", "outlined", "consequently", "headline", "treating", "punch", "appointments", "str", "gotta", "cowboy", "narrative", "bahrain", "enormous", "karma", "consist", "betty", "queens", "academics", "pubs", "quantitative", "lucas", "screensavers", "subdivision", "tribes", "vip", "defeat", "clicks", "distinction", "honduras", "naughty", "hazards", "insured", "harper", "livestock", "mardi", "exemption", "tenant", "sustainability", "cabinets", "tattoo", "shake", "algebra", "shadows", "holly", "formatting", "silly", "nutritional", "yea", "mercy", "hartford", "freely", "marcus", "sunrise", "wrapping", "mild", "fur", "nicaragua", "weblogs", "timeline", "tar", "belongs", "rj", "readily", "affiliation", "soc", "fence", "nudist", "infinite", "diana", "ensures", "relatives", "lindsay", "clan", "legally", "shame", "satisfactory", "revolutionary", "bracelets", "sync", "civilian", "telephony", "mesa", "fatal", "remedy", "realtors", "breathing", "briefly", "thickness", "adjustments", "graphical", "genius", "discussing", "aerospace", "fighter", "meaningful", "flesh", "retreat", "adapted", "barely", "wherever", "estates", "rug", "democrat", "borough", "maintains", "failing", "shortcuts", "ka", "retained", "voyeurweb", "pamela", "andrews", "marble", "extending", "jesse", "specifies", "hull", "logitech", "surrey", "briefing", "belkin", "dem", "accreditation", "wav", "blackberry", "highland", "meditation", "modular", "microphone", "macedonia", "combining", "brandon", "instrumental", "giants", "organizing", "shed", "balloon", "moderators", "winston", "memo", "ham", "solved", "tide", "kazakhstan", "hawaiian", "standings", "partition", "invisible", "gratuit", "consoles", "funk", "fbi", "qatar", "magnet", "translations", "porsche", "cayman", "jaguar", "reel", "sheer", "commodity", "posing", "wang", "kilometers", "rp", "bind", "thanksgiving", "rand", "hopkins", "urgent", "guarantees", "infants", "gothic", "cylinder", "witch", "buck", "indication", "eh", "congratulations", "tba", "cohen", "sie", "usgs", "puppy", "kathy", "acre", "graphs", "surround", "cigarettes", "revenge", "expires", "enemies", "lows", "controllers", "aqua", "chen", "emma", "consultancy", "finances", "accepts", "enjoying", "conventions", "eva", "patrol", "smell", "pest", "hc", "italiano", "coordinates", "rca", "fp", "carnival", "roughly", "sticker", "promises", "responding", "reef", "physically", "divide", "stakeholders", "hydrocodone", "gst", "consecutive", "cornell", "satin", "bon", "deserve", "attempting", "mailto", "promo", "jj", "representations", "chan", "worried", "tunes", "garbage", "competing", "combines", "mas", "beth", "bradford", "len", "phrases", "kai", "peninsula", "chelsea", "boring", "reynolds", "dom", "jill", "accurately", "speeches", "reaches", "schema", "considers", "sofa", "catalogs", "ministries", "vacancies", "quizzes", "parliamentary", "obj", "prefix", "lucia", "savannah", "barrel", "typing", "nerve", "dans", "planets", "deficit", "boulder", "pointing", "renew", "coupled", "viii", "myanmar", "metadata", "harold", "circuits", "floppy", "texture", "handbags", "jar", "ev", "somerset", "incurred", "acknowledge", "thoroughly", "antigua", "nottingham", "thunder", "tent", "caution", "identifies", "questionnaire", "qualification", "locks", "modelling", "namely", "miniature", "dept", "hack", "dare", "euros", "interstate", "pirates", "aerial", "hawk", "consequence", "rebel", "systematic", "perceived", "origins", "hired", "makeup", "textile", "lamb", "madagascar", "nathan", "tobago", "presenting", "cos", "troubleshooting", "uzbekistan", "indexes", "pac", "rl", "erp", "centuries", "gl", "magnitude", "ui", "richardson", "hindu", "dh", "fragrances", "vocabulary", "licking", "earthquake", "vpn", "fundraising", "fcc", "markers", "weights", "albania", "geological", "assessing", "lasting", "wicked", "eds", "introduces", "kills", "roommate", "webcams", "pushed", "webmasters", "ro", "df", "computational", "acdbentity", "participated", "junk", "handhelds", "wax", "lucy", "answering", "hans", "impressed", "slope", "reggae", "failures", "poet", "conspiracy", "surname", "theology", "nails", "evident", "whats", "rides", "rehab", "epic", "saturn", "organizer", "nut", "allergy", "sake", "twisted", "combinations", "preceding", "merit", "enzyme", "cumulative", "zshops", "planes", "edmonton", "tackle", "disks", "condo", "pokemon", "amplifier", "ambien", "arbitrary", "prominent", "retrieve", "lexington", "vernon", "sans", "worldcat", "titanium", "irs", "fairy", "builds", "contacted", "shaft", "lean", "bye", "cdt", "recorders", "occasional", "leslie", "casio", "deutsche", "ana", "postings", "innovations", "kitty", "postcards", "dude", "drain", "monte", "fires", "algeria", "blessed", "luis", "reviewing", "cardiff", "cornwall", "favors", "potato", "panic", "explicitly", "sticks", "leone", "transsexual", "ez", "citizenship", "excuse", "reforms", "basement", "onion", "strand", "pf", "sandwich", "uw", "lawsuit", "alto", "informative", "girlfriend", "bloomberg", "cheque", "hierarchy", "influenced", "banners", "reject", "eau", "abandoned", "bd", "circles", "italic", "beats", "merry", "mil", "scuba", "gore", "complement", "cult", "dash", "passive", "mauritius", "valued", "cage", "checklist", "requesting", "courage", "verde", "lauderdale", "scenarios", "gazette", "hitachi", "divx", "extraction", "batman", "elevation", "hearings", "coleman", "hugh", "lap", "utilization", "beverages", "calibration", "jake", "eval", "efficiently", "anaheim", "ping", "textbook", "dried", "entertaining", "prerequisite", "luther", "frontier", "settle", "stopping", "refugees", "knights", "hypothesis", "palmer", "medicines", "flux", "derby", "sao", "peaceful", "altered", "pontiac", "regression", "doctrine", "scenic", "trainers", "muze", "enhancements", "renewable", "intersection", "passwords", "sewing", "consistency", "collectors", "conclude", "recognised", "munich", "oman", "celebs", "gmc", "propose", "hh", "azerbaijan", "lighter", "rage", "adsl", "uh", "prix", "astrology", "advisors", "pavilion", "tactics", "trusts", "occurring", "supplemental", "travelling", "talented", "annie", "pillow", "induction", "derek", "precisely", "shorter", "harley", "spreading", "provinces", "relying", "finals", "paraguay", "steal", "parcel", "refined", "fd", "bo", "fifteen", "widespread", "incidence", "fears", "predict", "boutique", "acrylic", "rolled", "tuner", "avon", "incidents", "peterson", "rays", "asn", "shannon", "toddler", "enhancing", "flavor", "alike", "walt", "homeless", "horrible", "hungry", "metallic", "acne", "blocked", "interference", "warriors", "palestine", "listprice", "libs", "undo", "cadillac", "atmospheric", "malawi", "wm", "pk", "sagem", "knowledgestorm", "dana", "halo", "ppm", "curtis", "parental", "referenced", "strikes", "lesser", "publicity", "marathon", "ant", "proposition", "pressing", "gasoline", "apt", "dressed", "scout", "belfast", "exec", "dealt", "niagara", "inf", "eos", "warcraft", "charms", "catalyst", "trader", "bucks", "allowance", "vcr", "denial", "uri", "designation", "thrown", "prepaid", "raises", "gem", "duplicate", "electro", "criterion", "badge", "wrist", "civilization", "analyzed", "vietnamese", "heath", "tremendous", "ballot", "lexus", "varying", "remedies", "validity", "trustee", "maui", "weighted", "angola", "squirt", "performs", "plastics", "realm", "corrected", "jenny", "helmet", "salaries", "postcard", "elephant", "yemen", "encountered", "tsunami", "scholar", "nickel", "internationally", "surrounded", "psi", "buses", "expedia", "geology", "pct", "wb", "creatures", "coating", "commented", "wallet", "cleared", "smilies", "vids", "accomplish", "boating", "drainage", "shakira", "corners", "broader", "vegetarian", "rouge", "yeast", "yale", "newfoundland", "sn", "qld", "pas", "clearing", "investigated", "dk", "ambassador", "coated", "intend", "stephanie", "contacting", "vegetation", "doom", "findarticles", "louise", "kenny", "specially", "owen", "routines", "hitting", "yukon", "beings", "bite", "issn", "aquatic", "reliance", "habits", "striking", "myth", "infectious", "podcasts", "singh", "gig", "gilbert", "sas", "ferrari", "continuity", "brook", "fu", "outputs", "phenomenon", "ensemble", "insulin", "assured", "biblical", "weed", "conscious", "accent", "mysimon", "eleven", "wives", "ambient", "utilize", "mileage", "oecd", "prostate", "adaptor", "auburn", "unlock", "hyundai", "pledge", "vampire", "angela", "relates", "nitrogen", "xerox", "dice", "merger", "softball", "referrals", "quad", "dock", "differently", "firewire", "mods", "nextel", "framing", "organised", "musician", "blocking", "rwanda", "sorts", "integrating", "vsnet", "limiting", "dispatch", "revisions", "papua", "restored", "hint", "armor", "riders", "chargers", "remark", "dozens", "varies", "msie", "reasoning", "wn", "liz", "rendered", "picking", "charitable", "guards", "annotated", "ccd", "sv", "convinced", "openings", "buys", "burlington", "replacing", "researcher", "watershed", "councils", "occupations", "acknowledged", "nudity", "kruger", "pockets", "granny", "pork", "zu", "equilibrium", "viral", "inquire", "pipes", "characterized", "laden", "aruba", "cottages", "realtor", "merge", "privilege", "edgar", "develops", "qualifying", "chassis", "dubai", "estimation", "barn", "pushing", "llp", "fleece", "pediatric", "boc", "fare", "dg", "asus", "pierce", "allan", "dressing", "techrepublic", "vg", "bald", "filme", "craps", "fuji", "frost", "leon", "institutes", "mold", "dame", "fo", "sally", "yacht", "tracy", "prefers", "drilling", "brochures", "herb", "tmp", "alot", "ate", "breach", "whale", "traveller", "appropriations", "suspected", "tomatoes", "benchmark", "beginners", "instructors", "highlighted", "bedford", "stationery", "idle", "mustang", "unauthorized", "clusters", "antibody", "competent", "momentum", "fin", "wiring", "io", "pastor", "mud", "calvin", "uni", "shark", "contributor", "demonstrates", "phases", "grateful", "emerald", "gradually", "laughing", "grows", "cliff", "desirable", "tract", "ul", "ballet", "ol", "journalist", "abraham", "js", "bumper", "afterwards", "webpage", "religions", "garlic", "hostels", "shine", "senegal", "explosion", "pn", "banned", "wendy", "briefs", "signatures", "diffs", "cove", "mumbai", "ozone", "disciplines", "casa", "mu", "daughters", "conversations", "radios", "tariff", "nvidia", "opponent", "pasta", "simplified", "muscles", "serum", "wrapped", "swift", "motherboard", "runtime", "inbox", "focal", "bibliographic", "vagina", "eden", "distant", "incl", "champagne", "ala", "decimal", "hq", "deviation", "superintendent", "propecia", "dip", "nbc", "samba", "hostel", "housewives", "employ", "mongolia", "penguin", "magical", "influences", "inspections", "irrigation", "miracle", "manually", "reprint", "reid", "wt", "hydraulic", "centered", "robertson", "flex", "yearly", "penetration", "wound", "belle", "rosa", "conviction", "hash", "omissions", "writings", "hamburg", "lazy", "mv", "mpg", "retrieval", "qualities", "cindy", "lolita", "fathers", "carb", "charging", "cas", "marvel", "lined", "cio", "dow", "prototype", "importantly", "rb", "petite", "apparatus", "upc", "terrain", "dui", "pens", "explaining", "yen", "strips", "gossip", "rangers", "nomination", "empirical", "mh", "rotary", "worm", "dependence", "discrete", "beginner", "boxed", "lid", "sexuality", "polyester", "cubic", "deaf", "commitments", "suggesting", "sapphire", "kinase", "skirts", "mats", "remainder", "crawford", "labeled", "privileges", "televisions", "specializing", "marking", "commodities", "pvc", "serbia", "sheriff", "griffin", "declined", "guyana", "spies", "blah", "mime", "neighbor", "motorcycles", "elect", "highways", "thinkpad", "concentrate", "intimate", "reproductive", "preston", "deadly", "feof", "bunny", "chevy", "molecules", "rounds", "longest", "refrigerator", "tions", "intervals", "sentences", "dentists", "usda", "exclusion", "workstation", "holocaust", "keen", "flyer", "peas", "dosage", "receivers", "urls", "customise", "disposition", "variance", "navigator", "investigators", "cameroon", "baking", "marijuana", "adaptive", "computed", "needle", "baths", "enb", "gg", "cathedral", "brakes", "og", "nirvana", "ko", "fairfield", "owns", "til", "invision", "sticky", "destiny", "generous", "madness", "emacs", "climb", "blowing", "fascinating", "landscapes", "heated", "lafayette", "jackie", "wto", "computation", "hay", "cardiovascular", "ww", "sparc", "cardiac", "salvation", "dover", "adrian", "predictions", "accompanying", "vatican", "brutal", "learners", "gd", "selective", "arbitration", "configuring", "token", "editorials", "zinc", "sacrifice", "seekers", "guru", "isa", "removable", "convergence", "yields", "gibraltar", "levy", "suited", "numeric", "anthropology", "skating", "kinda", "aberdeen", "emperor", "grad", "malpractice", "dylan", "bras", "belts", "blacks", "educated", "rebates", "reporters", "burke", "proudly", "pix", "necessity", "rendering", "mic", "inserted", "pulling", "basename", "kyle", "obesity", "curves", "suburban", "touring", "clara", "vertex", "bw", "hepatitis", "nationally", "tomato", "andorra", "waterproof", "expired", "mj", "travels", "flush", "waiver", "pale", "specialties", "hayes", "humanitarian", "invitations", "functioning", "delight", "survivor", "garcia", "cingular", "economies", "alexandria", "bacterial", "moses", "counted", "undertake", "declare", "continuously", "johns", "valves", "gaps", "impaired", "achievements", "donors", "tear", "jewel", "teddy", "lf", "convertible", "ata", "teaches", "ventures", "nil", "bufing", "stranger", "tragedy", "julian", "nest", "pam", "dryer", "painful", "velvet", "tribunal", "ruled", "nato", "pensions", "prayers", "funky", "secretariat", "nowhere", "cop", "paragraphs", "gale", "joins", "adolescent", "nominations", "wesley", "dim", "lately", "cancelled", "scary", "mattress", "mpegs", "brunei", "likewise", "banana", "introductory", "slovak", "cakes", "stan", "reservoir", "occurrence", "idol", "bloody", "mixer", "remind", "wc", "worcester", "sbjct", "demographic", "charming", "mai", "tooth", "disciplinary", "annoying", "respected", "stays", "disclose", "affair", "drove", "washer", "upset", "restrict", "springer", "beside", "mines", "portraits", "rebound", "logan", "mentor", "interpreted", "evaluations", "fought", "baghdad", "elimination", "metres", "hypothetical", "immigrants", "complimentary", "helicopter", "pencil", "freeze", "hk", "performer", "abu", "titled", "commissions", "sphere", "powerseller", "moss", "ratios", "concord", "graduated", "endorsed", "ty", "surprising", "walnut", "lance", "ladder", "italia", "unnecessary", "dramatically", "liberia", "sherman", "cork", "maximize", "cj", "hansen", "senators", "workout", "mali", "yugoslavia", "bleeding", "characterization", "colon", "likelihood", "lanes", "purse", "fundamentals", "contamination", "mtv", "endangered", "compromise", "optimize", "stating", "dome", "caroline", "leu", "expiration", "namespace", "align", "peripheral", "bless", "engaging", "negotiation", "crest", "opponents", "triumph", "nominated", "confidentiality", "electoral", "changelog", "welding", "orgasm", "deferred", "alternatively", "heel", "alloy", "condos", "plots", "polished", "yang", "gently", "greensboro", "tulsa", "locking", "casey", "controversial", "draws", "fridge", "blanket", "bloom", "qc", "simpsons", "lou", "elliott", "recovered", "fraser", "justify", "upgrading", "blades", "pgp", "loops", "surge", "frontpage", "trauma", "aw", "tahoe", "advert", "possess", "demanding", "defensive", "sip", "flashers", "subaru", "forbidden", "tf", "vanilla", "programmers", "pj", "monitored", "installations", "deutschland", "picnic", "souls", "arrivals", "spank", "cw", "practitioner", "motivated", "wr", "dumb", "smithsonian", "hollow", "vault", "securely", "examining", "fioricet", "groove", "revelation", "rg", "pursuit", "delegation", "wires", "bl", "dictionaries", "mails", "backing", "greenhouse", "sleeps", "vc", "blake", "transparency", "dee", "travis", "wx", "endless", "figured", "orbit", "currencies", "niger", "bacon", "survivors", "positioning", "heater", "colony", "cannon", "circus", "promoted", "forbes", "mae", "moldova", "mel", "descending", "paxil", "spine", "trout", "enclosed", "feat", "temporarily", "ntsc", "cooked", "thriller", "transmit", "apnic", "fatty", "gerald", "pressed", "frequencies", "scanned", "reflections", "hunger", "mariah", "sic", "municipality", "usps", "joyce", "detective", "surgeon", "cement", "experiencing", "fireplace", "endorsement", "bg", "planners", "disputes", "textiles", "missile", "intranet", "closes", "seq", "psychiatry", "persistent", "deborah", "conf", "marco", "assists", "summaries", "glow", "gabriel", "auditor", "wma", "aquarium", "violin", "prophet", "cir", "bracket", "looksmart", "isaac", "oxide", "oaks", "magnificent", "erik", "colleague", "naples", "promptly", "modems", "adaptation", "hu", "harmful", "paintball", "prozac", "sexually", "enclosure", "acm", "dividend", "newark", "kw", "paso", "glucose", "phantom", "norm", "playback", "supervisors", "westminster", "turtle", "ips", "distances", "absorption", "treasures", "dsc", "warned", "neural", "ware", "fossil", "mia", "hometown", "badly", "transcripts", "apollo", "wan", "disappointed", "persian", "continually", "communist", "collectible", "handmade", "greene", "entrepreneurs", "robots", "grenada", "creations", "jade", "scoop", "acquisitions", "foul", "keno", "gtk", "earning", "mailman", "sanyo", "nested", "biodiversity", "excitement", "somalia", "movers", "verbal", "blink", "presently", "seas", "carlo", "workflow", "mysterious", "novelty", "bryant", "tiles", "voyuer", "librarian", "subsidiaries", "switched", "stockholm", "tamil", "garmin", "ru", "pose", "fuzzy", "indonesian", "grams", "therapist", "richards", "mrna", "budgets", "toolkit", "promising", "relaxation", "goat", "render", "carmen", "ira", "sen", "thereafter", "hardwood", "erotica", "temporal", "sail", "forge", "commissioners", "dense", "dts", "brave", "forwarding", "qt", "awful", "nightmare", "airplane", "reductions", "southampton", "istanbul", "impose", "organisms", "sega", "telescope", "viewers", "asbestos", "portsmouth", "cdna", "meyer", "enters", "pod", "savage", "advancement", "wu", "harassment", "willow", "resumes", "bolt", "gage", "throwing", "existed", "generators", "lu", "wagon", "barbie", "dat", "favour", "soa", "knock", "urge", "smtp", "generates", "potatoes", "thorough", "replication", "inexpensive", "kurt", "receptors", "peers", "roland", "optimum", "neon", "interventions", "quilt", "huntington", "creature", "ours", "mounts", "syracuse", "internship", "lone", "refresh", "aluminium", "snowboard", "beastality", "webcast", "michel", "evanescence", "subtle", "coordinated", "notre", "shipments", "maldives", "stripes", "firmware", "antarctica", "cope", "shepherd", "lm", "canberra", "cradle", "chancellor", "mambo", "lime", "kirk", "flour", "controversy", "legendary", "bool", "sympathy", "choir", "avoiding", "beautifully", "blond", "expects", "cho", "jumping", "fabrics", "antibodies", "polymer", "hygiene", "wit", "poultry", "virtue", "burst", "examinations", "surgeons", "bouquet", "immunology", "promotes", "mandate", "wiley", "departmental", "bbs", "spas", "ind", "corpus", "johnston", "terminology", "gentleman", "fibre", "reproduce", "convicted", "shades", "jets", "indices", "roommates", "adware", "qui", "intl", "threatening", "spokesman", "zoloft", "activists", "frankfurt", "prisoner", "daisy", "halifax", "encourages", "ultram", "cursor", "assembled", "earliest", "donated", "stuffed", "restructuring", "insects", "terminals", "crude", "morrison", "maiden", "simulations", "cz", "sufficiently", "examines", "viking", "myrtle", "bored", "cleanup", "yarn", "knit", "conditional", "mug", "crossword", "bother", "budapest", "conceptual", "knitting", "attacked", "hl", "bhutan", "liechtenstein", "mating", "compute", "redhead", "arrives", "translator", "automobiles", "tractor", "allah", "continent", "ob", "unwrap", "fares", "longitude", "resist", "challenged", "telecharger", "hoped", "pike", "safer", "insertion", "instrumentation", "ids", "hugo", "wagner", "constraint", "groundwater", "touched", "strengthening", "cologne", "gzip", "wishing", "ranger", "smallest", "insulation", "newman", "marsh", "ricky", "ctrl", "scared", "theta", "infringement", "bent", "laos", "subjective", "monsters", "asylum", "lightbox", "robbie", "stake", "cocktail", "outlets", "swaziland", "varieties", "arbor", "mediawiki", "configurations", "poison", "how are you", "i am fine", "youre welcome", "i dont know", "maybe", "hi", "hello", "whats up", "im thinking of you", "i miss you", "i love you", "i love you deeply", "i love you so much", "i love you always", "i love you much", "where are you", "ill come over", "come over here", "lets meet", "playing", "just joking", "youre in my mind", "whenever", "i saw you", "we were together", "we met", "we met a while ago", "we just met", "you saw me", "im studying", "im in school", "im travelling", "im in transit", "im at work", "im playing", "im shopping", "im at the grocery", "im at the parlor", "im at home", "where you are", "i adore you", "you are adored", "you are special", "am i special", "do you love me?", "yes", "no", "maybe", "lets meet again", "i hope to see you again", "what are you thinking", "youre always in my mind", "in the depths of soul", "in as much as I want", "nevertheless", "coming up with it", "i don't know this", "thinking of it", "thinking of you", "thinking of us", "i never want to but", "carry me all the way", "i am happy", "starting", "i never know how", "as much as i would", "killing me softly", "killing us", "the quietest weather", "gray clouds above", "i see the clear sky", "while the sky is bluest", "i've never been apart", "how would i know", "will i see you again", "it came up to me", "i was surprised", "surprising", "i would", "come to me", "start with this", "a few words", "lenten season is upon us", "i love", "thinking", "stop", "i wish i would have", "consider me", "i am looking for food", "while i am clothed", "walking the distance", "i still end up with you", "consider my wish", "halfed tree", "searching", "unsure", "not minding everyone", "listening to music", "on my computer", "typing", "eating", "sleeping", "thinking", "never missing", "stopping", "staring", "resting", "excruciating pain", "this sadness", "while im without", "collecting", "listening", "happiness", "the surf", "inspired", "rocking the music", "travelling", "playing", "while music plays", "stirring things up", "taking a bath", "walking on the shore", "grinding", "i never knew how", "i be at it", "considered everything", "i died", "i slept", "its wrapped", "made a union", "the sky bleeds", "music is spoken", "chilled", "i am spoiled", "this bringeth happiness", "its up to me", "the weather is", "i stay awake", "pillows", "grains", "half of the time", "it ends here", "i take flight", "distance is", "i like this", "forever", "lets meet", "gathered my wits", "what is?", "what is ?", "ouch!", "**", "that?", "ok", "ok bye", "really?", "why not..", "aww why?", "tell me!", "what s it?", "don't do that to me", "hi sir", "oh uhm..", "I honestly don't know", "I know", "this", "did you see", "good boy", "good pinsan", "do you have a gf?", "*kisses*", "feel good!", "like this", "like thus", "what are you doing to me?", "shall we talk about something else?", "oh yes..", "because", "I might consider it", "yes you :)", "you and me", "I like that more", "me?", "I agree", "I love you more", "I will", "IDK", "stuff", "sorry you cant do this here", "I love it", "oh no", "Ace of Hearts", "Two of Hearts", "Three of Hearts", "Four of Hearts", "Five of Hearts", "Six of Hearts", "Seven of Hearts", "Eight of Hearts", "Nine of Hearts", "Ten of Hearts", "Jack of Hearts", "Queen Of Hearts", "King of Hearts", "Ace of Clubs", "Two of Clubs", "Three of Clubs", "Four of Clubs", "Five of Clubs", "Six of Clubs", "Seven of Clubs", "Eight of Clubs", "Nine of Clubs", "Ten of Clubs", "Jack of Clubs", "Queen Of Clubs", "King of Clubs", "Ace of Diamonds", "Two of Diamonds", "Three of Diamonds", "Four of Diamonds", "Five of Diamonds", "Six of Diamonds", "Seven of Diamonds", "Eight of Diamonds", "Nine of Diamonds", "Ten of Diamonds", "Jack of Diamonds", "Queen Of Diamonds", "King of Diamonds", "Ace of Spades", "Two of Spades", "Three of Spades", "Four of Spades", "Five of Spades", "Six of Spades", "Seven of Spades", "Eight of Spades", "Nine of Spades", "Ten of Spades", "Jack of Spades", "Queen Of Spades", "King of Spades", "Joker", "Joker", "empty bottle", "bottle of wine", "wine glass", "bottle of iced tea", "energy drink", "lemon juice", "pack of green peas", "shirt", "bed", "headphones", "earphones", "blanket", "tablet", "kindle", "pills", "pack of coffee beans", "cup of coffee", "junkfood", "medicine", "spoon", "fork", "Nintendo Switch", "laptop", "mobile phone", "electric fan", "chair", "guitar", "keyboard", "piano", "tv", "monitor", "oil", "hashish", "marijuana", "cigarette", "vape", "pillow", "dog food", "bike", "car", "scooter", "skateboard", "printer", "shards of glass", "garbage", "strips of sleather", "food", "bottle of water", "bible", "Dhammapada", "yoga mat", "helmet", "chewing gum", "vitamins", "shirt", "sweater", "pants", "working pants", "skirt", "underwear", "parachute", "gun", "knife", "sword", "katana", "oatmeal", "chain", "slippers", "shoes", "book", "wires", "credit card", "stove", "oven", "hat", "bucket hat", "baseball cap", "beanie", "hoodie", "necklace", "ring", "gold ring", "diamond ring", "diamond", "diamonds", "painting", "pencil", "ballpoint pen", "sketchpad", "crayon", "box of crayons", "paint", "spray paint", "fruit", "lettuce", "carrot", "watermelon", "orange", "apple", "banana", "pear", "gold", "gold bar", "pistol", "lantern", "lamp", "umbrella", "newspaper", "Sega", "ecstasy", "Nintendo 64", "calculator", "brownies", "pie", "loaf bread", "aviator shades", "shutter shades", "CD", "floppy disk", "mp3 player", "walkman", "cassette", "ticket", "food stub", "ski mask", "spear", "nunchucks", "frying pan", "beans", "charger", "guitar pick", "mic", "digicam", "GoPro", "night vision goggles", "sniper rifle", "DS4 Playstation controller", "CDJ", "Raybans", "smartwatch", "modem", "axe", "Canada", "Sweden", "China", "Beijing", "New York", "California", "L.A.", "San Francisco", "Detroit", "Colorado", "Newark", "New Jersey", "Australia", "Gold Coast", "Thailand", "North Korea", "Pyongyang", "Seoul", "Tokyo", "Osaka", "Japan", "Fujian", "Kyoto", "Manila", "Palawan", "Siargao", "Sultan Kudarat", "Davao", "Sydney", "Poland", "Uzbekistan", "Kyrgystan", "Turkey", "Iraq", "Iran", "Bolivia", "Iceland", "Lithuania", "Greenland", "UK", "France", "Spain", "Rome", "Greece", "Amsterdam", "Netherlands", "Boracay", "Indonesia", "Russia", "Ukraine", "Africa", "Antarctica", "Alaska", "South Carolina", "North Carolina", "Philadelphia", "Brooklyn", "Mexico", "Brazil", "Taiwan", "Burma", "Cambodia", "Vietnam", "India", "Bangladesh", "New Delhi", "Bombay", "Philippines", "Africa and African America", "Aikido", "Animal and Imitative Systems in Chinese Martial Arts", "Archery, Japanese", "Baguazhang (Pa Kua Ch' uan)", "Boxing, Chinese", "Boxing, Chinese Shaolin Styles", "Boxing, European", "Brazilian Jiu Jitsu", "Budo, Bujutsu, and Bugei", "Capoeira", "China", "Chivalry", "Combatives: Military and Police Martial Art Training", "Dueling", "Europe", "External vs. Internal Chinese Martial Arts", "Folklore in the Martial Arts", "Form/Xing/Kata/Pattern Practice", "Gladiators", "Gunfighters", "Hapkido", "Heralds", "Iaido", "India", "Japan", "Japanese Martial Arts, Chinese Influences on", "Jeet Kune Do", "Judo", "Kajukenbo", "Kalarippayattu", "Karate, Japanese", "Karate, Okinawan", "Kendo", "Kenpo", "Ki/Qi", "Knights", "Kobudo, Okinawan", "Korea", "Korean Martial Arts, Chinese Influences On", "Koryu Bugei, Japanese", "Krav Maga", "Kung Fu/Gungfu/Gongfu", "Masters of Defense", "Medicine, Traditional Chinese", "Meditation", "Middle East", "Mongolia", "Muay Thai", "Ninjutsu", "Okinawa", "Orders of Knighthood, Secular", "Pacific Islands", "Pankration", "Performing Arts", "Philippines", "Political Conflict and the Martial Arts", "Rank", "Religion and Spiritual Development: Ancient Mediterranean and Medieval West", "Religion and Spiritual Development: China", "Religion and Spiritual Development: India", "Religion and Spiritual Development: Japan", "Sambo", "Samurai", "Savate", "Silat", "Social Uses of the Martial Arts", "Southeast Asia", "Stage Combat", "Stickfighting, Non-Asian", "Sword, Japanese", "Swordsmanship, European Medieval", "Swordsmanship, European Renaissance", "Swordsmanship, Japanese", "Swordsmanship, Korean/Hankuk Haedong Kumdo", "T'aek'kyon", "Taekwondo", "Taijiquan (Tai Chi Ch'uan)", "Thaing", "Thang-Ta", "Training Area", "Varma Ati", "Vovinam/Viet Vo Dao", "Warrior Monks, Japanese/Sohei", "Women in the Martial Arts", "Women in the Martial Arts: Britain and North America", "Women in the Martial Arts: China", "Women in the Martial Arts: Japan", "Wrestling and Grappling: China", "Wrestling and Grappling: Europe", "Wrestling and Grappling: India", "Wrestling and Grappling: Japan", "Wrestling, Professional", "Written Texts: China", "Written Texts: India", "Written Texts: Japan", "Xingyiquan (Hsing I Ch'uan)", "Yongchun/Wing Chun", "Backside 180", "Backside 360", "Backside Caballerial", "Backside Half Cab", "Fakie Ollie", "Frontside 180", "Frontside 360", "Frontside Caballerial", "Frontside Half Cab", "Kickturn", "Nollie", "Nollie Backside 180", "Nollie Backside 360", "Nollie Frontside 180", "Nollie Frontside 360", "Ollie", "Ollie North", "Ollie South", "Switch Backside 180", "Switch Backside 360", "Switch Frontside 180", "Switch Frontside 360", "Switch Ollie", "Tic-Tac", "360 Flip", "360 Hardflip", "360 Ollie Heelflip", "360 Ollie Kickflip", "360 Pop Shove-it", "360 Shuvit", "540 Flip", "720 Flip", "Alpha Flip", "Anti Casper Flip", "Backside Bigspin", "Backside Flip", "Backside Half Cab Heelflip", "Backside Half Cab Kickflip", "Backside Heelflip", "Backside Kickflip", "Big Heelflip", "Bigflip", "Biggerflip", "Biggerspin", "Bigspin", "Bubble Flip", "Bullflip", "Caballerial Flip", "Camel Flip", "Casper Flip", "Daydream Flip", "De Comply", "Disco Flip", "Double Heelflip", "Double Kickflip", "Dragon Flip", "Fakie 360 Flip", "Fakie 360 Hardflip", "Fakie Backside Bigspin", "Fakie Backside Pop Shove-it", "Fakie Frontside Bigspin", "Fakie Frontside Pop Shove-it", "Fakie Hardflip", "Fakie Heelflip", "Fakie Inward Heelflip", "Fakie Kickflip", "Fakie Varial Heelflip", "Fakie Varial Kickflip", "Feather Flip", "Fingerflip", "Forward Flip", "Front Foot Impossible", "Frontside 360 Pop Shove it", "Frontside Bigspin", "Frontside Flip", "Frontside Half Cab Heelflip", "Frontside Half Cab Kickflip", "Frontside Heelflip", "Frontside Kickflip", "Frontside Pop Shove-it", "Gazelle Flip", "Gazelle Spin", "Ghetto Bird", "Gingersnap", "Grape Flip", "Half Cab", "Handstand Flip", "Hardflip", "Haslam Flip", "Heelflip", "Hospital Flip", "Illusion Flip", "Impossible", "Inward Heelflip", "Jesus Flip", "Kickback Flip", "Kickflip", "Kiwi Flip", "Laser Flip", "Late Kickflip", "Nerd Flip", "Nightmare Flip", "No Comply", "540", "720", "900", "Airwalk", "Benihana", "Cannonball", "Christ Air", "Crossbone", "Delmar Indy", "Indy", "Indy Grab", "Invert", "Japan Air", "Judo Air", "Madonna", "McTwist", "Melancholy Grab", "Melon", "Method Air", "Mute Air", "Nose Grab", "Rocket Air", "Sal Flip", "Seatbelt Grab", "Stiffy", "Superman Grab", "Varial", "Egg Plant", "Manual", "Nose Manual", "Varial Heelflip", "Varial Kickflip", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "Abstract Art", "Abstract Expressionism", "Academicism", "Analytical Cubism", "Art Deco", "Art Nouveau", "Ashcan School", "Banksy", "Baroque", "Byzantine Art", "Classicism", "Cloisonnism", "Color Field", "Conceptual Art", "Constructivism", "Cubism", "Cubo-Futurism", "Dadaism", "Dutch Golden Age", "Early Netherlandish", "Early Renaissance", "Expressionism", "Fauvism", "Futurism", "Geometric Abstract Art", "Gothic Art", "High Renaissance", "Hudson River School", "Impressionism", "Italian Renaissance", "Kitsch", "Luminism", "Mannerism", "Metaphysical Art", "Minimalism", "Modernism", "Naive Art/ Primitivism", "Neo-Baroque", "Neo-Classicism", "Neo-Dada", "Neo Expressionism", "Neoplasticism", "New Realism", "Northern Renaissance", "Op-Art", "Orientalism", "Orphism", "Pointilism", "Pop Art", "Pop Surrealism", "Post-Impressionism", "Pre-Raphaelites", "Precisionism", "Proto Renaissance", "Purism", "Realism", "Regionalism", "Renaissance", "Rococo", "Romanticism", "Social Realism", "Socialist Realism", "Suprematism", "Surrealism", "Symbolism", "Synthetic Cubism", "Synthetism", "Tenebrism", "Tonalism", "Tubism", "Ukiyo-E", "Verism", "Alternative", "Anime", "Blues", "Classical", "Comedy", "Commercials", "Country", "Dance", "Easy Listening", "Electronic", "Enka", "French Pop", "Folk Music", "German Folk", "German Pop", "Fitness and Workout", "Hip-Hop/Rap", "Holiday Music", "Indie Pop", "Industrial", "Inspirational", "Instrumental", "Jazz", "K-Pop", "Karaoke", "Latin", "Metal", "New Age", "Opera", "Pop", "R&B/Soul", "Reggae", "Rock", "Soundtracks", "Spoken Word", "Tex-Mex/Tejano", "Vocal", "World", "You met", "You fought with", "You fought with", "You defeated", "You defeated", "You defeated", "You were sent to the hospital by", "You were defeated by", "You healed", "You were healed by", "You jailed", "You pranked", "You were pranked by", "You were jailed by", "you were beat by", "you were K.Ode by", "a stranger", "a child", "an emo", "a doctor", "a soldier", "a police", "a homeless person", "a mom", "a gamer", "a dancer", "an artist", "a peasant", "a prince", "a princess", "a King", "a Queen", "a lawyer", "a vendor", "an alien", "a Mexican", "a nurse", "a lizard", "a woman", "a girl", "a boy", "an optometrist", "a physician", "a psychologist", "a psychiatrist", "a teacher", "White Tara", "Green Tara", "a ninja", "a gangster", "Dollars", "Rupies", "Yen", "Pesos", "Pounds", "Coins", "Arcade Coins", "Mickey Mouse Money", "Francs", "Shekels", "Tugriks", "Indian Rupees", "Singapore Dollars", "Rubles", "Dinars", "Yuans", "Bahts", "Afghanis", "Riyals", "Kronas", "Riels", "DDOS attacks", "Botnets", "Credit Card Numbers", "E-mail addresses", "Business Addresses", "Home Addresses", "Passwords", "Mobile Numbers", "Telephone Numbers", "STD", "spits", "garbage", "sickness", "nudes", "hate", "likes", "Canada", "Sweden", "China", "Beijing", "New York", "California", "L.A.", "San Francisco", "Detroit", "Colorado", "Newark", "New Jersey", "Australia", "Gold Coast", "Thailand", "North Korea", "Pyongyang", "Seoul", "Tokyo", "Osaka", "Japan", "Fujian", "Kyoto", "Manila", "Palawan", "Siargao", "Sultan Kudarat", "Davao", "Sydney", "Poland", "Uzbekistan", "Kyrgystan", "Turkey", "Iraq", "Iran", "Bolivia", "Iceland", "Lithuania", "Greenland", "UK", "France", "Spain", "Rome", "Greece", "Amsterdam", "Netherlands", "Boracay", "Indonesia", "Russia", "Ukraine", "Africa", "Antarctica", "Alaska", "South Carolina", "North Carolina", "Philadelphia", "Brooklyn", "Mexico", "Brazil", "Taiwan", "Burma", "Cambodia", "Vietnam", "India", "Bangladesh", "New Delhi", "Bombay", "Philippines", "Italy", "Belgium", "Denmark", "Colombia", "Argentina", "Albania", "Algeria", "Andora", "Angola", "Antigua and Barbuda", "Armenia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Belarus", "Belize", "Benin", "Bhutan", "Bosnia", "Botswana", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cameroon", "Chad", "Chile", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia", "Congo", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Guinea", "Estonia", "Swaziland", "Ethiopia", "Fiji", "Gabon", "Gambia", "Ghana", "Guatemala", "Guyana", "Haiti", "Honduras", "Hungary", "Israel", "Italy", "Jamaica", "Kenya", "Jordan", "Laos", "Latvia", "Lebanon", "Liberia", "Liechtenstein", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritiana", "Mauritius", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Portugal", "Qatar", "Romania", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Slovakia", "Slovenia", "Solomon Islands", "South Africa", "South Korea", "South Sudan", "Sri Lanka", "Sudan", "Suriname", "Syria", "Tajikistan", "Tanzania", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Yemen", "Zambia", "Zimbabwe", "samurai helmet", "bike helmet", "motorcycle helmet", "astronaut helmet", "pilot helmet", "aviator hat", "baseball cap", "backwards baseball cap", "trucker cap", "backwards trucker cap", "construction helmet", "miner helmet", "skate helmet", "ski mask", "facemask", "beanie", "birthday party hat", "pantyhose", "f13th mask", "jabbawockee mask", "none", "poring hat", "beehive", "idea bubble", "speech bubble", "bucket hat", "black bucket hat", "beige bucket hat", "orange bucket hat", "blue bucket hat", "american football helmet", "rugby helmet", "emo hair", "mohawk", "blonded semi-balded", "skinhead", "tropika", "glasses", "raybans", "shades", "spectacles", "night-vision goggles", "pilot goggles", "black-rimmed glasses", "nostril piercing", "tibetan headgear", "sikh headgear", "muslim hat", "skullcap", "muslim skullhat", "long hair", "salt and pepper", "blonde", "headphones", "earphones", "visor hat", "headband", "cat headband", "rabbit headband", "afro", "curly curls", "facial mask", "face paint", "warpaint", "unipaint", "maked-up", "bush headgear", "soldier helmet", "buddhahead", "game-night drink", "cig", "tobacco", "spliff", "straw", "british army guard headgear", "police helmet", "police mask", "hanja mask", "java mask", "african continent mask", "feather", "chef hat", "indian chief headgear", "black paint", "hijab", "knight armor", "police armor", "samurai armor", "karate uniform", "police uniform", "soldier uniform", "korean robe", "japanese robe", "barong", "polo", "shirt", "black shirt", "sweater", "tanktop", "backpack", "slingbag", "none", "chest hair", "kevlar", "press vest", "bush gear", "hoodie", "white hoodie", "blue hoodie", "tight shirt", "nikes", "puma", "adidas", "coca-cola retro shirt", "rasta shirt", "sash", "soccer uniform", "american football armor", "football shirt", "soccer shirt", "referee shirt", "pacemaker", "bra", "bikini", "chest bag", "tuxedo", "suit", "bowtie", "tie", "apron", "chef uniform", "red paint", "black paint", "astronaut suit", "diving suit", "rashguard", "jersey", "bathrobe", "farmer gear", "lanyard", "muslim clothing", "sikh clothing", "tourguide uniform", "boyscout uniform", "girlscout uniform", "black sweater", "scarf", "shawl", "green hoodie", "pink hoodie", "jacket", "windbreaker", "varsity jacket", "jock jacket", "vest", "coat", "sword", "samurai", "club", "knife", "machete", "ice cream", "food", "coffee", "pizza", "camera", "gun", "staff", "ruler", "katana", "arnis", "nunchucks", "cat", "tablet", "phone", "iphone", "android", "fruitshake", "vape", "bong", "spliff", "joint", "beer", "champagne", "chainsaw", "folder", "testpaper", "pen", "macbook", "laptop", "linux computer", "pencil", "paintbrush", "tire pump", "fire extinguisher", "measuring device", "scalpel", "diamond cutter", "diamond", "diamonds", "trash", "water", "none", "empty-hand", "spraypaint", "smartwatch", "dynamite", "c4", "whisker", "whiskey", "liquor", "flask", "leaf", "feather", "book", "novel", "junkfood", "rifle", "sniper", "handgun", "laser", "keys", "guitar", "electric guitar", "classical guitar", "ukulele", "keyboard", "burger", "twig", "plank", "paddel", "coins", "money", "dollar bills", "fruit", "vegetable", "ps4 controller", "xbox controller", "ipod", "yarn", "spear", "bow", "tights", "shorts", "cycling shorts", "skirt", "bushwear", "pants", "leggings", "elephant pants", "skinny jeans", "jeans", "none", "trunks", "pants", "pants", "pants", "holster", "bruise", "slacks", "hiking pants", "karate pants", "taekwondo pants", "mma shorts", "briefs", "sleather pants", "slippers", "hotel slippers", "shoes", "shoes", "shoes", "shoes", "boots", "beige boots", "black army boots", "nikes", "adidas", "puma", "converse", "chucks", "none", "socks", "clogs", "leather shoes", "white shoes", "skateboard", "longboard", "sneakers", "new balance", "world balance", "fluffy shoes", "fluffy slippers", "sandals", "You walk in a field", "You encounter an animal", "You encounter a monster", "You encounter an enemy", "You encounter a friend", "You encounter an ally", "You enter an alley", "It is night time", "The sun just rised", "It is dawn", "It is dusk", "You enter the university", "You sit down on your computer", "You just chill", "You chill in a cafe", "You feel sleepy", "You are hungry", "You walk on", "You run straight", "You run in loops", "You are tired", "You are bullied", "You are sent to the hospital", "You go on a roadtrip", "You hike", "You mine", "You are out of money", "You just earned your salary", "You spend your time waiting", "You just nearly died", "You do your assignment", "You paint", "You hum", "You rap", "You sing", "You hear someone singing", "You compose rap", "You compose a classical track", "You feel lonely", "You feel happy", "You feel ecstatic", "You yearn for something", "You feel you should meditate", "You feel you should pray", "You walk in a church", "You walk in a temple", "You walk in a mosque", "You walk in a forest", "You walk in a jungle", "You walk along the road", "You're in the city", "You ride a bus", "You ride a cab", "You take out the trash", "You find a job", "Someone gave you work", "You worship", "You're in transit", "You surf the internet", "You got hacked", "You got scammed", "You exercise", "You were commissioned in the army", "You were commisioned in the police force", "You were commissioned in the airforce", "You were commissioned in the marines", "You have a mission", "You feel inspired", "You feel uninspired", "You feel creative block", "You feel like dancing", "You hear music", "You watch TV", "You hear the radio", "You are fatigued", "You enter war", "You meet someone", "You view film showing schedules", "You browse through courses", "You walk into a market", "You think of getting souvenirs", "You explore the place", "red", "crimson", "maroon", "scarlet", "orange", "amber", "rust", "salmon", "green", "emerald", "lime", "olive", "yellow", "gold", "lemon", "mustard", "blue", "azure", "indigo", "teal", "purple", "lavender", "magenta", "violet", "brown", "beige", "chocolate", "sienna", "gray", "charcoal", "silver", "slate", "black", "ebony", "jet", "onyx", "white", "alabaster", "ivory", "pearl", "pink", "sky blue", "neon green", "neon yellow", "neon orange", "neon blue", "touchdown", "touchdown", "touchdown", "first down", "first down", "first down", "first down", "second down", "second down", "second down", "third down", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "there are 3 guards ahead of you", "there are 3 guards ahead of you", "there are 3 guards ahead of you", "there are 4 guards ahead of you", "there are 2 guards ahead of you", "there are 2 guards ahead of you", "there are 2 guards ahead of you", "there is 1 guard ahead of you", "there is 1 guard ahead of you", "species", "practice", "natural", "measure", "present", "form", "order", "quality", "condition", "state", "action", "element", "part", "division", "subject", "ground", "power", "station", "register", "person", "place", "ordinary", "strong", "under", "make", "light", "exercise", "exchange", "parallel", "charge", "support", "judgment", "substance", "figure", "strength", "sound", "service", "quantity", "standard", "right", "point", "character", "strike", "discharge", "force", "return", "spring", "square", "between", "without", "water", "spirit", "distance", "contract", "positive", "position", "straight", "moderate", "double", "superior", "certain", "compound", "interest", "language", "passage", "business", "through", "manner", "relation", "general", "process", "strain", "delicate", "bearing", "property", "advance", "account", "original", "religion", "round", "over", "principal", "sharp", "surface", "line", "degree", "report", "course", "matter", "sentence", "body", "express", "close", "quarter", "head", "negative", "take", "plant", "argument", "increase", "house", "movement", "table", "balance", "separate", "small", "back", "entrance", "settle", "reason", "machine", "common", "material", "scale", "authority", "capable", "anything", "regular", "stock", "break", "opposite", "into", "distress", "work", "standing", "cross", "color", "number", "stroke", "convert", "radical", "relative", "function", "stand", "press", "question", "peculiar", "progress", "together", "touch", "capacity", "physical", "horse", "specific", "external", "produce", "incapable", "passion", "represent", "promise", "tender", "issue", "family", "range", "domestic", "shoulder", "change", "approach", "transfer", "carriage", "feeling", "security", "something", "direction", "pressure", "frame", "like", "free", "company", "inferior", "distinct", "variety", "solution", "capital", "grain", "deposit", "circular", "receive", "pleasure", "particular", "office", "faculty", "motion", "personal", "country", "narrow", "occasion", "open", "addition", "second", "complete", "short", "ancient", "contrary", "serve", "disorder", "crown", "mark", "weight", "large", "white", "tongue", "mountain", "address", "vessel", "throw", "science", "system", "turn", "object", "temper", "internal", "base", "pass", "familiar", "principle", "another", "that", "hold", "compass", "pitch", "influence", "enter", "command", "reduce", "level", "surprise", "time", "bottom", "face", "flower", "extreme", "raise", "purpose", "nature", "answer", "down", "against", "stick", "clear", "record", "article", "discourse", "string", "shell", "side", "fall", "backward", "determine", "several", "forward", "period", "absolute", "taste", "draw", "waste", "running", "spread", "chamber", "cause", "official", "province", "flat", "instrument", "native", "conduct", "maintain", "descent", "block", "presence", "simple", "lead", "weather", "direct", "which", "opinion", "justice", "guard", "master", "appearance", "season", "regard", "check", "shoot", "society", "liquid", "rule", "pattern", "sphere", "directly", "cast", "life", "definite", "private", "give", "knowledge", "cover", "weak", "draught", "section", "sovereign", "stop", "organic", "screw", "violence", "decision", "render", "beat", "rise", "current", "affection", "evidence", "great", "court", "silver", "hand", "correct", "roll", "honor", "wind", "plate", "channel", "single", "keep", "heat", "cylinder", "divide", "release", "after", "respect", "military", "stomach", "some", "root", "timber", "structure", "school", "exterior", "syllable", "piece", "feather", "pledge", "supply", "christian", "branch", "religious", "necessary", "father", "execution", "affected", "knot", "carry", "other", "circle", "kind", "worship", "style", "example", "effect", "obscure", "well", "violent", "horn", "english", "drive", "outside", "better", "church", "mixture", "with", "equal", "reproach", "bear", "volatile", "equivalent", "slender", "remove", "being", "preserve", "grace", "earth", "elevation", "design", "stream", "furnish", "dress", "little", "writing", "spiritual", "black", "twist", "picture", "from", "smooth", "estate", "fine", "anchor", "joint", "heart", "expression", "reach", "center", "contest", "trust", "special", "shall", "friend", "high", "call", "train", "traverse", "irregular", "wrong", "sign", "watch", "catch", "animal", "stone", "dependent", "before", "relief", "thought", "fortune", "will", "active", "formation", "valuable", "soft", "about", "operation", "bank", "heavy", "solid", "ring", "proportion", "symbol", "opposition", "apparent", "abstract", "portion", "dignity", "revolution", "post", "voluntary", "length", "market", "harmony", "prepare", "perform", "land", "board", "shaft", "neglect", "iron", "value", "attempt", "hard", "judge", "proper", "mouth", "moral", "district", "interior", "genus", "union", "purple", "husband", "wing", "broken", "foreign", "divine", "perfect", "last", "compact", "escape", "extract", "demand", "flexible", "still", "wheel", "long", "burden", "labor", "note", "interval", "column", "destitute", "reference", "letter", "control", "freedom", "swallow", "medicine", "history", "difference", "people", "strip", "contempt", "handle", "decline", "good", "liberty", "brilliant", "fashion", "engage", "rest", "impression", "offensive", "drawing", "purchase", "minute", "metal", "texture", "doctrine", "cutting", "lower", "paper", "sight", "hollow", "follow", "judicial", "formal", "salt", "blow", "member", "fellow", "mean", "mother", "thread", "corrupt", "failure", "associate", "relieve", "display", "full", "distant", "disease", "sense", "liberal", "intended", "gather", "play", "blood", "swell", "stuff", "bill", "opening", "quarrel", "world", "secure", "stage", "government", "plane", "public", "composition", "allowance", "thing", "establish", "essential", "gentle", "consider", "examine", "attack", "benefit", "height", "exhibit", "movable", "voice", "tropical", "platform", "alternate", "have", "catholic", "bound", "advantage", "bright", "thrust", "marble", "mercury", "alcohol", "making", "throat", "foot", "shelter", "elastic", "slight", "painting", "inclose", "stem", "reduction", "vegetable", "breast", "drum", "guide", "generation", "study", "within", "succession", "dressing", "powerful", "staff", "notice", "downward", "upright", "favor", "thick", "trade", "extend", "custom", "faith", "mechanical", "turning", "front", "agreement", "glass", "extension", "normal", "green", "exposure", "medium", "product", "application", "term", "vertical", "shape", "choice", "more", "somewhat", "chance", "result", "residence", "party", "wear", "confidence", "soldier", "continue", "powder", "found", "learning", "situation", "bitter", "struggle", "finger", "shield", "officer", "rough", "field", "space", "privilege", "delicacy", "manifest", "sacred", "race", "organ", "behind", "breath", "belonging", "phrase", "border", "marine", "breathing", "flesh", "stretch", "musical", "imperfect", "keeping", "trouble", "fresh", "different", "image", "plaster", "numerous", "existence", "surround", "commerce", "passing", "rank", "around", "mill", "popular", "counter", "fruit", "praise", "hence", "beneath", "loose", "hammer", "amount", "pack", "secondary", "sweet", "meeting", "tone", "inclined", "refuse", "game", "floating", "mineral", "devotion", "memory", "individual", "withdraw", "size", "severe", "declare", "warrant", "desire", "fish", "provide", "title", "smoke", "suffer", "social", "bond", "virtue", "doubtful", "speech", "sympathy", "ready", "feed", "metallic", "fast", "step", "leave", "poison", "worthy", "entire", "easily", "steel", "colored", "disguise", "variable", "speaking", "rising", "indicate", "band", "primary", "agitation", "worm", "quick", "flight", "discipline", "careless", "secret", "lock", "profession", "affect", "minister", "excess", "flourish", "pole", "tooth", "situated", "mind", "disgrace", "censure", "estimate", "treat", "dead", "chemical", "grave", "deliver", "tail", "drop", "attention", "surrender", "hydrogen", "american", "sheet", "building", "preparation", "attend", "plain", "fabric", "limit", "appear", "fasten", "bind", "swelling", "show", "striking", "witness", "ornament", "possession", "bishop", "name", "collect", "hinder", "beyond", "beginning", "case", "covenant", "marriage", "foul", "yield", "type", "handsome", "uniform", "whatever", "earnest", "proof", "himself", "segment", "former", "critical", "difficulty", "proceed", "walk", "restrain", "prince", "setting", "trick", "leader", "female", "universal", "floor", "fire", "false", "depression", "seal", "class", "similar", "stamp", "sleep", "destroy", "following", "resemble", "formerly", "match", "management", "growth", "suit", "patient", "aggregate", "various", "south", "projection", "habit", "tissue", "dispute", "move", "sacrifice", "become", "agreeable", "credit", "partial", "chain", "broad", "northern", "heavenly", "pipe", "arrangement", "impulse", "sport", "apply", "live", "tension", "write", "above", "wood", "furnace", "circuit", "token", "decree", "trial", "shade", "child", "engaged", "imitation", "meet", "truth", "fair", "offer", "supreme", "constant", "sensible", "properly", "share", "device", "pair", "sugar", "solemn", "restore", "commission", "happiness", "word", "exact", "criminal", "model", "belief", "delivery", "spot", "suitable", "commonly", "ceremony", "convey", "search", "behavior", "printing", "measured", "frequent", "ball", "profit", "especially", "whole", "admit", "muscular", "thin", "singular", "related", "vapor", "crowd", "quiet", "method", "living", "first", "fault", "skin", "reverse", "college", "royal", "chief", "want", "battle", "appetite", "disposition", "recover", "beam", "drink", "reverence", "converse", "essence", "same", "deprive", "deep", "nervous", "wide", "hawk", "compose", "skeleton", "error", "nucleus", "proposition", "bend", "ship", "drinking", "difficult", "whip", "important", "swimming", "hanging", "empty", "wash", "obligation", "cotton", "nerve", "generally", "prayer", "century", "view", "servant", "coloring", "exertion", "incline", "unite", "observation", "middle", "community", "territory", "bone", "story", "colorless", "shallow", "solitary", "doubt", "acid", "slip", "speak", "deceive", "apparatus", "flow", "even", "dominion", "introduce", "severity", "region", "intimate", "becoming", "meaning", "philosophy", "extremity", "gravity", "forth", "diameter", "near", "scratch", "assembly", "east", "shoe", "prevent", "success", "spindle", "what", "activity", "bolt", "extensive", "brief", "project", "book", "cunning", "drift", "accident", "indirect", "protection", "evil", "group", "burning", "yellow", "fancy", "particle", "confusion", "document", "energy", "exhaust", "series", "reception", "utter", "yielding", "remote", "stiff", "wild", "discover", "policy", "angle", "below", "tree", "literary", "rate", "pursuit", "clothing", "engine", "trunk", "claim", "previous", "grant", "tribe", "extinct", "obtain", "furniture", "sequence", "imperial", "petition", "rope", "pleasing", "remedy", "oblique", "warm", "composed", "fill", "blue", "economy", "sprinkle", "smell", "promote", "money", "resolve", "covering", "needle", "blind", "acute", "foolish", "fossil", "european", "worth", "combine", "companion", "volume", "rather", "gain", "exciting", "look", "soil", "outward", "bring", "skill", "west", "duty", "sulphur", "expose", "noble", "posture", "lose", "follower", "distinction", "brush", "copper", "diminish", "sort", "attachment", "sensation", "inside", "aspect", "stain", "affinity", "slide", "southern", "edge", "perception", "conclusion", "unequal", "priest", "boiling", "steam", "lord", "consent", "float", "tincture", "collection", "beak", "rock", "mine", "wearing", "decay", "moisture", "stern", "confine", "average", "burn", "scheme", "pale", "while", "declaration", "contain", "plunder", "actual", "accent", "mass", "equality", "bladder", "young", "curve", "intense", "star", "loss", "reading", "spiral", "political", "assault", "prospect", "tendency", "remain", "made", "contraction", "brain", "evolution", "experience", "further", "complex", "sponge", "worthless", "develop", "extent", "except", "payment", "election", "sometimes", "vision", "screen", "seize", "pain", "sufficient", "dwelling", "manage", "sensitive", "hundred", "music", "modern", "horizon", "town", "birth", "lime", "appeal", "kingdom", "constitution", "inclosure", "suspension", "suffering", "rich", "room", "collar", "elevated", "prominent", "coarse", "bent", "descend", "holding", "love", "treatise", "instruct", "perceive", "pointed", "sudden", "adjacent", "formed", "agree", "split", "license", "reflection", "shut", "dissolve", "battery", "variation", "start", "price", "load", "necessity", "coming", "vehicle", "axis", "sweep", "wall", "sustain", "vote", "driving", "flavor", "breed", "prepared", "anterior", "saddle", "pride", "divinity", "aromatic", "lively", "foundation", "dark", "continued", "derivative", "minor", "nation", "conveyance", "utterance", "legal", "mistress", "corner", "rent", "occupation", "reputation", "sail", "taking", "grass", "crescent", "mistake", "dull", "mode", "visible", "precious", "undergo", "toward", "engraving", "moving", "list", "home", "currency", "port", "wicked", "vein", "only", "membrane", "towards", "dispose", "wound", "rapid", "hook", "seat", "bargain", "copy", "sink", "partially", "otherwise", "overcome", "stalk", "feel", "corn", "trumpet", "true", "courage", "grand", "carrying", "connection", "coast", "successive", "stay", "painful", "lost", "advocate", "king", "motive", "velocity", "expansion", "margin", "dance", "track", "where", "independent", "north", "bore", "honorable", "theory", "wanting", "seed", "arch", "composite", "leaf", "comparison", "soul", "poor", "calendar", "death", "satisfy", "artificial", "statement", "such", "indian", "reward", "travel", "likeness", "reserve", "restraint", "intellect", "courtesy", "cold", "delay", "describe", "idea", "fight", "reasoning", "central", "partition", "milk", "literature", "organism", "fold", "equation", "male", "shadow", "easy", "fear", "forest", "verse", "just", "absence", "tertiary", "according", "feast", "freight", "department", "outline", "artifice", "captain", "resistance", "chase", "diamond", "forming", "student", "slow", "given", "trespass", "merchant", "primitive", "defend", "sexual", "amorphous", "appropriate", "temple", "invest", "dishonor", "civil", "development", "lateral", "print", "outer", "adjective", "cord", "blade", "darkness", "retreat", "challenge", "shot", "silence", "alkaloid", "fail", "night", "roman", "strongly", "thousand", "profound", "danger", "ultimate", "harbor", "nothing", "execute", "sour", "desert", "attach", "concern", "employment", "bridge", "pile", "duration", "regulate", "innocent", "future", "permanent", "leather", "main", "governor", "comfort", "flag", "real", "calling", "encounter", "bell", "grow", "half", "posterior", "signature", "erect", "humor", "morality", "mutual", "proceeding", "able", "cheat", "friendly", "insect", "either", "treatment", "attendant", "vocal", "shining", "sucker", "leading", "deeply", "find", "flowing", "settlement", "council", "infinite", "divided", "skillful", "exceed", "pleasant", "speed", "altitude", "winding", "content", "commit", "bankrupt", "careful", "continuous", "consequence", "excite", "exhibition", "noise", "concrete", "breeding", "incident", "much", "annual", "skilled", "hair", "prove", "remark", "admission", "enlarge", "provided", "breathe", "hearing", "raising", "attribute", "firm", "arrange", "meal", "sand", "dish", "strange", "fourth", "atlantic", "congress", "barrel", "western", "mental", "aperture", "lodge", "pull", "sterling", "come", "inserted", "contact", "sing", "prefix", "prejudice", "provision", "talk", "counsel", "void", "nose", "chest", "vulgar", "strap", "wanton", "latin", "card", "analysis", "institution", "ridicule", "covered", "brace", "third", "pronounce", "limited", "enough", "overthrow", "crack", "coin", "adherent", "observe", "coat", "flame", "dorsal", "capsule", "impress", "guilty", "delight", "best", "stranger", "nobility", "possess", "duck", "conception", "electricity", "uncertain", "affecting", "rational", "clothes", "also", "wonder", "summer", "involve", "request", "reaction", "envelop", "breach", "excellent", "obstruct", "atmosphere", "mantle", "remember", "again", "receiver", "consonant", "blank", "devoted", "blast", "nice", "improper", "excuse", "intention", "embrace", "agent", "limb", "excellence", "injury", "faithful", "protect", "chiefly", "production", "pastoral", "isomeric", "trifling", "sentiment", "appendix", "temporary", "test", "drill", "burst", "temporal", "when", "beating", "rolling", "orderly", "sitting", "tract", "send", "neck", "author", "strict", "less", "benefice", "woman", "away", "enterprise", "help", "overflow", "testimony", "join", "excitement", "stable", "cannon", "dash", "idle", "luminous", "originally", "doctor", "resolution", "appoint", "crystal", "beauty", "assurance", "shake", "eastern", "torture", "damage", "shock", "morbid", "rounded", "aside", "vigorous", "ascertain", "window", "read", "designate", "effort", "repair", "compare", "binding", "boat", "fever", "impregnate", "machinery", "moment", "keeper", "pungent", "whistle", "penetrate", "finish", "having", "elegant", "irritate", "fillet", "cluster", "pregnant", "winter", "woolen", "gross", "german", "ferment", "signal", "rude", "offering", "dust", "angular", "tune", "stupid", "institute", "vital", "writer", "source", "because", "obedience", "ruin", "eccentric", "occupy", "crystalline", "across", "communion", "appendage", "ventral", "oppose", "memorial", "cradle", "lightly", "cloth", "include", "symmetry", "triumph", "esteem", "riding", "assume", "subdue", "sorrow", "propriety", "impure", "very", "sounding", "secular", "adjust", "plan", "scatter", "scent", "tube", "fanciful", "possible", "suspend", "marked", "stigma", "creature", "disperse", "twisted", "depth", "african", "liable", "profane", "tool", "fence", "fore", "instance", "cure", "river", "desolate", "contrast", "measuring", "disclose", "heaven", "kindness", "performance", "shed", "march", "rare", "fragrant", "parish", "cloud", "rendering", "servile", "malignant", "transport", "romance", "origin", "self", "lady", "twelve", "vagabond", "lace", "pick", "romantic", "ocean", "depress", "penalty", "eruption", "survey", "sonorous", "perennial", "shore", "journey", "casting", "succeed", "improve", "analogous", "poisonous", "steep", "shooting", "tenant", "hostile", "speaker", "venture", "endeavor", "tear", "peace", "hang", "advanced", "stake", "suppress", "steady", "gate", "page", "liquor", "varnish", "bivalve", "intellectual", "vice", "sublime", "wooden", "intensity", "alphabet", "elevate", "tenacious", "conversion", "jack", "event", "employ", "thunder", "radiant", "muscle", "moon", "spoken", "gradual", "apple", "inactive", "defeat", "rustic", "understand", "degrade", "deck", "ancestor", "putting", "agency", "constituent", "conflict", "favorable", "generous", "antecedent", "storm", "indefinite", "disposed", "bite", "customary", "distemper", "wire", "subordinate", "restless", "apart", "ease", "polish", "debate", "indulge", "deviation", "arrest", "hole", "serpent", "determination", "bark", "brown", "whisper", "beforehand", "slippery", "auxiliary", "prime", "orange", "early", "flood", "layer", "vicious", "bonnet", "digest", "accord", "latter", "scrape", "swing", "cherry", "monkey", "leap", "renounce", "awkward", "raised", "giving", "continent", "reserved", "hazard", "warp", "beautiful", "score", "invention", "girdle", "exclusive", "yard", "prostrate", "horizontal", "parting", "abuse", "citizen", "receptacle", "electric", "lantern", "bastard", "pound", "terminal", "belong", "inhabitant", "hide", "upper", "mechanic", "pigment", "reality", "traffic", "treasury", "poetry", "deed", "premise", "believe", "ridge", "flash", "shackle", "endure", "meridian", "inflated", "prize", "usage", "think", "fishing", "scene", "termination", "injure", "recognize", "fact", "solidity", "loud", "anatomy", "reciprocal", "charity", "journal", "eating", "review", "gallery", "understanding", "hardness", "chapter", "humble", "pointing", "confirm", "pure", "lean", "fracture", "year", "distinguish", "entertain", "garden", "their", "plunge", "adhesion", "purity", "industry", "exception", "discovery", "combined", "push", "entirely", "paint", "inquiry", "trace", "sole", "mystery", "importance", "torment", "forcible", "care", "past", "genius", "bottle", "twenty", "suffix", "immovable", "fibrous", "clean", "silent", "association", "sanction", "pierce", "wander", "gathering", "tread", "naked", "gift", "glance", "relish", "acting", "trim", "departure", "emotion", "reckoning", "grade", "wave", "concave", "immediate", "royalty", "ability", "induction", "three", "validity", "apartment", "crime", "along", "fleet", "triangle", "bird", "crossing", "mischief", "sword", "implement", "polished", "ignorant", "protest", "grief", "coal", "disposal", "intrigue", "punishment", "anger", "mount", "soluble", "stripe", "squeeze", "transmit", "violation", "plot", "multiply", "probable", "patience", "decrease", "chestnut", "begin", "showing", "rupture", "depart", "paragraph", "concerning", "national", "visionary", "farm", "eager", "reflect", "expand", "curious", "qualify", "molecule", "preceding", "upward", "slope", "harsh", "gravel", "wholly", "valence", "windlass", "human", "itself", "bold", "massive", "construction", "alloy", "crust", "cake", "terminate", "left", "parasite", "medical", "harness", "weapon", "tell", "fountain", "consideration", "favorite", "wrongly", "vehement", "going", "groove", "electrical", "mature", "counterfeit", "inversion", "faint", "drag", "testament", "ruffle", "undertake", "repose", "health", "fleshy", "communicate", "many", "assistant", "food", "virgin", "versed", "destruction", "prick", "temperature", "allow", "verbal", "transparent", "collective", "revolve", "combination", "fantastic", "during", "weakness", "lack", "wrinkle", "version", "alliance", "antiquity", "serious", "tenth", "store", "roof", "information", "than", "retire", "gold", "siphon", "separation", "wedge", "crest", "vibrate", "conical", "procure", "numbers", "filling", "pocket", "spur", "angles", "greek", "substitute", "runner", "feeding", "correction", "splendid", "venomous", "founder", "dolphin", "oxygen", "tackle", "dislike", "distribute", "entangle", "charm", "magnetic", "inheritance", "brick", "publicly", "slightly", "disturb", "corruption", "gallant", "deliberate", "canvas", "gray", "hedge", "indulgence", "healthy", "drain", "insolent", "bodily", "wise", "conceit", "telescope", "daughter", "yellowish", "pursue", "identical", "spider", "falsehood", "globe", "resemblance", "description", "readily", "savage", "arbitrary", "academy", "snow", "politics", "looking", "agitate", "thorough", "connect", "secretion", "afford", "articulate", "cell", "deficient", "strengthen", "recess", "bridle", "splendor", "impose", "emblem", "sting", "remarkable", "truss", "explain", "hope", "resist", "slander", "partisan", "trap", "aquatic", "fresh-water", "hood", "disdain", "removed", "adventure", "summary", "count", "whether", "literal", "pasture", "chloride", "throne", "garment", "guardian", "rose", "discount", "lasting", "cease", "sharpen", "quicken", "receipt", "morally", "habitual", "ecstasy", "defense", "alone", "heap", "edible", "beast", "palm", "dimension", "gospel", "fluid", "island", "deal", "operate", "cattle", "suppose", "concord", "cream", "queen", "ethereal", "there", "roller", "patent", "rubber", "rail", "patron", "should", "brass", "appointment", "vigor", "passive", "vascular", "beetle", "fabulous", "prodigal", "abandon", "apprehension", "fertile", "french", "imagination", "discuss", "welcome", "distrust", "contend", "lift", "dishonest", "finding", "imposing", "erroneous", "utmost", "useful", "pertaining", "diffuse", "carbon", "overlook", "blossom", "obtained", "cushion", "notion", "dispatch", "cabbage", "fortress", "equivocal", "basket", "holy", "steward", "youth", "washing", "sluggish", "messenger", "maturity", "infamous", "shorten", "else", "dexterous", "apparel", "mourning", "crooked", "propose", "rigorous", "rush", "stubborn", "dependence", "disturbance", "trench", "till", "radiate", "sailing", "eight", "infusion", "solemnity", "fret", "highly", "charter", "gloomy", "scraping", "next", "knife", "nitrogen", "tide", "magnitude", "linen", "persuade", "final", "residue", "bending", "spar", "imaginary", "flying", "accept", "bread", "attitude", "knight", "bloom", "assign", "generate", "driver", "file", "foliage", "festival", "parade", "experiment", "eminence", "conquer", "translate", "pretty", "sect", "allied", "melancholy", "breadth", "flatter", "venereal", "repeat", "abdomen", "silly", "monument", "song", "deduction", "submit", "inflame", "concert", "flush", "disgust", "fragment", "acceptance", "inspire", "neutral", "piercing", "knowing", "household", "stump", "cement", "enforce", "medicinal", "adverse", "oriental", "embarrass", "club", "instead", "enemy", "soften", "obstinate", "offspring", "please", "enamel", "shame", "practical", "examination", "beard", "road", "boundary", "warmth", "publish", "decorate", "shift", "stall", "sterile", "noxious", "sweeten", "tobacco", "obsolete", "bronze", "recital", "scholar", "theology", "distillation", "disk", "assumed", "rack", "animate", "christ", "paradise", "jurisdiction", "shrink", "touching", "recompense", "inherent", "alarm", "sincere", "conquest", "arms", "perch", "politic", "paddle", "intestine", "meat", "repetition", "abusive", "spear", "honorary", "relating", "reed", "disorderly", "plural", "immediately", "produced", "prudent", "dividing", "glory", "caution", "litter", "fixed", "rain", "were", "useless", "defective", "shine", "hospital", "injurious", "wretched", "funeral", "enjoyment", "access", "major", "defect", "brother", "empire", "procession", "accurate", "lessen", "seven", "explosive", "cheerful", "embryo", "dirty", "fellowship", "sickness", "rotation", "secretary", "wisdom", "temperate", "instruction", "transient", "resolute", "solicit", "weaken", "tarnish", "nail", "abortive", "mounted", "straw", "learned", "commander", "strive", "doubling", "hill", "chlorine", "butter", "dangerous", "catching", "infant", "greenish", "recall", "abundant", "sulphuric", "refer", "explanation", "nearly", "vexation", "perfection", "four", "castle", "confuse", "farther", "administer", "instant", "spoil", "junction", "mast", "ministry", "eclipse", "rake", "suborder", "prolific", "forbear", "tribunal", "irritation", "boom", "divination", "vacant", "sinister", "inspired", "sensibility", "exist", "stated", "graduate", "intercourse", "gland", "chapel", "calm", "perverse", "modest", "spell", "legitimate", "mortgage", "ardent", "manifold", "league", "blunt", "frequently", "limitation", "framework", "worse", "stitch", "fund", "equally", "shrill", "larva", "inflammation", "bundle", "immature", "pepper", "called", "frontal", "culture", "date", "planet", "condemn", "nasal", "willing", "disciple", "wine", "expense", "marshal", "cowardly", "riddle", "smart", "contrivance", "shank", "cutter", "director", "hasty", "gauge", "merit", "elementary", "sheep", "trail", "trimming", "marking", "always", "ticket", "precipitate", "interpret", "saving", "depressed", "regiment", "decoration", "permit", "abroad", "specious", "subtile", "cipher", "combat", "arsenic", "tough", "sentinel", "adequate", "import", "spare", "digestion", "adorn", "then", "wealth", "manual", "eternal", "opponent", "believer", "compress", "lake", "refine", "fidelity", "armed", "valve", "sullen", "spend", "conformity", "lifeless", "prosecute", "patch", "panel", "defile", "grating", "transverse", "engagement", "tumult", "malicious", "flowering", "most", "belt", "fitting", "slate", "adoption", "heel", "sweeping", "hydrous", "angry", "resort", "locality", "closely", "comb", "reversed", "heating", "grammar", "magazine", "clay", "morning", "vault", "diagonal", "couple", "boot", "engraved", "emission", "bloody", "university", "portable", "thorax", "juice", "spotted", "exclude", "abnormal", "attain", "logical", "fruitful", "removal", "doing", "sell", "mournful", "skull", "this", "monstrous", "elaborate", "canon", "endless", "seventh", "defensive", "orchestra", "simplicity", "transform", "confound", "pool", "violate", "likely", "vesicle", "precise", "scientific", "treasure", "creation", "inward", "masonry", "attraction", "belly", "adversary", "gripe", "each", "pencil", "egyptian", "delegate", "garrison", "variance", "corolla", "alienate", "accessory", "inner", "temperament", "done", "sore", "constrain", "exempt", "associated", "recovery", "late", "complaint", "melting", "dialect", "shrub", "prison", "deserving", "rightful", "excursion", "entreaty", "refined", "debt", "denial", "oily", "avoid", "inverted", "proverb", "metameric", "anxiety", "cleavage", "chimney", "laughter", "excessive", "metrical", "twitch", "improvement", "arrogant", "traveler", "universe", "chemistry", "peduncle", "abatement", "canal", "multitude", "resident", "safety", "derision", "sweat", "rider", "reckon", "dread", "superficial", "depend", "tend", "player", "mortal", "enthusiasm", "president", "barbarous", "evening", "devise", "genuine", "surrounding", "imitate", "convenient", "revolving", "honey", "hardened", "bruise", "thinking", "children", "conform", "tribute", "contention", "ride", "they", "uncover", "steal", "honest", "mushroom", "nest", "harmonize", "disable", "creep", "thus", "mortar", "chair", "extremely", "consistency", "verge", "disquiet", "vanity", "defiance", "mask", "strait", "rouse", "fringe", "mate", "bass", "safe", "flounder", "compensation", "quickly", "conceal", "bull", "prisoner", "build", "resembling", "pardon", "city", "crustacea", "starch", "heavily", "usual", "platinum", "bush", "decided", "nurse", "omission", "surety", "accidental", "clumsy", "proposal", "punish", "contents", "british", "exposition", "gigantic", "warranty", "rear", "fiction", "collision", "armor", "plank", "crop", "attorney", "radiated", "encircle", "passionate", "antelope", "scotch", "accomplish", "supposed", "emit", "hesitate", "pedestal", "pearl", "bandage", "fatigue", "submission", "training", "partake", "rapidity", "every", "worldly", "incense", "attached", "probably", "engrave", "distribution", "plead", "wait", "inform", "door", "ribbon", "impart", "mail", "swift", "premium", "yoke", "narcotic", "trifle", "unfold", "lesson", "glucoside", "kernel", "reconcile", "profuse", "conceive", "visit", "plastic", "defendant", "cavity", "silicate", "inhabit", "continuance", "crude", "graceful", "charcoal", "india", "slave", "destructive", "ether", "adhere", "ditch", "estimation", "chinese", "solvent", "persuasion", "oxidation", "entertainment", "spectrum", "detail", "disunite", "tower", "reliance", "urge", "mixed", "hall", "immortal", "beverage", "weigh", "flour", "constitute", "tack", "lance", "intermediate", "sale", "area", "vent", "publication", "coating", "audience", "particularly", "unit", "compel", "augment", "laying", "interfere", "index", "garland", "entry", "rectitude", "discord", "deformity", "consist", "dullness", "happy", "cool", "know", "exactly", "united", "farthest", "tubular", "grasp", "infernal", "construct", "treaty", "regarded", "narrowly", "toll", "kill", "kindred", "learn", "fortunate", "sensual", "railway", "efficacy", "uniformity", "remainder", "employed", "integrity", "helmet", "operculum", "conscience", "incision", "stout", "devote", "naturally", "dragon", "divest", "exclamation", "indented", "enlargement", "imagine", "orthodox", "conductor", "frustrate", "occur", "dialogue", "mollusca", "curtain", "poetical", "loop", "infectious", "bare", "rabble", "weed", "crab", "watery", "income", "feeble", "lease", "adjustment", "confession", "enormous", "born", "array", "crush", "stress", "volcanic", "humanity", "perplex", "requital", "plaintiff", "boil", "revenue", "often", "wagon", "susceptible", "sanskrit", "noisy", "speculation", "suture", "contrive", "cant", "olive", "finished", "forge", "dexterity", "showy", "indifferent", "require", "pervert", "tasteless", "proclaim", "mechanism", "discussion", "slacken", "deposition", "manufacture", "deity", "blemish", "strained", "writ", "criticism", "affair", "out", "scattered", "inference", "alkaline", "mostly", "cardinal", "winged", "army", "slice", "crank", "keen", "essay", "retain", "prey", "abundance", "periodical", "pillar", "sacrament", "pink", "retort", "purify", "goodness", "hind", "refusal", "conspicuous", "friendship", "expedition", "widely", "deadly", "objection", "partly", "rapacious", "perfume", "sauce", "poem", "couch", "spin", "response", "subjected", "stuffing", "recoil", "pine", "conclude", "falling", "tonic", "legislative", "formality", "expectation", "blame", "staple", "revive", "globular", "unnatural", "forehead", "escutcheon", "alcoholic", "monthly", "recite", "brood", "astringent", "fineness", "arranged", "seam", "supporter", "tumble", "branches", "fastening", "assent", "proud", "govern", "bosom", "artful", "eminent", "diminution", "sick", "unity", "headlong", "cautious", "mistaken", "derive", "homology", "inflict", "sulphide", "humility", "teach", "truck", "pouch", "neat", "prohibit", "grind", "pavement", "advice", "pluck", "hour", "kindly", "monarch", "tumor", "mingle", "turbulent", "predicate", "however", "representation", "watchful", "intent", "painted", "ordnance", "scorn", "chatter", "sediment", "cognizance", "literally", "derivation", "gentleman", "abrupt", "subtle", "craft", "fool", "bestow", "tight", "spleen", "facing", "portrait", "keel", "procedure", "vibration", "valued", "harangue", "frank", "rust", "coach", "wreck", "path", "earthy", "authentic", "once", "palliate", "oxide", "working", "pacific", "aversion", "pyroxene", "grains", "spanish", "heave", "chorus", "magnesia", "tenor", "productive", "mitigate", "denoting", "definition", "gall", "carbonate", "inclosed", "bulk", "taint", "pillage", "slowly", "healing", "effective", "foil", "pressing", "unctuous", "nitrogenous", "calcium", "hydrocarbon", "suggestion", "quotient", "integral", "gradually", "extended", "unlucky", "stir", "spirited", "convent", "majority", "parent", "harvest", "statue", "ligament", "reflected", "existing", "noted", "ecliptic", "equitable", "anxious", "neither", "farewell", "bail", "flute", "must", "facility", "ensign", "italian", "barren", "solitude", "refrain", "accuracy", "charitable", "clock", "weary", "silvery", "deception", "wheat", "nobleman", "antimony", "pronoun", "received", "chancery", "expedient", "flock", "repeated", "saffron", "exemption", "kindle", "stool", "breaking", "thicken", "abate", "boast", "harden", "prose", "ward", "devil", "celestial", "leguminous", "throwing", "voyage", "diminutive", "explode", "fugitive", "including", "regularly", "fastened", "sermon", "snap", "dreadful", "custody", "cruel", "oppress", "magical", "silk", "galley", "uncommon", "executive", "denote", "seek", "warning", "elephant", "livery", "salmon", "designed", "statute", "education", "bringing", "modesty", "typical", "prostitute", "initial", "humming", "heathen", "confused", "adhesive", "sickly", "required", "throng", "attract", "teaching", "packing", "occupied", "ornamental", "quill", "tyrant", "hydrate", "oath", "snatch", "vagrant", "tunnel", "inflamed", "stirring", "alumina", "meanness", "cable", "problem", "incumbent", "insipid", "spout", "narrative", "orator", "punch", "attended", "articulation", "default", "poverty", "lighter", "five", "paste", "viscous", "analogy", "clearing", "imposition", "curse", "quadrate", "flattery", "insult", "justify", "disregard", "parliament", "vinegar", "cleave", "delineate", "borough", "diversion", "dealer", "pour", "whitish", "imitative", "boiler", "spurious", "vain", "ending", "camphor", "puzzle", "included", "pause", "contracted", "adjectively", "fondness", "indies", "squirrel", "month", "crane", "sketch", "controversy", "guarantee", "chastity", "unlimited", "fighting", "pretend", "surpass", "button", "overseer", "unusual", "flank", "stony", "efficient", "rarely", "mankind", "spice", "guilt", "assemble", "though", "formula", "teacher", "dainty", "innocence", "vitreous", "clergyman", "animation", "apron", "cycle", "serving", "equity", "scripture", "violet", "containing", "hear", "stopping", "consisting", "decomposition", "lightning", "latitude", "ideal", "hire", "elbow", "purse", "gossip", "capillary", "trivial", "pompous", "feature", "cheer", "suspense", "rigid", "optical", "available", "malice", "whose", "critic", "brave", "neighbor", "link", "stratagem", "spire", "seeing", "prudence", "assertion", "worry", "both", "extravagant", "harmonious", "partner", "acquire", "decisive", "valley", "backbone", "sportive", "granular", "random", "asiatic", "diligence", "cordial", "bath", "vowel", "dealing", "brighten", "dense", "tortoise", "sculpture", "shearing", "reptile", "bible", "seizure", "indent", "pulse", "wool", "wish", "univalve", "lash", "withhold", "suspicion", "adherence", "acknowledge", "firmness", "celebrate", "scramble", "until", "nickname", "discern", "undue", "murder", "diurnal", "hebrew", "evergreen", "shepherd", "impudent", "detached", "jointed", "cask", "alive", "comparative", "frolic", "mouse", "signify", "announce", "quickness", "orifice", "accompany", "explosion", "clothe", "caustic", "choose", "pace", "mirror", "cohesion", "artillery", "insert", "mobile", "conversation", "symptom", "grease", "polarity", "offset", "deer", "furious", "emphasis", "been", "transact", "calamity", "resolved", "producing", "contingent", "complexion", "puff", "sagacious", "classical", "deluge", "rattle", "rash", "expert", "expressive", "footing", "cone", "austere", "competent", "plausible", "studious", "breech", "spelling", "retail", "petty", "reasonable", "buffalo", "bubble", "insanity", "idleness", "proceeds", "curl", "ascend", "wife", "reform", "creeping", "balloon", "create", "rage", "entreat", "insertion", "offend", "rove", "shifting", "twelfth", "inspect", "decide", "figurative", "miss", "athletic", "directed", "exceeding", "ambition", "absorb", "tangent", "bait", "haughty", "intercept", "translation", "crisp", "darken", "stability", "factor", "octave", "insnare", "propagate", "evident", "tenure", "auditory", "forked", "obstacle", "muzzle", "intricate", "grate", "peevish", "applied", "summons", "golden", "locomotive", "incorrect", "intensive", "insoluble", "collected", "amusement", "vary", "attentive", "smile", "reproduce", "cleft", "dropping", "pectoral", "ceiling", "indigo", "ruminant", "artless", "message", "pity", "ravenous", "rapidly", "quadrant", "lying", "invite", "merry", "pliable", "animated", "liability", "assuming", "sprout", "affirmative", "barter", "suggest", "elder", "monster", "tending", "ethylene", "rampart", "scope", "yarn", "reign", "lofty", "rubbish", "foremost", "melt", "to", "eighteen", "teeth", "feathered", "formally", "objective", "reckless", "deaden", "spruce", "molasses", "sheath", "fond", "secrecy", "entrails", "digestive", "commercial", "horror", "geometry", "provoke", "identity", "themselves", "abide", "valid", "winning", "satisfaction", "foliated", "cultivate", "insurance", "shower", "dejection", "street", "bench", "notch", "sanctuary", "threaten", "core", "thirst", "crimson", "isolated", "fate", "potassium", "sphenoid", "gloss", "initiate", "killing", "remembrance", "acuteness", "digging", "fraud", "endowment", "commanding", "stale", "resin", "tally", "select", "weaving", "bowl", "sloping", "exalt", "interrupt", "wither", "foresight", "circulation", "gill", "igneous", "obscurity", "distill", "inscribe", "bondage", "hastily", "notation", "firearm", "mute", "oppressive", "pericarp", "communication", "creeper", "forfeit", "apprehend", "fully", "gracious", "divert", "derived", "railroad", "interchange", "originate", "obstinacy", "neuter", "sack", "capture", "fencing", "inquire", "pope", "greatly", "wolf", "degraded", "dejected", "guidance", "aerial", "rhyme", "desirable", "insensible", "discordant", "ligature", "adopted", "sanguine", "spasmodic", "physician", "luster", "salute", "broach", "fork", "gear", "graduated", "adultery", "warlike", "obstruction", "liver", "smallpox", "lighten", "loosen", "rigor", "deformed", "climate", "admitted", "hunting", "fifteenth", "reject", "concerned", "butcher", "cessation", "approve", "turkish", "fare", "saturated", "impair", "shroud", "clamor", "disjoint", "fourteen", "epidemic", "clergy", "muddy", "laugh", "shrewd", "observance", "act", "singing", "snuff", "cricket", "geology", "insane", "subsequent", "missile", "on", "beggar", "cane", "eagle", "abruptly", "deceitful", "reddish", "cathedral", "sixteenth", "senate", "buck", "nourish", "displace", "relate", "candidate", "plump", "slack", "artery", "sodium", "powdered", "ascent", "gloom", "lowering", "resinous", "tradition", "governing", "boiled", "induce", "arise", "meditate", "voltaic", "harmless", "shedding", "ripple", "uneasy", "fissure", "merchandise", "victory", "conference", "paid", "uneasiness", "instinct", "unworthy", "rival", "wasteful", "preliminary", "branching", "boasting", "brittle", "honesty", "need", "indistinct", "inspiration", "giddy", "rescue", "absent", "buffoon", "convex", "frontier", "argue", "thickness", "marginal", "throughout", "untimely", "exquisite", "rogue", "potter", "qualities", "nonsense", "stealing", "lining", "relax", "infuse", "ruling", "additional", "streak", "immerse", "preference", "network", "condense", "tablet", "tinge", "onward", "smother", "grasping", "ammonia", "jupiter", "doublet", "mission", "fission", "anew", "causing", "sleeve", "authorized", "amber", "excrement", "damp", "affront", "offense", "cherish", "restrict", "budding", "confederate", "sever", "ambush", "growing", "irritable", "local", "homage", "regret", "vitality", "meadow", "northwest", "spongy", "leaves", "elsewhere", "police", "placenta", "component", "spirituous", "accustom", "therefore", "intelligence", "actually", "consistent", "destiny", "cloak", "forbid", "disappear", "cylindrical", "written", "fifth", "urine", "haste", "already", "scarf", "durable", "grievous", "arrival", "fierce", "whirl", "afflict", "built", "furrow", "sorrowful", "plume", "aniline", "tick", "connected", "serpentine", "spit", "epoch", "magnify", "drunken", "torpedo", "conscious", "fortify", "session", "vertebra", "shipping", "saint", "petroleum", "assist", "curb", "observer", "asunder", "qualified", "occurrence", "cleaning", "offender", "mediate", "occurring", "negligent", "beaten", "illustration", "mock", "stormy", "verb", "figured", "assemblage", "drying", "murmur", "deviate", "kitchen", "zinc", "anticipate", "servitude", "creditor", "privy", "dock", "monopoly", "newspaper", "retard", "licensed", "terrestrial", "boastful", "sliding", "ragged", "furnished", "wrought", "frightful", "whence", "stratum", "differ", "gratify", "conjecture", "ownership", "whimsical", "mere", "fundamental", "variant", "arboreal", "subjection", "strife", "subscribe", "ointment", "symmetrical", "exactness", "glossy", "liking", "sprightly", "collapse", "pudding", "cultivation", "disfavor", "dart", "renew", "consign", "tremulous", "distinguished", "pleading", "saline", "recent", "limestone", "vindicate", "inch", "heroic", "preface", "magistrate", "inflection", "unlike", "cruelty", "semblance", "mention", "parapet", "readiness", "used", "abode", "troop", "jacket", "equator", "invisible", "hindrance", "anthozoa", "spike", "refractory", "narration", "magnetism", "naval", "bitumen", "impetuous", "germinal", "measurement", "unjust", "mole", "chosen", "willow", "retract", "obvious", "combining", "prosperity", "allay", "stocking", "lymphatic", "adapted", "protract", "sober", "explore", "abounding", "commotion", "pricking", "affix", "dipping", "nutrition", "pigeon", "forcing", "feminine", "palate", "cartilage", "republic", "rebuke", "walking", "reclaim", "duplicate", "arrive", "quit", "quartz", "scallop", "guess", "trump", "homologous", "sixteen", "grieve", "removing", "slaughter", "extracted", "suspect", "engineer", "aldehyde", "titmouse", "carried", "stringed", "arrogance", "studied", "tractable", "reveal", "observing", "distaste", "delicious", "retired", "cancer", "hinge", "obscene", "preacher", "illustrate", "triple", "bolster", "cheek", "fullness", "applause", "surgeon", "voracious", "moth", "quite", "save", "carving", "deny", "grapple", "diet", "vehemence", "tartar", "vassal", "parcel", "tabernacle", "dream", "opaque", "cathartic", "herring", "opposed", "abdominal", "steamer", "tiller", "admiration", "breeches", "obedient", "thrusting", "bluster", "owner", "certainty", "sway", "respond", "scarlet", "goose", "ashes", "martial", "salient", "manganese", "accession", "glutinous", "declivity", "popularly", "invalid", "grateful", "correspond", "practiced", "bias", "nocturnal", "calcareous", "tumultuous", "performer", "dispense", "quietly", "discretion", "proboscis", "frost", "skirt", "laudable", "separated", "pulp", "harm", "privacy", "brought", "sternum", "cost", "rifle", "awake", "tallow", "jump", "vomit", "thirty", "bracket", "terror", "swim", "freezing", "persian", "recently", "unstable", "inequality", "see", "truly", "ripe", "reply", "overhang", "misfortune", "performed", "oyster", "citation", "dilute", "confess", "specially", "extraordinary", "expressed", "contained", "breeze", "contribute", "tent", "contagious", "package", "infect", "volunteer", "percussion", "warbler", "captive", "ingredient", "failing", "secrete", "technical", "knitting", "goddess", "trousers", "puncture", "cheese", "tapering", "ingenious", "windpipe", "workman", "mammalia", "collateral", "shave", "painter", "harass", "reel", "countenance", "frivolous", "evacuate", "ignorance", "happen", "mosaic", "for", "collectively", "slavery", "mackerel", "navigation", "brisk", "savor", "blister", "developed", "claw", "episcopal", "undivided", "redress", "sparkle", "stumble", "coffee", "boisterous", "reproof", "ramble", "encourage", "twice", "thrush", "triangular", "tapeworm", "fitness", "lodging", "appointed", "confer", "manure", "basic", "patriarch", "parties", "phenomena", "expel", "dried", "idiom", "theme", "stimulate", "admitting", "drapery", "genera", "countries", "stamens", "previously", "involving", "separating", "murderous", "seizing", "successful", "frighten", "set", "hoop", "printed", "supported", "spiritless", "plumb", "shoal", "pavilion", "endurance", "encumber", "pendent", "turkey", "conviction", "receiving", "faction", "limber", "disagree", "stupefy", "prevail", "enlarged", "cage", "clasp", "conveying", "mammals", "protoplasm", "engross", "exert", "emperor", "extending", "porous", "consequent", "horseback", "froth", "settled", "bachelor", "reduced", "landscape", "knock", "republican", "partaking", "suspended", "edifice", "capability", "buckle", "vanish", "righteous", "lawful", "maiden", "telltale", "cellular", "convict", "soothe", "snail", "brake", "sparrow", "vast", "chaff", "camp", "filament", "chill", "glassy", "tracing", "elect", "accusation", "fishes", "envy", "hunger", "polite", "lumber", "freely", "flashing", "discredit", "profess", "accretion", "brightness", "moist", "affirm", "illuminate", "melody", "tire", "pliant", "effusion", "exclusion", "text", "blessed", "enrich", "utensil", "frugality", "revenge", "park", "implied", "in", "corona", "differential", "fusion", "impotent", "dissection", "tragedy", "woody", "cleanse", "deceit", "longer", "yearly", "almost", "pendulum", "twin", "indicator", "respiration", "infantry", "hail", "consume", "distrain", "reducing", "chord", "spectator", "illegal", "swiftness", "lever", "prosperous", "colony", "selection", "illusion", "ventilate", "parietal", "arctic", "bismuth", "cranium", "formative", "flax", "solar", "undertaking", "behave", "urinary", "assistance", "but", "worsted", "coral", "humorous", "nineteen", "sameness", "resentment", "gaseous", "lion", "sure", "grecian", "textile", "stagger", "vivacity", "iniquity", "summon", "clause", "velvet", "smear", "encompass", "swollen", "fashionable", "intrude", "deprived", "garnish", "composing", "loom", "preaching", "eloquence", "decayed", "silurian", "parchment", "infection", "magnesium", "prelude", "discontent", "thumb", "tympanum", "distract", "team", "rehearse", "dictate", "abortion", "seminary", "skip", "manager", "selfish", "loathing", "suck", "obsequious", "pyramid", "observant", "establishment", "penance", "trinity", "busy", "springing", "weeping", "gayety", "rugged", "stave", "total", "flask", "concurrence", "mood", "chart", "inscription", "clerk", "viscid", "baptism", "calculus", "enduring", "foretell", "reprove", "eucharist", "madness", "stupidity", "catalogue", "hurry", "atom", "collation", "pillow", "calculate", "eject", "housing", "peel", "location", "inhuman", "tuft", "least", "substantial", "sustained", "thwart", "unlawful", "cabinet", "ventricle", "rigging", "determined", "trip", "assize", "driven", "carpet", "hurt", "smoky", "pump", "longing", "radius", "ambiguous", "exalted", "albumin", "oppression", "frugal", "gothic", "stately", "hooked", "shears", "porcelain", "benzene", "franchise", "although", "fraction", "flavored", "substitution", "distinctly", "entitle", "transit", "since", "nine", "risk", "ghost", "divorce", "prophecy", "representative", "changeable", "bohemian", "unable", "explicit", "advise", "greedy", "squander", "requisite", "enroll", "revolt", "scold", "foreshow", "evaporate", "warfare", "pearly", "vertebral", "swiftly", "stereotype", "herb", "impartial", "hardy", "authorize", "corrosive", "laborious", "infinity", "absorption", "conjunction", "cloister", "reservoir", "acrid", "commodity", "million", "uterus", "eleventh", "fifteen", "pretender", "diatonic", "jury", "hydroxyl", "varieties", "surgery", "commons", "upon", "invent", "responsible", "requite", "prompt", "those", "haul", "reside", "lathe", "allege", "consort", "mentally", "licentious", "excavate", "bury", "babble", "feudal", "canvass", "comprehend", "dissolute", "pension", "blessing", "switch", "effeminate", "repeating", "educate", "balsam", "shuffle", "stifle", "outrage", "invasion", "appease", "tilt", "stoop", "vexatious", "wager", "orbit", "resound", "drawn", "subdued", "dagger", "indication", "pickle", "hackney", "hearty", "relapse", "concealed", "tame", "speculum", "persistent", "blanch", "carbonic", "prickly", "syllogism", "luxury", "childish", "provincial", "knit", "forced", "wasting", "dismiss", "designation", "corporation", "coupling", "venus", "ballast", "lavish", "recording", "phenomenon", "boring", "curvature", "bully", "ruff", "bowsprit", "bastion", "braid", "consult", "harrow", "hasten", "deputy", "suspicious", "betray", "puppet", "playing", "privately", "famous", "assert", "chisel", "permission", "reformed", "ratio", "mustard", "hissing", "hurtful", "leaning", "reversal", "committee", "treason", "villain", "corresponding", "resulting", "treble", "pushing", "examining", "ductile", "affirmation", "flux", "guttural", "remission", "congregation", "annoy", "criticise", "said", "mortify", "heedless", "tabular", "shiver", "uneven", "displeasure", "antique", "fatal", "characteristic", "zigzag", "audible", "reversion", "canker", "shark", "respecting", "surveyor", "pistil", "premature", "agility", "sulphate", "wreath", "inflate", "presage", "lustful", "eighth", "capstan", "confined", "rendered", "chalk", "engender", "twofold", "attractive", "fell", "diligent", "burlesque", "vacancy", "bustle", "misery", "luxurious", "holland", "silicon", "antagonist", "fright", "concretion", "overpower", "dissent", "lover", "introduction", "abandoned", "pottery", "hunt", "lives", "desperate", "roving", "birch", "density", "bunch", "overturn", "revival", "turnpike", "operative", "finishing", "spine", "dismount", "headdress", "veil", "overwhelm", "unhappy", "coarsely", "perplexity", "ellipse", "oration", "tributary", "informal", "herbaceous", "sanctity", "undo", "restoration", "artist", "vicinity", "soak", "vacation", "median", "pivot", "mohammedan", "negligence", "uniformly", "echo", "modify", "testify", "absurd", "seaweed", "collector", "projectile", "aberration", "piston", "saturate", "fallow", "marrow", "vomiting", "infirm", "testing", "enjoy", "languish", "precedent", "stationary", "rudder", "inanimate", "payable", "seventy", "clutch", "china", "peaceful", "sister", "sucking", "preach", "prosecution", "jaundice", "gradient", "hypothesis", "adjoining", "penitent", "comment", "concealment", "perpetual", "airy", "rostrum", "dying", "accuse", "talking", "inherit", "tumbler", "thrown", "palatine", "defraud", "basin", "calmness", "symphony", "rudimentary", "negotiate", "wandering", "quail", "revelation", "greatness", "answerable", "besides", "widow", "alter", "falsify", "autumn", "oval", "crossbow", "recede", "broker", "hatch", "erection", "adjunct", "tense", "habitation", "umbrella", "inclining", "manuscript", "realize", "mild", "folly", "ascending", "patronage", "wedlock", "getting", "snake", "coordinate", "abridge", "dismal", "senior", "oblong", "sequester", "organization", "diseased", "vacuum", "bryozoa", "immersion", "focus", "plait", "founded", "offered", "dioxide", "unfeeling", "fluke", "chicken", "eleven", "maintenance", "puddling", "moisten", "hound", "russian", "perforated", "retainer", "olfactory", "roundish", "warehouse", "granite", "frozen", "launch", "quarry", "splinter", "gunpowder", "molding", "heighten", "surveying", "trough", "searching", "stab", "elevator", "extraction", "refinement", "crotchet", "use", "mound", "rhythm", "ivory", "desirous", "attainment", "rectify", "indolent", "jerk", "umbilicus", "smack", "muse", "auction", "allegiance", "define", "apparently", "tarsus", "inability", "baggage", "boarding", "folding", "junior", "might", "clamp", "changed", "possessed", "passable", "bromine", "sent", "spill", "delirium", "coffin", "trickery", "withered", "polar", "utterly", "stagnant", "phosphorus", "coalesce", "consecrate", "straddle", "submissive", "shatter", "ulcer", "toss", "shameful", "daily", "disengage", "ruler", "bearer", "bony", "calyx", "wickedness", "placed", "changing", "felicity", "poll", "vocation", "attendance", "falsely", "clip", "wonderful", "potash", "bodies", "substantive", "liberate", "ritual", "prevailing", "telegraph", "carrier", "courteous", "waist", "herd", "aspirate", "intend", "potent", "enhance", "inconsistency", "analyse", "analysis", "analyst", "analytic", "analytical", "analytically", "analyze", "approachable", "area", "assess", "assessable", "assessment", "assume", "assumed", "assuming", "assumption", "authoritative", "authoritatively", "authority", "availability", "available", "beneficial", "beneficiary", "blinker", "concept", "conception", "conceptual", "conceptualize", "conceptually", "consist", "consistency", "consistent", "consistently", "constituency", "constitute", "constitution", "constitutive", "context", "contextual", "contextualization", "contextualize", "contextually", "contractor", "create", "creation", "creator", "data", "definable", "define", "definition", "derivation", "derive", "disestablish", "disestablishment", "dissimilar", "dissimilarity", "distribute", "distribution", "distributional", "distributive", "distributor", "economic", "economical", "economically", "economics", "economist", "economy", "environment", "environmental", "environmentalism", "environmentalist", "environmentally", "establish", "established", "establishment", "estimation", "evident", "evidential", "evidently", "exporter", "financial", "financially", "financier", "formula", "formula milk", "formulate", "formulation", "functional", "functionally", "ID", "identifiable", "identification", "identify", "identity", "illegality", "income", "inconsistent", "indicate", "individualist", "insignificance", "methodological", "redistribution", "responsively", "blinker", "indication", "indicator", "indiscreet", "indiscreetly", "individualism", "individuality", "individually", "insignificant", "interpret", "interpretable", "interpretation", "invariable", "invariably", "involve", "involved", "involvement", "isolating", "labor", "legal", "legality", "legally", "legislate", "legislation", "legislative", "legislator", "legislature", "majority", "method", "methodical", "methodically", "methodology", "misinterpret", "misinterpretation", "occur", "occurrence", "percentage", "periodic", "periodical", "periodically", "policy", "principle", "principled", "procedural", "procedure", "proceed", "proceeding", "proceeds", "reassess", "reassessment", "recreate", "recreation", "redefine", "redefinition", "redistribute", "reformulate", "reformulation", "reinterpret", "reinterpretation", "reoccur", "require", "requirement", "respond", "respondent", "response", "responsive", "restructure", "restructuring", "role", "sector", "significance", "significant", "significantly", "signify", "similar", "similarity", "similarly", "specific", "specifically", "specification", "specificity", "specifics", "structural", "structurally", "theoretical", "theoretically", "theoretician", "theorist", "theory", "unapproachable", "unavailability", "unavailable", "unconstitutional", "unconstitutionally", "undefined", "uneconomic", "uneconomical", "unidentifiable", "uninvolved", "unprincipled", "unresponsive", "unstructured", "variability", "variance", "variant", "variation", "varied", "vary", "inappropriacy", "deregulation", "distinctly", "evaluation", "insecurely", "abnormal", "abnormally", "achievable", "achieve", "achievement", "acquire", "acquisition", "admin", "administration", "administrative", "administratively", "administrator", "affect", "affective", "affectively", "appropriacy", "aspect", "assistance", "categorization", "categorize", "category", "chapter", "commissioner", "community", "complexity", "computable", "computation", "computational", "compute", "computer", "computing", "conclude", "conclusion", "conclusive", "conclusively", "consequence", "consequent", "consequently", "construction", "constructive", "constructively", "consume", "consumer", "consumption", "creditor", "cultural", "culturally", "cultured", "restrictive", "deregulate", "distinct", "distinction", "distinctive", "distinctively", "element", "equate", "equation", "evaluate", "finality", "finalization", "finalize", "finally", "inappropriate", "inconclusive", "inconclusively", "indistinct", "indistinctly", "injure", "injured", "injury", "insecure", "institution", "institutional", "institutionalization", "institutionalize", "institutionalized", "institutionally", "invest", "investment", "investor", "irrelevance", "irrelevancy", "irrelevant", "irrelevantly", "item", "itemize", "journal", "maintain", "maintenance", "previously", "relevance", "resourcefully", "selectively", "strategical", "restrictive", "nontraditional", "normalcy", "normality", "normalization", "normalize", "normally", "obtain", "obtainable", "participant", "participate", "participation", "participatory", "perceive", "perception", "police commissioner", "positively", "previous", "primarily", "purchaser", "purchasing", "reconstruct", "reconstruction", "reevaluate", "re-evaluation", "refocus", "region", "regional", "regionally", "regulate", "regulator", "regulatory", "reinvest", "reinvestment", "relevant", "reside", "residence", "residency", "residential", "resourceful", "restrict", "restricted", "restriction", "restrictively", "security", "seek", "selection", "selective", "selector", "sought", "strategic", "strategist", "strategy", "textual", "tradition", "traditional", "traditionalist", "traditionally", "transferability", "transferable", "transference", "unaffected", "unassisted", "uncultured", "under-resourced", "uninjured", "unobtainable", "unrestricted", "conventionality", "insufficiency", "interactively", "alternatively", "circumstance", "commentary", "commentator", "compensate", "compensation", "compensatory", "component", "consensus", "considerable", "considerably", "constancy", "constantly", "constrain", "constraint", "contribute", "contribution", "contributor", "convene", "convention", "conventional", "coordination", "corporate", "corporation", "correspond", "correspondence", "corresponding", "correspondingly", "criterion", "deduce", "deducible", "deduction", "demo", "demonstrable", "demonstrably", "demonstrate", "demonstration", "demonstrator", "disproportion", "disproportionate", "disproportionately", "documentation", "dominance", "dominant", "dominate", "domination", "emphasis", "emphasize", "emphatic", "emphatically", "ensure", "exclude", "excluding", "exclusion", "exclusionary", "framework", "funder", "funding", "illustrate", "illustration", "illustrative", "immigrant", "immigrate", "immigration", "immigration control", "imply", "inconstancy", "inconstant", "initially", "insufficient", "interact", "interaction", "interactive", "invalidate", "invalidation", "invalidity", "justifiable", "justifiably", "justification", "justified", "justify", "linkage", "locate", "located", "location", "maximization", "maximize", "minority", "negate", "nuclear reactor", "outcome", "partnership", "philosopher", "philosophic", "reliability", "technological", "unconventionality", "philosophic", "philosophical", "philosophize", "philosophizing", "philosophy", "physically", "proportion", "proportional", "proportionally", "proportionate", "proportionately", "publish", "publisher", "publishing", "react", "reaction", "reactionary", "reactivate", "reactivation", "reactive", "reactor", "registration", "reliable", "reliance", "reliant", "relocate", "relocation", "rely", "removable", "removal", "schematic", "schematically", "sequential", "sequentially", "sexism", "sexual", "sexuality", "sexually", "specifiable", "specify", "sufficiency", "sufficient", "sufficiently", "technical", "technically", "technique", "technology", "unconstrained", "unconventional", "unjustified", "unpublished", "unreliability", "unreliable", "unspecified", "valid", "validate", "validation", "validity", "validly", "volume", "adequacy", "cyclical", "domesticated", "predictability", "accessibility", "accessible", "adequate", "annually", "apparent", "apparently", "approximately", "approximation", "attitude", "attributable", "civil", "civilly", "commit", "commitment", "committed", "communicable", "communicate", "communication", "communicative", "concentrated", "concentration", "confer", "conference", "contrasting", "contrastive", "cyclic", "debatable", "despite", "dimension", "-dimensional", "domesticate", "emerge", "emergence", "emergent", "erroneous", "erroneously", "error", "ethnicity", "goal", "hence", "hypothesis", "hypothesize", "hypothetical", "hypothetically", "implicate", "implication", "impose", "imposition", "inaccessibility", "inaccessible", "inadequacy", "inadequate", "inadequately", "integrate", "integrated", "integration", "internal", "internalization", "internalize", "internally", "investigate", "investigation", "investigative", "investigator", "investigatory", "mechanism", "multidimensional", "obvious", "obviously", "obviousness", "occupancy", "occupant", "occupation", "occupational", "occupationally", "occupied", "occupier", "occupy", "optional", "parameter", "predict", "predictable", "prediction", "principally", "professionalism", "professionally", "projection", "promote", "promoter", "promotion", "regime", "resolution", "statistical", "statistic", "unpredictability", "retain", "retainer", "retention", "retentive", "series", "statistician", "status", "stressed", "stressed out", "stressful", "subsequent", "subsequently", "summarize", "summation", "uncommunicative", "undertake", "undertaking", "undertook", "unparalleled", "unpredictable", "unresolved", "unstressed", "discretely", "enforceable", "expansively", "illogicality", "imprecisely", "liberation", "academe", "academia", "academy", "adjust", "adjustment", "alter", "alterable", "alteration", "amend", "amendment", "aware", "awareness", "capacity", "challenged", "challenger", "challenging", "clause", "consult", "consultancy", "consultant", "consultation", "consultative", "discrete", "discretion", "discretionary", "enable", "energetic", "energetically", "energy", "enforce", "enforced", "entity", "evolution", "evolutionarily", "evolutionary", "evolve", "expand", "expansion", "expansionism", "expansionist", "expansive", "exposed", "exposure", "external", "externalization", "externalize", "externally", "facilitate", "facilitation", "facilitator", "facility", "fundamentally", "generate", "generation", "illogical", "image", "imagery", "imprecise", "incapacitate", "indiscretion", "instability", "liberalism", "liberalization", "liberalize", "liberate", "liberated", "licence", "licensed", "logic", "logical", "logically", "logician", "margin", "marginally", "mental", "mentality", "mentally", "modification", "modify", "notion", "orientate", "orientation", "perspective", "precise", "precisely", "precision", "primacy", "psychological", "stylishly", "sustainability", "psychologically", "psychologist", "psychology", "pursue", "pursuit", "ratio", "readjust", "readjustment", "redraft", "reorient", "reorientation", "revenue", "social security", "stability", "stabilization", "stabilize", "styling", "stylish", "stylization", "stylized", "sustain", "sustainable", "sustenance", "symbol", "symbolic", "symbolically", "symbolism", "symbolist", "symbolize", "transition", "transitional", "transitory", "trend", "unalterable", "unaltered", "unaware", "unawareness", "unlicensed", "unmodified", "unstable", "unsustainable", "version", "welfare", "whereas", "motivated", "enhanced", "explicitly", "flexibility", "inaccuracy", "inflexibility", "irrationality", "abstraction", "accuracy", "accurate", "accurately", "acknowledge", "allocate", "allocation", "assign", "assignment", "attach", "attached", "attachment", "authorship", "bonding", "brevity", "briefing", "briefly", "capability", "capable", "capably", "citation", "cite", "cooperate", "cooperation", "discriminate", "discrimination", "diverse", "diversification", "diversify", "diversity", "domain", "edit", "edition", "editor", "editorship", "enhance", "estate", "exceed", "expertise", "explicit", "federal", "federally", "federation", "fee", "flexible", "furthermore", "gender", "ignorance", "ignorant", "ignorantly", "ignore", "inaccurate", "incapable", "incentive", "incidence", "incident", "incidentally", "incorporate", "incorporation", "inflexible", "inhibit", "inhibition", "initiation", "initiative", "initiator", "instruct", "instructive", "instructively", "instructor", "intelligence", "intelligent", "intelligently", "intermission", "interval", "irrational", "lecturer", "migrant", "migrate", "migration", "migratory", "ministerial", "ministry", "motivate", "neutrality", "rationality", "neutralization", "neutralize", "nevertheless", "precede", "precedence", "precedent", "presumably", "presume", "presumption", "presumptuous", "rational", "rationalism", "rationalization", "rationalize", "reassign", "reassignment", "recommence", "recoverable", "recovery", "recovery room", "reveal", "revealing", "revealingly", "revelation", "subsidization", "subsidize", "subsidy", "traceable", "transform", "transformation", "transformational", "transportation", "unassigned", "unattached", "underlie", "underlying", "unintelligent", "unmotivated", "unprecedented", "unprecedentedly", "utilization", "utilize", "ideological", "invisibility", "adapt", "adaptability", "adaptable", "adaptation", "adaption", "adaptive", "adulthood", "advocacy", "classical", "classically", "comprehensively", "comprise", "confirm", "confirmation", "conversion", "coupling", "decade", "definitely", "definitive", "definitively", "deniable", "denial", "deny", "differentiate", "differentiation", "disposable", "disposal", "dispose", "disposed", "eliminate", "elimination", "empirical", "empirically", "empiricism", "empiricist", "equip", "equipment", "extraction", "finite", "foundation", "global", "globalization", "globally", "globe", "graded", "hierarchical", "hierarchically", "hierarchy", "identical", "identically", "ideology", "indefinite", "indefinitely", "infer", "inference", "infinitely", "innovate", "innovation", "innovative", "innovator", "innovatory", "insertion", "intervene", "intervention", "invisible", "irreversible", "irreversibly", "isolate", "isolated", "isolation", "isolationism", "isolationist", "media", "mode", "paradigm", "paradigmatic", "phenomenal", "phenomenon", "prioritization", "prioritize", "priority", "prohibit", "prohibition", "prohibitive", "prohibitively", "publication", "quotation", "reversal", "reversibility", "reversible", "simulate", "simulated", "simulation", "solely", "somewhat", "submission", "uniquely", "submit", "succession", "successive", "successively", "successor", "survival", "survive", "survivor", "thesis", "topic", "topical", "topicality", "transmission", "transmit", "ultimately", "unaided", "undeniable", "undeniably", "unique", "visibility", "visible", "visibly", "voluntarily", "arbitrarily", "abandoned", "abandonment", "accompaniment", "accompany", "accumulate", "accumulation", "ambiguity", "ambiguous", "ambiguously", "append", "appendix", "appreciable", "appreciably", "appreciate", "appreciation", "arbitrary", "automate", "automation", "biased", "clarification", "clarify", "clarity", "commodity", "complementary", "conform", "conformability", "conformable", "conformance", "conformation", "conformist", "conformity", "contradict", "contradiction", "contradictory", "crucial", "crucially", "currency", "denotation", "denotational", "denote", "detect", "detectable", "detection", "detective", "detector", "deviate", "deviation", "displace", "displacement", "drama", "dramatic", "dramatically", "dramatist", "dramatization", "dramatize", "eventual", "eventuality", "eventually", "exhibition", "exploitation", "fluctuate", "fluctuation", "guideline", "implicit", "implicitly", "induce", "induction", "inevitability", "inevitable", "inevitably", "infrastructural", "infrastructure", "inspect", "inspection", "inspector", "intense", "intensely", "intensification", "intensify", "intensity", "intensive", "intensively", "manipulate", "manipulation", "manipulative", "minimization", "minimize", "nonconformism", "Nonconformist", "nonconformist", "nonconformity", "nuclear", "paragraph", "paragraphing", "practitioner", "predominance", "predominant", "predominantly", "predominate", "predominately", "prospective", "reinforce", "reinforcement", "reschedule", "rescheduling", "restoration", "restore", "revise", "revision", "surveyor", "terminate", "termination", "thematic", "thematically", "thereby", "unaccompanied", "unambiguous", "unambiguously", "unappreciated", "unbiased", "uncharted", "unscheduled", "vehicle", "via", "virtual", "virtually", "visualization", "visualize", "vol.", "widespread", "incoherence", "rigidity", "accommodate", "accommodation", "analogous", "analogy", "anticipate", "anticipation", "anticipatory", "assurance", "assure", "assured", "assuredly", "attain", "attainable", "attainment", "behalf", "bulky", "cease", "ceaseless", "ceaselessly", "coherence", "coherent", "coherently", "coincide", "coincidence", "coincident", "coincidental", "coincidentally", "commence", "commencement", "compatibility", "compatible", "compatibly", "concurrent", "concurrently", "confine", "confined", "controversial", "controversially", "controversy", "conversely", "device", "devote", "devotion", "diminish", "diminution", "distort", "distortion", "duration", "erode", "erosion", "ethic", "ethical", "ethically", "found", "immature", "immaturity", "incoherent", "incompatibility", "incompatible", "inherent", "inherently", "insight", "insightful", "integral", "integrally", "maturation", "maturational", "maturity", "mediate", "mediation", "minimal", "minimalism", "minimalist", "minimally", "mutual", "mutuality", "mutually", "passivity", "protocol", "qualitative", "qualitatively", "refine", "refined", "refinement", "relax", "relaxation", "relaxed", "relaxing", "restrain", "restrained", "restraint", "rev", "revolution", "revolutionize", "rigid", "scenario", "temporarily", "violation", "self-assurance", "self-assured", "sphere", "spherical", "spherically", "supplemental", "supplementary", "suspend", "suspension", "temporary", "unanticipated", "unattainable", "unconfined", "uncontroversial", "undiminished", "unethical", "unethically", "unfounded", "unification", "unify", "unrestrained", "violate", "vision", "reluctance", "straightforwardly", "adjacent", "albeit", "assemble", "assembly", "collapsible", "colleague", "compilation", "compile", "conceivable", "conceivably", "conceive", "convince", "convinced", "convincing", "convincingly", "depress", "depressed", "depressing", "depressingly", "depression", "enormity", "enormous", "enormously", "forthcoming", "inclination", "inclined", "inconceivable", "inconceivably", "integrity", "intrinsic", "intrinsically", "invoke", "likewise", "nonetheless", "odd", "oddness", "odds", "ongoing", "persist", "persistence", "persistent", "persistently", "reluctant", "so-called", "straightforward", "unconvinced", "undergo", "whereby", "Acting", "Actuarial Foundations", "Actuarial Science", "Administrative Sciences", "Administrative Sciences", "Advanced Information Technology", "Advertising", "African American & Black Diaspora Studies", "African American Studies", "African Languages & Literatures", "African Studies", "American & New England Studies", "American Law", "American Studies", "Anatomy & Neurobiology", "Ancient Greek", "Ancient Greek & Latin", "Ancient Greek/Literary Translation", "Anglican & Episcopal Studies", "Anthropology", "Anthropology with a Specialization in Anthropology, Health & Medicine", "Anthropology with a Specialization in Biological Anthropology", "Anthropology with a Specialization in Sociocultural Anthropology", "Anthropology & Religion", "Applied Biomechanics", "Applied Biostatistics", "Applied Business Analytics", "Applied Data Analytics", "Applied Human Development", "Arabic", "Archaeological & Environmental Sciences", "Archaeological & Environmental Sciences/Archaeology", "Archaeology", "Architectural Studies", "Art", "Art Education", "Art Education with Initial License", "Art History", "Art & Architecture, History of", "Artificial Intelligence", "Arts Administration", "Arts Leadership", "Arts Management", "Arts Marketing", "Asian Legal Studies", "Asian Studies", "Astronomy", "Astronomy & Physics", "Astrophysics & Space Physics", "Autism Spectrum Disorders", "Autism & Emotional/Behavioral Disorders", "Banking & Financial Law", "Behavior & Health", "Behavioral Neuroscience", "Bilingual Education/Teaching English to Speakers of Other Languages", "Biochemistry", "Biochemistry & Molecular Biology; Biotechnology", "Bioimaging", "Bioinformatics", "Bioinformatics", "Biology", "Biology with a Specialization in Behavioral Biology", "Biology with a Specialization in Cell Biology, Molecular Biology & Genetics", "Biology with a Specialization in Ecology & Conservation Biology", "Biology with a Specialization in Neurobiology", "Biology Education", "Biomedical Engineering", "Biomedical Forensic Sciences", "Biomedical Research Technologies", "Biomedical Sciences", "Biostatistics", "Business Administration", "Business Administration & Law", "Business Administration & Management", "Business Administration & Medicine", "Business Administration & Public Health", "Business Analytics", "Chemistry", "Chemistry & Physics", "Chemistry: Biochemistry", "Chemistry: Chemical Biology", "Teaching of Chemistry", "Child Life & Family-Centered Care", "Chinese", "Chinese Language & Literature", "Chinese/Literary Translation", "Chronic & Non-Communicable Diseases", "Cinema & Media Production", "Cinema & Media Studies", "City Planning", "Civic Science Communication", "Classical Civilization", "Classical Studies", "Classical Studies/Philosophy", "Classics & Archaeology", "Classics & Philosophy", "Classics & Religion", "Climate Change and Health", "Clinical Research", "Cognitive & Neural Systems", "Commercial Theater Development", "Community Assessment, Program Design, Implementation & Evaluation", "Comparative Literature", "Comparative Literature/Literary Translation", "Composition", "Composition & Music Theory", "Computer Engineering", "Computer Information Systems", "Computer Networks", "Computer Science & Economics", "Computer Science", "Computing & Data Sciences", "Conducting", "Core Curriculum", "Core Independent Studies", "Corporate Finance", "Costume Design & Production", "Counseling", "Counseling Psychology & Applied Human Development", "Creative Writing", "Criminal Justice", "Curriculum & Teaching", "Cybercrime Investigation & Cybersecurity", "Dance", "Data Analytics", "Data Science", "Database Management & Business Intelligence", "Deaf Education", "Deaf Studies", "Dental Biomaterials", "Dental Medicine", "Dental Public Health", "Dermatology", "Developmental Studies", "Directing", "Early Childhood Education", "Earth & Environment", "Earth & Environmental Sciences", "Economic Policy", "Economics", "Economics, Global Development", "Economics & Mathematics", "Economics & Mathematics/Economics", "Editorial Studies", "Education", "Education for Equity & Social Justice", "Education & Human Development", "Education & Human Development/Applied Human Development", "Education & Human Development/Educational Policy Studies", "Education & Human Development/TESOL & Applied Linguistics", "Education & Human Development/TESOL Multilingual Learner Education", "Educational Leadership & Policy Studies", "Educational Studies", "Electrical Engineering", "Electrical & Computer Engineering", "Elementary Education", "Emerging Media Studies", "Emotional & Behavioral Challenges in Schools", "Endodontics", "Energy & Environment", "Engineering Science", "English", "English & American Literature", "English & Law", "English Education", "Enterprise Risk Management", "Enterprise Risk Management & Compliance", "Environmental Analysis & Policy", "Environmental Health", "Environmental Remote Sensing & GIS", "Epidemiology", "Epidemiology & Biostatistics", "Estate Planning", "Esthetic, Digital, and Operative Dentistry", "European Law", "European Studies", "Evangelism", "Event Management", "Event Management & Public Relations", "Faith & Ecological Justice", "Film", "Film & Television", "Film & Television Studies", "Finance", "Financial Management", "Financial Planning", "Financial Services Compliance", "Financial Technology", "Forensic Anthropology", "Foundations of Health Communication", "French & Linguistics", "French Language & Literature", "French Studies", "French Studies/French Language & Literature", "French Studies/Literary Translation", "Gastronomy", "Genealogical Research", "General Science Education", "Genetic Counseling", "Genetic Counseling/Master of Public Health", "Genetics & Genomics", "Geoarchaeology", "Geriatric Dental Medicine", "German", "German Language & Literature", "German/Literary Translation", "Global Education Leadership Program", "Global Health", "Global Health Program Design, Monitoring & Evaluation", "Global Marketing Management", "Global Medieval Studies", "Global Policy", "Graphic Design", "Greek—Ancient", "Greek—Modern", "Health Care Emergency Management", "Healthcare Management", "Healthcare Promotion, Media & Marketing", "Health Communication", "Health Communication & Promotion", "Health Equity", "Health Informatics", "Health Policy & Law", "Health Professions Education", "Health Science", "Health Services & Policy Research", "Hebrew", "Higher Education Leadership", "Hindi-Urdu", "Hispanic Language & Literatures", "Historical Performance", "History", "History of Art & Architecture", "History & Law", "Holocaust, Genocide & Human Rights Studies", "Hospitality", "Hospitality Administration", "Hospitality Administration & Gastronomy", "Hospitality & Communication", "Hospitality Management", "Hospitality Management (Advanced)", "Human Development & Education", "Human Physiology", "Human Resources Management", "Human Rights & Social Justice", "Immunology Training", "Independent Major", "Infectious Disease", "Information Security", "Information Technology", "Information Technology Project Management", "Innovation & Entrepreneurship", "Insurance Management", "Intellectual Property & Information Law", "Interdisciplinary Studies", "International Business Law", "International & European Business Law", "International Affairs", "International Business Management", "International Commercial & Investment Arbitration", "International Finance", "International Relations", "International Relations/International Affairs", "International Relations & Business Administration", "International Relations & Law", "Investment Analysis", "Italian", "Italian & Linguistics", "Italian Studies", "Japanese & Linguistics", "Japanese Language & Literature", "Japanese/Literary Translation", "Jewish Studies", "Journalism", "Korean Language & Literature", "Korean", "Language & Literacy Education", "Latin", "Latin American Studies", "Latin/Literary Translation", "Law", "Law—American", "Law—Asian Legal Studies", "Law—Banking & Financial", "Law—European", "Law—Intellectual Property & Information", "Law—International Business", "Law—Taxation", "Law & Business Administration", "Law & English", "Law & History", "Law & International Relations", "Law & Philosophy", "Law & Preservation Studies", "Law & Public Health", "Leadership, Policy & Advocacy for Early Childhood Well-Being", "Lighting Design", "Linguistics", "Linguistics & African Languages", "Linguistics & Computer Science", "Linguistics & Philosophy", "Linguistics and Speech, Language & Hearing Sciences", "Linguistics and Speech, Language & Hearing Sciences", "Literacy Instruction & Intervention", "Literary Translation", "Management Studies", "Management Studies", "Marine Science", "Materials Science & Engineering", "Maternal & Child Health", "Mathematical Finance", "Mathematical Finance & Financial Technology", "Mathematics (includes Statistics)", "Mathematics", "Mathematics/Biostatistics", "Mathematics & Computer Science", "Mathematics & Mathematics Education", "Mathematics & Philosophy", "Mathematics & Physics", "Mathematics Education", "Mechanical Engineering", "Media Science", "Media Ventures", "Medical Anthropology", "Medical Anthropology & Cross-Cultural Practice", "Medical Sciences", "Medical Sciences and Mental Health Counseling & Behavioral Medicine", "Medical Sciences & Public Health", "Medicine", "Medicine & Law", "Medicine/Business Administration", "Medicine & Public Health", "Early Medical School Selection Program", "Mental Health & Substance Use", "Mental Health Counseling & Behavioral Medicine", "Microbiology", "Middle East & North Africa Studies", "Middle Eastern and South Asian Languages & Literatures", "Modern Foreign Language Education", "Modern Greek", "Modular Medical/Dental Integrated Curriculum", "Molecular Biology, Cell Biology & Biochemistry", "Molecular Medicine", "Museum Education", "Museum Studies", "Music", "Musicology", "Music Education", "Music Ministry", "Music Performance", "Music Theory", "Muslim Cultures", "Muslim Societies", "Muslim Studies", "Myth Studies", "Neuroscience", "Neuroscience & Computational Neuroscience", "Nutrition", "Nutrition/Dietetics", "Nutrition & Metabolism", "Occupational Therapy", "Opera", "Oral Biology", "Oral Health Sciences", "Oral & Maxillofacial Surgery", "Orofacial & Skeletal Biology", "Orthodontics & Dentofacial Orthopedics", "Painting", "Paralegal Studies", "Path 2 Path Program", "Pathology & Laboratory Medicine", "Pediatric Dentistry", "Performance, Music", "Periodontology", "Persian Cultural Studies", "Pharmaceutical Development, Delivery & Access", "Pharmacology & Experimental Therapeutics", "Philosophy", "Philosophy & Neuroscience", "Philosophy & Physics", "Philosophy & Political Science", "Philosophy & Psychology", "Philosophy & Religion", "Physical Therapy", "Physician Assistant Program", "Physics", "Physics & Computer Science", "Physics Education", "Physiology or Biophysics", "Playwriting", "Political Science", "Population Health Research", "Portuguese & Brazilian Cultural Studies", "Premedical Studies", "Preservation Studies", "Printmaking", "Print Media & Photography", "Product Design & Manufacture", "Production Management", "Professional Fundraising", "Program Management", "Project Management", "Project, Program & Portfolio Management", "Prosthodontics", "Psychology", "Public Anthropology", "Public Health", "Public Health & Genetic Counseling", "Public Health & Law", "Public Health & Management", "Public Health & Medical Sciences", "Public Health & Medicine", "Public Health & Social Work", "Public Policy Analysis", "Public Relations", "Reading Education", "Real Estate", "Rehabilitation Sciences", "Religion", "Religion & Public Leadership", "Religion in Science & Medicine", "Religious Education", "Religious Studies", "Remote Sensing & Geospatial Sciences", "Robotics & Autonomous Systems", "Russian", "Russian Language & Literature", "Scene Design", "Scene Painting", "Science Education", "Screenwriting", "Sculpture", "Sex, Sexuality & Gender", "Social Studies Education", "Social Work, Clinical Practice", "Social Work, Macro Practice", "Social Work", "Sociology", "Sociology & Social Work", "Social Work & Education", "Social Work & Public Health", "Social Work & Theology", "Software Development", "Sound Design", "Spanish", "Spanish & Linguistics", "Spanish/Literary Translation", "Special Education", "Speech, Language & Hearing Sciences", "Speech-Language Pathology", " Spirituality Studies", "Stage Management", "Statistical Practice", "Statistics", "Statistics & Computer Science", "Strategic Management in Criminal Justice", "Supply Chain Management", "Sustainable Energy", "Systems Engineering", "Tax Law", "Teaching English to Speakers of Other Languages", "Teaching Language, Literature & Film", "Teaching Science Education", "Teaching Students with Moderate Disabilities", "Teaching Students with Severe Disabilities", "Teaching Writing", "Technical Production", "Telecommunication", "Television", "Theatre Arts", "Theatre Education", "Theatre–Stage Management", "Theatre–Technical Production", "Theology", "Theology & Latinx Studies", "Theology & Social Work", "Theology—Divinity & Sacred Music", "Theology—Sacred Music", "Theology—Sacred Theology", "Theology—Theological Studies", "Theology—Transformational Leadership", "Transactional Skills", "Turkish Cultural Studies", "Urban Affairs", "Urban Policy & Planning", "Urban Studies", "Visual Arts", "Visual & Digital Health Communication", "Visual Narrative", "Web Application Development", "Women’s, Gender & Sexuality Studies", "World Language Education", "the", "of", "and", "to", "a", "in", "is", "that", "for", "it", "as", "was", "with", "be", "by", "on", "not", "he", "this", "are", "or", "his", "from", "at", "which", "but", "have", "an", "had", "they", "you", "were", "their", "one", "all", "we", "can", "her", "has", "there", "been", "if", "more", "will", "so", "when", "who", "my", "would", "them", "like", "me", "what", "about", "its", "some", "into", "than", "other", "could", "these", "may", "time", "only", "then", "two", "now", "such", "also", "any", "new", "very", "because", "just", "should", "where", "most", "after", "before", "those", "people", "over", "through", "many", "even", "only", "first", "much", "also", "see", "after", "way", "year", "being", "good", "make", "our", "work", "world", "life", "study", "research", "data", "theory", "model", "method", "analysis", "process", "system", "information", "knowledge", "science", "social", "human", "development", "education", "history", "culture", "language", "political", "economic", "government", "policy", "problem", "question", "change", "effect", "result", "cause", "factor", "variable", "relationship", "difference", "example", "evidence", "argument", "concept", "definition", "approach", "perspective", "context", "structure", "function", "form", "level", "type", "role", "period", "century", "population", "group", "individual", "society", "community", "country", "state", "national", "international", "global", "local", "public", "private", "right", "law", "power", "authority", "control", "order", "value", "moral", "ethical", "religious", "philosophical", "psychological", "biological", "physical", "chemical", "environmental", "technical", "professional", "academic", "institutional", "organizational", "management", "administration", "leadership", "decision", "strategy", "plan", "project", "program", "resource", "material", "technology", "innovation", "design", "practice", "behavior", "experience", "learning", "teaching", "student", "teacher", "school", "university", "college", "course", "class", "text", "book", "article", "paper", "journal", "publication", "author", "writer", "reader", "audience", "discourse", "communication", "media", "expression", "meaning", "interpretation", "understanding", "awareness", "consciousness", "thought", "mind", "brain", "body", "health", "medical", "disease", "treatment", "care", "service", "support", "family", "parent", "child", "youth", "adult", "elderly", "gender", "sex", "race", "ethnic", "class", "economic", "poor", "rich", "wealth", "income", "money", "market", "business", "industry", "corporation", "company", "worker", "employee", "labor", "work", "production", "product", "consumer", "demand", "supply", "price", "cost", "benefit", "profit", "loss", "growth", "decline", "increase", "decrease", "rise", "fall", "high", "low", "large", "small", "big", "little", "major", "minor", "important", "significant", "critical", "essential", "necessary", "fundamental", "basic", "primary", "secondary", "main", "central", "key", "principal", "general", "specific", "particular", "special", "common", "usual", "normal", "standard", "traditional", "modern", "contemporary", "current", "present", "past", "future", "ancient", "medieval", "early", "late", "recent", "modern", "postmodern", "industrial", "digital", "virtual", "real", "actual", "potential", "possible", "impossible", "probable", "likely", "unlikely", "certain", "uncertain", "clear", "obvious", "apparent", "evident", "visible", "invisible", "transparent", "opaque", "simple", "complex", "complicated", "difficult", "easy", "hard", "soft", "strong", "weak", "powerful", "powerless", "independent", "dependent", "free", "constrained", "limited", "unlimited", "finite", "infinite", "absolute", "relative", "comparative", "competitive", "cooperative", "collaborative", "collective", "individualistic", "democratic", "authoritarian", "liberal", "conservative", "radical", "moderate", "extreme", "mainstream", "marginal", "dominant", "subordinate", "superior", "inferior", "equal", "unequal", "fair", "unfair", "just", "unjust", "legal", "illegal", "legitimate", "illegitimate", "valid", "invalid", "reliable", "unreliable", "accurate", "inaccurate", "precise", "imprecise", "correct", "incorrect", "true", "false", "real", "unreal", "genuine", "fake", "authentic", "inauthentic", "original", "copy", "source", "resource", "reference", "citation", "quote", "paraphrase", "summary", "abstract", "introduction", "conclusion", "chapter", "section", "paragraph", "sentence", "word", "term", "phrase", "vocabulary", "grammar", "syntax", "semantics", "pragmatics", "phonetics", "phonology", "morphology", "linguistics", "literature", "poetry", "prose", "fiction", "nonfiction", "narrative", "story", "plot", "character", "theme", "symbol", "imagery", "metaphor", "simile", "analogy", "comparison", "contrast", "juxtaposition", "irony", "paradox", "ambiguity", "clarity", "precision", "accuracy", "detail", "specificity", "generality", "abstraction", "concretion", "theory", "theoretical", "practical", "empirical", "experimental", "observational", "qualitative", "quantitative", "statistical", "mathematical", "numerical", "digital", "analog", "binary", "code", "program", "algorithm", "computation", "calculation", "measurement", "assessment", "evaluation", "judgment", "criticism", "review", "analysis", "synthesis", "evaluation", "interpretation", "explanation", "description", "narration", "argumentation", "persuasion", "rhetoric", "logic", "reasoning", "inference", "deduction", "induction", "abduction", "premise", "conclusion", "assumption", "presumption", "hypothesis", "thesis", "antithesis", "synthesis", "dialectic", "debate", "discussion", "dialogue", "conversation", "interview", "survey", "questionnaire", "instrument", "tool", "device", "apparatus", "equipment", "machine", "technology", "science", "scientific", "unscientific", "pseudoscientific", "philosophical", "theological", "metaphysical", "epistemological", "ontological", "ethical", "aesthetic", "political", "sociological", "anthropological", "psychological", "biological", "chemical", "physical", "geological", "astronomical", "ecological", "environmental", "geographical", "historical", "economic", "legal", "medical", "educational", "pedagogical", "curricular", "instructional", "developmental", "evolutionary", "revolutionary", "progressive", "regressive", "conservative", "liberal", "radical", "moderate", "extreme", "object", "subject", "objective", "subjective", "neutral", "biased", "partial", "impartial", "fair", "unfair", "just", "unjust", "ethical", "unethical", "moral", "immoral", "legal", "illegal", "legitimate", "illegitimate", "valid", "invalid", "reliable", "unreliable", "credible", "incredible", "plausible", "implausible", "possible", "impossible", "probable", "improbable", "likely", "unlikely", "certain", "uncertain", "definite", "indefinite", "specific", "vague", "clear", "unclear", "obvious", "subtle", "explicit", "implicit", "direct", "indirect", "overt", "covert", "public", "private", "open", "closed", "accessible", "inaccessible", "available", "unavailable", "present", "absent", "existing", "nonexistent", "real", "imaginary", "concrete", "abstract", "tangible", "intangible", "physical", "mental", "material", "immaterial", "spiritual", "secular", "religious", "sacred", "profane", "holy", "unholy", "divine", "human", "natural", "supernatural", "artificial", "synthetic", "genuine", "fake", "authentic", "inauthentic", "original", "derivative", "unique", "common", "rare", "frequent", "infrequent", "constant", "variable", "stable", "unstable", "static", "dynamic", "fixed", "fluid", "rigid", "flexible", "elastic", "plastic", "solid", "liquid", "gaseous", "molecular", "atomic", "nuclear", "chemical", "biological", "organic", "inorganic", "living", "nonliving", "dead", "alive", "animate", "inanimate", "conscious", "unconscious", "aware", "unaware", "mindful", "mindless", "thoughtful", "thoughtless", "intelligent", "unintelligent", "smart", "dumb", "bright", "dim", "brilliant", "dull", "genius", "idiot", "expert", "novice", "professional", "amateur", "specialist", "generalist", "theorist", "practitioner", "researcher", "scholar", "scientist", "philosopher", "historian", "sociologist", "anthropologist", "psychologist", "economist", "political", "scientist", "artist", "writer", "poet", "novelist", "playwright", "dramatist", "actor", "actress", "director", "producer", "musician", "composer", "painter", "sculptor", "architect", "engineer", "doctor", "physician", "surgeon", "nurse", "patient", "client", "customer", "consumer", "user", "participant", "subject", "respondent", "informant", "interviewee", "observer", "participant", "spectator", "audience", "viewer", "listener", "reader", "writer", "speaker", "talker", "communicator", "messenger", "emissary", "ambassador", "diplomat", "politician", "statesman", "leader", "follower", "ruler", "subject", "citizen", "resident", "inhabitant", "native", "foreigner", "alien", "immigrant", "emigrant", "refugee", "asylum", "seeker", "migrant", "nomad", "traveler", "tourist", "visitor", "guest", "host", "friend", "enemy", "ally", "adversary", "opponent", "proponent", "supporter", "critic", "detractor", "advocate", "activist", "reformer", "revolutionary", "rebel", "loyalist", "conservative", "traditionalist", "progressive", "liberal", "radical", "moderate", "centrist", "extremist", "fanatic", "zealot", "skeptic", "cynic", "optimist", "pessimist", "realist", "idealist", "pragmatist", "dogmatist", "relativist", "absolutist", "pluralist", "monist", "dualist", "materialist", "idealist", "empiricist", "rationalist", "romantic", "classical", "modernist", "postmodernist", "structuralist", "poststructuralist", "deconstructionist", "feminist", "marxist", "capitalist", "socialist", "communist", "anarchist", "fascist", "totalitarian", "authoritarian", "democratic", "republican", "monarchical", "aristocratic", "oligarchic", "plutocratic", "technocratic", "bureaucratic", "meritocratic", "autocratic", "theocratic", "secular", "religious", "devout", "pious", "faithful", "unfaithful", "loyal", "disloyal", "true", "false", "honest", "dishonest", "truthful", "deceitful", "sincere", "insincere", "genuine", "hypocritical", "authentic", "phony", "real", "fake", "original", "copy", "imitation", "simulation", "representation", "presentation", "reproduction", "duplication", "replication", "repetition", "iteration", "variation", "modification", "alteration", "change", "transformation", "transition", "shift", "move", "movement", "motion", "action", "activity", "process", "procedure", "operation", "function", "performance", "execution", "implementation", "application", "use", "utilization", "employment", "deployment", "allocation", "distribution", "circulation", "flow", "current", "stream", "flux", "change", "exchange", "trade", "commerce", "business", "transaction", "deal", "agreement", "contract", "treaty", "pact", "alliance", "union", "merger", "acquisition", "takeover", "buyout", "purchase", "sale", "price", "cost", "value", "worth", "valuation", "appraisal", "assessment", "evaluation", "judgment", "estimate", "approximation", "calculation", "computation", "measurement", "quantification", "qualification", "description", "specification", "definition", "clarification", "explanation", "interpretation", "understanding", "comprehension", "knowledge", "awareness", "consciousness", "recognition", "acknowledgment", "admission", "confession", "disclosure", "revelation", "discovery", "invention", "creation", "production", "manufacture", "construction", "building", "assembly", "formation", "establishment", "foundation", "institution", "organization", "association", "corporation", "company", "firm", "enterprise", "venture", "project", "initiative", "campaign", "movement", "crusade", "drive", "effort", "endeavor", "attempt", "trial", "experiment", "test", "examination", "inquiry", "investigation", "research", "study", "analysis", "scrutiny", "inspection", "audit", "review", "survey", "poll", "questionnaire", "interview", "discussion", "conversation", "dialogue", "debate", "argument", "dispute", "controversy", "conflict", "fight", "battle", "war", "peace", "truce", "ceasefire", "armistice", "treaty", "agreement", "resolution", "solution", "answer", "response", "reply", "reaction", "feedback", "input", "output", "throughput", "process", "system", "network", "web", "internet", "digital", "virtual", "online", "offline", "computer", "software", "hardware", "program", "application", "app", "algorithm", "code", "data", "information", "knowledge", "wisdom", "insight", "foresight", "hindsight", "oversight", "supervision", "management", "administration", "leadership", "governance", "control", "regulation", "rule", "law", "legislation", "policy", "procedure", "protocol", "convention", "tradition", "custom", "habit", "routine", "pattern", "model", "framework", "structure", "architecture", "design", "blueprint", "plan", "scheme", "strategy", "tactic", "method", "approach", "technique", "skill", "ability", "capacity", "capability", "competence", "proficiency", "expertise", "mastery", "talent", "gift", "aptitude", "intelligence", "intellect", "mind", "brain", "thought", "idea", "concept", "notion", "conception", "perception", "perspective", "viewpoint", "standpoint", "position", "opinion", "belief", "faith", "trust", "confidence", "certainty", "doubt", "skepticism", "cynicism", "distrust", "mistrust", "suspicion", "fear", "anxiety", "worry", "concern", "care", "attention", "focus", "concentration", "emphasis", "stress", "pressure", "tension", "strain", "burden", "load", "weight", "mass", "volume", "density", "intensity", "severity", "gravity", "seriousness", "importance", "significance", "relevance", "pertinence", "applicability", "utility", "usefulness", "effectiveness", "efficiency", "productivity", "creativity", "innovation", "originality", "novelty", "newness", "freshness", "modernity", "currency", "timeliness", "opportunity", "chance", "possibility", "probability", "likelihood", "risk", "danger", "threat", "hazard", "peril", "jeopardy", "safety", "security", "protection", "defense", "offense", "attack", "defend", "protect", "guard", "shield", "shelter", "refuge", "sanctuary", "asylum", "haven", "harbor", "port", "dock", "pier", "wharf", "quay", "berth", "mooring", "anchor", "rope", "chain", "cable", "wire", "string", "thread", "fiber", "filament", "strand", "line", "row", "column", "array", "matrix", "grid", "lattice", "framework", "structure", "skeleton", "shell", "skin", "surface", "exterior", "interior", "inside", "outside", "internal", "external", "inner", "outer", "central", "peripheral", "marginal", "border", "boundary", "edge", "limit", "frontier", "territory", "domain", "realm", "sphere", "world", "universe", "cosmos", "galaxy", "star", "planet", "moon", "sun", "earth", "ground", "soil", "land", "water", "air", "fire", "wind", "rain", "snow", "ice", "heat", "cold", "temperature", "climate", "weather", "environment", "ecology", "ecosystem", "biome", "habitat", "niche", "species", "genus", "family", "order", "class", "phylum", "kingdom", "domain", "life", "organism", "cell", "tissue", "organ", "system", "organism", "population", "community", "ecosystem", "biosphere", "geosphere", "hydrosphere", "atmosphere", "lithosphere", "crust", "mantle", "core", "center", "middle", "heart", "nucleus", "hub", "focus", "epicenter", "origin", "source", "beginning", "start", "commencement", "initiation", "inauguration", "launch", "introduction", "preface", "prologue", "foreword", "preamble", "preliminary", "introductory", "opening", "initial", "primary", "first", "prime", "primordial", "primitive", "ancient", "archaic", "old", "older", "oldest", "elder", "elderly", "aged", "age", "aging", "maturation", "development", "growth", "expansion", "extension", "prolongation", "lengthening", "widening", "broadening", "deepening", "heightening", "intensifying", "strengthening", "weakening", "diminishing", "reducing", "decreasing", "lessening", "shrinking", "contracting", "compressing", "condensing", "concentrating", "focusing", "directing", "guiding", "leading", "steering", "navigating", "piloting", "driving", "riding", "flying", "sailing", "swimming", "walking", "running", "jumping", "leaping", "hopping", "skipping", "dancing", "singing", "playing", "working", "resting", "sleeping", "dreaming", "waking", "living", "dying", "birth", "death", "life", "existence", "being", "becoming", "changing", "transforming", "evolving", "developing", "progressing", "regressing", "decaying", "rotting", "decomposing", "disintegrating", "dissolving", "melting", "freezing", "boiling", "evaporating", "condensing", "subliming", "depositing", "precipitating", "crystallizing", "solidifying", "liquefying", "gasifying", "ionizing", "dissociating", "associating", "combining", "mixing", "blending", "merging", "fusing", "joining", "connecting", "linking", "bonding", "attaching", "detaching", "separating", "dividing", "splitting", "breaking", "fracturing", "cracking", "shattering", "smashing", "crushing", "grinding", "pulverizing", "powdering", "granulating", "crystallizing", "dissolving", "suspending", "emulsifying", "homogenizing", "stirring", "mixing", "shaking", "agitating", "vibrating", "oscillating", "pulsating", "beating", "throbbing", "pounding", "hammering", "forging", "molding", "casting", "shaping", "forming", "creating", "designing", "planning", "scheming", "plotting", "conspiring", "colluding", "cooperating", "collaborating", "assisting", "helping", "aiding", "supporting", "encouraging", "motivating", "inspiring", "stimulating", "provoking", "inciting", "instigating", "initiating", "starting", "beginning", "commencing", "inaugurating", "launching", "establishing", "founding", "creating", "inventing", "discovering", "finding", "locating", "positioning", "placing", "putting", "setting", "arranging", "organizing", "ordering", "systematizing", "categorizing", "classifying", "typing", "sorting", "grouping", "clustering", "bundling", "packaging", "wrapping", "covering", "concealing", "hiding", "revealing", "exposing", "uncovering", "discovering", "disclosing", "divulging", "sharing", "communicating", "transmitting", "transferring", "transporting", "moving", "shifting", "relocating", "migrating", "traveling", "journeying", "voyaging", "sailing", "flying", "driving", "riding", "walking", "running", "crawling", "sliding", "gliding", "floating", "sinking", "submerging", "emerging", "appearing", "disappearing", "vanishing", "evaporating", "dissipating", "dispersing", "scattering", "spreading", "expanding", "contracting", "shrinking", "growing", "developing", "maturing", "aging", "dying", "dead", "deceased", "departed", "gone", "lost", "missing", "absent", "present", "here", "there", "everywhere", "nowhere", "somewhere", "anywhere", "elsewhere", "wherever", "whenever", "however", "whatever", "whichever", "whoever", "whomever", "whosever", "whatsoever", "whosoever", "everyone", "everything", "everybody", "everywhere", "nobody", "nothing", "nowhere", "someone", "something", "somewhere", "anyone", "anything", "anywhere", "each", "every", "all", "both", "either", "neither", "none", "some", "any", "many", "much", "few", "little", "more", "less", "most", "least", "several", "numerous", "countless", "infinite", "finite", "limited", "unlimited", "boundless", "endless", "eternal", "perpetual", "temporary", "transient", "fleeting", "brief", "short", "long", "lengthy", "extended", "prolonged", "protracted", "enduring", "lasting", "permanent", "semipermanent", "temporary", "momentary", "instant", "immediate", "instantaneous", "sudden", "gradual", "slow", "fast", "quick", "rapid", "swift", "speedy", "hasty", "hurried", "rushed", "leisurely", "unhurried", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "careless", "negligent", "attentive", "careful", "cautious", "prudent", "reckless", "rash", "impulsive", "spontaneous", "planned", "premeditated", "calculated", "strategic", "tactical", "operational", "functional", "dysfunctional", "effective", "ineffective", "efficient", "inefficient", "productive", "unproductive", "creative", "uncreative", "innovative", "traditional", "conventional", "unconventional", "orthodox", "heterodox", "heretical", "blasphemous", "sacrilegious", "profane", "sacred", "holy", "unholy", "divine", "mundane", "ordinary", "extraordinary", "exceptional", "commonplace", "usual", "unusual", "rare", "frequent", "occasional", "sporadic", "intermittent", "continuous", "discontinuous", "constant", "inconstant", "variable", "invariable", "changing", "unchanging", "stable", "unstable", "static", "dynamic", "mobile", "immobile", "movable", "immovable", "portable", "fixed", "stationary", "still", "motionless", "active", "inactive", "passive", "aggressive", "assertive", "submissive", "dominant", "subordinate", "superior", "inferior", "equal", "unequal", "equivalent", "nonequivalent", "identical", "different", "similar", "dissimilar", "alike", "unlike", "same", "opposite", "contrary", "reverse", "inverse", "converse", "obverse", "transverse", "longitudinal", "lateral", "medial", "central", "peripheral", "marginal", "borderline", "boundary", "frontier", "limit", "threshold", "brink", "verge", "edge", "rim", "brim", "lip", "mouth", "opening", "entrance", "exit", "door", "gate", "portal", "passage", "path", "way", "road", "street", "avenue", "boulevard", "highway", "freeway", "expressway", "turnpike", "parkway", "driveway", "alley", "lane", "route", "course", "direction", "orientation", "alignment", "arrangement", "order", "sequence", "series", "succession", "chain", "string", "line", "queue", "row", "column", "array", "matrix", "grid", "pattern", "design", "motif", "theme", "subject", "topic", "issue", "matter", "affair", "business", "concern", "interest", "attention", "focus", "emphasis", "stress", "accent", "pronunciation", "enunciation", "articulation", "expression", "utterance", "statement", "declaration", "announcement", "proclamation", "pronouncement", "edict", "decree", "order", "command", "instruction", "direction", "guideline", "rule", "regulation", "law", "statute", "ordinance", "act", "bill", "legislation", "policy", "procedure", "protocol", "convention", "tradition", "custom", "habit", "practice", "routine", "ritual", "ceremony", "observance", "celebration", "festival", "holiday", "vacation", "break", "rest", "pause", "interruption", "disruption", "disturbance", "interference", "intervention", "mediation", "arbitration", "negotiation", "discussion", "conversation", "dialogue", "debate", "argument", "dispute", "controversy", "conflict", "strife", "discord", "harmony", "concord", "agreement", "consensus", "unanimity", "majority", "minority", "plurality", "singularity", "unity", "diversity", "variety", "multiplicity", "complexity", "simplicity", "difficulty", "ease", "comfort", "discomfort", "pain", "pleasure", "joy", "sorrow", "happiness", "sadness", "anger", "fear", "love", "hate", "like", "dislike", "preference", "aversion", "attraction", "repulsion", "affinity", "animosity", "friendship", "enmity", "rivalry", "competition", "cooperation", "collaboration", "partnership", "alliance", "coalition", "federation", "confederation", "union", "league", "association", "organization", "institution", "establishment", "foundation", "corporation", "company", "firm", "enterprise", "business", "industry", "commerce", "trade", "market", "economy", "finance", "banking", "investment", "speculation", "gambling", "risk", "venture", "enterprise", "project", "undertaking", "endeavor", "effort", "attempt", "trial", "experiment", "test", "examination", "inquiry", "investigation", "research", "study", "analysis", "scrutiny", "inspection", "audit", "review", "evaluation", "assessment", "appraisal", "judgment", "criticism", "commentary", "review", "report", "account", "record", "document", "file", "archive", "library", "database", "repository", "depository", "storage", "memory", "recall", "recollection", "remembrance", "reminiscence", "nostalgia", "history", "past", "present", "future", "time", "temporal", "eternal", "perpetual", "momentary", "instant", "immediate", "soon", "later", "afterward", "beforehand", "previously", "formerly", "originally", "initially", "finally", "ultimately", "eventually", "soon", "shortly", "quickly", "rapidly", "slowly", "gradually", "suddenly", "abruptly", "immediately", "instantly", "directly", "straightaway", "forthwith", "promptly", "punctually", "timely", "late", "early", "premature", "overdue", "delayed", "postponed", "deferred", "scheduled", "planned", "unplanned", "spontaneous", "impromptu", "improvised", "adlib", "extemporaneous", "unrehearsed", "practiced", "rehearsed", "prepared", "unprepared", "ready", "unready", "willing", "unwilling", "reluctant", "eager", "keen", "enthusiastic", "apathetic", "indifferent", "neutral", "biased", "partial", "impartial", "fair", "unfair", "just", "unjust", "equitable", "inequitable", "equal", "unequal", "balanced", "unbalanced", "stable", "unstable", "steady", "unsteady", "constant", "inconstant", "consistent", "inconsistent", "compatible", "incompatible", "congruent", "incongruent", "harmonious", "discordant", "agreeable", "disagreeable", "pleasant", "unpleasant", "enjoyable", "unenjoyable", "satisfying", "unsatisfying", "fulfilling", "unfulfilling", "rewarding", "unrewarding", "valuable", "valueless", "worthless", "priceless", "expensive", "cheap", "costly", "inexpensive", "affordable", "unaffordable", "economical", "uneconomical", "efficient", "inefficient", "effective", "ineffective", "powerful", "powerless", "strong", "weak", "forceful", "force", "pressure", "stress", "tension", "strain", "burden", "load", "weight", "mass", "volume", "density", "gravity", "force", "energy", "power", "work", "heat", "light", "sound", "electricity", "magnetism", "radiation", "wave", "particle", "atom", "molecule", "compound", "element", "mixture", "solution", "suspension", "colloid", "emulsion", "foam", "aerosol", "gel", "sol", "solid", "liquid", "gas", "plasma", "state", "phase", "transition", "change", "transformation", "conversion", "alteration", "modification", "variation", "deviation", "departure", "divergence", "convergence", "meeting", "intersection", "junction", "crossroads", "intersection", "interchange", "overpass", "underpass", "bridge", "tunnel", "passage", "corridor", "hallway", "lobby", "foyer", "entrance", "exit", "doorway", "gateway", "portal", "threshold", "brink", "verge", "edge", "margin", "border", "boundary", "frontier", "perimeter", "circumference", "diameter", "radius", "center", "middle", "heart", "core", "nucleus", "hub", "focus", "focal", "central", "peripheral", "marginal", "outside", "inside", "interior", "exterior", "surface", "superficial", "deep", "profound", "shallow", "depth", "height", "width", "length", "breadth", "thickness", "thinness", "density", "sparsity", "crowding", "congestion", "overcrowding", "spacious", "cramped", "roomy", "confined", "limited", "restricted", "unrestricted", "free", "bound", "unbound", "loose", "tight", "tense", "relaxed", "calm", "agitated", "nervous", "anxious", "worried", "concerned", "carefree", "nonchalant", "indifferent", "detached", "involved", "engaged", "disengaged", "interested", "disinterested", "uninterested", "bored", "entertained", "amused", "diverted", "distracted", "focused", "concentrated", "attentive", "inattentive", "negligent", "careful", "careless", "reckless", "cautious", "prudent", "rash", "impulsive", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "mistaken", "correct", "incorrect", "right", "wrong", "true", "false", "accurate", "inaccurate", "precise", "imprecise", "exact", "inexact", "specific", "vague", "clear", "unclear", "obvious", "subtle", "explicit", "implicit", "overt", "covert", "public", "private", "secret", "open", "closed", "accessible", "inaccessible", "available", "unavailable", "present", "absent", "missing", "lost", "found", "discovered", "invented", "created", "destroyed", "ruined", "damaged", "repaired", "fixed", "broken", "shattered", "fragmented", "whole", "complete", "incomplete", "partial", "total", "entire", "full", "empty", "filled", "unfilled", "occupied", "vacant", "taken", "free", "available", "unavailable", "ready", "unready", "prepared", "unprepared", "equipped", "unequipped", "armed", "unarmed", "dangerous", "safe", "secure", "insecure", "protected", "unprotected", "defended", "undefended", "guarded", "unguarded", "watched", "unwatched", "observed", "unobserved", "noticed", "unnoticed", "seen", "unseen", "visible", "invisible", "transparent", "opaque", "clear", "cloudy", "bright", "dim", "dark", "light", "heavy", "weighty", "lightweight", "burdensome", "easy", "difficult", "simple", "complex", "complicated", "intricate", "involved", "detailed", "general", "specific", "broad", "narrow", "wide", "thin", "thick", "fat", "thin", "slim", "slender", "bulky", "compact", "dense", "sparse", "crowded", "empty", "populated", "unpopulated", "inhabited", "uninhabited", "occupied", "vacant", "deserted", "abandoned", "forsaken", "neglected", "ignored", "attended", "unattended", "accompanied", "unaccompanied", "alone", "lonely", "solitary", "social", "antisocial", "friendly", "unfriendly", "hostile", "hospitable", "welcoming", "unwelcoming", "inviting", "uninviting", "attractive", "unattractive", "beautiful", "ugly", "pretty", "plain", "handsome", "gorgeous", "stunning", "dazzling", "radiant", "glowing", "shining", "dull", "matte", "glossy", "shiny", "reflective", "absorbent", "porous", "nonporous", "permeable", "impermeable", "transparent", "translucent", "opaque", "clear", "cloudy", "foggy", "misty", "hazy", "smoky", "dusty", "dirty", "clean", "filthy", "spotless", "stained", "marked", "blemished", "flawed", "perfect", "imperfect", "defective", "faulty", "functional", "dysfunctional", "working", "broken", "operational", "nonoperational", "active", "inactive", "dormant", "extinct", "alive", "dead", "living", "nonliving", "organic", "inorganic", "natural", "artificial", "synthetic", "genuine", "fake", "real", "unreal", "authentic", "inauthentic", "original", "copy", "imitation", "simulation", "representation", "presentation", "exhibition", "display", "show", "performance", "act", "scene", "stage", "theater", "cinema", "movie", "film", "video", "audio", "sound", "music", "noise", "silence", "quiet", "loud", "soft", "harsh", "gentle", "rough", "smooth", "coarse", "fine", "delicate", "robust", "fragile", "durable", "perishable", "temporary", "permanent", "eternal", "finite", "infinite", "limited", "unlimited", "restricted", "unrestricted", "free", "bound", "constrained", "unconstrained", "controlled", "uncontrolled", "regulated", "unregulated", "ordered", "chaotic", "organized", "disorganized", "systematic", "unsystematic", "methodical", "haphazard", "random", "patterned", "regular", "irregular", "consistent", "inconsistent", "predictable", "unpredictable", "expected", "unexpected", "surprising", "unsurprising", "usual", "unusual", "common", "rare", "frequent", "infrequent", "constant", "variable", "stable", "unstable", "steady", "unsteady", "balanced", "unbalanced", "equal", "unequal", "equitable", "inequitable", "fair", "unfair", "just", "unjust", "righteous", "unrighteous", "moral", "immoral", "ethical", "unethical", "principled", "unprincipled", "virtuous", "vicious", "good", "evil", "kind", "cruel", "benevolent", "malevolent", "compassionate", "ruthless", "merciful", "merciless", "forgiving", "unforgiving", "tolerant", "intolerant", "accepting", "rejecting", "inclusive", "exclusive", "comprehensive", "selective", "general", "specific", "broad", "narrow", "wide", "deep", "shallow", "profound", "superficial", "thorough", "cursory", "detailed", "vague", "precise", "imprecise", "accurate", "inaccurate", "correct", "incorrect", "right", "wrong", "true", "false", "valid", "invalid", "sound", "unsound", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sensible", "foolish", "wise", "unwise", "smart", "stupid", "intelligent", "unintelligent", "brilliant", "dull", "bright", "dim", "clever", "cunning", "sly", "crafty", "artful", "ingenious", "creative", "uncreative", "imaginative", "unimaginative", "inventive", "uninventive", "resourceful", "unresourceful", "capable", "incapable", "competent", "incompetent", "skilled", "unskilled", "experienced", "inexperienced", "knowledgeable", "ignorant", "learned", "unlearned", "educated", "uneducated", "literate", "illiterate", "numerate", "innumerate", "articulate", "inarticulate", "eloquent", "ineloquent", "fluent", "dysfluent", "coherent", "incoherent", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sane", "insane", "crazy", "mad", "sensible", "foolish", "wise", "foolish", "prudent", "imprudent", "cautious", "reckless", "careful", "careless", "attentive", "inattentive", "observant", "unobservant", "perceptive", "imperceptive", "insightful", "uninsightful", "understanding", "misunderstanding", "comprehending", "incomprehending", "knowing", "unknowing", "aware", "unaware", "conscious", "unconscious", "awake", "asleep", "alert", "drowsy", "tired", "energetic", "exhausted", "refreshed", "fatigued", "weary", "rested", "sleepy", "sleepless", "insomniac", "dreaming", "waking", "living", "dead", "alive", "deceased", "departed", "gone", "lost", "found", "discovered", "hidden", "revealed", "exposed", "concealed", "covered", "uncovered", "protected", "unprotected", "safe", "unsafe", "secure", "insecure", "certain", "uncertain", "sure", "unsure", "confident", "diffident", "bold", "timid", "brave", "cowardly", "fearless", "fearful", "anxious", "calm", "nervous", "relaxed", "tense", "stressed", "unstressed", "pressured", "unpressured", "burdened", "unburdened", "loaded", "unloaded", "weighted", "weightless", "heavy", "light", "massive", "minute", "enormous", "tiny", "huge", "small", "large", "big", "little", "gigantic", "microscopic", "macroscopic", "visible", "invisible", "seen", "unseen", "observed", "unobserved", "noticed", "unnoticed", "detected", "undetected", "found", "lost", "missing", "present", "absent", "here", "there", "everywhere", "nowhere", "somewhere", "anywhere", "elsewhere", "wherever", "whenever", "however", "whatever", "whichever", "whoever", "whomever", "whosever", "whatsoever", "whosoever", "everyone", "everything", "everybody", "everywhere", "nobody", "nothing", "nowhere", "someone", "something", "somewhere", "anyone", "anything", "anywhere", "each", "every", "all", "both", "either", "neither", "none", "some", "any", "many", "much", "few", "little", "more", "less", "most", "least", "several", "numerous", "countless", "infinite", "finite", "limited", "unlimited", "boundless", "endless", "eternal", "perpetual", "temporary", "transient", "fleeting", "brief", "short", "long", "lengthy", "extended", "prolonged", "protracted", "enduring", "lasting", "permanent", "semipermanent", "temporary", "momentary", "instant", "immediate", "instantaneous", "sudden", "gradual", "slow", "fast", "quick", "rapid", "swift", "speedy", "hasty", "hurried", "rushed", "leisurely", "unhurried", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "careless", "negligent", "attentive", "careful", "cautious", "prudent", "reckless", "rash", "impulsive", "spontaneous", "planned", "premeditated", "calculated", "strategic", "tactical", "operational", "functional", "dysfunctional", "effective", "ineffective", "efficient", "inefficient", "productive", "unproductive", "creative", "uncreative", "innovative", "traditional", "conventional", "unconventional", "orthodox", "heterodox", "heretical", "blasphemous", "sacrilegious", "profane", "sacred", "holy", "unholy", "divine", "mundane", "ordinary", "extraordinary", "exceptional", "commonplace", "usual", "unusual", "rare", "frequent", "occasional", "sporadic", "intermittent", "continuous", "discontinuous", "constant", "inconstant", "variable", "invariable", "changing", "unchanging", "stable", "unstable", "static", "dynamic", "mobile", "immobile", "movable", "immovable", "portable", "fixed", "stationary", "still", "motionless", "active", "inactive", "passive", "aggressive", "assertive", "submissive", "dominant", "subordinate", "superior", "inferior", "equal", "unequal", "equivalent", "nonequivalent", "identical", "different", "similar", "dissimilar", "alike", "unlike", "same", "opposite", "contrary", "reverse", "inverse", "converse", "obverse", "transverse", "longitudinal", "lateral", "medial", "central", "peripheral", "marginal", "borderline", "boundary", "frontier", "limit", "threshold", "brink", "verge", "edge", "rim", "brim", "lip", "mouth", "opening", "entrance", "exit", "door", "gate", "portal", "passage", "path", "way", "road", "street", "avenue", "boulevard", "highway", "freeway", "expressway", "turnpike", "parkway", "driveway", "alley", "lane", "route", "course", "direction", "orientation", "alignment", "arrangement", "order", "sequence", "series", "succession", "chain", "string", "line", "queue", "row", "column", "array", "matrix", "grid", "pattern", "design", "motif", "theme", "subject", "topic", "issue", "matter", "affair", "business", "concern", "interest", "attention", "focus", "emphasis", "stress", "accent", "pronunciation", "enunciation", "articulation", "expression", "utterance", "statement", "declaration", "announcement", "proclamation", "pronouncement", "edict", "decree", "order", "command", "instruction", "direction", "guideline", "rule", "regulation", "law", "statute", "ordinance", "act", "bill", "legislation", "policy", "procedure", "protocol", "convention", "tradition", "custom", "habit", "practice", "routine", "ritual", "ceremony", "observance", "celebration", "festival", "holiday", "vacation", "break", "rest", "pause", "interruption", "disruption", "disturbance", "interference", "intervention", "mediation", "arbitration", "negotiation", "discussion", "conversation", "dialogue", "debate", "argument", "dispute", "controversy", "conflict", "strife", "discord", "harmony", "concord", "agreement", "consensus", "unanimity", "majority", "minority", "plurality", "singularity", "unity", "diversity", "variety", "multiplicity", "complexity", "simplicity", "difficulty", "ease", "comfort", "discomfort", "pain", "pleasure", "joy", "sorrow", "happiness", "sadness", "anger", "fear", "love", "hate", "like", "dislike", "preference", "aversion", "attraction", "repulsion", "affinity", "animosity", "friendship", "enmity", "rivalry", "competition", "cooperation", "collaboration", "partnership", "alliance", "coalition", "federation", "confederation", "union", "league", "association", "organization", "institution", "establishment", "foundation", "corporation", "company", "firm", "enterprise", "business", "industry", "commerce", "trade", "market", "economy", "finance", "banking", "investment", "speculation", "gambling", "risk", "venture", "enterprise", "project", "undertaking", "endeavor", "effort", "attempt", "trial", "experiment", "test", "examination", "inquiry", "investigation", "research", "study", "analysis", "scrutiny", "inspection", "audit", "review", "evaluation", "assessment", "appraisal", "judgment", "criticism", "commentary", "review", "report", "account", "record", "document", "file", "archive", "library", "database", "repository", "depository", "storage", "memory", "recall", "recollection", "remembrance", "reminiscence", "nostalgia", "history", "past", "present", "future", "time", "temporal", "eternal", "perpetual", "momentary", "instant", "immediate", "soon", "later", "afterward", "beforehand", "previously", "formerly", "originally", "initially", "finally", "ultimately", "eventually", "soon", "shortly", "quickly", "rapidly", "slowly", "gradually", "suddenly", "abruptly", "immediately", "instantly", "directly", "straightaway", "forthwith", "promptly", "punctually", "timely", "late", "early", "premature", "overdue", "delayed", "postponed", "deferred", "scheduled", "planned", "unplanned", "spontaneous", "impromptu", "improvised", "adlib", "extemporaneous", "unrehearsed", "practiced", "rehearsed", "prepared", "unprepared", "ready", "unready", "willing", "unwilling", "reluctant", "eager", "keen", "enthusiastic", "apathetic", "indifferent", "neutral", "biased", "partial", "impartial", "fair", "unfair", "just", "unjust", "equitable", "inequitable", "equal", "unequal", "balanced", "unbalanced", "stable", "unstable", "steady", "unsteady", "constant", "inconstant", "consistent", "inconsistent", "compatible", "incompatible", "congruent", "incongruent", "harmonious", "discordant", "agreeable", "disagreeable", "pleasant", "unpleasant", "enjoyable", "unenjoyable", "satisfying", "unsatisfying", "fulfilling", "unfulfilling", "rewarding", "unrewarding", "valuable", "valueless", "worthless", "priceless", "expensive", "cheap", "costly", "inexpensive", "affordable", "unaffordable", "economical", "uneconomical", "efficient", "inefficient", "effective", "ineffective", "powerful", "powerless", "strong", "weak", "forceful", "force", "pressure", "stress", "tension", "strain", "burden", "load", "weight", "mass", "volume", "density", "gravity", "force", "energy", "power", "work", "heat", "light", "sound", "electricity", "magnetism", "radiation", "wave", "particle", "atom", "molecule", "compound", "element", "mixture", "solution", "suspension", "colloid", "emulsion", "foam", "aerosol", "gel", "sol", "solid", "liquid", "gas", "plasma", "state", "phase", "transition", "change", "transformation", "conversion", "alteration", "modification", "variation", "deviation", "departure", "divergence", "convergence", "meeting", "intersection", "junction", "crossroads", "intersection", "interchange", "overpass", "underpass", "bridge", "tunnel", "passage", "corridor", "hallway", "lobby", "foyer", "entrance", "exit", "doorway", "gateway", "portal", "threshold", "brink", "verge", "edge", "margin", "border", "boundary", "frontier", "perimeter", "circumference", "diameter", "radius", "center", "middle", "heart", "core", "nucleus", "hub", "focus", "focal", "central", "peripheral", "marginal", "outside", "inside", "interior", "exterior", "surface", "superficial", "deep", "profound", "shallow", "depth", "height", "width", "length", "breadth", "thickness", "thinness", "density", "sparsity", "crowding", "congestion", "overcrowding", "spacious", "cramped", "roomy", "confined", "limited", "restricted", "unrestricted", "free", "bound", "unbound", "loose", "tight", "tense", "relaxed", "calm", "agitated", "nervous", "anxious", "worried", "concerned", "carefree", "nonchalant", "indifferent", "detached", "involved", "engaged", "disengaged", "interested", "disinterested", "uninterested", "bored", "entertained", "amused", "diverted", "distracted", "focused", "concentrated", "attentive", "inattentive", "negligent", "careful", "careless", "reckless", "cautious", "prudent", "rash", "impulsive", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "mistaken", "correct", "incorrect", "right", "wrong", "true", "false", "accurate", "inaccurate", "precise", "imprecise", "exact", "inexact", "specific", "vague", "clear", "unclear", "obvious", "subtle", "explicit", "implicit", "overt", "covert", "public", "private", "secret", "open", "closed", "accessible", "inaccessible", "available", "unavailable", "present", "absent", "missing", "lost", "found", "discovered", "invented", "created", "destroyed", "ruined", "damaged", "repaired", "fixed", "broken", "shattered", "fragmented", "whole", "complete", "incomplete", "partial", "total", "entire", "full", "empty", "filled", "unfilled", "occupied", "vacant", "taken", "free", "available", "unavailable", "ready", "unready", "prepared", "unprepared", "equipped", "unequipped", "armed", "unarmed", "dangerous", "safe", "secure", "insecure", "protected", "unprotected", "defended", "undefended", "guarded", "unguarded", "watched", "unwatched", "observed", "unobserved", "noticed", "unnoticed", "seen", "unseen", "visible", "invisible", "transparent", "opaque", "clear", "cloudy", "bright", "dim", "dark", "light", "heavy", "weighty", "lightweight", "burdensome", "easy", "difficult", "simple", "complex", "complicated", "intricate", "involved", "detailed", "general", "specific", "broad", "narrow", "wide", "thin", "thick", "fat", "thin", "slim", "slender", "bulky", "compact", "dense", "sparse", "crowded", "empty", "populated", "unpopulated", "inhabited", "uninhabited", "occupied", "vacant", "deserted", "abandoned", "forsaken", "neglected", "ignored", "attended", "unattended", "accompanied", "unaccompanied", "alone", "lonely", "solitary", "social", "antisocial", "friendly", "unfriendly", "hostile", "hospitable", "welcoming", "unwelcoming", "inviting", "uninviting", "attractive", "unattractive", "beautiful", "ugly", "pretty", "plain", "handsome", "gorgeous", "stunning", "dazzling", "radiant", "glowing", "shining", "dull", "matte", "glossy", "shiny", "reflective", "absorbent", "porous", "nonporous", "permeable", "impermeable", "transparent", "translucent", "opaque", "clear", "cloudy", "foggy", "misty", "hazy", "smoky", "dusty", "dirty", "clean", "filthy", "spotless", "stained", "marked", "blemished", "flawed", "perfect", "imperfect", "defective", "faulty", "functional", "dysfunctional", "working", "broken", "operational", "nonoperational", "active", "inactive", "dormant", "extinct", "alive", "dead", "living", "nonliving", "organic", "inorganic", "natural", "artificial", "synthetic", "genuine", "fake", "real", "unreal", "authentic", "inauthentic", "original", "copy", "imitation", "simulation", "representation", "presentation", "exhibition", "display", "show", "performance", "act", "scene", "stage", "theater", "cinema", "movie", "film", "video", "audio", "sound", "music", "noise", "silence", "quiet", "loud", "soft", "harsh", "gentle", "rough", "smooth", "coarse", "fine", "delicate", "robust", "fragile", "durable", "perishable", "temporary", "permanent", "eternal", "finite", "infinite", "limited", "unlimited", "restricted", "unrestricted", "free", "bound", "constrained", "unconstrained", "controlled", "uncontrolled", "regulated", "unregulated", "ordered", "chaotic", "organized", "disorganized", "systematic", "unsystematic", "methodical", "haphazard", "random", "patterned", "regular", "irregular", "consistent", "inconsistent", "predictable", "unpredictable", "expected", "unexpected", "surprising", "unsurprising", "usual", "unusual", "common", "rare", "frequent", "infrequent", "constant", "variable", "stable", "unstable", "steady", "unsteady", "balanced", "unbalanced", "equal", "unequal", "equitable", "inequitable", "fair", "unfair", "just", "unjust", "righteous", "unrighteous", "moral", "immoral", "ethical", "unethical", "principled", "unprincipled", "virtuous", "vicious", "good", "evil", "kind", "cruel", "benevolent", "malevolent", "compassionate", "ruthless", "merciful", "merciless", "forgiving", "unforgiving", "tolerant", "intolerant", "accepting", "rejecting", "inclusive", "exclusive", "comprehensive", "selective", "general", "specific", "broad", "narrow", "wide", "deep", "shallow", "profound", "superficial", "thorough", "cursory", "detailed", "vague", "precise", "imprecise", "accurate", "inaccurate", "correct", "incorrect", "right", "wrong", "true", "false", "valid", "invalid", "sound", "unsound", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sensible", "foolish", "wise", "unwise", "smart", "stupid", "intelligent", "unintelligent", "brilliant", "dull", "bright", "dim", "clever", "cunning", "sly", "crafty", "artful", "ingenious", "creative", "uncreative", "imaginative", "unimaginative", "inventive", "uninventive", "resourceful", "unresourceful", "capable", "incapable", "competent", "incompetent", "skilled", "unskilled", "experienced", "inexperienced", "knowledgeable", "ignorant", "learned", "unlearned", "educated", "uneducated", "literate", "illiterate", "numerate", "innumerate", "articulate", "inarticulate", "eloquent", "ineloquent", "fluent", "dysfluent", "coherent", "incoherent", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sane", "insane", "crazy", "mad", "sensible", "foolish", "wise", "foolish", "prudent", "imprudent", "cautious", "reckless", "careful", "careless", "attentive", "inattentive", "observant", "unobservant", "perceptive", "imperceptive", "insightful", "uninsightful", "understanding", "misunderstanding", "comprehending", "incomprehending", "knowing", "unknowing", "aware", "unaware", "conscious", "unconscious", "awake", "asleep", "alert", "drowsy", "tired", "energetic", "exhausted", "refreshed", "fatigued", "weary", "rested", "sleepy", "sleepless", "insomniac", "dreaming", "waking", "living", "dead", "alive", "deceased", "departed", "gone", "lost", "found", "discovered", "hidden", "revealed", "exposed", "concealed", "covered", "uncovered", "protected", "unprotected", "safe", "unsafe", "secure", "insecure", "certain", "uncertain", "sure", "unsure", "confident", "diffident", "bold", "timid", "brave", "cowardly", "fearless", "fearful", "anxious", "calm", "nervous", "relaxed", "tense", "stressed", "unstressed", "pressured", "unpressured", "burdened", "unburdened", "loaded", "unloaded", "weighted", "weightless", "heavy", "light", "massive", "minute", "enormous", "tiny", "huge", "small", "large", "big", "little", "gigantic", "microscopic", "macroscopic", "visible", "invisible", "seen", "unseen", "observed", "unobserved", "noticed", "unnoticed", "detected", "undetected", "found", "lost", "missing", "present", "absent", "here", "there", "everywhere", "nowhere", "somewhere", "anywhere", "elsewhere", "wherever", "whenever", "however", "whatever", "whichever", "whoever", "whomever", "whosever", "whatsoever", "whosoever", "everyone", "everything", "everybody", "everywhere", "nobody", "nothing", "nowhere", "someone", "something", "somewhere", "anyone", "anything", "anywhere", "each", "every", "all", "both", "either", "neither", "none", "some", "any", "many", "much", "few", "little", "more", "less", "most", "least", "several", "numerous", "countless", "infinite", "finite", "limited", "unlimited", "boundless", "endless", "eternal", "perpetual", "temporary", "transient", "fleeting", "brief", "short", "long", "lengthy", "extended", "prolonged", "protracted", "enduring", "lasting", "permanent", "semipermanent", "temporary", "momentary", "instant", "immediate", "instantaneous", "sudden", "gradual", "slow", "fast", "quick", "rapid", "swift", "speedy", "hasty", "hurried", "rushed", "leisurely", "unhurried", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "careless", "negligent", "attentive", "careful", "cautious", "prudent", "reckless", "rash", "impulsive", "spontaneous", "planned", "premeditated", "calculated", "strategic", "tactical", "operational", "functional", "dysfunctional", "effective", "ineffective", "efficient", "inefficient", "productive", "unproductive", "creative", "uncreative", "innovative", "traditional", "conventional", "unconventional", "orthodox", "heterodox", "heretical", "blasphemous", "sacrilegious", "profane", "sacred", "holy", "unholy", "divine", "mundane", "ordinary", "extraordinary", "exceptional", "commonplace", "usual", "unusual", "rare", "frequent", "occasional", "sporadic", "intermittent", "continuous", "discontinuous", "constant", "inconstant", "variable", "invariable", "changing", "unchanging", "stable", "unstable", "static", "dynamic", "mobile", "immobile", "movable", "immovable", "portable", "fixed", "stationary", "still", "motionless", "active", "inactive", "passive", "aggressive", "assertive", "submissive", "dominant", "subordinate", "superior", "inferior", "equal", "unequal", "equivalent", "nonequivalent", "identical", "different", "similar", "dissimilar", "alike", "unlike", "same", "opposite", "contrary", "reverse", "inverse", "converse", "obverse", "transverse", "longitudinal", "lateral", "medial", "central", "peripheral", "marginal", "borderline", "boundary", "frontier", "limit", "threshold", "brink", "verge", "edge", "rim", "brim", "lip", "mouth", "opening", "entrance", "exit", "door", "gate", "portal", "passage", "path", "way", "road", "street", "avenue", "boulevard", "highway", "freeway", "expressway", "turnpike", "parkway", "driveway", "alley", "lane", "route", "course", "direction", "orientation", "alignment", "arrangement", "order", "sequence", "series", "succession", "chain", "string", "line", "queue", "row", "column", "array", "matrix", "grid", "pattern", "design", "motif", "theme", "subject", "topic", "issue", "matter", "affair", "business", "concern", "interest", "attention", "focus", "emphasis", "stress", "accent", "pronunciation", "enunciation", "articulation", "expression", "utterance", "statement", "declaration", "announcement", "proclamation", "pronouncement", "edict", "decree", "order", "command", "instruction", "direction", "guideline", "rule", "regulation", "law", "statute", "ordinance", "act", "bill", "legislation", "policy", "procedure", "protocol", "convention", "tradition", "custom", "habit", "practice", "routine", "ritual", "ceremony", "observance", "celebration", "festival", "holiday", "vacation", "break", "rest", "pause", "interruption", "disruption", "disturbance", "interference", "intervention", "mediation", "arbitration", "negotiation", "discussion", "conversation", "dialogue", "debate", "argument", "dispute", "controversy", "conflict", "strife", "discord", "harmony", "concord", "agreement", "consensus", "unanimity", "majority", "minority", "plurality", "singularity", "unity", "diversity", "variety", "multiplicity", "complexity", "simplicity", "difficulty", "ease", "comfort", "discomfort", "pain", "pleasure", "joy", "sorrow", "happiness", "sadness", "anger", "fear", "love", "hate", "like", "dislike", "preference", "aversion", "attraction", "repulsion", "affinity", "animosity", "friendship", "enmity", "rivalry", "competition", "cooperation", "collaboration", "partnership", "alliance", "coalition", "federation", "confederation", "union", "league", "association", "organization", "institution", "establishment", "foundation", "corporation", "company", "firm", "enterprise", "business", "industry", "commerce", "trade", "market", "economy", "finance", "banking", "investment", "speculation", "gambling", "risk", "venture", "enterprise", "project", "undertaking", "endeavor", "effort", "attempt", "trial", "experiment", "test", "examination", "inquiry", "investigation", "research", "study", "analysis", "scrutiny", "inspection", "audit", "review", "evaluation", "assessment", "appraisal", "judgment", "criticism", "commentary", "review", "report", "account", "record", "document", "file", "archive", "library", "database", "repository", "depository", "storage", "memory", "recall", "recollection", "remembrance", "reminiscence", "nostalgia", "history", "past", "present", "future", "time", "temporal", "eternal", "perpetual", "momentary", "instant", "immediate", "soon", "later", "afterward", "beforehand", "previously", "formerly", "originally", "initially", "finally", "ultimately", "eventually", "soon", "shortly", "quickly", "rapidly", "slowly", "gradually", "suddenly", "abruptly", "immediately", "instantly", "directly", "straightaway", "forthwith", "promptly", "punctually", "timely", "late", "early", "premature", "overdue", "delayed", "postponed", "deferred", "scheduled", "planned", "unplanned", "spontaneous", "impromptu", "improvised", "adlib", "extemporaneous", "unrehearsed", "practiced", "rehearsed", "prepared", "unprepared", "ready", "unready", "willing", "unwilling", "reluctant", "eager", "keen", "enthusiastic", "apathetic", "indifferent", "neutral", "biased", "partial", "impartial", "fair", "unfair", "just", "unjust", "equitable", "inequitable", "equal", "unequal", "balanced", "unbalanced", "stable", "unstable", "steady", "unsteady", "constant", "inconstant", "consistent", "inconsistent", "compatible", "incompatible", "congruent", "incongruent", "harmonious", "discordant", "agreeable", "disagreeable", "pleasant", "unpleasant", "enjoyable", "unenjoyable", "satisfying", "unsatisfying", "fulfilling", "unfulfilling", "rewarding", "unrewarding", "valuable", "valueless", "worthless", "priceless", "expensive", "cheap", "costly", "inexpensive", "affordable", "unaffordable", "economical", "uneconomical", "efficient", "inefficient", "effective", "ineffective", "powerful", "powerless", "strong", "weak", "forceful", "force", "pressure", "stress", "tension", "strain", "burden", "load", "weight", "mass", "volume", "density", "gravity", "force", "energy", "power", "work", "heat", "light", "sound", "electricity", "magnetism", "radiation", "wave", "particle", "atom", "molecule", "compound", "element", "mixture", "solution", "suspension", "colloid", "emulsion", "foam", "aerosol", "gel", "sol", "solid", "liquid", "gas", "plasma", "state", "phase", "transition", "change", "transformation", "conversion", "alteration", "modification", "variation", "deviation", "departure", "divergence", "convergence", "meeting", "intersection", "junction", "crossroads", "intersection", "interchange", "overpass", "underpass", "bridge", "tunnel", "passage", "corridor", "hallway", "lobby", "foyer", "entrance", "exit", "doorway", "gateway", "portal", "threshold", "brink", "verge", "edge", "margin", "border", "boundary", "frontier", "perimeter", "circumference", "diameter", "radius", "center", "middle", "heart", "core", "nucleus", "hub", "focus", "focal", "central", "peripheral", "marginal", "outside", "inside", "interior", "exterior", "surface", "superficial", "deep", "profound", "shallow", "depth", "height", "width", "length", "breadth", "thickness", "thinness", "density", "sparsity", "crowding", "congestion", "overcrowding", "spacious", "cramped", "roomy", "confined", "limited", "restricted", "unrestricted", "free", "bound", "unbound", "loose", "tight", "tense", "relaxed", "calm", "agitated", "nervous", "anxious", "worried", "concerned", "carefree", "nonchalant", "indifferent", "detached", "involved", "engaged", "disengaged", "interested", "disinterested", "uninterested", "bored", "entertained", "amused", "diverted", "distracted", "focused", "concentrated", "attentive", "inattentive", "negligent", "careful", "careless", "reckless", "cautious", "prudent", "rash", "impulsive", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "mistaken", "correct", "incorrect", "right", "wrong", "true", "false", "accurate", "inaccurate", "precise", "imprecise", "exact", "inexact", "specific", "vague", "clear", "unclear", "obvious", "subtle", "explicit", "implicit", "overt", "covert", "public", "private", "secret", "open", "closed", "accessible", "inaccessible", "available", "unavailable", "present", "absent", "missing", "lost", "found", "discovered", "invented", "created", "destroyed", "ruined", "damaged", "repaired", "fixed", "broken", "shattered", "fragmented", "whole", "complete", "incomplete", "partial", "total", "entire", "full", "empty", "filled", "unfilled", "occupied", "vacant", "taken", "free", "available", "unavailable", "ready", "unready", "prepared", "unprepared", "equipped", "unequipped", "armed", "unarmed", "dangerous", "safe", "secure", "insecure", "protected", "unprotected", "defended", "undefended", "guarded", "unguarded", "watched", "unwatched", "observed", "unobserved", "noticed", "unnoticed", "seen", "unseen", "visible", "invisible", "transparent", "opaque", "clear", "cloudy", "bright", "dim", "dark", "light", "heavy", "weighty", "lightweight", "burdensome", "easy", "difficult", "simple", "complex", "complicated", "intricate", "involved", "detailed", "general", "specific", "broad", "narrow", "wide", "thin", "thick", "fat", "thin", "slim", "slender", "bulky", "compact", "dense", "sparse", "crowded", "empty", "populated", "unpopulated", "inhabited", "uninhabited", "occupied", "vacant", "deserted", "abandoned", "forsaken", "neglected", "ignored", "attended", "unattended", "accompanied", "unaccompanied", "alone", "lonely", "solitary", "social", "antisocial", "friendly", "unfriendly", "hostile", "hospitable", "welcoming", "unwelcoming", "inviting", "uninviting", "attractive", "unattractive", "beautiful", "ugly", "pretty", "plain", "handsome", "gorgeous", "stunning", "dazzling", "radiant", "glowing", "shining", "dull", "matte", "glossy", "shiny", "reflective", "absorbent", "porous", "nonporous", "permeable", "impermeable", "transparent", "translucent", "opaque", "clear", "cloudy", "foggy", "misty", "hazy", "smoky", "dusty", "dirty", "clean", "filthy", "spotless", "stained", "marked", "blemished", "flawed", "perfect", "imperfect", "defective", "faulty", "functional", "dysfunctional", "working", "broken", "operational", "nonoperational", "active", "inactive", "dormant", "extinct", "alive", "dead", "living", "nonliving", "organic", "inorganic", "natural", "artificial", "synthetic", "genuine", "fake", "real", "unreal", "authentic", "inauthentic", "original", "copy", "imitation", "simulation", "representation", "presentation", "exhibition", "display", "show", "performance", "act", "scene", "stage", "theater", "cinema", "movie", "film", "video", "audio", "sound", "music", "noise", "silence", "quiet", "loud", "soft", "harsh", "gentle", "rough", "smooth", "coarse", "fine", "delicate", "robust", "fragile", "durable", "perishable", "temporary", "permanent", "eternal", "finite", "infinite", "limited", "unlimited", "restricted", "unrestricted", "free", "bound", "constrained", "unconstrained", "controlled", "uncontrolled", "regulated", "unregulated", "ordered", "chaotic", "organized", "disorganized", "systematic", "unsystematic", "methodical", "haphazard", "random", "patterned", "regular", "irregular", "consistent", "inconsistent", "predictable", "unpredictable", "expected", "unexpected", "surprising", "unsurprising", "usual", "unusual", "common", "rare", "frequent", "infrequent", "constant", "variable", "stable", "unstable", "steady", "unsteady", "balanced", "unbalanced", "equal", "unequal", "equitable", "inequitable", "fair", "unfair", "just", "unjust", "righteous", "unrighteous", "moral", "immoral", "ethical", "unethical", "principled", "unprincipled", "virtuous", "vicious", "good", "evil", "kind", "cruel", "benevolent", "malevolent", "compassionate", "ruthless", "merciful", "merciless", "forgiving", "unforgiving", "tolerant", "intolerant", "accepting", "rejecting", "inclusive", "exclusive", "comprehensive", "selective", "general", "specific", "broad", "narrow", "wide", "deep", "shallow", "profound", "superficial", "thorough", "cursory", "detailed", "vague", "precise", "imprecise", "accurate", "inaccurate", "correct", "incorrect", "right", "wrong", "true", "false", "valid", "invalid", "sound", "unsound", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sensible", "foolish", "wise", "unwise", "smart", "stupid", "intelligent", "unintelligent", "brilliant", "dull", "bright", "dim", "clever", "cunning", "sly", "crafty", "artful", "ingenious", "creative", "uncreative", "imaginative", "unimaginative", "inventive", "uninventive", "resourceful", "unresourceful", "capable", "incapable", "competent", "incompetent", "skilled", "unskilled", "experienced", "inexperienced", "knowledgeable", "ignorant", "learned", "unlearned", "educated", "uneducated", "literate", "illiterate", "numerate", "innumerate", "articulate", "inarticulate", "eloquent", "ineloquent", "fluent", "dysfluent", "coherent", "incoherent", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sane", "insane", "crazy", "mad", "sensible", "foolish", "wise", "foolish", "prudent", "imprudent", "cautious", "reckless", "careful", "careless", "attentive", "inattentive", "observant", "unobservant", "perceptive", "imperceptive", "insightful", "uninsightful", "understanding", "misunderstanding", "comprehending", "incomprehending", "knowing", "unknowing", "aware", "unaware", "conscious", "unconscious", "awake", "asleep", "alert", "drowsy", "tired", "energetic", "exhausted", "refreshed", "fatigued", "weary", "rested", "sleepy", "sleepless", "insomniac", "dreaming", "waking", "living", "dead", "alive", "deceased", "departed", "gone", "lost", "found", "discovered", "hidden", "revealed", "exposed", "concealed", "covered", "uncovered", "protected", "unprotected", "safe", "unsafe", "secure", "insecure", "certain", "uncertain", "sure", "unsure", "confident", "diffident", "bold", "timid", "brave", "cowardly", "fearless", "fearful", "anxious", "calm", "nervous", "relaxed", "tense", "stressed", "unstressed", "pressured", "unpressured", "burdened", "unburdened", "loaded", "unloaded", "weighted", "weightless", "heavy", "light", "massive", "minute", "enormous", "tiny", "huge", "small", "large", "big", "little", "gigantic", "microscopic", "macroscopic", "visible", "invisible", "seen", "unseen", "observed", "unobserved", "noticed", "unnoticed", "detected", "undetected", "found", "lost", "missing", "present", "absent", "here", "there", "everywhere", "nowhere", "somewhere", "anywhere", "elsewhere", "wherever", "whenever", "however", "whatever", "whichever", "whoever", "whomever", "whosever", "whatsoever", "whosoever", "everyone", "everything", "everybody", "everywhere", "nobody", "nothing", "nowhere", "someone", "something", "somewhere", "anyone", "anything", "anywhere", "each", "every", "all", "both", "either", "neither", "none", "some", "any", "many", "much", "few", "little", "more", "less", "most", "least", "several", "numerous", "countless", "infinite", "finite", "limited", "unlimited", "boundless", "endless", "eternal", "perpetual", "temporary", "transient", "fleeting", "brief", "short", "long", "lengthy", "extended", "prolonged", "protracted", "enduring", "lasting", "permanent", "semipermanent", "temporary", "momentary", "instant", "immediate", "instantaneous", "sudden", "gradual", "slow", "fast", "quick", "rapid", "swift", "speedy", "hasty", "hurried", "rushed", "leisurely", "unhurried", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "careless", "negligent", "attentive", "careful", "cautious", "prudent", "reckless", "rash", "impulsive", "spontaneous", "planned", "premeditated", "calculated", "strategic", "tactical", "operational", "functional", "dysfunctional", "effective", "ineffective", "efficient", "inefficient", "productive", "unproductive", "creative", "uncreative", "innovative", "traditional", "conventional", "unconventional", "orthodox", "heterodox", "heretical", "blasphemous", "sacrilegious", "profane", "sacred", "holy", "unholy", "divine", "mundane", "ordinary", "extraordinary", "exceptional", "commonplace", "usual", "unusual", "rare", "frequent", "occasional", "sporadic", "intermittent", "continuous", "discontinuous", "constant", "inconstant", "variable", "invariable", "changing", "unchanging", "stable", "unstable", "static", "dynamic", "mobile", "immobile", "movable", "immovable", "portable", "fixed", "stationary", "still", "motionless", "active", "inactive", "passive", "aggressive", "assertive", "submissive", "dominant", "subordinate", "superior", "inferior", "equal", "unequal", "equivalent", "nonequivalent", "identical", "different", "similar", "dissimilar", "alike", "unlike", "same", "opposite", "contrary", "reverse", "inverse", "converse", "obverse", "transverse", "longitudinal", "lateral", "medial", "central", "peripheral", "marginal", "borderline", "boundary", "frontier", "limit", "threshold", "brink", "verge", "edge", "rim", "brim", "lip", "mouth", "opening", "entrance", "exit", "door", "gate", "portal", "passage", "path", "way", "road", "street", "avenue", "boulevard", "highway", "freeway", "expressway", "turnpike", "parkway", "driveway", "alley", "lane", "route", "course", "direction", "orientation", "alignment", "arrangement", "order", "sequence", "series", "succession", "chain", "string", "line", "queue", "row", "column", "array", "matrix", "grid", "pattern", "design", "motif", "theme", "subject", "topic", "issue", "matter", "affair", "business", "concern", "interest", "attention", "focus", "emphasis", "stress", "accent", "pronunciation", "enunciation", "articulation", "expression", "utterance", "statement", "declaration", "announcement", "proclamation", "pronouncement", "edict", "decree", "order", "command", "instruction", "direction", "guideline", "rule", "regulation", "law", "statute", "ordinance", "act", "bill", "legislation", "policy", "procedure", "protocol", "convention", "tradition", "custom", "habit", "practice", "routine", "ritual", "ceremony", "observance", "celebration", "festival", "holiday", "vacation", "break", "rest", "pause", "interruption", "disruption", "disturbance", "interference", "intervention", "mediation", "arbitration", "negotiation", "discussion", "conversation", "dialogue", "debate", "argument", "dispute", "controversy", "conflict", "strife", "discord", "harmony", "concord", "agreement", "consensus", "unanimity", "majority", "minority", "plurality", "singularity", "unity", "diversity", "variety", "multiplicity", "complexity", "simplicity", "difficulty", "ease", "comfort", "discomfort", "pain", "pleasure", "joy", "sorrow", "happiness", "sadness", "anger", "fear", "love", "hate", "like", "dislike", "preference", "aversion", "attraction", "repulsion", "affinity", "animosity", "friendship", "enmity", "rivalry", "competition", "cooperation", "collaboration", "partnership", "alliance", "coalition", "federation", "confederation", "union", "league", "association", "organization", "institution", "establishment", "foundation", "corporation", "company", "firm", "enterprise", "business", "industry", "commerce", "trade", "market", "economy", "finance", "banking", "investment", "speculation", "gambling", "risk", "venture", "enterprise", "project", "undertaking", "endeavor", "effort", "attempt", "trial", "experiment", "test", "examination", "inquiry", "investigation", "research", "study", "analysis", "scrutiny", "inspection", "audit", "review", "evaluation", "assessment", "appraisal", "judgment", "criticism", "commentary", "review", "report", "account", "record", "document", "file", "archive", "library", "database", "repository", "depository", "storage", "memory", "recall", "recollection", "remembrance", "reminiscence", "nostalgia", "history", "past", "present", "future", "time", "temporal", "eternal", "perpetual", "momentary", "instant", "immediate", "soon", "later", "afterward", "beforehand", "previously", "formerly", "originally", "initially", "finally", "ultimately", "eventually", "soon", "shortly", "quickly", "rapidly", "slowly", "gradually", "suddenly", "abruptly", "immediately", "instantly", "directly", "straightaway", "forthwith", "promptly", "punctually", "timely", "late", "early", "premature", "overdue", "delayed", "postponed", "deferred", "scheduled", "planned", "unplanned", "spontaneous", "impromptu", "improvised", "adlib", "extemporaneous", "unrehearsed", "practiced", "rehearsed", "prepared", "unprepared", "ready", "unready", "willing", "unwilling", "reluctant", "eager", "keen", "enthusiastic", "apathetic", "indifferent", "neutral", "biased", "partial", "impartial", "fair", "unfair", "just", "unjust", "equitable", "inequitable", "equal", "unequal", "balanced", "unbalanced", "stable", "unstable", "steady", "unsteady", "constant", "inconstant", "consistent", "inconsistent", "compatible", "incompatible", "congruent", "incongruent", "harmonious", "discordant", "agreeable", "disagreeable", "pleasant", "unpleasant", "enjoyable", "unenjoyable", "satisfying", "unsatisfying", "fulfilling", "unfulfilling", "rewarding", "unrewarding", "valuable", "valueless", "worthless", "priceless", "expensive", "cheap", "costly", "inexpensive", "affordable", "unaffordable", "economical", "uneconomical", "efficient", "inefficient", "effective", "ineffective", "powerful", "powerless", "strong", "weak", "forceful", "force", "pressure", "stress", "tension", "strain", "burden", "load", "weight", "mass", "volume", "density", "gravity", "force", "energy", "power", "work", "heat", "light", "sound", "electricity", "magnetism", "radiation", "wave", "particle", "atom", "molecule", "compound", "element", "mixture", "solution", "suspension", "colloid", "emulsion", "foam", "aerosol", "gel", "sol", "solid", "liquid", "gas", "plasma", "state", "phase", "transition", "change", "transformation", "conversion", "alteration", "modification", "variation", "deviation", "departure", "divergence", "convergence", "meeting", "intersection", "junction", "crossroads", "intersection", "interchange", "overpass", "underpass", "bridge", "tunnel", "passage", "corridor", "hallway", "lobby", "foyer", "entrance", "exit", "doorway", "gateway", "portal", "threshold", "brink", "verge", "edge", "margin", "border", "boundary", "frontier", "perimeter", "circumference", "diameter", "radius", "center", "middle", "heart", "core", "nucleus", "hub", "focus", "focal", "central", "peripheral", "marginal", "outside", "inside", "interior", "exterior", "surface", "superficial", "deep", "profound", "shallow", "depth", "height", "width", "length", "breadth", "thickness", "thinness", "density", "sparsity", "crowding", "congestion", "overcrowding", "spacious", "cramped", "roomy", "confined", "limited", "restricted", "unrestricted", "free", "bound", "unbound", "loose", "tight", "tense", "relaxed", "calm", "agitated", "nervous", "anxious", "worried", "concerned", "carefree", "nonchalant", "indifferent", "detached", "involved", "engaged", "disengaged", "interested", "disinterested", "uninterested", "bored", "entertained", "amused", "diverted", "distracted", "focused", "concentrated", "attentive", "inattentive", "negligent", "careful", "careless", "reckless", "cautious", "prudent", "rash", "impulsive", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "mistaken", "correct", "incorrect", "right", "wrong", "true", "false", "accurate", "inaccurate", "precise", "imprecise", "exact", "inexact", "specific", "vague", "clear", "unclear", "obvious", "subtle", "explicit", "implicit", "overt", "covert", "public", "private", "secret", "open", "closed", "accessible", "inaccessible", "available", "unavailable", "present", "absent", "missing", "lost", "found", "discovered", "invented", "created", "destroyed", "ruined", "damaged", "repaired", "fixed", "broken", "shattered", "fragmented", "whole", "complete", "incomplete", "partial", "total", "entire", "full", "empty", "filled", "unfilled", "occupied", "vacant", "taken", "free", "available", "unavailable", "ready", "unready", "prepared", "unprepared", "equipped", "unequipped", "armed", "unarmed", "dangerous", "safe", "secure", "insecure", "protected", "unprotected", "defended", "undefended", "guarded", "unguarded", "watched", "unwatched", "observed", "unobserved", "noticed", "unnoticed", "seen", "unseen", "visible", "invisible", "transparent", "opaque", "clear", "cloudy", "bright", "dim", "dark", "light", "heavy", "weighty", "lightweight", "burdensome", "easy", "difficult", "simple", "complex", "complicated", "intricate", "involved", "detailed", "general", "specific", "broad", "narrow", "wide", "thin", "thick", "fat", "thin", "slim", "slender", "bulky", "compact", "dense", "sparse", "crowded", "empty", "populated", "unpopulated", "inhabited", "uninhabited", "occupied", "vacant", "deserted", "abandoned", "forsaken", "neglected", "ignored", "attended", "unattended", "accompanied", "unaccompanied", "alone", "lonely", "solitary", "social", "antisocial", "friendly", "unfriendly", "hostile", "hospitable", "welcoming", "unwelcoming", "inviting", "uninviting", "attractive", "unattractive", "beautiful", "ugly", "pretty", "plain", "handsome", "gorgeous", "stunning", "dazzling", "radiant", "glowing", "shining", "dull", "matte", "glossy", "shiny", "reflective", "absorbent", "porous", "nonporous", "permeable", "impermeable", "transparent", "translucent", "opaque", "clear", "cloudy", "foggy", "misty", "hazy", "smoky", "dusty", "dirty", "clean", "filthy", "spotless", "stained", "marked", "blemished", "flawed", "perfect", "imperfect", "defective", "faulty", "functional", "dysfunctional", "working", "broken", "operational", "nonoperational", "active", "inactive", "dormant", "extinct", "alive", "dead", "living", "nonliving", "organic", "inorganic", "natural", "artificial", "synthetic", "genuine", "fake", "real", "unreal", "authentic", "inauthentic", "original", "copy", "imitation", "simulation", "representation", "presentation", "exhibition", "display", "show", "performance", "act", "scene", "stage", "theater", "cinema", "movie", "film", "video", "audio", "sound", "music", "noise", "silence", "quiet", "loud", "soft", "harsh", "gentle", "rough", "smooth", "coarse", "fine", "delicate", "robust", "fragile", "durable", "perishable", "temporary", "permanent", "eternal", "finite", "infinite", "limited", "unlimited", "restricted", "unrestricted", "free", "bound", "constrained", "unconstrained", "controlled", "uncontrolled", "regulated", "unregulated", "ordered", "chaotic", "organized", "disorganized", "systematic", "unsystematic", "methodical", "haphazard", "random", "patterned", "regular", "irregular", "consistent", "inconsistent", "predictable", "unpredictable", "expected", "unexpected", "surprising", "unsurprising", "usual", "unusual", "common", "rare", "frequent", "infrequent", "constant", "variable", "stable", "unstable", "steady", "unsteady", "balanced", "unbalanced", "equal", "unequal", "equitable", "inequitable", "fair", "unfair", "just", "unjust", "righteous", "unrighteous", "moral", "immoral", "ethical", "unethical", "principled", "unprincipled", "virtuous", "vicious", "good", "evil", "kind", "cruel", "benevolent", "malevolent", "compassionate", "ruthless", "merciful", "merciless", "forgiving", "unforgiving", "tolerant", "intolerant", "accepting", "rejecting", "inclusive", "exclusive", "comprehensive", "selective", "general", "specific", "broad", "narrow", "wide", "deep", "shallow", "profound", "superficial", "thorough", "cursory", "detailed", "vague", "precise", "imprecise", "accurate", "inaccurate", "correct", "incorrect", "right", "wrong", "true", "false", "valid", "invalid", "sound", "unsound", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sensible", "foolish", "wise", "unwise", "smart", "stupid", "intelligent", "unintelligent", "brilliant", "dull", "bright", "dim", "clever", "cunning", "sly", "crafty", "artful", "ingenious", "creative", "uncreative", "imaginative", "unimaginative", "inventive", "uninventive", "resourceful", "unresourceful", "capable", "incapable", "competent", "incompetent", "skilled", "unskilled", "experienced", "inexperienced", "knowledgeable", "ignorant", "learned", "unlearned", "educated", "uneducated", "literate", "illiterate", "numerate", "innumerate", "articulate", "inarticulate", "eloquent", "ineloquent", "fluent", "dysfluent", "coherent", "incoherent", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sane", "insane", "crazy", "mad", "sensible", "foolish", "wise", "foolish", "prudent", "imprudent", "cautious", "reckless", "careful", "careless", "attentive", "inattentive", "observant", "unobservant", "perceptive", "imperceptive", "insightful", "uninsightful", "understanding", "misunderstanding", "comprehending", "incomprehending", "knowing", "unknowing", "aware", "unaware", "conscious", "unconscious", "awake", "asleep", "alert", "drowsy", "tired", "energetic", "exhausted", "refreshed", "fatigued", "weary", "rested", "sleepy", "sleepless", "insomniac", "dreaming", "waking", "living", "dead", "alive", "deceased", "departed", "gone", "lost", "found", "discovered", "hidden", "revealed", "exposed", "concealed", "covered", "uncovered", "protected", "unprotected", "safe", "unsafe", "secure", "insecure", "certain", "uncertain", "sure", "unsure", "confident", "diffident", "bold", "timid", "brave", "cowardly", "fearless", "fearful", "anxious", "calm", "nervous", "relaxed", "tense", "stressed", "unstressed", "pressured", "unpressured", "burdened", "unburdened", "loaded", "unloaded", "weighted", "weightless", "heavy", "light", "massive", "minute", "enormous", "tiny", "huge", "small", "large", "big", "little", "gigantic", "microscopic", "macroscopic", "visible", "invisible", "seen", "unseen", "observed", "unobserved", "noticed", "unnoticed", "detected", "undetected", "found", "lost", "missing", "present", "absent", "here", "there", "everywhere", "nowhere", "somewhere", "anywhere", "elsewhere", "wherever", "whenever", "however", "whatever", "whichever", "whoever", "whomever", "whosever", "whatsoever", "whosoever", "everyone", "everything", "everybody", "everywhere", "nobody", "nothing", "nowhere", "someone", "something", "somewhere", "anyone", "anything", "anywhere", "each", "every", "all", "both", "either", "neither", "none", "some", "any", "many", "much", "few", "little", "more", "less", "most", "least", "several", "numerous", "countless", "infinite", "finite", "limited", "unlimited", "boundless", "endless", "eternal", "perpetual", "temporary", "transient", "fleeting", "brief", "short", "long", "lengthy", "extended", "prolonged", "protracted", "enduring", "lasting", "permanent", "semipermanent", "temporary", "momentary", "instant", "immediate", "instantaneous", "sudden", "gradual", "slow", "fast", "quick", "rapid", "swift", "speedy", "hasty", "hurried", "rushed", "leisurely", "unhurried", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "careless", "negligent", "attentive", "careful", "cautious", "prudent", "reckless", "rash", "impulsive", "spontaneous", "planned", "premeditated", "calculated", "strategic", "tactical", "operational", "functional", "dysfunctional", "effective", "ineffective", "efficient", "inefficient", "productive", "unproductive", "creative", "uncreative", "innovative", "traditional", "conventional", "unconventional", "orthodox", "heterodox", "heretical", "blasphemous", "sacrilegious", "profane", "sacred", "holy", "unholy", "divine", "mundane", "ordinary", "extraordinary", "exceptional", "commonplace", "usual", "unusual", "rare", "frequent", "occasional", "sporadic", "intermittent", "continuous", "discontinuous", "constant", "inconstant", "variable", "invariable", "changing", "unchanging", "stable", "unstable", "static", "dynamic", "mobile", "immobile", "movable", "immovable", "portable", "fixed", "stationary", "still", "motionless", "active", "inactive", "passive", "aggressive", "assertive", "submissive", "dominant", "subordinate", "superior", "inferior", "equal", "unequal", "equivalent", "nonequivalent", "identical", "different", "similar", "dissimilar", "alike", "unlike", "same", "opposite", "contrary", "reverse", "inverse", "converse", "obverse", "transverse", "longitudinal", "lateral", "medial", "central", "peripheral", "marginal", "borderline", "boundary", "frontier", "limit", "threshold", "brink", "verge", "edge", "rim", "brim", "lip", "mouth", "opening", "entrance", "exit", "door", "gate", "portal", "passage", "path", "way", "road", "street", "avenue", "boulevard", "highway", "freeway", "expressway", "turnpike", "parkway", "driveway", "alley", "lane", "route", "course", "direction", "orientation", "alignment", "arrangement", "order", "sequence", "series", "succession", "chain", "string", "line", "queue", "row", "column", "array", "matrix", "grid", "pattern", "design", "motif", "theme", "subject", "topic", "issue", "matter", "affair", "business", "concern", "interest", "attention", "focus", "emphasis", "stress", "accent", "pronunciation", "enunciation", "articulation", "expression", "utterance", "statement", "declaration", "announcement", "proclamation", "pronouncement", "edict", "decree", "order", "command", "instruction", "direction", "guideline", "rule", "regulation", "law", "statute", "ordinance", "act", "bill", "legislation", "policy", "procedure", "protocol", "convention", "tradition", "custom", "habit", "practice", "routine", "ritual", "ceremony", "observance", "celebration", "festival", "holiday", "vacation", "break", "rest", "pause", "interruption", "disruption", "disturbance", "interference", "intervention", "mediation", "arbitration", "negotiation", "discussion", "conversation", "dialogue", "debate", "argument", "dispute", "controversy", "conflict", "strife", "discord", "harmony", "concord", "agreement", "consensus", "unanimity", "majority", "minority", "plurality", "singularity", "unity", "diversity", "variety", "multiplicity", "complexity", "simplicity", "difficulty", "ease", "comfort", "discomfort", "pain", "pleasure", "joy", "sorrow", "happiness", "sadness", "anger", "fear", "love", "hate", "like", "dislike", "preference", "aversion", "attraction", "repulsion", "affinity", "animosity", "friendship", "enmity", "rivalry", "competition", "cooperation", "collaboration", "partnership", "alliance", "coalition", "federation", "confederation", "union", "league", "association", "organization", "institution", "establishment", "foundation", "corporation", "company", "firm", "enterprise", "business", "industry", "commerce", "trade", "market", "economy", "finance", "banking", "investment", "speculation", "gambling", "risk", "venture", "enterprise", "project", "undertaking", "endeavor", "effort", "attempt", "trial", "experiment", "test", "examination", "inquiry", "investigation", "research", "study", "analysis", "scrutiny", "inspection", "audit", "review", "evaluation", "assessment", "appraisal", "judgment", "criticism", "commentary", "review", "report", "account", "record", "document", "file", "archive", "library", "database", "repository", "depository", "storage", "memory", "recall", "recollection", "remembrance", "reminiscence", "nostalgia", "history", "past", "present", "future", "time", "temporal", "eternal", "perpetual", "momentary", "instant", "immediate", "soon", "later", "afterward", "beforehand", "previously", "formerly", "originally", "initially", "finally", "ultimately", "eventually", "soon", "shortly", "quickly", "rapidly", "slowly", "gradually", "suddenly", "abruptly", "immediately", "instantly", "directly", "straightaway", "forthwith", "promptly", "punctually", "timely", "late", "early", "premature", "overdue", "delayed", "postponed", "deferred", "scheduled", "planned", "unplanned", "spontaneous", "impromptu", "improvised", "adlib", "extemporaneous", "unrehearsed", "practiced", "rehearsed", "prepared", "unprepared", "ready", "unready", "willing", "unwilling", "reluctant", "eager", "keen", "enthusiastic", "apathetic", "indifferent", "neutral", "biased", "partial", "impartial", "fair", "unfair", "just", "unjust", "equitable", "inequitable", "equal", "unequal", "balanced", "unbalanced", "stable", "unstable", "steady", "unsteady", "constant", "inconstant", "consistent", "inconsistent", "compatible", "incompatible", "congruent", "incongruent", "harmonious", "discordant", "agreeable", "disagreeable", "pleasant", "unpleasant", "enjoyable", "unenjoyable", "satisfying", "unsatisfying", "fulfilling", "unfulfilling", "rewarding", "unrewarding", "valuable", "valueless", "worthless", "priceless", "expensive", "cheap", "costly", "inexpensive", "affordable", "unaffordable", "economical", "uneconomical", "efficient", "inefficient", "effective", "ineffective", "powerful", "powerless", "strong", "weak", "forceful", "force", "pressure", "stress", "tension", "strain", "burden", "load", "weight", "mass", "volume", "density", "gravity", "force", "energy", "power", "work", "heat", "light", "sound", "electricity", "magnetism", "radiation", "wave", "particle", "atom", "molecule", "compound", "element", "mixture", "solution", "suspension", "colloid", "emulsion", "foam", "aerosol", "gel", "sol", "solid", "liquid", "gas", "plasma", "state", "phase", "transition", "change", "transformation", "conversion", "alteration", "modification", "variation", "deviation", "departure", "divergence", "convergence", "meeting", "intersection", "junction", "crossroads", "intersection", "interchange", "overpass", "underpass", "bridge", "tunnel", "passage", "corridor", "hallway", "lobby", "foyer", "entrance", "exit", "doorway", "gateway", "portal", "threshold", "brink", "verge", "edge", "margin", "border", "boundary", "frontier", "perimeter", "circumference", "diameter", "radius", "center", "middle", "heart", "core", "nucleus", "hub", "focus", "focal", "central", "peripheral", "marginal", "outside", "inside", "interior", "exterior", "surface", "superficial", "deep", "profound", "shallow", "depth", "height", "width", "length", "breadth", "thickness", "thinness", "density", "sparsity", "crowding", "congestion", "overcrowding", "spacious", "cramped", "roomy", "confined", "limited", "restricted", "unrestricted", "free", "bound", "unbound", "loose", "tight", "tense", "relaxed", "calm", "agitated", "nervous", "anxious", "worried", "concerned", "carefree", "nonchalant", "indifferent", "detached", "involved", "engaged", "disengaged", "interested", "disinterested", "uninterested", "bored", "entertained", "amused", "diverted", "distracted", "focused", "concentrated", "attentive", "inattentive", "negligent", "careful", "careless", "reckless", "cautious", "prudent", "rash", "impulsive", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "mistaken", "correct", "incorrect", "right", "wrong", "true", "false", "accurate", "inaccurate", "precise", "imprecise", "exact", "inexact", "specific", "vague", "clear", "unclear", "obvious", "subtle", "explicit", "implicit", "overt", "covert", "public", "private", "secret", "open", "closed", "accessible", "inaccessible", "available", "unavailable", "present", "absent", "missing", "lost", "found", "discovered", "invented", "created", "destroyed", "ruined", "damaged", "repaired", "fixed", "broken", "shattered", "fragmented", "whole", "complete", "incomplete", "partial", "total", "entire", "full", "empty", "filled", "unfilled", "occupied", "vacant", "taken", "free", "available", "unavailable", "ready", "unready", "prepared", "unprepared", "equipped", "unequipped", "armed", "unarmed", "dangerous", "safe", "secure", "insecure", "protected", "unprotected", "defended", "undefended", "guarded", "unguarded", "watched", "unwatched", "observed", "unobserved", "noticed", "unnoticed", "seen", "unseen", "visible", "invisible", "transparent", "opaque", "clear", "cloudy", "bright", "dim", "dark", "light", "heavy", "weighty", "lightweight", "burdensome", "easy", "difficult", "simple", "complex", "complicated", "intricate", "involved", "detailed", "general", "specific", "broad", "narrow", "wide", "thin", "thick", "fat", "thin", "slim", "slender", "bulky", "compact", "dense", "sparse", "crowded", "empty", "populated", "unpopulated", "inhabited", "uninhabited", "occupied", "vacant", "deserted", "abandoned", "forsaken", "neglected", "ignored", "attended", "unattended", "accompanied", "unaccompanied", "alone", "lonely", "solitary", "social", "antisocial", "friendly", "unfriendly", "hostile", "hospitable", "welcoming", "unwelcoming", "inviting", "uninviting", "attractive", "unattractive", "beautiful", "ugly", "pretty", "plain", "handsome", "gorgeous", "stunning", "dazzling", "radiant", "glowing", "shining", "dull", "matte", "glossy", "shiny", "reflective", "absorbent", "porous", "nonporous", "permeable", "impermeable", "transparent", "translucent", "opaque", "clear", "cloudy", "foggy", "misty", "hazy", "smoky", "dusty", "dirty", "clean", "filthy", "spotless", "stained", "marked", "blemished", "flawed", "perfect", "imperfect", "defective", "faulty", "functional", "dysfunctional", "working", "broken", "operational", "nonoperational", "active", "inactive", "dormant", "extinct", "alive", "dead", "living", "nonliving", "organic", "inorganic", "natural", "artificial", "synthetic", "genuine", "fake", "real", "unreal", "authentic", "inauthentic", "original", "copy", "imitation", "simulation", "representation", "presentation", "exhibition", "display", "show", "performance", "act", "scene", "stage", "theater", "cinema", "movie", "film", "video", "audio", "sound", "music", "noise", "silence", "quiet", "loud", "soft", "harsh", "gentle", "rough", "smooth", "coarse", "fine", "delicate", "robust", "fragile", "durable", "perishable", "temporary", "permanent", "eternal", "finite", "infinite", "limited", "unlimited", "restricted", "unrestricted", "free", "bound", "constrained", "unconstrained", "controlled", "uncontrolled", "regulated", "unregulated", "ordered", "chaotic", "organized", "disorganized", "systematic", "unsystematic", "methodical", "haphazard", "random", "patterned", "regular", "irregular", "consistent", "inconsistent", "predictable", "unpredictable", "expected", "unexpected", "surprising", "unsurprising", "usual", "unusual", "common", "rare", "frequent", "infrequent", "constant", "variable", "stable", "unstable", "steady", "unsteady", "balanced", "unbalanced", "equal", "unequal", "equitable", "inequitable", "fair", "unfair", "just", "unjust", "righteous", "unrighteous", "moral", "immoral", "ethical", "unethical", "principled", "unprincipled", "virtuous", "vicious", "good", "evil", "kind", "cruel", "benevolent", "malevolent", "compassionate", "ruthless", "merciful", "merciless", "forgiving", "unforgiving", "tolerant", "intolerant", "accepting", "rejecting", "inclusive", "exclusive", "comprehensive", "selective", "general", "specific", "broad", "narrow", "wide", "deep", "shallow", "profound", "superficial", "thorough", "cursory", "detailed", "vague", "precise", "imprecise", "accurate", "inaccurate", "correct", "incorrect", "right", "wrong", "true", "false", "valid", "invalid", "sound", "unsound", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sensible", "foolish", "wise", "unwise", "smart", "stupid", "intelligent", "unintelligent", "brilliant", "dull", "bright", "dim", "clever", "cunning", "sly", "crafty", "artful", "ingenious", "creative", "uncreative", "imaginative", "unimaginative", "inventive", "uninventive", "resourceful", "unresourceful", "capable", "incapable", "competent", "incompetent", "skilled", "unskilled", "experienced", "inexperienced", "knowledgeable", "ignorant", "learned", "unlearned", "educated", "uneducated", "literate", "illiterate", "numerate", "innumerate", "articulate", "inarticulate", "eloquent", "ineloquent", "fluent", "dysfluent", "coherent", "incoherent", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sane", "insane", "crazy", "mad", "sensible", "foolish", "wise", "foolish", "prudent", "imprudent", "cautious", "reckless", "careful", "careless", "attentive", "inattentive", "observant", "unobservant", "perceptive", "imperceptive", "insightful", "uninsightful", "understanding", "misunderstanding", "comprehending", "incomprehending", "knowing", "unknowing", "aware", "unaware", "conscious", "unconscious", "awake", "asleep", "alert", "drowsy", "tired", "energetic", "exhausted", "refreshed", "fatigued", "weary", "rested", "sleepy", "sleepless", "insomniac", "dreaming", "waking", "living", "dead", "alive", "deceased", "departed", "gone", "lost", "found", "discovered", "hidden", "revealed", "exposed", "concealed", "covered", "uncovered", "protected", "unprotected", "safe", "unsafe", "secure", "insecure", "certain", "uncertain", "sure", "unsure", "confident", "diffident", "bold", "timid", "brave", "cowardly", "fearless", "fearful", "anxious", "calm", "nervous", "relaxed", "tense", "stressed", "unstressed", "pressured", "unpressured", "burdened", "unburdened", "loaded", "unloaded", "weighted", "weightless", "heavy", "light", "massive", "minute", "enormous", "tiny", "huge", "small", "large", "big", "little", "gigantic", "microscopic", "macroscopic", "visible", "invisible", "seen", "unseen", "observed", "unobserved", "noticed", "unnoticed", "detected", "undetected", "found", "lost", "missing", "present", "absent", "here", "there", "everywhere", "nowhere", "somewhere", "anywhere", "elsewhere", "wherever", "whenever", "however", "whatever", "whichever", "whoever", "whomever", "whosever", "whatsoever", "whosoever", "everyone", "everything", "everybody", "everywhere", "nobody", "nothing", "nowhere", "someone", "something", "somewhere", "anyone", "anything", "anywhere", "each", "every", "all", "both", "either", "neither", "none", "some", "any", "many", "much", "few", "little", "more", "less", "most", "least", "several", "numerous", "countless", "infinite", "finite", "limited", "unlimited", "boundless", "endless", "eternal", "perpetual", "temporary", "transient", "fleeting", "brief", "short", "long", "lengthy", "extended", "prolonged", "protracted", "enduring", "lasting", "permanent", "semipermanent", "temporary", "momentary", "instant", "immediate", "instantaneous", "sudden", "gradual", "slow", "fast", "quick", "rapid", "swift", "speedy", "hasty", "hurried", "rushed", "leisurely", "unhurried", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "careless", "negligent", "attentive", "careful", "cautious", "prudent", "reckless", "rash", "impulsive", "spontaneous", "planned", "premeditated", "calculated", "strategic", "tactical", "operational", "functional", "dysfunctional", "effective", "ineffective", "efficient", "inefficient", "productive", "unproductive", "creative", "uncreative", "innovative", "traditional", "conventional", "unconventional", "orthodox", "heterodox", "heretical", "blasphemous", "sacrilegious", "profane", "sacred", "holy", "unholy", "divine", "mundane", "ordinary", "extraordinary", "exceptional", "commonplace", "usual", "unusual", "rare", "frequent", "occasional", "sporadic", "intermittent", "continuous", "discontinuous", "constant", "inconstant", "variable", "invariable", "changing", "unchanging", "stable", "unstable", "static", "dynamic", "mobile", "immobile", "movable", "immovable", "portable", "fixed", "stationary", "still", "motionless", "active", "inactive", "passive", "aggressive", "assertive", "submissive", "dominant", "subordinate", "superior", "inferior", "equal", "unequal", "equivalent", "nonequivalent", "identical", "different", "similar", "dissimilar", "alike", "unlike", "same", "opposite", "contrary", "reverse", "inverse", "converse", "obverse", "transverse", "longitudinal", "lateral", "medial", "central", "peripheral", "marginal", "borderline", "boundary", "frontier", "limit", "threshold", "brink", "verge", "edge", "rim", "brim", "lip", "mouth", "opening", "entrance", "exit", "door", "gate", "portal", "passage", "path", "way", "road", "street", "avenue", "boulevard", "highway", "freeway", "expressway", "turnpike", "parkway", "driveway", "alley", "lane", "route", "course", "direction", "orientation", "alignment", "arrangement", "order", "sequence", "series", "succession", "chain", "string", "line", "queue", "row", "column", "array", "matrix", "grid", "pattern", "design", "motif", "theme", "subject", "topic", "issue", "matter", "affair", "business", "concern", "interest", "attention", "focus", "emphasis", "stress", "accent", "pronunciation", "enunciation", "articulation", "expression", "utterance", "statement", "declaration", "announcement", "proclamation", "pronouncement", "edict", "decree", "order", "command", "instruction", "direction", "guideline", "rule", "regulation", "law", "statute", "ordinance", "act", "bill", "legislation", "policy", "procedure", "protocol", "convention", "tradition", "custom", "habit", "practice", "routine", "ritual", "ceremony", "observance", "celebration", "festival", "holiday", "vacation", "break", "rest", "pause", "interruption", "disruption", "disturbance", "interference", "intervention", "mediation", "arbitration", "negotiation", "discussion", "conversation", "dialogue", "debate", "argument", "dispute", "controversy", "conflict", "strife", "discord", "harmony", "concord", "agreement", "consensus", "unanimity", "majority", "minority", "plurality", "singularity", "unity", "diversity", "variety", "multiplicity", "complexity", "simplicity", "difficulty", "ease", "comfort", "discomfort", "pain", "pleasure", "joy", "sorrow", "happiness", "sadness", "anger", "fear", "love", "hate", "like", "dislike", "preference", "aversion", "attraction", "repulsion", "affinity", "animosity", "friendship", "enmity", "rivalry", "competition", "cooperation", "collaboration", "partnership", "alliance", "coalition", "federation", "confederation", "union", "league", "association", "organization", "institution", "establishment", "foundation", "corporation", "company", "firm", "enterprise", "business", "industry", "commerce", "trade", "market", "economy", "finance", "banking", "investment", "speculation", "gambling", "risk", "venture", "enterprise", "project", "undertaking", "endeavor", "effort", "attempt", "trial", "experiment", "test", "examination", "inquiry", "investigation", "research", "study", "analysis", "scrutiny", "inspection", "audit", "review", "evaluation", "assessment", "appraisal", "judgment", "criticism", "commentary", "review", "report", "account", "record", "document", "file", "archive", "library", "database", "repository", "depository", "storage", "memory", "recall", "recollection", "remembrance", "reminiscence", "nostalgia", "history", "past", "present", "future", "time", "temporal", "eternal", "perpetual", "momentary", "instant", "immediate", "soon", "later", "afterward", "beforehand", "previously", "formerly", "originally", "initially", "finally", "ultimately", "eventually", "soon", "shortly", "quickly", "rapidly", "slowly", "gradually", "suddenly", "abruptly", "immediately", "instantly", "directly", "straightaway", "forthwith", "promptly", "punctually", "timely", "late", "early", "premature", "overdue", "delayed", "postponed", "deferred", "scheduled", "planned", "unplanned", "spontaneous", "impromptu", "improvised", "adlib", "extemporaneous", "unrehearsed", "practiced", "rehearsed", "prepared", "unprepared", "ready", "unready", "willing", "unwilling", "reluctant", "eager", "keen", "enthusiastic", "apathetic", "indifferent", "neutral", "biased", "partial", "impartial", "fair", "unfair", "just", "unjust", "equitable", "inequitable", "equal", "unequal", "balanced", "unbalanced", "stable", "unstable", "steady", "unsteady", "constant", "inconstant", "consistent", "inconsistent", "compatible", "incompatible", "congruent", "incongruent", "harmonious", "discordant", "agreeable", "disagreeable", "pleasant", "unpleasant", "enjoyable", "unenjoyable", "satisfying", "unsatisfying", "fulfilling", "unfulfilling", "rewarding", "unrewarding", "valuable", "valueless", "worthless", "priceless", "expensive", "cheap", "costly", "inexpensive", "affordable", "unaffordable", "economical", "uneconomical", "efficient", "inefficient", "effective", "ineffective", "powerful", "powerless", "strong", "weak", "forceful", "force", "pressure", "stress", "tension", "strain", "burden", "load", "weight", "mass", "volume", "density", "gravity", "force", "energy", "power", "work", "heat", "light", "sound", "electricity", "magnetism", "radiation", "wave", "particle", "atom", "molecule", "compound", "element", "mixture", "solution", "suspension", "colloid", "emulsion", "foam", "aerosol", "gel", "sol", "solid", "liquid", "gas", "plasma", "state", "phase", "transition", "change", "transformation", "conversion", "alteration", "modification", "variation", "deviation", "departure", "divergence", "convergence", "meeting", "intersection", "junction", "crossroads", "intersection", "interchange", "overpass", "underpass", "bridge", "tunnel", "passage", "corridor", "hallway", "lobby", "foyer", "entrance", "exit", "doorway", "gateway", "portal", "threshold", "brink", "verge", "edge", "margin", "border", "boundary", "frontier", "perimeter", "circumference", "diameter", "radius", "center", "middle", "heart", "core", "nucleus", "hub", "focus", "focal", "central", "peripheral", "marginal", "outside", "inside", "interior", "exterior", "surface", "superficial", "deep", "profound", "shallow", "depth", "height", "width", "length", "breadth", "thickness", "thinness", "density", "sparsity", "crowding", "congestion", "overcrowding", "spacious", "cramped", "roomy", "confined", "limited", "restricted", "unrestricted", "free", "bound", "unbound", "loose", "tight", "tense", "relaxed", "calm", "agitated", "nervous", "anxious", "worried", "concerned", "carefree", "nonchalant", "indifferent", "detached", "involved", "engaged", "disengaged", "interested", "disinterested", "uninterested", "bored", "entertained", "amused", "diverted", "distracted", "focused", "concentrated", "attentive", "inattentive", "negligent", "careful", "careless", "reckless", "cautious", "prudent", "rash", "impulsive", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "mistaken", "correct", "incorrect", "right", "wrong", "true", "false", "accurate", "inaccurate", "precise", "imprecise", "exact", "inexact", "specific", "vague", "clear", "unclear", "obvious", "subtle", "explicit", "implicit", "overt", "covert", "public", "private", "secret", "open", "closed", "accessible", "inaccessible", "available", "unavailable", "present", "absent", "missing", "lost", "found", "discovered", "invented", "created", "destroyed", "ruined", "damaged", "repaired", "fixed", "broken", "shattered", "fragmented", "whole", "complete", "incomplete", "partial", "total", "entire", "full", "empty", "filled", "unfilled", "occupied", "vacant", "taken", "free", "available", "unavailable", "ready", "unready", "prepared", "unprepared", "equipped", "unequipped", "armed", "unarmed", "dangerous", "safe", "secure", "insecure", "protected", "unprotected", "defended", "undefended", "guarded", "unguarded", "watched", "unwatched", "observed", "unobserved", "noticed", "unnoticed", "seen", "unseen", "visible", "invisible", "transparent", "opaque", "clear", "cloudy", "bright", "dim", "dark", "light", "heavy", "weighty", "lightweight", "burdensome", "easy", "difficult", "simple", "complex", "complicated", "intricate", "involved", "detailed", "general", "specific", "broad", "narrow", "wide", "thin", "thick", "fat", "thin", "slim", "slender", "bulky", "compact", "dense", "sparse", "crowded", "empty", "populated", "unpopulated", "inhabited", "uninhabited", "occupied", "vacant", "deserted", "abandoned", "forsaken", "neglected", "ignored", "attended", "unattended", "accompanied", "unaccompanied", "alone", "lonely", "solitary", "social", "antisocial", "friendly", "unfriendly", "hostile", "hospitable", "welcoming", "unwelcoming", "inviting", "uninviting", "attractive", "unattractive", "beautiful", "ugly", "pretty", "plain", "handsome", "gorgeous", "stunning", "dazzling", "radiant", "glowing", "shining", "dull", "matte", "glossy", "shiny", "reflective", "absorbent", "porous", "nonporous", "permeable", "impermeable", "transparent", "translucent", "opaque", "clear", "cloudy", "foggy", "misty", "hazy", "smoky", "dusty", "dirty", "clean", "filthy", "spotless", "stained", "marked", "blemished", "flawed", "perfect", "imperfect", "defective", "faulty", "functional", "dysfunctional", "working", "broken", "operational", "nonoperational", "active", "inactive", "dormant", "extinct", "alive", "dead", "living", "nonliving", "organic", "inorganic", "natural", "artificial", "synthetic", "genuine", "fake", "real", "unreal", "authentic", "inauthentic", "original", "copy", "imitation", "simulation", "representation", "presentation", "exhibition", "display", "show", "performance", "act", "scene", "stage", "theater", "cinema", "movie", "film", "video", "audio", "sound", "music", "noise", "silence", "quiet", "loud", "soft", "harsh", "gentle", "rough", "smooth", "coarse", "fine", "delicate", "robust", "fragile", "durable", "perishable", "temporary", "permanent", "eternal", "finite", "infinite", "limited", "unlimited", "restricted", "unrestricted", "free", "bound", "constrained", "unconstrained", "controlled", "uncontrolled", "regulated", "unregulated", "ordered", "chaotic", "organized", "disorganized", "systematic", "unsystematic", "methodical", "haphazard", "random", "patterned", "regular", "irregular", "consistent", "inconsistent", "predictable", "unpredictable", "expected", "unexpected", "surprising", "unsurprising", "usual", "unusual", "common", "rare", "frequent", "infrequent", "constant", "variable", "stable", "unstable", "steady", "unsteady", "balanced", "unbalanced", "equal", "unequal", "equitable", "inequitable", "fair", "unfair", "just", "unjust", "righteous", "unrighteous", "moral", "immoral", "ethical", "unethical", "principled", "unprincipled", "virtuous", "vicious", "good", "evil", "kind", "cruel", "benevolent", "malevolent", "compassionate", "ruthless", "merciful", "merciless", "forgiving", "unforgiving", "tolerant", "intolerant", "accepting", "rejecting", "inclusive", "exclusive", "comprehensive", "selective", "general", "specific", "broad", "narrow", "wide", "deep", "shallow", "profound", "superficial", "thorough", "cursory", "detailed", "vague", "precise", "imprecise", "accurate", "inaccurate", "correct", "incorrect", "right", "wrong", "true", "false", "valid", "invalid", "sound", "unsound", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sensible", "foolish", "wise", "unwise", "smart", "stupid", "intelligent", "unintelligent", "brilliant", "dull", "bright", "dim", "clever", "cunning", "sly", "crafty", "artful", "ingenious", "creative", "uncreative", "imaginative", "unimaginative", "inventive", "uninventive", "resourceful", "unresourceful", "capable", "incapable", "competent", "incompetent", "skilled", "unskilled", "experienced", "inexperienced", "knowledgeable", "ignorant", "learned", "unlearned", "educated", "uneducated", "literate", "illiterate", "numerate", "innumerate", "articulate", "inarticulate", "eloquent", "ineloquent", "fluent", "dysfluent", "coherent", "incoherent", "logical", "illogical", "rational", "irrational", "reasonable", "unreasonable", "sane", "insane", "crazy", "mad", "sensible", "foolish", "wise", "foolish", "prudent", "imprudent", "cautious", "reckless", "careful", "careless", "attentive", "inattentive", "observant", "unobservant", "perceptive", "imperceptive", "insightful", "uninsightful", "understanding", "misunderstanding", "comprehending", "incomprehending", "knowing", "unknowing", "aware", "unaware", "conscious", "unconscious", "awake", "asleep", "alert", "drowsy", "tired", "energetic", "exhausted", "refreshed", "fatigued", "weary", "rested", "sleepy", "sleepless", "insomniac", "dreaming", "waking", "living", "dead", "alive", "deceased", "departed", "gone", "lost", "found", "discovered", "hidden", "revealed", "exposed", "concealed", "covered", "uncovered", "protected", "unprotected", "safe", "unsafe", "secure", "insecure", "certain", "uncertain", "sure", "unsure", "confident", "diffident", "bold", "timid", "brave", "cowardly", "fearless", "fearful", "anxious", "calm", "nervous", "relaxed", "tense", "stressed", "unstressed", "pressured", "unpressured", "burdened", "unburdened", "loaded", "unloaded", "weighted", "weightless", "heavy", "light", "massive", "minute", "enormous", "tiny", "huge", "small", "large", "big", "little", "gigantic", "microscopic", "macroscopic", "visible", "invisible", "seen", "unseen", "observed", "unobserved", "noticed", "unnoticed", "detected", "undetected", "found", "lost", "missing", "present", "absent", "here", "there", "everywhere", "nowhere", "somewhere", "anywhere", "elsewhere", "wherever", "whenever", "however", "whatever", "whichever", "whoever", "whomever", "whosever", "whatsoever", "whosoever", "everyone", "everything", "everybody", "everywhere", "nobody", "nothing", "nowhere", "someone", "something", "somewhere", "anyone", "anything", "anywhere", "each", "every", "all", "both", "either", "neither", "none", "some", "any", "many", "much", "few", "little", "more", "less", "most", "least", "several", "numerous", "countless", "infinite", "finite", "limited", "unlimited", "boundless", "endless", "eternal", "perpetual", "temporary", "transient", "fleeting", "brief", "short", "long", "lengthy", "extended", "prolonged", "protracted", "enduring", "lasting", "permanent", "semipermanent", "temporary", "momentary", "instant", "immediate", "instantaneous", "sudden", "gradual", "slow", "fast", "quick", "rapid", "swift", "speedy", "hasty", "hurried", "rushed", "leisurely", "unhurried", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "careless", "negligent", "attentive", "careful", "cactious", "prudent", "reckless", "rash", "impulsive", "spontaneous", "planned", "premeditated", "calculated", "strategic", "tactical", "operational", "functional", "dysfunctional", "effective", "ineffective", "efficient", "inefficient", "productive", "unproductive", "creative", "uncreative", "innovative", "traditional", "conventional", "unconventional", "orthodox", "heterodox", "heretical", "blasphemous", "sacrilegious", "profane", "sacred", "holy", "unholy", "divine", "mundane", "ordinary", "extraordinary", "exceptional", "commonplace", "usual", "unusual", "rare", "frequent", "occasional", "sporadic", "intermittent", "continuous", "discontinuous", "constant", "inconstant", "variable", "invariable", "changing", "unchanging", "stable", "unstable", "static", "dynamic", "mobile", "immobile", "movable", "immovable", "portable", "fixed", "stationary", "still", "motionless", "active", "inactive", "passive", "aggressive", "assertive", "submissive", "dominant", "subordinate", "superior", "inferior", "equal", "unequal", "equivalent", "nonequivalent", "identical", "different", "similar", "dissimilar", "alike", "unlike", "same", "opposite", "contrary", "reverse", "inverse", "converse", "obverse", "transverse", "longitudinal", "lateral", "medial", "central", "peripheral", "marginal", "borderline", "boundary", "frontier", "limit", "threshold", "brink", "verge", "edge", "rim", "brim", "lip", "mouth", "opening", "entrance", "exit", "door", "gate", "portal", "passage", "path", "way", "road", "street", "avenue", "boulevard", "highway", "freeway", "expressway", "turnpike", "parkway", "driveway", "alley", "lane", "route", "course", "direction", "orientation", "alignment", "arrangement", "order", "sequence", "series", "succession", "chain", "string", "line", "queue", "row", "column", "array", "matrix", "grid", "pattern", "design", "motif", "theme", "subject", "topic", "issue", "matter", "affair", "business", "concern", "interest", "attention", "focus", "emphasis", "stress", "accent", "pronunciation", "enunciation", "articulation", "expression", "utterance", "statement", "declaration", "announcement", "proclamation", "pronouncement", "edict", "decree", "order", "command", "instruction", "direction", "guideline", "rule", "regulation", "law", "statute", "ordinance", "act", "bill", "legislation", "policy", "procedure", "protocol", "convention", "tradition", "custom", "habit", "practice", "routine", "ritual", "ceremony", "observance", "celebration", "festival", "holiday", "vacation", "break", "rest", "pause", "interruption", "disruption", "disturbance", "interference", "intervention", "mediation", "arbitration", "negotiation", "discussion", "conversation", "dialogue", "debate", "argument", "dispute", "controversy", "conflict", "strife", "discord", "harmony", "concord", "agreement", "consensus", "unanimity", "majority", "minority", "plurality", "singularity", "unity", "diversity", "variety", "multiplicity", "complexity", "simplicity", "difficulty", "ease", "comfort", "discomfort", "pain", "pleasure", "joy", "sorrow", "happiness", "sadness", "anger", "fear", "love", "hate", "like", "dislike", "preference", "aversion", "attraction", "repulsion", "affinity", "animosity", "friendship", "enmity", "rivalry", "competition", "cooperation", "collaboration", "partnership", "alliance", "coalition", "federation", "confederation", "union", "league", "association", "organization", "institution", "establishment", "foundation", "corporation", "company", "firm", "enterprise", "business", "industry", "commerce", "trade", "market", "economy", "finance", "banking", "investment", "speculation", "gambling", "risk", "venture", "enterprise", "project", "undertaking", "endeavor", "effort", "attempt", "trial", "experiment", "test", "examination", "inquiry", "investigation", "research", "study", "analysis", "scrutiny", "inspection", "audit", "review", "evaluation", "assessment", "appraisal", "judgment", "criticism", "commentary", "review", "report", "account", "record", "document", "file", "archive", "library", "database", "repository", "depository", "storage", "memory", "recall", "recollection", "remembrance", "reminiscence", "nostalgia", "history", "past", "present", "future", "time", "temporal", "eternal", "perpetual", "momentary", "instant", "immediate", "soon", "later", "afterward", "beforehand", "previously", "formerly", "originally", "initially", "finally", "ultimately", "eventually", "soon", "shortly", "quickly", "rapidly", "slowly", "gradually", "suddenly", "abruptly", "immediately", "instantly", "directly", "straightaway", "forthwith", "promptly", "punctually", "timely", "late", "early", "premature", "overdue", "delayed", "postponed", "deferred", "scheduled", "planned", "unplanned", "spontaneous", "impromptu", "improvised", "adlib", "extemporaneous", "unrehearsed", "practiced", "rehearsed", "prepared", "unprepared", "ready", "unready", "willing", "unwilling", "reluctant", "eager", "keen", "enthusiastic", "apathetic", "indifferent", "neutral", "biased", "partial", "impartial", "fair", "unfair", "just", "unjust", "equitable", "inequitable", "equal", "unequal", "balanced", "unbalanced", "stable", "unstable", "steady", "unsteady", "constant", "inconstant", "consistent", "inconsistent", "compatible", "incompatible", "congruent", "incongruent", "harmonious", "discordant", "agreeable", "disagreeable", "pleasant", "unpleasant", "enjoyable", "unenjoyable", "satisfying", "unsatisfying", "fulfilling", "unfulfilling", "rewarding", "unrewarding", "valuable", "valueless", "worthless", "priceless", "expensive", "cheap", "costly", "inexpensive", "affordable", "unaffordable", "economical", "uneconomical", "efficient", "inefficient", "effective", "ineffective", "powerful", "powerless", "strong", "weak", "forceful", "force", "pressure", "stress", "tension", "strain", "burden", "load", "weight", "mass", "volume", "density", "gravity", "force", "energy", "power", "work", "heat", "light", "sound", "electricity", "magnetism", "radiation", "wave", "particle", "atom", "molecule", "compound", "element", "mixture", "solution", "suspension", "colloid", "emulsion", "foam", "aerosol", "gel", "sol", "solid", "liquid", "gas", "plasma", "state", "phase", "transition", "change", "transformation", "conversion", "alteration", "modification", "variation", "deviation", "departure", "divergence", "convergence", "meeting", "intersection", "junction", "crossroads", "intersection", "interchange", "overpass", "underpass", "bridge", "tunnel", "passage", "corridor", "hallway", "lobby", "foyer", "entrance", "exit", "doorway", "gateway", "portal", "threshold", "brink", "verge", "edge", "margin", "border", "boundary", "frontier", "perimeter", "circumference", "diameter", "radius", "center", "middle", "heart", "core", "nucleus", "hub", "focus", "focal", "central", "peripheral", "marginal", "outside", "inside", "interior", "exterior", "surface", "superficial", "deep", "profound", "shallow", "depth", "height", "width", "length", "breadth", "thickness", "thinness", "density", "sparsity", "crowding", "congestion", "overcrowding", "spacious", "cramped", "roomy", "confined", "limited", "restricted", "unrestricted", "free", "bound", "unbound", "loose", "tight", "tense", "relaxed", "calm", "agitated", "nervous", "anxious", "worried", "concerned", "carefree", "nonchalant", "indifferent", "detached", "involved", "engaged", "disengaged", "interested", "disinterested", "uninterested", "bored", "entertained", "amused", "diverted", "distracted", "focused", "concentrated", "attentive", "inattentive", "negligent", "careful", "careless", "reckless", "cautious", "prudent", "rash", "impulsive", "deliberate", "intentional", "accidental", "unintentional", "inadvertent", "mistaken", "correct", "incorrect", "right", "wrong", "true", "false", "accurate", "inaccurate", "precise", "imprecise", "exact", "inexact", "specific", "vague", "clear", "unclear", "obvious", "subtle", "explicit", "implicit", "overt", "covert", "public", "private", "secret", "open", "closed", "accessible", "inaccessible", "available", "unavailable", "present", "absent", "missing", "lost", "found", "discovered", "invented", "created", "destroyed", "ruined", "damaged", "repaired", "fixed", "broken", "shattered", "fragmented", "whole", "complete", "incomplete", "partial", "total", "entire", "full", "empty", "filled", "unfilled", "occupied", "vacant", "taken", "free", "available", "unavailable", "ready", "unready", "prepared", "unprepared", "equipped", "unequipped", "armed", "unarmed", "dangerous", "safe", "secure", "insecure", "protected", "unprotected", "defended", "undefended", "guarded", "unguarded", "watched", "unwatched", "observed", "unobserved", "noticed", "unnoticed", "seen", "unseen", "visible", "invisible", "transparent", "opaque", "clear", "cloudy", "bright", "dim", "dark", "light", "heavy", "weighty", "lightweight", "burdensome", "easy", "difficult", "simple", "complex", "complicated", "intricate", "involved", "detailed", "general", "specific", "broad", "narrow", "wide", "thin", "thick", "fat", "thin", "slim", "slender", "bulky", "compact", "dense", "sparse", "crowded", "empty", "populated", "unpopulated", "inhabited", "uninhabited", "occupied", "vacant", "deserted", "abandoned", "forsaken", "neglected", "ignored", "attended", "unattended", "accompanied", "unaccompanied", "alone", "lonely", "solitary", "social", "antisocial", "friendly", "unfriendly", "hostile", "hospitable", "welcoming", "unwelcoming", "inviting", "uninviting", "attractive", "unattractive", "beautiful", "ugly", "pretty", "plain", "handsome", "gorgeous", "stunning", "dazzling", "radiant", "glowing", "shining", "dull", "matte", "glossy", "shiny", "reflective", "absorbent", "porous", "nonporous", "permeable", "impermeable", "transparent", "translucent", "opaque", "clear", "cloudy", "foggy", "misty", "hazy", "smoky", "dusty", "dirty", "clean", "filthy", "spotless", "stained", "marked", "blemished", "flawed", "perfect", "imperfect", "defective", "faulty", "functional", "dysfunctional", "working", "broken", "operational", "nonoperational", "active", "inactive", "dormant", "extinct", "alive", "dead", "living", "nonliving", "organic", "inorganic", "natural", "artificial", "synthetic", "genuine", "fake", "real", "unreal", "authentic", "inauthentic", "original", "copy", "imitation", "simulation", "representation", "presentation", "exhibition", "display", "show", "performance", "act", "scene", "stage", "theater", "cinema", "movie", "film", "video", "audio", "sound", "music", "noise", "silence", "quiet", "loud", "soft", "harsh", "gentle", "rough", "smooth", "coarse", "fine", "delicate", "robust", "fragile", "durable", "perishable", "temporary", "permanent", "eternal", "finite", "infinite", "limited", "unlimited", "restricted", "unrestricted", "free", "bound", "constrained", "unconstrained", "controlled", "uncontrolled", "regulated", "unregulated", "ordered", "chaotic", "organized", "disorganized", "systematic", "unsystematic", "methodical", "haphazard", "random", "patterned", "regular", "irregular", "consistent", "inconsistent", "predictable", "unpredictable", "expected", "unexpected", "surprising", "unsurprising", "usual", "unusual", "common", "rare", "frequent", "infrequent", "constant", "variable", "stable", "unstable", "steady", "unsteady", "balanced", "unbalanced", "equal", "unequal", "equitable", "inequitable", "fair", "unfair", "just", "unjust", "righteous", "unrighteous", "moral", "immoral", "ethical", "unethical", "principled", "unprincipled", "virtuous", "vicious", "good", "evil"]
 
@@ -761,16 +735,16 @@ def main():
                     "4 Their sorrows shall be multiplied that hasten after another god: their drink offerings of blood will I not offer, nor take up their names into my lips.", "5 The LORD is the portion of mine inheritance and of my cup: thou maintainest my lot.", "6 The lines are fallen unto me in pleasant places; yea, I have a goodly heritage.", "7 I will bless the LORD, who hath given me counsel: my reins also instruct me in the night seasons.", "8 I have set the LORD always before me: because he is at my right hand, I shall not be moved.", "9 Therefore my heart is glad, and my glory rejoiceth: my flesh also shall rest in hope.", "10 For thou wilt not leave my soul in hell; neither wilt thou suffer thine Holy One to see corruption.", "11 Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore.", "1 Hear the right, O LORD, attend unto my cry, give ear unto my prayer, that goeth not out of feigned lips.", "2 Let my sentence come forth from thy presence; let thine eyes behold the things that are equal.", "3 Thou hast proved mine heart; thou hast visited me in the night; thou hast tried me, and shalt find nothing; I am purposed that my mouth shall not transgress.", "4 Concerning the works of men, by the word of thy lips I have kept me from the paths of the destroyer.", "5 Hold up my goings in thy paths, that my footsteps slip not.", "6 I have called upon thee, for thou wilt hear me, O God: incline thine ear unto me, and hear my speech.", "7 Shew thy marvellous lovingkindness, O thou that savest by thy right hand them which put their trust in thee from those that rise up against them.", "8 Keep me as the apple of the eye*, hide me under the shadow of thy wings,", "9 From the wicked that oppress me, from my deadly enemies, who compass me about.", "10 They are inclosed in their own fat: with their mouth they speak proudly.", "11 They have now compassed us in our steps: they have set their eyes bowing down to the earth;", "12 Like as a lion that is greedy of his prey, and as it were a young lion lurking in secret places.", "13 Arise, O LORD, disappoint him, cast him down: deliver my soul from the wicked, which is thy sword:", "14 From men which are thy hand, O LORD, from men of the world, which have their portion in this life, and whose belly thou fillest with thy hid treasure: they are full of children, and leave the rest of their substance to their babes.", "15 As for me, I will behold thy face in righteousness: I shall be satisfied, when I awake, with thy likeness.", "1 I will love thee, O LORD, my strength.", "2 The LORD is my rock, and my fortress, and my deliverer; my God, my strength, in whom I will trust; my buckler, and the horn of my salvation, and my high tower.", "3 I will call upon the LORD, who is worthy to be praised: so shall I be saved from mine enemies.", "4 The sorrows of death compassed me, and the floods of ungodly men made me afraid.", "5 The sorrows of hell compassed me about: the snares of death prevented me.", "6 In my distress I called upon the LORD, and cried unto my God: he heard my voice out of his temple, and my cry came before him, even into his ears.", "7 Then the earth shook and trembled; the foundations also of the hills moved and were shaken, because he was wroth.", "8 There went up a smoke out of his nostrils, and fire out of his mouth devoured: coals were kindled by it.", "9 He bowed the heavens also, and came down: and darkness was under his feet.", "10 And he rode upon a cherub, and did fly: yea, he did fly upon the wings of the wind.", "11 He made darkness his secret place; his pavilion round about him were dark waters and thick clouds of the skies.", "12 At the brightness that was before him his thick clouds passed, hail stones and coals of fire.", "13 The LORD also thundered in the heavens, and the Highest gave his voice; hail stones and coals of fire.", "14 Yea, he sent out his arrows, and scattered them; and he shot out lightnings, and discomfited them.", "15 Then the channels of waters were seen, and the foundations of the world were discovered at thy rebuke, O LORD, at the blast of the breath of thy nostrils.", "16 He sent from above, he took me, he drew me out of many waters.", "17 He delivered me from my strong enemy, and from them which hated me: for they were too strong for me.", "18 They prevented me in the day of my calamity: but the LORD was my stay.", "19 He brought me forth also into a large place; he delivered me, because he delighted in me.", "20 The LORD rewarded me according to my righteousness; according to the cleanness of my hands hath he recompensed me.", "21 For I have kept the ways of the LORD, and have not wickedly departed from my God.", "22 For all his judgments were before me, and I did not put away his statutes from me.", "23 I was also upright before him, and I kept myself from mine iniquity.", "24 Therefore hath the LORD recompensed me according to my righteousness, according to the cleanness of my hands in his eyesight.", "25 With the merciful thou wilt shew thyself merciful; with an upright man thou wilt shew thyself upright;" "26 With the pure thou wilt shew thyself pure; and with the froward thou wilt shew thyself froward.", "27 For thou wilt save the afflicted people; but wilt bring down high looks.", "28 For thou wilt light my candle: the LORD my God will enlighten my darkness.", "29 For by thee I have run through a troop; and by my God have I leaped over a wall.", "30 As for God, his way is perfect: the word of the LORD is tried: he is a buckler to all those that trust in him.", "31 For who is God save the LORD? or who is a rock save our God?", "32 It is God that girdeth me with strength, and maketh my way perfect.", "33 He maketh my feet like hinds' feet, and setteth me upon my high places.", "34 He teacheth my hands to war, so that a bow of steel is broken by mine arms.", "35 Thou hast also given me the shield of thy salvation: and thy right hand hath holden me up, and thy gentleness hath made me great.", "36 Thou hast enlarged my steps under me, that my feet did not slip.", "37 I have pursued mine enemies, and overtaken them: neither did I turn again till they were consumed.", "38 I have wounded them that they were not able to rise: they are fallen under my feet.", "39 For thou hast girded me with strength unto the battle: thou hast subdued under me those that rose up against me.", "40 Thou hast also given me the necks of mine enemies; that I might destroy them that hate me.", "41 They cried, but there was none to save them: even unto the LORD, but he answered them not.", "42 Then did I beat them small as the dust before the wind: I did cast them out as the dirt in the streets.", "43 Thou hast delivered me from the strivings of the people; and thou hast made me the head of the heathen: a people whom I have not known shall serve me.", "44 As soon as they hear of me, they shall obey me: the strangers shall submit themselves unto me.", "45 The strangers shall fade away, and be afraid out of their close places.", "46 The LORD liveth; and blessed be my rock; and let the God of my salvation be exalted.", "47 It is God that avengeth* me, and subdueth the people under me.", "48 He delivereth me from mine enemies: yea, thou liftest me up above those that rise up against me: thou hast delivered me from the violent man.", "49 Therefore will I give thanks unto thee, O LORD, among the heathen, and sing praises unto thy name.", "50 Great deliverance giveth he to his king; and sheweth mercy to his anointed, to David, and to his seed for evermore.", "1 The heavens declare the glory of God; and the firmament sheweth his handywork*.", "2 Day unto day uttereth speech, and night unto night sheweth knowledge.", "3 There is no speech nor language, where their voice is not heard.", "4 Their line is gone out through all the earth, and their words to the end of the world. In them hath he set a tabernacle for the sun,", "5 Which is as a bridegroom coming out of his chamber, and rejoiceth as a strong man to run a race.", "6 His going forth is from the end of the heaven, and his circuit unto the ends of it: and there is nothing hid from the heat thereof.", "7 The law of the LORD is perfect, converting the soul: the testimony of the LORD is sure, making wise the simple.", "8 The statutes of the LORD are right, rejoicing the heart: the commandment of the LORD is pure, enlightening the eyes.", "9 The fear of the LORD is clean, enduring for ever: the judgments of the LORD are true and righteous altogether.", "10 More to be desired are they than gold, yea, than much fine gold: sweeter also than honey and the honeycomb*.", "11 Moreover by them is thy servant warned: and in keeping of them there is great reward.", "12 Who can understand his errors? cleanse thou me from secret faults.", "13 Keep back thy servant also from presumptuous sins; let them not have dominion over me: then shall I be upright, and I shall be innocent from the great transgression.", "14 Let the words of my mouth, and the meditation of my heart, be acceptable in thy sight, O LORD, my strength, and my redeemer.", "1 The LORD hear thee in the day of trouble; the name of the God of Jacob defend thee;", "2 Send thee help from the sanctuary, and strengthen thee out of Zion;", "3 Remember all thy offerings, and accept thy burnt sacrifice; Selah.", "4 Grant thee according to thine own heart, and fulfil all thy counsel.", "5 We will rejoice in thy salvation, and in the name of our God we will set up our banners: the LORD fulfil all thy petitions.", "6 Now know I that the LORD saveth his anointed; he will hear him from his holy heaven with the saving strength of his right hand.", "7 Some trust in chariots, and some in horses: but we will remember the name of the LORD our God.", "8 They are brought down and fallen: but we are risen, and stand upright.", "9 Save, LORD: let the king hear us when we call.", "1 The king shall joy in thy strength, O LORD; and in thy salvation how greatly shall he rejoice!", "2 Thou hast given him his heart's desire, and hast not withholden the request of his lips. Selah.", "3 For thou preventest him with the blessings of goodness: thou settest a crown of pure gold on his head.", "4 He asked life of thee, and thou gavest it him, even length of days for ever and ever.", "5 His glory is great in thy salvation: honour and majesty hast thou laid upon him.", "6 For thou hast made him most blessed for ever: thou hast made him exceeding glad with thy countenance.", "7 For the king trusteth in the LORD, and through the mercy of the most High he shall not be moved.", "8 Thine hand shall find out all thine enemies: thy right hand shall find out those that hate thee.", "9 Thou shalt make them as a fiery oven in the time of thine anger: the LORD shall swallow them up in his wrath, and the fire shall devour them.", "10 Their fruit shalt thou destroy from the earth, and their seed from among the children of men.", "11 For they intended evil against thee: they imagined a mischievous device, which they are not able to perform.", "12 Therefore shalt thou make them turn their back, when thou shalt make ready thine arrows upon thy strings against the face of them.", "13 Be thou exalted, LORD, in thine own strength: so will we sing and praise thy power."]
             
         deck1 = ["Ace of Hearts", "Two of Hearts", "Three of Hearts", "Four of Hearts", "Five of Hearts", "Six of Hearts", "Seven of Hearts", "Eight of Hearts", "Nine of Hearts", "Ten of Hearts", "Jack of Hearts", "Queen Of Hearts", "King of Hearts", "Ace of Clubs", "Two of Clubs", "Three of Clubs", "Four of Clubs", "Five of Clubs", "Six of Clubs", "Seven of Clubs", "Eight of Clubs", "Nine of Clubs", "Ten of Clubs", "Jack of Clubs", "Queen Of Clubs", "King of Clubs", "Ace of Diamonds", "Two of Diamonds", "Three of Diamonds", "Four of Diamonds", "Five of Diamonds", "Six of Diamonds", "Seven of Diamonds", "Eight of Diamonds", "Nine of Diamonds", "Ten of Diamonds", "Jack of Diamonds", "Queen Of Diamonds", "King of Diamonds", "Ace of Spades", "Two of Spades", "Three of Spades", "Four of Spades", "Five of Spades", "Six of Spades", "Seven of Spades", "Eight of Spades", "Nine of Spades", "Ten of Spades", "Jack of Spades", "Queen Of Spades", "King of Spades", "Joker", "Joker"]
-            
+
         koran1 = ["[67.1] Blessed is He in Whose hand is the kingdom, and He has power over all things,", "[67.2] Who created death and life that He may try you-- which of you is best in deeds; and He is the Mighty, the Forgiving,", "[67.3] Who created the seven heavens one above another; you see no incongruity in the creation of the Beneficent God; then look again, can you see any disorder?", "[67.4] Then turn back the eye again and again; your look shall '~ come back to you confused while it is fatigued.", "[67.5] And certainly We have adorned this lower heaven with ( lamps and We have made these missiles for the Shaitans, and We have prepared for them the chastisement of burning.", "[67.6] And for those who disbelieve in their Lord is the punishment of hell, and evil is the resort.", "[67.7] When they shall be cast therein, they shall hear a loud moaning of it as it heaves,", "[67.8] Almost bursting for fury. Whenever a group is cast into it, its keeper shall ask them: Did there not come to you a warner?", "[67.9] They shall say: Yea! indeed there came to us a warner, but we rejected (him) and said: Allah has not revealed anything, you are only in a great error.", "[67.10] And they shall say: Had we but listened or pondered, we should not have been among the inmates of the burning fire.", "[67.11] So they shall acknowledge their sins, but far will be (forgiveness) from the inmates of the burning fire.", "[67.12] (As for) those who fear their Lord in secret, they shall surely have forgiveness and a great reward.", "[67.13] And conceal your word or manifest it; surely He is Cognizant of what is in the hearts.", "[67.14] Does He not know, Who created? And He is the Knower of the subtleties, the Aware.", "[67.15] He it is Who made the earth smooth for you, therefore go about in the spacious sides thereof, and eat of His sustenance, and to Him is the return after death.", "[67.16] Are you secure of those in the heaven that He should not make the earth to swallow you up? Then lo! it shall be in a state of commotion.", "[67.17] Or are you secure of those in the heaven that He should not send down upon you a punishment? Then shall you know how was My warning.", "[67.18] And certainly those before them rejected (the truth), then how was My disapproval.", "[67.19] Have they not seen the birds above them expanding (their wings) and contracting (them)? What is it that withholds them save the Beneficent God? Surely He sees everything.", "[67.20] Or who is it that will be a host for you to assist you besides the Beneficent God? The unbelievers are only in deception.", "[67.21] Or who is it that will give you sustenance if He should withhold His sustenance? Nay! they persist in disdain and aversion.", "[67.22] What! is he who goes prone upon his face better guided or he who walks upright upon a straight path?", "[67.23] Say: He it is Who brought you into being and made for you the ears and the eyes and the hearts: little is it that you give thanks.", "[67.24] Say: He it is Who multiplied you in the earth and to Him you shall be gathered.", "[67.25] And they say: When shall this threat be (executed) if you are truthful?", "[67.26] Say: The knowledge (thereof is only with Allah and I am only a plain warner.=", "[67.27] But when they shall see it nigh, the faces of those who disbelieve shall be sorry, and it shall be said; This is that which you used to call for.", "[67.28] Say: Have you considered if Allah should destroy me and those with me-- rather He will have mercy on us; yet who will protect the unbelievers from a painful punishment?", "[67.29] Say: He is the Beneficent God, we believe in Him and on Him do we rely, so you shall come to know who it is that is in clear error.", "[67.30] Say: Have you considered if your water should go down, who is it then that will bring you flowing water?", "[89.1] I swear by the daybreak,", "[89.2] And the ten nights,", "[89.3] And the even and the odd,", "[89.4] And the night when it departs.", "[89.5] Truly in that there is an oath for those who possess understanding.", "[89.6] Have you not considered how your Lord dealt with Ad,", "[89.7] (The people of) Aram, possessors of lofty buildings,", "[89.8] The like of which were not created in the (other) cities;", "[89.9] And (with) Samood, who hewed out the rocks in the valley,", "[89.10] And (with) Firon, the lord of hosts,", "[89.11] Who committed inordinacy in the cities,", "[89.12] So they made great mischief therein?", "[89.13] Therefore your Lord let down upon them a portion of the chastisement.", "[89.14] Most sure!y your Lord is watching.", "[89.15] And as for man, when his Lord tries him, then treats him with honor and makes him lead an easy life, he says: My Lord honors me.", "[89.16] But when He tries him (differently), then straitens to him his means of subsistence, he says: My Lord has disgraced me.", "[89.17] Nay! but you do not honor the orphan,", "[89.18] Nor do you urge one another to feed the poor,", "[89.19] And you eat away the heritage, devouring (everything) indiscriminately,", "[89.20] And you love wealth with exceeding love.", "[89.21] Nay! when the earth is made to crumble to pieces,", "[89.22] And your Lord comes and (also) the angels in ranks,", "[89.23] And hell is made to appear on that day. On that day shall man be mindful, and what shall being mindful (then) avail him?", "[89.24] He shall say: O! would that I had sent before for (this) my life!", "[89.25] But on that day shall no one chastise with (anything like) His chastisement,", "[89.26] And no one shall bind with (anything like) His binding.", "[89.27] O soul that art at rest!", "[89.28] Return to your Lord, well-pleased (with him), well-pleasing (Him),", "[89.29] So enter among My servants,", "[89.30] And enter into My garden.", "[87.1] Glorify the name of your Lord, the Most High,", "[87.2] Who creates, then makes complete,", "[87.3] And Who makes (things) according to a measure, then guides (them to their goal),", "[87.4] And Who brings forth herbage,", "[87.5] Then makes it dried up, dust-colored.", "[87.6] We will make you recite so you shall not forget,", "[87.7] Except what Allah pleases, surely He knows the manifest, and what is hidden.", "[87.8] And We will make your way smooth to a state of ease.", "[87.9] Therefore do remind, surely reminding does profit.", "[87.10] He who fears will mind,", "[87.11] And the most unfortunate one will avoid it,", "[87.12] Who shall enter the great fire;", "[87.13] Then therein he shall neither live nor die.", "[87.14] He indeed shall be successful who purifies himself,", "[87.15] And magnifies the name of his Lord and prays.", "[87.16] Nay! you prefer the life of this world,", "[87.17] While the hereafter is better and more lasting.", "[87.18] Most surely this is in the earlier scriptures,", "[87.19] The scriptures of Ibrahim and Musa.", "[24.1] (This is) a chapter which We have revealed and made obligatory and in which We have revealed clear communications that you may be mindful.", "[24.2] (As for) the fornicatress and the fornicator, flog each of them, (giving) a hundred stripes, and let not pity for them detain you in the matter of obedience to Allah, if you believe in Allah and the last day, and let a party of believers witness their chastisement.", "[24.3] The fornicator shall not marry any but a fornicatress or idolatress, and (as for) the fornicatress, none shall marry her but a fornicator or an idolater; and it is forbidden to the believers.", "[24.4] And those who accuse free women then do not bring four witnesses, flog them, (giving) eighty stripes, and do not admit any evidence from them ever; and these it is that are the transgressors,", "[24.5] Except those who repent after this and act aright, for surely Allah is Forgiving, Merciful.", "[24.6] And (as for) those who accuse their wives and have no witnesses except themselves, the evidence of one of these (should be taken) four times, bearing Allah to witness that he is most surely of the truthful ones.", "[24.7] And the fifth (time) that the curse of Allah be on him if he is one of the liars.", "[24.8] And it shall avert the chastisement from her if she testify four times, bearing Allah to witness that he is most surely one of the liars;", "[24.9] And the fifth (time) that the wrath of Allah be on her if he is one of the truthful.", "[24.10] And were it not for Allah's grace upon you and His mercy-- and that Allah is Oft-returning (to mercy), Wise!", "[24.11] Surely they who concocted the lie are a party from among you. Do not regard it an evil to you; nay, it is good for you. Every man of them shall have what he has earned of sin; and (as for) him who took upon himself the main part thereof, he shall have a grievous chastisement.", "[24.12] Why did not the believing men and the believing women, when you heard it, think well of their own people, and say: This is an evident falsehood?", "[24.13] Why did they not bring four witnesses of it? But as they have not brought witnesses they are liars before Allah.", "[24.14] And were it not for Allah's grace upon you and His mercy in this world and the hereafter, a grievous chastisement would certainly have touched you on account of the discourse which you entered into.", "[24.15] When you received it with your tongues and spoke with your mouths what you had no knowledge of, and you deemed it an easy matter while with Allah it was grievous.", "[24.16] And why did you not, when you heard it, say: It does not beseem us that we should talk of it; glory be to Thee! this is a great calumny?", "[24.17] Allah admonishes you that you should not return to the like of it ever again if you are believers.", "[24.18] And Allah makes clear to you the communications; and Allah is Knowing, Wise.", "[24.19] Surely (as for) those who love that scandal should circulate respecting those who believe, they shall have a grievous chastisement in this world and the hereafter; and Allah knows, while you do not know.", "[24.20] And were it not for Allah's grace on you and His mercy, and that Allah is Compassionate, Merciful.", "[24.21] O you who believe! do not follow the footsteps of the Shaitan, and whoever follows the footsteps of the Shaitan, then surely he bids the doing of indecency and evil; and were it not for Allah's grace upon you and His mercy, not one of you would have ever been pure, but Allah purifies whom He pleases; and Allah is Hearing, Knowing.", "[24.22] And let not those of you who possess grace and abundance swear against giving to the near of kin and the poor and those who have fled in Allah's way, and they should pardon and turn away. Do you not love that Allah should forgive you? And Allah is Forgiving, Merciful.", "[24.23] Surely those who accuse chaste believing women, unaware (of the evil), are cursed in this world and the hereafter, and they shall have a grievous chastisement.", "[24.24] On the day when their tongues and their hands and their feet shall bear witness against them as to what they did.", "[24.25] On that day Allah will pay back to them in full their just reward, and they shall know that Allah is the evident Truth.", "[24.26] Bad women .are for bad men and bad men are for bad women. Good women are for good men and good men are for good women", "[24.27] O you who believe! Do not enter houses other than your own houses until you have asked permission and saluted their inmates; this is better for you, that you may be mindful.", "[24.28] But if you do not find any one therein, then do not enter them until permission is given to you; and if it is said to you: Go back, then go back; this is purer for you; and Allah is Cognizant of what you do.", "[24.29] It is no sin in you that you enter uninhabited houses wherein you have your necessaries; and Allah knows what you do openly and what you hide.", "[24.30] Say to the believing men that they cast down their looks and guard their private parts; that is purer for them; surely Allah is Aware of what they do.", "[24.31] And say to the believing women that they cast down their looks and guard their private parts and do not display their ornaments except what appears thereof, and let them wear their head-coverings over their bosoms, and not display their ornaments except to their husbands or their fathers, or the fathers of their husbands, or their sons, or the sons of their husbands, or their brothers, or their brothers' sons, or their sisters' sons, or their women, or those whom their right hands possess, or the male servants not having need (of women), or the children who have not attained knowledge of what is hidden of women; and let them not strike their feet so that what they hide of their ornaments may be known; and turn to Allah all of you, O believers! so that you may be successful.", "[24.32] And marry those among you who are single and those who are fit among your male slaves and your female slaves; if they are needy, Allah will make them free from want out of His grace; and Allah is Ample-giving, Knowing.", "[24.33] And let those who do not find the means to marry keep chaste until Allah makes them free from want out of His grace. And (as for) those who ask for a writing from among those whom your right hands possess, give them the writing if you know any good in them, and give them of the wealth of Allah which He has given you; and do not compel your slave girls to prostitution, when they desire to keep chaste, in order to seek the frail good of this world's life; and whoever compels them, then surely after their compulsion Allah is Forgiving, Merciful.", "[24.34] And certainly We have sent to you clear communications and a description of those who have passed away before you, and an admonition to those who guard (against evil).", "[24.35] Allah is the light of the heavens and the earth; a likeness of His light is as a niche in which is a lamp, the lamp is in a glass, (and) the glass is as it were a brightly shining star, lit from a blessed olive-tree, neither eastern nor western, the oil whereof almost gives light though fire touch it not-- light upon light-- Allah guides to His light whom He pleases, and Allah sets forth parables for men, and Allah is Cognizant of all things.", "[24.36] In houses which Allah has permitted to be exalted and that His name may be remembered in them; there glorify Him therein in the mornings and the evenings,", "[24.37] Men whom neither merchandise nor selling diverts from the remembrance of Allah and the keeping up of prayer and the giving of poor-rate; they fear a day in which the hearts and eyes shall turn about;", "[24.38] That Allah may give them the best reward of what they have done, and give them more out of His grace; and Allah gives sustenance to whom He pleases without measure.", "[24.39] And (as for) those who disbelieve, their deeds are like the mirage in a desert, which the thirsty man deems to be water; until when he comes to it he finds it to be naught, and there he finds Allah, so He pays back to him his reckoning in full; and Allah is quick in reckoning;", "[24.40] Or like utter darkness in the deep sea: there covers it a wave above which is another wave, above which is a cloud, (layers of) utter darkness one above another; when he holds out his hand, he is almost unable to see it; and to whomsoever Allah does not give light, he has no light.", "[24.41] Do you not see that Allah is He Whom do glorify all those who are in the heavens and the earth, and the (very) birds with expanded wings? He knows the prayer of each one and its glorification, and Allah is Cognizant of what they do.", "[24.42] And Allah's is the kingdom of the heavens and the earth, and to Allah is the eventual coming.", "[24.43] Do you not see that Allah drives along the clouds, then gathers them together, then piles them up, so that you see the rain coming forth from their midst? And He sends down of the clouds that are (like) mountains wherein is hail, afflicting therewith whom He pleases and turning it away from whom He pleases; the flash of His lightning almost takes away the sight.", "[24.44] Allah turns over the night and the day; most surely there is a lesson in this for those who have sight.", \
             "[24.45] And Allah has created from water every living creature: so of them is that which walks upon its belly, and of them is that which walks upon two feet, and of them is that which walks upon four; Allah creates what He pleases; surely Allah has power over all things.", "[24.46] Certainly We have revealed clear communications, and Allah guides whom He pleases to the right way.", "[24.47] And they say: We believe in Allah and in the apostle and we obey; then a party of them turn back after this, and these are not believers.", "[24.48] And when they are called to Allah and His Apostle that he may judge between them, lo! a party of them turn aside.", "[24.49] And if the truth be on their side, they come to him quickly, obedient.", "[24.50] Is there in their hearts a disease, or are they in doubt, or do they fear that Allah and His Apostle will act wrongfully towards them? Nay! they themselves are the unjust.", "[24.51] The response of the believers, when they are invited to Allah and His Apostle that he may judge between them, is only to say: We hear and we obey; and these it is that are the successful.", "[24.52] And he who obeys Allah and His Apostle, and fears Allah, and is careful of (his duty to) Him, these it is that are the achievers.", "[24.53] And they swear by Allah with the most energetic of their oaths that if you command them they would certainly go forth. Say: Swear not; reasonable obedience (is desired); surely Allah is aware of what you do.", "[24.54] Say: Obey Allah and obey the Apostle; but if you turn back, then on him rests that which is imposed on him and on you rests that which is imposed on you; and if you obey him, you are on the right way; and nothing rests on the Apostle but clear delivering (of the message).", "[24.55] Allah has promised to those of you who believe and do good that He will most certainly make them rulers in the earth as He made rulers those before them, and that He will most certainly establish for them their religion which He has chosen for them, and that He will most certainly, after their fear, give them security in exchange; they shall serve Me, not associating aught with Me; and whoever is ungrateful after this, these it is who are the. transgressors.", "[24.56] And keep up prayer and pay the poor-rate and obey the Apostle, so that mercy may be shown to you.", "[24.57] Think not that those who disbelieve shall escape in the earth, and their abode is the fire; and certainly evil is the resort!", "[24.58] O you who believe! let those whom your right hands possess and those of you who have not attained to puberty ask permission of you three times; before the morning prayer, and when you put off your clothes at midday in summer, and after the prayer of the nightfall; these are three times of privacy for you; neither is it a sin for you nor for them besides these, some of you must go round about (waiting) upon others; thus does Allah make clear to you the communications, and Allah is Knowing, Wise.", "[24.59] And when the children among you have attained to puberty, let them seek permission as those before them sought permission; thus does Allah make clear to you His communications, and Allah is knowing, Wise.", "[24.60] And (as for) women advanced in years who do not hope for a marriage, it is no sin for them if they put off their clothes without displaying their ornaments; and if they restrain themselves it is better for them; and Allah is Hearing, Knowing.", "[24.61] There is no blame on the blind man, nor is there blame on the lame, nor is there blame on the sick, nor on yourselves that you eat from your houses, or your fathers' houses or your mothers' houses, or your brothers' houses, or your sisters' houses, or your paternal uncles' houses, or your paternal aunts' houses, or your maternal uncles' houses, or your maternal aunts' houses, or what you possess the keys of, or your friends' (houses). It is no sin in you that you eat together or separately. So when you enter houses, greet your people with a salutation from Allah, blessed (and) goodly; thus does Allah make clear to you the communications that you may understand.", "[24.62] Only those are believers who believe in Allah and His Apostle, and when they are with him on a momentous affair they go not away until they have asked his permission; surely they who ask your permission are they who believe in Allah and His Apostle; so when they ask your permission for some affair of theirs, give permission to whom you please of them and ask forgiveness for them from Allah; surely Allah is Forgiving, Merciful.", "[24.63] Do not hold the Apostle's calling (you) among you to be like your calling one to the other; Allah indeed knows those who steal away from among you, concealing themselves; therefore let those beware who go against his order lest a trial afflict them or there befall them a painful chastisement.", "[24.64] Now surely Allah's is whatever is in the heavens and the earth; He knows indeed that to which you are conforming yourselves; and on the day on which they are returned to Him He will inform them of what they did; and Allah is Cognizant of all things.", "[85.1] I swear by the mansions of the stars,", "[85.2] And the promised day,", "[85.3] And the bearer of witness and those against whom the witness is borne.", "[85.4] Cursed be the makers of the pit,", "[85.5] Of the fire (kept burning) with fuel,", "[85.6] When they sat by it,", "[85.7] And they were witnesses of what they did with the believers.", "[85.8] And they did not take vengeance on them for aught except that they believed in Allah, the Mighty, the Praised,", "[85.9] Whose is the kingdom of the heavens and the earth; and Allah is a Witness of all things.", "[85.10] Surely (as for) those who persecute the believing men and the believing women, then do not repent, they shall have the chastisement of hell, and they shall have the chastisement of burning.", "[85.11] Surely (as for) those who believe and do good, they shall have gardens beneath which rivers flow, that is the great achievement.", "[85.12] Surely the might of your Lord is great.", "[85.13] Surely He it is Who originates and reproduces,", "[85.14] And He is the Forgiving, the Loving,", "[85.15] Lord of the Arsh, the Glorious,", "[85.16] The great doer of what He will.", "[85.17] Has not there come to you the story of the hosts,", "[85.18] Of Firon and Samood?", "[85.19] Nay! those who disbelieve are in (the act of) giving the lie to the truth.", "[85.20] And Allah encompasses them on every side.", "[85.21] Nay! it is a glorious Quran,", "[85.22] In a guarded tablet.", "[113.1] Say: I seek refuge in the Lord of the dawn,", "[113.2] From the evil of what He has created,", "[113.3] And from the evil of the utterly dark night when it comes,", "[113.4] And from the evil of those who blow on knots,", "[113.5] And from the evil of the envious when he envies", "[52.1] I swear by the Mountain,", "[52.2] And the Book written", "[52.3] In an outstretched fine parchment,", "[52.4] And the House (Kaaba) that is visited,", "[52.5] And the elevated canopy", "[52.6] And the swollen sea", "[52.7] Most surely the punishment of your Lord will come to pass;", "[52.8] There shall be none to avert it;", "[52.9] On the day when the heaven shall move from side to side", "[52.10] And the mountains shall pass away passing away (altogether).", "[52.11] So woe on that day to those who reject (the truth),", "[52.12] Those who sport entering into vain discourses.", "[52.13] The day on which they shall be driven away to the fire of hell with violence.", "[52.14] This is the fire which you used to give the lie to.", "[52.15] Is it magic then or do you not see?", "[52.16] Enter into it, then bear (it) patiently, or do not bear (it) patiently, it is the same to you; you shall be requited only (for) what you did.", "[52.17] Surely those who guard (against evil) shall be in gardens and bliss", "[52.18] Rejoicing because of what their Lord gave them, and their Lord saved them from the punishment of the burning fire.", "[52.19] Eat and drink pleasantly for what you did,", "[52.20] Reclining on thrones set in lines, and We will unite them to large-eyed beautiful ones.", "[52.21] And (as for) those who believe and their offspring follow them in faith, We will unite with them their offspring and We will not diminish to them aught of their work; every man is responsible for what he shall have wrought.", "[52.22] And We will aid them with fruit and flesh such as they desire.", "[52.23] They shall pass therein from one to another a cup wherein there shall be nothing vain nor any sin.", "[52.24] And round them shall go boys of theirs as if they were hidden pearls.", "[52.25] And some of them shall advance towards others questioning each other.", "[52.26] Saying: Surely we feared before on account of our families:", "[52.27] But Allah has been gracious to us and He has saved us from the punishment of the hot wind:", "[52.28] Surely we called upon Him before: Surely He is the Benign, the Merciful.", "[52.29] Therefore continue to remind, for by the grace of your Lord, you are not a soothsayer, or a madman.", "[52.30] Or do they say: A poet, we wait for him the evil accidents of time.", "[52.31] Say: Wait, for surely I too with you am of those who wait.", "[52.32] Nay! do their understandings bid them this? Or are they an inordinate people?", "[52.33] Or do they say: He has forged it. Nay! they do not believe.", "[52.34] Then let them bring an announcement like it if they are truthful.", "[52.35] Or were they created without there being anything, or are they the creators?", "[52.36] Or did they create the heavens and the earth? Nay! they have no certainty.", "[52.37] Or have they the treasures of your Lord with them? Or have they been set in absolute authority?", "[52.38] Or have they the means by which they listen? Then let their listener bring a clear authority.", "[52.39] Or has He daughters while you have sons?", "[52.40] Or do you ask them for a reward, so that they are overburdened by a debt?", "[52.41] Or have they the unseen so that they write (it) down?", "[52.42] Or do they desire a war? But those who disbelieve shall be the vanquished ones in war.", "[52.43] Or have they a god other than Allah? Glory be to Allah from what they set up (with Him).", "[52.44] And if they should see a portion of the heaven coming down, they would say: Piled up clouds.", "[52.45] Leave them then till they meet that day of theirs wherein they shall be made to swoon (with terror):", "[52.46] The day on which their struggle shall not avail them aught, nor shall they be helped.", "[52.47] And surely those who are unjust shall have a punishment besides that (in the world), but most of them do not know.", "[52.48] And wait patiently for the judgment of your Lord, for surely you are before Our eyes, and sing the praise of your Lord when you rise;", "[52.49] And in the night, give Him glory too, and at the setting of the stars."]
-            
+
         fcci = ['a', 'ai', 'an', 'ang', 'ao', 'ba', 'bai', 'ban', 'bang', 'bao', 'bei', 'ben', 'beng', 'bi', 'bian', 'biao', 'bie', 'bin', 'bing', 'bo', 'bu', 'ca', 'cai', 'can', 'cang', 'cao', 'ce', 'cei', 'cen', 'ceng', 'cha', 'chai', 'chan', 'chang', 'chao', 'che', 'chen', 'cheng', 'chi', 'chong', 'chou', 'chu', 'chua', 'chuai', 'chuan', 'chuang', 'chui', 'chun', 'chuo', 'ci', 'cong', 'cou', 'cu', 'cuan', 'cui', 'cun', 'cuo', 'da', 'dai', 'dan', 'dang', 'dao', 'de', 'dei', 'den', 'deng', 'di', 'dia', 'dian', 'diao', 'die', 'ding', 'diu', 'dong', 'dou', 'du', 'duan', 'dui', 'dun', 'duo', 'e', 'ei', 'en', 'eng', 'er', 'fa', 'fan', 'fang', 'fei', 'fen', 'feng', 'fo', 'fou', 'fu', 'ga', 'gai', 'gan', 'gang', 'gao', 'ge', 'gei', 'gen', 'geng', 'gong', 'gou', 'gu', 'gua', 'guai', 'guan', 'guang', 'gui', 'gun', 'guo', 'ha', 'hai', 'han', 'hang', 'hao', 'he', 'hei', 'hen', 'heng', 'hong', 'hou', 'hu', 'hua', 'huai', 'huan', 'huang', 'hui', 'hun', 'huo', 'ji', 'jia', 'jian', 'jiang', 'jiao', 'jie', 'jin', 'jing', 'jiong', 'jiu', 'ju', 'juan', 'jue', 'jun', 'ka', 'kai', 'kan', 'kang', 'kao', 'ke', 'kei', 'ken', 'keng', 'kong', 'kou', 'ku', 'kua', 'kuai', 'kuan', 'kuang', 'kui', 'kun', 'kuo', 'la', 'lai', 'lan', 'lang', 'lao', 'le', 'lei', 'leng', 'li', 'lia', 'lian', 'liang', 'liao', 'lie', 'lin', 'ling', 'liu', 'long', 'lou', 'lu', 'luan', 'lun', 'luo', 'lü', 'lüe', 'ma', 'mai', 'man', 'mang', 'mao', 'me', 'mei', 'men', 'meng', 'mi', 'mian', 'miao', 'mie', 'min', 'ming', 'miu', 'mo', 'mou', 'mu', 'na', 'nai', 'nan', 'nang', 'nao', 'ne', 'nei', 'nen', 'neng', 'ni', 'nian', 'niang', 'niao', 'nie', 'nin', 'ning', 'niu', 'nong', 'nou', 'nu', 'nuan', 'nuo', 'nü', 'nüe', 'o', 'ou', 'pa', 'pai', 'pan', 'pang', 'pao', 'pei', 'pen', 'peng', 'pi', 'pian', 'piao', 'pie', 'pin', 'ping', 'po', 'pou', 'pu', 'qi', 'qia', 'qian', 'qiang', 'qiao', 'qie', 'qin', 'qing', 'qiong', 'qiu', 'qu', 'quan', 'que', 'qun', 'ran', 'rang', 'rao', 're', 'ren', 'reng', 'ri', 'rong', 'rou', 'ru', 'ruan', 'rui', 'run', 'ruo', 'sa', 'sai', 'san', 'sang', 'sao', 'se', 'sen', 'seng', 'sha', 'shai', 'shan', 'shang', 'shao', 'she', 'shei', 'shen', 'sheng', 'shi', 'shou', 'shu', 'shua', 'shuai', 'shuan', 'shuang', 'shui', 'shun', 'shuo', 'si', 'song', 'sou', 'su', 'suan', 'sui', 'sun', 'suo', 'ta', 'tai', 'tan', 'tang', 'tao', 'te', 'tei', 'teng', 'ti', 'tian', 'tiao', 'tie', 'ting', 'tong', 'tou', 'tu', 'tuan', 'tui', 'tun', 'tuo', 'wa', 'wai', 'wan', 'wang', 'wei', 'wen', 'weng', 'wo', 'wu', 'xi', 'xia', 'xian', 'xiang', 'xiao', 'xie', 'xin', 'xing', 'xiong', 'xiu', 'xu', 'xuan', 'xue', 'xun', 'ya', 'yan', 'yang', 'yao', 'ye', 'yi', 'yin', 'ying', 'yo', 'yong', 'you', 'yu', 'yuan', 'yue', 'yun', 'za', 'zai', 'zan', 'zang', 'zao', 'ze', 'zei', 'zen', 'zeng', 'zha', 'zhai', 'zhan', 'zhang', 'zhao', 'zhe', 'zhei', 'zhen', 'zheng', 'zhi', 'zhong', 'zhou', 'zhu', 'zhua', 'zhuai', 'zhuan', 'zhuang', 'zhui', 'zhun', 'zhuo', 'zi', 'zong', 'zou', 'zu', 'zuan', 'zui', 'zun', 'zuo', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
         def nano():
             global omit_result
             dd = (diction)
-            ddd = session.current_charset if session.current_charset else current_ddd
+            ddd = current_ddd
             ct = datetime.datetime.now()
             cchar = random.choices(ddd, k=random.randint(1,8))
             chchars_str = ''.join(cchar)
@@ -782,12 +756,11 @@ def main():
             star = "&"
             dash = ""
             print(star, dash, chchars_str, dash, result, dash, ct)
-            print(usr, star, dash, chchars_str, dash, result, dash, ct, file=z)
 
         def n1():
             global omit_result
             dd = (diction)
-            ddd = session.current_charset if session.current_charset else current_ddd
+            ddd = current_ddd
             ct = datetime.datetime.now()
             cchar = random.choices(ddd, k=random.randint(1,7))
             chchars_str = ''.join(cchar)
@@ -798,7 +771,6 @@ def main():
             star = "&"
             dash = ""
             print(star, dash, chchars_str, dash, result, dash, ct)
-            print(usr, star, dash, chchars_str, dash, result, dash, ct, file=z)
 
         def kata():
             dd = (diction)
@@ -810,7 +782,6 @@ def main():
             result = "  ".join(random.sample(nano, random.randint(1, 9)))
             tars = "~~"
             print(tars, kkchar_str, result, ct)
-            print(usr, tars, kkchar_str, result, ct, file=z)
 
         def hangu():
             dd = (diction)
@@ -822,7 +793,6 @@ def main():
             result = "  ".join(random.sample(dd, random.randint(1, 9)))
             arts = "^^"
             print(arts, hangchar_str, result, ct)
-            print(usr, arts, hangchar_str, result, ct, file=z)
 
         def manton():
             dd = (diction)
@@ -832,9 +802,8 @@ def main():
             macchar_str = ''.join(macchar)
             nano = (random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd), random.choice(dd))
             result = "  ".join(random.sample(dd, random.randint(1, 9)))
-            marts = "+++"
+            marts = "++"
             print(marts, macchar_str, result, ct)
-            print(usr, marts, macchar_str, result, ct, file=z)
 
         def aans():
             dd = (diction)
@@ -846,7 +815,6 @@ def main():
             result = "  ".join(random.sample(dd, random.randint(1, 9)))
             ansarts = "@@@"
             print(ansarts, anschar_str, result, ct)
-            print(usr, ansarts, anschar_str, result, ct, file=z)
 
         def ruuh():
             dd = (diction)
@@ -858,7 +826,6 @@ def main():
             result = "  ".join(random.sample(dd, random.randint(1, 9)))
             rarts = "%%%"
             print(rarts, ruchar_str, result, ct)
-            print(usr, rarts, ruchar_str, result, ct, file=z)
 
         def tinie_N():
             an = (fcci)
@@ -869,17 +836,16 @@ def main():
             wonyao_str = ''.join(cci)
             ha_sh = "#"
             print(ha_sh, wonyao_str, acadl, ct)
-            print(usr, ha_sh, wonyao_str, acadl, ct, file=z)
 
         def commands():
             print()
-            print(" version | switch/lpro-s [lx] | [blank input] for nano / 1-nano [n1/3 spaces] | nano characters [nanochars/nnc] | katakana [kata/b] | jamo [hangu/n] | chi [++] | ans [@@] | ruh [%%] | profile | note / journal / save | pwd / ls / cd / clear [cl] / mkdir / rm | type-text | search")
+            print(" version | [blank input] for nano / 1-nano [n1/3 spaces] | nano characters [nanochars/nnc] | katakana [kata/b] | jamo [hangu/n] | chi [++] | ans [@@] | ruh [%%] | profile | pwd / ls / cd / clear [cl] / mkdir / rm | type-text | fsearch ")
             print()
-            print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: cbmp, cmbpc, xcbmp, xcbmpc, hbmp, hbmpc, xhbmp, xhbmpc, jbmp, jbmpc, xjbmp, xjbmpc, fbmp, xfbmp")
+            print(" FNTCCI: tinien [single space/**], ntag, fcci-monitor [fstart/fcci] | synthesis: xcbmp, xcbmpc, xhbmp, xhbmpc, xjbmp, xjbmpc, xfbmp")
             print()
-            print(" | random hospital [rhosp/ghosthunt], jburner/jtburner, cburner/ctburner, ruh-time-call [RTC], ruh-monitor [rmonitor], insta ghost write [IGW], sound stream [sst], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], ascii search [ascsearch/asc], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], frames search [fsearch], police (prad), CAI Environments (CAI/GES), amror (meditation game), amror-search [amsearch], time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]") 
+            print(" | random hospital [rhosp/ghosthunt], ruh-monitor [rmonitor], insta ghost write [IGW], ghost write/code [GW], proverbs [ps], c-characters [cchar/cc], ch-monitor [CHM], kata-monitor [KM], jamo-monitor [JM], speak [spk], map, threads, zuz [pp], call, time-call [TC], message [lh], [echo], [fuzz], alerts, light incense, prayer, dhammapada, message-scan [scan], ascii [double space], archery, value, tag / atag, monitor-start [mstart], acad-monitor (astart), weapon start [wstart], oscillator/time-oscillator [oscill/toscill], MedProc AI [MAI], MedProcCont [MAIc/MPC], burner-start/time-burner [burn/tburn], burner-search [b-search], Medicals (M), Earth Science (SCI), psychology (psyc), Patient Simu, biology (B), chemistry (ch), legal terms (Law), change username [username/user], print time, (ai) auto-mat [AAM], [ID / IDC], the heart sutra, herbs/herbals, degree/major, frames [fps], police (prad), CAI Environments (CAI/GES), time-monitor [tmonitor], speech-time-monitor [stmonitor], guard, Programs [PROGR], generate string [gstring]")
             print()
-            print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}, monitor-search [msearch], acad-search [asearch]")
+            print(" | pray, sleep, eat, meditate, draw card, slot, find coins, search for items, fly, drink coffee, drink tea, surf, skate, art, give alms, radio, hack, brawl, souls, hipster tarot, mp3, spar, train, rest, psalms, haiku, karate, koans, equips, rpg, color key, doodling, BUMP, MA, Magic, zen melody, monopoly, stats, progress, collections, football, c, entry, posting, koran, heBrews, Clearance, MiCasa, stuff, worship, License, climb, teletubby, {[muslim prayer] fajr (before dawn) / dhuhr (noon) / asr (late afternoon) / maghrib (at sunset) / isha (nighttime)}")
 
         def ls():
             try:
@@ -945,10 +911,8 @@ def main():
             ct = datetime.datetime.now()
             monitor = "text-type:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
             print(usr, monitor, title, ct, file=j)
             print()
-            print(file=z)
             print("*this saves to MProcs-text.txt*")
             print()
             print(file=j)
@@ -958,100 +922,29 @@ def main():
 
         def GES():
             print()
-            print(file=z)
             print("Crown | ART | Birth Snapshot | YzB | Thailand Hospital | egg | Zen Meditation (USVU) | Shinobi Primer | Hacking 101 @m0nkrpg | Saler | 445 | First Office Salute | Poker Table | chi_a | med_apteu #proc #music")
-            print("Crown | ART | Birth Snapshot | YzB | Thailand Hospital | egg | Zen Meditation (USVU) | Shinobi Primer | Hacking 101 @m0nkrpg | Saler | 445 | First Office Salute | Poker Table | chi_a | med_apteu #proc #music", file=z)
 
         def print_time():
             t_time = datetime.datetime.now()
             l_time = "Time: "
             print(l_time, t_time)
-            print(usr, l_time, t_time, file=z)
 
-        def profile():
-            print()
-            print(file=z)
-            ID()
-            print()
-            print(file=z)
-            value()
-            print()
-            print(file=z)
-            atag()
-            print()
-            print(file=z)
-            earth_science()
-            print()
-            print(file=z)
-            draw_card()
-            print()
-            print(file=z)
-            stats()
-            print()
-            print(file=z)
-            hack()
-            print()
-            print(file=z)
-            progress()
-            print()
-            print(file=z)
-            haiku()
-            print()
-            print(file=z)
-            rpg()
-            print()
-            print(file=z)
-            equips()
-            print()
-            print(file=z)
-            legal_terms()
-            print()
-            print(file=z)
-            dhammapada()
-
-        def note():
-            t_time = datetime.datetime.now()
-            l_time = "| Time:"
-            print("type in note")
-            print("type in note", file=z)
-            print()
-            print(file=z)
-            save = input()
-            print()
-            print(file=z)
-            print("note: " + "" + save, l_time, t_time)
-            print(usr + "" + " " + "" + "note: " + "" + save, l_time, t_time, file=z)
-
-        def journal():
-            t_time = datetime.datetime.now()
-            l_time = "| Time:"
-            print("type in note")
-            print("type in note", file=z)
-            print()
-            print(file=z)
-            save = input()
-            print()
-            print(file=z)
-            print("journal: " + "" + save, l_time, t_time)
-            print(usr + "" + " " + "" + "journal: " + "" + save, l_time, t_time, file=z)
-
-        def save():
-            t_time = datetime.datetime.now()
-            l_time = "| Time:"
-            print("type in note")
-            print("type in note", file=z)
-            print()
-            print(file=z)
-            save = input()
-            print()
-            print(file=z)
-            print("save: " + "" + save, l_time, t_time)
-            print(usr + "" + " " + "" + "save: " + "" + save, l_time, t_time, file=z)
+        def change_username():
+            def set_usr(newUsr):
+                global usr
+                usr = newUsr
+            new = input("Session username: ")
+            user = f"{GREEN}{new}{RESET}"
+            ST = " st"
+            medicci = f"{ST}"
+            dollar = "$"
+            sign = f"{BLUE}{dollar}{RESET}"
+            set_usr(medicci + "" + " " + "" + "(" + "" + " " + "" + "" + user + "" + "" + " " + "" + ")" + "" + " " + "" + sign + "" + " ")
+            ct = datetime.datetime.now()
 
         def search():
             zen = input("Search: ")
             print()
-            print(file=z)
             with open(r"MProcs-logs.txt", 'r') as fp:
                 for l_no, line in enumerate(fp):
                     # search string
@@ -1060,57 +953,79 @@ def main():
                         print('Line Number:', l_no)
                         print('Line:', line)
 
-        def msearch():
-            zen = input("Monitor-Search: ")
-            folder = input("folder (foldername followed by a slash or leave blank): ")
-            print()
-            print(file=z)
-            with open(folder + "" + r"monitor-logs.txt", 'r') as fp:
-                for l_no, line in enumerate(fp):
-                    # search string
-                    if zen in line:
-                        print(zen + "" + ' found')
-                        print('Line Number:', l_no)
-                        print('Line:', line)
+        def busearch(file_path="burner-log.txt"):
+            zen = input("(burner) search: ")
+            if not zen:
+                print("Search cancelled.")
+                return
 
-        def asearch():
-            zen = input("acad-monitor-search: ")
-            folder = input("folder (foldername followed by a slash or leave blank): ")
-            print()
-            print(file=z)
-            with open(folder + "" + r"a-monitor-logs.txt", 'r') as fp:
-                for l_no, line in enumerate(fp):
-                    # search string
-                    if zen in line:
-                        print(zen + "" + ' found')
-                        print('Line Number:', l_no)
-                        print('Line:', line)
+            while True:
+                try:
+                    fps = float(input("Indicate speed in seconds: "))
+                    if fps < 0:
+                        print("Speed must be non-negative.")
+                        continue
+                    break
+                except ValueError:
+                    print("Invalid value. Please enter a number.")
+                except KeyboardInterrupt:
+                    print("\nInput cancelled.")
+                    return
 
-        def amsearch():
-            zen = input("amror-monitor-search: ")
-            folder = input("folder (foldername followed by a slash or leave blank): ")
             print()
-            print(file=z)
-            with open(folder + "" + r"amror-logs.txt", 'r') as fp:
-                for l_no, line in enumerate(fp):
-                    # search string
-                    if zen in line:
-                        print(zen + "" + ' found')
-                        print('Line Number:', l_no)
-                        print('Line:', line)
+            print("Ctrl-C to stop")
+            print()
+            try:
+                with open(file_path, 'r') as fp:
+                    for line in fp:  # Process line by line to save memory
+                        if zen in line:  # Case-sensitive search
+                            try:
+                                time.sleep(fps)  # Can be interrupted by Ctrl+C
+                                print(line.strip())
+                            except KeyboardInterrupt:
+                                print("\nSearch interrupted by user.")
+                                return
+            except FileNotFoundError:
+                print(f"Error: File '{file_path}' not found.")
+            except Exception as e:
+                print(f"An error occurred: {e}")
+
+        def profile():
+            print()
+            ID()
+            print()
+            value()
+            print()
+            atag()
+            print()
+            earth_science()
+            print()
+            draw_card()
+            print()
+            stats()
+            print()
+            hack()
+            print()
+            progress()
+            print()
+            haiku()
+            print()
+            rpg()
+            print()
+            equips()
+            print()
+            legal_terms()
+            print()
+            dhammapada()
 
         def echo():
             echo = input("$ ")
             ct = datetime.datetime.now()
             print()
-            print(file=z)
             ech = "echo:"
             print(ech, usr, echo, ct)
-            print(ech, usr, echo, ct, file=z)
 
         def worker_thread(thread_id, delay, stop_event):
-
-            o = open("threads.txt", "a", buffering=1)
 
             def generate_random_letters():
                 random1 = random.choice(string.ascii_letters)
@@ -1131,7 +1046,7 @@ def main():
                     acad = acadlist                 
                     random_letters = generate_random_letters()
                     sitch  = (round(random.random() * 9999, 4))
-
+                    
                     sample_size_hangu = random.randint(1, min(20, len(hangu)))
                     sample_size_cc = random.randint(1, min(12, len(cc)))
                     sample_size_kk = random.randint(1, min(15, len(kk)))
@@ -1146,9 +1061,7 @@ def main():
                 
                     ctm = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
                     print(f"{maroon} {title} {random_letters} {sitch:.4f} {hchat} {cchat} {kkhat} {kchat} {kchat2} {ctm}")
-                    print(f"{maroon} {title} {random_letters} {sitch:.4f} {hchat} {cchat} {kkhat} {kchat} {kchat2} {ctm}", file=o)
                     print()
-                    print(file=o)
                     stop_event.wait(delay)
 
             except Exception as e:
@@ -1157,10 +1070,7 @@ def main():
                 print(f"\nThread {thread_id} finished")
 
         def activate_threads(stop_event):
-
-            o = open("threads.txt", "a", buffering=1)
             title = input("thread name: ")
-
             while True:
                 try:
                     num_threads = int(input("Number of threads: "))
@@ -1182,16 +1092,10 @@ def main():
                     print("Invalid input")
 
             ct = datetime.datetime.now()
-            monitor = "threads-start:"
-            print()
-            print("*this saves to threads.txt*")
+            monitor = "s-threads-start:"
             print()
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=o)
             print()
-            print(file=z)
-            print(file=o)
             time.sleep(3)
 
             print("\nStarting threads...")
@@ -1233,15 +1137,12 @@ def main():
             ct = datetime.datetime.now()
             chchar = "c-characters:"
             print(chchar, chichar, ct)
-            print(usr, chchar, chichar, ct, file=z) 
 
         def pray():
             ct = datetime.datetime.now()
             print("You start praying to a God...")
-            print(usr + "" + " " + "" + "You start praying to a God...", file=z)
             time.sleep(7)
             print("You finished praying", ct)
-            print(usr + "" + " " + "" + "You finished praying", ct, file=z)
             time.sleep(3)
 
         def climb():
@@ -1251,12 +1152,10 @@ def main():
             ct = datetime.datetime.now()
             clim = "climb:"
             print(clim, climb, ct)
-            print(usr, clim, climb, ct, file=z)
 
         def prayer():
             ct = datetime.datetime.now()
             print("OM MANI PADME HUM", ct)
-            print(usr + "" + " " + "" + "OM MANI PADME HUM", ct, file=z)
 
         def stats():
             stat = "stats:"
@@ -1280,7 +1179,6 @@ def main():
             chemicals = (round(random.random()*120))
             ct = datetime.datetime.now()
             print(stat, hea, health, conf, confidence, oxyg, oxygen, happ, happiness, luc, luck, rele, release, ener, energy, oppo, opportunity, chem, chemicals, ct)
-            print(usr, stat, hea, health, conf, confidence, oxyg, oxygen, happ, happiness, luc, luck, rele, release, ener, energy, oppo, opportunity, chem, chemicals, ct, file=z)
 
         def progress():
             ct = datetime.datetime.now()
@@ -1289,12 +1187,9 @@ def main():
             progress = "progress: "
             print(percentage)
             print("% done with")
-            print("% done with", file=z)
             probability = (round(random.random()*4))
             print(probability)
             print("quads", ct)
-            print("quads", file=z)
-            print(usr, progress, percentage, probability, ct, file=z)
 
         def light_incense():
             while True:
@@ -1307,57 +1202,44 @@ def main():
             number
             numberstr = str(number)
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             print("You light" + "" + " " + "" + numberstr + "" + " " + "" + "incense...", ct)
-            print(usr + "" + " " + "" + "You light" + "" + " " + "" + numberstr + "" + " " + "" + "incense...", ct, file=z)
             time.sleep(3)
 
         def heart_sutra():
             time.sleep(2)
             print()
             print("The Bodhisattva of Compassion, / When he meditated deeply, / Saw the emptiness of all five skandhas / And sundered the bonds that caused him suffering.")
-            print("The Bodhisattva of Compassion, / When he meditated deeply, / Saw the emptiness of all five skandhas / And sundered the bonds that caused him suffering.", file=z)
             time.sleep(8)
             print()
             print("Here then, / Form is no other than emptiness, / Emptiness no other than form. / Form is only emptiness, / Emptiness only form.")
-            print("Here then, / Form is no other than emptiness, / Emptiness no other than form. / Form is only emptiness, / Emptiness only form.", file=z)
             time.sleep(8)
             print()
             print("Feeling, thought, and choice, / Consciousness itself, / Are the same as this.")
-            print("Feeling, thought, and choice, / Consciousness itself, / Are the same as this.", file=z)
             time.sleep(8)
             print()
             print("All things are by nature void / They are not born or destroyed / Nor are they stained or pure / Nor do they wax or wane")
-            print("All things are by nature void / They are not born or destroyed / Nor are they stained or pure / Nor do they wax or wane", file=z)
             time.sleep(8)
             print()
             print("So, in emptiness, no form, / No feeling, thought, or choice, / Nor is there consciousness. / No eye, ear, nose, tongue, body, mind; / No colour, sound, smell, taste, touch, / Or what the mind takes hold of, / Nor even act of sensing.")
-            print("So, in emptiness, no form, / No feeling, thought, or choice, / Nor is there consciousness. / No eye, ear, nose, tongue, body, mind; / No colour, sound, smell, taste, touch, / Or what the mind takes hold of, / Nor even act of sensing.", file=z)
             time.sleep(10)
             print()
             print("No ignorance or end of it, / Nor all that comes of ignorance; / No withering, no death, / No end of them.")
-            print("No ignorance or end of it, / Nor all that comes of ignorance; / No withering, no death, / No end of them.", file=z)
             time.sleep(7)
             print()
             print("Nor is there pain, or cause of pain, / Or cease in pain, or noble path / To lead from pain; / Not even wisdom to attain! / Attainment too is emptiness.")
-            print("Nor is there pain, or cause of pain, / Or cease in pain, or noble path / To lead from pain; / Not even wisdom to attain! / Attainment too is emptiness.", file=z)
             time.sleep(8)
             print()
             print("So know that the Bodhisattva / Holding to nothing whatever, / But dwelling in Prajna wisdom, / Is freed of delusive hindrance, / Rid of the fear bred by it, / And reaches clearest Nirvana.")
-            print("So know that the Bodhisattva / Holding to nothing whatever, / But dwelling in Prajna wisdom, / Is freed of delusive hindrance, / Rid of the fear bred by it, / And reaches clearest Nirvana.", file=z)
             time.sleep(9)
             print()
             print("All Buddhas of past and present, / Buddhas of future time, / Using this Prajna wisdom, / Come to full and perfect vision.")
-            print("All Buddhas of past and present, / Buddhas of future time, / Using this Prajna wisdom, / Come to full and perfect vision.", file=z)
             time.sleep(8)
             print()
             print("Hear then the great dharani, / The radiant peerless mantra, / The Prajnaparamita / Whose words allay all pain; Hear and believe its truth!")
-            print("Hear then the great dharani, / The radiant peerless mantra, / The Prajnaparamita / Whose words allay all pain; Hear and believe its truth!", file=z)
             time.sleep(8)
             print()
             print("Gate Gate Paragate Parasamgate / Bodhi Svaha / Gate Gate Paragate Parasamgate / Bodhi Svaha / Gate Gate Paragate Parasamgate / Bodhi Svaha")
-            print("Gate Gate Paragate Parasamgate / Bodhi Svaha / Gate Gate Paragate Parasamgate / Bodhi Svaha / Gate Gate Paragate Parasamgate / Bodhi Svaha", file=z)
             time.sleep(10)
 
         def hebrews():
@@ -1368,12 +1250,10 @@ def main():
             ct = datetime.datetime.now()
             brews = "heBrews:"
             print(brews, verse, ct)
-            print(usr, brews, verse, ct, file=z)
 
         def teletubby():
             ct = datetime.datetime.now()
             print("You think of a command", ct)
-            print(usr + "" + " " + "" + "You think of a command", ct, file=z)
             time.sleep(2)
 
         def herbs():
@@ -1404,7 +1284,6 @@ def main():
             value = (round(random.random()*9999999999,10))
             ct = datetime.datetime.now()
             print(h, letter1, letter2, letter3, letter4, letter5, value, herbal, ct)
-            print(usr, h, letter1, letter2, letter3, letter4, letter5, value, herbal, ct, file=z)
 
         def legal_terms():
             dd = list(legal_terms1)
@@ -1422,7 +1301,6 @@ def main():
             ct = datetime.datetime.now()
             l = "law:"
             print(l, law, ct)
-            print(usr, l, law, ct, file=z)
 
         def degree():
             dd = list(degrees1)
@@ -1442,11 +1320,8 @@ def main():
             bu = "-from Boston University website (bu.edu)"
             ct = datetime.datetime.now()
             print(d, value, degree, ct)
-            print(usr, d, value, degree, ct, file=z)
             print()
-            print(file=z)
             print(bu)
-            print(bu, file=z)
 
         def biology():
             dd = list(biology1)
@@ -1464,7 +1339,6 @@ def main():
             ct = datetime.datetime.now()
             bio = "biology:"
             print(bio, b, ct)
-            print(usr, bio, b, ct, file=z)
 
         def chemistry():
             dd = list(chemistry1)
@@ -1482,7 +1356,6 @@ def main():
             ct = datetime.datetime.now()
             chem = "chemistry:"
             print(chem, ch, ct)
-            print(usr, chem, ch, ct, file=z)
 
         def patient_simu():
             time.sleep(0)
@@ -1523,7 +1396,6 @@ def main():
             missue = random.sample(msymptoms, 2)
             m = "mental issue:"
             print(t_time, patient, n, name, surname, age, ages, g, gender, l, locality, temp, temperature, pu, pulse, rr, respiration, bp, pressure, s, symptom, othersy, osymptoms, m, missue)
-            print(usr, t_time, patient, n, name, surname, age, ages, g, gender, l, locality, temp, temperature, pu, pulse, rr, respiration, bp, pressure, s, symptom, othersy, osymptoms, m, missue, file=z)
 
         def earth_science():
             dd = list(science1)
@@ -1541,7 +1413,6 @@ def main():
             ct = datetime.datetime.now()
             sci = "earth science:"
             print(sci, earth, ct)
-            print(usr, sci, earth, ct, file=z)
 
         def psychology():
             dd = list(psychology1)
@@ -1559,7 +1430,6 @@ def main():
             ct = datetime.datetime.now()
             p = "psychology:"
             print(p, psych, ct)
-            print(usr, p, psych, ct, file=z)
 
         def medicals():
             dd = list(medicals1)
@@ -1577,7 +1447,6 @@ def main():
             ct = datetime.datetime.now()
             med = "Medicals:"
             print(med, medical, ct)
-            print(usr, med, medical, ct, file=z)
 
         def license():
             license = ["You have no license", "You have no license", "You have a license"]
@@ -1585,7 +1454,6 @@ def main():
             ct = datetime.datetime.now()
             lic = "License:"
             print(lic, lice, ct)
-            print(usr, lic, lice, ct, file=z)
 
         def police():
             time.sleep(0)
@@ -1605,7 +1473,6 @@ def main():
             ct = datetime.datetime.now()
             po = "police:"
             print(po, cod, urge, sus, suspectcode, pol, loc, dire, location, ct)
-            print(usr, po, cod, urge, sus, suspectcode, pol, loc, dire, sus, suspectcode, location, ct, file=z)
 
         def clearance():
             time.sleep(0)
@@ -1614,7 +1481,6 @@ def main():
             ct = datetime.datetime.now()
             med = "Clearance:"
             print(med, clear, ct)
-            print(usr, med, clear, ct, file=z)
 
         def entry():
             _entry = "Entry: "
@@ -1628,7 +1494,6 @@ def main():
             ct = datetime.datetime.now()
             _room = "Room"
             print(_entry, gate, phase, _floor, floors, _room, rooms, ct)
-            print(usr, _entry, gate, phase, _floor, floors, _room, rooms, ct, file=z)
 
         def zuz():
             dd = (diction)
@@ -1640,7 +1505,6 @@ def main():
             result_text = ", ".join(random_result)
             speak(result_text)
             print(sitar, result_text, result, ct)
-            print(usr, sitar, result_text, result, ct, file=z)
 
         def micasa():
             time.sleep(1)
@@ -1649,7 +1513,6 @@ def main():
             micasa = random.sample(rooms, 1)
             ct = datetime.datetime.now()
             print(mic, micasa, ct)
-            print(usr, mic, micasa, ct, file=z)
 
         def stuff():
             stu = "stuff:"
@@ -1658,7 +1521,6 @@ def main():
             stuffs = random.sample(stuff, random.randint(1, 8))
             ct = datetime.datetime.now()
             print(stu, stuffs, ct)
-            print(usr, stu, stuffs, ct, file=z)
 
         def worship():
             ct = datetime.datetime.now()
@@ -1666,7 +1528,6 @@ def main():
             wor = "worship:"
             worship = "You worship in silence.."
             print(wor, worship, ct)
-            print(usr, wor, worship, ct, file=z)
             time.sleep(3)
 
         def posting():
@@ -1678,7 +1539,6 @@ def main():
             postings = (round(random.random()*5))
             defaults = (round(random.random()*15))
             print(_post, _have, postings, _posting, defaults, _default, ct)
-            print(usr, _post, _have, postings, _posting, defaults, _default, ct, file=z)
 
         def speech(text):
             if platform.system() == "Linux" and shutil.which("termux-tts-speak"):
@@ -1693,9 +1553,9 @@ def main():
             if shutil.which("espeak"):
                 try:
                     if platform.system() == "Windows":
-                        subprocess.run(["espeak", "-v", "en+f1", text], check=True)
+                        subprocess.run(["espeak", text], check=True)
                     else:
-                        subprocess.run(["espeak", "-v", "en+f1", text], check=True)
+                        subprocess.run(["espeak", text], check=True)
                     return
                 except subprocess.CalledProcessError as e:
                     print(f"eSpeak error: {e}")
@@ -1708,165 +1568,112 @@ def main():
             def prayer():
                 time.sleep(3)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
-                print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings", file=z)
                 speech("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
-                print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger", file=z)
                 speech("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
-                print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")        
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
-                print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
 
@@ -1882,281 +1689,190 @@ def main():
             def prayer():
                 time.sleep(3)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")        
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
-                print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings", file=z)
                 speech("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
-                print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger", file=z)
                 speech("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
-                print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
-                print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
 
@@ -2172,223 +1888,151 @@ def main():
             def prayer():
                 time.sleep(3)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")        
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
-                print("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings", file=z)
                 speech("All compliments, prayers, and pure words are due to Allah, Peace be upon you oh Prophet and the mercy of Allah and his blessings")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
-                print("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger", file=z)
                 speech("Peace be upon us and upon the righteous slaves of Allah, I bear witness that there is no God except Allah and I bear witness that Muhammad is his slave and messenger")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
-                print("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, bless Muhammad and the family of Muhammad as you blessed Ibrahim and the family of Ibrahim.. You are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
-                print("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory", file=z)
                 speech("Oh Allah, send prayers upon Muhammad and the family of Muhammad as you sent prayers upon Ibrahim and the family of Ibrahim.. you are indeed worthy of praise, full of glory")
                 time.sleep(9)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
-                print("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed", file=z)
                 speech("Allah hears those who praise him, our Lord all praise is for you, praise which is abundant, excellent, and blessed")
                 time.sleep(6)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
-                print("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great", file=z)
                 speech("Glorious is my Lord the most Great, Glorious is my Lord the most great, Glorious is my Lord the most great")
                 time.sleep(4)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(2)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
-                print("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision", file=z)
                 speech("Oh Allah, forgive me, have mercy on me, strengthen me, raise me in status, pardon me and grant me provision")
                 time.sleep(8)
                 print()
-                print(file=z)
                 print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
-                print("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high", file=z)
                 speech("Glorious is my Lord the most high, Glorious is my Lord the most high, Glorious is my Lord the most high")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
-                print("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu", file=z)
                 speech("Assalamu Alaikum Wa Rammatullahi Wa Barakatuhu")
                 time.sleep(5)
                 print()
-                print(file=z)
                 print("Allah Hu Akbar")
-                print("Allah Hu Akbar", file=z)
                 speech("Allah Hu Akbar")
                 time.sleep(5)
 
@@ -2412,53 +2056,42 @@ def main():
             ct = datetime.datetime.now()
             print()
             print("You sit and start to meditate...", ct)
-            print(usr + "" + " " + "" + "You sit and start to meditate...", ct, file=z)
             time.sleep(number)
             ct2 = datetime.datetime.now()
             print("You finished meditating", ct2)
-            print(usr + "" + " " + "" + "You finished meditating", ct, file=z)
             time.sleep(3)
 
         def sleep():
             ct = datetime.datetime.now()
             print("You lay down and doze off...", ct)
-            print(usr + "" + " " + "" + "You lay down and doze off...", ct, file=z)
             time.sleep(29)
             print("You wake up", ct)
-            print(usr + "" + " " + "" + "You wake up", ct, file=z)
             time.sleep(3)
 
         def eat():
             ct = datetime.datetime.now()
             print("You prepare food and start to consume a meal...")
-            print(usr + "" + " " + "" + "You prepare food and start to consume a meal...", file=z)
             time.sleep(5)
             print("You have eaten", ct)
-            print(usr + "" + " " + "" + "You have eaten", ct, file=z)
             time.sleep(3)
 
         def find_coins():
             ct = datetime.datetime.now()
             print("You start to search around for coins...")
-            print(usr + "" + " " + "" + "You start to search around for coins...", file=z)
             time.sleep(10)
             print("You found:")
-            print("You found:", file=z)
             tin = (random.randint(0,100))
             coins = "coins: "
             print(coins, tin, ct)
-            print(usr, coins, tin, ct, file=z)      
             time.sleep(3)
 
         def slot():
             ct = datetime.datetime.now()
             print("You pull on the slot lever...")
-            print(usr + "" + " " + "" + "You pull on the slot lever...", file=z)
             time.sleep(5)
             slot = random.choices(range(10), k=3)
             slots = "slot: "
             print(slots, slot, ct)
-            print(usr, slots, slot, ct, file=z)
             time.sleep(3)
 
         def draw_card():
@@ -2474,118 +2107,88 @@ def main():
             ct = datetime.datetime.now()
             print()
             print("You draw a card from a deck...")
-            print(usr + "" + " " + "" + "You draw a card from a deck...", file=z)
             time.sleep(2)
             card = random.sample(dd, number)
             print("You drew:")
-            print("You drew:", file=z)
             cards = "card: "
             print(cards, card, ct)
-            print(usr, cards, card, ct, file=z)
             time.sleep(3)
 
         def search_for_items():
             print("You search around...")
-            print(usr + "" + " " + "" + "You search around...", file=z)
             time.sleep(2)
             itemd = ["empty bottle", "bottle of wine", "wine glass", "bottle of iced tea", "energy drink", "lemon juice", "pack of green peas", "shirt", "bed", "headphones", "earphones", "blanket", "tablet", "kindle", "pills", "pack of coffee beans", "cup of coffee", "junkfood", "medicine", "spoon", "fork", "Nintendo Switch", "laptop", "mobile phone", "electric fan", "chair", "guitar", "keyboard", "piano", "tv", "monitor", "oil", "hashish", "marijuana", "cigarette", "vape", "pillow", "dog food", "bike", "car", "scooter", "skateboard", "printer", "shards of glass", "garbage", "strips of sleather", "food", "bottle of water", "bible", "Dhammapada", "yoga mat", "helmet", "chewing gum", "vitamins", "shirt", "sweater", "pants", "working pants", "skirt", "underwear", "parachute", "gun", "knife", "sword", "katana", "oatmeal", "chain", "slippers", "shoes", "book", "wires", "credit card", "stove", "oven", "hat", "bucket hat", "baseball cap", "beanie", "hoodie", "necklace", "ring", "gold ring", "diamond ring", "diamond", "diamonds", "painting", "pencil", "ballpoint pen", "sketchpad", "crayon", "box of crayons", "paint", "spray paint", "fruit", "lettuce", "carrot", "watermelon", "orange", "apple", "banana", "pear", "gold", "gold bar", "pistol", "lantern", "lamp", "umbrella", "newspaper", "Sega", "ecstasy", "Nintendo 64", "calculator", "brownies", "pie", "loaf bread", "aviator shades", "shutter shades", "CD", "floppy disk", "mp3 player", "walkman", "cassette", "ticket", "food stub", "ski mask", "spear", "nunchucks", "frying pan", "beans", "charger", "guitar pick", "mic", "digicam", "GoPro", "night vision goggles", "sniper rifle", "DS4 Playstation controller", "CDJ", "Raybans", "smartwatch", "modem", "axe"]
             items = (random.choice(itemd), random.choice(itemd))
             item = random.sample(items, 2)
             ct = datetime.datetime.now()
             print("You found:")
-            print("You found:", file=z)
             items = "items: "
             print(items, item, ct)
-            print(usr, items, item, ct, file=z)
             time.sleep(3)
 
         def fly():
             print("You go to the airport and board a plane...")
-            print(usr + "" + " " + "" + "You go to the airport and board a plane...", file=z)
             time.sleep(2)
             print("You arrived in:")
-            print("You arrived in:", file=z)
             countries = ["Canada", "Sweden", "China", "Beijing", "New York", "California", "L.A.", "San Francisco", "Detroit", "Colorado", "Newark", "New Jersey", "Australia", "Gold Coast", "Thailand", "North Korea", "Pyongyang", "Seoul", "Tokyo", "Osaka", "Japan", "Fujian", "Kyoto", "Manila", "Palawan", "Siargao", "Sultan Kudarat", "Davao", "Sydney", "Poland", "Uzbekistan", "Kyrgystan", "Turkey", "Iraq", "Iran", "Bolivia", "Iceland", "Lithuania", "Greenland", "UK", "France", "Spain", "Rome", "Greece", "Amsterdam", "Netherlands", "Boracay", "Indonesia", "Russia", "Ukraine", "Africa", "Antarctica", "Alaska", "South Carolina", "North Carolina", "Philadelphia", "Brooklyn", "Mexico", "Brazil", "Taiwan", "Burma", "Cambodia", "Vietnam", "India", "Bangladesh", "New Delhi", "Bombay", "Philippines"]
             country = random.sample(countries, 1)
             ct = datetime.datetime.now()
             fly = "fly: "
             print(fly, country, ct)
-            print(usr, fly, country, ct, file=z)
             time.sleep(3)
 
         def drink_coffee():
             print("You have coffee and feel the effect of caffeine...")
-            print(usr + "" + " " + "" + "You have coffee and feel the effect of caffeine...", file=z)
             time.sleep(7)
             ct = datetime.datetime.now()
             print("You finished drinking your coffee", ct)
-            print(usr + "" + " " + "" + "You finished drinking your coffee", ct, file=z)
             time.sleep(3)
 
         def drink_tea():
             print("You have tea...")
-            print(usr + "" + " " + "" + "You have tea...", file=z)
             time.sleep(7)
             ct = datetime.datetime.now()
             print("You finish your tea", ct)
-            print(usr + "" + " " + "" + "You finish your tea", ct, file=z)
             time.sleep(3)
 
         def surf():
             print("You enter the water and wait for a wave...")
-            print(usr + "" + " " + "" + "You enter the water and wait for a wave...", file=z)
             time.sleep(random.randint(1,8))
             print("You surfed:")
-            print("You surfed:", file=z)
             time.sleep(3)
             modnar = (round(random.random()*60,2))
             ct = datetime.datetime.now()
             surf = "surfed: "
             print(surf, modnar, ct)
-            print(usr, surf, modnar, ct, file=z)
             print("..meters before you wiped-out")
-            print("..meters before you wiped-out", file=z)
             time.sleep(3)
 
         def collections():
             print("You recall")
-            print(usr + "" + " " + "" + "You recall", file=z)
             time.sleep(3)
             semit = (round(random.random()*666))
             collections = "collections: "
             print(semit)
-            print(semit, file=z)
             print("items out of 666 with")
-            print("items out of 666 with", file=z)
             time.sleep(1)
             sitch  = (round(random.random()*100,3))
             print(sitch)
-            print(sitch, file=z)
             ct = datetime.datetime.now()
             print("in your Satchel")
-            print("in your Satchel", ct, file=z)
-            print(usr, collections, semit, sitch, ct, file=z)
 
         def doodling():
             print("You pick up a calculator...")
-            print(usr + "" + " " + "" + "You pick up a calculator...", file=z)
             time.sleep(5)
             print()
-            print(file=z)
             print("You draw:")
-            print("You draw:", file=z)
             time.sleep(1)
             print()
             print()
-            print(file=z)
-            print(file=z)
             mondar = (round(random.random()*999,8))
             ct = datetime.datetime.now()
             doodling = "doodling: "
             print(doodling, mondar, ct)
-            print(usr, doodling, mondar, ct, file=z)
             print()
-            print(file=z)
 
         def zen_melody():
             keys = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
@@ -2594,7 +2197,6 @@ def main():
             ct = datetime.datetime.now()
             zenmelody = "zen melody: "
             print(zenmelody, key, raondam, ct)
-            print(usr + "" + " " + "" + zenmelody, key, raondam, ct, file=z)
 
         def value():
             letters1 = ["A", "a", "B", "b", "C", "c", "D", "d", "E", "e", "F", "f", "G", "g", "H", "h", "I", "i", "J", "j", "K", "k", "L", "l", "M", "m", "N", "n", "O", "o", "P", "p", "Q", "q", "R", "r", "S", "s", "T", "t", "U", "u", "V", "v", "W", "w", "X", "x", "Y", "y", "Z", "z"]
@@ -2611,13 +2213,11 @@ def main():
             ct = datetime.datetime.now()
             values = "value:"
             print(values, letter1, letter2, letter3, letter4, letter5, value, ct)
-            print(usr + "" + " " + "" + values, letter1, letter2, letter3, letter4, letter5, value, ct, file=z)
 
         def bump():
             ct = datetime.datetime.now()
             time.sleep(1.5)
             print("You can do it!", ct)
-            print(usr + "" + " " + "" + "You can do it!", ct, file=z)
             time.sleep(3)
 
         def ma():
@@ -2627,56 +2227,46 @@ def main():
             ct = datetime.datetime.now()
             MA = "MA: "
             print(MA, mart, ct)
-            print(usr, MA, mart, ct, file=z)
             print()
-            print(file=z)
             print("-from the contents of Martial Arts of the World: An Encyclopedia")
-            print("-from the contents of Martial Arts of the World: An Encyclopedia", file=z)
             time.sleep(6)
 
         def skate():
             time.sleep(5)
             print("You ride your trickboard and did a")
-            print("You ride your trickboard and did a", file=z)
             tricks = ["Backside 180", "Backside 360", "Backside Caballerial", "Backside Half Cab", "Fakie Ollie", "Frontside 180", "Frontside 360", "Frontside Caballerial", "Frontside Half Cab", "Kickturn", "Nollie", "Nollie Backside 180", "Nollie Backside 360", "Nollie Frontside 180", "Nollie Frontside 360", "Ollie", "Ollie North", "Ollie South", "Switch Backside 180", "Switch Backside 360", "Switch Frontside 180", "Switch Frontside 360", "Switch Ollie", "Tic-Tac", "360 Flip", "360 Hardflip", "360 Ollie Heelflip", "360 Ollie Kickflip", "360 Pop Shove-it", "360 Shuvit", "540 Flip", "720 Flip", "Alpha Flip", "Anti Casper Flip", "Backside Bigspin", "Backside Flip", "Backside Half Cab Heelflip", "Backside Half Cab Kickflip", "Backside Heelflip", "Backside Kickflip", "Big Heelflip", "Bigflip", "Biggerflip", "Biggerspin", "Bigspin", "Bubble Flip", "Bullflip", "Caballerial Flip", "Camel Flip", "Casper Flip", "Daydream Flip", "De Comply", "Disco Flip", "Double Heelflip", "Double Kickflip", "Dragon Flip", "Fakie 360 Flip", "Fakie 360 Hardflip", "Fakie Backside Bigspin", "Fakie Backside Pop Shove-it", "Fakie Frontside Bigspin", "Fakie Frontside Pop Shove-it", "Fakie Hardflip", "Fakie Heelflip", "Fakie Inward Heelflip", "Fakie Kickflip", "Fakie Varial Heelflip", "Fakie Varial Kickflip", "Feather Flip", "Fingerflip", "Forward Flip", "Front Foot Impossible", "Frontside 360 Pop Shove it", "Frontside Bigspin", "Frontside Flip", "Frontside Half Cab Heelflip", "Frontside Half Cab Kickflip", "Frontside Heelflip", "Frontside Kickflip", "Frontside Pop Shove-it", "Gazelle Flip", "Gazelle Spin", "Ghetto Bird", "Gingersnap", "Grape Flip", "Half Cab", "Handstand Flip", "Hardflip", "Haslam Flip", "Heelflip", "Hospital Flip", "Illusion Flip", "Impossible", "Inward Heelflip", "Jesus Flip", "Kickback Flip", "Kickflip", "Kiwi Flip", "Laser Flip", "Late Kickflip", "Nerd Flip", "Nightmare Flip", "No Comply", "540", "720", "900", "Airwalk", "Benihana", "Cannonball", "Christ Air", "Crossbone", "Delmar Indy", "Indy", "Indy Grab", "Invert", "Japan Air", "Judo Air", "Madonna", "McTwist", "Melancholy Grab", "Melon", "Method Air", "Mute Air", "Nose Grab", "Rocket Air", "Sal Flip", "Seatbelt Grab", "Stiffy", "Superman Grab", "Varial", "Egg Plant", "Manual", "Nose Manual", "Varial Heelflip", "Varial Kickflip",\
                          "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", ]
             trick = random.sample(tricks, 1)
             ct = datetime.datetime.now()
             skate = "skate: "
             print(skate, trick, ct)
-            print(usr, skate, trick, ct, file=z)
             time.sleep(3)
 
         def art():
             time.sleep(4)
             print("You make a piece in the style of")
-            print("You make a piece in the style of", file=z)
             styles = ["Abstract Art", "Abstract Expressionism", "Academicism", "Analytical Cubism", "Art Deco", "Art Nouveau", "Ashcan School", "Banksy", "Baroque", "Byzantine Art", "Classicism", "Cloisonnism", "Color Field", "Conceptual Art", "Constructivism", "Cubism", "Cubo-Futurism", "Dadaism", "Dutch Golden Age", "Early Netherlandish", "Early Renaissance", "Expressionism", "Fauvism", "Futurism", "Geometric Abstract Art", "Gothic Art", "High Renaissance", "Hudson River School", "Impressionism", "Italian Renaissance", "Kitsch", "Luminism", "Mannerism", "Metaphysical Art", "Minimalism", "Modernism", "Naive Art/ Primitivism", "Neo-Baroque", "Neo-Classicism", "Neo-Dada", "Neo Expressionism", "Neoplasticism", "New Realism", "Northern Renaissance", "Op-Art", "Orientalism", "Orphism", "Pointilism", "Pop Art", "Pop Surrealism", "Post-Impressionism", "Pre-Raphaelites", "Precisionism", "Proto Renaissance", "Purism", "Realism", "Regionalism", "Renaissance", "Rococo", "Romanticism", "Social Realism", "Socialist Realism", "Suprematism", "Surrealism", "Symbolism", "Synthetic Cubism", "Synthetism", "Tenebrism", "Tonalism", "Tubism", "Ukiyo-E", "Verism"]
             art = random.sample(styles, 1)
             ct = datetime.datetime.now()
             arts = "art: "
             print(arts, art, ct)
-            print(usr, arts, art, ct, file=z)
             time.sleep(3)
 
         def radio():
             time.sleep(2)
             print("You tune in to the radio and listen to:")
-            print("You tune in to the radio and listen to:", file=z)
             time.sleep(1)
             genres = ["Alternative", "Anime", "Blues", "Classical", "Comedy", "Commercials", "Country", "Dance", "Easy Listening", "Electronic", "Enka", "French Pop", "Folk Music", "German Folk", "German Pop", "Fitness and Workout", "Hip-Hop/Rap", "Holiday Music", "Indie Pop", "Industrial", "Inspirational", "Instrumental", "Jazz", "K-Pop", "Karaoke", "Latin", "Metal", "New Age", "Opera", "Pop", "R&B/Soul", "Reggae", "Rock", "Soundtracks", "Spoken Word", "Tex-Mex/Tejano", "Vocal", "World"]
             music = random.sample(genres, 1)
             ct = datetime.datetime.now()
             radio = "radio: "
             print(radio, music, ct)
-            print(usr, radio, music, ct, file=z)
             time.sleep(3)
 
         def give_alms():
             ct = datetime.datetime.now()
             time.sleep(3)
             print("You gave alms to the needy", ct)
-            print(usr + "" + " " + "" + "You gave alms to the needy", ct, file=z)
             time.sleep(3)
 
         def brawl():
@@ -2691,48 +2281,37 @@ def main():
             print(brawls, ct)
             time.sleep(3)
             print()
-            print(file=z)
             print("With A Score Of:")
-            print("With A Score Of:", file=z)
             time.sleep(2)
             randit = (random.randint(50,100))
             ct = datetime.datetime.now()
             print(randit)
-            print(randit, file=z)
-            print(usr, brawl, action, person, randit, ct, file=z)
             time.sleep(3)
 
         def karate():
             time.sleep(1)
             print("Movement:")
-            print("Movement:", file=z)
             time.sleep(3)
             print()
-            print(file=z)
             radnti = (random.randint(0,999))
             opponents = ["You", "Sensei", "Opponent", "Opponent"]
             opponent = random.sample(opponents, 1)
             ct = datetime.datetime.now()
             karate = "karate: "
             print(karate, radnti, opponent, ct)
-            print(usr, karate, radnti, opponent, ct, file=z)   
             time.sleep(3)
 
         def koans():
             time.sleep(2)
             print()
-            print(file=z)
             koans = ['One day, the World-Honored One ascended to the rostrum. Manjusri struck the table with the gavel and said, “Contemplate clearly the Dharma of the Dharma-King! The Dharma of the Dharma-King is like this.” Thereupon, the World-Honored One descended from the rostrum.', 'Emperor Bu of Ryo asked Great Master Bodhidharma, “What is the highest meaning of the holy reality?” Bodhidharma replied, “Vast and void, no holiness.” The emperor said, “Who are you in front of me?” Bodhidharma said, “I don’t know.” The emperor did not match him. Finally, Bodhidharma crossed the Yangtse River and came to the Shorin Temple. There he sat for nine years, facing the wall.', 'A king of Eastern India invited the twenty-seventh patriarch, Prajna Tara, for a meal. The king asked, “Why don’t you recite sutras?” The patriarch said, “The poor way [1] does not stay in the world of subject when breathing in, and has nothing to do with the world of objects when breathing out. I am always reciting the suchness-sutra in millions and millions of volumes.” [1]: i.e., “I.”', 'When the World-Honored One was walking with his assembly, he pointed to the ground with his hand and said, “This place is good for building a temple.” Indra [1] took a stalk of grass and stuck it in the ground and said, “The temple has been built.” The World-Honored One smiled. [1]: Exactly: Sakra Devendra. The lord god of the Trayastrimasa Heaven.', 'A monk asked Seigen, “What is the essence of Buddhism?” Seigen said, “What is the price of rice in Roryo?”', 'A monk asked Great Master Ba, “Apart from the Four Phrases, beyond one hundred Negations, please tell me directly, Master, the meaning of Bodhidharma’s coming from the West.” Master Ba said, “I am tired today, I can’t explain it to you. Go and ask Chizo.” The monk asked Chizo about it. Chizo said, “Why don’t you ask our master?” The monk said, “He told me to ask you.” Chizo said, “I have a headache today, I can’t explain it to you. Go and ask Brother Kai.” The monk asked Brother Kai about it. Kai said, “I don’t understand nothing about that question.” The monk told Great Master Ba about it. Great Master said, “Chizo’s head is white, Kai’s head is black.”', 'Yakusan had not ascended the rostrum for a long time. The temple steward said, “All the assembly has been wishing for instruction for a long time. Please, Master, give your assembly a sermon.” Yakusan had the bell rung. The assembly gathered. Yakusan ascended the rostrum and sat there for a while. Then he descended and returned to his room. The temple steward followed him and asked, “You said a while ago that you would give the assembly a sermon. Why didn’t you speak even a word?” Yakusan said, “For sutras, there are sutra specialists; for sastras [1], there are sastra specialists. Why do you have doubts about this old monk [2] ?” [1]: Books on Buddhist doctrines, written by ancient Buddhist philosophers. [2]: i.e. Yakusan.', 'Whenever Master Hyakujo delivered a sermon, an old man was always there listening with the monks. When they left, he left too. One day, however, he remained behind. Hyakujo asked him, “What man are you, standing there?” The old man replied, “In the past, in the time of Kashyapa Buddha, I lived on this mountain as a Zen priest. Once a monk came and asked me, ‘Does a perfectly enlightened person fall under the law of cause and effect or not?’ I said to him, He does not.’ Because of this answer, I fell into the state of a fox for 500 lives. Now, I beg you, Master, please say a turning word.” Hyakujo said, “The law of cause and effect cannot be obscured.” Upon hearing this, the old man became greatly enlightened.', 'Once the monks of the eastern and western Zen halls in Nansen’s temple were quarrelling about a cat. As he saw this, Nansen held up the cat and said, “You monks! If one of you can say a word, I will not slay the cat.” No one could answer. Nansen cut the cat in two. Nansen told Joshu what had happened, and asked him for his view. Joshu thereupon took his sandals, put them upon his head and went away. Nansen said, “If you had been there, I could have spared the cat.”', 'There was an old woman on the way to Taizan. Whenever a monk asked her how to get to Taizan, she would answer, “Go straight on.” After the monk had gone a few steps, she would say, “This good and naïve fellow goes off that way, too.” Later a monk told Joshu about this. Joshu said, “Wait a bit. I will go and see through her for you.” He went and asked the same question. The next day, Joshu ascended the rostrum and said, “I have seen through the old woman for you.”', 'Great Master Unmon said, “When the light does not penetrate, there are two diseases. Everything is unclear and things hang before you: this is one disease. Even after you have realized the emptiness of all things, somehow you feel as if there were still something there. This shows that the light has not yet penetrated thoroughly. Also there are two diseases concerning the Dharma-body. You have reached the Dharma-body, but you remain attached to the Dharma and cannot extinguish your own view; therefore you lead a corrupt life around the Dharma-body: this is one disease. Suppose you have truly penetrated to the end, if you give up further efforts, it will not do. You examine yourself minutely and say you have no flaw: this is nothing but a disease.”', 'Jizo asked Shuzanshu, “Where have you come from?” Shuzanshu said, “I have come from the South.” Jizo said, “How is Buddhism in the South these days?” Shuzanshu said, “There is much lively discussion.” Jizo said, “How could that match with our planting the rice field here and making rice-balls to eat?” Shuzanshu said, “How could you then save the beings of the Three Worlds?” Jizo said, “What do you call ‘the Three Worlds’?”', 'When Rinzai was about to die, he entrusted Sansho with his Dharma and said, “After my passing, do not destroy my treasury of the Eye of the true Dharma [1].” Sansho said, “How would I dare destroy your treasury of the Eye of the true Dharma?” Rinzai said, “If someone asks you about it, how will you answer?” Sansho instantly shouted his Kaatz. Rinzai said, “Who knows that my treasury of the Eye of the true Dharma has been destroyed by this blind donkey?” [1]: Originally: shobogenzo.', 'Attendant Kaku asked Tokusan, “Where have all the past saints gone?” Tokusan said, “What? What?” Kaku said, “I gave the command for an excellent horse like a flying dragon to spring forth, but there came out only a lame tortoise.” Tokusan was silent. The next day, when Tokusan came out of the bath, Kaku served him tea. Tokusan passed his hand gently over Kaku’s back. Kaku said, “This old fellow has gotten a glimpse for the first time.” Again, Tokusan was silent.', 'Isan asked Kyozan, “Where have you come from?” Kyozan said, “From the rice field.” Isan said, “How many people are there in the rice field?” Kyozan thrust his hoe into the ground and stood with his hands folded on his chest. Isan said, “There are a great number of people cutting thatch on the South Mountain.” Kyozan took up his hoe and left immediately.', 'Mayoku, with his ring-staff in hand, came to Shokei. He circled Shokei’s dais three times, shook the ring-staff and stood there bolt upright. Shokei said, “Right, right!” Mayoku then came to Nansen. He circled Nansen’s dais three times, shook the ring-staff and stood there bolt upright. Nansen said, “Not right, not right!” Then, Mayoku said, “Master Shokei said, ‘Right, right!’ Why, Master, do you say, ‘Not right, not right!’?” Nansen said, “With Shokei it is right, but with you it is not right. This is nothing but a whirling of the wind. In the end, it will perish.”', 'Hogen asked Shuzanshu, “"If there is only a hairsbreadth of difference, it is the distance between heaven and earth."[1] How do you understand that?” Shuzanshu said, “If there is only a hairsbreadth of difference, it is the distance between heaven and earth.” Hogen said, “If that’s your understanding, how could you ever attain IT?” Shuzanshu said, “My view is just that. How about you, Master?” Hogen said, “If there only is a hairsbreadth of difference, it is the distance between heaven and earth.” Shuzanshu made a deep bow. [1]: Cited from the Shinjinmei (A Hymn of Sincere Mind), a work by the Third Patriarch Sosan.', 'A monk asked Joshu, “Does the dog have buddha-nature, or not?” Joshu said, “It has” [U]. The monk said, “If it has it, why did it creep into that skin bag?” Joshu said, “Because it does so knowingly.” Another monk asked, “Does the dog have buddha-nature, or not?” Joshu said, “It has not” [Mu]. The monk said, “All living beings have buddha-nature [2]. Why doesn’t the dog have any?” Joshu said, “Because it is in its karma-consciousness.” [1]: see case 1 of Mumonkan: the Shoyoroku case presents a fuller text of the dialogue. [2]: Quotation from the Nirvana Sutra 7, 25.', 'A monk asked Unmon, “Not a single thought arises: is there any fault or not?” Unmon said, “Mt. Sumeru. [1]” [1]: The highest and most massive mountain in the world according to the Indian cosmology.', 'Jizo asked Hogen, “Where are you going, senior monk? [1]” Hogen said, “I am on pilgrimage [2], following the wind.” Jizo said, “What are you on pilgrimage for?” Hogen said, “I don’t know.” Jizo said, “Non knowing is most intimate.” Hogen suddenly attained great enlightenment. [1]: “Senior monk” (joza) is an honorific for a monk who has practiced more than 10 years. [2]: Originally: angya.', 'When Ungan was sweeping the ground, Dogo said, “You are having a hard time!” Ungan said, “You should know there is one who doesn’t have a hard time.” Dogo said, “If that’s true, you mean there is a second moon?” Ungan held up his broom and said, “What number of moon is this?” Dogo was silent. Gensha said, “That is precisely the second moon.” Unmon said, “The servant greets the maid politely.”', 'Ganto came to Tokusan. He straddled the threshold of the gate and asked, “Is this ordinary or is this holy?” Tokusan shouted, “Kaatz!” Ganto made a deep bow. Hearing of this, Tozan said, “Hardly anyone but Ganto could have accepted it that way.” Ganto said, “Old Tozan can’t tell between good and bad. At that time, I raised up with one hand and suppressed with the other.”', 'Whenever Roso saw a monk coming, he immediately sat facing the wall. Hearing of this, Nansen said, “I usually tell my people to realize what has existed before the kalpa of emptiness [1], or to understand what has been before Buddhas appeared in the world. Still, I haven’t acknowledged one disciple or even a half. If he continues that way, he will go on even until the year of the donkey [2].” [1]: One of the “four kalpas” or periods of cosmic changes: the kalpa of creation, the kalpa of existence, the kalpa of destruction, and the kalpa of emptiness. [2]: Since there is no “year of the donkey” in the Chinese zodiac, the expression “until the year of donkey” means endlessly.', 'Seppo, instructing the assembly, said, “There’s a poisonous snake on the southern side of the mountain. All of you should look at it carefully!” Chokei said, “Today in the Zen hall there are many people. They have lost their body and life.” A monk told this to Gensha, who said, “Only Elder Brother Ryo [2] could say something like that. However, I wouldn’t talk like that.” The monk asked, “What then would you say, Master”? Gensha replied, “Why does it have to be ‘the southern side of the mountain’?” Unmon threw his staff in front of Seppo and acted frightened. [1]: see case 22 of Hekiganroku. [2]: i.e. Chokei.', 'One day, Enkan called to his attendant, “Bring me the rhinoceros fan.” The attendant said, “It is broken.” Enkan said, “If the fan is already broken, bring me the rhinoceros himself.” The attendant gave no answer. Shifuku drew a circle and wrote the ideograph “ox [2]” in it. [1]: see case 91 of Hekiganroku. [2]: The Chinese character for “ox” (gyu) is one of the two characters for “rhinoceros” (saigyu = sai + gyu).', 'Kyozan pointed to the snow lion [1] and said, “Is there any [2] that goes beyond this color?” Unmon said [3], “I would have pushed it over for him at once.” Setcho said [4], “He only knows how to push it over, but he doesn’t know how to help it up.” [1]: Probably a lion made of snow or a stone lion covered with snow. [2]: I.e., “anyone” or “anything.” [3]: I.e., later. [4]: I.e., hearing of this.', 'Hogen pointed to the bamboo blinds with his hand. At that moment, two monks who were there went over to the blinds together and rolled them up. Hogen said, “One has gained, one has lost.”', 'A monk asked Gokoku, “How about when a crane perches on a withered pine tree?” Gokoku said, “It is a disgrace when seen from the ground.” The monk asked, “What about when every drop of water is frozen at once?” Gokoku said, “It’s a disgrace after the sun has risen.” The monk asked, “At the time of the Esho Persecution [1], where did the good Guardian Deities [2] of the Dharma go?” Gokoku said, “It is a disgrace for the two of them on both sides of the temple gate.” [1]: Buddhism was suppressed by order of Emperor Bu (about 840). [2]: Nio-figures representing the two Deva kings on each side of the main gate of a Buddhist temple. They are considered to be protectors of the Dharma.', 'When he was staying at the government office of the Province Ei, Fuketsu entered the hall [to preach] and said, “The heart seal [stamp] of the patriarch resembles the activity of the iron ox. When it goes away, the [impression of the] seal remains; when it stays there, the [impression of the] seal is brought to naught. If it neither goes away nor stays, would it be right to give a seal [of approval] or not?” Then Elder Rohi came up and said, “I have the activities of the iron ox. [However,] I ask you, Master, not to give me the seal.” Fuketsu said, “I am accustomed to leveling the great ocean through fishing whales. But, alas, now I find instead a frog wriggling about in the mud.” Rohi stood there considering. Fuketsu shouted “Kaatz!” and said, “Why don’t you say anything else, Elder?” Rohi was perplexed. Fuketsu hit him with his whisk and said, “Do you remember what you said? Say something, I’ll check it for you.” Rohi tried to say something. Fuketsu hit him again with his whisk. The Magistrate said, “Buddha’s law and the King’s law are of the same nature.” Fuketsu said, “What principle do you see in them?” The Magistrate said, “If you do not make a decision where a decision should be made, you are inviting disorder.” Fuketsu descended from the rostrum.', 'A monk asked Daizui, “When the great kalpa fire bursts out, the whole universe [2] will be destroyed. I wonder if IT will also be destroyed or not.” Daizui said, “Destroyed.” The monk said, “If so, will IT be gone with the other [3]?” Daizui said, “Gone with the other.” A monk asked Ryusai, “When the great kalpa fire bursts out, the whole universe will be destroyed. I wonder if IT will also be destroyed or not.” Ryusai said, “Not destroyed.” The monk said, “Why is it not destroyed?” Ryusai said, “Because it is the same as the whole universe.” [1]: see case 29 of Hekiganroku: The Shoyoroku case has an additional part with Ryusai. [2]: Literally: “a billion worlds.” [3]: The word “the other” means “the universe.”', 'Unmon, instructing the assembly, said, “The old buddha and a pillar intersect each other. What number of activity is that?” The assembly was silent. He said on their behalf, “Clouds gather over the South Mountain; rain falls on the North Mountain.”', 'Kyozan asked a monk, “Where do you come from?” The monk said, “I am from Yu Province” Kyozan said, “Do you think of that place?” The monk said, “I always do.” Kyozan said, “That which thinks is the mind [1]. That which is thought about is the objective world. Within that are mountains, rivers and the great earth, towers, palaces, people, animals, and other things. Reflect upon the mind that thinks. Are there a lot of things there?” The monk said, “I don’t see anything at all there.” Kyozan said, “That’s right for the stage of understanding, but not yet for the stage of personalization.” The monk said, “Do you have any special advice, Master?”\
                      Kyozan said, “It is not right to say that there is or there is not. Your insight shows that you have obtained only one side of the mystery. Sitting down, putting on clothes, from now on you see by yourself.” [1]: Originally: kokoro.', 'Sansho asked Seppo, “When a fish with golden scales has passed through the net, what should it get for food?” Seppo said, “I will tell you when you have passed through the net.” Sansho said, “A great Zen master with 1500 disciples doesn’t know how to speak.” Seppo said, “The old monk is just too busy with temple affairs.”', 'Fuketsu, giving instruction, said, “If one raises a speck of dust, the house and the nation prosper. If one does not raise a speck of dust, they perish.” Setcho held up his staff and said, “Is there anyone who lives and dies with this?”', 'Rakuho came to Kassan and without bowing stood facing him. Kassan said, “A chicken dwells in the phoenix nest. It’s not of the same class. Go away.” Rakuho said, “I have come from far away, hearing much about you. Please, Master, I beg you to guide me.” Kassan said, “Before my eyes there is no you, and here there is no old monk [1].” Rakuho shouted, “Kaatz!” Kassan said, “Stop it, stop it. Don’t be so careless and hasty. Clouds and the moon are the same; valleys and mountains are different from each other. It is not difficult to cut off the tongues of the people under heaven. But how can you make a tongueless person speak?” Rakuho said nothing. Kassan hit him. With this, Rakuho started to obey Kassan. [1]: I.e., “I.”', 'Great Master Ba was seriously ill. The temple steward asked him, “Master, how are you feeling these days?” Great Master said, “Sun-faced Buddha, Moon-faced Buddha.”', 'Isan asked Kyozan, “Suppose a man asks you, saying, ‘All living beings are tossed in a vast karma-consciousness, and have no foundation to rely upon.’ How would you check him?” Kyozan said, “If such a monk appears, I call out to him, ‘Mr. So-and-so!’ When he turns his head, instantly I say, ‘What is this?’ If he hesitates, then I say to him, "Not only is there a vast karma-consciousness, but also there is no foundation to rely upon."” Isan said, “Good.”', 'Rinzai instructed his assembly and said, “There is one true person of no rank, always coming out and going in through the gates of your face [1]. Beginners who have not yet witnessed that, look! look!” Then a monk came out and asked, “What is the one true person of no rank?” Rinzai descended from the rostrum and grabbed him. The monk hesitated. Rinzai pushed him away and said, “The true person of no rank — what a shit-stick you are!” [1]: I.e., sense organs such as eyes, nose, ears, tongue, etc.', 'A monk asked Joshu, “I have just entered this monastery. I beg you, Master, please give me instructions.” Joshu asked, “Have you eaten your rice gruel yet?” The monk answered, “Yes, I have.” Joshu said, “Then wash your bowls.”', 'Unmon asked Kempo, “May I ask for your answer [1]?” Kempo said, “Have you ever reached this old monk or not?” Unmon said, “If so, I must say I was too late.” Kempo said, “Is that so? Is that so?” Unmon said, “I thought I was Marquis White, but I find that here is Marquise Black [2].” [1]: A literal translation. It is possible to understand the word simply as “instruction.” [2]: Marquis White and Marquise Black are noted thieves in Chinese folklore. Marquise Black, a female thief, seems to have been the cleverer of the two.', 'When he was about to die, Rakuho addressed his assembly and said, “I have one matter to ask you about. If you say ‘yes’ to this, you are putting another head on your own. If you say ‘no,’ you are looking for life by cutting off your head.” The head monk said, “The green mountain always lifts up its legs; you don’t need to carry a lantern in the daylight.” [1] Rakuho said, “What time is this to utter such a saying?” A senior monk named Genjo stepped forward and said, “Apart from these two ways, I beg you, Master, not to ask.” Rakuho said, “That’s not enough. Say some more.” Genjo said, “I cannot say it fully.” Rakuho said, “I don’t care whether or not you can say it fully.” Genjo said, “I feel just like an attendant who has nothing to respond to his master.” [2] That evening, Rakuho called Genjo to him and said, “Your response today had something quite reasonable. You have to realize what our late master [3] said, "There are no dharmas before the eyes, Yet consciousness is before the eyes. IT is not the Dharma before the eyes, IT cannot be reached by eyes and ears."" Which phrase is the guest? Which phrase is the host? If you can sort them out, I will transmit the bowl and robe to you.” Genjo said, “I don’t understand.” Rakuho said, “You must understand.” Genjo said, “I really don’t understand.” Rakuho uttered a kaatz and said, “Miserable, miserable!” [Another] monk asked, “What would you like to say, Master?” Rakuho said, “The boat of compassion is not rowed over pure waves. It’s been wasted labor releasing wooden geese down the precipitous strait [4].” [1]: Most probably a saying formed by Rakuho himself. [2]: Apparently an idiomatic expression meaning, “I can’t describe it in words.” [3]: Rinzai or Kassan. [4]: It was a custom that the boat rushing down the stream through a gorge released pieces of wood ahead as a warning so that a possible crash with the boat coming upstream could be avoided. These wooden chips were called “wooden geese.”', 'A monk asked National Teacher Chu of Nanyo, “What is the essential body [1] of Vairocana Buddha [2]?” National Teacher said, “Pass me that water jug.” The monk passed him the water jug. National Teacher said, “Put it back where it was.” The monk asked again, “What is the essential body of Vairocana Buddha?” National Teacher said, “The old Buddha is long gone.” [1]: The so-called “Dharma-body” or dharmakaya. [2]: The principal Buddha.', 'Razan asked Ganto, “What if things appear and disappear without ceasing?” Ganto scolded him saying, “Who appears and disappears?”', 'A monk asked Master Ho of Koyo, “The great dragon has emerged from the ocean, calming heaven and earth. How will you treat him when he suddenly appears before you?” Master Ho said, “Suparnin [1], the king of birds, absorbs the entire universe. Who can stick his head within him?” The monk said, “But how about when he does appear?” Ho said, “It is like a falcon catching a pigeon. If you don’t realize it, you will learn the truth through the ‘inspection before the balcony.’ [2]” The monk said, “If so, then I’ll fold my hands on my chest and retreat three steps.” Ho said, “You black tortoise under the Sumeru altar. [3] Don’t wait to be struck on the forehead again and get hurt.” [1]: A giant bird that eats even dragons. [2]: A reference to a story in which Heigenkun Chosho, the brother of the king of Cho and a wealthy landlord with 3,000 dependents, built a grand palace with a balcony that overlooked the main road. One day a crippled person was passing by and one of the concubines saw him and laughed. The crippled person was angered and demanded Heigenkun her head. Heigenkun presented the head of an executed convict as the head of the concubine. His dependents knew of his deception, lost faith in their master and gradually all left him. His fortunes declined, so at last he cut off the head of the concubine and presented it for the crippled person to inspect. After that the dependents returned and his fortunes were restored. The story is an allusion to the fact that you can never hide away the real truth. [3]: A reference to one of the four carved figures, representing black tortoises, underneath the Sumeru altar (with the Buddha statue). It is used here as a symbol of someone who has lost the freedom of movement.', 'The Engaku [1] Sutra says: “At all times, you do not raise the delusive mind. When there are all kinds of illusory thoughts, you do not extinguish them. Dwelling in the delusory state of mind, you do not add understanding. Where there is no understanding, you do not distinguish the truth.” [1]: “Engaku” means the perfect awakening of Buddha.', 'Great Master Tokusan Emmyo instructed his assembly and said, “If you have exhausted to the end, you will realize right away that all buddhas in the three worlds have stuck their mouths to the wall [1]. Yet there is still one person ¡© he is giving a great laugh. If you can recognize that person, you have accomplished your study.” [1]: I.e., they are unable to open their mouths.', 'A monk asked Joshu, “What is the meaning of the patriarch’s coming from the West?” Joshu said, “The oak tree there in the garden.”', 'Vimalakirti asked Manjusri, “What does it mean that the Bodhisattva enters the Dharma-gate of Not-Two?” Manjusri said, “I see it like this: in all phenomena, there are neither words nor explanations, neither presentations nor knowledge; it is beyond all questions and answers. That is what I understand with /to enter the Dharma-gate of Not-Two/.” Then Manjusri asked Vimalakirti, “All of us have finished giving our explanations. Now you should give your explanation. What does it mean that the Bodhisattva enters the Dharma-gate of Not-Two?” Vimalakirti remained silent.', 'When Tozan held a memorial service for Ungan before his portrait, he mentioned the episode with the portrait [1]. A monk came forward and asked, “When Ungan said, ‘Just this!’ what did that mean?” Tozan said, “At that time, I almost misunderstood my master’s meaning.” The monk said, “I wonder whether or not Ungan really knew that IT is.” Tozan said, “If he did not know that it is, how could he say like that? If he knew that it is, how did he dare say like that?” [1]: Tozan was still a young monk under Ungan. One day, when he was leaving his master, he asked Ungan, “After your passing, if I am asked by someone whether I have your portrait, what should I answer?” Ungan was silent for a while and then said, “Just this.”', 'When Seppo was living in a hermitage, two monks came to pay their respects. When he saw them coming, Seppo thrust open the gate of his hermitage with his hands, jumped out, and said, “What is this?” The monks also said, “What is this?” Seppo hung his head and retired into his hermitage. Later, the monks came to Ganto. He asked them, “Where have you come from?” The monks said, “From Reinan.” Ganto said, “Did you ever visit Seppo?” The monks said, “Yes, we visited him.” Ganto said, “What did he say?” The monks related what had happened. Ganto said, “What else did he say?” The monks said, “Not a word; he hung his head and retired into his hermitage.” Ganto said, “Oh, how I regret now that in those days I did not tell him the last word! If I had told it to him, no one under heaven could do anything against him.” At the end of the summer practice period the monks came back to this conversation and asked him about its meaning. Ganto said, “Why didn’t you ask me about it sooner?” The monks said, “We could not dare to ask you about it.” Ganto said, “Seppo was born on the same stem as I, but he will not die on the same stem. If you want to know the last word, it is just this.”']
             koan = random.sample(koans, 1)
             ct = datetime.datetime.now()
             koans = "koans: "
             print(koans, koan, ct)
-            print(usr, koans, koan, ct, file=z)
             print()
-            print(file=z)
             print("-Shoyoroku (E. Book of Serenity, C. Ts’ung-jung lu) A collection of 100 koans (50 are in LIFE), originally compiled in the 12th century by Wanshi Shogaku (C. Hung-chih Cheng-chüeh)")
-            print("-Shoyoroku (E. Book of Serenity, C. Ts’ung-jung lu) A collection of 100 koans (50 are in LIFE), originally compiled in the 12th century by Wanshi Shogaku (C. Hung-chih Cheng-chüeh)", file=z)
 
         def hipster_tarot():
             while True:
@@ -2746,18 +2325,14 @@ def main():
             numberstr = str(number)
             print()
             print("You draw" + "" + " " + "" + numberstr + "" + " " + "" + "cards from a deck...")
-            print(usr + "" + " " + "" + "You draw" + "" + " " + "" + numberstr + "" + " " + "" + "cards from a deck...", file=z) 
             time.sleep(4)
             deck = ["The Fool | Upright | Beginnings, innocence, spontaneity, a free spirit", "The Fool | Reversed | Holding back, recklessness, risk-taking", "The Fool | Upright | Manifestation, resourcfulness, power, inspired action", "The Fool | Reversed | Manipulation, poor planning, untapped talents", "The High Priestess | Upright | Intuition, sacred knowledge, the subconscious mind", "The High Priestess | Reversed | Secrets, disconnected from intuition, withdrawal and silence", "The Empress | Upright | Femininity, beauty, nature, nurturing, abundance", "The Empress | Reversed | Creative block, dependence on others", "The Emperor | Upright | Authority, establishment, structure, a father figure", "The Emperor | Reversed | Domination, excessive control, lack of discipline, inflexibility", "The Hierophant | Upright | Spiritual wisdom, religious beliefs, conformity, tradition,institutions", "The Hierophant | Reversed | Personal beliefs, freedom, challenging the status quo", "The Lovers | Upright | Love, harmony, relationships, values alignment, choices", "The Lovers | Reversed | Self-love, disharmony, imbalance, misalignment of values", "The Chariot | Upright | Control, willpower, success, action, determination", "The Chariot | Reversed | Self-discipline, opposition, lack of direction", "Strength | Upright | Strength, courage, persuasion, influence, compassion", "Strength | Reversed | Inner strength, self-doubt, low energy, raw emotion", "The Hermit | Upright | Soul-searching, introspection, being alone, inner guidance", "The Hermit | Reversed | Isolation, loneliness, withdrawal", "Wheel Of Fortune | Upright | Good luck, karma, life cycles, destiny, a turning point", "Wheel Of Fortune | Reversed | Bad luck, resistance to change, breaking cycles", "Justice | Upright | Justice, fairness, truth, cause and effect, law", "Justice | Reversed | Unfairness, lack of accountability, dishonesty", "The Hanged Man | Upright | Pause, surrender, letting go, new perspectives", "The Hanged Man | Reversed | Delays, resistance, stalling, indecision", "Death | Upright | Endings, change, transformation, transition", "Death | Reversed | Resistance to change, personal transformation, inner purging", "Temperance | Upright | Balance, moderation, patience, purpose", "Temperance | Reversed | Imbalance, excess, self-healing, re-alignment", "The Devil | Upright | Shadow self, attachment, addiction, restriction, sexuality", "The Devil | Reversed | Releasing limiting beliefs, exploring dark thoughts, detachment", "The Tower | Upright | Sudden change, upheaval, chaos, revelation, awakening", "The Tower | Reversed | Personal transformation, fear of change, averting disaster", "The Star | Upright | Hope, faith, purpose, renewal, spirituality", "The Star | Reversed | Lack of faith, despair, self-trust, disconnection", "The Moon | Upright | Lack of faith, despair, self-trust, disconnection", "The Moon | Reversed | Release of fear, repressed emotion, inner confusion", "The Sun | Upright | Positivity, fun, warmth, success, vitality", "The Sun | Reversed | Inner child, feeling down, overly optimistic", "Judgement | Upright | Judgement, rebirth, inner calling, absolution", "Judgement | Reversed | Self-doubt, inner critic, ignoring the call", "The World | Upright | Completion, integration, accomplishment, travel", "The World | Reversed | Seeking personal closure, short-cuts, delays", "Ace Of Cups | Upright | Love, new relationships, compassion, creativity.", "Ace Of Cups | Reversed | Self-love, intuition, repressed emotions." "Two Of Cups | Upright | Unified love, partnership, mutual attraction", "Two Of Cups | Reversed | Self-love, break-ups, disharmony, distrust.", "Three Of Cups | Upright | Celebration, friendship, creativity, collaborations.", "Three Of Cups | Reversed | Independence, alone time, hardcore partying, ‘three’s a crowd’.", "Four Of Cups | Upright | Meditation, contemplation, apathy, reevaluation.", "Four Of Cups | Reversed | Retreat, withdrawal, checking in for alignment.", "Five Of Cups | Upright | Retreat, withdrawal, checking in for alignment.", "Five Of Cups | Reversed | Personal setbacks, self-forgiveness, moving on.", "Six Of Cups | Upright | Revisiting the past, childhood memories, innocence, joy.", "Six Of Cups | Reversed | Living in the past, forgiveness, lacking playfulness.", "Seven Of Cups | Upright | Opportunities, choices, wishful thinking, illusion.", "Seven Of Cups | Reversed | Alignment, personal values, overwhelmed by choices.", "Eight Of Cups | Upright | Disappointment, abandonment, withdrawal, escapism.", "Eight Of Cups | Reversed | Trying one more time, indecision, aimless drifting, walking away.", "Nine Of Cups | Upright | Contentment, satisfaction, gratitude, wish come true.", "Nine Of Cups | Reversed | Inner happiness, materialism, dissatisfaction, indulgence.", "Ten Of Cups | Upright | Divine love, blissful relationships, harmony, alignment.", "Ten Of Cups | Reversed | Disconnection, misaligned values, struggling relationships.", "Page Of Cups | Upright | Creative opportunities, intuitive messages, curiosity, possibility.", "Page Of Cups | Reversed | New ideas, doubting intuition, creative blocks, emotional immaturity.", "Knight Of  Cups | Upright | Creativity, romance, charm, imagination, beauty.", "Knight Of Cups | Reversed | Overactive imagination, unrealistic, jealous, moody.", "Queen Of Cups | Upright | Compassionate, caring, emotionally stable, intuitive, in flow.", "Queen Of Cups | Reversed | Inner feelings, self-care, self-love, co-dependency.", "King Of Cups | Upright | Emotionally balanced, compassionate, diplomatic.", "King Of Cups | Reversed | Self-compassion, inner feelings, moodiness, emotionally manipulative.", "Ace Of Swords | Upright | Breakthroughs, new ideas, mental clarity, success", "Ace of Swords | Reversed | Inner clarity, re-thinking an idea, clouded judgement", "Two Of Swords | Upright | Difficult decisions, weighing up options, an impasse, avoidance", "Two Of Swords | Reversed | Indecision, confusion, information overload, stalemate", "Three Of Swords | Upright | Heartbreak, emotional pain, sorrow, grief, hurt", "Three Of Swords | Reversed | Negative self-talk, releasing pain, optimism, forgiveness", "Four Of Swords | Upright | Rest, relaxation, meditation, contemplation, recuperation", "Four Of Swords | Reversed | Exhaustion, burn-out, deep contemplation, stagnation", "Five Of Swords | Upright | Conflict, disagreements, competition, defeat, winning at all costs", "Five Of Swords | Reversed | Reconciliation, making amends, past resentment", "Six Of Swords | Upright | Transition, change, rite of passage, releasing baggage.", "Six Of Swords | Reversed | Personal transition, resistance to change, unfinished business", "Seven Of Swords | Upright | Betrayal, deception, getting away with something, acting strategically", "Seven Of Swords | Reversed | Imposter syndrome, self-deceit, keeping secrets", "Eight Of Swords | Upright | Negative thoughts, self-imposed restriction, imprisonment, victim mentality", "Eight Of Swords | Reversed | Self-limiting beliefs, inner critic, releasing negative thoughts, open to new perspectives", "Nine Of Swords | Upright | Anxiety, worry, fear, depression, nightmares", "Nine Of Swords | Reversed | Inner turmoil, deep-seated fears, secrets, releasing worry", "Ten Of Swords | Upright | Painful endings, deep wounds, betrayal, loss, crisis", "Ten Of Swords | Reversed | Recovery, regeneration, resisting an inevitable end", "Page Of Swords | Upright | New ideas, curiosity, thirst for knowledge, new ways of communicating", "Page Of Swords | Reversed | Self-expression, all talk and no action, haphazard action, haste", "Knight Of Swords | Upright | Ambitious, action-oriented, driven to succeed, fast-thinking", "Knight Of Swords | Reversed | Restless, unfocused, impulsive, burn-out", "Queen Of Swords | Upright | Independent, unbiased judgement, clear boundaries, direct communication", "Queen Of Swords | Reversed | Overly-emotional, easily influenced, bitchy, cold-hearted", "King Of Swords | Upright | Mental clarity, intellectual power, authority, truth", "King Of Swords | Reversed | Quiet power, inner truth, misuse of power, manipulation", "Ace Of Pentacles | Upright | A new financial or career opportunity, manifestation, abundance", "Ace Of Pentacles | Reversed | Lost opportunity, lack of planning and foresight", "Two Of Pentacles | Upright | Multiple priorities, time management, prioritisation, adaptability.", "Two Of Pentacles | Reversed | Over-committed, disorganisation, reprioritisation.", "Three Of Pentacles | Upright | Teamwork, collaboration, learning, implementation.", "Three Of Pentacles | Reversed | Disharmony, misalignment, working alone.", "Four Of Pentacles | Upright | Saving money, security, conservatism, scarcity, control.", "Four Of Pentacles | Reversed | Over-spending, greed, self-protection.", "Five Of Pentacles | Upright | Financial loss, poverty, lack mindset, isolation, worry.", "Five Of Pentacles | Reversed | Recovery from financial loss, spiritual poverty.", "Six Of Pentacles | Upright | Giving, receiving, sharing wealth, generosity, charity.", "Six Of Pentacles | Reversed | Self-care, unpaid debts, one-sided charity.", "Seven Of Pentacles | Upright | Long-term view, sustainable results, perseverance, investment.", "Seven Of Pentacles | Reversed | Lack of long-term vision, limited success or reward.", "Eight Of Pentacles | Upright | Apprenticeship, repetitive tasks, mastery, skill development.", "Eight Of Pentacles | Reversed | Self-development, perfectionism, misdirected activity.", "Nine Of Pentacles | Upright | Abundance, luxury, self-sufficiency, financial independence.", "Nine Of Pentacles | Reversed | Self-worth, over-investment in work, hustling.", "Ten Of Pentacles | Upright | Wealth, financial security, family, long-term success, contribution.", "Ten Of Pentacles | Reversed | The dark side of wealth, financial failure or loss.", "Page Of Pentacles | Upright | Manifestation, financial opportunity, skill development.", "Page Of Pentacles | Reversed | Lack of progress, procrastination, learn from failure.", "Knight Of Pentacles | Upright | Hard work, productivity, routine, conservatism.", "Knight Of Pentacles | Reversed | Self-discipline, boredom, feeling ‘stuck’, perfectionism.", "Queen Of Pentacles | Upright | Nurturing, practical, providing financially, a working parent.", "Queen Of Pentacles | Reversed | Financial independence, self-care, work-home conflict", "King Of Pentacles | Upright | Wealth, business, leadership, security, discipline, abundance.", "King Of Pentacles | Reversed | Financially inept, obsessed with wealth and status, stubborn.", "Ace Of Wands | Upright | Inspiration, new opportunities, growth, potential", "Ace Of Wands | Reversed | An emerging idea, lack of direction, distractions, delays", "Two Of Wands | Upright | Future planning, progress, decisions, discovery", "Two Of Wands | Reversed | Personal goals, inner alignment, fear of unknown, lack of planning", "Three Of Wands | Upright | Progress, expansion, foresight, overseas opportunities", "Three Of Wands | Reversed | Playing small, lack of foresight, unexpected delays", "Four Of Wands | Upright | Celebration, joy, harmony, relaxation, homecoming", "Four Of Wands | Reversed | Personal celebration, inner harmony, conflict with others, transition.", "Five Of Wands | Upright | Conflict, disagreements, competition, tension, diversity", "Five Of Wands | Reversed | Inner conflict, conflict avoidance, tension release", "Six Of Wands | Upright | Success, public recognition, progress, self-confidence", "Six Of Wands | Reversed | Private achievement, personal definition of success, fall from grace, egotism", "Seven Of Wands | Upright | Challenge, competition, protection, perseverance", "Seven Of Wands | Reversed | Exhaustion, giving up, overwhelmed", "Eight Of Wands | Upright | Movement, fast paced change, action, alignment, air travel", "Eight Of Wands | Reversed | Delays, frustration, resisting change, internal alignment", "Nine Of Wands | Upright | Resilience, courage, persistence, test of faith, boundaries", "Nine Of Wands | Reversed | Inner resources, struggle, overwhelm, defensive, paranoia", "Ten Of Wands | Upright | Burden, extra responsibility, hard work, completion", "Ten Of Wands | Reversed | Doing it all, carrying the burden, delegation, release", "Page Of Wands | Upright | Inspiration, ideas, discovery, limitless potential, free spirit", "Page Of Wands | Reversed | Newly-formed ideas, redirecting energy, self-limiting beliefs, a spiritual path", "Knight Of Wands | Upright | Energy, passion, inspired action, adventure, impulsiveness", "Knight Of Wands | Reversed | Passion project, haste, scattered energy, delays, frustration", "Queen Of Wands | Upright | Courage, confidence, independence, social butterfly, determination", "Queen Of Wands | Reversed | Self-respect, self-confidence, introverted, re-establish sense of self", "King Of Wands | Upright | Natural-born leader, vision, entrepreneur, honour", "King Of Wands | Reversed |  Impulsiveness, haste, ruthless, high expectations"]
             card = random.sample(deck, number)
             print("You drew:")
-            print("You drew:", file=z)
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             tarot = "tarot: "
             print(tarot, card, ct)
-            print(usr, tarot, card, ct, file=z)
 
         def hack():
             time.sleep(5)
@@ -2790,7 +2365,6 @@ def main():
             ct = datetime.datetime.now()
             print(money, ct)
             hack = "hack:"
-            print(usr, hack, youm, country, serv, nega, amdorn, nega, andorm, andg, tidnar, money, ct, file=z)    
             time.sleep(3)
 
         def spar():
@@ -2802,31 +2376,25 @@ def main():
             ct = datetime.datetime.now()
             spar = "spar: "
             print(spar, action, kick, ct)
-            print(usr, spar, action, kick, ct, file=z)
             time.sleep(3)
 
         def train():
             time.sleep(2)
             print("You did:")
-            print("You did:", file=z)
             time.sleep(5)
             nums = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 20, 20, 20, 30, 30, 40, 40, 50, 50, 60, 70, 80, 90, 100]
             num = random.sample(nums, 1)
             ct = datetime.datetime.now()
             train = "train: "
             print(train, num, ct)
-            print(usr, train, num, ct, file=z)
             print("push-ups")
-            print("push-ups", file=z)
             time.sleep(3)
 
         def rest():
             ct = datetime.datetime.now()
             print("You start to rest...", ct)
-            print(usr + "" + " " + "" + "You start to rest...", ct, file=z)
             time.sleep(8)
             print("You rested", ct)
-            print(usr + "" + " " + "" + "You rested", ct, file=z)
             time.sleep(3)
 
         def haiku():
@@ -2840,21 +2408,17 @@ def main():
             ct = datetime.datetime.now()
             haiku = "haiku: "
             print(haiku, start, mid, end, ct)
-            print(usr, haiku, start, mid, end, ct, file=z)
 
         def psalms():
             dd = list(verses1)
             time.sleep(5)
             print("From the Bible (King James Version), The Book of Psalms 1-21,")
-            print("From the Bible (King James Version), The Book of Psalms 1-21,", file=z)
             print()
-            print(file=z)
             time.sleep(2)
             verse = random.sample(dd, 1)
             ct = datetime.datetime.now()
             psalms = "psalms: "
             print(psalms, verse, ct)
-            print(usr, psalms, verse, ct, file=z)
 
         def dhammapada():
             dd = list(dhammapada1)
@@ -2869,19 +2433,14 @@ def main():
             time.sleep(1)
             print()
             print()
-            print(file=z)
             print("Here are verses from Buddha's text, The Dhammapada")
-            print("Here are verses from Buddha's text, The Dhammapada", file=z)
             print()
-            print(file=z)
             time.sleep(1)
             verse = random.sample(dd, number)
             ct = datetime.datetime.now()
             dhammapad = "dhammapada: "
             print(dhammapad, verse, ct)
-            print(usr, dhammapad, verse, ct, file=z)
             print()
-            print(file=z)
 
         def pr0verbs():
             dd = list(proverbs)
@@ -2895,20 +2454,17 @@ def main():
             number
             time.sleep(.2)
             print()
-            print(file=z)
             verse = random.sample(dd, number)
             ct = datetime.datetime.now()
             prverbs = "proverbs:"
             print(prverbs, verse, ct)
-            print(usr, prverbs, verse, ct, file=z)
             print()
-            print(file=z)
 
         def koran():
             koran = list(koran1)
             while True:
                 try:
-                    number = int(input("Indicate number of (koran) verses: "))
+                    number = int(input("Indicate number of (koran) verses "))
                 except ValueError:
                     print("Invalid value")
                 else:
@@ -2916,19 +2472,16 @@ def main():
             number
             time.sleep(1)
             print()
-            print(file=z)
             print("Here are five verses from The Koran, from chapters 24. The Light, 52. The Mountain, 67. The Kingdom, 85. The Celestial Stations, 87. The Most High, 89. The Daybreak, 113. The Dawn")
-            print("Here are five verses from The Koran, from chapters 24. The Light, 52. The Mountain, 67. The Kingdom, 85. The Celestial Stations, 87. The Most High, 89. The Daybreak, 113. The Dawn", file=z)
             print()
-            print(file=z)
             time.sleep(2)
+            koran = ["[67.1] Blessed is He in Whose hand is the kingdom, and He has power over all things,", "[67.2] Who created death and life that He may try you-- which of you is best in deeds; and He is the Mighty, the Forgiving,", "[67.3] Who created the seven heavens one above another; you see no incongruity in the creation of the Beneficent God; then look again, can you see any disorder?", "[67.4] Then turn back the eye again and again; your look shall '~ come back to you confused while it is fatigued.", "[67.5] And certainly We have adorned this lower heaven with ( lamps and We have made these missiles for the Shaitans, and We have prepared for them the chastisement of burning.", "[67.6] And for those who disbelieve in their Lord is the punishment of hell, and evil is the resort.", "[67.7] When they shall be cast therein, they shall hear a loud moaning of it as it heaves,", "[67.8] Almost bursting for fury. Whenever a group is cast into it, its keeper shall ask them: Did there not come to you a warner?", "[67.9] They shall say: Yea! indeed there came to us a warner, but we rejected (him) and said: Allah has not revealed anything, you are only in a great error.", "[67.10] And they shall say: Had we but listened or pondered, we should not have been among the inmates of the burning fire.", "[67.11] So they shall acknowledge their sins, but far will be (forgiveness) from the inmates of the burning fire.", "[67.12] (As for) those who fear their Lord in secret, they shall surely have forgiveness and a great reward.", "[67.13] And conceal your word or manifest it; surely He is Cognizant of what is in the hearts.", "[67.14] Does He not know, Who created? And He is the Knower of the subtleties, the Aware.", "[67.15] He it is Who made the earth smooth for you, therefore go about in the spacious sides thereof, and eat of His sustenance, and to Him is the return after death.", "[67.16] Are you secure of those in the heaven that He should not make the earth to swallow you up? Then lo! it shall be in a state of commotion.", "[67.17] Or are you secure of those in the heaven that He should not send down upon you a punishment? Then shall you know how was My warning.", "[67.18] And certainly those before them rejected (the truth), then how was My disapproval.", "[67.19] Have they not seen the birds above them expanding (their wings) and contracting (them)? What is it that withholds them save the Beneficent God? Surely He sees everything.", "[67.20] Or who is it that will be a host for you to assist you besides the Beneficent God? The unbelievers are only in deception.", "[67.21] Or who is it that will give you sustenance if He should withhold His sustenance? Nay! they persist in disdain and aversion.", "[67.22] What! is he who goes prone upon his face better guided or he who walks upright upon a straight path?", "[67.23] Say: He it is Who brought you into being and made for you the ears and the eyes and the hearts: little is it that you give thanks.", "[67.24] Say: He it is Who multiplied you in the earth and to Him you shall be gathered.", "[67.25] And they say: When shall this threat be (executed) if you are truthful?", "[67.26] Say: The knowledge (thereof is only with Allah and I am only a plain warner.=", "[67.27] But when they shall see it nigh, the faces of those who disbelieve shall be sorry, and it shall be said; This is that which you used to call for.", "[67.28] Say: Have you considered if Allah should destroy me and those with me-- rather He will have mercy on us; yet who will protect the unbelievers from a painful punishment?", "[67.29] Say: He is the Beneficent God, we believe in Him and on Him do we rely, so you shall come to know who it is that is in clear error.", "[67.30] Say: Have you considered if your water should go down, who is it then that will bring you flowing water?", "[89.1] I swear by the daybreak,", "[89.2] And the ten nights,", "[89.3] And the even and the odd,", "[89.4] And the night when it departs.", "[89.5] Truly in that there is an oath for those who possess understanding.", "[89.6] Have you not considered how your Lord dealt with Ad,", "[89.7] (The people of) Aram, possessors of lofty buildings,", "[89.8] The like of which were not created in the (other) cities;", "[89.9] And (with) Samood, who hewed out the rocks in the valley,", "[89.10] And (with) Firon, the lord of hosts,", "[89.11] Who committed inordinacy in the cities,", "[89.12] So they made great mischief therein?", "[89.13] Therefore your Lord let down upon them a portion of the chastisement.", "[89.14] Most sure!y your Lord is watching.", "[89.15] And as for man, when his Lord tries him, then treats him with honor and makes him lead an easy life, he says: My Lord honors me.", "[89.16] But when He tries him (differently), then straitens to him his means of subsistence, he says: My Lord has disgraced me.", "[89.17] Nay! but you do not honor the orphan,", "[89.18] Nor do you urge one another to feed the poor,", "[89.19] And you eat away the heritage, devouring (everything) indiscriminately,", "[89.20] And you love wealth with exceeding love.", "[89.21] Nay! when the earth is made to crumble to pieces,", "[89.22] And your Lord comes and (also) the angels in ranks,", "[89.23] And hell is made to appear on that day. On that day shall man be mindful, and what shall being mindful (then) avail him?", "[89.24] He shall say: O! would that I had sent before for (this) my life!", "[89.25] But on that day shall no one chastise with (anything like) His chastisement,", "[89.26] And no one shall bind with (anything like) His binding.", "[89.27] O soul that art at rest!", "[89.28] Return to your Lord, well-pleased (with him), well-pleasing (Him),", "[89.29] So enter among My servants,", "[89.30] And enter into My garden.", "[87.1] Glorify the name of your Lord, the Most High,", "[87.2] Who creates, then makes complete,", "[87.3] And Who makes (things) according to a measure, then guides (them to their goal),", "[87.4] And Who brings forth herbage,", "[87.5] Then makes it dried up, dust-colored.", "[87.6] We will make you recite so you shall not forget,", "[87.7] Except what Allah pleases, surely He knows the manifest, and what is hidden.", "[87.8] And We will make your way smooth to a state of ease.", "[87.9] Therefore do remind, surely reminding does profit.", "[87.10] He who fears will mind,", "[87.11] And the most unfortunate one will avoid it,", "[87.12] Who shall enter the great fire;", "[87.13] Then therein he shall neither live nor die.", "[87.14] He indeed shall be successful who purifies himself,", "[87.15] And magnifies the name of his Lord and prays.", "[87.16] Nay! you prefer the life of this world,", "[87.17] While the hereafter is better and more lasting.", "[87.18] Most surely this is in the earlier scriptures,", "[87.19] The scriptures of Ibrahim and Musa.", "[24.1] (This is) a chapter which We have revealed and made obligatory and in which We have revealed clear communications that you may be mindful.", "[24.2] (As for) the fornicatress and the fornicator, flog each of them, (giving) a hundred stripes, and let not pity for them detain you in the matter of obedience to Allah, if you believe in Allah and the last day, and let a party of believers witness their chastisement.", "[24.3] The fornicator shall not marry any but a fornicatress or idolatress, and (as for) the fornicatress, none shall marry her but a fornicator or an idolater; and it is forbidden to the believers.", "[24.4] And those who accuse free women then do not bring four witnesses, flog them, (giving) eighty stripes, and do not admit any evidence from them ever; and these it is that are the transgressors,", "[24.5] Except those who repent after this and act aright, for surely Allah is Forgiving, Merciful.", "[24.6] And (as for) those who accuse their wives and have no witnesses except themselves, the evidence of one of these (should be taken) four times, bearing Allah to witness that he is most surely of the truthful ones.", "[24.7] And the fifth (time) that the curse of Allah be on him if he is one of the liars.", "[24.8] And it shall avert the chastisement from her if she testify four times, bearing Allah to witness that he is most surely one of the liars;", "[24.9] And the fifth (time) that the wrath of Allah be on her if he is one of the truthful.", "[24.10] And were it not for Allah's grace upon you and His mercy-- and that Allah is Oft-returning (to mercy), Wise!", "[24.11] Surely they who concocted the lie are a party from among you. Do not regard it an evil to you; nay, it is good for you. Every man of them shall have what he has earned of sin; and (as for) him who took upon himself the main part thereof, he shall have a grievous chastisement.", "[24.12] Why did not the believing men and the believing women, when you heard it, think well of their own people, and say: This is an evident falsehood?", "[24.13] Why did they not bring four witnesses of it? But as they have not brought witnesses they are liars before Allah.", "[24.14] And were it not for Allah's grace upon you and His mercy in this world and the hereafter, a grievous chastisement would certainly have touched you on account of the discourse which you entered into.", "[24.15] When you received it with your tongues and spoke with your mouths what you had no knowledge of, and you deemed it an easy matter while with Allah it was grievous.", "[24.16] And why did you not, when you heard it, say: It does not beseem us that we should talk of it; glory be to Thee! this is a great calumny?", "[24.17] Allah admonishes you that you should not return to the like of it ever again if you are believers.", "[24.18] And Allah makes clear to you the communications; and Allah is Knowing, Wise.", "[24.19] Surely (as for) those who love that scandal should circulate respecting those who believe, they shall have a grievous chastisement in this world and the hereafter; and Allah knows, while you do not know.", "[24.20] And were it not for Allah's grace on you and His mercy, and that Allah is Compassionate, Merciful.", "[24.21] O you who believe! do not follow the footsteps of the Shaitan, and whoever follows the footsteps of the Shaitan, then surely he bids the doing of indecency and evil; and were it not for Allah's grace upon you and His mercy, not one of you would have ever been pure, but Allah purifies whom He pleases; and Allah is Hearing, Knowing.", "[24.22] And let not those of you who possess grace and abundance swear against giving to the near of kin and the poor and those who have fled in Allah's way, and they should pardon and turn away. Do you not love that Allah should forgive you? And Allah is Forgiving, Merciful.", "[24.23] Surely those who accuse chaste believing women, unaware (of the evil), are cursed in this world and the hereafter, and they shall have a grievous chastisement.", "[24.24] On the day when their tongues and their hands and their feet shall bear witness against them as to what they did.", "[24.25] On that day Allah will pay back to them in full their just reward, and they shall know that Allah is the evident Truth.", "[24.26] Bad women .are for bad men and bad men are for bad women. Good women are for good men and good men are for good women", "[24.27] O you who believe! Do not enter houses other than your own houses until you have asked permission and saluted their inmates; this is better for you, that you may be mindful.", "[24.28] But if you do not find any one therein, then do not enter them until permission is given to you; and if it is said to you: Go back, then go back; this is purer for you; and Allah is Cognizant of what you do.", "[24.29] It is no sin in you that you enter uninhabited houses wherein you have your necessaries; and Allah knows what you do openly and what you hide.", "[24.30] Say to the believing men that they cast down their looks and guard their private parts; that is purer for them; surely Allah is Aware of what they do.", "[24.31] And say to the believing women that they cast down their looks and guard their private parts and do not display their ornaments except what appears thereof, and let them wear their head-coverings over their bosoms, and not display their ornaments except to their husbands or their fathers, or the fathers of their husbands, or their sons, or the sons of their husbands, or their brothers, or their brothers' sons, or their sisters' sons, or their women, or those whom their right hands possess, or the male servants not having need (of women), or the children who have not attained knowledge of what is hidden of women; and let them not strike their feet so that what they hide of their ornaments may be known; and turn to Allah all of you, O believers! so that you may be successful.", "[24.32] And marry those among you who are single and those who are fit among your male slaves and your female slaves; if they are needy, Allah will make them free from want out of His grace; and Allah is Ample-giving, Knowing.", "[24.33] And let those who do not find the means to marry keep chaste until Allah makes them free from want out of His grace. And (as for) those who ask for a writing from among those whom your right hands possess, give them the writing if you know any good in them, and give them of the wealth of Allah which He has given you; and do not compel your slave girls to prostitution, when they desire to keep chaste, in order to seek the frail good of this world's life; and whoever compels them, then surely after their compulsion Allah is Forgiving, Merciful.", "[24.34] And certainly We have sent to you clear communications and a description of those who have passed away before you, and an admonition to those who guard (against evil).", "[24.35] Allah is the light of the heavens and the earth; a likeness of His light is as a niche in which is a lamp, the lamp is in a glass, (and) the glass is as it were a brightly shining star, lit from a blessed olive-tree, neither eastern nor western, the oil whereof almost gives light though fire touch it not-- light upon light-- Allah guides to His light whom He pleases, and Allah sets forth parables for men, and Allah is Cognizant of all things.", "[24.36] In houses which Allah has permitted to be exalted and that His name may be remembered in them; there glorify Him therein in the mornings and the evenings,", "[24.37] Men whom neither merchandise nor selling diverts from the remembrance of Allah and the keeping up of prayer and the giving of poor-rate; they fear a day in which the hearts and eyes shall turn about;", "[24.38] That Allah may give them the best reward of what they have done, and give them more out of His grace; and Allah gives sustenance to whom He pleases without measure.", "[24.39] And (as for) those who disbelieve, their deeds are like the mirage in a desert, which the thirsty man deems to be water; until when he comes to it he finds it to be naught, and there he finds Allah, so He pays back to him his reckoning in full; and Allah is quick in reckoning;", "[24.40] Or like utter darkness in the deep sea: there covers it a wave above which is another wave, above which is a cloud, (layers of) utter darkness one above another; when he holds out his hand, he is almost unable to see it; and to whomsoever Allah does not give light, he has no light.", "[24.41] Do you not see that Allah is He Whom do glorify all those who are in the heavens and the earth, and the (very) birds with expanded wings? He knows the prayer of each one and its glorification, and Allah is Cognizant of what they do.", "[24.42] And Allah's is the kingdom of the heavens and the earth, and to Allah is the eventual coming.", "[24.43] Do you not see that Allah drives along the clouds, then gathers them together, then piles them up, so that you see the rain coming forth from their midst? And He sends down of the clouds that are (like) mountains wherein is hail, afflicting therewith whom He pleases and turning it away from whom He pleases; the flash of His lightning almost takes away the sight.", "[24.44] Allah turns over the night and the day; most surely there is a lesson in this for those who have sight.", \
+            "[24.45] And Allah has created from water every living creature: so of them is that which walks upon its belly, and of them is that which walks upon two feet, and of them is that which walks upon four; Allah creates what He pleases; surely Allah has power over all things.", "[24.46] Certainly We have revealed clear communications, and Allah guides whom He pleases to the right way.", "[24.47] And they say: We believe in Allah and in the apostle and we obey; then a party of them turn back after this, and these are not believers.", "[24.48] And when they are called to Allah and His Apostle that he may judge between them, lo! a party of them turn aside.", "[24.49] And if the truth be on their side, they come to him quickly, obedient.", "[24.50] Is there in their hearts a disease, or are they in doubt, or do they fear that Allah and His Apostle will act wrongfully towards them? Nay! they themselves are the unjust.", "[24.51] The response of the believers, when they are invited to Allah and His Apostle that he may judge between them, is only to say: We hear and we obey; and these it is that are the successful.", "[24.52] And he who obeys Allah and His Apostle, and fears Allah, and is careful of (his duty to) Him, these it is that are the achievers.", "[24.53] And they swear by Allah with the most energetic of their oaths that if you command them they would certainly go forth. Say: Swear not; reasonable obedience (is desired); surely Allah is aware of what you do.", "[24.54] Say: Obey Allah and obey the Apostle; but if you turn back, then on him rests that which is imposed on him and on you rests that which is imposed on you; and if you obey him, you are on the right way; and nothing rests on the Apostle but clear delivering (of the message).", "[24.55] Allah has promised to those of you who believe and do good that He will most certainly make them rulers in the earth as He made rulers those before them, and that He will most certainly establish for them their religion which He has chosen for them, and that He will most certainly, after their fear, give them security in exchange; they shall serve Me, not associating aught with Me; and whoever is ungrateful after this, these it is who are the. transgressors.", "[24.56] And keep up prayer and pay the poor-rate and obey the Apostle, so that mercy may be shown to you.", "[24.57] Think not that those who disbelieve shall escape in the earth, and their abode is the fire; and certainly evil is the resort!", "[24.58] O you who believe! let those whom your right hands possess and those of you who have not attained to puberty ask permission of you three times; before the morning prayer, and when you put off your clothes at midday in summer, and after the prayer of the nightfall; these are three times of privacy for you; neither is it a sin for you nor for them besides these, some of you must go round about (waiting) upon others; thus does Allah make clear to you the communications, and Allah is Knowing, Wise.", "[24.59] And when the children among you have attained to puberty, let them seek permission as those before them sought permission; thus does Allah make clear to you His communications, and Allah is knowing, Wise.", "[24.60] And (as for) women advanced in years who do not hope for a marriage, it is no sin for them if they put off their clothes without displaying their ornaments; and if they restrain themselves it is better for them; and Allah is Hearing, Knowing.", "[24.61] There is no blame on the blind man, nor is there blame on the lame, nor is there blame on the sick, nor on yourselves that you eat from your houses, or your fathers' houses or your mothers' houses, or your brothers' houses, or your sisters' houses, or your paternal uncles' houses, or your paternal aunts' houses, or your maternal uncles' houses, or your maternal aunts' houses, or what you possess the keys of, or your friends' (houses). It is no sin in you that you eat together or separately. So when you enter houses, greet your people with a salutation from Allah, blessed (and) goodly; thus does Allah make clear to you the communications that you may understand.", "[24.62] Only those are believers who believe in Allah and His Apostle, and when they are with him on a momentous affair they go not away until they have asked his permission; surely they who ask your permission are they who believe in Allah and His Apostle; so when they ask your permission for some affair of theirs, give permission to whom you please of them and ask forgiveness for them from Allah; surely Allah is Forgiving, Merciful.", "[24.63] Do not hold the Apostle's calling (you) among you to be like your calling one to the other; Allah indeed knows those who steal away from among you, concealing themselves; therefore let those beware who go against his order lest a trial afflict them or there befall them a painful chastisement.", "[24.64] Now surely Allah's is whatever is in the heavens and the earth; He knows indeed that to which you are conforming yourselves; and on the day on which they are returned to Him He will inform them of what they did; and Allah is Cognizant of all things.", "[85.1] I swear by the mansions of the stars,", "[85.2] And the promised day,", "[85.3] And the bearer of witness and those against whom the witness is borne.", "[85.4] Cursed be the makers of the pit,", "[85.5] Of the fire (kept burning) with fuel,", "[85.6] When they sat by it,", "[85.7] And they were witnesses of what they did with the believers.", "[85.8] And they did not take vengeance on them for aught except that they believed in Allah, the Mighty, the Praised,", "[85.9] Whose is the kingdom of the heavens and the earth; and Allah is a Witness of all things.", "[85.10] Surely (as for) those who persecute the believing men and the believing women, then do not repent, they shall have the chastisement of hell, and they shall have the chastisement of burning.", "[85.11] Surely (as for) those who believe and do good, they shall have gardens beneath which rivers flow, that is the great achievement.", "[85.12] Surely the might of your Lord is great.", "[85.13] Surely He it is Who originates and reproduces,", "[85.14] And He is the Forgiving, the Loving,", "[85.15] Lord of the Arsh, the Glorious,", "[85.16] The great doer of what He will.", "[85.17] Has not there come to you the story of the hosts,", "[85.18] Of Firon and Samood?", "[85.19] Nay! those who disbelieve are in (the act of) giving the lie to the truth.", "[85.20] And Allah encompasses them on every side.", "[85.21] Nay! it is a glorious Quran,", "[85.22] In a guarded tablet.", "[113.1] Say: I seek refuge in the Lord of the dawn,", "[113.2] From the evil of what He has created,", "[113.3] And from the evil of the utterly dark night when it comes,", "[113.4] And from the evil of those who blow on knots,", "[113.5] And from the evil of the envious when he envies", "[52.1] I swear by the Mountain,", "[52.2] And the Book written", "[52.3] In an outstretched fine parchment,", "[52.4] And the House (Kaaba) that is visited,", "[52.5] And the elevated canopy", "[52.6] And the swollen sea", "[52.7] Most surely the punishment of your Lord will come to pass;", "[52.8] There shall be none to avert it;", "[52.9] On the day when the heaven shall move from side to side", "[52.10] And the mountains shall pass away passing away (altogether).", "[52.11] So woe on that day to those who reject (the truth),", "[52.12] Those who sport entering into vain discourses.", "[52.13] The day on which they shall be driven away to the fire of hell with violence.", "[52.14] This is the fire which you used to give the lie to.", "[52.15] Is it magic then or do you not see?", "[52.16] Enter into it, then bear (it) patiently, or do not bear (it) patiently, it is the same to you; you shall be requited only (for) what you did.", "[52.17] Surely those who guard (against evil) shall be in gardens and bliss", "[52.18] Rejoicing because of what their Lord gave them, and their Lord saved them from the punishment of the burning fire.", "[52.19] Eat and drink pleasantly for what you did,", "[52.20] Reclining on thrones set in lines, and We will unite them to large-eyed beautiful ones.", "[52.21] And (as for) those who believe and their offspring follow them in faith, We will unite with them their offspring and We will not diminish to them aught of their work; every man is responsible for what he shall have wrought.", "[52.22] And We will aid them with fruit and flesh such as they desire.", "[52.23] They shall pass therein from one to another a cup wherein there shall be nothing vain nor any sin.", "[52.24] And round them shall go boys of theirs as if they were hidden pearls.", "[52.25] And some of them shall advance towards others questioning each other.", "[52.26] Saying: Surely we feared before on account of our families:", "[52.27] But Allah has been gracious to us and He has saved us from the punishment of the hot wind:", "[52.28] Surely we called upon Him before: Surely He is the Benign, the Merciful.", "[52.29] Therefore continue to remind, for by the grace of your Lord, you are not a soothsayer, or a madman.", "[52.30] Or do they say: A poet, we wait for him the evil accidents of time.", "[52.31] Say: Wait, for surely I too with you am of those who wait.", "[52.32] Nay! do their understandings bid them this? Or are they an inordinate people?", "[52.33] Or do they say: He has forged it. Nay! they do not believe.", "[52.34] Then let them bring an announcement like it if they are truthful.", "[52.35] Or were they created without there being anything, or are they the creators?", "[52.36] Or did they create the heavens and the earth? Nay! they have no certainty.", "[52.37] Or have they the treasures of your Lord with them? Or have they been set in absolute authority?", "[52.38] Or have they the means by which they listen? Then let their listener bring a clear authority.", "[52.39] Or has He daughters while you have sons?", "[52.40] Or do you ask them for a reward, so that they are overburdened by a debt?", "[52.41] Or have they the unseen so that they write (it) down?", "[52.42] Or do they desire a war? But those who disbelieve shall be the vanquished ones in war.", "[52.43] Or have they a god other than Allah? Glory be to Allah from what they set up (with Him).", "[52.44] And if they should see a portion of the heaven coming down, they would say: Piled up clouds.", "[52.45] Leave them then till they meet that day of theirs wherein they shall be made to swoon (with terror):", "[52.46] The day on which their struggle shall not avail them aught, nor shall they be helped.", "[52.47] And surely those who are unjust shall have a punishment besides that (in the world), but most of them do not know.", "[52.48] And wait patiently for the judgment of your Lord, for surely you are before Our eyes, and sing the praise of your Lord when you rise;", "[52.49] And in the night, give Him glory too, and at the setting of the stars."]
             verse = random.sample(koran, number)
             ct = datetime.datetime.now()
             kor = "koran: "
             print(kor, verse, ct)
-            print(usr, kor, verse, ct, file=z)
             print()
-            print(file=z)
 
         def message():
             chat = input("$ ")
@@ -2943,7 +2496,6 @@ def main():
             ctd = datetime.datetime.now()
             lh = "lh: "
             print(lh + "" + "$" + "" + " " + "" + usr, chat)
-            print(lh + "" + "$" + "" + " " + "" + usr, chat, ctd, file=z)
             for _ in range(number):
                 def generate_random_letters():
                     random1 = random.choice(string.ascii_letters)
@@ -2955,14 +2507,12 @@ def main():
                 random_letters = generate_random_letters()
                 time.sleep(random.randint(0,4))
                 print()
-                print(file=z)
                 nano = (diction)
                 sitch  = (round(random.random()*9999,4))
                 lokalhost = "LOKALHOST: "
                 chat = random.sample(nano, random.randint(0,5))
                 ct = datetime.datetime.now()
                 print(lokalhost, random_letters, sitch, chat, ct)
-                print(usr, lokalhost, random_letters, sitch, chat, ct, file=z)
 
         def souls():
             nano = (diction)
@@ -2979,20 +2529,16 @@ def main():
             for _ in range(number):
                 time.sleep(1)
                 print()
-                print(file=z)
                 anrdom = (round(random.random()*999,8))
                 soulchat = random.sample(nano, 1)
                 ct = datetime.datetime.now()
                 souls = "souls: "
                 print(souls, anrdom, soulchat, ct)
-                print(usr, souls, anrdom, soulchat, ct, file=z)
 
         def c():
             chat2 = input("chat: ")
             print()
-            print(file=z)
             print(usr + "" + " " + "" + "You: " + "" + chat2)
-            print(usr + "" + " " + "" + "You: " + "" + chat2, file=z)
             for _ in range(6):
                 print()
                 time.sleep(random.randint(1,4))
@@ -3002,11 +2548,9 @@ def main():
                 kchat = random.sample(chatso, 1)
                 c = "c: "
                 print(c, kchatz, kchat)
-                print(usr, c, kchatz, kchat, file=z)
 
         def asciii():
             print()
-            print(file=z)
             ctm = datetime.datetime.now()
             def generate_random_letters():
                 random1 = random.choice(string.ascii_letters)
@@ -3019,7 +2563,6 @@ def main():
             sitch  = (round(random.random()*9999,4))
             asc = "ascii:"
             print(asc, usr, random_letters, sitch, ctm)
-            print(asc, usr, random_letters, sitch, ctm, file=z)
             pr1 = (round(random.random()*99999999999999999999999999999999999999999))
             pr2 = (round(random.random()*99999999999999999999999999999999999999999))
             pr3 = (round(random.random()*99999999999999999999999999999999999999999))
@@ -3045,114 +2588,61 @@ def main():
             print(pr10)
             print(pr11)
             print(pr12)
-            print(file=z)
-            print(pr1, file=z)
-            print(pr2, file=z)
-            print(pr3, file=z)
-            print(pr4, file=z)
-            print(pr5, file=z)
-            print(pr6, file=z)
-            print(pr7, file=z)
-            print(pr8, file=z)
-            print(pr9, file=z)
-            print(pr10, file=z)
-            print(pr11, file=z)
-            print(pr12, file=z)
-
-        def ascsearch():
-            zen = input("(ascii) search: ")
-            print()
-            try:
-                with open(r"METASCI-logs.txt", 'r') as fp:
-                    for line_no, line in enumerate(fp):
-                        if zen in line:
-                            print(line.strip())
-                            fp_temp = open(r"METASCI-logs.txt", 'r')
-                            count = 0
-                            for temp_line_no, temp_line in enumerate(fp_temp):
-                                if temp_line_no > line_no and count < 14:
-                                    print(temp_line.strip())
-                                    count += 1
-                            fp_temp.close()
-                            print()
-            except FileNotFoundError:
-                print("Error: File 'METASCI-logs.txt' not found.")
-            except Exception as e:
-                print(f"An error occurred: {e}")
 
         def mp3():
             print("You queue five tracks from an mp3 player that you found on the train...")
-            print(usr + "" + " " + "" + "You queue four tracks from an mp3 player that you found on the train...", file=z)
             time.sleep(4)
             tracks = ["NO RULES by Mija, bloody white", "How Low by Ludacris", "BURN IT DOWN by Kayzo", "COUNT DANKULA by GENGHAR, GHASTLY", "Chum by Earl Sweatshirt", "O.P.U.S. by Subtronics", "Cyclops Rocks by Subtronics", "Wyclef Jean by Young Thug", "Wild for the Night by A$AP Rocky, Skrillex", "Hercules by Young Thug", "Angels by A$AP Rocky", "F**kin' Problems by A$AP Rocky, Drake, 2 Chainz, Kendrick Lamar", "Goldie by A$AP Rocky", "Don't Think It Over by Her's", "In My Mind - Deathpact Reprise by ILLENIUM, Excision, HALIENE, Deathpact", "Morning Star's Fall by Caster, Mantis", "Worldwide Suicide by In Hearts Wake, PhaseOne", "Never Let Go by Dion Timmer, Haley Maze", "Dont Wake Me Up by Oliverse", "Someone Else by Bear Grillz, Elle Vee", "Bottle Of Rain by Kayzo, POORSTACY", "GIGACHAD by Kai Wachi", "You're Gonna Love Me by Eliminate, Leah Culver", "Love, Love, Love by As Tall As Lions", "MakeDamnSure by Taking Back Sunday", "Kings And Queens by Thirty Seconds To Mars", "Maps by Yeah Yeah Yeahs", "Poetically Pathetic by Amber Pacific", "Tonight by FM Static", "Anthem Of Our Dying Day by Story Of The Year", "MAKE U MISS ME by Kayzo, Seon", "NEWS FLASH by Kayzo, Kamiyada+", "Fight or Flight by Alison Wonderland, MEMBA", "YUKON (INTERLUDE) by Joji", "My Hero by Foo Fighters", "Called Out In The Dark by Snow Patrol", "my god by Trevor Hall", "Real Love by Jess Glynne, Clean Bandit", "MIND YOUR BUSINESS by will.i.am, Britney Spears", "Obstacle 1 by Interpol", "Full Circle by HAELOS", "Hold On by HAELOS", "Fire Ina Hole by Method Man, Redman", "Rockit by Herbie Hancock", "Hymn For The Weekend by Coldplay", "Agent Orange by Slapshock", "I'm Gonna Be by Post Malone", "I'm Not Okay by My Chemical Romance", "Rude Boy by Rihanna", "D.O.A. (Death Of Auto-Tune) by JAY-Z", "Roses by The Chainsmokers, ROZES", "Stick Stickly by Attack Attack!", "Jail pt 2 by Kanye West", "Risk by Deftones", "This Is What You Came For by Calvin Harris, Rihanna", "Hot-n-Fun by N.E.R.D, Nelly Furtado", "Work by Rihanna, Drake", "777 by Kid Trunks, XXXTENTACION", "Music by Madonna", "What's My Name by Rihanna, Drake", "Love Never Felt So Good by Michael Jackson, Justin Timberlake", "Sweet Disposition by The Temper Trap", "Forrest Gump by Frank Ocean", "Purification by Purification", "Total Liberation by Gather", "Soaked In Torment by All Out War", "Scream & Shout by will.i.am, Britney Spears", "Decode by Paramore", "Miracle by Paramore", "Messiah by Alison Wonderland, M-Phazes", "Heart Skipped A Beat by The xx", "Basic Space by The xx", "Intro by The xx", "Islands by The xx", "Crystalized by The xx", "VCR by The xx", "Mood Ring by Lorde", "Sudden Desire by Hayley Williams", "August 10 by Khruangbin", "The Pioneers by Bloc Party", "Chasing Cars by Snow Patrol", "RUNNING by The Kid LAROI", "Shake It by Metro Station", "The Less I Know The Better by Tame Impala", "Miss The Rage by Trippie Red, Playboi Carti", "This Is America by Childish Gambino", "Consistency by Megan Thee Stallion, Jhene Aiko", "Flexing So Hard by Higher Brothers", "Laundry by QUIX", "Cologne by Clean Bandit, Nikki Cislyn, Javeon", "Pachuca Sunrise by Minus The Bear", "Feeling Like The End by Joji", "Nomadic by Higher Brothers, Joji", "Upper Echelon by Travis Scott, T.I., 2 Chainz", "Same Ol' Mistakes by Rihanna", "Power Trip by J. Cole, Miguel", "Hits From The Bong by Cypress Hill", "Y.O.U. by Method Man, Redman"]
             music = random.sample(tracks, 5)
             ct = datetime.datetime.now()
             mp3 = "mp3: "
             print(mp3, music, ct)
-            print(usr, mp3, music, ct, file=z)
             time.sleep(3)
 
         def monopoly():
             print("You rolled:")
-            print("You rolled:", file=z)
             time.sleep(2)
             dice1 = ["1", "2", "3", "4", "5", "6", "7", "8"]
             dice2 = ["1", "2", "3", "4", "5", "6", "7", "8"]
             roll1 = random.sample(dice1, 1)
             roll2 = random.sample(dice2, 1)
             print(roll1)
-            print(roll1, file=z)
             print(roll2)
-            print(roll2, file=z)
             time.sleep(2)
             boxes = ["Mediterranean Avenue", "Community Chest", "Baltic Avenue", "INCOME TAX", "Reading Railroad", "Oriental Avenue", "Chance", "Vermont Avenue", "Connecticut Avenue", "Jail", "St. Charles Palace", "Electric Company", "States Avenue", "Virginia Avenue", "Pennsylvania Railroad", "St. James Place", "Community Chest", "Free Parking", "Kentucky Avenue", "Chance", "Indiana Avenue", "Illinois Avenue", "B&O Railroad", "Atlantic Avenue", "Ventnor Avenue", "Water Works", "Marvin Gardens", "GO TO JAIL", "Pacific Avenue", "North Carolina Avenue", "Community Chest", "Pennsylvania Avenue", "Short Line", "Chance", "Park Place", "LUXURY TAX", "Boardwalk"]
             box = random.sample(boxes, 1)
             print("And landed in =")
-            print("And landed in =", file=z)
             ct = datetime.datetime.now()
             monopoly = "monopoly: "
             print(monopoly, box, ct)
-            print(usr, monopoly, roll1, roll2, box, ct, file=z)
             time.sleep(3)
 
         def equips():
             time.sleep(2)
             print("head:")
-            print("head:", file=z)
             headgear = ["samurai helmet", "bike helmet", "motorcycle helmet", "astronaut helmet", "pilot helmet", "aviator hat", "baseball cap", "backwards baseball cap", "trucker cap", "backwards trucker cap", "construction helmet", "miner helmet", "skate helmet", "ski mask", "facemask", "beanie", "birthday party hat", "pantyhose", "f13th mask", "jabbawockee mask", "none", "poring hat", "beehive", "idea bubble", "speech bubble", "bucket hat", "black bucket hat", "beige bucket hat", "orange bucket hat", "blue bucket hat", "american football helmet", "rugby helmet", "emo hair", "mohawk", "blonded semi-balded", "skinhead", "tropika", "glasses", "raybans", "shades", "spectacles", "night-vision goggles", "pilot goggles", "black-rimmed glasses", "nostril piercing", "tibetan headgear", "sikh headgear", "muslim hat", "skullcap", "muslim skullhat", "long hair", "salt and pepper", "blonde", "headphones", "earphones", "visor hat", "headband", "cat headband", "rabbit headband", "afro", "curly curls", "facial mask", "face paint", "warpaint", "unipaint", "maked-up", "bush headgear", "soldier helmet", "buddhahead", "game-night drink", "cig", "tobacco", "spliff", "straw", "british army guard headgear", "police helmet", "police mask", "hanja mask", "java mask", "african continent mask", "feather", "chef hat", "indian chief headgear", "black paint", "hijab"]
             head= random.sample(headgear, 1)
             print(head)
-            print(head, file=z)
             print("torso:")
-            print("torso:", file=z)
             torsogear = ["knight armor", "police armor", "samurai armor", "karate uniform", "police uniform", "soldier uniform", "korean robe", "japanese robe", "barong", "polo", "shirt", "black shirt", "sweater", "tanktop", "backpack", "slingbag", "none", "chest hair", "kevlar", "press vest", "bush gear", "hoodie", "white hoodie", "blue hoodie", "tight shirt", "nikes", "puma", "adidas", "coca-cola retro shirt", "rasta shirt", "sash", "soccer uniform", "american football armor", "football shirt", "soccer shirt", "referee shirt", "pacemaker", "bra", "bikini", "chest bag", "tuxedo", "suit", "bowtie", "tie", "apron", "chef uniform", "red paint", "black paint", "astronaut suit", "diving suit", "rashguard", "jersey", "bathrobe", "farmer gear", "lanyard", "muslim clothing", "sikh clothing", "tourguide uniform", "boyscout uniform", "girlscout uniform", "black sweater", "scarf", "shawl", "green hoodie", "pink hoodie", "jacket", "windbreaker", "varsity jacket", "jock jacket", "vest", "coat"]
             torso= random.sample(torsogear, 1)
             print(torso)
-            print(torso, file=z)
             print("hand:")
-            print("hand:", file=z)
             handgear = ["sword", "samurai", "club", "knife", "machete", "ice cream", "food", "coffee", "pizza", "camera", "gun", "staff", "ruler", "katana", "arnis", "nunchucks", "cat", "tablet", "phone", "iphone", "android", "fruitshake", "vape", "bong", "spliff", "joint", "beer", "champagne", "chainsaw", "folder", "testpaper", "pen", "macbook", "laptop", "linux computer", "pencil", "paintbrush", "tire pump", "fire extinguisher", "measuring device", "scalpel", "diamond cutter", "diamond", "diamonds", "trash", "water", "none", "empty-hand", "spraypaint", "smartwatch", "dynamite", "c4", "whisker", "whiskey", "liquor", "flask", "leaf", "feather", "book", "novel", "junkfood", "rifle", "sniper", "handgun", "laser", "keys", "guitar", "electric guitar", "classical guitar", "ukulele", "keyboard", "burger", "twig", "plank", "paddel", "coins", "money", "dollar bills", "fruit", "vegetable", "ps4 controller", "xbox controller", "ipod", "yarn", "spear", "bow"]
             hand= random.sample(handgear, 1)
             print(hand)
-            print(hand, file=z)
             print("legs:")
-            print("legs:", file=z)
             leggear = ["tights", "shorts", "cycling shorts", "skirt", "bushwear", "pants", "leggings", "elephant pants", "skinny jeans", "jeans", "none", "trunks", "pants", "pants", "pants", "holster", "bruise", "slacks", "hiking pants", "karate pants", "taekwondo pants", "mma shorts", "briefs", "sleather pants"]
             legs= random.sample(leggear, 1)
             print(legs)
-            print(legs, file=z)
             print("feet:")
-            print("feet:", file=z)
             feetgear = ["slippers", "hotel slippers", "shoes", "shoes", "shoes", "shoes", "boots", "beige boots", "black army boots", "nikes", "adidas", "puma", "converse", "chucks", "none", "socks", "clogs", "leather shoes", "white shoes", "skateboard", "longboard", "sneakers", "new balance", "world balance", "fluffy shoes", "fluffy slippers", "sandals"]
             feet= random.sample(feetgear, 1)
             print(feet)
-            print(feet, file=z)
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             equips = "equips: "
             print(equips, head, torso, hand, legs, feet, ct)
-            print(usr, equips, head, torso, hand, legs, feet, ct, file=z)
 
         def rpg():
             time.sleep(2)
@@ -3161,31 +2651,22 @@ def main():
             ct = datetime.datetime.now()
             rpg = "rpg: "
             print(rpg, path, ct)
-            print(usr, rpg, path, ct, file=z)
             time.sleep(3)
 
         def archery():
             time.sleep(2)
             print()
-            print(file=z)
             print("You aim your bow..")
-            print(usr + "" + " " + "" + "You aim your bow..", file=z)
             time.sleep(2)
             print("You hit:")
-            print("You hit:", file=z)
             num = (round(random.random()*30,3))
             print(num)
-            print(num, file=z)
             print("centimeters from the bullseye with")
-            print("centimeters from the bullseye with", file=z)
             raditn = (random.randint(50,100))
             print(raditn)
-            print(raditn, file=z)
             ct = datetime.datetime.now()
             print("percent accuracy", ct)
-            print("percent accuracy", ct, file=z)
             archery = "archery: "
-            print(usr, archery, num, raditn, ct, file=z)
             time.sleep(3)
 
         def color_key():
@@ -3195,7 +2676,6 @@ def main():
             ct = datetime.datetime.now()
             colorkey = "color key: "
             print(colorkey, colors, ct)
-            print(usr, colorkey, colors, ct, file=z)
 
         def magic():
             opp = "OPPONENT"
@@ -3259,7 +2739,6 @@ def main():
             ct = datetime.datetime.now()
             print(turnt, ct)
             magic = "magic:"
-            print(usr, magic, opp, hand, hand1, hand2, hand3, hand4, hand5, hand6, hand7, nexto, next1, fromb, you, hand, hand21, hand22, hand23, hand24, hand25, hand26, hand27, nexto, next2, fromc, turnt, ct, file=z)
 
         def football():
             football = ["touchdown", "touchdown", "touchdown", "first down", "first down", "first down", "first down", "second down", "second down", "second down", "third down", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "the path is clear", "there are 3 guards ahead of you", "there are 3 guards ahead of you", "there are 3 guards ahead of you", "there are 4 guards ahead of you", "there are 2 guards ahead of you", "there are 2 guards ahead of you", "there are 2 guards ahead of you", "there is 1 guard ahead of you", "there is 1 guard ahead of you"]
@@ -3267,7 +2746,6 @@ def main():
             ct = datetime.datetime.now()
             footballs = "football: "
             print(footballs, fball, ct)
-            print(usr, footballs, fball, ct, file=z)
 
         def mapp():
             dd = list(diction)
@@ -3285,7 +2763,6 @@ def main():
             ct = datetime.datetime.now()
             mapd = "map:"
             print(mapd, mapped, ct)
-            print(usr, mapd, mapped, ct, file=z)
 
         def auto_mat():
             while True:
@@ -3300,7 +2777,6 @@ def main():
             time.sleep(1)
             print()
             print(numberstr + "" + " " + "" + "processes will be queued...")
-            print(usr + "" + " " + "" + numberstr + "" + " " + "" + "processes will be queued...", file=z)
             time.sleep(3)
             for _ in range(number):
                 print()
@@ -3308,26 +2784,21 @@ def main():
                 function_list = [version, print_time, pray, climb, prayer, stats, progress, light_incense, hebrews, teletubby, legal_terms, biology, chemistry, patient_simu, earth_science, psychology, medicals, license, police, clearance, nano, entry, micasa, stuff, worship, posting, meditate, sleep, eat, find_coins, slot, draw_card, search_for_items, fly, drink_coffee, drink_tea, surf, collections, doodling, zen_melody, value, bump, ma, skate, art, radio, give_alms, brawl, karate, koans, hipster_tarot, hack, spar, train, rest, haiku, psalms, dhammapada, koran, message, souls, c, asciii, mp3, monopoly, equips, rpg, archery, color_key, magic, football, mapp, ID, IDC, fuzz, msgs, tag, atag, frames, chichars, tinie_N, kata, hangu, generate_secure_string, pr0verbs, insta_ghost_write, n1]
                 random.choice(function_list)()
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             print("/processes finished!", ct)
-            print(usr + "" + " " + "" + "/processes finished!", ct, file=z)
             print()
-            print(file=z)
 
         def ID():
             ct = datetime.datetime.now()
             ID = "ID:"
             log = "[Logged-in]"
             print(usr, ID, log, ct)
-            print(usr, ID, log, ct, file=z)
 
         def IDC():
             ct = datetime.datetime.now()
             IDC = "IDC:"
             log = "[Logged-out]"
             print(usr, IDC, log, ct)
-            print(usr, IDC, log, ct, file=z)
 
         def weapon_start():
             print("Ctrl+C to stop")
@@ -3415,37 +2886,9 @@ def main():
             if shutil.which("espeak"):
                 try:
                     if platform.system() == "Windows":
-                        subprocess.run(["espeak", "-v", "en+f1", text], check=True)
+                        subprocess.run(["espeak", text], check=True)
                     else:
-                        subprocess.run(["espeak", "-v", "en+f1", text], check=True)
-                    return
-                except subprocess.CalledProcessError as e:
-                    print(f"eSpeak error: {e}")
-                    return
-                except Exception as e:
-                    print(f"An unexpected error occurred with eSpeak: {e}")
-                    return d
-            else:
-                print()
-                print("ERROR: Neither 'termux-tts-speak' nor 'espeak' was found.")
-                print("Install 'termux-api' (and the Android Termux:API app) or 'sudo apt install espeak / pkg install espeak'.")
-
-        def spik(text):
-            if platform.system() == "Linux" and shutil.which("termux-tts-speak"):
-                try:
-                    subprocess.run(["termux-tts-speak", text], check=True)
-                    return
-                except subprocess.CalledProcessError as e:
-                    print(f"Termux-TTS error: {e}")
-                except FileNotFoundError:
-                    pass
-
-            if shutil.which("espeak"):
-                try:
-                    if platform.system() == "Windows":
-                        subprocess.run(["espeak", "-v", "ru+f2", text], check=True)
-                    else:
-                        subprocess.run(["espeak", "-v", "ru+f2", text], check=True)
+                        subprocess.run(["espeak", text], check=True)
                     return
                 except subprocess.CalledProcessError as e:
                     print(f"eSpeak error: {e}")
@@ -3462,17 +2905,7 @@ def main():
             maroon = " st"
             nano = (diction)
             title = input("call name: ")
-            c = open("call-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "call-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=c)
             print()
-            print(file=z)
-            print("*this saves to call-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=c)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3481,26 +2914,16 @@ def main():
                     random3 = random.choice(string.ascii_letters)
                     letters = [random1, random2, random3]
                     return letters
-                def generate_ans():
-                    ans = (alphabeta)
-                    anschar = random.choices(ans, k=random.randint(5,6))
-                    sstr = ''.join(anschar)
-                    return sstr
-                anschar_str = generate_ans()
                 speak("alert!")
-                time.sleep(2.9)
+                time.sleep(1.6)
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 kchat = random.sample(nano, random.randint(1,7))
                 random_result = random.choices(nano, k=random.randint(1,7))
                 result_text = "  ".join(random_result)
-                print(maroon, anschar_str, sitch, result_text, ctm)
-                print(maroon, anschar_str, sitch, result_text, ctm, file=c)
-                speak(anschar_str)
-                time.sleep(.2)
+                print(maroon, random_letters, sitch, result_text, ctm)
                 speak(result_text)
                 print()
-                print(file=c)
             
             def main_loop():
                 while True:
@@ -3519,7 +2942,6 @@ def main():
             maroon = " st"
             nano = (diction)
             title = input("time-call name: ")
-            c = open("call-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             while True:
                 try:
@@ -3531,13 +2953,7 @@ def main():
             buffer
             monitor = "time-call-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=c)
             print()
-            print(file=z)
-            print("*this saves to call-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=c)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3546,88 +2962,16 @@ def main():
                     random3 = random.choice(string.ascii_letters)
                     letters = [random1, random2, random3]
                     return letters
-                def generate_ans():
-                    ans = (alphabeta)
-                    anschar = random.choices(ans, k=random.randint(5,6))
-                    sstr = ''.join(anschar)
-                    return sstr
-                anschar_str = generate_ans()
                 speak("alert!")
-                time.sleep(1.6)
+                time.sleep(2.9)
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 kchat = random.sample(nano, random.randint(1,7))
                 random_result = random.choices(nano, k=random.randint(1,7))
                 result_text = "  ".join(random_result)
-                print(maroon, anschar_str, sitch, result_text, ctm)
-                print(maroon, anschar_str, sitch, result_text, ctm, file=c)
-                speak(anschar_str)
-                time.sleep(.2)
+                print(maroon, random_letters, sitch, result_text, ctm)
                 speak(result_text)
                 print()
-                print(file=c)
-                time.sleep(buffer)
-            
-            def main_loop():
-                while True:
-                    generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def ruh_time_call():
-            maroon = " st"
-            
-            nano = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
-
-            title = input("ruh-TC name: ")
-            r = open("ruh-call-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            while True:
-                try:
-                    buffer = float(input("time-buffer in seconds: "))
-                except ValueError:
-                    print("Invalid value")
-                else:
-                    break
-            buffer
-            monitor = "ruh-TC-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=r)
-            print()
-            print(file=z)
-            print("*this saves to call-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=r)
-            def generate_random_result():
-                ctm = datetime.datetime.now()
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-                def generate_ans():
-                    ans = (alphabeta)
-                    anschar = random.choices(ans, k=random.randint(5,6))
-                    sstr = ''.join(anschar)
-                    return sstr
-                anschar_str = generate_ans()
-                spik("alert!")
-                time.sleep(1.6)
-                random_letters = generate_random_letters()
-                sitch  = (round(random.random()*9999,4))
-                kchat = random.sample(nano, random.randint(1,7))
-                random_result = random.choices(nano, k=random.randint(1,22))
-                result_text = "".join(random_result)
-                print(maroon, anschar_str, sitch, result_text, ctm)
-                print(maroon, anschar_str, sitch, result_text, ctm, file=r)
-                spik(result_text)
-                print()
-                print(file=r)
                 time.sleep(buffer)
             
             def main_loop():
@@ -3642,26 +2986,17 @@ def main():
         def spheak():
             sph = input("speak: ")
             print()
-            print(file=z)
             print(sph)
-            print(sph, file=z)
             speak(sph)
 
         def kata_monitor():
             maroon = " st"
             nano = (katakana)
             title = input("kata-monitor name: ")
-            n = open("kata-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "kata-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=n)
             print()
-            print(file=z)
-            print("*this saves to kata-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=n)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3675,9 +3010,7 @@ def main():
                 kkhat = random.choices(nano, k=random.randint(1,15))
                 kkhat_str = ''.join(kkhat)
                 print(maroon, kkhat_str, sitch, random_letters, ctm)
-                print(maroon, kkhat_str, sitch, random_letters, file=n)
                 print()
-                print(file=n)
 
             def main_loop():
                 while True:
@@ -3696,17 +3029,10 @@ def main():
             maroon = " st"
             nano = (jamo)
             title = input("jamo-monitor name: ")
-            h = open("jamo-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "jamo-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=h)
             print()
-            print(file=z)
-            print("*this saves to jamo-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=h)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3720,9 +3046,7 @@ def main():
                 kkhat = random.choices(nano, k=random.randint(1,20))
                 kkhat_str = ''.join(kkhat)
                 print(maroon, kkhat_str, random_letters, sitch, ctm)
-                print(maroon, kkhat_str, random_letters, sitch, file=h)
                 print()
-                print(file=h)
 
             def main_loop():
                 while True:
@@ -3741,17 +3065,10 @@ def main():
             maroon = " st"
             nano = (chi_chars)
             title = input("ch-monitor name: ")
-            l = open("ch-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "ch-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=l)
             print()
-            print(file=z)
-            print("*this saves to ch-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=l)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3764,9 +3081,7 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 cchat = random.choices(nano, k=random.randint(1,12))
                 print(maroon, random_letters, sitch, cchat, ctm)
-                print(maroon, random_letters, sitch, cchat, ctm, file=l)
                 print()
-                print(file=l)
 
             def main_loop():
                 while True:
@@ -3775,7 +3090,7 @@ def main():
                     if integer > 15:
                         if random.choice([True, False]):
                             generate_random_result()
-
+                            
             try:
                 main_loop()
             except KeyboardInterrupt:
@@ -3787,17 +3102,10 @@ def main():
             nano = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
 
             title = input("ruh-monitor name: ")
-            w = open("ruh-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "ruh-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=w)
             print()
-            print(file=z)
-            print("*this saves to ruh-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=w)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3811,9 +3119,7 @@ def main():
                 kkhat = random.choices(nano, k=random.randint(1,22))
                 kkhat_str = ''.join(kkhat)
                 print(maroon, kkhat_str, sitch, random_letters, ctm)
-                print(maroon, kkhat_str, sitch, random_letters, file=w)
                 print()
-                print(file=w)
 
             def main_loop():
                 while True:
@@ -3830,13 +3136,10 @@ def main():
 
         def ghost_write():
             nano = (diction)
-            g = open("ghost.txt", "a", buffering=1)
             print()
-            print(file=g)
             def generate_random_result():
                 kchat = " ".join(random.choices(nano, k=random.randint(1,7)))
                 print(kchat)
-                print(kchat, file=g)
 
             def main_loop():
                 while True:
@@ -3848,11 +3151,9 @@ def main():
             except KeyboardInterrupt:
                 print()
                 print("\nStopped by user.")
-                print("this saved to ghost.txt")
 
         def insta_ghost_write():
             nano = (diction)
-            g = open("ghost.txt", "a", buffering=1)
             while True:
                 try:
                     number = int(input("Indicate number of (i-GhostWrite) results: "))
@@ -3865,25 +3166,12 @@ def main():
             for _ in range(number):
                 kchat = " ".join(random.choices(nano, k=random.randint(1,7)))
                 print(kchat)
-                print(kchat, file=g)
-            print()
-            print("this saved to ghost.txt")
 
         def monitor_start():
             maroon = " st"
             nano = (diction)
             title = input("monitor name: ")
-            m = open("monitor-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "monitor-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=m)
             print()
-            print(file=z)
-            print("*this saves to monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=m)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3892,19 +3180,11 @@ def main():
                     random3 = random.choice(string.ascii_letters)
                     letters = [random1, random2, random3]
                     return letters
-                def generate_ans():
-                    ans = (alphabeta)
-                    anschar = random.choices(ans, k=random.randint(5,6))
-                    sstr = ''.join(anschar)
-                    return sstr
-                anschar_str = generate_ans()
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
-                print(maroon, anschar_str, sitch, kchat, ctm)
-                print(maroon, anschar_str, sitch, kchat, ctm, file=m)
+                print(maroon, random_letters, sitch, kchat, ctm)
                 print()
-                print(file=m)
 
             def main_loop():
                 while True:
@@ -3924,17 +3204,7 @@ def main():
             nano = (diction)
             acad = (acadlist)
             title = input("a-monitor name: ")
-            a = open("a-monitor-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "acad-monitor-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=a)
             print()
-            print(file=z)
-            print("*this saves to a-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=a)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -3949,11 +3219,8 @@ def main():
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 kchat2 = random.choices(acad, k=random.randint(1,7))
                 print(maroon, random_letters, sitch, kchat, kchat2, ctm)
-                print(maroon, random_letters, sitch, kchat, kchat2, ctm, file=a)
                 print("_______________________________________")
-                print("_______________________________________", file=a)
                 print()
-                print(file=a)
 
             def main_loop():
                 while True:
@@ -3971,33 +3238,21 @@ def main():
         def fntcci_monitor():
             maroon = " st"
             aono = (fcci)
-            nano= (diction)
             acad = (acadlist)
             title = input("FNTCCI-monitor name: ")
-            i = open("FNTCCI-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "FNTCCI-monitor-start:"
+            print()
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=i)
             print()
-            print(file=z)
-            print("*this saves to FNTCCI-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=i)
             def Wonraoyerjishibli():
                 cci = random.choices(aono, k=random.randint(1,10))
-                cchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 acadl = random.choices(acad, k=random.randint(1,7))
                 wonyao_str = ''.join(cci)
-                dash = "-"
                 ctm = datetime.datetime.now()
-                print(maroon, wonyao_str, dash, cchat, acadl, ctm)
-                print(maroon, wonyao_str, dash, cchat, acadl, ctm, file=i)
+                print(maroon, wonyao_str, acadl, ctm)
                 print("_______________________________________")
-                print("_______________________________________", file=i)
                 print()
-                print(file=i)
 
             def main_loop():
                 while True:
@@ -4025,17 +3280,7 @@ def main():
                 else:
                     break
             buffer
-            t = open("t-monitor-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "time-monitor-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=t)
             print()
-            print(file=z)
-            print("*this saves to t-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=t)
             def generate_random_result():
                 time.sleep(buffer)
                 ctm = datetime.datetime.now()
@@ -4051,11 +3296,8 @@ def main():
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 kchat2 = random.choices(acad, k=random.randint(1,7))
                 print(maroon, random_letters, sitch, kchat, kchat2, ctm)
-                print(maroon, random_letters, sitch, kchat, kchat2, ctm, file=t)
                 print("_______________________________________")
-                print("_______________________________________", file=t)
                 print()
-                print(file=t)
 
             def main_loop():
                 while True:
@@ -4079,17 +3321,7 @@ def main():
                 else:
                     break
             buffer
-            t = open("t-monitor-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "time-monitor-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=t)
             print()
-            print(file=z)
-            print("*this saves to t-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=t)
             def generate_random_result():
                 time.sleep(buffer)
                 ctm = datetime.datetime.now()
@@ -4107,12 +3339,9 @@ def main():
                 random_result = [random.choice(nano)]
                 result_text = ", ".join(random_result)
                 print(maroon, random_letters, sitch, kchat, kchat2, result_text, ctm)
-                print(maroon, random_letters, sitch, kchat, kchat2, result_text, ctm, file=t)
                 print("_______________________________________")
-                print("_______________________________________", file=t)
                 speak(result_text)
                 print()
-                print(file=t)
 
             def main_loop():
                 while True:
@@ -4170,17 +3399,11 @@ def main():
                 else:
                     break
             buffer
-            p = open("programs-monitor-logs.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "programs-monitor-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=p)
             print()
-            print(file=z)
-            print("*this saves to programs-monitor-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=p)
+
             def generate_random_result():
                 time.sleep(buffer)
                 ctm = datetime.datetime.now()
@@ -4197,12 +3420,8 @@ def main():
                 result = random.sample(random_result, 1)
                 result_text = ", ".join(result)
                 print(maroon, random_letters, sitch, result, ctm)
-                print(maroon, random_letters, sitch, result, ctm, file=z)
-                print(maroon, random_letters, sitch, result, ctm, file=p)
                 speak(result_text)
                 print()
-                print(file=z)
-                print(file=p)
 
             def main_loop():
                 while True:
@@ -4228,9 +3447,7 @@ def main():
             numberstr = str(number)
             print()
             print("Scanning...")
-            print("Scanning...", file=z)
             print()
-            print(file=z)
             time.sleep(2)
             for _ in range(number):
                 time.sleep(.1)
@@ -4254,85 +3471,59 @@ def main():
                         cchat = random.choices(cc, k=random.randint(1,40))
                         kkchar_str = ''.join(kkchar)
                         hchar_str = ''.join(hchar)
-                        kchat = "  ".join(random.choices(nano, k=random.randint(0,27)))
-                        kchat2 = random.choices(acad, k=random.randint(0,8))
+                        kchat = "  ".join(random.sample(nano, random.randint(0,27)))
+                        kchat2 = random.sample(acad, random.randint(0,8))
                         msg = "msg:"
                         print(usr, msg, random_letters, sitch, kchat, kchat2, kkchar_str, cchat, hchar_str, ctm)
-                        print(usr, msg, random_letters, sitch, kchat, kchat2, kkchar_str, cchat, hchar_str, ctm, file=z)
-                        print()
-                        print(file=z)                   
+                        print()                 
             print()
-            print(file=z)
             ct = datetime.datetime.now()
             print("/scanning finished!", ct)
-            print(usr + "" + " " + "" + "/scanning finished!", ct, file=z)
             print()
-            print(file=z)
 
         def fuzz():
             ct = datetime.datetime.now()
             fuzz = "fuzzing..."
             print(fuzz, ct)
-            print(usr, ct, fuzz, file=z)
             time.sleep(3)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("#")
-            print("#", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print("%")
-            print("%", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print(">")
-            print(">", file=z)
             time.sleep(.2)
             print()
-            print(file=z)
             print("You light an incense...")
-            print("You light an incense...", file=z)
             time.sleep(4)
 
         def tag():   
@@ -4360,11 +3551,9 @@ def main():
                     return letters
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
-                kchat = "  ".join(random.sample(nano, random.randint(1,7)))
+                kchat = "  ".join(random.choices(nano, k=random.randint(1,7)))
                 print()
-                print(file=z)
                 print(tag, rtag, random_letters, sitch, kchat, ctm)
-                print(usr, tag, rtag, random_letters, sitch, kchat, ctm, file=z)
 
         def atag():   
             rtag = input("a-tag: ")
@@ -4395,9 +3584,7 @@ def main():
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,8)))
                 kchat2 = random.choices(acad, k=random.randint(1,7))
                 print()
-                print(file=z)
                 print(tag, rtag, random_letters, sitch, kchat, kchat2, ctm)
-                print(usr, tag, rtag, random_letters, sitch, kchat, kchat2, ctm, file=z)
 
         def ntag():  
             ctag = input("n-tag: ")
@@ -4412,7 +3599,6 @@ def main():
             for _ in range(number):
                 time.sleep(.103)
                 an = (fcci) 
-                nano = (diction)
                 acad = (acadlist)
                 ct = datetime.datetime.now()
                 tag = "n-tag:"
@@ -4424,24 +3610,13 @@ def main():
                     letters = [random1, random2, random3]
                     random.shuffle(letters)
                     return letters
-                def generate_ans():
-                    ans = (alphabeta)
-                    anschar = random.choices(ans, k=random.randint(5,6))
-                    sstr = ''.join(anschar)
-                    return sstr
-                anschar_str = generate_ans()
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 nn = random.choices(an, k=random.randint(1,10))
                 wonyao_str = ''.join(nn)
-                cchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 acadl = random.sample(acad, random.randint(1,7))
-                dash = "-"
                 print()
-                print(file=z)
-                print(tag, ctag, anschar_str, sitch, wonyao_str, dash, cchat, acadl, ctm)
-                print(usr, tag, ctag, anschar_str, sitch, wonyao_str, dash, cchat, acadl, ctm, file=z)
-
+                print(tag, ctag, random_letters, sitch, wonyao_str, acadl, ctm)
 
         def MAI():
             import time
@@ -4457,7 +3632,6 @@ def main():
             for _ in range(number):
                 time.sleep(1.5)
                 print()
-                print(file=z)
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
                     random1 = random.choice(string.ascii_letters)
@@ -4470,7 +3644,6 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 asc = "ascii:"
                 print(asc, usr, random_letters, sitch, ctm)
-                print(asc, usr, random_letters, sitch, ctm, file=z)
                 pr1 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr2 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr3 = (round(random.random()*99999999999999999999999999999999999999999))
@@ -4496,21 +3669,7 @@ def main():
                 print(pr10)
                 print(pr11)
                 print(pr12)
-                print(file=z)
-                print(pr1, file=z)
-                print(pr2, file=z)
-                print(pr3, file=z)
-                print(pr4, file=z)
-                print(pr5, file=z)
-                print(pr6, file=z)
-                print(pr7, file=z)
-                print(pr8, file=z)
-                print(pr9, file=z)
-                print(pr10, file=z)
-                print(pr11, file=z)
-                print(pr12, file=z)
                 print()
-                print(file=z)
                 time.sleep(2)
                 if True:
                     nano = (diction)
@@ -4534,11 +3693,8 @@ def main():
                             kchat = random.choices(nano, k=random.randint(1,8))
                             kchat2 = random.choices(acad, k=random.randint(1,7))
                             print()
-                            print(file=z)
                             print(usr, random_letters, sitch, kchat2, kchat, ctm)
-                            print(usr, random_letters, sitch, kchat2, kchat, ctm, file=z)
                             print()
-                            print(file=z)
                             time.sleep(4.2)
                 if True:
                     integer = (round(random.random()*25))
@@ -4551,9 +3707,7 @@ def main():
                                 hashes = ("#", "#####", "##########", "##########################", "##########################", "##########################")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
                 if True:
                     integer = (round(random.random()*25))
@@ -4566,9 +3720,7 @@ def main():
                                 hashes = ("V", "    V", "          V", "                    V", "                              V", "                                        V")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4582,9 +3734,7 @@ def main():
                                 hashes = ("v", "    v", "          v", "                    v", "                              v", "                                        v")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4598,9 +3748,7 @@ def main():
                                 hashes = ("O", "    O", "          O", "                    O", "                              O", "                                        O")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4614,9 +3762,7 @@ def main():
                                 hashes = ("o", "    o", "          o", "                    o", "                              o", "                                        o")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4630,9 +3776,7 @@ def main():
                                 hashes = ("0", "    0", "          0", "                    0", "                              0", "                                        0")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4646,9 +3790,7 @@ def main():
                                 hashes = ("H", "    H", "          H", "                    H", "                              H", "                                        H")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4662,9 +3804,7 @@ def main():
                                 hashes = ("h", "    h", "          h", "                    h", "                              h", "                                        h")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4678,9 +3818,7 @@ def main():
                                 hashes = ("Q", "    Q", "          Q", "                    Q", "                              Q", "                                        Q")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4694,9 +3832,7 @@ def main():
                                 hashes = ("q", "    q", "          q", "                    q", "                              q", "                                        q")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4710,9 +3846,7 @@ def main():
                                 hashes = ("Y", "    Y", "          Y", "                    Y", "                              Y", "                                        Y")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4726,9 +3860,7 @@ def main():
                                 hashes = ("y", "    y", "          y", "                    y", "                              y", "                                        y")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4742,9 +3874,7 @@ def main():
                                 hashes = ("I", "    I", "          I", "                    I", "                              I", "                                        I", "                              III", "                                        III")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4758,9 +3888,7 @@ def main():
                                 hashes = ("i", "    i", "          i", "                    i", "                              i", "                                        i", "                              iii", "                                        iii")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4774,9 +3902,7 @@ def main():
                                 hashes = ("L", "    L", "          L", "                    L", "                              L", "                                        L")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4790,9 +3916,7 @@ def main():
                                 hashes = ("l", "    l", "          l", "                    l", "                              l", "                                        l")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4806,9 +3930,7 @@ def main():
                                 hashes = ("X", "    X", "          X", "                    X", "                              X", "                                        X")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4822,9 +3944,7 @@ def main():
                                 hashes = ("x", "    x", "          x", "                    x", "                              x", "                                        x")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4838,9 +3958,7 @@ def main():
                                 hashes = ("U", "    U", "          U", "                    U", "                              U", "                                        U")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4854,9 +3972,7 @@ def main():
                                 hashes = ("u", "    u", "          u", "                    u", "                              u", "                                        u")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4870,9 +3986,7 @@ def main():
                                 hashes = ("G", "    G", "          G", "                    G", "                              G", "                                        G")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4885,10 +3999,7 @@ def main():
                                 ctm = datetime.datetime.now()
                                 hashes = ("g", "    g", "          g", "                    g", "                              g", "                                        g")
                                 hashh = random.sample(hashes, random.randint(1,1))
-                                print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4902,9 +4013,7 @@ def main():
                                 hashes = ("B", "    B", "          B", "                    B", "                              B", "                                        B")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4918,9 +4027,7 @@ def main():
                                 hashes = ("b", "    b", "          b", "                    b", "                              b", "                                        b")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4934,9 +4041,7 @@ def main():
                                 hashes = ("P", "    P", "          P", "                    P", "                              P", "                                        P")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4950,9 +4055,7 @@ def main():
                                 hashes = ("p", "    p", "          p", "                    p", "                              p", "                                        p")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4966,9 +4069,7 @@ def main():
                                 hashes = ("T", "    T", "          T", "                    T", "                              T", "                                        T")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4982,9 +4083,7 @@ def main():
                                 hashes = ("t", "    t", "          t", "                    t", "                              t", "                                        t")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -4998,9 +4097,7 @@ def main():
                                 hashes = ("C", "    C", "          C", "                    C", "                              C", "                                        C")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5014,9 +4111,7 @@ def main():
                                 hashes = ("c", "    c", "          c", "                    c", "                              c", "                                        c")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5030,9 +4125,7 @@ def main():
                                 hashes = ("Z", "    Z", "          Z", "                    Z", "                              Z", "                                        Z")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5046,9 +4139,7 @@ def main():
                                 hashes = ("z", "    z", "          z", "                    z", "                              z", "                                        z")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5062,9 +4153,7 @@ def main():
                                 hashes = ("-======================", "-================", "-======================", "-================")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5078,9 +4167,7 @@ def main():
                                 hashes = ("#", "#####", "##########", "##########################", "##########################", "##########################")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
         def MAIc():
@@ -5090,7 +4177,6 @@ def main():
             def generate_random_result():
                 time.sleep(1.5)
                 print()
-                print(file=z)
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
                     random1 = random.choice(string.ascii_letters)
@@ -5103,7 +4189,6 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 asc = "ascii:"
                 print(asc, usr, random_letters, sitch, ctm)
-                print(asc, usr, random_letters, sitch, ctm, file=z)
                 pr1 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr2 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr3 = (round(random.random()*99999999999999999999999999999999999999999))
@@ -5129,21 +4214,7 @@ def main():
                 print(pr10)
                 print(pr11)
                 print(pr12)
-                print(file=z)
-                print(pr1, file=z)
-                print(pr2, file=z)
-                print(pr3, file=z)
-                print(pr4, file=z)
-                print(pr5, file=z)
-                print(pr6, file=z)
-                print(pr7, file=z)
-                print(pr8, file=z)
-                print(pr9, file=z)
-                print(pr10, file=z)
-                print(pr11, file=z)
-                print(pr12, file=z)
                 print()
-                print(file=z)
                 time.sleep(2)
                 if True:
                     nano = (diction)
@@ -5167,11 +4238,8 @@ def main():
                             kchat = random.choices(nano, k=random.randint(1,8))
                             kchat2 = random.choices(acad, k=random.randint(1,7))
                             print()
-                            print(file=z)
                             print(usr, random_letters, sitch, kchat2, kchat, ctm)
-                            print(usr, random_letters, sitch, kchat2, kchat, ctm, file=z)
                             print()
-                            print(file=z)
                             time.sleep(4.2)
                 if True:
                     integer = (round(random.random()*25))
@@ -5184,9 +4252,7 @@ def main():
                                 hashes = ("#", "#####", "##########", "##########################", "##########################", "##########################")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
                 if True:
                     integer = (round(random.random()*25))
@@ -5199,9 +4265,7 @@ def main():
                                 hashes = ("V", "    V", "          V", "                    V", "                              V", "                                        V")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5215,9 +4279,7 @@ def main():
                                 hashes = ("v", "    v", "          v", "                    v", "                              v", "                                        v")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5231,9 +4293,7 @@ def main():
                                 hashes = ("O", "    O", "          O", "                    O", "                              O", "                                        O")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5247,9 +4307,7 @@ def main():
                                 hashes = ("o", "    o", "          o", "                    o", "                              o", "                                        o")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5263,9 +4321,7 @@ def main():
                                 hashes = ("0", "    0", "          0", "                    0", "                              0", "                                        0")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5279,9 +4335,7 @@ def main():
                                 hashes = ("H", "    H", "          H", "                    H", "                              H", "                                        H")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5295,9 +4349,7 @@ def main():
                                 hashes = ("h", "    h", "          h", "                    h", "                              h", "                                        h")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5311,9 +4363,7 @@ def main():
                                 hashes = ("Q", "    Q", "          Q", "                    Q", "                              Q", "                                        Q")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5327,9 +4377,7 @@ def main():
                                 hashes = ("q", "    q", "          q", "                    q", "                              q", "                                        q")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5343,9 +4391,7 @@ def main():
                                 hashes = ("Y", "    Y", "          Y", "                    Y", "                              Y", "                                        Y")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5359,9 +4405,7 @@ def main():
                                 hashes = ("y", "    y", "          y", "                    y", "                              y", "                                        y")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5375,9 +4419,7 @@ def main():
                                 hashes = ("I", "    I", "          I", "                    I", "                              I", "                                        I", "                              III", "                                        III")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5391,9 +4433,7 @@ def main():
                                 hashes = ("i", "    i", "          i", "                    i", "                              i", "                                        i", "                              iii", "                                        iii")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5407,9 +4447,7 @@ def main():
                                 hashes = ("L", "    L", "          L", "                    L", "                              L", "                                        L")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5423,9 +4461,7 @@ def main():
                                 hashes = ("l", "    l", "          l", "                    l", "                              l", "                                        l")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5439,9 +4475,7 @@ def main():
                                 hashes = ("X", "    X", "          X", "                    X", "                              X", "                                        X")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5455,9 +4489,7 @@ def main():
                                 hashes = ("x", "    x", "          x", "                    x", "                              x", "                                        x")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5471,9 +4503,7 @@ def main():
                                 hashes = ("U", "    U", "          U", "                    U", "                              U", "                                        U")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5487,9 +4517,7 @@ def main():
                                 hashes = ("u", "    u", "          u", "                    u", "                              u", "                                        u")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5503,9 +4531,7 @@ def main():
                                 hashes = ("G", "    G", "          G", "                    G", "                              G", "                                        G")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5519,9 +4545,7 @@ def main():
                                 hashes = ("g", "    g", "          g", "                    g", "                              g", "                                        g")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5535,9 +4559,7 @@ def main():
                                 hashes = ("B", "    B", "          B", "                    B", "                              B", "                                        B")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5551,9 +4573,7 @@ def main():
                                 hashes = ("b", "    b", "          b", "                    b", "                              b", "                                        b")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5567,9 +4587,7 @@ def main():
                                 hashes = ("P", "    P", "          P", "                    P", "                              P", "                                        P")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5583,9 +4601,7 @@ def main():
                                 hashes = ("p", "    p", "          p", "                    p", "                              p", "                                        p")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5599,9 +4615,7 @@ def main():
                                 hashes = ("T", "    T", "          T", "                    T", "                              T", "                                        T")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5615,9 +4629,7 @@ def main():
                                 hashes = ("t", "    t", "          t", "                    t", "                              t", "                                        t")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5631,9 +4643,7 @@ def main():
                                 hashes = ("C", "    C", "          C", "                    C", "                              C", "                                        C")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5647,9 +4657,7 @@ def main():
                                 hashes = ("c", "    c", "          c", "                    c", "                              c", "                                        c")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5663,9 +4671,7 @@ def main():
                                 hashes = ("Z", "    Z", "          Z", "                    Z", "                              Z", "                                        Z")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5679,9 +4685,7 @@ def main():
                                 hashes = ("z", "    z", "          z", "                    z", "                              z", "                                        z")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5695,9 +4699,7 @@ def main():
                                 hashes = ("-======================", "-================", "-======================", "-================")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
                 if True:
@@ -5711,9 +4713,7 @@ def main():
                                 hashes = ("#", "#####", "##########", "##########################", "##########################", "##########################")
                                 hashh = random.sample(hashes, random.randint(1,1))
                                 print(usr, hashh)
-                                print(usr, hashh, ctm, file=z)
                                 print()
-                                print(file=z)
                                 time.sleep(.5)
 
             def main_loop():
@@ -5789,9 +4789,7 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
-
         def frames():
-            b = open("D-frames-logs.txt", "a", buffering=1)
             while True:
                 try:
                     number = int(input("Indicate number of (frames) results: "))
@@ -5817,9 +4815,7 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 asc = "frames:"
                 print()
-                print(file=b)
                 print(asc, usr, name, random_letters, sitch, ctm)
-                print(asc, usr, name, random_letters, sitch, ctm, file=b)
                 pr1 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr2 = (round(random.random()*99999999999999999999999999999999999999999))
                 pr3 = (round(random.random()*99999999999999999999999999999999999999999))
@@ -5845,93 +4841,11 @@ def main():
                 print(pr10)
                 print(pr11)
                 print(pr12)
-                print(file=b)
-                print(pr1, file=b)
-                print(pr2, file=b)
-                print(pr3, file=b)
-                print(pr4, file=b)
-                print(pr5, file=b)
-                print(pr6, file=b)
-                print(pr7, file=b)
-                print(pr8, file=b)
-                print(pr9, file=b)
-                print(pr10, file=b)
-                print(pr11, file=b)
-                print(pr12, file=b)
                 print()
-                print(file=b)
-
-        def fsearch():
-            zen = input("(frames) search: ")
-            while True:
-                try:
-                    fps = float(input("Indicate speed in (halfed) seconds: "))
-                except ValueError:
-                    print("Invalid value")
-                else:
-                    break
-            print()
-            try:
-                with open(r"D-frames-logs.txt", 'r') as fp:
-                    for line_no, line in enumerate(fp):
-                        if zen in line:
-                            time.sleep(fps)
-                            print(line.strip())
-                            fp_temp = open(r"D-frames-logs.txt", 'r')
-                            count = 0
-                            for temp_line_no, temp_line in enumerate(fp_temp):
-                                if temp_line_no > line_no and count < 14:
-                                    print(temp_line.strip())
-                                    count += 1
-                            fp_temp.close()
-                            print()
-            except FileNotFoundError:
-                print("Error: File 'D-frames-logs.txt' not found.")
-            except Exception as e:
-                print(f"An error occurred: {e}")
-
-
-        def busearch(file_path="burner-log.txt"):
-            zen = input("(burner) search: ")
-            if not zen:
-                print("Search cancelled.")
-                return
-
-            while True:
-                try:
-                    fps = float(input("Indicate speed in seconds: "))
-                    if fps < 0:
-                        print("Speed must be non-negative.")
-                        continue
-                    break
-                except ValueError:
-                    print("Invalid value. Please enter a number.")
-                except KeyboardInterrupt:
-                    print("\nInput cancelled.")
-                    return
-
-            print()
-            print("Ctrl-C to stop")
-            print()
-            try:
-                with open(file_path, 'r') as fp:
-                    for line in fp:  # Process line by line to save memory
-                        if zen in line:  # Case-sensitive search
-                            try:
-                                time.sleep(fps)  # Can be interrupted by Ctrl+C
-                                print(line.strip())
-                            except KeyboardInterrupt:
-                                print("\nSearch interrupted by user.")
-                                return
-            except FileNotFoundError:
-                print(f"Error: File '{file_path}' not found.")
-            except Exception as e:
-                print(f"An error occurred: {e}")
 
         def oscillator():
             print("Ctrl+C to stop")
             print()
-
             def generate_random_result():
                 meter = ["                              ", "*                             ", " *                            ", "  *                           ", "   *                          ", "    *                         ", "     *                        ", "      *                       ", "       *                      ", "        *                     ", "         *                    ", "          *                   ", "           *                  ", "            *                 ", "             *                ", "              *               ", "               *              ", "                *             ", "                 *            ", "                  *           ", "                   *          ", "                    *         ", "                     *        ", "                      *       ", "                       *      ", "                        *     ", "                         *    ", "                          *   ", "                           *  ", "                            * ", "                             *"]
                 oscill = random.sample(meter, 1)
@@ -5976,548 +4890,17 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
-        def amror():
-            nano = (diction)
-            title = input("Amror session name: ")
-            g = open("amror-logs.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "amror-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=g)
-            print()
-            print(file=z)
-            print("*this saves to amror-logs.txt* Ctrl+C to stop")
-            print()
-            print(file=g)
-            def generate_random_result():
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            mic = "home:"
-                            rooms = ["living room", "kitchen", "bedroom", "garden", "patio", "guest room", "garage", "work room", "library", "art room", "meditation room", "bath room", "temple"]
-                            micasa = random.sample(rooms, 1)
-                            ct = datetime.datetime.now()
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(mic, micasa, ct, group)
-                            print(usr, mic, micasa, ct, group, file=z)
-                            print(usr, mic, micasa, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            paths = ["You level up", "You level up", "You level up", "You walk in a field", "You encounter an animal", "You encounter a monster", "You encounter an enemy", "You encounter a friend", "You encounter an ally", "You enter an alley", "It is night time", "The sun just rised", "It is dawn", "It is dusk", "You enter the university", "You sit down on your computer", "You just chill", "You chill in a cafe", "You feel sleepy", "You are hungry", "You walk on", "You run straight", "You run in loops", "You are tired", "You are bullied", "You are sent to the hospital", "You go on a roadtrip", "You hike", "You mine", "You are out of money", "You just earned your salary", "You spend your time waiting", "You just nearly died", "You do your assignment", "You paint", "You hum", "You rap", "You sing", "You hear someone singing", "You compose rap", "You compose a classical track", "You feel lonely", "You feel happy", "You feel ecstatic", "You yearn for something", "You feel you should meditate", "You feel you should pray", "You walk in a church", "You walk in a temple", "You walk in a mosque", "You walk in a forest", "You walk in a jungle", "You walk along the road", "You're in the city", "You ride a bus", "You ride a cab", "You take out the trash", "You find a job", "Someone gave you work", "You worship", "You're in transit", "You surf the internet", "You got hacked", "You got scammed", "You exercise", "You were commissioned in the army", "You were commisioned in the police force", "You were commissioned in the airforce", "You were commissioned in the marines", "You have a mission", "You feel inspired", "You feel uninspired", "You feel creative block", "You feel like dancing", "You hear music", "You watch TV", "You hear the radio", "You are fatigued", "You enter war", "You meet someone", "You view film showing schedules", "You browse through courses", "You walk into a market", "You think of getting souvenirs", "You explore the place"]
-                            path = random.sample(paths, 1)
-                            ct = datetime.datetime.now()
-                            rpg = "rpg: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(rpg, path, ct, group)
-                            print(usr, rpg, path, ct, group, file=z)
-                            print(usr, rpg, path, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            stu = "stuff:"
-                            stuffd = ["sofa", "tv", "radio", "computer", "tablet", "phone", "refrigerator", "bed", "sink", "oven", "stove", "clock", "refreshments", "snacks", "cookies", "easel", "sketchpad", "laptop", "postcard", "table", "study table", "desk", "kitchen counter", "bible", "dining table", "chair", "gaming chair", "lamp", "light", "fruit", "speaker", "guitar", "piano", "synthesizer", "photo", "painting", "cdj", "vinyl", "electric guitar", "bass guitar", "monitor", "camera", "vinyl player", "gun", "iPod", "cctv", "bike", "car", "window", "door", "sweater", "ps5", "pillow", "blanket", "clothes", "dresser", "safe", "dhammapada", "keyboard", "koran", "paint", "paper", "brush", "tree", "pencil", "spraypaint", "drawing tablet", "drawing", "buddha", "air conditioner", "duster", "walkie", "grass", "mirror", "tools", "pen", "magazine", "book", "carpet", "mat", "zafu", "weed", "kush"]
-                            stuff = (random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd), random.choice(stuffd))
-                            stuffs = random.sample(stuff, random.randint(1, 8))
-                            ct = datetime.datetime.now()
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(stu, stuffs, ct, group)
-                            print(usr, stu, stuffs, ct, group, file=z)
-                            print(usr, stu, stuffs, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You go to the airport and board a plane...")
-                            print(usr + "" + " " + "" + "You go to the airport and board a plane...", file=z)
-                            time.sleep(2)
-                            print("You arrived in:")
-                            print("You arrived in:", file=z)
-                            countries = ["Canada", "Sweden", "China", "Beijing", "New York", "California", "L.A.", "San Francisco", "Detroit", "Colorado", "Newark", "New Jersey", "Australia", "Gold Coast", "Thailand", "North Korea", "Pyongyang", "Seoul", "Tokyo", "Osaka", "Japan", "Fujian", "Kyoto", "Manila", "Palawan", "Siargao", "Sultan Kudarat", "Davao", "Sydney", "Poland", "Uzbekistan", "Kyrgystan", "Turkey", "Iraq", "Iran", "Bolivia", "Iceland", "Lithuania", "Greenland", "UK", "France", "Spain", "Rome", "Greece", "Amsterdam", "Netherlands", "Boracay", "Indonesia", "Russia", "Ukraine", "Africa", "Antarctica", "Alaska", "South Carolina", "North Carolina", "Philadelphia", "Brooklyn", "Mexico", "Brazil", "Taiwan", "Burma", "Cambodia", "Vietnam", "India", "Bangladesh", "New Delhi", "Bombay", "Philippines"]
-                            country = random.sample(countries, 1)
-                            ct = datetime.datetime.now()
-                            fly = "fly: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(fly, country, ct, group)
-                            print(usr, fly, country, ct, group, file=z)
-                            print(usr, fly, country, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            youm = "You manage to connect to..."
-                            print(youm)
-                            countries = ["Canada", "Sweden", "China", "Beijing", "New York", "California", "L.A.", "San Francisco", "Detroit", "Colorado", "Newark", "New Jersey", "Australia", "Gold Coast", "Thailand", "North Korea", "Pyongyang", "Seoul", "Tokyo", "Osaka", "Japan", "Fujian", "Kyoto", "Manila", "Palawan", "Siargao", "Sultan Kudarat", "Davao", "Sydney", "Poland", "Uzbekistan", "Kyrgystan", "Turkey", "Iraq", "Iran", "Bolivia", "Iceland", "Lithuania", "Greenland", "UK", "France", "Spain", "Rome", "Greece", "Amsterdam", "Netherlands", "Boracay", "Indonesia", "Russia", "Ukraine", "Africa", "Antarctica", "Alaska", "South Carolina", "North Carolina", "Philadelphia", "Brooklyn", "Mexico", "Brazil", "Taiwan", "Burma", "Cambodia", "Vietnam", "India", "Bangladesh", "New Delhi", "Bombay", "Philippines", "Italy", "Belgium", "Denmark", "Colombia", "Argentina", "Albania", "Algeria", "Andora", "Angola", "Antigua and Barbuda", "Armenia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Belarus", "Belize", "Benin", "Bhutan", "Bosnia", "Botswana", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cameroon", "Chad", "Chile", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia", "Congo", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Guinea", "Estonia", "Swaziland", "Ethiopia", "Fiji", "Gabon", "Gambia", "Ghana", "Guatemala", "Guyana", "Haiti", "Honduras", "Hungary", "Israel", "Italy", "Jamaica", "Kenya", "Jordan", "Laos", "Latvia", "Lebanon", "Liberia", "Liechtenstein", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritiana", "Mauritius", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Oman", "Pakistan", "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Portugal", "Qatar", "Romania", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Slovakia", "Slovenia", "Solomon Islands", "South Africa", "South Korea", "South Sudan", "Sri Lanka", "Sudan", "Suriname", "Syria", "Tajikistan", "Tanzania", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Yemen", "Zambia", "Zimbabwe"]
-                            country = random.sample(countries, 1)
-                            print(country)
-                            serv = "Server at:"
-                            print(serv)
-                            negat = ["-", "+"]
-                            nega = random.sample(negat, 1)
-                            print(nega) 
-                            amdorn = (round(random.random()*90,4))
-                            print(amdorn)
-                            nega = random.sample(negat, 1)
-                            print(nega)
-                            andorm = (round(random.random()*180,4))
-                            print(andorm)
-                            andg = "and got away with:"
-                            print(andg)
-                            tidnar = (random.randint(0,999999999))
-                            print(tidnar)
-                            monies = ["Dollars", "Rupies", "Yen", "Pesos", "Pounds", "Coins", "Arcade Coins", "Mickey Mouse Money", "Francs", "Shekels", "Tugriks", "Indian Rupees", "Singapore Dollars", "Rubles", "Dinars", "Yuans", "Bahts", "Afghanis", "Riyals", "Kronas", "Riels", "DDOS attacks", "Botnets", "Credit Card Numbers", "E-mail addresses", "Business Addresses", "Home Addresses", "Passwords", "Mobile Numbers", "Telephone Numbers", "STD", "spits", "garbage", "sickness", "nudes", "hate", "likes"]
-                            money = random.sample(monies, 1)
-                            ct = datetime.datetime.now()
-                            print(money, ct)
-                            hack = "hack:"
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(group)
-                            print()
-                            print(usr, hack, youm, country, serv, nega, amdorn, nega, andorm, andg, tidnar, money, ct, group, file=z)
-                            print(usr, hack, youm, country, serv, nega, amdorn, nega, andorm, andg, tidnar, money, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You rolled:")
-                            print("You rolled:", file=z)
-                            time.sleep(1)
-                            dice1 = ["1", "2", "3", "4", "5", "6", "7", "8"]
-                            dice2 = ["1", "2", "3", "4", "5", "6", "7", "8"]
-                            roll1 = random.sample(dice1, 1)
-                            roll2 = random.sample(dice2, 1)
-                            print(roll1)
-                            print(roll1, file=z)
-                            print(roll2)
-                            print(roll2, file=z)
-                            time.sleep(2)
-                            boxes = ["Mediterranean Avenue", "Community Chest", "Baltic Avenue", "INCOME TAX", "Reading Railroad", "Oriental Avenue", "Chance", "Vermont Avenue", "Connecticut Avenue", "Jail", "St. Charles Palace", "Electric Company", "States Avenue", "Virginia Avenue", "Pennsylvania Railroad", "St. James Place", "Community Chest", "Free Parking", "Kentucky Avenue", "Chance", "Indiana Avenue", "Illinois Avenue", "B&O Railroad", "Atlantic Avenue", "Ventnor Avenue", "Water Works", "Marvin Gardens", "GO TO JAIL", "Pacific Avenue", "North Carolina Avenue", "Community Chest", "Pennsylvania Avenue", "Short Line", "Chance", "Park Place", "LUXURY TAX", "Boardwalk"]
-                            box = random.sample(boxes, 1)
-                            print("And landed in =")
-                            print("And landed in =", file=z)
-                            ct = datetime.datetime.now()
-                            monopoly = "monopoly: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(monopoly, box, ct, group)
-                            print(usr, monopoly, roll1, roll2, box, ct, group, file=z)
-                            print(usr, monopoly, roll1, roll2, box, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You ride your trickboard and did a")
-                            print("You ride your trickboard and did a", file=z)
-                            tricks = ["Backside 180", "Backside 360", "Backside Caballerial", "Backside Half Cab", "Fakie Ollie", "Frontside 180", "Frontside 360", "Frontside Caballerial", "Frontside Half Cab", "Kickturn", "Nollie", "Nollie Backside 180", "Nollie Backside 360", "Nollie Frontside 180", "Nollie Frontside 360", "Ollie", "Ollie North", "Ollie South", "Switch Backside 180", "Switch Backside 360", "Switch Frontside 180", "Switch Frontside 360", "Switch Ollie", "Tic-Tac", "360 Flip", "360 Hardflip", "360 Ollie Heelflip", "360 Ollie Kickflip", "360 Pop Shove-it", "360 Shuvit", "540 Flip", "720 Flip", "Alpha Flip", "Anti Casper Flip", "Backside Bigspin", "Backside Flip", "Backside Half Cab Heelflip", "Backside Half Cab Kickflip", "Backside Heelflip", "Backside Kickflip", "Big Heelflip", "Bigflip", "Biggerflip", "Biggerspin", "Bigspin", "Bubble Flip", "Bullflip", "Caballerial Flip", "Camel Flip", "Casper Flip", "Daydream Flip", "De Comply", "Disco Flip", "Double Heelflip", "Double Kickflip", "Dragon Flip", "Fakie 360 Flip", "Fakie 360 Hardflip", "Fakie Backside Bigspin", "Fakie Backside Pop Shove-it", "Fakie Frontside Bigspin", "Fakie Frontside Pop Shove-it", "Fakie Hardflip", "Fakie Heelflip", "Fakie Inward Heelflip", "Fakie Kickflip", "Fakie Varial Heelflip", "Fakie Varial Kickflip", "Feather Flip", "Fingerflip", "Forward Flip", "Front Foot Impossible", "Frontside 360 Pop Shove it", "Frontside Bigspin", "Frontside Flip", "Frontside Half Cab Heelflip", "Frontside Half Cab Kickflip", "Frontside Heelflip", "Frontside Kickflip", "Frontside Pop Shove-it", "Gazelle Flip", "Gazelle Spin", "Ghetto Bird", "Gingersnap", "Grape Flip", "Half Cab", "Handstand Flip", "Hardflip", "Haslam Flip", "Heelflip", "Hospital Flip", "Illusion Flip", "Impossible", "Inward Heelflip", "Jesus Flip", "Kickback Flip", "Kickflip", "Kiwi Flip", "Laser Flip", "Late Kickflip", "Nerd Flip", "Nightmare Flip", "No Comply", "540", "720", "900", "Airwalk", "Benihana", "Cannonball", "Christ Air", "Crossbone", "Delmar Indy", "Indy", "Indy Grab", "Invert", "Japan Air", "Judo Air", "Madonna", "McTwist", "Melancholy Grab", "Melon", "Method Air", "Mute Air", "Nose Grab", "Rocket Air", "Sal Flip", "Seatbelt Grab", "Stiffy", "Superman Grab", "Varial", "Egg Plant", "Manual", "Nose Manual", "Varial Heelflip", "Varial Kickflip",\
-                         "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", "bail", ]
-                            trick = random.sample(tricks, 1)
-                            ct = datetime.datetime.now()
-                            skate = "skate: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(skate, trick, ct, group)
-                            print(usr, skate, trick, ct, group, file=z)
-                            print(usr, skate, trick, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            starting = ["in the depths of soul", "in as much as I want", "nevertheless", "coming up with it", "i don't know this", "thinking of it", "thinking of you", "thinking of us", "i never want to but", "carry me all the way", "i am happy", "starting", "i never know how", "as much as i would", "killing me softly", "killing us", "the quietest weather", "gray clouds above", "i see the clear sky", "while the sky is bluest", "i've never been apart", "how would i know", "will i see you again", "it came up to me", "i was surprised", "surprising", "i would", "come to me", "start with this", "a few words", "lenten season is upon us", "i love", "thinking", "stop"]
-                            start = random.sample(starting, 1)
-                            middle = ["i wish i would have", "consider me", "i am looking for food", "while i am clothed", "walking the distance", "i still end up with you", "consider my wish", "halfed tree", "searching", "unsure", "not minding everyone", "listening to music", "on my computer", "typing", "eating", "sleeping", "thinking", "never missing", "stopping", "staring", "resting", "excruciating pain", "this sadness", "while im without", "collecting", "listening", "happiness", "the surf", "inspired", "rocking the music", "travelling", "playing", "while music plays", "stirring things up", "taking a bath", "walking on the shore", "grinding"]
-                            mid = random.sample(middle, 1)
-                            ending = ["i never knew how", "i be at it", "considered everything", "i died", "i slept", "its wrapped", "made a union", "the sky bleeds", "music is spoken", "chilled", "i am spoiled", "this bringeth happiness", "its up to me", "the weather is", "i stay awake", "pillows", "grains", "half of the time", "it ends here", "i take flight", "distance is", "i like this", "forever", "lets meet", "gathered my wits"]
-                            end = random.sample(ending, 1)
-                            ct = datetime.datetime.now()
-                            haiku = "haiku: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(haiku, start, mid, end, ct, group)
-                            print(usr, haiku, start, mid, end, ct, group, file=z)
-                            print(usr, haiku, start, mid, end, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print()
-                            print(file=z)
-                            print("You aim your bow..")
-                            print(usr + "" + " " + "" + "You aim your bow..", file=z)
-                            time.sleep(1)
-                            print("You hit:")
-                            print("You hit:", file=z)
-                            num = (round(random.random()*30,3))
-                            print(num)
-                            print(num, file=z)
-                            print("centimeters from the bullseye with")
-                            print("centimeters from the bullseye with", file=z)
-                            raditn = (random.randint(50,100))
-                            print(raditn)
-                            print(raditn, file=z)
-                            ct = datetime.datetime.now()
-                            print("percent accuracy", ct)
-                            print("percent accuracy", ct, file=z)
-                            archery = "archery: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(group)
-                            print(usr, archery, num, raditn, ct, group, file=z)
-                            print(usr, archery, num, raditn, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            _entry = "Entry: "
-                            gates = ["Gate 1", "Gate 2", "Gate 3", "Gate 4", "Gate 5", "Gate 6", "Gate 7", "Gate 8", "Gate 9"]
-                            phases = ["Phase 1", "Phase 2", "Phase 3", "Phase 4", "Phase 5", "Phase 6", "Phase 7", "Phase 8", "Phase 9", "Phase 10"]
-                            floors = (round(random.random()*102))
-                            _floor = "Floor"
-                            gate = random.sample(gates, 1)
-                            phase = random.sample(phases, 1)
-                            rooms = (round(random.random()*102))
-                            ct = datetime.datetime.now()
-                            _room = "Room"
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(_entry, gate, phase, _floor, floors, _room, rooms, ct, group)
-                            print(usr, _entry, gate, phase, _floor, floors, _room, rooms, ct, group, file=z)
-                            print(usr, _entry, gate, phase, _floor, floors, _room, rooms, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You tune in to the radio and listen to:")
-                            print("You tune in to the radio and listen to:", file=z)
-                            genres = ["Alternative", "Anime", "Blues", "Classical", "Comedy", "Commercials", "Country", "Dance", "Easy Listening", "Electronic", "Enka", "French Pop", "Folk Music", "German Folk", "German Pop", "Fitness and Workout", "Hip-Hop/Rap", "Holiday Music", "Indie Pop", "Industrial", "Inspirational", "Instrumental", "Jazz", "K-Pop", "Karaoke", "Latin", "Metal", "New Age", "Opera", "Pop", "R&B/Soul", "Reggae", "Rock", "Soundtracks", "Spoken Word", "Tex-Mex/Tejano", "Vocal", "World"]
-                            music = random.sample(genres, 1)
-                            ct = datetime.datetime.now()
-                            radio = "radio: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(radio, music, ct, group)
-                            print(usr, radio, music, ct, group, file=z)
-                            print(usr, radio, music, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("head:")
-                            print("head:", file=z)
-                            headgear = ["samurai helmet", "bike helmet", "motorcycle helmet", "astronaut helmet", "pilot helmet", "aviator hat", "baseball cap", "backwards baseball cap", "trucker cap", "backwards trucker cap", "construction helmet", "miner helmet", "skate helmet", "ski mask", "facemask", "beanie", "birthday party hat", "pantyhose", "f13th mask", "jabbawockee mask", "none", "poring hat", "beehive", "idea bubble", "speech bubble", "bucket hat", "black bucket hat", "beige bucket hat", "orange bucket hat", "blue bucket hat", "american football helmet", "rugby helmet", "emo hair", "mohawk", "blonded semi-balded", "skinhead", "tropika", "glasses", "raybans", "shades", "spectacles", "night-vision goggles", "pilot goggles", "black-rimmed glasses", "nostril piercing", "tibetan headgear", "sikh headgear", "muslim hat", "skullcap", "muslim skullhat", "long hair", "salt and pepper", "blonde", "headphones", "earphones", "visor hat", "headband", "cat headband", "rabbit headband", "afro", "curly curls", "facial mask", "face paint", "warpaint", "unipaint", "maked-up", "bush headgear", "soldier helmet", "buddhahead", "game-night drink", "cig", "tobacco", "spliff", "straw", "british army guard headgear", "police helmet", "police mask", "hanja mask", "java mask", "african continent mask", "feather", "chef hat", "indian chief headgear", "black paint", "hijab"]
-                            head= random.sample(headgear, 1)
-                            print(head)
-                            print(head, file=z)
-                            print("torso:")
-                            print("torso:", file=z)
-                            torsogear = ["knight armor", "police armor", "samurai armor", "karate uniform", "police uniform", "soldier uniform", "korean robe", "japanese robe", "barong", "polo", "shirt", "black shirt", "sweater", "tanktop", "backpack", "slingbag", "none", "chest hair", "kevlar", "press vest", "bush gear", "hoodie", "white hoodie", "blue hoodie", "tight shirt", "nikes", "puma", "adidas", "coca-cola retro shirt", "rasta shirt", "sash", "soccer uniform", "american football armor", "football shirt", "soccer shirt", "referee shirt", "pacemaker", "bra", "bikini", "chest bag", "tuxedo", "suit", "bowtie", "tie", "apron", "chef uniform", "red paint", "black paint", "astronaut suit", "diving suit", "rashguard", "jersey", "bathrobe", "farmer gear", "lanyard", "muslim clothing", "sikh clothing", "tourguide uniform", "boyscout uniform", "girlscout uniform", "black sweater", "scarf", "shawl", "green hoodie", "pink hoodie", "jacket", "windbreaker", "varsity jacket", "jock jacket", "vest", "coat"]
-                            torso= random.sample(torsogear, 1)
-                            print(torso)
-                            print(torso, file=z)
-                            print("hand:")
-                            print("hand:", file=z)
-                            handgear = ["sword", "samurai", "club", "knife", "machete", "ice cream", "food", "coffee", "pizza", "camera", "gun", "staff", "ruler", "katana", "arnis", "nunchucks", "cat", "tablet", "phone", "iphone", "android", "fruitshake", "vape", "bong", "spliff", "joint", "beer", "champagne", "chainsaw", "folder", "testpaper", "pen", "macbook", "laptop", "linux computer", "pencil", "paintbrush", "tire pump", "fire extinguisher", "measuring device", "scalpel", "diamond cutter", "diamond", "diamonds", "trash", "water", "none", "empty-hand", "spraypaint", "smartwatch", "dynamite", "c4", "whisker", "whiskey", "liquor", "flask", "leaf", "feather", "book", "novel", "junkfood", "rifle", "sniper", "handgun", "laser", "keys", "guitar", "electric guitar", "classical guitar", "ukulele", "keyboard", "burger", "twig", "plank", "paddel", "coins", "money", "dollar bills", "fruit", "vegetable", "ps4 controller", "xbox controller", "ipod", "yarn", "spear", "bow"]
-                            hand= random.sample(handgear, 1)
-                            print(hand)
-                            print(hand, file=z)
-                            print("legs:")
-                            print("legs:", file=z)
-                            leggear = ["tights", "shorts", "cycling shorts", "skirt", "bushwear", "pants", "leggings", "elephant pants", "skinny jeans", "jeans", "none", "trunks", "pants", "pants", "pants", "holster", "bruise", "slacks", "hiking pants", "karate pants", "taekwondo pants", "mma shorts", "briefs", "sleather pants"]
-                            legs= random.sample(leggear, 1)
-                            print(legs)
-                            print(legs, file=z)
-                            print("feet:")
-                            print("feet:", file=z)
-                            feetgear = ["slippers", "hotel slippers", "shoes", "shoes", "shoes", "shoes", "boots", "beige boots", "black army boots", "nikes", "adidas", "puma", "converse", "chucks", "none", "socks", "clogs", "leather shoes", "white shoes", "skateboard", "longboard", "sneakers", "new balance", "world balance", "fluffy shoes", "fluffy slippers", "sandals"]
-                            feet= random.sample(feetgear, 1)
-                            print(feet)
-                            print(feet, file=z)
-                            print()
-                            print(file=z)
-                            ct = datetime.datetime.now()
-                            equips = "equips: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(equips, head, torso, hand, legs, feet, ct, group)
-                            print(usr, equips, head, torso, hand, legs, feet, ct, group, file=z)
-                            print(usr, equips, head, torso, hand, legs, feet, ct, group,  file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            actions = ["You met", "You fought with", "You fought with", "You defeated", "You defeated","You defeated", "You were sent to the hospital by", "You were defeated by", "You healed", "You were healed by", "You jailed", "You pranked", "You were pranked by", "You were jailed by", "you were beat by", "you were K.Ode by"]
-                            action = random.sample(actions, 1)
-                            people = ["a stranger", "a child", "an emo", "a doctor", "a soldier", "a police", "a homeless person", "a mom", "a gamer", "a dancer", "an artist", "a peasant", "a prince", "a princess", "a King", "a Queen", "a lawyer", "a vendor", "an alien", "a Mexican", "a nurse", "a lizard", "a woman", "a girl", "a boy", "an optometrist", "a physician", "a psychologist", "a psychiatrist", "a teacher", "White Tara", "Green Tara", "a ninja", "a gangster"]
-                            person = random.sample(people, 1)
-                            brawl = "brawl: "
-                            brawls = brawl, action, person
-                            print(brawls, )
-                            print()
-                            print(file=z)
-                            print("With A Score Of:")
-                            print("With A Score Of:", file=z)
-                            randit = (random.randint(50,100))
-                            ct = datetime.datetime.now()
-                            print(randit)
-                            print(randit, file=z)
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(group)
-                            print(usr, brawl, action, person, randit, ct, group, file=z)
-                            print(usr, brawl, action, person, randit, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            ct = datetime.datetime.now()
-                            print("You start to rest...", ct)
-                            print(usr + "" + " " + "" + "You start to rest...", ct, file=z)
-                            time.sleep(8)
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print("You rested", ct, group)
-                            print(usr + "" + " " + "" + "You rested", ct, group, file=z)
-                            print(usr + "" + " " + "" + "You rested", ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You search around...")
-                            print(usr + "" + " " + "" + "You search around...", file=z)
-                            time.sleep(2)
-                            itemd = ["empty bottle", "bottle of wine", "wine glass", "bottle of iced tea", "energy drink", "lemon juice", "pack of green peas", "shirt", "bed", "headphones", "earphones", "blanket", "tablet", "kindle", "pills", "pack of coffee beans", "cup of coffee", "junkfood", "medicine", "spoon", "fork", "Nintendo Switch", "laptop", "mobile phone", "electric fan", "chair", "guitar", "keyboard", "piano", "tv", "monitor", "oil", "hashish", "marijuana", "cigarette", "vape", "pillow", "dog food", "bike", "car", "scooter", "skateboard", "printer", "shards of glass", "garbage", "strips of sleather", "food", "bottle of water", "bible", "Dhammapada", "yoga mat", "helmet", "chewing gum", "vitamins", "shirt", "sweater", "pants", "working pants", "skirt", "underwear", "parachute", "gun", "knife", "sword", "katana", "oatmeal", "chain", "slippers", "shoes", "book", "wires", "credit card", "stove", "oven", "hat", "bucket hat", "baseball cap", "beanie", "hoodie", "necklace", "ring", "gold ring", "diamond ring", "diamond", "diamonds", "painting", "pencil", "ballpoint pen", "sketchpad", "crayon", "box of crayons", "paint", "spray paint", "fruit", "lettuce", "carrot", "watermelon", "orange", "apple", "banana", "pear", "gold", "gold bar", "pistol", "lantern", "lamp", "umbrella", "newspaper", "Sega", "ecstasy", "Nintendo 64", "calculator", "brownies", "pie", "loaf bread", "aviator shades", "shutter shades", "CD", "floppy disk", "mp3 player", "walkman", "cassette", "ticket", "food stub", "ski mask", "spear", "nunchucks", "frying pan", "beans", "charger", "guitar pick", "mic", "digicam", "GoPro", "night vision goggles", "sniper rifle", "DS4 Playstation controller", "CDJ", "Raybans", "smartwatch", "modem", "axe"]
-                            items = (random.choice(itemd), random.choice(itemd))
-                            item = random.sample(items, 2)
-                            ct = datetime.datetime.now()
-                            print("You found:")
-                            print("You found:", file=z)
-                            items = "items: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(items, item, ct, group)
-                            print(usr, items, item, ct, group, file=z)
-                            print(usr, items, item, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            actions = ["You connected with a", "You connected a", "You anticipate to give a", "You hit your opponent with a", "You give a", "You waited and gave a", "You missed with a", "You missed with a", "You attempted a", "You recieved a", "Your opponent connected with a", "Your opponent missed with a", "Your opponent waited and gave a", "Your opponent anticipated to give a", "You blocked a", "You blocked a", "You blocked a", "You blocked a", "You blocked a", "Your opponent blocked a", "Your opponent blocked a", "Your opponent blocked a", "Your opponent blocked a"]
-                            action = random.sample(actions, 1)
-                            kicks = ["45 kick", "45 kick", "45 kick", "45 kick", "45 kick", "front kick", "stretching kick", "turning-side kick", "turning-side kick", "side kick", "side kick", "punching kick", "axe kick", "axe kick", "full moon kick","full moon kick", "turning-long", "turning-long", "turning-jumping 45 kick", "out-in kick", "in-out kick", "turning-jumping out-in", "roundhouse kick", "roundhouse kick", "roundhouse kick", "turning-jumping roundhouse kick", "punch", "punch", "punch", "punch", "bullet 45 kick", "double 45 kick", "triple 45 kick", "jumping 45 kick", "jumping roundhouse kick", "jumping axe kick", "jumping front kick", "jumping out-in kick", "jumping in-out kick", "jumping side kick", "jumping turning-side kick", "jumping full moon kick"]
-                            kick = random.sample(kicks, 1)
-                            ct = datetime.datetime.now()
-                            spar = "spar: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(spar, action, kick, ct, group)
-                            print(usr, spar, action, kick, ct, group, file=z)
-                            print(usr, spar, action, kick, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            color = ["red", "crimson", "maroon", "scarlet", "orange", "amber", "rust", "salmon", "green", "emerald", "lime", "olive", "yellow", "gold", "lemon", "mustard", "blue", "azure", "indigo", "teal", "purple", "lavender", "magenta", "violet", "brown", "beige", "chocolate", "sienna", "gray", "charcoal", "silver", "slate", "black", "ebony", "jet", "onyx", "white", "alabaster", "ivory", "pearl", "pink", "sky blue", "neon green", "neon yellow", "neon orange", "neon blue"]
-                            colors = random.sample(color, 5)
-                            ct = datetime.datetime.now()
-                            colorkey = "color key: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(colorkey, colors, ct, group)
-                            print(usr, colorkey, colors, ct, group, file=z)
-                            print(usr, colorkey, colors, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You make a piece in the style of")
-                            print("You make a piece in the style of", file=z)
-                            styles = ["Abstract Art", "Abstract Expressionism", "Academicism", "Analytical Cubism", "Art Deco", "Art Nouveau", "Ashcan School", "Banksy", "Baroque", "Byzantine Art", "Classicism", "Cloisonnism", "Color Field", "Conceptual Art", "Constructivism", "Cubism", "Cubo-Futurism", "Dadaism", "Dutch Golden Age", "Early Netherlandish", "Early Renaissance", "Expressionism", "Fauvism", "Futurism", "Geometric Abstract Art", "Gothic Art", "High Renaissance", "Hudson River School", "Impressionism", "Italian Renaissance", "Kitsch", "Luminism", "Mannerism", "Metaphysical Art", "Minimalism", "Modernism", "Naive Art/ Primitivism", "Neo-Baroque", "Neo-Classicism", "Neo-Dada", "Neo Expressionism", "Neoplasticism", "New Realism", "Northern Renaissance", "Op-Art", "Orientalism", "Orphism", "Pointilism", "Pop Art", "Pop Surrealism", "Post-Impressionism", "Pre-Raphaelites", "Precisionism", "Proto Renaissance", "Purism", "Realism", "Regionalism", "Renaissance", "Rococo", "Romanticism", "Social Realism", "Socialist Realism", "Suprematism", "Surrealism", "Symbolism", "Synthetic Cubism", "Synthetism", "Tenebrism", "Tonalism", "Tubism", "Ukiyo-E", "Verism"]
-                            art = random.sample(styles, 1)
-                            ct = datetime.datetime.now()
-                            arts = "art: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(arts, art, ct, group)
-                            print(usr, arts, art, ct, group, file=z)
-                            print(usr, arts, art, ct, group, file=g)
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("Movement:")
-                            print("Movement:", file=z)
-                            time.sleep(3)
-                            print()
-                            print(file=z)
-                            radnti = (random.randint(0,999))
-                            opponents = ["You", "Sensei", "Opponent", "Opponent"]
-                            opponent = random.sample(opponents, 1)
-                            ct = datetime.datetime.now()
-                            karate = "karate: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(karate, radnti, opponent, ct, group)
-                            print(usr, karate, radnti, opponent, ct, group, file=z)
-                            print(usr, karate, radnti, opponent, ct, group, file=g)   
-                            print()
-                            print(file=g)   
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You start to search around for coins...")
-                            print(usr + "" + " " + "" + "You start to search around for coins...", file=z)
-                            time.sleep(10)
-                            print("You found:")
-                            print("You found:", file=z)
-                            tin = (random.randint(0,100))
-                            ct = datetime.datetime.now()
-                            coins = "coins: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(coins, tin, ct, group)
-                            print(usr, coins, tin, ct, group, file=z)
-                            print(usr, coins, tin, ct, group, file=g)  
-                            print()
-                            print(file=g)
-
-                if True:
-                    integer = (round(random.random()*25))
-                    if integer > 20:
-                        if random.choice([True, False]):
-                            print("You did:")
-                            print("You did:", file=z)
-                            time.sleep(5)
-                            nums = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 20, 20, 20, 30, 30, 40, 40, 50, 50, 60, 70, 80, 90, 100]
-                            num = random.sample(nums, 1)
-                            ct = datetime.datetime.now()
-                            train = "train: "
-                            groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                            group = random.sample(groups, 1)
-                            print(train, num, ct, group)
-                            print(usr, train, num, ct, group, file=z)
-                            print(usr, train, num, ct, group, file=g)
-                            print("push-ups")
-                            print("push-ups", file=z)
-                            print()
-                            print(file=g)
-
-            def generate_random_result2():
-                maroon = " st"
-                ctm = datetime.datetime.now()
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    random.shuffle(letters)
-                    return letters
-                random_letters = generate_random_letters()
-                sitch  = (round(random.random()*9999,4))
-                kchat = random.sample(nano, random.randint(0,7))
-                amtag = "am-tag:"
-                groups = ["Group 1", "Group 2", "Group 3", "Group 4", "Group 5"]
-                group = random.sample(groups, 1)
-                print(amtag, random_letters, sitch, kchat, ctm, group)
-                print(usr, amtag, random_letters, sitch, kchat, ctm, group, file=z)
-                print(usr, amtag, random_letters, sitch, kchat, ctm, group, file=g)
-                print()
-                print(file=g)
-            
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,5))
-                    integer = (round(random.random()*25))
-                    integer2 = (round(random.random()*25))
-                    if integer > 15:
-                        if random.choice([True, False]):
-                            generate_random_result()
-                    if integer2 > 15:
-                        if random.choice([True, False]):
-                            generate_random_result2()
-            
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
         def burner():
             nano = (diction)
+            print("Not recording")
+            print()
+            time.sleep(.4)
             title = input("burn name: ")
-            x = open("burner-log.txt", "a", buffering=1)
             ct = datetime.datetime.now()
             monitor = "burner-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=x)
             print()
-            print(file=z)
-            print("*this saves to burner-log.txt* Ctrl+C to stop")
             print()
-            print(file=x)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -6547,122 +4930,6 @@ def main():
                 sitch  = (round(random.random()*999999999999999,5))
                 kchat = random.sample(nano, random.randint(1,2))
                 print(title, ctm, random_letters, sitch, kchat)
-                print(title, ctm, random_letters, sitch, kchat, file=x)
-            
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,1))
-                    integer = (round(random.random()*10))
-                    if integer > 5:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def cburner():
-            chi_char = (chi_chars)
-            title = input("c-burn name: ")
-            x = open("burner-log.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "c-burner-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=x)
-            print()
-            print(file=z)
-            print("*this saves to burner-log.txt* Ctrl+C to stop")
-            print()
-            print(file=x)
-            def generate_random_result():
-                ctm = datetime.datetime.now()
-                def generate_random_characters():
-                    random1 = random.choice(chi_char)
-                    random2 = random.choice(chi_char)
-                    random3 = random.choice(chi_char)
-                    random4 = random.choice(chi_char)
-                    random5 = random.choice(chi_char)
-                    random6 = random.choice(chi_char)
-                    random7 = random.choice(chi_char)
-                    random8 = random.choice(chi_char)
-                    random9 = random.choice(chi_char)
-                    random10 = random.choice(chi_char)
-                    random11 = random.choice(chi_char)
-                    random12 = random.choice(chi_char)
-                    random13 = random.choice(chi_char)
-                    random14 = random.choice(chi_char)
-                    random15 = random.choice(chi_char)
-                    random16 = random.choice(chi_char)
-                    random17 = random.choice(chi_char)
-                    random18 = random.choice(chi_char)
-                    random19 = random.choice(chi_char)
-                    random20 = random.choice(chi_char)
-                    characters = [random1, random2, random3, random4, random5, random6, random7, random8, random9, random10, random11, random12, random13, random14, random15, random16, random17, random18, random19, random20]
-                    return characters
-                random_characters = generate_random_characters()
-                sitch  = (round(random.random()*999999999999999,5))
-                print(title, ctm, random_characters, sitch)
-                print(title, ctm, random_characters, sitch, file=x)
-            
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,1))
-                    integer = (round(random.random()*10))
-                    if integer > 5:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-
-        def jburner():
-            chi_char = (katakana)
-            title = input("j-burn name: ")
-            x = open("burner-log.txt", "a", buffering=1)
-            ct = datetime.datetime.now()
-            monitor = "j-burner-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=x)
-            print()
-            print(file=z)
-            print("*this saves to burner-log.txt* Ctrl+C to stop")
-            print()
-            print(file=x)
-            def generate_random_result():
-                ctm = datetime.datetime.now()
-                def generate_random_characters():
-                    random1 = random.choice(chi_char)
-                    random2 = random.choice(chi_char)
-                    random3 = random.choice(chi_char)
-                    random4 = random.choice(chi_char)
-                    random5 = random.choice(chi_char)
-                    random6 = random.choice(chi_char)
-                    random7 = random.choice(chi_char)
-                    random8 = random.choice(chi_char)
-                    random9 = random.choice(chi_char)
-                    random10 = random.choice(chi_char)
-                    random11 = random.choice(chi_char)
-                    random12 = random.choice(chi_char)
-                    random13 = random.choice(chi_char)
-                    random14 = random.choice(chi_char)
-                    random15 = random.choice(chi_char)
-                    random16 = random.choice(chi_char)
-                    random17 = random.choice(chi_char)
-                    random18 = random.choice(chi_char)
-                    random19 = random.choice(chi_char)
-                    random20 = random.choice(chi_char)
-                    characters = [random1, random2, random3, random4, random5, random6, random7, random8, random9, random10, random11, random12, random13, random14, random15, random16, random17, random18, random19, random20]
-                    return characters
-                random_characters = generate_random_characters()
-                sitch  = (round(random.random()*999999999999999,5))
-                print(title, ctm, random_characters, sitch)
-                print(title, ctm, random_characters, sitch, file=x)
             
             def main_loop():
                 while True:
@@ -6679,8 +4946,10 @@ def main():
 
         def tburner():
             nano = (diction)
+            print("Not recording")
+            print()
+            time.sleep(.4)
             title = input("burn name: ")
-            x = open("burner-log.txt", "a", buffering=1)
             while True:
                 try:
                     buffer = float(input("time-buffer in seconds: "))
@@ -6691,13 +4960,8 @@ def main():
             ct = datetime.datetime.now()
             monitor = "burner-start:"
             print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=x)
             print()
-            print(file=z)
-            print("*this saves to burner-log.txt* Ctrl+C to stop")
             print()
-            print(file=x)
             def generate_random_result():
                 ctm = datetime.datetime.now()
                 def generate_random_letters():
@@ -6727,278 +4991,11 @@ def main():
                 sitch  = (round(random.random()*999999999999999,5))
                 kchat = random.sample(nano, random.randint(1,2))
                 print(title, ctm, random_letters, sitch, kchat)
-                print(title, ctm, random_letters, sitch, kchat, file=x)
             
             def main_loop():
                 while True:
                     time.sleep(buffer)
                     generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def ctburner():
-            chi_char = (chi_chars)
-            title = input("c-burn name: ")
-            x = open("burner-log.txt", "a", buffering=1)
-            while True:
-                try:
-                    buffer = float(input("time-buffer in seconds: "))
-                except ValueError:
-                    print("Invalid value")
-                else:
-                    break
-            ct = datetime.datetime.now()
-            monitor = "c-burner-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=x)
-            print()
-            print(file=z)
-            print("*this saves to burner-log.txt* Ctrl+C to stop")
-            print()
-            print(file=x)
-            def generate_random_result():
-                ctm = datetime.datetime.now()
-                def generate_random_characters():
-                    random1 = random.choice(chi_char)
-                    random2 = random.choice(chi_char)
-                    random3 = random.choice(chi_char)
-                    random4 = random.choice(chi_char)
-                    random5 = random.choice(chi_char)
-                    random6 = random.choice(chi_char)
-                    random7 = random.choice(chi_char)
-                    random8 = random.choice(chi_char)
-                    random9 = random.choice(chi_char)
-                    random10 = random.choice(chi_char)
-                    random11 = random.choice(chi_char)
-                    random12 = random.choice(chi_char)
-                    random13 = random.choice(chi_char)
-                    random14 = random.choice(chi_char)
-                    random15 = random.choice(chi_char)
-                    random16 = random.choice(chi_char)
-                    random17 = random.choice(chi_char)
-                    random18 = random.choice(chi_char)
-                    random19 = random.choice(chi_char)
-                    random20 = random.choice(chi_char)
-                    characters = [random1, random2, random3, random4, random5, random6, random7, random8, random9, random10, random11, random12, random13, random14, random15, random16, random17, random18, random19, random20]
-                    return characters
-                random_characters = generate_random_characters()
-                sitch  = (round(random.random()*999999999999999,5))
-                print(title, ctm, random_characters, sitch)
-                print(title, ctm, random_characters, sitch, file=x)
-            
-            def main_loop():
-                while True:
-                    time.sleep(buffer)
-                    generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def jtburner():
-            chi_char = (katakana)
-            title = input("j-burn name: ")
-            x = open("burner-log.txt", "a", buffering=1)
-            while True:
-                try:
-                    buffer = float(input("time-buffer in seconds: "))
-                except ValueError:
-                    print("Invalid value")
-                else:
-                    break
-            ct = datetime.datetime.now()
-            monitor = "j-burner-start:"
-            print(usr, monitor, title, ct)
-            print(usr, monitor, title, ct, file=z)
-            print(usr, monitor, title, ct, file=x)
-            print()
-            print(file=z)
-            print("*this saves to burner-log.txt* Ctrl+C to stop")
-            print()
-            print(file=x)
-            def generate_random_result():
-                ctm = datetime.datetime.now()
-                def generate_random_characters():
-                    random1 = random.choice(chi_char)
-                    random2 = random.choice(chi_char)
-                    random3 = random.choice(chi_char)
-                    random4 = random.choice(chi_char)
-                    random5 = random.choice(chi_char)
-                    random6 = random.choice(chi_char)
-                    random7 = random.choice(chi_char)
-                    random8 = random.choice(chi_char)
-                    random9 = random.choice(chi_char)
-                    random10 = random.choice(chi_char)
-                    random11 = random.choice(chi_char)
-                    random12 = random.choice(chi_char)
-                    random13 = random.choice(chi_char)
-                    random14 = random.choice(chi_char)
-                    random15 = random.choice(chi_char)
-                    random16 = random.choice(chi_char)
-                    random17 = random.choice(chi_char)
-                    random18 = random.choice(chi_char)
-                    random19 = random.choice(chi_char)
-                    random20 = random.choice(chi_char)
-                    characters = [random1, random2, random3, random4, random5, random6, random7, random8, random9, random10, random11, random12, random13, random14, random15, random16, random17, random18, random19, random20]
-                    return characters
-                random_characters = generate_random_characters()
-                sitch  = (round(random.random()*999999999999999,5))
-                print(title, ctm, random_characters, sitch)
-                print(title, ctm, random_characters, sitch, file=x)
-            
-            def main_loop():
-                while True:
-                    time.sleep(buffer)
-                    generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def cbmp():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Chinese'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (C)'")
-            print()
-
-            time.sleep(.3)
-
-            c_fcci = ['a', 'ai', 'an', 'ang', 'ao', 'ba', 'bai', 'ban', 'bang', 'bao', 'bei', 'ben', 'beng', 'bi', 'bian', 'biao', 'bie', 'bin', 'bing', 'bo', 'bu', 'ca', 'cai', 'can', 'cang', 'cao', 'ce', 'cei', 'cen', 'ceng', 'cha', 'chai', 'chan', 'chang', 'chao', 'che', 'chen', 'cheng', 'chi', 'chong', 'chou', 'chu', 'chua', 'chuai', 'chuan', 'chuang', 'chui', 'chun', 'chuo', 'ci', 'cong', 'cou', 'cu', 'cuan', 'cui', 'cun', 'cuo', 'da', 'dai', 'dan', 'dang', 'dao', 'de', 'dei', 'den', 'deng', 'di', 'dia', 'dian', 'diao', 'die', 'ding', 'diu', 'dong', 'dou', 'du', 'duan', 'dui', 'dun', 'duo', 'e', 'ei', 'en', 'eng', 'er', 'fa', 'fan', 'fang', 'fei', 'fen', 'feng', 'fo', 'fou', 'fu', 'ga', 'gai', 'gan', 'gang', 'gao', 'ge', 'gei', 'gen', 'geng', 'gong', 'gou', 'gu', 'gua', 'guai', 'guan', 'guang', 'gui', 'gun', 'guo', 'ha', 'hai', 'han', 'hang', 'hao', 'he', 'hei', 'hen', 'heng', 'hong', 'hou', 'hu', 'hua', 'huai', 'huan', 'huang', 'hui', 'hun', 'huo', 'ji', 'jia', 'jian', 'jiang', 'jiao', 'jie', 'jin', 'jing', 'jiong', 'jiu', 'ju', 'juan', 'jue', 'jun', 'ka', 'kai', 'kan', 'kang', 'kao', 'ke', 'kei', 'ken', 'keng', 'kong', 'kou', 'ku', 'kua', 'kuai', 'kuan', 'kuang', 'kui', 'kun', 'kuo', 'la', 'lai', 'lan', 'lang', 'lao', 'le', 'lei', 'leng', 'li', 'lia', 'lian', 'liang', 'liao', 'lie', 'lin', 'ling', 'liu', 'long', 'lou', 'lu', 'luan', 'lun', 'luo', 'lü', 'lüe', 'ma', 'mai', 'man', 'mang', 'mao', 'me', 'mei', 'men', 'meng', 'mi', 'mian', 'miao', 'mie', 'min', 'ming', 'miu', 'mo', 'mou', 'mu', 'na', 'nai', 'nan', 'nang', 'nao', 'ne', 'nei', 'nen', 'neng', 'ni', 'nian', 'niang', 'niao', 'nie', 'nin', 'ning', 'niu', 'nong', 'nou', 'nu', 'nuan', 'nuo', 'nü', 'nüe', 'o', 'ou', 'pa', 'pai', 'pan', 'pang', 'pao', 'pei', 'pen', 'peng', 'pi', 'pian', 'piao', 'pie', 'pin', 'ping', 'po', 'pou', 'pu', 'qi', 'qia', 'qian', 'qiang', 'qiao', 'qie', 'qin', 'qing', 'qiong', 'qiu', 'qu', 'quan', 'que', 'qun', 'ran', 'rang', 'rao', 're', 'ren', 'reng', 'ri', 'rong', 'rou', 'ru', 'ruan', 'rui', 'run', 'ruo', 'sa', 'sai', 'san', 'sang', 'sao', 'se', 'sen', 'seng', 'sha', 'shai', 'shan', 'shang', 'shao', 'she', 'shei', 'shen', 'sheng', 'shi', 'shou', 'shu', 'shua', 'shuai', 'shuan', 'shuang', 'shui', 'shun', 'shuo', 'si', 'song', 'sou', 'su', 'suan', 'sui', 'sun', 'suo', 'ta', 'tai', 'tan', 'tang', 'tao', 'te', 'tei', 'teng', 'ti', 'tian', 'tiao', 'tie', 'ting', 'tong', 'tou', 'tu', 'tuan', 'tui', 'tun', 'tuo', 'wa', 'wai', 'wan', 'wang', 'wei', 'wen', 'weng', 'wo', 'wu', 'xi', 'xia', 'xian', 'xiang', 'xiao', 'xie', 'xin', 'xing', 'xiong', 'xiu', 'xu', 'xuan', 'xue', 'xun', 'ya', 'yan', 'yang', 'yao', 'ye', 'yi', 'yin', 'ying', 'yo', 'yong', 'you', 'yu', 'yuan', 'yue', 'yun', 'za', 'zai', 'zan', 'zang', 'zao', 'ze', 'zei', 'zen', 'zeng', 'zha', 'zhai', 'zhan', 'zhang', 'zhao', 'zhe', 'zhei', 'zhen', 'zheng', 'zhi', 'zhong', 'zhou', 'zhu', 'zhua', 'zhuai', 'zhuan', 'zhuang', 'zhui', 'zhun', 'zhuo', 'zi', 'zong', 'zou', 'zu', 'zuan', 'zui', 'zun', 'zuo', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            
-            maroon = " st"
-
-            cnano1 = (c_fcci)
-
-            q = open("cbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "cbmp-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=q)
-            print()
-            print("*this saves to cbmp.txt*")
-            print()
-            print(file=q)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                cci1 = random.choices(cnano1, k=random.randint(1,10))
-
-                result_text = "".join(cci1)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=q)
-
-                speak(result_text)
-
-                print()
-                print(file=q)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def cbmpc():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Chinese'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (CC)'")
-            print()
-
-            time.sleep(.3)
-
-            c_fcci = chi_chars
-            
-            maroon = " st"
-
-            cnano1 = (c_fcci)
-
-            q = open("cbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "cbmpc-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=q)
-            print()
-            print("*this saves to cbmp.txt*")
-            print()
-            print(file=q)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                cci1 = random.choices(cnano1, k=random.randint(1,25))
-
-                result_text = "".join(cci1)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=q)
-
-                speak(result_text)
-
-                print()
-                print(file=q)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
 
             try:
                 main_loop()
@@ -7119,150 +5116,6 @@ def main():
                 speak(result_text)
 
                 print()
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def hbmp():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Korean'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (H)'")
-            print()
-
-            time.sleep(.3)
-
-            h_fcci = ["ga", "gya", "geo", "gyeo", "go", "gyo", "gu", "gyu", "geu", "gi", "gae", "gyae", "ge", "gye", "gwa", "gwae", "goe", "gwo", "gwe", "gwi", "gui", "kka", "kkya", "kkeo", "kkyeo", "kko", "kkyo", "kku", "kkyu", "kkeu", "kki", "kkae", "kkyae", "kke", "kkye", "kkwa", "kkwae", "kkoe", "kkwo", "kkwe", "kkwi", "kkui", "na", "nya", "neo", "nyeo", "no", "nyo", "nu", "nyu", "neu", "ni", "nae", "nyae", "ne", "nye", "nwa", "nwae", "noe", "nwo", "nwe", "nwi", "nui", "da", "dya", "deo", "dyeo", "do", "dyo", "du", "dyu", "deu", "di", "dae", "dyae", "de", "dye", "dwa", "dwae", "doe", "dwo", "dwe", "dwi", "dui", "tta", "ttya", "tteo", "ttyeo", "tto", "ttyo", "ttu", "ttyu", "tteu", "tti", "ttae", "ttyae", "tte", "ttye", "ttwa", "ttwae", "ttoe", "ttwo", "ttwe", "ttwi", "ttui", "ra", "rya", "reo", "ryeo", "ro", "ryo", "ru", "ryu", "reu", "ri", "rae", "ryae", "re", "rye", "rwa", "rwae", "roe", "rwo", "rwe", "rwi", "rui", "ma", "mya", "meo", "myeo", "mo", "myo", "mu", "myu", "meu", "mi", "mae", "myae", "me", "mye", "mwa", "mwae", "moe", "mwo", "mwe", "mwi", "mui", "ba", "bya", "beo", "byeo", "bo", "byo", "bu", "byu", "beu", "bi", "bae", "byae", "be", "bye", "bwa", "bwae", "boe", "bwo", "bwe", "bwi", "bui", "ppa", "ppya", "ppeo", "ppyeo", "ppo", "ppyo", "ppu", "ppyu", "ppeu", "ppi", "ppae", "ppyae", "ppe", "ppye", "ppwa", "ppwae", "ppoe", "ppwo", "ppwe", "ppwi", "ppui", "sa", "sya", "seo", "syeo", "so", "syo", "su", "syu", "seu", "si", "sae", "syae", "se", "sye", "swa", "swae", "soe", "swo", "swe", "swi", "sui", "ssa", "ssya", "sseo", "ssyeo", "sso", "ssyo", "ssu", "ssyu", "sseu", "ssi", "ssae", "ssyae", "sse", "ssye", "sswa", "sswae", "ssoe", "sswo", "sswe", "sswi", "ssui", "a", "ya", "eo", "yeo", "o", "yo", "u", "yu", "eu", "i", "ae", "yae", "e", "ye", "wa", "wae", "oe", "wo", "we", "wi", "ui", "ja", "jya", "jeo", "jyeo", "jo", "jyo", "ju", "jyu", "jeu", "ji", "jae", "jyae", "je", "jye", "jwa", "jwae", "joe", "jwo", "jwe", "jwi", "jui", "jja", "jjya", "jjeo", "jjyeo", "jjo", "jjyo", "jju", "jjyu", "jjeu", "jji", "jjae", "jjyae", "jje", "jjye", "jjwa", "jjwae", "jjoe", "jjwo", "jjwe", "jjwi", "jjui", "cha", "chya", "cheo", "chyeo", "cho", "chyo", "chu", "chyu", "cheu", "chi", "chae", "chyae", "che", "chye", "chwa", "chwae", "choe", "chwo", "chwe", "chwi", "chui", "ka", "kya", "keo", "kyeo", "ko", "kyo", "ku", "kyu", "keu", "ki", "kae", "kyae", "ke", "kye", "kwa", "kwae", "koe", "kwo", "kwe", "kwi", "kui", "ta", "tya", "teo", "tyeo", "to", "tyo", "tu", "tyu", "teu", "ti", "tae", "tyae", "te", "tye", "twa", "twae", "toe", "two", "twe", "twi", "tui", "pa", "pya", "peo", "pyeo", "po", "pyo", "pu", "pyu", "peu", "pi", "pae", "pyae", "pe", "pye", "pwa", "pwae", "poe", "pwo", "pwe", "pwi", "pui", "ha", "hya", "heo", "hyeo", "ho", "hyo", "hu", "hyu", "heu", "hi", "hae", "hyae", "he", "hye", "hwa", "hwae", "hoe", "hwo", "hwe", "hwi", "hui", ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            
-            maroon = " st"
-
-            hnano1 = (h_fcci)
-
-            k = open("hbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "hbmp-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=k)
-            print()
-            print("*this saves to hbmp.txt*")
-            print()
-            print(file=k)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                hcci = random.choices(hnano1, k=random.randint(1,10))
-
-                result_text = "".join(hcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=k)
-
-                speak(result_text)
-
-                print()
-                print(file=k)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def hbmpc():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Korean'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (HC)'")
-            print()
-
-            time.sleep(.3)
-
-            h_fcci = jamo
-            
-            maroon = " st"
-
-            hnano1 = (h_fcci)
-
-            k = open("hbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "hbmpc-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=k)
-            print()
-            print("*this saves to hbmp.txt*")
-            print()
-            print(file=k)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                hcci = random.choices(hnano1, k=random.randint(1,25))
-
-                result_text = "".join(hcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=k)
-
-                speak(result_text)
-
-                print()
-                print(file=k)
                 
             def main_loop():
                 while True:
@@ -7405,150 +5258,6 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
-        def jbmp():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Japanese'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (J)'")
-            print()
-
-            time.sleep(.3)
-
-            j_fcci = ["a", "i", "u", "e", "o", "ka", "ki", "ku", "ke", "ko", "kya", "kyu", "kyo", "ga", "gi", "gu", "ge", "go", "gya", "gyu", "gyo", "sa", "shi", "su", "se", "so", "sha", "shu", "sho", "za", "ji", "zu", "ze", "zo", "ja", "ju", "jo", "ta", "chi", "tsu", "te", "to", "cha", "chu", "cho", "da", "de", "do", "na", "ni", "nu", "ne", "no", "nya", "nyu", "nyo", "ha", "hi", "fu", "he", "ho", "hya", "hyu", "hyo", "ba", "bi", "bu", "be", "bo", "bya", "byu", "byo", "pa", "pi", "pu", "pe", "po", "pya", "pyu", "pyo", "ma", "mi", "mu", "me", "mo", "mya", "myu", "myo", "ya", "yu", "yo", "ra", "ri", "ru", "re", "ro", "rya", "ryu", "ryo", "wa", "wo", "n", ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            
-            maroon = " st"
-
-            jnano = (j_fcci)
-
-            e = open("jbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "jbmp-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=e)
-            print()
-            print("*this saves to jbmp.txt*")
-            print()
-            print(file=e)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                jcci = random.choices(jnano, k=random.randint(1,10))
-
-                result_text = "".join(jcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=e)
-
-                speak(result_text)
-
-                print()
-                print(file=e)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
-        def jbmpc():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Japanese'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (JC)'")
-            print()
-
-            time.sleep(.3)
-
-            j_fcci = katakana
-            
-            maroon = " st"
-
-            jnano = (j_fcci)
-
-            e = open("jbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "jbmpc-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=e)
-            print()
-            print("*this saves to jbmp.txt*")
-            print()
-            print(file=e)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                jcci = random.choices(jnano, k=random.randint(1,25))
-
-                result_text = "".join(jcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=e)
-
-                speak(result_text)
-
-                print()
-                print(file=e)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
         def xjbmp():
 
             time.sleep(.3)
@@ -7677,78 +5386,6 @@ def main():
             except KeyboardInterrupt:
                 print("\nStopped by user.")
 
-        def fbmp():
-
-            time.sleep(.3)
-
-            print()
-            print("DISCLAIMER: This works on Android and must have Termux and Termux-API installed from F-Droid and Google Text-to-Speech options set to 'Filipino/Tagalog'")
-            print()
-            print("Ctrl+C To Stop")
-            print()
-            print("'FNTCCI (F/T)'")
-            print()
-
-            time.sleep(.3)
-
-            t_fcci = ["a", "e", "i", "o", "u", "ba", "be", "bi", "bo", "bu", "ka", "ke", "ki", "ko", "ku", "da", "de", "di", "do", "du", "ga", "ge", "gi", "go", "gu", "ha", "he", "hi", "ho", "hu", "la", "le", "li", "lo", "lu", "ma", "me", "mi", "mo", "mu", "na", "ne", "ni", "no", "nu", "nga", "nge", "ngi", "ngo", "ngu", "pa", "pe", "pi", "po", "pu", "ra", "re", "ri", "ro", "ru", "sa", "se", "si", "so", "su", "ta", "te", "ti", "to", "tu", "wa", "we", "wi", "wo", "wu", "ya", "ye", "yi", "yo", "yu", ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            
-            maroon = " st"
-
-            fnano = (t_fcci)
-
-            u = open("fbmp.txt", "a", buffering=1)
-
-            ct = datetime.datetime.now()
-
-            monitor = "fbmp-start:"
-            print(monitor, ct)
-            print(monitor, ct, file=u)
-            print()
-            print("*this saves to fbmp.txt*")
-            print()
-            print(file=u)
-
-            def generate_random_result():
-
-                ctm = datetime.datetime.now()
-
-                def generate_random_letters():
-                    random1 = random.choice(string.ascii_letters)
-                    random2 = random.choice(string.ascii_letters)
-                    random3 = random.choice(string.ascii_letters)
-                    letters = [random1, random2, random3]
-                    return letters
-
-                random_letters = generate_random_letters()
-
-                sitch  = (round(random.random()*9999,4))
-
-                tcci = random.choices(fnano, k=random.randint(1,10))
-
-                result_text = "".join(tcci)
-
-                print(maroon, random_letters, sitch, result_text, ctm)
-                print(maroon, random_letters, sitch, result_text, ctm, file=u)
-
-                speak(result_text)
-
-                print()
-                print(file=u)
-                
-            def main_loop():
-                while True:
-                    time.sleep(random.randint(0,6))
-                    integer = (round(random.random()*18))
-                    if integer > 10:
-                        if random.choice([True, False]):
-                            generate_random_result()
-
-            try:
-                main_loop()
-            except KeyboardInterrupt:
-                print("\nStopped by user.")
-
         def xfbmp():
 
             time.sleep(.3)
@@ -7838,72 +5475,7 @@ def main():
             
             # 4. Print to console
             ct = datetime.datetime.now()
-            print(f"\n{BLUE}generated_string: {secure_str} | {ct}{RESET}")            
-            # Print to file (Note the comma before file=z)
-            print(f"{usr}Generated_String: {secure_str} | {ct}", file=z)
-
-        def check_ss():
-            try:
-                subprocess.run(["mpv", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                return True
-            except FileNotFoundError:
-                print("-" * 50)
-                print("ERROR: 'mpv' is not installed.")
-                print("\nTo fix this, run:")
-                print("  Termux: pkg install mpv pulseaudio")
-                print("  Linux:  sudo apt install mpv")
-                print("  MacOS:  brew install mpv")
-                print("-" * 50)
-                return False
-
-        def sound_stream():
-
-            if not check_ss():
-                return
-
-            sample_rate = 44100
-            
-            cmd = [
-                "mpv",
-                "--no-video",
-                "--demuxer=rawaudio",  
-                "--demuxer-rawaudio-rate=44100",
-                "--demuxer-rawaudio-channels=1",
-                "--demuxer-rawaudio-format=s16le",
-                "-"  # Read from stdin
-            ]
-
-            try:
-                player = subprocess.Popen(cmd, stdin=subprocess.PIPE)
-                
-                print("Generating tones... (Ctrl+C to stop)")
-
-                while True:
-                    pitch = random.uniform(40, 1000)
-                    duration = random.uniform(0.01, 1.11) 
-                    num_samples = int(sample_rate * duration)
-                    
-                    audio_bytes = bytearray()
-                    for x in range(num_samples):
-                        sample = int(16000 * math.sin(2 * math.pi * pitch * (x / sample_rate)))
-                        audio_bytes.extend(struct.pack('h', sample))
-                    
-                    if player.poll() is not None:
-                        print("\n[!] mpv exited unexpectedly.")
-                        break
-                        
-                    player.stdin.write(audio_bytes)
-                    player.stdin.flush()
-
-            except KeyboardInterrupt:
-                print("\nStopping...")
-            except BrokenPipeError:
-                print("\n[!] Connection to mpv was lost.")
-            finally:
-                if 'player' in locals():
-                    player.terminate()
-                    player.wait()
-
+            print(f"\n{BLUE}generated_string: {secure_str} | {ct}{RESET}")
 
         def rhospital():
             hospitals = ["MASSACHUSETTS GENERAL HOSPITAL: 55 FRUIT STREET, BOSTON, MA 02114. Type: Acute Care Teaching Hospital. Beds: 999. Specialty: General Medicine, Surgery, Psychiatry.",
@@ -8506,27 +6078,22 @@ def main():
 
             ct = datetime.datetime.now()
             print()
-            print(file=z)
-            print(hospital, ct)
-            print(hospital, ct, file=z)
+            print(hospital, ct)              
 
         def choice():
             choice = ''
-            while choice !='pray' and choice !='slot' and choice !='search for items' and choice !='surf' and choice !='sleep' and choice !='eat' and choice !='meditate' and choice !='find coins' and choice !='draw card' and choice !='fly' and choice !='drink coffee' and choice !='drink tea' and choice !='surf' and choice !='dhammapada' and choice !='skate' and choice !='art' and choice !='give alms' and choice !='radio' and choice !='hack' and choice !='message' and choice !='brawl' and choice !='souls'and choice !='hipster tarot' and choice !='mp3' and choice !='spar' and choice !='train' and choice !='rest' and choice !='psalms' and choice !='haiku' and choice !='muslim prayer' and choice !='karate' and choice !='koans' and choice !='equips' and choice !='rpg' and choice !='archery' and choice !='color key' and choice !='doodling' and choice !='BUMP' and choice !='MA' and choice !='Magic' and choice !='commands' and choice !='ascii' and choice !='zen melody' and choice !='monopoly' and choice !='light incense' and choice  !='stats' and choice !='prayer' and choice !='progress' and choice !='collections' and choice !='football' and choice !='c' and choice !='map' and choice !='search' and choice !='print time' and choice !='entry' and choice !='posting' and choice !='koran' and choice !='heBrews' and choice !='Medicals' and choice !='M' and choice !='Clearance' and choice !='MiCasa' and choice !='stuff' and choice !='worship' and choice !='Earth Science' and choice !='SCI' and choice !='value' and choice !='psychology' and choice !='psyc' and choice !='Patient Simu' and choice !='biology' and choice !='B' and choice !='legal terms' and choice !='Law' and choice !='the heart sutra' and choice !='License' and choice !='police' and choice !='prad' and choice !='climb' and choice !='chemistry' and choice !='ch' and choice !='weapon start' and choice !='wstart' and choice !='teletubby' and choice !='note' and choice !='save' and choice !='journal' and choice !='version' and choice !='ai' and choice !='auto-mat' and choice !='AAM' and choice !='ID' and choice !='IDC' and choice !='echo' and choice !='monitor-start' and choice !='mstart' and choice !='change username' and choice !='username' and choice !='user' and choice !='fuzz' and choice !='message-scan' and choice !='scan' and choice !='monitor-search' and choice !='msearch' and choice !='tag' and choice !='atag' and choice !='a-tag' and choice !='acad-monitor' and choice !='astart' and choice !='acad-search' and choice !='asearch' and choice !='oscillator' and choice !='oscillate' and choice !='oscill' and choice !='amror' and choice !='game' and choice !='amsearch' and choice !='amror-search' and choice !='amror search' and choice !='profile' and choice !='Profile' and choice !='herbs' and choice !='herbals' and choice !='degree' and choice !='degrees' and choice !='major' and choice !='majors' and choice !='MedProc AI' and choice !='MAI' and choice !='frames' and choice !='fsearch' and choice !='ascsearch' and choice !='alerts' and choice !='Alerts' and choice !='burner-start' and choice !='burner start' and choice !='burner' and choice !='burn' and choice !='MAIc' and choice !='MPC' and choice !='mpc' and choice !='GES' and choice !='call' and choice !='time-monitor':
-                global usr
+            while choice !='pray' and choice !='slot' and choice !='search for items' and choice !='surf' and choice !='sleep' and choice !='eat' and choice !='meditate' and choice !='find coins' and choice !='draw card' and choice !='fly' and choice !='drink coffee' and choice !='drink tea' and choice !='surf' and choice !='dhammapada' and choice !='skate' and choice !='art' and choice !='give alms' and choice !='radio' and choice !='hack' and choice !='message' and choice !='brawl' and choice !='souls'and choice !='hipster tarot' and choice !='mp3' and choice !='spar' and choice !='train' and choice !='rest' and choice !='psalms' and choice !='haiku' and choice !='muslim prayer' and choice !='karate' and choice !='koans' and choice !='equips' and choice !='rpg' and choice !='archery' and choice !='color key' and choice !='doodling' and choice !='BUMP' and choice !='MA' and choice !='Magic' and choice !='commands' and choice !='ascii' and choice !='zen melody' and choice !='monopoly' and choice !='light incense' and choice  !='stats' and choice !='prayer' and choice !='progress' and choice !='collections' and choice !='football' and choice !='c' and choice !='map' and choice !='search' and choice !='print time' and choice !='entry' and choice !='posting' and choice !='koran' and choice !='heBrews' and choice !='Medicals' and choice !='M' and choice !='Clearance' and choice !='MiCasa' and choice !='stuff' and choice !='worship' and choice !='Earth Science' and choice !='SCI' and choice !='value' and choice !='psychology' and choice !='psyc' and choice !='Patient Simu' and choice !='biology' and choice !='B' and choice !='legal terms' and choice !='Law' and choice !='the heart sutra' and choice !='License' and choice !='police' and choice !='prad' and choice !='climb' and choice !='chemistry' and choice !='ch' and choice !='weapon start' and choice !='wstart' and choice !='teletubby' and choice !='note' and choice !='save' and choice !='journal' and choice !='version' and choice !='ai' and choice !='auto-mat' and choice !='AAM' and choice !='ID' and choice !='IDC' and choice !='echo' and choice !='monitor-start' and choice !='mstart' and choice !='change username' and choice !='username' and choice !='user' and choice !='fuzz' and choice !='message-scan' and choice !='scan' and choice !='monitor-search' and choice !='msearch' and choice !='tag' and choice !='atag' and choice !='a-tag' and choice !='acad-monitor' and choice !='astart' and choice !='acad-search' and choice !='asearch' and choice !='oscillator' and choice !='oscillate' and choice !='oscill' and choice !='amror' and choice !='game' and choice !='amsearch' and choice !='amror-search' and choice !='amror search' and choice !='profile' and choice !='Profile' and choice !='herbs' and choice !='herbals' and choice !='degree' and choice !='degrees' and choice !='major' and choice !='majors' and choice !='MedProc AI' and choice !='MAI' and choice !='frames' and choice !='fsearch' and choice !='ascsearch' and choice !='alerts' and choice !='Alerts' and choice !='burner-start' and choice !='burner start' and choice !='burner' and choice !='burn' and choice !='kiomai' and choice !='KIOMAI' and choice !='GES' and choice !='call' and choice !='time-monitor':
                 print()
-                print(file=z)
                 choice = input(usr)
                 ct = datetime.datetime.now()
-                print(usr, choice, ct, file=z)
 
-                if choice == "version" or choice == "about" or choice == "intro":
+                if choice == "version":
                     version()
 
-                if choice == "commands" or choice == "help" or choice == "-help" or choice == "--help":
+                if choice == "commands":
                     commands()
 
-                if choice == "nano chars" or choice == "nano characters" or choice == "nano-characters" or choice == "nanochars" or choice == "nano-chars" or choice == "nnc" or choice == 'NNC':
+                if choice == "nano chars" or choice == "nano characters" or choice == "nano-characters" or choice == "nanochars" or choice == "nano-chars" or choice == "nnc" or choice == "NNC":
                     select_charset()
 
                 if choice == "GES" or choice == "CAI" or choice == "CAI Environments" or choice == "CAI environments" or choice == "cai environments":
@@ -8540,25 +6107,9 @@ def main():
 
                 if choice == 'change username' or choice == 'username' or choice == 'user':
                     change_username()
-                    return "continue"
 
                 if choice == 'alerts' or choice == 'Alerts':
                     alerts()
-
-                if choice == 'note':
-                    note()
-
-                if choice == 'journal':
-                    journal()
-
-                if choice == 'save':
-                    save()
-
-                if choice == 'search':
-                    search()
-
-                if choice == 'monitor-search' or choice == 'msearch':
-                    msearch()
 
                 if choice == 'echo':
                     echo()
@@ -8815,9 +6366,6 @@ def main():
                 if choice == "ascii" or choice == "  ":
                     asciii()
 
-                if choice == "ascii search" or choice == "ascsearch" or choice == "asc search" or choice =="asc":
-                    ascsearch()
-
                 if choice == "mp3":
                     mp3()
 
@@ -8850,7 +6398,6 @@ def main():
 
                 if choice == "donate":
                     print("Contact the developer at usvu.tech@gmail.com")
-                    print(usr + "" + " " + "" + "Contact the developer at usvu.tech@gmail.com", file=z)
                     time.sleep(5)
 
                 if choice == "exit":
@@ -8864,13 +6411,10 @@ def main():
                     weapon_start()
 
                 if choice == "call":
-                    call()
+                    print("this function does not work in this web version")
 
                 if choice == "time-call" or choice == "time call" or choice == "TC":
-                    time_call()
-
-                if choice == "RTC" or choice == "ruh time call" or choice == "ruh-time-call":
-                    ruh_time_call()
+                    print("this function does not work in this web version")
 
                 if choice == "monitor-start" or choice == "mstart":
                     monitor_start()
@@ -8882,10 +6426,7 @@ def main():
                     time_monitor()
 
                 if choice == "speech time monitor" or choice == "speech-time-monitor" or choice == "speech time-monitor" or choice == "speech tmonitor" or choice == "stmonitor":
-                    s_time_monitor()
-
-                if choice == "acad-search" or choice == "asearch":
-                    asearch()
+                    print("this function does not work in this web version")
 
                 if choice == "message-scan" or choice == "scan":
                     msgs()
@@ -8908,44 +6449,26 @@ def main():
                 if choice == "frames" or choice == "fps":
                     frames()
 
-                if choice == "frames search" or choice == "fsearch":
-                    fsearch()
-
-                if choice == "busearch" or choice == "burner search" or choice == "burner-search" or choice == "bsearch" or choice == "b-search":
-                    busearch()
-
                 if choice == "oscillator" or choice == "oscillate" or choice == "oscill":
                     oscillator()
 
                 if choice == "toscillator" or choice == "toscillate" or choice == "toscill" or choice == "time-oscill" or choice == "time-oscillate" or choice == "time-oscillator":
                     toscillator()
 
-                if choice == "amror" or choice == "game" or choice == "amror game" or choice == "meditation game":
-                    amror()
-
-                if choice == "amsearch" or choice == "amror-search" or choice == "amror search":
-                    amsearch()
-
                 if choice == "burner-start" or choice == "burner start" or choice == "burner" or choice == "burn" or choice == "Burn":
                     burner()
 
-                if choice == "c-burner-start" or choice == "c burner start" or choice == "cburner" or choice == "cburn" or choice == "cBurn":
-                    cburner()
-
-                if choice == "j-burner-start" or choice == "j burner start" or choice == "jburner" or choice == "jburn" or choice == "jBurn":
-                    jburner()
-
-                if choice == "time-burner-start" or choice == "time burner start" or choice == "time burner" or choice == "tburn" or choice == "time burn" or choice == "tburner" or choice == "tBurn" or choice == "c-time-burner":
+                if choice == "time-burner-start" or choice == "time burner start" or choice == "time burner" or choice == "tburn" or choice == "time burn" or choice == "tburner" or choice == "tBurn" or choice == "time-burner":
                     tburner()
 
-                if choice == "c-time-burner-start" or choice == "c time burner start" or choice == "c time burner" or choice == "ctburn" or choice == "c time burn" or choice == "ctburner" or choice == "ctBurn" or choice == "c-time-burner":
-                    ctburner()
+                if choice == 'search' or choice == 'fsearch':
+                    search()
 
-                if choice == "j-time-burner-start" or choice == "j time burner start" or choice == "j time burner" or choice == "jtburn" or choice == "j time burn" or choice == "jtburner" or choice == "jtBurn" or choice == "j-time-burner":
-                    jtburner()
+                if choice == "busearch" or choice == "burner search" or choice == "burner-search" or choice == "bsearch" or choice == "b-search":
+                    busearch()
 
                 if choice == "zuz" or choice == "ZUZ" or choice == "pp" or choice == "PP" or choice == "Zuz":
-                    zuz()
+                    print("this function does not work in this web version")
 
                 if choice == "programs" or choice == "Programs" or choice == "Prog" or choice == "PROGR" or choice == "program" or choice == "Program" or choice == "progr":
                     programs()
@@ -8995,49 +6518,28 @@ def main():
                             mp()
 
                 if choice == "speak" or choice == "spk":
-                    spheak()
-
-                if choice == "cbmp":
-                    cbmp()
-
-                if choice == "cbmpc":
-                    cbmpc()                    
+                    print("this function does not work in this web version")
 
                 if choice == "xcbmp":
-                    xcbmp()
+                    print("this function does not work in this web version")
 
                 if choice == "xcbmpc":
-                    xcbmpc()
-
-                if choice == "hbmp":
-                    hbmp()
-
-                if choice == "hbmpc":
-                    hbmpc()
+                    print("this function does not work in this web version")
 
                 if choice == "xhbmp":
-                    xhbmp()
+                    print("this function does not work in this web version")
 
                 if choice == "xhbmpc":
-                    xhbmpc()
-
-                if choice == "jbmp":
-                    jbmp()
-
-                if choice == "jbmpc":
-                    jbmpc()
+                    print("this function does not work in this web version")
 
                 if choice == "xjbmp":
-                    xjbmp()
+                    print("this function does not work in this web version")
 
                 if choice == "xjbmpc":
-                    xjbmpc()
-
-                if choice == "fbmp":
-                    fbmp()
+                    print("this function does not work in this web version")
 
                 if choice == "xfbmp":
-                    xfbmp()
+                    print("this function does not work in this web version")
 
                 if choice == "gen string" or choice == "generate string" or choice == "genstring" or choice == "gstring":
                     generate_secure_string()
@@ -9048,775 +6550,17 @@ def main():
                 if choice == "insta ghost write" or choice == "Insta Ghost Write" or choice == "IGW" or choice == "igw" or choice == "insta ghost code" or choice == "iGW" or choice == "insta GW" or choice == "insta gw":
                     insta_ghost_write()
 
-                if choice == "soundstream" or choice == "sst" or choice == "SST" or choice == "sound stream" or choice == "stream sound" or choice == "streamsound":
-                    sound_stream()
-
                 if choice == "rhospital" or choice == "random hospital" or choice == "ghosthunt" or choice == "rhosp":
                     rhospital()
 
-                if choice == "switch" or choice == "lx" or choice == "lpro-s":
-                    return "switch"
-
-        parser = argparse.ArgumentParser(description="MProcs", prefix_chars='-')
-
-        parser.add_argument("--user", "--username", nargs='?', const='ASK', help="Set username *lx-switch persistent")
-        parser.add_argument("--charset", "--nanochars", "-ch", nargs='?', const='ASK', help="Set Nano charset (e.g. 1, 2a, korean) *lx-switch persistent")
-        parser.add_argument("--version", "--about", "--wm", "--intro", action="store_true", help="Display intro, version, and welcome message")
-        parser.add_argument("--x", "--c", "--exit", "--close", action="store_true", help="Don't continue the program")
-        parser.add_argument("-nano", "-n", action="store_true")
-        parser.add_argument("-n1", "-1nano", action="store_true")
-        parser.add_argument("-lh", "-message", action="store_true")
-        parser.add_argument("-cai", "-ges", action="store_true")
-        parser.add_argument("-print-time", action="store_true")
-        parser.add_argument("-profile", action="store_true")
-        parser.add_argument("-alerts", action="store_true")
-        parser.add_argument("-note", action="store_true")
-        parser.add_argument("-journal", action="store_true")
-        parser.add_argument("-save", action="store_true")
-        parser.add_argument("-search", action="store_true")
-        parser.add_argument("-monitor-search", "-msearch", action="store_true")
-        parser.add_argument("-echo", action="store_true")
-        parser.add_argument("-chinese-characters", "-c-characters", "-cchar", action="store_true")
-        parser.add_argument("-ch-monitor", "-chm", action="store_true")
-        parser.add_argument("-pray", action="store_true")
-        parser.add_argument("-climb", action="store_true")
-        parser.add_argument("-prayer", action="store_true")
-        parser.add_argument("-stats", action="store_true")
-        parser.add_argument("-progress", action="store_true")
-        parser.add_argument("-light-incense", action="store_true")
-        parser.add_argument("-heart-sutra", action="store_true")
-        parser.add_argument("-hebrews", action="store_true")
-        parser.add_argument("-teletubby", action="store_true")
-        parser.add_argument("-herbs", "-herbals", action="store_true")
-        parser.add_argument("-legal-terms", "-law", action="store_true")
-        parser.add_argument("-degrees", "-majors", action="store_true")
-        parser.add_argument("-biology", action="store_true")
-        parser.add_argument("-chemistry", action="store_true")
-        parser.add_argument("-patient-simu", action="store_true")
-        parser.add_argument("-earth-science", "-sci", action="store_true")
-        parser.add_argument("-psychology", "-psyc", action="store_true")
-        parser.add_argument("-medicals", "-m", action="store_true")
-        parser.add_argument("-license", action="store_true")
-        parser.add_argument("-police", "-prad", action="store_true")
-        parser.add_argument("-clearance", action="store_true")
-        parser.add_argument("-katakana", "-kata", action="store_true")
-        parser.add_argument("-jamo", "-hangu", action="store_true")
-        parser.add_argument("-chi", action="store_true")
-        parser.add_argument("-ans", action="store_true")
-        parser.add_argument("-ruh", action="store_true")
-        parser.add_argument("-kata-monitor", "-km", action="store_true")
-        parser.add_argument("-jamo-monitor", "-jm", action="store_true")
-        parser.add_argument("-ruh-monitor", "-rmonitor", action="store_true")
-        parser.add_argument("-entry", action="store_true")
-        parser.add_argument("-micasa", action="store_true")
-        parser.add_argument("-stuff", action="store_true")
-        parser.add_argument("-worship", action="store_true")
-        parser.add_argument("-posting", action="store_true")
-        parser.add_argument("-fajr", action="store_true")
-        parser.add_argument("-dhuhr", action="store_true")
-        parser.add_argument("-asr", action="store_true")
-        parser.add_argument("-maghrib", action="store_true")
-        parser.add_argument("-isha", action="store_true")
-        parser.add_argument("-meditate", action="store_true")
-        parser.add_argument("-sleep", action="store_true")
-        parser.add_argument("-eat", action="store_true")
-        parser.add_argument("-find-coins", action="store_true")
-        parser.add_argument("-slot", action="store_true")
-        parser.add_argument("-draw-card", action="store_true")
-        parser.add_argument("-search-items", action="store_true")
-        parser.add_argument("-fly", action="store_true")
-        parser.add_argument("-drink-coffee", action="store_true")
-        parser.add_argument("-drink-tea", action="store_true")
-        parser.add_argument("-surf", action="store_true")
-        parser.add_argument("-collections", action="store_true")
-        parser.add_argument("-doodling", action="store_true")
-        parser.add_argument("-zen-melody", action="store_true")
-        parser.add_argument("-value", action="store_true")
-        parser.add_argument("-bump", action="store_true")
-        parser.add_argument("-ma", "-martial-arts", action="store_true")
-        parser.add_argument("-skate", action="store_true")
-        parser.add_argument("-id", action="store_true")
-        parser.add_argument("-idc", action="store_true")
-        parser.add_argument("-art", action="store_true")
-        parser.add_argument("-radio", action="store_true")
-        parser.add_argument("-give-alms", action="store_true")
-        parser.add_argument("-brawl", action="store_true")
-        parser.add_argument("-karate", action="store_true")
-        parser.add_argument("-koans", action="store_true")
-        parser.add_argument("-hipster-tarot", "-tarot", action="store_true")
-        parser.add_argument("-hack", action="store_true")
-        parser.add_argument("-spar", action="store_true")
-        parser.add_argument("-train", action="store_true")
-        parser.add_argument("-rest", action="store_true")
-        parser.add_argument("-haiku", action="store_true")
-        parser.add_argument("-psalms", action="store_true")
-        parser.add_argument("-dhammapada", action="store_true")
-        parser.add_argument("-proverbs", action="store_true")
-        parser.add_argument("-koran", action="store_true")
-        parser.add_argument("-souls", action="store_true")
-        parser.add_argument("-guard", action="store_true")
-        parser.add_argument("-chat", action="store_true")
-        parser.add_argument("-ascii", action="store_true")
-        parser.add_argument("-ascii-search", "-ascsearch", action="store_true")
-        parser.add_argument("-mp3", action="store_true")
-        parser.add_argument("-monopoly", action="store_true")
-        parser.add_argument("-equips", action="store_true")
-        parser.add_argument("-rpg", action="store_true")
-        parser.add_argument("-archery", action="store_true")
-        parser.add_argument("-color-key", action="store_true")
-        parser.add_argument("-magic", action="store_true")
-        parser.add_argument("-football", action="store_true")
-        parser.add_argument("-map", action="store_true")
-        parser.add_argument("-auto-mat", "-aam", action="store_true")
-        parser.add_argument("-donate", action="store_true")
-        parser.add_argument("-weapon-start", "-wstart", action="store_true")
-        parser.add_argument("-call", action="store_true")
-        parser.add_argument("-time-call", "-tc", action="store_true")
-        parser.add_argument("-monitor-start", "-mstart", action="store_true")
-        parser.add_argument("-acad-monitor", "-astart", action="store_true")
-        parser.add_argument("-time-monitor", "-tmonitor", action="store_true")
-        parser.add_argument("-ruh-time-call", "-rtc", action="store_true")
-        parser.add_argument("-speech-tmonitor", action="store_true")
-        parser.add_argument("-acad-search", action="store_true")
-        parser.add_argument("-message-scan", "-scan", action="store_true")
-        parser.add_argument("-fuzz", action="store_true")
-        parser.add_argument("-tag", action="store_true")
-        parser.add_argument("-a-tag", "-atag", action="store_true")
-        parser.add_argument("-medproc-ai", "-mai", action="store_true")
-        parser.add_argument("-medproc-cont", "-mpc", "-maic", action="store_true")
-        parser.add_argument("-frames", "-fps", action="store_true")
-        parser.add_argument("-frames-search", action="store_true")
-        parser.add_argument("-burner-search", "-bsearch", action="store_true")
-        parser.add_argument("-oscillator", "-oscill", action="store_true")
-        parser.add_argument("-time-oscillator", "-toscill", action="store_true")
-        parser.add_argument("-amror", action="store_true")
-        parser.add_argument("-amror-search", "-amsearch", action="store_true")
-        parser.add_argument("-burner-start", "-burner", "-burn", action="store_true")
-        parser.add_argument("-time-burner-start", "-time-burner", "-tburner", "-tburn", action="store_true")
-        parser.add_argument("-c-burner-start", "-cburner", "-cburn", action="store_true")
-        parser.add_argument("-c-time-burner-start", "-c-time-burner", "-ctburner", "-ctburn", action="store_true")
-        parser.add_argument("-j-burner-start", "-jburner", "-jburn", action="store_true")
-        parser.add_argument("-j-time-burner-start", "-j-time-burner", "-jtburner", "-jtburn", action="store_true")
-        parser.add_argument("-zuz", "-pp", action="store_true")
-        parser.add_argument("-programs", "-progr", action="store_true")
-        parser.add_argument("-tinien", action="store_true")
-        parser.add_argument("-n-tag", "-ntag", action="store_true")
-        parser.add_argument("-fcci-monitor", "-fmonitor", action="store_true")
-        parser.add_argument("-type-text", action="store_true")
-        parser.add_argument("-threads", action="store_true")
-        parser.add_argument("-speak", "-spk", action="store_true")
-        parser.add_argument("-cbmp", action="store_true")
-        parser.add_argument("-cbmpc", action="store_true")
-        parser.add_argument("-xcbmp", action="store_true")
-        parser.add_argument("-xcbmpc", action="store_true")
-        parser.add_argument("-hbmp", action="store_true")
-        parser.add_argument("-hbmpc", action="store_true")
-        parser.add_argument("-xhbmp", action="store_true")
-        parser.add_argument("-xhbmpc", action="store_true")
-        parser.add_argument("-jbmp", action="store_true")
-        parser.add_argument("-jbmpc", action="store_true")
-        parser.add_argument("-xjbmp", action="store_true")
-        parser.add_argument("-xjbmpc", action="store_true")
-        parser.add_argument("-fbmp", action="store_true")
-        parser.add_argument("-xfbmp", action="store_true")
-        parser.add_argument("-gen-string", "-gstring", action="store_true")
-        parser.add_argument("-ghost-write", "-gw", action="store_true")
-        parser.add_argument("-insta-ghost-write", "-igw", action="store_true")
-        parser.add_argument("-sound-stream", "-sst", action="store_true")
-        parser.add_argument("-rhospital", "-ghosthunt", action="store_true")
-        parser.add_argument("-mprocs-commands", action="store_true")
-
-        single_dash_args = [a for a in sys.argv[1:] if a.startswith('-') and not a.startswith('--')]
-
-        if len(single_dash_args) > 1:
-            print("Error: You cannot combine multiple single-dash flags.")
-            sys.exit(1)
-
-        args = parser.parse_args()
-
-        if args.user:
-            change_username(None if args.user == 'ASK' else args.user)
-        
-        if args.charset:
-            select_charset(None if args.charset == 'ASK' else args.charset)
-
-        if args.version:
-            print()
-            print(file=z)
-            version()
-
-        if args.cai:
-            GES()
-            
-        if args.print_time:
-            print_time()            
-
-        if args.profile:
-            profile()           
-
-        if args.alerts:
-            alerts()            
-
-        if args.note:
-            note()            
-
-        if args.journal:
-            journal()
-            
-        if args.save:
-            save()
-            
-        if args.search:
-            search()
-            
-        if args.monitor_search:
-            msearch()            
-
-        if args.echo:
-            echo()
-            
-        if args.chinese_characters:
-            chichars()            
-
-        if args.ch_monitor:
-            ch_monitor()            
-            sys.exit(0)
-
-        if args.pray:
-            pray()
-            
-        if args.climb:
-            climb()
-            
-        if args.prayer:
-            prayer()            
-
-        if args.stats:
-            stats()
-            
-        if args.progress:
-            progress()
-            
-        if args.light_incense:
-            light_incense()
-            
-        if args.heart_sutra:
-            heart_sutra()            
-
-        if args.hebrews:
-            hebrews()
-            
-        if args.teletubby:
-            teletubby()           
-
-        if args.herbs:
-            herbs()            
-
-        if args.legal_terms:
-            legal_terms()
-            
-        if args.degrees:
-            degree()
-            
-        if args.biology:
-            biology()
-            
-        if args.chemistry:
-            chemistry()
-            
-        if args.patient_simu:
-            patient_simu()
-            
-        if args.earth_science:
-            earth_science()
-            
-        if args.psychology:
-            psychology()
-            
-        if args.medicals:
-            medicals()
-            
-        if args.license:
-            license()
-            
-        if args.police:
-            police()
-            
-        if args.clearance:
-            clearance()
-            
-        if args.nano:
-            nano()
-
-        if args.n1:
-            n1()
-            
-        if args.katakana:
-            kata()           
-
-        if args.jamo:
-            hangu()           
-
-        if args.chi:
-            manton()
-
-        if args.ans:
-            aans()
-
-        if args.ruh:
-            ruuh()            
-
-        if args.kata_monitor:
-            kata_monitor()
-            sys.exit(0)
-
-        if args.jamo_monitor:
-            hangu_monitor()
-            sys.exit(0)
-
-        if args.ruh_monitor:
-            ruh_monitor()
-            sys.exit(0)
-
-        if args.entry:
-            entry()
-            
-        if args.micasa:
-            micasa()
-            
-        if args.stuff:
-            stuff()
-            
-        if args.worship:
-            worship()
-            
-        if args.posting:
-            posting()
-            
-        if args.fajr:
-            fajr()
-            
-        if args.dhuhr:
-            dhuhr()
-            
-        if args.asr:
-            asr()           
-
-        if args.maghrib:
-            maghrib()
-            
-        if args.isha:
-            meditate()            
-
-        if args.sleep:
-            sleep()
-            
-        if args.eat:
-            eat()
-            
-        if args.find_coins:
-            find_coins()
-            
-        if args.slot:
-            slot()
-            
-        if args.draw_card:
-            draw_card()
-            
-        if args.search_items:
-            search_for_items()
-            
-        if args.fly:
-            fly()
-            
-        if args.drink_coffee:
-            drink_coffee()            
-
-        if args.drink_tea:
-            drink_tea()
-            
-        if args.surf:
-            surf()            
-
-        if args.collections:
-            collections()
-            
-        if args.doodling:
-            doodling()            
-
-        if args.zen_melody:
-            zen_melody()
-            
-        if args.value:
-            value()            
-
-        if args.bump:
-            bump()
-            
-        if args.ma:
-            ma()
-            
-        if args.skate:
-            skate()
-            
-        if args.id:
-            ID()
-            
-        if args.idc:
-            IDC()
-            
-        if args.art:
-            art()
-            
-        if args.radio:
-            radio()
-            
-        if args.give_alms:
-            give_alms()
-            
-        if args.brawl:
-            brawl()
-            
-        if args.karate:
-            karate()
-            
-        if args.koans:
-            koans()
-            
-        if args.hipster_tarot:
-            hipster_tarot()
-            
-        if args.hack:
-            hack()
-            
-        if args.spar:
-            spar()
-            
-        if args.train:
-            train()
-            
-        if args.rest:
-            rest()           
-
-        if args.haiku:
-            haiku()            
-
-        if args.psalms:
-            psalms()
-            
-        if args.dhammapada:
-            dhammapada()            
-
-        if args.proverbs:
-            proverbs()            
-
-        if args.koran:
-            koran()            
-
-        if args.lh:
-            message()
-            
-        if args.souls:
-            souls()
-            
-        if args.guard:
-            guard()
-            sys.exit(0)
-            
-        if args.chat:
-            c()
-            
-        if args.ascii:
-            asciii()
-            
-        if args.ascii_search:
-            ascsearch()
-            
-        if args.mp3:
-            mp3()
-            
-        if args.monopoly:
-            monopoly()
-            
-        if args.equips:
-            equips()
-            
-        if args.rpg:
-            rpg()
-            
-        if args.archery:
-            archery()
-            
-        if args.color_key:
-            color_key()
-            
-        if args.magic:
-            magic()            
-
-        if args.football:
-            football()
-            
-        if args.map:
-            mapp()
-            
-        if args.auto_mat:
-            auto_mat()
-            
-        if args.donate:
-            print("Contact the developer at usvu.tech@gmail.com")
-            print(usr + "" + " " + "" + "Contact the developer at usvu.tech@gmail.com", file=z)
-            
-        if args.weapon_start:
-            weapon_start()
-            sys.exit(0)            
-
-        if args.call:
-            call()
-            sys.exit(0)
-            
-        if args.time_call:
-            time_call()
-            sys.exit(0)
-            
-        if args.monitor_start:
-            monitor_start()
-            sys.exit(0)
-            
-        if args.acad_monitor:
-            acad_monitor()
-            sys.exit(0)
-            
-        if args.time_monitor:
-            time_monitor()
-            sys.exit(0)
-            
-        if args.speech_tmonitor:
-            s_time_monitor()
-            sys.exit(0)
-
-        if args.ruh_time_call:
-            ruh_time_call()
-            sys.exit(0)
-            
-        if args.acad_search:
-            asearch()
-            
-        if args.message_scan:
-            msgs()
-            
-        if args.fuzz:
-            fuzz()            
-
-        if args.tag:
-            tag()
-            
-        if args.a_tag:
-            atag()
-            
-        if args.medproc_ai:
-            MAI()
-            sys.exit(0)           
-
-        if args.medproc_cont:
-            MAIc()
-            sys.exit(0)
-            
-        if args.frames:
-            frames()
-            
-        if args.frames_search:
-            fsearch()            
-
-        if args.burner_search:
-            busearch()
-            
-        if args.oscillator:
-            oscillator()
-            sys.exit(0)
-            
-        if args.time_oscillator:
-            toscillator()
-            sys.exit(0)
-            
-        if args.amror:
-            amror()
-            sys.exit(0)           
-
-        if args.amror_search:
-            amsearch()           
-
-        if args.burner_start:
-            burner()
-            sys.exit(0)
-            
-        if args.time_burner_start:
-            tburner()
-            sys.exit(0)
-
-        if args.c_burner_start:
-            cburner()
-            sys.exit(0)
-            
-        if args.c_time_burner_start:
-            ctburner()
-            sys.exit(0)
-
-        if args.j_burner_start:
-            jburner()
-            sys.exit(0)
-            
-        if args.j_time_burner_start:
-            jtburner()
-            sys.exit(0)
-            
-        if args.zuz:
-            zuz()
-            
-        if args.programs:
-            programs()
-            sys.exit(0)           
-
-        if args.tinien:
-            tinie_N()           
-
-        if args.n_tag:
-            ntag()           
-
-        if args.fcci_monitor:
-            fntcci_monitor()
-            sys.exit(0)            
-
-        if args.type_text:
-            text()
-            
-        if args.threads:
-            while True:
-
-                    thread_stop_event = threading.Event()
-
-                    try:
-                        activate_threads(thread_stop_event) 
-
-                    except Exception as e:
-                        print(f"An unhandled error occurred: {e}")
-                        thread_stop_event.set()
-                    
-                    sys.exit(0)
-
-        if args.speak:
-            spheak()
-            
-        if args.cbmp:
-            cbmp()
-            sys.exit(0)
-            
-        if args.cbmpc:
-            cbmpc()
-            sys.exit(0)
-            
-        if args.xcbmp:
-            xcbmp()
-            sys.exit(0)
-
-        if args.xcbmpc:
-            xcbmpc()
-            sys.exit(0)
-
-        if args.cbmp:
-            hbmp()            
-            sys.exit(0)
-
-        if args.cbmpc:
-            hbmpc()
-            sys.exit(0)
-
-        if args.xcbmp:
-            xhbmp()
-            sys.exit(0)
-
-        if args.xcbmpc:
-            xhbmpc()
-            sys.exit(0)
-
-        if args.cbmp:
-            jbmp()           
-            sys.exit(0)
-
-        if args.cbmpc:
-            jbmpc()
-            sys.exit(0)
-
-        if args.xcbmp:
-            xjbmp()
-            sys.exit(0)
-
-        if args.xcbmpc:
-            xjbmpc()
-            sys.exit(0)
-
-        if args.fbmp:
-            fbmp()
-            sys.exit(0)
-
-        if args.xfbmp:
-            xfbmp()
-            sys.exit(0)
-
-        if args.gen_string:
-            generate_secure_string()            
-
-        if args.ghost_write:
-            ghost_write()
-            sys.exit(0)
-
-        if args.insta_ghost_write:
-            insta_ghost_write()                
-
-        if args.sound_stream:
-            sound_stream()
-            sys.exit(0)
-
-        if args.rhospital:
-            rhospital()
-
-        if args.mprocs_commands:
-            commands()
-
-        if args.x:
-            sys.exit(0)
-            
         chooseAgain = "yes"
-        while chooseAgain == "yes":
-            result = choice()
-            
-            if result == "switch":
-                return
+        while chooseAgain:
+            choice()
 
         chooseAgain = input()
-        z.close()
-        m.close()
-        a.close()
-        b.close()
-        i.close()
-        x.close()
-        c.close()
-        t.close()
-        p.close()
-        j.close()
-        q.close()
-        k.close()
-        e.close()
-        u.close()
-        o.close()
-        n.close()
-        h.close()
-        w.close()
-        l.close()
-        g.close()
 
     mp()
 
 if __name__ == "__main__":
-    main()
-
+     main()
 
