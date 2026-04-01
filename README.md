@@ -1,3 +1,16 @@
+# New New: NeonBunny
+
+    pipx install NeonBunny
+
+open:
+
+    neonbunny
+    nibbler
+    nibble
+    nb
+    nblr
+    nbl
+
 # a simplified version of MProcs
 Files here are for documentation purposes and research. The distributable package 'mdcci' is installed as a single module from pip/pipx directory directly.
 
