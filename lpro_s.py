@@ -23,6 +23,25 @@ BLUE = '\033[94m'
 PINK = '\033[95m'
 RESET = '\033[0m'
 
+colors = {
+    'RED': '\033[31m',
+    'GREEN': '\033[32m',
+    'YELLOW': '\033[33m',
+    'PURPLE': '\033[35m',
+    'CYAN': '\033[36m',
+    'WHITE': '\033[37m',
+    'BRIGHT_RED': '\033[91m',
+    'BRIGHT_GREEN': '\033[92m',
+    'BRIGHT_YELLOW': '\033[93m',
+    'BRIGHT_BLUE': '\033[94m',
+    'BRIGHT_PURPLE': '\033[95m',
+    'BRIGHT_CYAN': '\033[96m',
+    'BRIGHT_WHITE': '\033[97m'
+}
+
+def get_random_color():
+    return random.choice(list(colors.values()))
+
 raw_name = session.raw_usr
 
 global usr
@@ -674,7 +693,7 @@ def main():
         print(alert, value, random_letters, kkchar_str, cchat, hchar_str, rrchar_str, ct)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.15-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.2-s{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -774,7 +793,8 @@ def main():
                 result = "  ".join(random.sample(nano, random.randint(1, 9)))
             star = "&"
             dash = ""
-            print(star, dash, chchars_str, dash, result, dash, ct)
+            random_color = get_random_color()
+            print(f"{star} {dash} {random_color}{chchars_str} {dash} {result}{RESET} {dash} {ct}")
 
         def n1():
             global omit_result
@@ -3292,7 +3312,8 @@ def main():
                 random_letters = generate_random_letters()
                 sitch  = (round(random.random()*9999,4))
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
-                print(maroon, anschar_str, sitch, kchat, ctm)
+                random_color = get_random_color()
+                print(f"{maroon} {anschar_str} {sitch} {random_color}{kchat}{RESET} {ctm}")
                 print()
 
             def main_loop():
@@ -3327,7 +3348,8 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 kchat2 = random.choices(acad, k=random.randint(1,7))
-                print(maroon, random_letters, sitch, kchat, kchat2, ctm)
+                random_color = get_random_color()
+                print(f"{maroon} {random_letters} {sitch} {random_color}{kchat} {kchat2}{RESET} {ctm}")
                 print("_______________________________________")
                 print()
 
@@ -3407,7 +3429,8 @@ def main():
                 sitch  = (round(random.random()*9999,4))
                 kchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 kchat2 = random.choices(acad, k=random.randint(1,7))
-                print(maroon, random_letters, sitch, kchat, kchat2, ctm)
+                random_color = get_random_color()
+                print(f"{maroon} {random_letters} {sitch} {random_color}{kchat} {kchat2}{RESET} {ctm}")
                 print("_______________________________________")
                 print()
 
@@ -3736,8 +3759,9 @@ def main():
                 cchat = "  ".join(random.choices(nano, k=random.randint(1,9)))
                 acadl = random.sample(acad, random.randint(1,7))
                 dash = "-"
+                random_color = get_random_color()
                 print()
-                print(tag, ctag, anschar_str, sitch, wonyao_str, dash, cchat, acadl, ctm)
+                print(f"{tag} {ctag} {anschar_str} {sitch} {wonyao_str} {dash} {random_color}{cchat} {acadl}{RESET} {ctm}")
 
         def MAI():
             import time
