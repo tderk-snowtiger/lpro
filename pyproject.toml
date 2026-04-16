@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mdcci"
-version = "1.4"
-description = "Extended LPro - MProcs simplified - A Life program by tderk, originally LPro.py and Destiny [2024]"
+name = "NeonBunny"
+version = "1.2"
+description = "A Life program by tderk, originally LPro.py and Destiny [2024]"
 requires-python = ">=3.8"
 readme = "README.md"
 license = { text = "MIT" }
@@ -14,26 +14,29 @@ authors = [
 ]
 
 [project.scripts]
-mdcci = "mdcci.scripts.main:run"
+NeonBunny = "NeonBunny.scripts.main:run"
+neonbunny = "NeonBunny.scripts.main:run"
 
-lpro = "mdcci.scripts.lpro:main"
-lpro-s = "mdcci.scripts.lpro_s:main"
+nibbler = "NeonBunny.scripts.lpro:main"
+nibble = "NeonBunny.scripts.lpro_s:main"
 
-lxpro = "mdcci.scripts.main:run"
+NB = "NeonBunny.scripts.main:run"
+nb = "NeonBunny.scripts.main:run"
 
-snowtiger = "mdcci.scripts.main:run"
+nblr = "NeonBunny.scripts.lpro:main"
+nbl = "NeonBunny.scripts.lpro_s:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["mdcci*", "mdcci.*"] 
+include = ["NeonBunny*", "NeonBunny.*"] 
 exclude = ["tests*", "docs*", "venv*", "build*", "dist*", "*test*"]
 
 [tool.setuptools.package-data]
-"mdcci" = ["py.typed"]  # Changed to x_lpro
-"mdcci.scripts" = ["*.txt", "*.md", "*.json", "data/*", "logs/*"]
+"NeonBunny" = ["py.typed"] 
+"NeonBunny.scripts" = ["*.txt", "*.md", "*.json", "data/*", "logs/*"]
 
 dependencies = []
 
