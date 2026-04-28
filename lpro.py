@@ -24,19 +24,17 @@ PINK = '\033[95m'
 RESET = '\033[0m'
 
 colors = {
-    'RED': '\033[31m',
     'GREEN': '\033[32m',
     'YELLOW': '\033[33m',
     'PURPLE': '\033[35m',
     'CYAN': '\033[36m',
-    'WHITE': '\033[37m',
+    'DEFAULT': '\033[0m',
     'BRIGHT_RED': '\033[91m',
     'BRIGHT_GREEN': '\033[92m',
     'BRIGHT_YELLOW': '\033[93m',
     'BRIGHT_BLUE': '\033[94m',
     'BRIGHT_PURPLE': '\033[95m',
     'BRIGHT_CYAN': '\033[96m',
-    'BRIGHT_WHITE': '\033[97m'
 }
 
 def get_random_color():
@@ -695,7 +693,7 @@ def main():
         print(alert, value, random_letters, rrchar_str, kkchar_str, cchat, hchar_str, ct, file=z)
 
     def version():
-        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.2{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
+        title =  usr + "" + " " + "" + f"snowtiger >>> {ORANGE}I.S. (Incubator Studios) Outbeat Produce:{RESET} {GREEN}MProcs-8.2.1{RESET} {ORANGE}by tderk{RESET} - {ORANGE}Established Lpro.py (Life-pro) and Destiny [2024]{RESET}"
         title2 = f"| {BLUE}Indicative: @USVirtualUni && © Medicine, Computable (N_2025) && FNTCCI{RESET} |"
         title3 = f"{ORANGE}All Rights Reserved{RESET} - {BLUE}Medicci.ca{RESET}"
         title4 = f"- {RED}(P0cket Un1-Ver$e){RESET}"
@@ -4464,7 +4462,7 @@ def main():
                 print()
                 print(file=z)
                 print(f"{tag} {ctag} {anschar_str} {sitch} {wonyao_str} {dash} {random_color}{cchat} {acadl}{RESET} {ctm}")
-                print(f"{user} {tag} {ctag} {anschar_str} {sitch} {wonyao_str} {dash} {random_color}{cchat} {acadl}{RESET} {ctm}", file=z)
+                print(f"{usr} {tag} {ctag} {anschar_str} {sitch} {wonyao_str} {dash} {random_color}{cchat} {acadl}{RESET} {ctm}", file=z)
 
 
         def MAI():
