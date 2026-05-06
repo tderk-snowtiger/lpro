@@ -44,3 +44,5 @@ do indicated function then return to shell:
 MProcs Web App: https://nanodesks.pyscriptapps.com/mprocs/latest
 
 Destiny.nano: https://tderk-snowtiger.github.io
+
+Weblog: https://kredtidy.tumblr.com
